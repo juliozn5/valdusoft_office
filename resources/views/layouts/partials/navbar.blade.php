@@ -70,7 +70,10 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Mi perfil</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="auth-login.html"><i class="feather icon-power"></i> Salir</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Salir</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul>
