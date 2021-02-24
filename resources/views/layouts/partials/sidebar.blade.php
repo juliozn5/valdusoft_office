@@ -12,23 +12,17 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item">
-                <a href="{{ route('home') }}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Email">Inicio</span></a>
-            </li>
-        </ul>
+          
+            @if (Auth()->user()->role == 'administrator')
+            @include('layouts.partials.menu_sidebar.administrator')
+            @endif
+            @if (Auth()->user()->role == 'client')
+            @include('layouts.partials.menu_sidebar.client')
+            @endif
+            @if (Auth()->user()->role == 'employee')
+            @include('layouts.partials.menu_sidebar.employee')
+            @endif
 
-     
-                @if (Auth()->user()->role == 'administrator')
-                    @include('layouts.partials.menu_navbar.administrator')
-                @endif
-                @if (Auth()->user()->role == 'pago')
-                    @include('layouts.partials.menu_navbar.pago')
-                @endif
-                @if (Auth()->user()->role == 'gold parthner')
-                    @include('layouts.partials.menu_navbar.gold parthner')
-                @endif
-                @if (Auth()->user()->role == 'cm')
-                    @include('layouts.partials.menu_navbar.cm')
-                @endif
+        </ul>
     </div>
 </div>

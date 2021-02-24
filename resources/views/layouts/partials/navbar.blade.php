@@ -10,20 +10,14 @@
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-language nav-item">
                         <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="flag-icon flag-icon-us"></i><span class="selected-language">English</span>
+                            <i class="flag-icon flag-icon-es"></i><span class="selected-language">Español</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdown-flag">
                             <a class="dropdown-item" href="#" data-language="en">
                                 <i class="flag-icon flag-icon-us"></i> English
                             </a>
-                            <a class="dropdown-item" href="#" data-language="fr">
-                                <i class="flag-icon flag-icon-fr"></i> French
-                            </a>
-                            <a class="dropdown-item" href="#" data-language="de">
-                                <i class="flag-icon flag-icon-de"></i> German
-                            </a>
-                            <a class="dropdown-item" href="#" data-language="pt">
-                                <i class="flag-icon flag-icon-pt"></i> Portuguese
+                            <a class="dropdown-item" href="#" data-language="en">
+                                <i class="flag-icon flag-icon-es"></i> Español
                             </a>
                         </div>
                     </li>
@@ -31,12 +25,12 @@
                     <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon feather icon-search"></i></a>
                         <div class="search-input">
                             <div class="search-input-icon"><i class="feather icon-search primary"></i></div>
-                            <input class="input" type="text" placeholder="Explore Vuexy..." tabindex="-1" data-search="template-list">
+                            <input class="input" type="text" placeholder="Explora Valdusoft..." tabindex="-1" data-search="template-list">
                             <div class="search-input-close"><i class="feather icon-x"></i></div>
                             <ul class="search-list search-list-main"></ul>
                         </div>
                     </li>
-                    <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">5</span></a>
+                    <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">5</span></a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
                                 <div class="dropdown-header m-0 p-2">
@@ -58,12 +52,12 @@
                             </li>
                             <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center" href="javascript:void(0)">View all notifications</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
-                                <span class="user-name text-bold-600">John Doe</span>
-                                <span class="user-status">Available</span>
+                                <span class="user-name text-bold-600">name</span>
+                                <span class="user-status">Role</span>
                             </div>
                             <span><img class="round" src="{{ asset('template/app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"></span>
                         </a>
