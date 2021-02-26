@@ -13,18 +13,21 @@
             data-i18n="Email">Perfil</span></a>
 </li>
 
-<!-- INTERES -->
-<li class=" nav-item">
-    <a href="{{ route('landing.holidays') }}"><i class="feather icon-calendar"></i><span class="menu-title"
+
+<li class="nav-item has-sub"><a href="#"><i class="feather icon-help-circle"></i><span class="menu-title"
+            data-i18n="Ecommerce">Intereses</span></a>
+    <ul class="menu-content" style="">
+        <li class=""><a href="{{ route('landing.holidays') }}"><i class="feather icon-calendar"></i><span class="menu-title"
             data-i18n="Email">Vacaciones</span></a>
-</li>
+        </li>
 
-<li class=" nav-item">
-    <a href="{{ route('landing.financing') }}"><i class="feather icon-activity"></i><span class="menu-title"
+        <li class=""><a href="{{ route('landing.financing') }}"><i class="feather icon-activity"></i><span class="menu-title"
             data-i18n="Email">Financiamiento</span></a>
-</li>
-
-<li class=" nav-item">
-    <a href="{{ route('landing.bonds') }}"><i class="feather icon-gift"></i><span class="menu-title"
+        </li>
+        
+        <li class=""><a href="{{ route('landing.bonds') }}"><i class="feather icon-gift"></i><span class="menu-title"
             data-i18n="Email">Bonos</span></a>
+        </li>
+
+    </ul>
 </li>

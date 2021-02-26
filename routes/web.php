@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::group(['middleware'=>['auth']], function() {
     Route::get('/', 'HomeController@index')->name('index');
+    Route::get('home', 'HomeController@index')->name('home');
 
 });
 
@@ -24,7 +25,6 @@ Route::group(['middleware'=>['auth']], function() {
 // administradores
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['administrator']], function () {
 
-    Route::get('home', 'HomeController@index')->name('home');
     Route::get('landing/customers', 'CustomersController@index')->name('landing.customers');
     Route::get('landing/employees', 'EmployeesController@index')->name('landing.employees');
     Route::get('landing/payroll', 'PayrollController@index')->name('landing.payroll');

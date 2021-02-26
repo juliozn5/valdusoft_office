@@ -23,18 +23,20 @@
             data-i18n="Email">Hosting</span></a>
 </li>
 
-<!-- FINANCIERO -->
-<li class=" nav-item">
-    <a href="{{ route('landing.payroll') }}"><i class="feather icon-file-text"></i><span class="menu-title"
-            data-i18n="Email">Nomina</span></a>
-</li>
+<li class="nav-item has-sub"><a href="#"><i class="feather icon-archive"></i><span class="menu-title"
+            data-i18n="Ecommerce">Finanzas</span></a>
+    <ul class="menu-content" style="">
+        <li class=""> <a href="{{ route('landing.payroll') }}"><i class="feather icon-file-text"></i><span
+                    class="menu-title" data-i18n="Email">Nomina</span></a>
+        </li>
 
-<li class=" nav-item">
-    <a href="{{ route('landing.bill') }}"><i class="feather icon-folder"></i><span class="menu-title"
-            data-i18n="Email">Facturas</span></a>
-</li>
+        <li class=""><a href="{{ route('landing.bill') }}"><i class="feather icon-folder"></i><span class="menu-title"
+                    data-i18n="Email">Facturas</span></a>
+        </li>
 
-<li class=" nav-item">
-    <a href="{{ route('landing.payments') }}"><i class="feather icon-dollar-sign"></i><span class="menu-title"
-            data-i18n="Email">Pagos</span></a>
+        <li class=""><a href="{{ route('landing.payments') }}"><i class="feather icon-dollar-sign"></i><span
+                    class="menu-title" data-i18n="Email">Pagos</span></a>
+        </li>
+
+    </ul>
 </li>

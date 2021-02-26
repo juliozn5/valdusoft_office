@@ -1,10 +1,10 @@
-<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <div class="brand-logo"></div>
-                    <h2 class="brand-text mb-0">Valdusoft</h2>
+                    <img class="img-fluid center-block logo-center mb-5" width="200px" height="200px"
+                        src="{{ asset('images/logo.png') }}" />
                 </a>
             </li>
         </ul>
@@ -12,7 +12,7 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          
+
             @if (Auth()->user()->role == 'administrator')
             @include('layouts.partials.menu_sidebar.administrator')
             @endif

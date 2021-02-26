@@ -82,13 +82,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column"
                                         </div>
 
                                         <div class="text-right mt-1"><a href="{{route ('register') }}"
-                                                class="card-link text-info ">¿Aún no tienes una cuenta? <b>Regístrate.</b></a>
+                                                class="card-link text-info ">¿Aún no tienes una cuenta?
+                                                <b>Regístrate.</b></a>
                                         </div>
 
                                         <div class="text-left mt-2">
                                             <fieldset class="checkbox">
                                                 <div class="vs-checkbox-con vs-checkbox-primary">
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" name="remember" id="remember"
+                                                        {{ old('remember') ? 'checked' : '' }}>
                                                     <span class="vs-checkbox">
                                                         <span class="vs-checkbox--check">
                                                             <i class="vs-icon feather icon-check"></i>
@@ -113,22 +115,23 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column"
 
 @push('scripts')
 <script>
-// login script
-const eyeBtn = document.getElementById("eye-btn");
-const passwordField = document.getElementById("password");
+    // login script
+    const eyeBtn = document.getElementById("eye-btn");
+    const passwordField = document.getElementById("password");
 
-eyeBtn.addEventListener("click", (e) => {
-    if (passwordField.type === "password") {
-        // set button class atribute to eye-slash icon
-        e.target.setAttribute("class", "feather icon-eye-off float-right");
-        // change the input type to text
-        passwordField.type = "text";
-    } else {
-        // set button class atribute to eye icon
-        e.target.setAttribute("class", "feather icon-eye float-right");
-        // change the input type to password
-        passwordField.type = "password";
-    }
-});
+    eyeBtn.addEventListener("click", (e) => {
+        if (passwordField.type === "password") {
+            // set button class atribute to eye-slash icon
+            e.target.setAttribute("class", "feather icon-eye-off float-right");
+            // change the input type to text
+            passwordField.type = "text";
+        } else {
+            // set button class atribute to eye icon
+            e.target.setAttribute("class", "feather icon-eye float-right");
+            // change the input type to password
+            passwordField.type = "password";
+        }
+    });
+
 </script>
 @endpush
