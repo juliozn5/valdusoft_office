@@ -27,7 +27,7 @@ class HomeController extends Controller
         if (Auth::guest()){
             return redirect('login');
         }else{
-           return view('layouts.admin'); 
+           return view('home'); 
         }
         
     }

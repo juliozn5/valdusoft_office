@@ -10,6 +10,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
 
 @include('layouts.partials.sidebar')
 
+
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -552,7 +553,6 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
         </div>
     </div>
 </div>
-
         <!-- END: Content-->
 
         <div class="sidenav-overlay"></div>

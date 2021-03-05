@@ -13,6 +13,62 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+Route::group(['middleware'=>['auth']], function() {
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('home', 'HomeController@index')->name('home');
+});
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// administradores
+Route::group(['middleware' => ['auth', 'role'], 'role' => ['administrator']], function () {
+
+    Route::get('landing/customers', 'CustomersController@index')->name('landing.customers');
+    Route::get('landing/employees', 'EmployeesController@index')->name('landing.employees');
+    Route::get('landing/payroll', 'PayrollController@index')->name('landing.payroll');
+    Route::get('landing/payments', 'PaymentsController@index')->name('landing.payments');
+
+});
+
+
+// clientes
+Route::group(['middleware' => ['auth', 'role'], 'role' => ['client']], function () {
+   
+    Route::get('landing/domain', 'DomainController@index')->name('landing.domain');
+    
+});
+
+
+// trabajadores
+Route::group(['middleware' => ['auth', 'role'], 'role' => ['employee']], function () {
+   
+    Route::get('landing/profile', 'ProfileController@index')->name('landing.profile');
+    Route::get('landing/holidays', 'HolidaysController@index')->name('landing.holidays');
+    Route::get('landing/financing', 'FinancingController@index')->name('landing.financing');
+    Route::get('landing/bonds', 'BondsController@index')->name('landing.bonds');
+
+});
+
+
+// administradores y clientes
+Route::group(['middleware' => ['auth', 'role'], 'role' => ['administrator', 'client']], function () {
+
+    Route::get('landing/projects', 'ProjectsController@index')->name('landing.projects');
+    Route::get('landing/hosting', 'HostingController@index')->name('landing.hosting');
+
+});
+
+
+// clientes y trabajadores
+Route::group(['middleware' => ['auth', 'role'], 'role' => ['client', 'employee']], function () {
+   
+    Route::get('landing/dashboard', 'DashboardController@index')->name('landing.dashboard');
+    
+});
+
+
+// administradores, clientes y trabajadores 
+Route::group(['middleware' => ['auth', 'role'], 'role' => ['administrator', 'client', 'employee']], function () {
+   
+    Route::get('landing/bill', 'BillController@index')->name('landing.bill');
+
+});
