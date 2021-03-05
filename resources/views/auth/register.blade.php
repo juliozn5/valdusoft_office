@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @push('body-atribute')
