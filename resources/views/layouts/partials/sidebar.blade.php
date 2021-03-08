@@ -13,13 +13,13 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-            @if (Auth()->user()->role == 'administrator')
+            @if (Auth()->user()->role == '1')
             @include('layouts.partials.menu_sidebar.administrator')
             @endif
-            @if (Auth()->user()->role == 'client')
+            @if (Auth()->user()->role == '2')
             @include('layouts.partials.menu_sidebar.client')
             @endif
-            @if (Auth()->user()->role == 'employee')
+            @if (Auth()->user()->role == '3')
             @include('layouts.partials.menu_sidebar.employee')
             @endif
 
