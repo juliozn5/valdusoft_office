@@ -55,7 +55,6 @@ Route::group(['middleware' => ['auth', 'role'], 'role' => ['3']], function () {
 // administradores y clientes
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2']], function () {
 
-    Route::get('landing/projects', 'ProjectsController@index')->name('landing.projects');
     Route::get('landing/hosting', 'HostingController@index')->name('landing.hosting');
 
 });
@@ -73,6 +72,7 @@ Route::group(['middleware' => ['auth', 'role'], 'role' => ['2', '3']], function 
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2', '3']], function () {
    
     Route::get('landing/bill', 'BillController@index')->name('landing.bill');
+    Route::get('landing/projects', 'ProjectsController@index')->name('landing.projects');
 
 });
 
