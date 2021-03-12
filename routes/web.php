@@ -19,6 +19,9 @@ Route::group(['middleware'=>['auth']], function() {
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('users/index', 'ProfileController@index')->name('users.index');
+    Route::get('profile', 'ProfileController@edit')->name('profile');
+    Route::patch('profile-update', 'ProfileController@update')->name('profile.update');
+
 });
 
 

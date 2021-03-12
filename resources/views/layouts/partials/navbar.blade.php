@@ -56,13 +56,31 @@
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
-                                <span class="user-name text-bold-600">name</span>
-                                <span class="user-status">Role</span>
+                                <span class="user-name text-bold-600">{{Auth::user()->name}}</span>
+                                @if(Auth::user()->role === '0')
+                                <span class="user-status text-bold-600 role-color">Nuevo</span>
+                                @elseif(Auth::user()->role === '1')
+                                <span class="user-status text-bold-600 role-color">Administrador</span>
+                                @elseif(Auth::user()->role === '2')
+                                <span class="user-status text-bold-600 role-color">Cliente</span>
+                                @elseif(Auth::user()->role === '3')
+                                <span class="user-status text-bold-600 role-color">Trabajador</span>
+                                @endif
                             </div>
-                            <span><img class="round" src="{{ asset('template/app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"></span>
+                            @if(!Auth::user()->getMedia('photo')->isEmpty())
+                            <span>
+                                <img class="round" src="{{ Auth::user()->photoUrl }}"
+                                    alt="{{ Auth::user()->fullname }}" height="40" width="40">
+                            </span>
+                            @else
+                            <span>
+                            <span><img class="round" src="{{ asset('images/valdusoft.png') }}" alt="avatar" height="40" width="40"></span>
+                            </span>
+                            @endif
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#"><i class="feather icon-user"></i> Mi perfil</a>
+                            <a class="dropdown-item" href="{{ route('profile') }}"><i class="feather icon-user"></i> Mi perfil</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Salir</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

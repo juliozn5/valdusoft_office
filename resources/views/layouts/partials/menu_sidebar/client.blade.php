@@ -14,11 +14,6 @@
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('landing.domain') }}"><i class="feather icon-server"></i><span class="menu-title"
-            data-i18n="Email">Dominio</span></a>
-</li>
-
-<li class=" nav-item">
     <a href="{{ route('landing.bill') }}"><i class="feather icon-folder"></i><span class="menu-title"
             data-i18n="Email">Facturas</span></a>
 </li>
