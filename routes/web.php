@@ -52,6 +52,11 @@ Route::group(['middleware' => ['auth', 'role'], 'role' => ['3']], function () {
 // administradores y clientes
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2']], function () {
     Route::get('landing/hosting', 'HostingController@index')->name('landing.hosting');
+    Route::get('landing/hosting/create', 'HostingController@create')->name('landing.hosting-create');
+    Route::get('landing/hosting/edit/{id}', 'HostingController@edit')->name('landing.hosting-edit');
+    Route::post('landing/hosting/store', 'HostingController@store')->name('landing.hosting-store');
+    Route::patch('landing/hosting/update/{id}', 'HostingController@update')->name('landing.hosting-update');
+    Route::delete('landing/hosting/delete/{id}', 'HostingController@delete')->name('landing.hosting-delete');
 });
 
 

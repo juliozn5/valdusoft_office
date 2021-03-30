@@ -36,6 +36,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Tabla de Hosting</h3>
+                             <a href="{{ route('landing.hosting-create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Hosting</a>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -48,12 +49,16 @@
                                             <th>URL</th>
                                             <th>Fecha de creación</th>
                                             <th>Fecha de vencimiento</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
+                                        
                                         @foreach ($hosting as $item)
                                         <tr>
                                             <th>{{ $loop->iteration }}</th>
+
                                             @if(!$item->getMedia('photo')->isEmpty())
                                             <th><img class="rounded-circle" width="50px" height="50px" src="{{ $item->photoUrl }}" /></th>
                                             @else
@@ -63,6 +68,15 @@
                                             <td><a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></td>
                                             <td>{{ $item->create_date }}</td>
                                             <td>{{ $item->due_date }}</td>
+
+                                            <td>
+                                                   <a href="{{ route('landing.hosting-edit', $item->id) }}" class="btn btn-primary mb-1"><i class="feather icon-edit"></i></a>
+                                                   <form action="{{ route('landing.hosting-delete', $item->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                   <button type="submit" class="btn btn-danger"><i class="feather icon-trash"></i></button>
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

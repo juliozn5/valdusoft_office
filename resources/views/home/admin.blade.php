@@ -120,13 +120,13 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
                                                 @endif
                                                 <td>{{ $item->name }}</td>
                                                 @if($item->position === '0')
-                                                <td>Gerente</td>
+                                                <td>Desarrollador</td>
                                                 @elseif($item->position === '1')
-                                                <td>Programador</td>
-                                                @elseif($item->position === '2')
                                                 <td>Diseñador</td>
+                                                @elseif($item->position === '2')
+                                                <td>Project Manager,</td>
                                                 @elseif($item->position === '3')
-                                                <td>Contratista</td>
+                                                <td>Financiero</td>
                                                 @endif
                                                 <td>{{ $item->email }}</td>
                                                 <td>{{ $item->phone }}</td>
