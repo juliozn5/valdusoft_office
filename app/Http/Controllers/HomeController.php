@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 
+use App\Models\User;
+use App\Models\Hosting;
+
 class HomeController extends Controller
 {
     /**
@@ -24,11 +27,35 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::guest()){
-            return redirect('login');
-        }else{
            return view('home'); 
-        }
+        
+    }
+
+    public function new()
+    {
+           return view('home.new'); 
+        
+    }
+
+    public function admin()
+    {
+        $user = User::all()->where('role', '=', 3);
+        $hosting = Hosting::all();
+
+        return view('home.admin')
+        ->with('user', $user)
+        ->with('hosting', $hosting); 
+    }
+
+    public function client()
+    {
+           return view('home.client'); 
+        
+    }
+
+    public function employe()
+    {
+           return view('home.employe'); 
         
     }
 }

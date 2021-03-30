@@ -9,11 +9,7 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        if (Auth::guest()){
-            return redirect('login');
-        }else{
-           return view('landing.projects'); 
-        }
+           return view('landing.projects.projects'); 
         
     }
 }

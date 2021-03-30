@@ -28,17 +28,6 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-
-    public function ProfileEdit()
-    {
-        if (Auth::guest()){
-            return redirect('login');
-        }else{
-           return view('users.profile-edit'); 
-        }
-        
-    }
-
     /**
      * Create a new controller instance.
      *

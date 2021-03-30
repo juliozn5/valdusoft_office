@@ -9,11 +9,7 @@ class BondsController extends Controller
 {
     public function index()
     {
-        if (Auth::guest()){
-            return redirect('login');
-        }else{
-           return view('landing.bonds'); 
-        }
+        return view('landing.bonds.bonds'); 
         
     }
 }

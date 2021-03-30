@@ -9,11 +9,7 @@ class CustomersController extends Controller
 {
     public function index()
     {
-        if (Auth::guest()){
-            return redirect('login');
-        }else{
-           return view('landing.customers'); 
-        }
-        
+        return view('landing.customers.customers'); 
+ 
     }
 }

@@ -9,11 +9,7 @@ class PayrollController extends Controller
 {
     public function index()
     {
-        if (Auth::guest()){
-            return redirect('login');
-        }else{
-           return view('landing.payroll'); 
-        }
+           return view('landing.payroll.payroll'); 
         
     }
 }

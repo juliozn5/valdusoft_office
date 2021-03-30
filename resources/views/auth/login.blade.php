@@ -1,16 +1,33 @@
 @extends('layouts.app')
 
-@push('styles')
-<style>
-
-
-</style>
-@endpush
-
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern 1-column navbar-floating footer-static bg-full-screen-image blank-page
 blank-page"
 data-open="click" data-menu="vertical-menu-modern" data-col="1-column"
+@endpush
+
+
+@push('scripts')
+<script>
+    // login script
+    const eyeBtn = document.getElementById("eye-btn");
+    const passwordField = document.getElementById("password");
+
+    eyeBtn.addEventListener("click", (e) => {
+        if (passwordField.type === "password") {
+            // set button class atribute to eye-slash icon
+            e.target.setAttribute("class", "feather icon-eye-off float-right");
+            // change the input type to text
+            passwordField.type = "text";
+        } else {
+            // set button class atribute to eye icon
+            e.target.setAttribute("class", "feather icon-eye float-right");
+            // change the input type to password
+            passwordField.type = "password";
+        }
+    });
+
+</script>
 @endpush
 
 @section('content')
@@ -113,25 +130,3 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column"
 </div>
 @endsection
 
-@push('scripts')
-<script>
-    // login script
-    const eyeBtn = document.getElementById("eye-btn");
-    const passwordField = document.getElementById("password");
-
-    eyeBtn.addEventListener("click", (e) => {
-        if (passwordField.type === "password") {
-            // set button class atribute to eye-slash icon
-            e.target.setAttribute("class", "feather icon-eye-off float-right");
-            // change the input type to text
-            passwordField.type = "text";
-        } else {
-            // set button class atribute to eye icon
-            e.target.setAttribute("class", "feather icon-eye float-right");
-            // change the input type to password
-            passwordField.type = "password";
-        }
-    });
-
-</script>
-@endpush

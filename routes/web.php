@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,70 +15,54 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-
+// usuarios logueado1
 Route::group(['middleware'=>['auth']], function() {
+
     Route::get('/', 'HomeController@index')->name('index');
-    Route::get('home', 'HomeController@index')->name('home');
-    Route::get('users/index', 'ProfileController@index')->name('users.index');
+
     Route::get('profile', 'ProfileController@edit')->name('profile');
     Route::patch('profile-update', 'ProfileController@update')->name('profile.update');
-
 });
 
+// usuario nuevo
+Route::group(['middleware' => ['auth', 'role'], 'role' => ['0']], function () {
+    Route::get('home', 'HomeController@index')->name('home');
+});
 
 // administradores
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['1']], function () {
-
+    Route::get('home-admin', 'HomeController@admin')->name('home.admin');
     Route::get('landing/customers', 'CustomersController@index')->name('landing.customers');
-    Route::get('landing/employees', 'EmployeesController@index')->name('landing.employees');
+    Route::get('landing/employes', 'EmployesController@index')->name('landing.employes');
     Route::get('landing/payroll', 'PayrollController@index')->name('landing.payroll');
     Route::get('landing/payments', 'PaymentsController@index')->name('landing.payments');
-
-});
-
-
-// clientes
-Route::group(['middleware' => ['auth', 'role'], 'role' => ['2']], function () {
-   
-    Route::get('landing/domain', 'DomainController@index')->name('landing.domain');
-    
 });
 
 
 // trabajadores
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['3']], function () {
-   
+    Route::get('home-employe', 'HomeController@employe')->name('home.employe');
     Route::get('landing/profile', 'ProfileController@index')->name('landing.profile');
     Route::get('landing/holidays', 'HolidaysController@index')->name('landing.holidays');
     Route::get('landing/financing', 'FinancingController@index')->name('landing.financing');
     Route::get('landing/bonds', 'BondsController@index')->name('landing.bonds');
-
 });
 
 
 // administradores y clientes
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2']], function () {
-
     Route::get('landing/hosting', 'HostingController@index')->name('landing.hosting');
-
 });
 
 
-// clientes y trabajadores
-Route::group(['middleware' => ['auth', 'role'], 'role' => ['2', '3']], function () {
-   
-    Route::get('landing/dashboard', 'DashboardController@index')->name('landing.dashboard');
-    
-});
+// clientes
+ Route::group(['middleware' => ['auth', 'role'], 'role' => ['2']], function () {
+    Route::get('home-client', 'HomeController@client')->name('home.client');
+ });
 
 
 // administradores, clientes y trabajadores 
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2', '3']], function () {
-   
     Route::get('landing/bill', 'BillController@index')->name('landing.bill');
     Route::get('landing/projects', 'ProjectsController@index')->name('landing.projects');
-
 });
-
-    
-

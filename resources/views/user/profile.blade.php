@@ -111,6 +111,40 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
 </style>
 @endpush
 
+
+@push('custom_js')
+<script>
+    $(document).ready(function() {
+      @if(!$user->getMedia('photo')->isEmpty())
+          @if(in_array($user->getMedia('photo')->first()->mime_type,array("image/png", "image/gif", "image/jpeg")))
+            previewPersistedFile("{{ $user->getMedia('photo')->first()->file }}", 'photo_preview');
+          @endif
+        @endif
+    });
+
+  function previewFile(input, preview_id) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              $("#" + preview_id).attr('src', e.target.result);
+              $("#" + preview_id).css('height', '300px');
+              $("#" + preview_id).parent().parent().removeClass('d-none');
+          }
+          $("label[for='" + $(input).attr('id') + "']").text(input.files[0].name);
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+
+  function previewPersistedFile(url, preview_id) {
+      $("#" + preview_id).attr('src', url);
+      $("#" + preview_id).css('height', '300px');
+      $("#" + preview_id).parent().parent().removeClass('d-none');
+
+  }
+
+</script>
+@endpush
+
 @section('content')
 
 @include('layouts.partials.navbar')
@@ -246,37 +280,3 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
         </footer>
         <!-- END: Footer-->
 @endsection
-
-
-@push('custom_js')
-<script>
-    $(document).ready(function() {
-      @if(!$user->getMedia('photo')->isEmpty())
-          @if(in_array($user->getMedia('photo')->first()->mime_type,array("image/png", "image/gif", "image/jpeg")))
-            previewPersistedFile("{{ $user->getMedia('photo')->first()->file }}", 'photo_preview');
-          @endif
-        @endif
-    });
-
-  function previewFile(input, preview_id) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-              $("#" + preview_id).attr('src', e.target.result);
-              $("#" + preview_id).css('height', '300px');
-              $("#" + preview_id).parent().parent().removeClass('d-none');
-          }
-          $("label[for='" + $(input).attr('id') + "']").text(input.files[0].name);
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
-
-  function previewPersistedFile(url, preview_id) {
-      $("#" + preview_id).attr('src', url);
-      $("#" + preview_id).css('height', '300px');
-      $("#" + preview_id).parent().parent().removeClass('d-none');
-
-  }
-
-</script>
-@endpush

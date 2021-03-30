@@ -26,7 +26,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        return view('users.profile-edit')
+        return view('user.profile')
         ->with('user',$user);
     }
 
@@ -35,26 +35,28 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         $fields = [
-         "name" => ['required'],
-         "role" => ['required'],
-         "email" => [
-            'required',
-            'string',
-            'email',
-            'max:255',
-        ],
+
+        //  "name" => ['required'],
+        //  "role" => ['required'],
+        //  "email" => [
+        //     'required',
+        //     'string',
+        //     'email',
+        //     'max:255',
+        // ],
         ];
 
         $msj = [
-            'name.required' => 'El nombre es requerido',
-            'role.required' => 'El telefono es requerido',
-            'email.unique' => 'El correo debe ser unico',
+            // 'name.required' => 'El nombre es requerido',
+            // 'role.required' => 'El telefono es requerido',
+            // 'email.unique' => 'El correo debe ser unico',
         ];
 
         $this->validate($request, $fields, $msj);
 
         // foto
         $user->update($request->all());
+
         if ($request->hasFile('photo')) {
             if(!$user->getMedia('photo')->isEmpty()) {
                 $user->getFirstMedia('photo')->delete();
@@ -65,7 +67,6 @@ class ProfileController extends Controller
 
         return redirect()->route('profile')->with('message','Se actualizo tu perfil');
         
-
     }
 
 }
