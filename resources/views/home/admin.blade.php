@@ -13,12 +13,6 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
     color: #FFFFFF;
 }
 
-.btn-payroll{
-    border-color: #0151ae !important;
-    background-color: #003573 !important;
-    color: #FFFFFF;
-}
-
 
 </style>
 @endpush
