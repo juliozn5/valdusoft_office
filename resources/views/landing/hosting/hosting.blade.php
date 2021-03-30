@@ -70,11 +70,11 @@
                                             <td>{{ $item->due_date }}</td>
 
                                             <td>
-                                                   <a href="{{ route('landing.hosting-edit', $item->id) }}" class="btn btn-primary mb-1"><i class="feather icon-edit"></i></a>
+                                                   <a href="{{ route('landing.hosting-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
                                                    <form action="{{ route('landing.hosting-delete', $item->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                   <button type="submit" class="btn btn-danger"><i class="feather icon-trash"></i></button>
+                                                   <button type="submit" class="btn btn-sm btn-danger"><i class="feather icon-trash"></i>Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

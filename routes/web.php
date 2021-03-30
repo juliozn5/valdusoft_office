@@ -69,5 +69,11 @@ Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2']], function 
 // administradores, clientes y trabajadores 
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2', '3']], function () {
     Route::get('landing/bill', 'BillController@index')->name('landing.bill');
+
     Route::get('landing/projects', 'ProjectsController@index')->name('landing.projects');
+    Route::get('landing/projects/create', 'ProjectsController@create')->name('landing.projects-create');
+    Route::get('landing/projects/edit/{id}', 'ProjectsController@edit')->name('landing.projects-edit');
+    Route::post('landing/projects/store', 'ProjectsController@store')->name('landing.projects-store');
+    Route::patch('landing/projects/update/{id}', 'ProjectsController@update')->name('landing.projects-update');
+    Route::delete('landing/projects/delete/{id}', 'ProjectsController@delete')->name('landing.projects-delete');
 });

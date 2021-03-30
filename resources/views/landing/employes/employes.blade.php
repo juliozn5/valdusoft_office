@@ -65,7 +65,7 @@
                                             @elseif($item->position === '1')
                                             <td>Diseñador</td>
                                             @elseif($item->position === '2')
-                                            <td>Project Manager,</td>
+                                            <td>Project Manager</td>
                                             @elseif($item->position === '3')
                                             <td>Financiero</td>
                                             @endif
