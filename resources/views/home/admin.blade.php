@@ -6,6 +6,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
 
 @push('custom_css')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.6/datatables.min.css"/>
+
 <style>
 
 .btn-client{
@@ -41,7 +42,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
 var options = {
       chart: {
         type: "area",
-        height: 400,
+        height: 500,
         foreColor: "#999",
         stacked: true,
         dropShadow: {
@@ -81,10 +82,10 @@ var options = {
       xaxis: {
         type: "datetime",
         axisBorder: {
-          show: false
+          show: true
         },
         axisTicks: {
-          show: false
+          show: true
         }
       },
       yaxis: {
@@ -138,13 +139,7 @@ var options = {
       return series;
     }
       
-
-    
-    
-
 </script>
-
-
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
@@ -173,30 +168,31 @@ var options = {
             <!-- Dashboard Analytics Start -->
             <section id="dashboard-analytics">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-5">
 
                         <div class="card">
                             <div class="card-content pl-1">
                                 <div class="card-body">
-                                <img src="{{ asset('images/ilustracion clientes.svg') }}" class="float-right pl-2" width="110" height="110" alt="">
-                                    <h6>Consulta todos los clientes</h6>
+                                <img src="{{ asset('images/ilustracion clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
+                                    <h4 class="pt-2">Consulta todos los clientes</h4>
+                                <a href="{{ route('landing.clients') }}" class="btn btn-primary btn-client mt-1"><b>Ver clientes</b></a>
                                 </div>
-                                <a href="{{ route('landing.customers') }}" class="btn btn-primary btn-client"><b>Ver clientes</b></a>
                             </div>
                         </div>
-                        
+
                         <div class="card">
-                            <div class="card-content pl-1">
-                                <div class="card-body">
-                                <img src="{{ asset('images/ilustracion nomina.svg') }}" class="float-right pl-2" width="110" height="110" alt="">
-                                    <h6>Consulta y paga la nomina</h6>
-                                </div>
-                                <a href="{{ route('landing.payroll') }}" class="btn btn-primary btn-payroll"><b>Ver nomina</b></a>
-                            </div>
-                        </div>
+                          <div class="card-content pl-1">
+                              <div class="card-body">
+                              <img src="{{ asset('images/ilustracion nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
+                                  <h4 class="pt-2">Consulta y paga la nomina</h4>
+                                <a href="{{ route('landing.payroll') }}" class="btn btn-primary btn-payroll mt-1"><b>Ver nomina</b></a>
+                              </div>
+                          </div>
+                      </div>
+                        
                     </div>
 
-                    <div class="col-8">
+                    <div class="col-7">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Empleados</h3>

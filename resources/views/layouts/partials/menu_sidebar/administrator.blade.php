@@ -9,7 +9,7 @@
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('landing.customers') }}"><i class="feather icon-users"></i>
+    <a href="{{ route('landing.clients') }}"><i class="feather icon-users"></i>
         <span class="menu-title" data-i18n="Email">Clientes</span></a>
 </li>
 

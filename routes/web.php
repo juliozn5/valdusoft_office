@@ -22,6 +22,10 @@ Route::group(['middleware'=>['auth']], function() {
 
     Route::get('profile', 'ProfileController@edit')->name('profile');
     Route::patch('profile-update', 'ProfileController@update')->name('profile.update');
+
+    Route::get('change-password', 'ChangePasswordController@index');
+    Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
 });
 
 // usuario nuevo
@@ -32,7 +36,15 @@ Route::group(['middleware' => ['auth', 'role'], 'role' => ['0']], function () {
 // administradores
 Route::group(['middleware' => ['auth', 'role'], 'role' => ['1']], function () {
     Route::get('home-admin', 'HomeController@admin')->name('home.admin');
-    Route::get('landing/customers', 'CustomersController@index')->name('landing.customers');
+    
+    Route::get('landing/clients', 'ClientsController@index')->name('landing.clients');
+    Route::get('landing/clients', 'ClientsController@index')->name('landing.clients');
+    Route::get('landing/clients/create', 'ClientsController@create')->name('landing.clients-create');
+    Route::get('landing/clients/edit/{id}', 'ClientsController@edit')->name('landing.clients-edit');
+    Route::post('landing/clients/store', 'ClientsController@store')->name('landing.clients-store');
+    Route::patch('landing/clients/update/{id}', 'ClientsController@update')->name('landing.clients-update');
+    Route::delete('landing/clients/delete/{id}', 'ClientsController@delete')->name('landing.clients-delete');
+
     Route::get('landing/employes', 'EmployesController@index')->name('landing.employes');
     Route::get('landing/payroll', 'PayrollController@index')->name('landing.payroll');
     Route::get('landing/payments', 'PaymentsController@index')->name('landing.payments');
