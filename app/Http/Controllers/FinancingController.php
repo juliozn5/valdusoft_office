@@ -9,11 +9,7 @@ class FinancingController extends Controller
 {
     public function index()
     {
-        if (Auth::guest()){
-            return redirect('login');
-        }else{
-           return view('landing.financing'); 
-        }
+           return view('landing.financing.financing'); 
         
     }
 }

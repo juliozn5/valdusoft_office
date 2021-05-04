@@ -9,11 +9,7 @@ class BillController extends Controller
 {
     public function index()
     {
-        if (Auth::guest()){
-            return redirect('login');
-        }else{
-           return view('landing.bill'); 
-        }
+        return view('landing.bill.bill'); 
         
     }
 }

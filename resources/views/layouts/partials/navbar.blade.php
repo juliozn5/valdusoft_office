@@ -4,11 +4,13 @@
             <div class="navbar-collapse" id="navbar-mobile">
                 <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
+                        <li class="nav-item mobile-menu d-xl-none mr-auto"><a
+                                class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
+                                    class="ficon feather icon-menu"></i></a></li>
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
-                    <li class="dropdown dropdown-language nav-item">
+                    {{-- <li class="dropdown dropdown-language nav-item">
                         <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="flag-icon flag-icon-es"></i><span class="selected-language">Español</span>
                         </a>
@@ -29,7 +31,7 @@
                             <div class="search-input-close"><i class="feather icon-x"></i></div>
                             <ul class="search-list search-list-main"></ul>
                         </div>
-                    </li>
+                    </li> --}}
                     <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">5</span></a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
@@ -56,15 +58,37 @@
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
-                                <span class="user-name text-bold-600">name</span>
-                                <span class="user-status">Role</span>
+                                <span class="user-name text-bold-600">{{Auth::user()->name}}</span>
+                                @if(Auth::user()->role === '0')
+                                <span class="user-status text-bold-600 role-color">Nuevo</span>
+                                @elseif(Auth::user()->role === '1')
+                                <span class="user-status text-bold-600 role-color">Administrador</span>
+                                @elseif(Auth::user()->role === '2')
+                                <span class="user-status text-bold-600 role-color">Cliente</span>
+                                @elseif(Auth::user()->role === '3')
+                                <span class="user-status text-bold-600 role-color">Trabajador</span>
+                                @endif
                             </div>
-                            <span><img class="round" src="{{ asset('template/app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"></span>
+                            @if(!Auth::user()->getMedia('photo')->isEmpty())
+                            <span>
+                                <img class="rounded-circle" src="{{ Auth::user()->photoUrl }}"
+                                    alt="{{ Auth::user()->fullname }}" height="40" width="40">
+                            </span>
+                            @else
+                            <span>
+                                <span><img class="rounded-circle" src="{{ asset('images/valdusoft.png') }}" alt="avatar"
+                                        height="40" width="40"></span>
+                            </span>
+                            @endif
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#"><i class="feather icon-user"></i> Mi perfil</a>
+                            <a class="dropdown-item" href="{{ route('profile') }}"><i class="feather icon-user"></i> Mi
+                                perfil</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Salir</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                    class="feather icon-power"></i> Salir</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

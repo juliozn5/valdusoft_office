@@ -9,11 +9,7 @@ class PaymentsController extends Controller
 {
     public function index()
     {
-        if (Auth::guest()){
-            return redirect('login');
-        }else{
-           return view('landing.payments'); 
-        }
+           return view('landing.payments.payments'); 
         
     }
 }
