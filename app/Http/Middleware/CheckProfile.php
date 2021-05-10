@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckRole
+class CheckProfile
 {
     /**
      * Handle an incoming request.
@@ -15,17 +15,18 @@ class CheckRole
      */
     public function handle($request, Closure $next)
 	{
-		$roles = $this->getRequiredRoleForRoute($request->route());
+		$roles = $this->getRequiredProfileForRoute($request->route());
 
-		if(!$roles || in_array($request->user()->role, $roles))
+		if(!$roles || in_array($request->user()->profile_id, $roles))
 		{
 			return $next($request);
 		}
 		return abort(401);
 	}
-	private function getRequiredRoleForRoute($route)
+
+	private function getRequiredProfileForRoute($route)
 	{
 		$actions = $route->getAction();
-		return isset($actions['role']) ? $actions['role'] : null;
+		return isset($actions['profile']) ? $actions['profile'] : null;
 	}
 }

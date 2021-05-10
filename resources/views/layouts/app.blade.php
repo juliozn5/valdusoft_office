@@ -8,6 +8,9 @@
 </head>
 
 <body @stack('body-atribute')>
+    @include('layouts.partials.navbar')
+
+    @include('layouts.partials.sidebar')
 
     @yield('content')
 

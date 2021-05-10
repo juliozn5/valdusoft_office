@@ -1,81 +1,19 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
-    <!-- BEGIN: Head-->
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <meta name="description" content="Valdusoft Client Backoffice">
-        <meta name="keywords" content="valdusoft, backoffice, web design, app, developers">
-        <meta name="author" content="Valdusoft">
-        <title>Valdusoft Backoffice</title>
-        <link rel="apple-touch-icon" href="{{ asset('assets/images/favicon.ico') }}">
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    @include('layouts.partials.head')
+    @include('layouts.partials.style')
 
-        <!-- BEGIN: Vendor CSS-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/vendors/css/vendors.min.css') }}">
-        <!-- END: Vendor CSS-->
+    @stack('styles')
+</head>
 
-        <!-- BEGIN: Theme CSS-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/bootstrap.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/bootstrap-extended.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/colors.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/components.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/themes/dark-layout.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/themes/semi-dark-layout.css') }}">
+<body @stack('body-atribute')>
 
-        <!-- BEGIN: Page CSS-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/core/colors/palette-gradient.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/pages/authentication.css') }}">
-        <!-- END: Page CSS-->
+    @yield('content')
 
-        <!-- BEGIN: Custom CSS-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/style.css') }}">
-        <!-- END: Custom CSS-->
-    </head>
-    <!-- END: Head-->
-
-    <!-- BEGIN: Body-->
-    <body class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
-        <!-- BEGIN: Content-->
-        <div class="app-content content">
-            <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
-            <div class="content-wrapper">
-                <div class="content-header row">
-                </div>
-                <div class="content-body">
-                    <section class="row flexbox-container">
-                        <div class="col-xl-8 col-11 d-flex justify-content-center">
-                            <div class="card bg-authentication rounded-0 mb-0">
-                                @yield('content')
-                            </div>
-                        </div>
-                    </section>
-
-                </div>
-            </div>
-        </div>
-        <!-- END: Content-->
-
-
-        <!-- BEGIN: Vendor JS-->
-        <script src="{{ asset('template//app-assets/vendors/js/vendors.min.js') }}"></script>
-        <!-- BEGIN Vendor JS-->
-
-        <!-- BEGIN: Page Vendor JS-->
-        <!-- END: Page Vendor JS-->
-
-        <!-- BEGIN: Theme JS-->
-        <script src="{{ asset('template//app-assets/js/core/app-menu.js') }}"></script>
-        <script src="{{ asset('template//app-assets/js/core/app.js') }}"></script>
-        <script src="{{ asset('template//app-assets/js/scripts/components.js') }}"></script>
-        <!-- END: Theme JS-->
-
-        <!-- BEGIN: Page JS-->
-        <!-- END: Page JS-->
-    </body>
-    <!-- END: Body-->
+    @include('layouts.partials.scripts')
+    
+    @stack('scripts')
+    
+</body>
 </html>

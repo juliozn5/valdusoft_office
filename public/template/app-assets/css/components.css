@@ -70,7 +70,8 @@ html body .content .content-wrapper {
 }
 html body .content .content-wrapper .content-header-title {
   font-weight : 500;
-  color : #636363;
+  color : #3C3232;
+  font-size: 16px;
   margin-right : 1rem;
 }
 html body .content .content-wrapper .content-header-right .dropdown-toggle::after {

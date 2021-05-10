@@ -16,7 +16,6 @@ use App\Models\User;
 Auth::routes();
 // usuarios logueado1
 Route::group(['middleware'=>['auth']], function() {
-
     Route::get('/', 'HomeController@index')->name('index');
 
     Route::get('profile', 'ProfileController@edit')->name('profile');
@@ -25,33 +24,46 @@ Route::group(['middleware'=>['auth']], function() {
     Route::get('change-password', 'ChangePasswordController@index');
     Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
 
+    //LISTADO DE RUTAS PARA EL ADMINISTRADOR
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'profile'], 'profile' => ['1']], function(){
+        Route::get('/', 'AdminController@index')->name('admin.index');
+
+        //VERIFICAR SI UN CORREO YA EXISTE EN LA BASE DE DATOS
+        Route::get('check-email/{email?}', 'AdminController@check_email')->name('admin.check-email');
+        //MENÚ CLIENTES
+        Route::group(['prefix' => 'clients'], function(){
+            Route::get('/', 'ClientsController@index')->name('admin.clients');
+            Route::get('create', 'ClientsController@create')->name('admin.clients.create');
+            Route::get('edit/{id}', 'ClientsController@edit')->name('admin.clients.edit');
+            Route::post('store', 'ClientsController@store')->name('admin.clients.store');
+            Route::patch('update/{id}', 'ClientsController@update')->name('admin.clients.update');
+            Route::delete('delete/{id}', 'ClientsController@delete')->name('admin.clients.delete');
+        });
+
+        //MENÚ EMPLEADOS
+        Route::group(['prefix' => 'employees'], function(){
+            Route::get('/', 'EmployeesController@index')->name('admin.employees');
+            Route::get('create', 'EmployeesController@create')->name('admin.employees.create');
+            Route::post('store', 'EmployeesController@store')->name('admin.employees.store');
+            Route::get('show/{slug}/{id}', 'EmployeesController@show')->name('admin.employees.show');
+        });
+    });
 });
 
 // usuario nuevo
-Route::group(['middleware' => ['auth', 'role'], 'role' => ['0']], function () {
+Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['0']], function () {
     Route::get('home', 'HomeController@index')->name('home');
 });
 
 // administradores
-Route::group(['middleware' => ['auth', 'role'], 'role' => ['1']], function () {
-    Route::get('home-admin', 'HomeController@admin')->name('home.admin');
-    
-    Route::get('landing/clients', 'ClientsController@index')->name('landing.clients');
-    Route::get('landing/clients', 'ClientsController@index')->name('landing.clients');
-    Route::get('landing/clients/create', 'ClientsController@create')->name('landing.clients-create');
-    Route::get('landing/clients/edit/{id}', 'ClientsController@edit')->name('landing.clients-edit');
-    Route::post('landing/clients/store', 'ClientsController@store')->name('landing.clients-store');
-    Route::patch('landing/clients/update/{id}', 'ClientsController@update')->name('landing.clients-update');
-    Route::delete('landing/clients/delete/{id}', 'ClientsController@delete')->name('landing.clients-delete');
-
-    Route::get('landing/employes', 'EmployesController@index')->name('landing.employes');
+Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['1']], function () {
     Route::get('landing/payroll', 'PayrollController@index')->name('landing.payroll');
     Route::get('landing/payments', 'PaymentsController@index')->name('landing.payments');
 });
 
 
 // trabajadores
-Route::group(['middleware' => ['auth', 'role'], 'role' => ['3']], function () {
+Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['3']], function () {
     Route::get('home-employe', 'HomeController@employe')->name('home.employe');
     Route::get('landing/profile', 'ProfileController@index')->name('landing.profile');
     Route::get('landing/holidays', 'HolidaysController@index')->name('landing.holidays');
@@ -61,7 +73,7 @@ Route::group(['middleware' => ['auth', 'role'], 'role' => ['3']], function () {
 
 
 // administradores y clientes
-Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2']], function () {
+Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['1', '2']], function () {
     Route::get('landing/hosting', 'HostingController@index')->name('landing.hosting');
     Route::get('landing/hosting/create', 'HostingController@create')->name('landing.hosting-create');
     Route::get('landing/hosting/edit/{id}', 'HostingController@edit')->name('landing.hosting-edit');
@@ -72,13 +84,13 @@ Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2']], function 
 
 
 // clientes
- Route::group(['middleware' => ['auth', 'role'], 'role' => ['2']], function () {
+ Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['2']], function () {
     Route::get('home-client', 'HomeController@client')->name('home.client');
  });
 
 
 // administradores, clientes y trabajadores 
-Route::group(['middleware' => ['auth', 'role'], 'role' => ['1', '2', '3']], function () {
+Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['1', '2', '3']], function () {
     Route::get('landing/bill', 'BillController@index')->name('landing.bill');
 
     Route::get('landing/projects', 'ProjectsController@index')->name('landing.projects');

@@ -5,11 +5,6 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
 @endpush
 
 @section('content')
-
-@include('layouts.partials.navbar')
-
-@include('layouts.partials.sidebar')
-
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>

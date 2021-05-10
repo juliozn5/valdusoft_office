@@ -2380,7 +2380,7 @@ body[data-col='1-column'] .header-navbar.floating-nav {
 .card .card-title {
   font-weight : 500;
   letter-spacing : 0.05rem;
-  font-size : 1.32rem;
+  font-size : 1.15rem;
   margin-bottom : 0.5rem;
 }
 .card .card-bordered {
@@ -3339,7 +3339,7 @@ _:-ms-lang(x), .toast-bs-container {
   border-radius : 5rem;
 }
 .pagination .page-item.prev-item .page-link, .pagination .page-item.next-item .page-link, .pagination .page-item.first .page-link, .pagination .page-item.last .page-link {
-  color : #003573;
+  color : #650865;
 }
 .pagination .page-item.prev-item.disabled .page-link, .pagination .page-item.next-item.disabled .page-link, .pagination .page-item.first.disabled .page-link, .pagination .page-item.last.disabled .page-link {
   color : #6C757D;
@@ -3360,7 +3360,7 @@ _:-ms-lang(x), .toast-bs-container {
   font-family : 'feather';
 }
 .pagination .page-item.prev-item .page-link:hover {
-  background : #003573;
+  background : #650865;
   color : #FFFFFF;
 }
 .pagination .page-item.prev-item ~ .page-item:nth-child(2) {
@@ -3392,7 +3392,7 @@ _:-ms-lang(x), .toast-bs-container {
   font-family : 'feather';
 }
 .pagination .page-item.next-item .page-link:hover {
-  background : #003573;
+  background : #650865;
   color : #FFFFFF;
 }
 .pagination .page-item.prev .page-link:before, .pagination .page-item.previous .page-link:before {
@@ -3420,7 +3420,7 @@ _:-ms-lang(x), .toast-bs-container {
   box-shadow : none;
 }
 .pagination .page-item .page-link:hover {
-  color : #003573;
+  color : #650865;
 }
 .pagination .page-item.active {
   background-color : #F0F0F0;
@@ -3429,7 +3429,8 @@ _:-ms-lang(x), .toast-bs-container {
 .pagination .page-item.active .page-link {
   z-index : 3;
   border-radius : 5rem;
-  background-color : #003573;
+  background-color :#650865;
+  ;
   color : #FFFFFF;
   -webkit-transform : scale(1.05);
       -ms-transform : scale(1.05);

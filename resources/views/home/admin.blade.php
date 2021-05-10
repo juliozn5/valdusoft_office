@@ -1,162 +1,154 @@
 @extends('layouts.app')
 
 @push('body-atribute')
-class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
+    class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
 
 @push('custom_css')
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.6/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.6/datatables.min.css"/>
 
-<style>
+    <style>
+        .btn-client{
+            border-color: #8f138f !important;
+            background-color: #650865 !important;
+            color: #FFFFFF;
+        }
 
-.btn-client{
-    border-color: #8f138f !important;
-    background-color: #650865 !important;
-    color: #FFFFFF;
-}
+        @import url('https://fonts.googleapis.com/css?family=Poppins');
 
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+        * {
+        font-family: 'Poppins', sans-serif;
+        }
 
-* {
-  font-family: 'Poppins', sans-serif;
-}
+        #chart {
+            max-width: auto;
+            margin: 35px auto;
+            opacity: 0.9;
+        }
 
-#chart {
-  max-width: auto;
-  margin: 35px auto;
-  opacity: 0.9;
-}
-
-#timeline-chart .apexcharts-toolbar {
-  opacity: 1;
-  border: 0;
-}
-
-
-</style>
+        #timeline-chart .apexcharts-toolbar {
+            opacity: 1;
+            border: 0;
+        }
+    </style>
 @endpush
 
 @push('custom_js')
-<script>
-
-var options = {
-      chart: {
-        type: "area",
-        height: 500,
-        foreColor: "#999",
-        stacked: true,
-        dropShadow: {
-          enabled: true,
-          enabledSeries: [0],
-          top: -2,
-          left: 2,
-          blur: 5,
-          opacity: 0.06
-        }
-      },
-      colors: ['#650865', '#003573'],
-      stroke: {
-        curve: "smooth",
-        width: 3
-      },
-      dataLabels: {
-        enabled: false
-      },
-      series: [{
-        name: 'Costos',
-        data: generateDayWiseTimeSeries(0, 18)
-      }, {
-        name: 'Ganancias',
-        data: generateDayWiseTimeSeries(1, 18)
-      }],
-      markers: {
-        size: 0,
-        strokeColor: "#fff",
-        strokeWidth: 3,
-        strokeOpacity: 1,
-        fillOpacity: 1,
-        hover: {
-          size: 6
-        }
-      },
-      xaxis: {
-        type: "datetime",
-        axisBorder: {
-          show: true
+    <script>
+        var options = {
+        chart: {
+            type: "area",
+            height: 500,
+            foreColor: "#999",
+            stacked: true,
+            dropShadow: {
+            enabled: true,
+            enabledSeries: [0],
+            top: -2,
+            left: 2,
+            blur: 5,
+            opacity: 0.06
+            }
         },
-        axisTicks: {
-          show: true
-        }
-      },
-      yaxis: {
-        labels: {
-          offsetX: 14,
-          offsetY: -5
+        colors: ['#650865', '#003573'],
+        stroke: {
+            curve: "smooth",
+            width: 3
+        },
+        dataLabels: {
+            enabled: false
+        },
+        series: [{
+            name: 'Costos',
+            data: generateDayWiseTimeSeries(0, 18)
+        }, {
+            name: 'Ganancias',
+            data: generateDayWiseTimeSeries(1, 18)
+        }],
+        markers: {
+            size: 0,
+            strokeColor: "#fff",
+            strokeWidth: 3,
+            strokeOpacity: 1,
+            fillOpacity: 1,
+            hover: {
+            size: 6
+            }
+        },
+        xaxis: {
+            type: "datetime",
+            axisBorder: {
+            show: true
+            },
+            axisTicks: {
+            show: true
+            }
+        },
+        yaxis: {
+            labels: {
+            offsetX: 14,
+            offsetY: -5
+            },
+            tooltip: {
+            enabled: true
+            }
+        },
+        grid: {
+            padding: {
+            left: -5,
+            right: 5
+            }
         },
         tooltip: {
-          enabled: true
-        }
-      },
-      grid: {
-        padding: {
-          left: -5,
-          right: 5
-        }
-      },
-      tooltip: {
-        x: {
-          format: "dd MMM yyyy"
+            x: {
+            format: "dd MMM yyyy"
+            },
         },
-      },
-      legend: {
-        position: 'top',
-        horizontalAlign: 'left'
-      },
-      fill: {
-        type: "solid",
-        fillOpacity: 0.7
-      }
-    };
+        legend: {
+            position: 'top',
+            horizontalAlign: 'left'
+        },
+        fill: {
+            type: "solid",
+            fillOpacity: 0.7
+        }
+        };
 
-    var chart = new ApexCharts(document.querySelector("#timeline-chart"), options);
+        var chart = new ApexCharts(document.querySelector("#timeline-chart"), options);
 
-    chart.render();
+        chart.render();
 
-    function generateDayWiseTimeSeries(s, count) {
-      var values = [[
-        4,3,10,9,29,19,25,9,12,7,19,5,13,9,17,2,7,5
-      ], [
-        2,3,8,7,22,16,23,7,11,5,12,5,10,4,15,2,6,2
-      ]];
-      var i = 0;
-      var series = [];
-      var x = new Date().getTime();
-      while (i < count) {
-        series.push([x, values[s][i]]);
-        x += 86400000;
-        i++;
-      }
-      return series;
-    }
-      
-</script>
+        function generateDayWiseTimeSeries(s, count) {
+        var values = [[
+            4,3,10,9,29,19,25,9,12,7,19,5,13,9,17,2,7,5
+        ], [
+            2,3,8,7,22,16,23,7,11,5,12,5,10,4,15,2,6,2
+        ]];
+        var i = 0;
+        var series = [];
+        var x = new Date().getTime();
+        while (i < count) {
+            series.push([x, values[s][i]]);
+            x += 86400000;
+            i++;
+        }
+        return series;
+        }
+        
+    </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.6/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.6/datatables.min.js"></script>
 
-<script>
-    $('.myTable').DataTable({
-        responsive: true
-    })
-</script>
+    <script>
+        $('.myTable').DataTable({
+            responsive: true
+        })
+    </script>
 @endpush
 
 @section('content')
-
-@include('layouts.partials.navbar')
-
-@include('layouts.partials.sidebar')
 
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -175,7 +167,7 @@ var options = {
                                 <div class="card-body">
                                 <img src="{{ asset('images/ilustracion clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta todos los clientes</h4>
-                                <a href="{{ route('landing.clients') }}" class="btn btn-primary btn-client mt-1"><b>Ver clientes</b></a>
+                                <a href="{{ route('admin.clients') }}" class="btn btn-primary btn-client mt-1"><b>Ver clientes</b></a>
                                 </div>
                             </div>
                         </div>

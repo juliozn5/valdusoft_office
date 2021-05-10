@@ -22,12 +22,19 @@ class User extends Authenticatable implements HasMedia
      */
     protected $fillable = [
         'name',
+        'last_name',
+        'slug',
         'email',
-        'password',
-        'profile_id',
         'phone',
+        'birthdate',
+        'admission_date',
+        'password',
         'position',
-        'role',
+        'skills',
+        'curriculum',
+        'price_per_hour',
+        'uphold_account',
+        'profile_id',
     ];
 
     /**
@@ -48,6 +55,15 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function profile(){
+        return $this->belongsTo('App\Models\Profile');
+    }
+
+    //Relación de los empleados con los proyectos
+    public function projects(){
+        return $this->belongsToMany('App\Models\Project', 'projects_users', 'user_id', 'project_id');
+    }
 
     public function getPhotoUrlAttribute()
     {

@@ -149,12 +149,12 @@ sup {
 }
 
 a {
-  color : #003573;
+  color : #252856;
   text-decoration : none;
   background-color : transparent;
 }
 a:hover {
-  color : #5E50EE;
+  color : #650865;
   text-decoration : none;
 }
 
@@ -1945,9 +1945,10 @@ pre code {
 }
 
 .table .thead-light th {
-  color : #4E5154;
-  background-color : #EDEDED;
-  border-color : #F8F8F8;
+  color : #FFFFFF;
+  background-color : #9D9EAF;
+  ;
+  border-color : #9D9EAF;
 }
 
 .table-dark {

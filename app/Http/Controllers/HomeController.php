@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-
 use App\Models\User;
 use App\Models\Hosting;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -27,7 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-           return view('home'); 
+        if (Auth::user()->profile_id == 1){
+            return redirect('admin');
+        }else if(Auth::user()->profile_id == 2){
+
+        }else if(Auth::user()->profile_id == 3){
+
+        }
+        
+        return view('home'); 
         
     }
 

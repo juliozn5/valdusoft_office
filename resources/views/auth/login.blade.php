@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern 1-column navbar-floating footer-static bg-full-screen-image blank-page
