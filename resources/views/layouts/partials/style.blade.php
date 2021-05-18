@@ -15,7 +15,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/pages/authentication.css') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/style.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/toastr.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/vendors/css/extensions/toastr.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/plugins/extensions/toastr.css') }}">
 
 @stack('custom_css')

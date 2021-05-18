@@ -18,6 +18,7 @@ class UpdateUsersTable extends Migration
             $table->string('curriculum')->nullable();
             $table->double('price_per_hour')->nullable();
             $table->string('uphold_account')->nullable();
+            $table->string('photo')->nullable();
         });
     }
 

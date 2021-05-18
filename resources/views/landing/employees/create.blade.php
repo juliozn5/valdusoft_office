@@ -100,8 +100,8 @@
                                         </div>
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
-                                                <label for="skills">Skills</label>
-                                                <input type="text" name="skills" id="skills" class="form-control">
+                                                <label for="phone">Teléfono</label>
+                                                <input type="text" name="phone" id="phone" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-12">
@@ -138,6 +138,19 @@
                                             <div class="form-group">
                                                 <label for="uphold_account">Cuenta Uphold</label>
                                                 <input type="text" name="uphold_account" id="uphold_account" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 pl-3">
+                                            <div class="form-group">
+                                                <div class="text-center"><label for="skills">Skills</label><hr></div>
+                                                <div class="row">
+                                                    @foreach ($skills as $skill)
+                                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                                                            <input type="checkbox" class="form-check-input skills" value="{{ $skill->id }}" name="skills[]">
+                                                            <label class="form-check-label">{{ $skill->skill }}</label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-12 alert alert-danger" id="errors_div" style="display: none;">

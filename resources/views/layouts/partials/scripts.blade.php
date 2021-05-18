@@ -1,6 +1,6 @@
 <!-- BEGIN: SCRIPTS JS-->
-
 <!-- BEGIN: Vendor JS-->
+<script src="https://kit.fontawesome.com/d6f2727f64.js" crossorigin="anonymous"></script>
 <script src="{{ asset('template/app-assets/vendors/js/vendors.min.js') }}"></script>
 <!-- BEGIN Vendor JS-->
 
@@ -15,7 +15,7 @@
 <script src="{{ asset('template/app-assets/js/core/app.js') }}"></script>
 <script src="{{ asset('template/app-assets/js/scripts/components.js') }}"></script>
 <script src="{{ asset('js/apexcharts.js') }}"></script>
-<script src="{{ asset('js/toastr.min.js') }}"></script>
+<script src="{{ asset('template/app-assets/vendors/js/extensions/toastr.min.js') }}"></script>
 
 <!-- END: Theme JS-->
 

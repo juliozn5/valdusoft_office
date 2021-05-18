@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str as Str;
 use App\Models\User;
+use App\Models\Project;
+use DB;
 
 class EmployeesController extends Controller
 { 
@@ -17,7 +19,11 @@ class EmployeesController extends Controller
     }
 
     public function create(){
-        return view('landing.employees.create');
+        $skills = DB::table('skills')
+                    ->orderBy('skill', 'ASC')
+                    ->get();
+
+        return view('landing.employees.create')->with(compact('skills'));
     }
 
     public function store(Request $request){
@@ -43,12 +49,44 @@ class EmployeesController extends Controller
 
         $employee->save();
 
-        return redirect()->route('admin.employees')->with('msj-exitoso', 'El empleado ha sido creado con éxito');
+        if (!is_null($request->skills)) {
+            foreach ($request->skills as $skill) {
+                DB::table('skills_users')->insert(
+                    ['skill_id' => $skill, 'user_id' => $employee->id]
+                );
+            }
+        }
+
+        return redirect()->route('admin.employees')->with('msj-exitoso', 'true');
     }
 
     public function show($slug, $id){
-        $employee = User::find($id);
+        $employee = User::where('id', '=', $id)
+                        ->with('projects', 'skills')
+                        ->first();
 
-        return view('landing.employees.show')->with(compact('employee'));
+        $projectsID = array();
+        foreach ($employee->projects as $project){
+            array_push($projectsID, $project->id);
+        }
+        
+        $availableProjects = Project::whereNotIn('id', $projectsID)->get();
+        
+        $projectColors = ['#FF3F3F', '#12A0B4', '#940385'];
+
+        return view('landing.employees.show')->with(compact('employee', 'projectColors', 'availableProjects'));
+    }
+
+    public function assign_projects(Request $request){
+        $fecha = date('Y-m-d H:i:s');
+        if (!is_null($request->projects)) {
+            foreach ($request->projects as $project) {
+                DB::table('projects_users')->insert(
+                    ['project_id' => $project, 'user_id' => $request->employee_id, 'created_at' => $fecha, 'updated_at' => $fecha]
+                );
+            }
+
+            return redirect()->back()->with('msj-exitoso', 'true');
+        }
     }
 }

@@ -30,11 +30,11 @@ class User extends Authenticatable implements HasMedia
         'admission_date',
         'password',
         'position',
-        'skills',
         'curriculum',
         'price_per_hour',
         'uphold_account',
         'profile_id',
+        'photo'
     ];
 
     /**
@@ -63,6 +63,10 @@ class User extends Authenticatable implements HasMedia
     //Relación de los empleados con los proyectos
     public function projects(){
         return $this->belongsToMany('App\Models\Project', 'projects_users', 'user_id', 'project_id');
+    }
+
+    public function skills(){
+        return $this->belongsToMany('App\Models\Skill', 'skills_users', 'user_id', 'skill_id');
     }
 
     public function getPhotoUrlAttribute()

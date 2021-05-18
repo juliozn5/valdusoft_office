@@ -46,6 +46,7 @@ Route::group(['middleware'=>['auth']], function() {
             Route::get('create', 'EmployeesController@create')->name('admin.employees.create');
             Route::post('store', 'EmployeesController@store')->name('admin.employees.store');
             Route::get('show/{slug}/{id}', 'EmployeesController@show')->name('admin.employees.show');
+            Route::post('assign-projects', 'EmployeesController@assign_projects')->name('admin.employees.assign-projects');
         });
     });
 });
