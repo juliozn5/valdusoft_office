@@ -15,6 +15,8 @@ class CreateSkillsUsersTable extends Migration
     {
         Schema::create('skills_users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('skill_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('skill_id')->references('id')->on('skills');
             $table->foreign('user_id')->references('id')->on('users');
         });
