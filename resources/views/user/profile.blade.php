@@ -114,13 +114,6 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
 
 @push('custom_js')
 <script>
-    $(document).ready(function() {
-      @if(!$user->getMedia('photo')->isEmpty())
-          @if(in_array($user->getMedia('photo')->first()->mime_type,array("image/png", "image/gif", "image/jpeg")))
-            previewPersistedFile("{{ $user->getMedia('photo')->first()->file }}", 'photo_preview');
-          @endif
-        @endif
-    });
 
   function previewFile(input, preview_id) {
       if (input.files && input.files[0]) {

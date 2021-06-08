@@ -19,8 +19,8 @@
                             <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">Empleados</div>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('admin.index') }}"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('admin.employees') }}">Empleados</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('admin.employes') }}">Empleados</a></li>
                                     <li class="breadcrumb-item">Detalle del Empleado</li>
                                 </ol>
                             </div>
@@ -35,11 +35,11 @@
                             <div class="card-header">
                                 <div class="row" style="display: flex; align-items: center;">
                                     <div class="col-md-4">
-                                        <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->fullname }}" height="100" width="100">
+                                        <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employe->photo) }}" alt="{{ $employe->fullname }}" height="100" width="100">
                                     </div>
                                     <div class="col-md-8">
-                                        <h3 class="card-title" >{{ $employee->name }} {{ $employee->last_name }}</h3>
-                                        {{ $employee->email }}
+                                        <h3 class="card-title" >{{ $employe->name }} {{ $employe->last_name }}</h3>
+                                        {{ $employe->email }}
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                     <div class="project-detail-titles">Proyectos Asignados</div>
                                     <div class="mt-1">
                                         @php $cont = 0; @endphp
-                                        @foreach ($employee->projects as $project)
+                                        @foreach ($employe->projects as $project)
                                             <a href="">
                                                 <div class="text-center text-white d-inline-block mr-1">
                                                     <div class="project-circle" style="background-color: {{ $projectColors[$cont] }};">P{{ $project->id }}</div>
@@ -76,13 +76,13 @@
                                     <div class="col-2">
                                         <div class="project-detail-titles">Fecha de Nacimiento</div>
                                         <div class="mt-1 project-detail-dates">
-                                            <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->birthdate)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->birthdate)) }}
+                                            <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employe->birthdate)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employe->birthdate)) }}
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="project-detail-titles">Fecha de Ingreso</div>
                                         <div class="mt-1 project-detail-dates">
-                                            <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->admission_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->admission_date)) }}
+                                            <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employe->admission_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employe->admission_date)) }}
                                         </div>
                                     </div>
                                     <div class="col-2">
@@ -97,7 +97,7 @@
                                 <div class="mt-3 pl-2 pr-2">
                                     <div class="project-detail-titles">Skills</div>
                                     <div class="mt-1">
-                                        @foreach ($employee->skills as $skill)
+                                        @foreach ($employe->skills as $skill)
                                             <div class="text-center text-white d-inline-block mr-1">
                                                 <div class="project-detail-skill">{{ $skill->skill }}</div>
                                             </div>
@@ -109,8 +109,8 @@
                                 <div class="mt-3 pl-2 pr-2">
                                     <div class="project-detail-titles">Curriculum Vitae</div>
                                     <div class="mt-1">
-                                        @if (!is_null($employee->curriculum))
-                                            <a href="{{ asset('uploads/documents/curriculums/'.$employee->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $employee->curriculum }}</a>
+                                        @if (!is_null($employe->curriculum))
+                                            <a href="{{ asset('uploads/documents/curriculums/'.$employe->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $employe->curriculum }}</a>
                                         @else
                                             <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible
                                         @endif
@@ -122,13 +122,13 @@
                                     <div class="col-2">
                                         <div class="project-detail-titles">Precio por hora</div>
                                         <div class="mt-1 project-detail-dates">
-                                            <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($employee->price_per_hour)) ? 'Dato no disponible' : $employee->price_per_hour.' USD' }}
+                                            <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($employe->price_per_hour)) ? 'Dato no disponible' : $employe->price_per_hour.' USD' }}
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="project-detail-titles">Cuenta Uphold</div>
                                         <div class="mt-1 project-detail-dates">
-                                            <img src="{{ asset('images/icons/uphold.png') }}" class="mr-1"> {{ (is_null($employee->uphold_account)) ? 'Dato no disponible' : $employee->uphold_account }}
+                                            <img src="{{ asset('images/icons/uphold.png') }}" class="mr-1"> {{ (is_null($employe->uphold_account)) ? 'Dato no disponible' : $employe->uphold_account }}
                                         </div>
                                     </div>
                                 </div>
@@ -197,9 +197,9 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form action="{{ route('admin.employees.assign-projects') }}" method="POST">
+                <form action="{{ route('admin.employes.assign-projects') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="employee_id" value="{{ $employee->id }}">
+                    <input type="hidden" name="employee_id" value="{{ $employe->id }}">
                     <div class="modal-body">
                         <div class="row ml-2 mr-2">
                             @if ($availableProjects->count() > 0)

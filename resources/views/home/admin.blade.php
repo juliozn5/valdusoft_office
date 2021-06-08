@@ -167,7 +167,7 @@
                                 <div class="card-body">
                                 <img src="{{ asset('images/ilustracion clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta todos los clientes</h4>
-                                <a href="{{ route('admin.clients') }}" class="btn btn-primary btn-client mt-1"><b>Ver clientes</b></a>
+                                <a href="{{ route('clients.home') }}" class="btn btn-primary btn-client mt-1"><b>Ver clientes</b></a>
                                 </div>
                             </div>
                         </div>

@@ -9,7 +9,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        employe
+        employes
         <div class="content-header row">
         </div>
         <div class="content-body">

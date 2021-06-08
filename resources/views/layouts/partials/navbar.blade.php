@@ -69,17 +69,10 @@
                                 <span class="user-status text-bold-600 role-color">Trabajador</span>
                                 @endif
                             </div>
-                            @if(!Auth::user()->getMedia('photo')->isEmpty())
-                            <span>
-                                <img class="rounded-circle" src="{{ Auth::user()->photoUrl }}"
-                                    alt="{{ Auth::user()->fullname }}" height="40" width="40">
-                            </span>
-                            @else
                             <span>
                                 <span><img class="rounded-circle" src="{{ asset('images/valdusoft.png') }}" alt="avatar"
                                         height="40" width="40"></span>
                             </span>
-                            @endif
 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">

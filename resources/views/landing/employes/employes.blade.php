@@ -20,7 +20,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title mb-2">Empleados</h3>
-                                <a href="{{ route('admin.employees.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i> Añadir Nuevo</a>
+                                <a href="{{ route('admin.employes.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i> Añadir Nuevo</a>
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
@@ -36,18 +36,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($employees as $employee)
+                                            @foreach ($employes as $employe)
                                                 <tr>
-                                                    @if(!$employee->getMedia('photo')->isEmpty())
-                                                        <th><img class="rounded-circle" width="50px" height="50px" src="{{ $item->photoUrl }}" /></th>
-                                                    @else
-                                                        <th><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft.png') }}" /></th>
-                                                    @endif
-                                                    <td>{{ $employee->name }}</td>
-                                                    <td>{{ $employee->last_name }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($employee->birthdate)) }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($employee->admission_date)) }}</td>
-                                                    <td><a href="{{ route('admin.employees.show', [$employee->slug, $employee->id]) }}"><i class="fa fa-eye"></i></a></td>
+                                                    <td><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft.png') }}" /></td>
+                                                    <td>{{ $employe->name }}</td>
+                                                    <td>{{ $employe->last_name }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($employe->birthdate)) }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($employe->admission_date)) }}</td>
+                                                    <td><a href="{{ route('admin.employes.show', [$employe->slug, $employe->id]) }}"><i class="fa fa-eye"></i></a></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -55,7 +51,7 @@
                                 </div>
 
                                 <div class="mr-3">
-                                    {{ $employees->links() }}
+                                    {{ $employes->links() }}
                                 </div>
                             </div>
                         </div>

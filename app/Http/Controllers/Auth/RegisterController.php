@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'slug' => Str::slug($data['name']),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'profile_id' => 3,
+            'profile_id' => 0,
         ]);
     }
 }

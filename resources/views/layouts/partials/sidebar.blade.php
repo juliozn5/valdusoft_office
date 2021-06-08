@@ -5,11 +5,11 @@
                 @if (Auth()->user()->profile_id == 0)
                     <a class="navbar-brand" href="{{ ('home') }}">
                 @elseif (Auth()->user()->profile_id == 1)
-                    <a class="navbar-brand" href="{{ route('admin.index') }}">
+                    <a class="navbar-brand" href="{{ route('admin.home') }}">
                 @elseif (Auth()->user()->profile_id == 2)
-                    <a class="navbar-brand" href="{{ route('home.client') }}">
+                    <a class="navbar-brand" href="{{ route('client.home') }}">
                 @elseif (Auth()->user()->profile_id == 3)
-                    <a class="navbar-brand" href="{{ route('home.employe') }}">
+                    <a class="navbar-brand" href="{{ route('employes.home') }}">
                 @endif
                     <img class="img-fluid center-block logo-center mb-5" width="200px" height="200px" src="{{ asset('images/logo.png') }}" />
                 </a>
@@ -25,7 +25,7 @@
             @elseif (Auth()->user()->profile_id == 2)
                 @include('layouts.partials.menu_sidebar.client')
             @elseif (Auth()->user()->profile_id == 3)
-                @include('layouts.partials.menu_sidebar.employee')
+                @include('layouts.partials.menu_sidebar.employe')
             @endif
         </ul>
     </div>

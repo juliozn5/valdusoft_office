@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-
-use App\Models\User;
 class ProfileController extends Controller
 {
     public function index()
@@ -15,7 +12,7 @@ class ProfileController extends Controller
         if (Auth::guest()){
             return redirect('login');
         }else{
-           return view('landing.profile'); 
+           return view('landing.profile.profile'); 
         }
         
     }
@@ -31,7 +28,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
 
-        $user = Auth::user();
+        $user = Auth::user()->id;
 
         $fields = [
 
@@ -56,12 +53,6 @@ class ProfileController extends Controller
         // foto
         $user->update($request->all());
 
-        if ($request->hasFile('photo')) {
-            if(!$user->getMedia('photo')->isEmpty()) {
-                $user->getFirstMedia('photo')->delete();
-            }
-            $user->addMediaFromRequest("photo")->toMediaCollection('photo');
-        }
         $user->save();
 
         return redirect()->route('profile')->with('message','Se actualizo tu perfil');

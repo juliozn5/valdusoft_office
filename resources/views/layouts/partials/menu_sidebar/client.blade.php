@@ -1,5 +1,5 @@
 <li class=" nav-item">
-    <a href="{{ route('home.client') }}"><i class="feather icon-home"></i>
+    <a href="{{ route('client.home') }}"><i class="feather icon-home"></i>
         <span class="menu-title" data-i18n="Email">Tablero</span></a>
 </li>
 

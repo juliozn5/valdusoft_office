@@ -68,7 +68,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column"
                                 <select name="role" id="role" class="form-control" required>
                                     <option value="" selected disabled>Seleccione una opción...</option>
                                     <option value="administrator">Administrador</option>
-                                    <option value="employe">Empleado</option>
+                                    <option value="employes">Empleado</option>
                                     <option value="client">Cliente</option>
                                     <option value="financial">Financiero</option>
                                 </select>

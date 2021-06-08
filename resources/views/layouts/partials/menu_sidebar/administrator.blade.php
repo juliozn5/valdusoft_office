@@ -1,5 +1,5 @@
 <li class=" nav-item">
-    <a href="{{ route('admin.index') }}"><i class="feather icon-home"></i>
+    <a href="{{ route('admin.home') }}"><i class="feather icon-home"></i>
         <span class="menu-title" data-i18n="Email">Inicio</span></a>
 </li>
 
@@ -9,12 +9,12 @@
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('admin.clients') }}"><i class="feather icon-users"></i>
+    <a href="{{ route('clients.home') }}"><i class="feather icon-users"></i>
         <span class="menu-title" data-i18n="Email">Clientes</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('admin.employees') }}"><i class="feather icon-briefcase"></i>
+    <a href="{{ route('employes.home') }}"><i class="feather icon-briefcase"></i>
         <span class="menu-title" data-i18n="Email">Empleados</span></a>
 </li>
 

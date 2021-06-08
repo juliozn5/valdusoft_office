@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern semi-dark-layout 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page  pace-done"
@@ -27,14 +27,14 @@ class="vertical-layout vertical-menu-modern semi-dark-layout 1-column  navbar-fl
                             <h3 class="pl-2 pr-2 pt-0 text-white text-center"><b class="text-info">{{ Auth::user()->name }}</b></h3>
                             <div class="card-content">
                                 <div class="card-body pt-1 row justify-content-center">
-                                    @if ( Auth::user()->role == 0)
-                                    <a href="{{ route('home') }}" class="btn btn-primary">Para poder entrar al Backoffice necesitas un Rol</a>
-                                    @elseif ( Auth::user()->role == 1)
-                                    <a href="{{ route('home.admin') }}" class="btn btn-primary">Entrar al Backoffice</a>
-                                    @elseif ( Auth::user()->role == 2)
-                                    <a href="{{ route('home.client') }}" class="btn btn-primary">Entrar al Backoffice</a>
-                                    @elseif ( Auth::user()->role == 3)
-                                    <a href="{{ route('home.employe') }}" class="btn btn-primary">Entrar al Backoffice</a>
+                                    @if ( Auth::user()->profile_id == 0)
+                                    <a href="#" class="btn btn-primary">Para poder entrar al Backoffice necesitas un Rol</a>
+                                    @elseif ( Auth::user()->profile_id == 1)
+                                    <a href="{{ route('admin.home') }}" class="btn btn-primary">Entrar al Backoffice</a>
+                                    @elseif ( Auth::user()->profile_id == 2)
+                                    <a href="{{ route('client.home') }}" class="btn btn-primary">Entrar al Backoffice</a>
+                                    @elseif ( Auth::user()->profile_id == 3)
+                                    <a href="{{ route('employes.home') }}" class="btn btn-primary">Entrar al Backoffice</a>
                                     @endif
                                 </div>
                             </div>

@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Hosting extends Model implements HasMedia
+class Hosting extends Model
 {
     use HasFactory;
-    use HasMediaTrait;
 
       /**
      * The attributes that are mass assignable.

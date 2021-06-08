@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Hosting;
-use Auth;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -38,11 +37,6 @@ class HomeController extends Controller
         
     }
 
-    public function new()
-    {
-           return view('home.new'); 
-        
-    }
 
     public function admin()
     {
@@ -60,7 +54,7 @@ class HomeController extends Controller
         
     }
 
-    public function employe()
+    public function employes()
     {
            return view('home.employe'); 
         

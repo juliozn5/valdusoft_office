@@ -52,7 +52,7 @@ $(document).ready(function() {
                         <h2 class="content-header-title float-left mb-0">Cliente</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('home.admin') }}">Inicio</a>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
                                 </li>
                                 <li class="breadcrumb-item"><a href="{{ route('landing.clients') }}">Cliente</a>
                                 </li>
