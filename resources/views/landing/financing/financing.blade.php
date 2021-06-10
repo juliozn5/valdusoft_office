@@ -85,13 +85,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Ago 2021</td>
                             <td>200$</td>
                             <td>200$</td>
-                            <td>180$</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    
 </div>
 </div>
 </div>
@@ -109,7 +109,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 <div class="small">
     <p class="Vacaciones">Próximas Vacaciones</p>
     <h4 class="Fecha"><i class="far fa-calendar"></i> 30 Agosto</h4>
-    <img class="Svg" src="{{ asset('images/ilustracion_clientes.svg') }}" alt="Help">
+    <img class="Svg" src="{{ asset('images/ilustracion_clientes.svg') }}" alt="Ico">
 </div>
 
 <style>
