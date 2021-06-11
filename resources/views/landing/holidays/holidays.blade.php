@@ -15,10 +15,42 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row">
+
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-left mb-0">Financiamiento</h2>
+                        <div class="breadcrumb-wrapper col-12">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="content-body">
         
-        <h1>holidays</h1>
+            <div class="table-responsive">
+                <table class="table mb-0">
+                    <thead class="thead-gris">
+                        <tr>
+                            <th>FECHA</th>
+                            <th>DEUDA</th>
+                            <th>ABONO</th>
+                            <th>PENDIENTE</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>05 Abr 2021</td>
+                            <td>40$</td>
+                            <td>20$</td>
+                            <td>20$</td>
+                       <tr>
+                    </tbody>
+                </table>
+            </div>
         
         
         </div>

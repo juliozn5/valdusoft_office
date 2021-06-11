@@ -17,12 +17,7 @@
                     <div class="col-12">
                         <h2 class="content-header-title float-left mb-0">Proyectos</h2>
                         <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="{{ route('landing.projects') }}">Proyectos</a>
-                                </li>
-                            </ol>
+                            
                         </div>
                     </div>
                 </div>
@@ -34,28 +29,33 @@
             <div class="row" id="table-head">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title mb-2">Tabla de Proyectos</h3>
-                             <a href="{{ route('landing.projects-create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Proyecto</a>
-                        </div>
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table mb-0">
-                                    <thead class="thead-dark">
+                                    <thead class="thead-gris">
                                         <tr>
-                                            <th>id</th>
-                                            <th>Nombre</th>
-                                            <th>Fecha de inicio</th>
-                                            <th>Estado</th>
-                                            <th>Acciones</th>
+                                            <th>ID</th>
+                                            <th>NOMBRE</th>
+                                            <th>FECHA DE INICIO</th>
+                                            <th>FECHA DE ENTREGA</th>
+                                            <th>ESTADO</th>
+                                            <th>ACCIÒN</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        
+                                        <tr>
+                                            <td>125966548</td>
+                                            <td>Lorem ipsum dolor</td>
+                                            <td>01/01/2021</td>
+                                            <td>01/04/2021</td>
+                                            <td><a href="#" class="genric-btn est rad">En proceso</a></td>
+                                            <td>ACCION</td>
+                                            <td>
+                                        <tr>
                                         @foreach ($projects as $item)
                                         <tr>
-                                            <th>{{ $item->id }}</th>
+                                            <td>{{ $item->id }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->start_date }}</td>
                                             <td>{{ $item->status }}</td>

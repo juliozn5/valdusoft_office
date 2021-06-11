@@ -15,10 +15,52 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row">
+
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-left mb-0">Facturaciòn</h2>
+                        <div class="breadcrumb-wrapper col-12">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="content-body">
         
-        <h1>bill</h1>
+            <div class="row" id="table-head">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="thead-gris">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>FECHA</th>
+                                            <th>MONTO</th>
+                                            <th>ESTADO</th>
+                                            <th>ACCIÒN</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>#125</td>
+                                            <td>05 Sep</td>
+                                            <td>20.36$</td>
+                                            <td><a href="#" class="genric-btn est rad">En proceso</a></td>
+                                            <td><i class="fa fa-eye"></i></td>
+                                        <tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         
         </div>
     </div>

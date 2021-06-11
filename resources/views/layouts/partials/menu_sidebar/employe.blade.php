@@ -1,6 +1,6 @@
-<li class=" nav-item">
+<li class=" nav-item btn-menu">
     <a href="{{ route('employes.home') }}"><i class="feather icon-home"></i>
-        <span class="menu-title" data-i18n="Email">Tablero</span></a>
+        <span class="menu-title" data-i18n="Email">Inicio</span></a>
 </li>
 
 <li class=" nav-item">
@@ -13,15 +13,10 @@
         <span class="menu-title" data-i18n="Email">Facturas</span></a>
 </li>
 
-<li class=" nav-item">
-    <a href="{{ route('landing.profile') }}"><i class="feather icon-user"></i>
-        <span class="menu-title" data-i18n="Email">Perfil</span></a>
-</li>
+<li class="nav-item has-sub"><a href="{{ route('landing.holidays') }}"><i class="feather icon-help-circle"></i>
+    <span class="menu-title" data-i18n="Email">De interes</span></a>
 
-<li class="nav-item has-sub"><a href="#"><i class="feather icon-help-circle"></i>
-    <span class="menu-title" data-i18n="Ecommerce">Intereses</span></a>
-
-    <ul class="menu-content" style="">
+    <!--<ul class="menu-content" style="">
 
         <li class=""><a href="{{ route('landing.holidays') }}"><i class="feather icon-calendar"></i>
             <span class="menu-title" data-i18n="Email">Vacaciones</span></a>
@@ -35,5 +30,12 @@
             <span class="menu-title" data-i18n="Email">Bonos</span></a>
         </li>
 
-    </ul>
+    </ul>-->
 </li>
+
+<li class=" nav-item">
+    <a href="{{ route('landing.profile') }}"><i class="feather icon-user"></i>
+        <span class="menu-title" data-i18n="Email">Perfil</span></a>
+</li>
+
+
