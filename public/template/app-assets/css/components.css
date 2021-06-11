@@ -3691,13 +3691,13 @@ tr.group {
 }/*agregado*/
 
 .thead-white{
-     background: #F8F8F8;
+     background: white;
     color: black;
     font-size: 1rem;
 }/*agregado*/
 
 .comments-area {
-  background: #F8F8F8;
+  background: white;
     padding: 12px 12px;
     margin-top: 50px;
     bottom: 0px;
@@ -3770,62 +3770,83 @@ tr.group {
 }
 
 .text-pao{
-  font-size: 17px;
-  position: relative;
-  top: -50px;
-  left: -56px;
-  margin: 0%;
+  font-size: 16px;
+    position: relative;
+    top: -75px;
+    left: -110px;
+    margin: 0%;
+    width: 200px;
 }
 
 .text-kei{
-  font-size: 17px;
-  position: relative;
-  top: -50px;
-  left: -43px;
-  margin: 0%;
-
+  font-size: 16px;
+    position: relative;
+    top: -75px;
+    left: -16px;
+    margin: 0%;
+    width: 200px;
 }
 
 .text-sy{
   font-size: 17px;
   position: relative;
-  top: -56px;
-  left: -43px;
+  top: -85px;
+  left: -17px;
   color: #8C468C;
   margin: 0%;
+  width: 70px
 }
 
 .text-mic{
   font-size: 17px;
-  position: relative;
-  top: -50px;
-  left: -63px;
-  margin: 0%;
-
+    position: relative;
+    top: -78px;
+    left: -16px;
+    margin: 0%;
+    width: 200px;
 }
 
 .text-chel{
   font-size: 17px;
   position: relative;
-  top: -60px;
-  left: -64px;
+  top: -82px;
+  left: -15px;
   color: #8C468C;
   margin: 0%;
+  width: 115px;
 }
 
 .img-view{
   position: relative;
     height: 120px;
-    top: 41px;
-    left: 125px;
+    top: 10px;
+    left: 55px;
+    width: 90px;
+    display: block;
+}
+
+.img-view2{
+  position: relative;
+    height: 120px;
+    top: 17px;
+    left: 150px;
     width: 100px;
     display: block;
 }
 
-.btn-dina{
+.img-view3{
   position: relative;
-  top: -52px;
-  left: -41px;
+    height: 120px;
+    top: 20px;
+    left: 125px;
+    width: 120px;
+    display: block;
+}
+
+.btn-dina{    
+  position: relative;
+  top: -65px;
+  left: -100px;
   width: 142px;
   margin: 0%;
   display: block;
@@ -3833,6 +3854,117 @@ tr.group {
 
 .img-profile{
   height: 50px;
+}
+
+
+.circulo {
+  width: 50px;
+  height: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background: #FF3F3F;
+  position: relative;
+  top: 2px;
+  left: 5px;
+  margin: 0%;
+}
+
+.circulop2 {
+  width: 51px;
+  height: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background: #12A0B4;
+  position: relative;
+  top: -48px;
+    left: 57px;
+  margin: 0%;
+}
+
+.circulop3 {
+  width: 51px;
+  height: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background: #940385;
+  position: relative;
+  top: -98px;
+  left: 110px;
+  margin: 0%;
+}
+
+
+.content-circle{
+  font-size: 17px;
+  position: relative;
+  top: 10px;
+  color: white;
+  margin: 0%;
+}
+
+.margin-pa{
+  margin-bottom: -70px;
+}
+
+.card-employes {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #FFFFFF;
+  background-clip: border-box;
+  border: 1px solid rgba(34, 41, 47, 0.125);
+  border-radius: 0.5rem;
+}
+
+.card-down{
+  position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0px;
+    width: 295px;
+    height: 175px;
+    word-wrap: break-word;
+    background-color: #FFFFFF;
+    background-clip: border-box;
+    border: 1px solid rgba(34, 41, 47, 0.125);
+    border-radius: 0.5rem;
+}
+
+.card-up{
+  position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0px;
+    width: 295px;
+    height: 175px;
+    word-wrap: break-word;
+    background-color: #FFFFFF;
+    background-clip: border-box;
+    border: 1px solid rgba(34, 41, 47, 0.125);
+    border-radius: 0.5rem;
 }
 
 

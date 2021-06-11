@@ -10,20 +10,6 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
-
-            <div class="content-header-left col-md-9 col-12 mb-2">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Proyectos</h2>
-                        <div class="breadcrumb-wrapper col-12">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
         <div class="content-body">
             <div class="row" id="table-head">
@@ -32,6 +18,20 @@
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table mb-0">
+                                    <div class="card-employes content-header row">
+
+                                        <div class="content-header-left col-md-9 col-12 mb-2">
+                                            <div class="row breadcrumbs-top">
+                                                <div class="col-12">
+                                                    <h2 class="content-header-title float-left mb-0 mt-1 ml-2"><strong>Proyectos</strong></h2>
+                                                    <div class="breadcrumb-wrapper col-12">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                    </div>
                                     <thead class="thead-gris">
                                         <tr>
                                             <th>ID</th>

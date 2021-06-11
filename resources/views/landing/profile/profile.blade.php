@@ -16,7 +16,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
     <div class="content-wrapper">
         <div class="content-header row">
         </div>
-        <div class="content-body">
+        <div class="card-employes content-body">
 
             <div class="comments-area col-4">
             <div class="comment-list">
@@ -37,8 +37,16 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
             </div>
 
         <strong>Proyectos asignados</strong>
-        <div class="button-group-area mt-40">
-            <a href="#" class="genric-btn circle">Primary</a>
+        <div class="margin-pa mt-40">
+            <div class="container circulo">
+            <h3><a href="#" class="content-circle">P1</a><h3>
+            </div>
+            <div class="container circulop2">
+                <h3><a href="#" class="content-circle">P2</a><h3>
+                </div>
+                <div class="container circulop3">
+                    <h3><a href="#" class="content-circle">P3</a><h3>
+                    </div>
         </div>
 
         <div class="table-responsive">
