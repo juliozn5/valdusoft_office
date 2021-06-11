@@ -36,8 +36,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                                <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #000;border-radius:10px;">En Proceso</div>
+                            <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -46,8 +46,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                                <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #000;border-radius:10px;">En Proceso</div>
+
+                            <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -56,8 +57,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                                <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #000; border-radius:10px;">En Proceso</div>
+                            <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -67,8 +68,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                                <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #000; border-radius:10px;">En Proceso</div>
+                            <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -78,19 +79,19 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                                <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #000; border-radius:10px;">En Proceso</div>
+                            <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
                         <tr>
                         <tr>
                             <th scope="row">#130</th>
-                            <td>Jacob</td>
+                            <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
                                 <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #000; border-radius:10px;">En Proceso</div>
+                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -100,8 +101,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                                <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #000; border-radius:10px;">En Proceso</div>
+                            <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         <tr>
@@ -109,8 +110,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                                <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #000; border-radius:10px;">En Proceso</div>
+                            <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -119,8 +120,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                                <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #000; border-radius:10px;">En Proceso</div>
+                            <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
