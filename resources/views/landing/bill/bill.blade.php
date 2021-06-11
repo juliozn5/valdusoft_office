@@ -15,7 +15,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row"> </div>
-        <div class="card container-sm position-absolute" style="width:1080px;height:828px;background:#FFFFFF;">
+        <div class="card container-sm  position-absolute" id="big-container-card">
             <div class="content-body jutify-content">
 
                 <h4 class="p-1 ">Facturación</h4>
@@ -36,8 +36,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                            <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
+                                <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -47,8 +47,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>20.36$</td>
                             <td>
 
-                            <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
+                                <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -57,8 +57,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                            <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
+                                <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -68,8 +68,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                            <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
+                                <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -79,8 +79,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                            <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
+                                <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -91,7 +91,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>20.36$</td>
                             <td>
                                 <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
+                                    <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -101,8 +101,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                            <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
+                                <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         <tr>
@@ -110,8 +110,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                            <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
+                                <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -120,8 +120,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <td>05 Sep</td>
                             <td>20.36$</td>
                             <td>
-                            <div class="text-center text-white d-inline-block mr-2">
-                                    <div class="project-detail-skill" style="background: #3C3232; border-radius:10px;">En Proceso</div>
+                                <div class="text-center text-white d-inline-block mr-2">
+                                    <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
                             <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
                         </tr>
@@ -129,7 +129,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </tbody>
                 </table>
 
-                <div class="card-body" style="padding: 0px 0px !important;">
+                <div class="card-body" id="card-of-body">
 
 
 
@@ -138,25 +138,25 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class="mt-1">
 
                             <div class="text-center text-white d-inline-block mr-1">
-                                <div class="project-circle" style="background:#EBEBEB;color:#000;"><i class="fas fa-angle-left"></i></div>
+                                <div class="project-circle" id="div-bottom"><i class="fas fa-angle-left"></i></div>
                             </div>
 
 
                             <div class="text-center d-inline-block">
-                                <div class="project-circle" style="background:#650865;">
+                                <div class="project-circle" id="div-bottom-2">
                                     <h5 class="text-white">1</h5>
                                 </div>
                             </div>
 
                             <div class="text-center d-inline-block mr-1">
-                                <div class="project-circle" style="background:#EBEBEB; color:#000;">
-                                    <h5 class="">2</h5>
+                                <div class="project-circle" id="div-bottom" >
+                                <h5>2</h5>
                                 </div>
                             </div>
 
 
                             <div class="text-center text-white d-inline-block mr-1">
-                                <div class="project-circle" style="background:#EBEBEB;color:#000;"><i class="fas fa-angle-right"></i></div>
+                                <div class="project-circle" id="div-bottom"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>
                     </div>

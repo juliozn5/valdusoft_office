@@ -17,7 +17,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row"></div>
-        <div class="card container-sm position-absolute" style="width:681px;height:580.05px;background:#FFFFFF;">
+        <div class="card container-sm position-absolute" id="container-card-principal">
 
             <p class="h4 pl-2 mt-1 container-fluid">Financiamiento</p>
 
@@ -91,13 +91,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
         </div>
 
-        <div class="card position-absolute container-fluid" style="width:326.4px;height:160.64px;left:730px;background:#FFFFFF;">
+        <div class="card position-absolute container-fluid" id="container-card-small">
         
         <p class="h4 p-2 position-absolute">Proximas<br>vacaciones</p>
 
-        <p class="h4 position-absolute" style="color:#650865; left:18px;bottom:40px;"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
+        <p class="h4 position-absolute" id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
 
-        <img class="col-6 position-absolute" style="left: 150px; bottom:5px;" src="{{ asset('images/ilustracion_clientes.svg')}}" alt="">
+        <img class="col-6 position-absolute" id="font-client" src="{{ asset('images/ilustracion_clientes.svg')}}" alt="">
 
         <div>
     </div>

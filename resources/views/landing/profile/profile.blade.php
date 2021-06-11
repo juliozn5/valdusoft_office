@@ -15,7 +15,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row"> </div>
-        <div class="card container" style="width:1039px;height:750.57px;background:#FFFFFF;">
+        <div class="card container" id="container-big-principal">
 
 
             <div class="content-body">
@@ -28,7 +28,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                             <div class="card-header">
 
-                                <div class="row" style="display: flex;align-items:center;">
+                                <div class="row" id="all-center-items">
 
                                     <div class="col-md-4">
 
@@ -44,7 +44,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             </div>
                         </div>
 
-                        <div class="card-body" style="padding: 0px 0px !important;">
+                        <div class="card-body">
 
                             <!--PROYECTOS ASIGNADOS-->
                             <br><br><br>
@@ -55,10 +55,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="mt-1">
 
 
-                                    <!--PROYECTO 2-->
+                                    <!--PROYECTO 1-->
                                     <div class="text-center text-white d-inline-block mr-1">
                                         <div class="project-circle" style="background:#FF3F3F;">P1</div>
                                     </div>
+
+                                    <!--PROYECTO 2-->
                                     <div class="text-center text-white d-inline-block mr-1">
                                         <div class="project-circle" style="background:#12A0B4;">P2</div>
                                     </div>
@@ -142,7 +144,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="mt-1">
 
                                             <img src="{{asset('images/icons/arrow-down.png')}}" alt="">
-                                            <div class="col-3 mr-1" style="left:15px;">CV_Gregorio_Zambrano.pdf</div>
+                                            <div class="col-4 mr-1" id="curiculum-email">CV_Gregorio_Zambrano.pdf</div>
                                         </div>
                                     </div>
 
@@ -156,7 +158,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             </div>
                                         </div>
 
-                                    <!--SECCION DE SUELDO (CUENTA DE UPHOLD)-->
+                                        <!--SECCION DE SUELDO (CUENTA DE UPHOLD)-->
                                         <div class="col-5">
                                             <div class="project-detail-titles">Cuenta Uphold</div>
                                             <div class="mt-1 project-detail-dates">
@@ -181,10 +183,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
         <!-- BEGIN: Footer-->
         <br><br><br><br>
-<footer class="footer footer-static footer-dark">
-    <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="text-bold-800 grey darken-2" href="https://valdusoft.com" target="_blank">Valdusoft,</a>All rights Reserved</span>
-        <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
-    </p>
-</footer>
-<!-- END: Footer-->
+        <footer class="footer footer-static footer-dark">
+            <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="text-bold-800 grey darken-2" href="https://valdusoft.com" target="_blank">Valdusoft,</a>All rights Reserved</span>
+                <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
+            </p>
+        </footer>
+        <!-- END: Footer-->
         @endsection
