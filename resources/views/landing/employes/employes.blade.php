@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="categories_post">
-                        <img src="{{ asset('template/app-assets/images/elements/decore-left.png') }}" alt="post">
+                        <img class="borde-circle" src="{{ asset('template/app-assets/images/elements/decore-left.png') }}" alt="post">
                         <div class="categories_details">
                             <div class="categories_text">
                                 <a href="single-blog.html"><h5></h5></a>
