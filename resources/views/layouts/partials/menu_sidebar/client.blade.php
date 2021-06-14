@@ -19,7 +19,7 @@
 </li>
 
 <li class=" nav-item">
-    <a href="#"><i class="feather icon-help-circle"></i>
+    <a href="{{ route('landing.financing') }}"><i class="feather icon-help-circle"></i>
         <span class="menu-title" data-i18n="Email">De interes</span></a>
 </li>
 
