@@ -13,8 +13,128 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
         <div class="content-header row">
         </div>
         <div class="content-body">
+
+
+
+            <section class="card-employes blog_categorie_area section_gap_top">
+
+                <div class="content-header row">
+        
+                    <div class="content-header-left col-md-9 col-12 mb-2">
+                        <div class="row breadcrumbs-top">
+                            <div class="col-12">
+                                <h2 class="content-header-title mb-0 mt-1 ml-2">Proyectos</h2>
+                                <div class="breadcrumb-wrapper col-12">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+        
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="categories_post">
+                                <img class="borde-circle" src="{{ asset('template/app-assets/images/elements/decore-left.png') }}" alt="post">
+                                <div class="categories_details">
+                                    <div class="categories_text">
+                                        <a href="single-blog.html"><h5></h5></a>
+                                        <div class="border_line"></div>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="categories_post">
+                                <img src="{{ asset('template/app-assets/images/elements/decore-left.png') }}" alt="post">
+                                <div class="categories_details">
+                                    <div class="categories_text">
+                                        <a href="single-blog.html"><h5></h5></a>
+                                        <div class="border_line"></div>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="categories_post">
+                                <img src="{{ asset('template/app-assets/images/elements/decore-left.png') }}" alt="post">
+                                <div class="categories_details">
+                                    <div class="categories_text">
+                                        <a href="single-blog.html"><h5></h5></a>
+                                        <div class="border_line"></div>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="categories_post">
+                                <img src="{{ asset('template/app-assets/images/elements/decore-left.png') }}" alt="post">
+                                <div class="categories_details">
+                                    <div class="categories_text">
+                                        <a href="single-blog.html"><h5></h5></a>
+                                        <div class="border_line"></div>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+            
+
+                <!--================Blog Categorie Area =================-->
+
+
+
             <!-- Dashboard Analytics Start -->
             <section id="dashboard-analytics">
+                <div class="row">
+                    <div class="card-down mt-2 ml-3">
+                    <div class="container-fluid col-3">
+                                <img class="img-view" src="{{ asset('images/ilustracion clientes.svg') }}" width="100" height="100" alt="">
+                                    <h4 class="text-pao">Ultima factura de la quincena</h4>
+                                <a href="·" class="btn-dina btn btn-primary btn-client mt-1"><b>Descargar</b></a>
+                        </div>
+                    </div>
+
+                    <div class="card-down mt-2 ml-1">
+                        <div class="container-fluid col-3 ml-1">
+                          
+                              <img class="img-view2" src="{{ asset('images/ilustracion nomina.svg') }}" alt="">
+                                  <h4 class="text-kei">Valor de la hora de trabajo</h4><br>
+                                  <h4 class="text-sy">$ 0.00</h4>
+                      </div>
+                    </div>
+
+                    <div class="card-down mt-2 ml-1">
+                      <div class="container-fluid col-3 ml-1">
+                            <img class="img-view3" src="{{ asset('images/ilustracion clientes.svg') }}" alt="">
+                                <h4 class="text-mic">Proximas <br> Vacaciones</h4><br>
+                                <h4 class="text-chel"><i class="feather icon-clipboard"></i>30 Agosto</h4>
+                    </div>
+                    </div>
+
+                    </div>
+
+                </section>
+
+
+
+
+
+
+
+
+
+            <!-- Dashboard Analytics Start -->
+            <!--<section id="dashboard-analytics">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="card bg-analytics text-white">
@@ -542,7 +662,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>-->
             <!-- Dashboard Analytics end -->
 
         </div>
