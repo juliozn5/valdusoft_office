@@ -14,14 +14,63 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
+        
+        <div class="card-holi content-body">
+        
+            <div class="table-responsive">
+                <table class="table mb-0">
+
+                    <div class="card-employes content-header row">
+
+                        <div class="content-header-left col-md-9 col-12 mb-2">
+                            <div class="row breadcrumbs-top">
+                                <div class="col-12">
+                                    <h2 class="content-header-title float-left mb-0 mt-1 ml-2"><strong>Finannciamiento</strong></h2>
+                                    <div class="breadcrumb-wrapper col-12">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </div>
+
+                    <thead class="thead-gris">
+                        <tr>
+                            <th>FECHA</th>
+                            <th>DEUDA</th>
+                            <th>ABONO</th>
+                            <th>PENDIENTE</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>05 Abr 2021</td>
+                            <td>40$</td>
+                            <td>20$</td>
+                            <td>20$</td>
+                       <tr>
+                    </tbody>
+                </table>
+            </div>
+        
+        
         </div>
-        <div class="content-body">
-        
-        <h1>holidays</h1>
-        
-        
-        </div>
+
+
+        <div class="card-cloud mt-2 ml-1">
+            <div class="container-fluid col-3 ml-1">
+                  <img class="img-view3" src="{{ asset('images/ilustracion clientes.svg') }}" alt="">
+                      <h4 class="text-mic">Proximas <br> Vacaciones</h4><br>
+                      <h4 class="text-chel"><i class="feather icon-clipboard"></i>30 Agosto</h4>
+          </div>
+          </div>
+
+
+
+
+
     </div>
 </div>
 
