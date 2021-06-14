@@ -9,23 +9,16 @@
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('landing.bill') }}"><i class="feather icon-folder"></i>
-        <span class="menu-title" data-i18n="Email">Facturas</span></a>
-</li>
-
-<li class=" nav-item">
     <a href="{{ route('landing.hosting') }}"><i class="feather icon-help-circle"></i>
         <span class="menu-title" data-i18n="Email">Hosting</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('landing.financing') }}"><i class="feather icon-help-circle"></i>
-        <span class="menu-title" data-i18n="Email">De interes</span></a>
+    <a href="{{ route('landing.bill') }}"><i class="feather icon-folder"></i>
+        <span class="menu-title" data-i18n="Email">Facturaciòn</span></a>
 </li>
 
-<li class=" nav-item">
-    <a href="{{ route('landing.profile') }}"><i class="feather icon-user"></i>
-        <span class="menu-title" data-i18n="Email">Perfil</span></a>
-</li>
+
+
 
 

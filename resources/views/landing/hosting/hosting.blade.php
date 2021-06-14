@@ -72,7 +72,7 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img src="{{asset('#')}}" alt=""></td>
                                         </tr>
 
                                         <tr>
@@ -80,22 +80,14 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img src="{{asset('#')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">travima.com</th>
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">travima.com</th>
-                                            <td>03/09/21</td>
-                                            <td>03/09/22</td>
-                                            <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img src="{{asset('#')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -103,7 +95,7 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img src="{{asset('#')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -111,7 +103,7 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img src="{{asset('#')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -119,20 +111,28 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img src="{{asset('#')}}" alt=""></td>
+                                        </tr>
+                                        <tr>
                                         <tr>
                                             <th scope="row">travima.com</th>
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img src="{{asset('#')}}" alt=""></td>
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img src="{{asset('#')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">travima.com</th>
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img src="{{asset('#')}}" alt=""></td>
                                         </tr>
 
                                     </tbody>
