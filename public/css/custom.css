@@ -112,4 +112,111 @@
   .icon-big{
     font-size: 18px !important;
   }
+
   
+  /*///////////////////////////*/
+  /*   PERSONALIZED CLASSES    */
+  /*       FINANCING           */
+  /*///////////////////////////*/
+
+  #container-card-principal{
+    width:681px;
+    height:580.05px;
+    background:#FFFFFF;
+  }
+
+  #container-card-small{
+    width:326.4px;
+    height:160.64px;
+    left:730px;
+    background:#FFFFFF;
+  }
+  #holidays-date{
+    color:#650865;
+    left:18px;
+    bottom:40px;
+  }
+  #font-client{
+    left: 150px;
+    bottom:5px;
+  }
+  
+
+   /*///////////////////////////*/
+  /*   PERSONALIZED CLASSES     */
+  /*          BILL              */
+  /*////////////////////////////*/
+
+#big-container-card{
+  width:1080px;
+  height:828px;
+  background:#FFFFFF;
+}
+
+#background-of-progress{
+  background: #3C3232;
+  border-radius:10px;
+}
+#card-of-body{
+  padding: 0px 0px !important;
+}
+#div-bottom{
+  background:#EBEBEB;
+  color:#000;
+}
+#div-bottom-2{
+  background:#650865;
+}
+
+  /*/////////////////////////////*/
+  /*   PERSONALIZED CLASSES      */
+  /*         PROJECTS            */
+  /*/////////////////////////////*/
+
+  #card-head{
+    height: 897px;
+  }
+
+  #process-project{
+    background: #3C3232;
+    border-radius:10px;
+  }
+
+  #div-bottom-project{
+    padding: 0px 0px !important;
+  }
+
+#div-bottom-background{
+  background:#EBEBEB;
+  color:#000;
+}
+
+#div-bottom-background2{
+  background:#650865;
+}
+
+  /*/////////////////////////////*/
+  /*   PERSONALIZED CLASSES      */
+  /*         PROFILE             */
+  /*/////////////////////////////*/
+
+
+#container-big-principal{
+  width:1039px;
+  height:750.57px;
+  background:#FFFFFF;
+}
+
+#all-center-items{
+  display: flex;
+  align-items:center;
+}
+
+#card-body-items{
+  padding: 0px 0px !important;
+}
+#curiculum-email{
+  left:15px;
+}
+
+
