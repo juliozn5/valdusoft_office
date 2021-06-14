@@ -14,16 +14,25 @@
         <div class="content-body">
             <div class="row" id="table-head">
                 <div class="col-12">
-                    <div class="card" id="card-head">
-                        <div class="card-header">
-                            <h3 class="card-title mb-2">Tabla de Proyectos</h3>
-                            <a href="{{ route('landing.projects-create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Proyecto</a>
-                        </div>
-
+                    <div class="card">
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table mb-0">
-                                    <thead class="thead-light ">
+                                    <div class="card-employes content-header row">
+
+                                        <div class="content-header-left col-md-9 col-12 mb-2">
+                                            <div class="row breadcrumbs-top">
+                                                <div class="col-12">
+                                                    <h2 class="content-header-title float-left mb-0 mt-1 ml-2"><strong>Proyectos</strong></h2>
+                                                    <div class="breadcrumb-wrapper col-12">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                    </div>
+                                    <thead class="thead-gris">
                                         <tr>
                                             <th>ID</th>
                                             <th>NOMBRE</th>

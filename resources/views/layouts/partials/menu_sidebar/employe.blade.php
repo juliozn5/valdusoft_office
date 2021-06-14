@@ -13,10 +13,16 @@
         <span class="menu-title" data-i18n="Email">Facturas</span></a>
 </li>
 
-<li class="nav-item has-sub"><a href="{{ route('landing.holidays') }}"><i class="feather icon-help-circle"></i>
+<li class=" nav-item">
+    <a href="{{ route('landing.holidays') }}"><i class="feather icon-help-circle"></i>
+        <span class="menu-title" data-i18n="Email">De interes</span></a>
+</li>
+
+
+<!--<li class="nav-item has-sub"><a href="{{ route('landing.holidays') }}"><i class="feather icon-help-circle"></i>
     <span class="menu-title" data-i18n="Email">De interes</span></a>
 
-    <!--<ul class="menu-content" style="">
+    <ul class="menu-content" style="">
 
         <li class=""><a href="{{ route('landing.holidays') }}"><i class="feather icon-calendar"></i>
             <span class="menu-title" data-i18n="Email">Vacaciones</span></a>
@@ -30,8 +36,8 @@
             <span class="menu-title" data-i18n="Email">Bonos</span></a>
         </li>
 
-    </ul>-->
-</li>
+    </ul>
+</li>-->
 
 <li class=" nav-item">
     <a href="{{ route('landing.profile') }}"><i class="feather icon-user"></i>

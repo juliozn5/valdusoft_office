@@ -15,7 +15,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         
-        <div class="content-body">
+        <div class="card-holi content-body">
         
             <div class="table-responsive">
                 <table class="table mb-0">
@@ -57,6 +57,20 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
         
         
         </div>
+
+
+        <div class="card-cloud mt-2 ml-1">
+            <div class="container-fluid col-3 ml-1">
+                  <img class="img-view3" src="{{ asset('images/ilustracion clientes.svg') }}" alt="">
+                      <h4 class="text-mic">Proximas <br> Vacaciones</h4><br>
+                      <h4 class="text-chel"><i class="feather icon-clipboard"></i>30 Agosto</h4>
+          </div>
+          </div>
+
+
+
+
+
     </div>
 </div>
 
