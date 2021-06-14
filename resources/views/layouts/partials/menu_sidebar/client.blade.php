@@ -15,6 +15,11 @@
 
 <li class=" nav-item">
     <a href="{{ route('landing.hosting') }}"><i class="feather icon-help-circle"></i>
+        <span class="menu-title" data-i18n="Email">Hosting</span></a>
+</li>
+
+<li class=" nav-item">
+    <a href="#"><i class="feather icon-help-circle"></i>
         <span class="menu-title" data-i18n="Email">De interes</span></a>
 </li>
 

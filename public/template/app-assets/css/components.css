@@ -3910,9 +3910,6 @@ tr.group {
 
 .card-employes {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -3929,9 +3926,6 @@ tr.group {
 
 .card-down{
   position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3950,9 +3944,6 @@ tr.group {
 
 .card-cloud{
   position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3973,9 +3964,6 @@ tr.group {
 
 .card-holi{
   position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3984,7 +3972,6 @@ tr.group {
     flex-direction: column;
     min-width: 0px;
     width: 730px;
-    /* height: 175px; */
     word-wrap: break-word;
     background-color: #FFFFFF;
     background-clip: border-box;

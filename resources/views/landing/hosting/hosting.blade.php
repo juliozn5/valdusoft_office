@@ -32,7 +32,164 @@
 
         <div class="content-body">
             
-            <div class="card-holi content-body">
+
+
+
+
+
+            <div class="row" id="table-head">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <div class="card-employes content-header row">
+
+                                        <div class="content-header-left col-md-9 col-12 mb-2">
+                                            <div class="row breadcrumbs-top">
+                                                <div class="col-12">
+                                                    <h2 class="content-header-title float-left mb-0 mt-1 ml-2"><strong>Hosting</strong></h2>
+                                                    <div class="breadcrumb-wrapper col-12">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                    </div>
+                                    <thead class="thead-gris">
+                                        <tr>
+                                            <th>DOMINIO</th>
+                                            <th>FECHA DE INICIO</th>
+                                            <th>FECHA DE RENOVACION</th>
+                                            <th>AÑOS</th>
+                                            <th>ACCIÓN</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                        </tr>
+                                        <tr>
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                        </tr>
+                                        <tr>
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                        </tr>
+                                        <tr>
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                        </tr>
+                                        <tr>
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">travima.com</th>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <div class="card-body" id="div-bottom-project">
+
+
+
+
+                                    <div class="pl-2 pr-3 float-right">
+                                        <div class="mt-1">
+
+                                            <div class="text-center text-white d-inline-block mr-1">
+                                                <div class="project-circle" id="div-bottom-background"><i class="fas fa-angle-left"></i></div>
+                                            </div>
+
+
+                                            <div class="text-center d-inline-block">
+                                                <div class="project-circle" id="div-bottom-background2">
+                                                    <h5 class="text-white">1</h5>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-center d-inline-block mr-1">
+                                                <div class="project-circle" id="div-bottom-background">
+                                                    <h5 class="">2</h5>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="text-center text-white d-inline-block mr-1">
+                                                <div class="project-circle" id="div-bottom-background"><i class="fas fa-angle-right"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+           <!-- <div class="card-holi content-body">
         
                 <div class="table-responsive">
                     <table class="table mb-0">
@@ -73,7 +230,7 @@
                 </div>
             
             
-            </div>    
+            </div>   
             
             
             
@@ -83,7 +240,7 @@
                           <h4 class="text-mic">Proximas <br> Vacaciones</h4><br>
                           <h4 class="text-chel"><i class="feather icon-clipboard"></i>30 Agosto</h4>
               </div>
-              </div>
+              </div> -->
     
     
             

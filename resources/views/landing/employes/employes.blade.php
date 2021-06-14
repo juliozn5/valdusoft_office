@@ -97,7 +97,7 @@
                 <div class="row">
                     <div class="card-down mt-2 ml-3">
                     <div class="container-fluid col-3">
-                                <img class="img-view" src="{{ asset('images/ilustracion clientes.svg') }}" width="100" height="100" alt="">
+                                <img class="img-view" src="{{ asset('images/ilustracion_clientes.svg') }}" width="100" height="100" alt="">
                                     <h4 class="text-pao">Ultima factura de la quincena</h4>
                                 <a href="·" class="btn-dina btn btn-primary btn-client mt-1"><b>Descargar</b></a>
                         </div>
@@ -106,7 +106,7 @@
                     <div class="card-down mt-2 ml-1">
                         <div class="container-fluid col-3 ml-1">
                           
-                              <img class="img-view2" src="{{ asset('images/ilustracion nomina.svg') }}" alt="">
+                              <img class="img-view2" src="{{ asset('images/ilustracion_nomina.svg') }}" alt="">
                                   <h4 class="text-kei">Valor de la hora de trabajo</h4><br>
                                   <h4 class="text-sy">$ 0.00</h4>
                       </div>
@@ -114,7 +114,7 @@
 
                     <div class="card-down mt-2 ml-1">
                       <div class="container-fluid col-3 ml-1">
-                            <img class="img-view3" src="{{ asset('images/ilustracion clientes.svg') }}" alt="">
+                            <img class="img-view3" src="{{ asset('images/ilustracion_clientes.svg') }}" alt="">
                                 <h4 class="text-mic">Proximas <br> Vacaciones</h4><br>
                                 <h4 class="text-chel"><i class="feather icon-clipboard"></i>30 Agosto</h4>
                     </div>
