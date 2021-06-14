@@ -14,7 +14,7 @@
     right: 0px;
 }
 
-#password+.feather {
+#password + .feather {
     cursor: pointer;
     pointer-events: all;
 }
@@ -26,15 +26,15 @@
 }
 
 .btn-auth-1 {
-    border-color: #4839EB !important;
+    border-color: #4839eb !important;
     background-color: #650765 !important;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .btn-auth-2 {
     border-color: #650765 !important;
-    background-color: #4839EB !important;
-    color: #FFFFFF;
+    background-color: #4839eb !important;
+    color: #ffffff;
 }
 
 .input-field input:focus {
@@ -46,7 +46,7 @@
     top: 7px;
     right: 4px;
     background: none;
-    border: none;   
+    border: none;
     color: #8d8d8d;
     padding: 5px 10px;
     cursor: pointer;
@@ -57,166 +57,170 @@
     transform: scale(1.1);
 }
 
-
 /* scroll */
 ::-webkit-scrollbar {
-    width:  7px;
+    width: 7px;
     height: 7px;
-  }
-  
-  ::-webkit-scrollbar-button:start:decrement,
-  ::-webkit-scrollbar-button:end:increment {
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
     display: block;
     height: 0;
     background-color: transparent;
-  }
-  
-  ::-webkit-scrollbar-track-piece {
+}
+
+::-webkit-scrollbar-track-piece {
     opacity: 0.2;
     display: none;
-  }
-  
-  ::-webkit-scrollbar-thumb:vertical {
+}
+
+::-webkit-scrollbar-thumb:vertical {
     height: 70px;
     background-color: #003573;
-  }
+}
 
-  .role-color{
-      color: #10163A;
-  }
-  .project-detail-titles{
-    color: #3C3232 !important; 
-    font-weight: bold; 
+.role-color {
+    color: #10163a;
+}
+.project-detail-titles {
+    color: #3c3232 !important;
+    font-weight: bold;
     font-size: 15px;
-  }
-  .project-circle{
-    border-radius: 50%; 
-    width: 40px; 
-    height: 40px; 
+}
+.project-circle {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     padding-top: 10px;
-  }
-  .project-circle-add{
-    background-color: #EBEBEB; 
-    color: #3C3232;
-  }
-  .project-detail-dates{
-    color: #3C3232 !important; 
-    font-weight: 400; 
+}
+.project-circle-add {
+    background-color: #ebebeb;
+    color: #3c3232;
+}
+.project-detail-dates {
+    color: #3c3232 !important;
+    font-weight: 400;
     font-size: 15px;
-  }
-  .project-detail-skill{
-    background-color: #650865; 
-    border-radius: 40px; 
+}
+.project-detail-skill {
+    background-color: #650865;
+    border-radius: 40px;
     padding: 10px;
-  }
-  .icon-big{
+}
+.icon-big {
     font-size: 18px !important;
-  }
+}
 
-  
-  /*///////////////////////////*/
-  /*   PERSONALIZED CLASSES    */
-  /*       FINANCING           */
-  /*///////////////////////////*/
+/*///////////////////////////*/
+/*   PERSONALIZED CLASSES    */
+/*       FINANCING           */
+/*///////////////////////////*/
 
-  #container-card-principal{
-    width:681px;
-    height:580.05px;
-    background:#FFFFFF;
-  }
+#container-card-principal {
+    width: 681px;
+    height: 580.05px;
+    background: #ffffff;
+}
 
-  #container-card-small{
-    width:326.4px;
-    height:160.64px;
-    left:730px;
-    background:#FFFFFF;
-  }
-  #holidays-date{
-    color:#650865;
-    left:18px;
-    bottom:40px;
-  }
-  #font-client{
+#container-card-small {
+    width: 326.4px;
+    height: 160.64px;
+    left: 730px;
+    background: #ffffff;
+}
+#holidays-date {
+    color: #650865;
+    left: 18px;
+    bottom: 40px;
+}
+#font-client {
     left: 150px;
-    bottom:5px;
-  }
-  
-
-   /*///////////////////////////*/
-  /*   PERSONALIZED CLASSES     */
-  /*          BILL              */
-  /*////////////////////////////*/
-
-#big-container-card{
-  width:1080px;
-  height:828px;
-  background:#FFFFFF;
+    bottom: 5px;
 }
 
-#background-of-progress{
-  background: #3C3232;
-  border-radius:10px;
-}
-#card-of-body{
-  padding: 0px 0px !important;
-}
-#div-bottom{
-  background:#EBEBEB;
-  color:#000;
-}
-#div-bottom-2{
-  background:#650865;
+/*///////////////////////////*/
+/*   PERSONALIZED CLASSES     */
+/*          BILL              */
+/*////////////////////////////*/
+
+#big-container-card {
+    width: 1080px;
+    height: 828px;
+    background: #ffffff;
 }
 
-  /*/////////////////////////////*/
-  /*   PERSONALIZED CLASSES      */
-  /*         PROJECTS            */
-  /*/////////////////////////////*/
-
-  #card-head{
-    height: 897px;
-  }
-
-  #process-project{
-    background: #3C3232;
-    border-radius:10px;
-  }
-
-  #div-bottom-project{
+#background-of-progress {
+    background: #3c3232;
+    border-radius: 10px;
+}
+#card-of-body {
     padding: 0px 0px !important;
-  }
-
-#div-bottom-background{
-  background:#EBEBEB;
-  color:#000;
+}
+#div-bottom {
+    background: #ebebeb;
+    color: #000;
+}
+#div-bottom-2 {
+    background: #650865;
 }
 
-#div-bottom-background2{
-  background:#650865;
+/*/////////////////////////////*/
+/*   PERSONALIZED CLASSES      */
+/*         PROJECTS            */
+/*/////////////////////////////*/
+
+#card-head {
+    height: 897px;
 }
 
-  /*/////////////////////////////*/
-  /*   PERSONALIZED CLASSES      */
-  /*         PROFILE             */
-  /*/////////////////////////////*/
-
-
-#container-big-principal{
-  width:1039px;
-  height:750.57px;
-  background:#FFFFFF;
+#process-project {
+    background: #3c3232;
+    border-radius: 10px;
 }
 
-#all-center-items{
-  display: flex;
-  align-items:center;
+#div-bottom-project {
+    padding: 0px 0px !important;
 }
 
-#card-body-items{
-  padding: 0px 0px !important;
-}
-#curiculum-email{
-  left:15px;
+#div-bottom-background {
+    background: #ebebeb;
+    color: #000;
 }
 
+#div-bottom-background2 {
+    background: #650865;
+}
 
+/*/////////////////////////////*/
+/*   PERSONALIZED CLASSES      */
+/*         PROFILE             */
+/*/////////////////////////////*/
+
+#container-big-principal {
+    width: 1039px;
+    height: 750.57px;
+    background: #ffffff;
+}
+
+#all-center-items {
+    display: flex;
+    align-items: center;
+}
+
+#card-body-items {
+    padding: 0px 0px !important;
+}
+#curiculum-email {
+    left: 15px;
+}
+/*/////////////////////////////*/
+/*   PERSONALIZED CLASSES      */
+/*         DASHBOARD            */
+/*/////////////////////////////*/
+
+#shadow {
+    background: linear-gradient( rgba(37, 40, 86, 0) 0%, #252856 100%);
+    border-radius: 7px;
+
+}
