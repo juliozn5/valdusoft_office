@@ -3622,6 +3622,15 @@ tr.group {
   background-color : #EDEDED;
 }
 
+/*----------------------------------------------------------------------------------------------*/
+
+.thead-gris{
+  background: #9D9EAF;
+  color: white;
+  font-size: 1rem;
+}/*agregado*/
+
+
 @media only screen and (max-width: 768px) {
   div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     -webkit-box-pack : center;
