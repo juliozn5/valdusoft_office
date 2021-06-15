@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('body-atribute')
-class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
+class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
 
 @section('content')
@@ -14,27 +14,209 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
+        <div class="content-header row"></div>
+        <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+                <div class="col-12">
+                    <h2 class="content-header-title float-left mb-0">Financiero</h2>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ route('landing.projects') }}">Financiero</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#">Pagos</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="content-body">
-        
-        <h1>payments</h1>
 
-        
-        </div>
     </div>
-</div>
+    <div class="content-body">
 
-        <!-- END: Content-->
+        <div class="" id="table-head">
+            <div class="col-11" style="margin-left:25px;">
+                <div class="card" id="card-head1">
+                    <div class="card-header">
+                        <h3 class="card-title mb-1">Pagos</h3>
+                        <a href="{{ route('landing.projects-create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Agregar Nuevo</a>
+                    </div>
 
+                    <div class="card-content">
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead class="thead-light ">
+                                    <tr>
+                                        <th scope="col">FECHA</th>
+                                        <th scope="col">CLIENTE</th>
+                                        <th scope="col"># DE FACTURA</th>
+                                        <th scope="col">PLATAFORMA DE PAGO</th>
+                                        <th scope="col">MONTO</th>
+                                        <th scope="col">FEE</th>
+                                        <th scope="col">TOTAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <div class="card-body" id="div-bottom-project">
+
+                                <div class="pl-2 pr-3 float-right">
+                                    <div class="mt-1">
+
+                                        <div class="text-center text-white d-inline-block mr-1">
+                                            <div class="project-circle" id="div-bottom-background"><i class="fas fa-angle-left"></i></div>
+                                        </div>
+
+
+                                        <div class="text-center d-inline-block">
+                                            <div class="project-circle" id="div-bottom-background2">
+                                                <h5 class="text-white">1</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center d-inline-block mr-1">
+                                            <div class="project-circle" id="div-bottom-background">
+                                                <h5 class="">2</h5>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="text-center text-white d-inline-block mr-1">
+                                            <div class="project-circle" id="div-bottom-background"><i class="fas fa-angle-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- END: Content-->
+                    <!--
         <div class="sidenav-overlay"></div>
         <div class="drag-target"></div>
-
-        <!-- BEGIN: Footer-->
+-->
+                    <!-- BEGIN: Footer
         <footer class="footer footer-static footer-dark">
             <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="text-bold-800 grey darken-2" href="https://valdusoft.com" target="_blank">Valdusoft,</a>All rights Reserved</span>
                 <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
-            </p>
-        </footer>
-        <!-- END: Footer-->
-@endsection
+            </p>-->
+                    <!--</footer>-->
+                    <!-- END: Footer-->
+                    @endsection
