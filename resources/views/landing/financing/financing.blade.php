@@ -91,7 +91,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
         </div>
 
-        <div class="card position-absolute container-fluid" id="container-card-small">
+        <div class="card position-absolute container-fluid ml-2" id="container-card-small">
         
         <p class="h4 p-2 position-absolute">Proximas<br>vacaciones</p>
 

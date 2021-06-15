@@ -165,7 +165,7 @@
                         <div class="card">
                             <div class="card-content pl-1">
                                 <div class="card-body">
-                                <img src="{{ asset('images/ilustracion clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
+                                <img src="{{ asset('images/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta todos los clientes</h4>
                                 <a href="{{ route('clients.home') }}" class="btn btn-primary btn-client mt-1"><b>Ver clientes</b></a>
                                 </div>
@@ -175,7 +175,7 @@
                         <div class="card">
                           <div class="card-content pl-1">
                               <div class="card-body">
-                              <img src="{{ asset('images/ilustracion nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
+                              <img src="{{ asset('images/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                   <h4 class="pt-2">Consulta y paga la nomina</h4>
                                 <a href="{{ route('landing.payroll') }}" class="btn btn-primary btn-payroll mt-1"><b>Ver nomina</b></a>
                               </div>
