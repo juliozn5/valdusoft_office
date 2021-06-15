@@ -20,7 +20,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
             <div class="table-responsive">
                 <table class="table mb-0">
 
-                    <div class="card-employes content-header row">
+                    <div class="card content-header row">
 
                         <div class="content-header-left col-md-9 col-12 mb-2">
                             <div class="row breadcrumbs-top">

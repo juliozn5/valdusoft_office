@@ -13,7 +13,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
         </div>
         <div class="content-body">
 
-            <section class="card-employes blog_categorie_area section_gap_top">
+            <section class="card blog_categorie_area section_gap_top">
 
                 <div class="content-header row">
         
