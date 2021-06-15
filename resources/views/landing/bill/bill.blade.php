@@ -15,7 +15,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row"> </div>
-        <div class="card container-sm  position-absolute" id="big-container-card">
+        <div class="card container-sm  " id="big-container-card">
             <div class="content-body jutify-content">
 
                 <h4 class="p-1 ">Facturación</h4>
