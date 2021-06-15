@@ -3635,76 +3635,10 @@ tr.group {
   margin-right: 10px;
 }/*agregado*/
 
-.text-black{
-  color: #6D6565;
-}/*agregado*/
-
-.card-client{
-  width: 18rem;
-}/*agregado*/
-
 .thead-gris{
   background: #9D9EAF;
   color: white;
   font-size: 1rem;
-}/*agregado*/
-
-.table{
-  width: 104%;
-}/*agregado*/
-
-
-
-.genric-btn.skills {
-  color: #fff;
-  background: #650865;
-  border: 1px solid transparent;
-}/*agregado*/
-
-.genric-btn.circle {
-  border-radius: 20px;
-}/*agregado*/
-
-.button-group-area .genric-btn {
-  margin-right: 10px;
-  margin-top: 10px;
-}/*agregado*/
-
-.genric-btn {
-  display: inline-block;
-  outline: none;
-  line-height: 40px;
-  padding: 0 30px;
-  font-size: .8em;
-  text-align: center;
-  text-decoration: none;
-  font-weight: 500;
-  cursor: pointer;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-}/*agregado*/
-
-.skills {
-  color: #fbf8fb !important;
-}/*agregado*/
-
-.thead-white{
-     background: white;
-    color: black;
-    font-size: 1rem;
-}/*agregado*/
-
-.comments-area {
-  background: white;
-    padding: 12px 12px;
-    margin-top: 50px;
-    bottom: 0px;
-}/*agregado*/
-
-.comments-area .comment-list {
-  padding-bottom: 48px;
 }/*agregado*/
 
 /*========= blog_categorie_area css ===========*/
@@ -3757,19 +3691,6 @@ tr.group {
     background: rgba(129,130,156); }/*agregado*/
 
 /*-----------------------------------------------------------------------------------------*/
-
-.genric-btn.rad {
-  color: #fff;
-  text-align: center;
-  height: 40px;
-  border-radius: 11px;
-}/*agregado*/
-
-.genric-btn.est {
-  font-size: 14px;
-  background: #3C3232;
-  border: 1px solid transparent;
-}/*agregado*/
 
 .text-pao{
   font-size: 16px;
@@ -3854,22 +3775,6 @@ tr.group {
   display: block;
 }/*agregado*/
 
-.img-profile{
-  height: 50px;
-}/*agregado*/
-
-.content-circle{
-  font-size: 17px;
-  position: relative;
-  top: 10px;
-  color: white;
-  margin: 0%;
-}/*agregado*/
-
-.margin-pa{
-  margin-bottom: -70px;
-}/*agregado*/
-
 .card-employes {
   position: relative;
   display: flex;
@@ -3940,7 +3845,6 @@ tr.group {
     border: 1px solid rgba(34, 41, 47, 0.125);
     border-radius: 0.5rem;
 }/*agregado*/
-
 
 .borde-circle{
   border-radius: 10px;

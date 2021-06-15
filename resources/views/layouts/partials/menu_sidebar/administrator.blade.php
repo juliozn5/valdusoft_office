@@ -1,43 +1,43 @@
 <li class=" nav-item">
-    <a href="{{ route('admin.home') }}"><i class="feather icon-home"></i>
-        <span class="menu-title" data-i18n="Email">Inicio</span></a>
+    <a href="{{ route('admin.home') }}"><img src="{{ asset('images/icons/home.png') }}"/>
+        <span class="menu-title ml-1" data-i18n="Email">Inicio</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('landing.projects') }}"><i class="feather icon-clipboard"></i>
-        <span class="menu-title" data-i18n="Email">Proyectos</span></a>
+    <a href="{{ route('landing.projects') }}"><img src="{{ asset('images/icons/maletin.png') }}"/>
+        <span class="menu-title ml-1" data-i18n="Email">Proyectos</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('clients.home') }}"><i class="feather icon-users"></i>
-        <span class="menu-title" data-i18n="Email">Clientes</span></a>
+    <a href="{{ route('clients.home') }}"><img src="{{ asset('images/icons/client.png') }}"/></i>
+        <span class="menu-title ml-1" data-i18n="Email">Clientes</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('employes.home') }}"><i class="feather icon-briefcase"></i>
-        <span class="menu-title" data-i18n="Email">Empleados</span></a>
+    <a href="{{ route('employes.home') }}"><img src="{{ asset('images/icons/users-line.png') }}"/>
+        <span class="menu-title ml-1" data-i18n="Email">Empleados</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('landing.hosting') }}"><i class="feather icon-hard-drive"></i>
-        <span class="menu-title" data-i18n="Email">Hosting</span></a>
+    <a href="{{ route('landing.hosting') }}"><img src="{{ asset('images/icons/hosting.png') }}"/>
+        <span class="menu-title ml-1" data-i18n="Email">Hosting</span></a>
 </li>
 
-<li class="nav-item has-sub"><a href="#"><i class="feather icon-archive"></i>
-        <span class="menu-title" data-i18n="Ecommerce">Finanzas</span></a>
+<li class="nav-item has-sub"><a href="#"><img src="{{ asset('images/icons/mone.png') }}"/>
+        <span class="menu-title ml-1" data-i18n="Ecommerce">Financiero</span></a>
 
     <ul class="menu-content" style="">
 
-        <li class=""> <a href="{{ route('landing.payroll') }}"><i class="feather icon-file-text"></i>
-                <span class="menu-title" data-i18n="Email">Nomina</span></a>
+        <li class=""><a href="{{ route('landing.bill') }}"><img src="{{ asset('images/icons/mone.png') }}"/>
+                <span class="menu-title ml-1" data-i18n="Email">Financiero-Facturas</span></a>
+        </li>
+        
+        <li class=""> <a href="{{ route('landing.payroll') }}"><img src="{{ asset('images/icons/mone.png') }}"/>
+                <span class="menu-title ml-1" data-i18n="Email">Financiero-Nòmina</span></a>
         </li>
 
-        <li class=""><a href="{{ route('landing.bill') }}"><i class="feather icon-folder"></i>
-                <span class="menu-title" data-i18n="Email">Facturas</span></a>
-        </li>
-
-        <li class=""><a href="{{ route('landing.payments') }}"><i class="feather icon-dollar-sign">
-                </i><span class="menu-title" data-i18n="Email">Pagos</span></a>
+        <li class=""><a href="{{ route('landing.payments') }}"><img src="{{ asset('images/icons/mone.png') }}"/>
+                </i><span class="menu-title ml-1" data-i18n="Email">Financiero-Pagos</span></a>
         </li>
 
     </ul>
