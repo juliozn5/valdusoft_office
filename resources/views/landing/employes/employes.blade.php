@@ -66,30 +66,30 @@
                     <div class="container pb-2">
                         <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" style="margin-right: 90px;">
 
-                            <div class="col shadow  rounded" style="right:20px;">
+                            <div class="col  rounded" style="right:20px;">
                                 <img src="{{asset('images/recomiendo.png')}}" class="mt-2" alt="">
                                 <div class="pr-1 mt-2 h4 pb-2  text-white" id="shadow">Recomiendo
                                 </div>
                             </div>
 
-                            <div class="col shadow  rounded" style="left:15px;">
+                            <div class="col rounded" style="left:15px;">
                                 <img src="{{asset('images/recomiendo.png')}}" class="mt-2" alt="">
                                 <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
                                 </div>
                             </div>
 
-                            <div class="col shadow  rounded" style="left:45px;">
+                            <div class="col   rounded" style="left:45px;">
                                 <img src="{{asset('images/recomiendo.png')}}" class="mt-2" alt="">
                                 <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
                                 </div>
                             </div>
-                            <div class="col shadow  rounded" style="left:80px;">
+                            <div class="col   rounded" style="left:80px;">
                                 <img src="{{asset('images/recomiendo.png')}}" class="mt-2" alt="">
                                 <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
                                 </div>
                             </div>
 
-                            <div class="col shadow  rounded" style="left:108px;">
+                            <div class="col   rounded" style="left:108px;">
                                 <img src="{{asset('images/recomiendo.png')}}" class="mt-2" alt="">
                                 <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
                                 </div>
@@ -116,7 +116,7 @@
                 </div>
 
 
-                <div class="col-4">
+                <div class="col-sm-4">
                     <div class="card" style="margin-left: 50px;">
                         <div class="card-body">
                             <h5 class="card-title">Valor de la hora<br>de trabajo</h5>
