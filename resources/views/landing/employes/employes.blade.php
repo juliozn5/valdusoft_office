@@ -18,7 +18,7 @@
 
 
                     <!--================Blog Categorie Area =================-->
-    <section class="card-employes blog_categorie_area section_gap_top">
+    <section class="card blog_categorie_area section_gap_top">
 
         <div class="content-header row">
 
