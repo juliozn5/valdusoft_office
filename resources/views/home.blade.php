@@ -44,7 +44,7 @@ class="vertical-layout vertical-menu-modern semi-dark-layout 1-column  navbar-fl
             </section>
         </div>
     </div>
-    <img class="img-auth" width="650px" height="500px" style="z-index: 1;" src="{{ asset('images/logo-fondo.png') }}" />
+    <img class="img-auth" width="650px" height="500px" style="z-index: 1;" src="{{ asset('images/valdusoft/logo-fondo.png') }}" />
 </div>
 
 @endsection
