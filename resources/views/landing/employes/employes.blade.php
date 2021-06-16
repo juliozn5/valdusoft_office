@@ -80,8 +80,7 @@
 
                             <div class="col   rounded" style="left:45px;">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                                </div>
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo                                </div>
                             </div>
                             <div class="col   rounded" style="left:80px;">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
