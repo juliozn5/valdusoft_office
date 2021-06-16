@@ -20,7 +20,7 @@ class HomeController extends Controller
     }
 
    
-    /**
+    /** 
      * Vista principal para cada rol
      *
      * @return void

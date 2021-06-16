@@ -1,4 +1,3 @@
-<!-- BEGIN: SCRIPTS JS-->
 <!-- BEGIN: Vendor JS-->
 <script src="https://kit.fontawesome.com/d6f2727f64.js" crossorigin="anonymous"></script>
 <script src="{{ asset('template/app-assets/vendors/js/vendors.min.js') }}"></script>
@@ -31,6 +30,7 @@
 <!-- BEGIN: Custom JS-->
 @stack('custom_js')
 
+{{-- notificaciones push --}}
 <script>
     @if(Session::has('message'))
     toastr.options = {
@@ -66,5 +66,3 @@
 
 </script>
 <!-- END: Custom JS-->
-
-<!-- END: SCRIPTS JS-->
