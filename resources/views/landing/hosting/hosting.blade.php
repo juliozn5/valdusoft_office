@@ -40,23 +40,15 @@
             <div class="row" id="table-head">
                 <div class="col-12">
                     <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title mb-2">Hosting</h3>
+                            @if (Auth::user()->profile_id == 1)
+                            <a href="{{ route('admin.clients.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Agregar Nuevo</a>
+                                @endif
+                        </div>
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table mb-0">
-                                    <div class="card content-header row">
-
-                                        <div class="content-header-left col-md-9 col-12 mb-2">
-                                            <div class="row breadcrumbs-top">
-                                                <div class="col-12">
-                                                    <h2 class="content-header-title float-left mb-0 mt-1 ml-2"><strong>Hosting</strong></h2>
-                                                    <div class="breadcrumb-wrapper col-12">
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                            
-                                    </div>
                                     <thead class="thead-gris">
                                         <tr>
                                             <th>DOMINIO</th>
@@ -72,7 +64,7 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/Group.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
                                         </tr>
 
                                         <tr>
@@ -80,22 +72,14 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/Group.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/Group.png')}}" alt=""></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>03/09/22</td>
-                                            <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/Group.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -103,7 +87,7 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/Group.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -111,7 +95,7 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/Group.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -119,20 +103,28 @@
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/Group.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+                                        </tr>
+                                        <tr>
                                         <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/Group.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+                                        <tr>
+                                            <td>trovimo.com</td>
+                                            <td>03/09/21</td>
+                                            <td>03/09/22</td>
+                                            <td>1</td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
                                             <td>03/09/22</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/Group.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
                                         </tr>
 
                                     </tbody>

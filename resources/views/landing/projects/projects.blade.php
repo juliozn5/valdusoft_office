@@ -52,7 +52,7 @@
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En Proceso</div>
                                             </td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                                         </tr>
 
                                         <tr>
@@ -64,7 +64,7 @@
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En Proceso</div>
                                             </td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">125966548</th>
@@ -75,19 +75,7 @@
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En Proceso</div>
                                             </td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -99,7 +87,7 @@
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En Proceso</div>
                                             </td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -111,7 +99,7 @@
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En Proceso</div>
                                             </td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -123,7 +111,9 @@
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En Proceso</div>
                                             </td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
+                                        </tr>
+                                        <tr>
                                         <tr>
                                             <th scope="row">125966548</th>
                                             <td>lorem ipsu dolor</td>
@@ -133,7 +123,17 @@
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En Proceso</div>
                                             </td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
+                                        <tr>
+                                            <th scope="row">125966548</th>
+                                            <td>lorem ipsu dolor</td>
+                                            <td>01/01/2021</td>
+                                            <td>01/04/2021</td>
+                                            <td>
+                                                <div class="text-center text-white d-inline-block mr-2">
+                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                            </td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">125966548</th>
@@ -144,7 +144,7 @@
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En Proceso</div>
                                             </td>
-                                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                                         </tr>
 
                                     </tbody>

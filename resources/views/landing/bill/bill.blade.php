@@ -39,7 +39,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="text-center text-white d-inline-block mr-2">
                                     <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
-                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                         </tr>
                         <tr>
                             <th scope="row">#126</th>
@@ -50,7 +50,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="text-center text-white d-inline-block mr-2">
                                     <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
-                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                         </tr>
                         <tr>
                             <th scope="row">#127</th>
@@ -60,7 +60,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="text-center text-white d-inline-block mr-2">
                                     <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
-                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                         </tr>
                         <tr>
                         <tr>
@@ -71,7 +71,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="text-center text-white d-inline-block mr-2">
                                     <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
-                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                         </tr>
                         <tr>
                         <tr>
@@ -82,7 +82,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="text-center text-white d-inline-block mr-2">
                                     <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
-                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                         </tr>
                         <tr>
                         <tr>
@@ -93,7 +93,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="text-center text-white d-inline-block mr-2">
                                     <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
-                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                         </tr>
                         <tr>
                         <tr>
@@ -104,7 +104,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="text-center text-white d-inline-block mr-2">
                                     <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
-                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                         <tr>
                             <th scope="row">#132</th>
                             <td>05 Sep</td>
@@ -113,7 +113,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="text-center text-white d-inline-block mr-2">
                                     <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
-                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                         </tr>
                         <tr>
                             <th scope="row">#133</th>
@@ -123,7 +123,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="text-center text-white d-inline-block mr-2">
                                     <div class="project-detail-skill" id="background-of-progress">En Proceso</div>
                             </td>
-                            <td><img src="{{asset('images/Vector.png')}}" alt=""></td>
+                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""></td>
                         </tr>
 
                     </tbody>
