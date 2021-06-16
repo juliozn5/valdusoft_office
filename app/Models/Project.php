@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model
 {
@@ -17,6 +17,8 @@ class Project extends Model
 
     //Relación de los proyectos asignados a los empleados
     public function employes(){
+
         return $this->belongsToMany('App\Models\User', 'projects_users', 'project_id', 'user_id');
+        
     }
 }

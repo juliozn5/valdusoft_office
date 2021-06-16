@@ -10,7 +10,10 @@ class Skill extends Model
         'skill'
     ];
 
+    // relacion de habilidades para cada empleado
     public function users(){
+
         return $this->belongsToMany('App\Models\User', 'skills_users', 'skill_id', 'user_id');
+
     }
 }

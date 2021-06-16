@@ -171,7 +171,7 @@
 
                                             <div class="text-center d-inline-block mr-1">
                                                 <div class="project-circle" id="div-bottom-background">
-                                                    <h5 class="">2</h5>
+                                                    <h5>2</h5>
                                                 </div>
                                             </div>
 
@@ -194,8 +194,8 @@
                                                 <td>{{ $item->start_date }}</td>
                                                 <td>{{ $item->status }}</td>
                                                 <td>
-                                                    <a href="{{ route('landing.projects-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
-                                                    <form action="{{ route('landing.projects-delete', $item->id) }}" method="POST">
+                                                    <a href="{{ route('projects-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
+                                                    <form action="{{ route('projects-delete', $item->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger"><i class="feather icon-trash"></i>Eliminar</button>

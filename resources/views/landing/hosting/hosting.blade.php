@@ -20,7 +20,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('landing.hosting') }}">Hosting</a>
+                                <li class="breadcrumb-item"><a href="{{ route('hosting') }}">Hosting</a>
                                 </li>
                             </ol>
                         </div>-->
@@ -159,7 +159,7 @@
 
                                             <div class="text-center d-inline-block mr-1">
                                                 <div class="project-circle" id="div-bottom-background">
-                                                    <h5 class="">2</h5>
+                                                    <h5>2</h5>
                                                 </div>
                                             </div>
 
@@ -195,7 +195,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Tabla de Hosting</h3>
-                             <a href="{{ route('landing.hosting-create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Hosting</a>
+                             <a href="{{ route('hosting-create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Hosting</a>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -229,8 +229,8 @@
                                             <td>{{ $item->due_date }}</td>
 
                                             <td>
-                                                   <a href="{{ route('landing.hosting-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
-                                                   <form action="{{ route('landing.hosting-delete', $item->id) }}" method="POST">
+                                                   <a href="{{ route('hosting-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
+                                                   <form action="{{ route('hosting-delete', $item->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="feather icon-trash"></i>Eliminar</button>

@@ -113,7 +113,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column"
                                                             <i class="vs-icon feather icon-check"></i>
                                                         </span>
                                                     </span>
-                                                    <span class="">Mantener mi sesión abierta</span>
+                                                    <span>Mantener mi sesión abierta</span>
                                                 </div>
                                             </fieldset>
                                         </div>

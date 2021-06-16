@@ -23,7 +23,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{ route('landing.projects') }}">Financiero</a>
+                            <li class="breadcrumb-item"><a href="{{ route('projects') }}">Financiero</a>
                             </li>
                             <li class="breadcrumb-item"><a href="#">Pagos</a>
                             </li>
@@ -36,12 +36,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     </div>
     <div class="content-body">
 
-        <div class="" id="table-head">
+        <div id="table-head">
             <div class="col-11" style="margin-left:25px;">
                 <div class="card" id="card-head1">
                     <div class="card-header">
                         <h3 class="card-title mb-1">Pagos</h3>
-                        <a href="{{ route('landing.projects-create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Agregar Nuevo</a>
+                        <a href="{{ route('projects-create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Agregar Nuevo</a>
                     </div>
 
                     <div class="card-content">
@@ -191,7 +191,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                                         <div class="text-center d-inline-block mr-1">
                                             <div class="project-circle" id="div-bottom-background">
-                                                <h5 class="">2</h5>
+                                                <h5>2</h5>
                                             </div>
                                         </div>
 

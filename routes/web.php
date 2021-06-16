@@ -34,8 +34,8 @@ Route::group(['middleware'=>['auth']], function() {
             Route::get('check-email/{email?}', 'AdminController@check_email')->name('admin.check-email');
 
 
-            Route::get('landing/payroll', 'PayrollController@index')->name('landing.payroll');
-            Route::get('landing/payments', 'PaymentsController@index')->name('landing.payments');
+            Route::get('payroll', 'PayrollController@index')->name('payroll');
+            Route::get('payments', 'PaymentsController@index')->name('payments');
 
         });
 
@@ -51,7 +51,7 @@ Route::group(['middleware'=>['auth']], function() {
             Route::patch('update/{id}', 'ClientsController@update')->name('admin.clients.update');
             Route::delete('delete/{id}', 'ClientsController@delete')->name('admin.clients.delete');
 
-            Route::get('home-client', 'HomeController@client')->name('client.home');
+            // Route::get('home-client', 'HomeController@client')->name('client.home');
 
    
         });
@@ -67,31 +67,31 @@ Route::group(['middleware'=>['auth']], function() {
             Route::post('assign-projects', 'EmployesController@assign_projects')->name('admin.employes.assign-projects');
 
             // Route::get('home-employes', 'HomeController@employes')->name('home.employes');
-            Route::get('landing/profile', 'ProfileController@index')->name('landing.profile');
-            Route::get('landing/holidays', 'HolidaysController@index')->name('landing.holidays');
-            Route::get('landing/financing', 'FinancingController@index')->name('landing.financing');
-            Route::get('landing/bonds', 'BondsController@index')->name('landing.bonds');
+            Route::get('profile', 'ProfileController@index')->name('profile');
+            Route::get('holidays', 'HolidaysController@index')->name('holidays');
+            Route::get('financing', 'FinancingController@index')->name('financing');
+            Route::get('bonds', 'BondsController@index')->name('bonds');
    
         });
 
         //LISTADO DE RUTAS PARA EL USUARIO NUEVO
-        Route::group(['prefix' => 'new', 'middleware' => ['auth', 'profile'], 'profile' => ['0']], function(){
+        // Route::group(['prefix' => 'new', 'middleware' => ['auth', 'profile'], 'profile' => ['0']], function(){
 
-            Route::get('/', 'HomeController@index')->name('home');
+        //     Route::get('/', 'HomeController@index')->name('home');
    
-        });
+        // });
 
 
 
         // administradores y clientes
         Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['1','2']], function () {
 
-            Route::get('landing/hosting', 'HostingController@index')->name('landing.hosting');
-            Route::get('landing/hosting/create', 'HostingController@create')->name('landing.hosting-create');
-            Route::get('landing/hosting/edit/{id}', 'HostingController@edit')->name('landing.hosting-edit');
-            Route::post('landing/hosting/store', 'HostingController@store')->name('landing.hosting-store');
-            Route::patch('landing/hosting/update/{id}', 'HostingController@update')->name('landing.hosting-update');
-            Route::delete('landing/hosting/delete/{id}', 'HostingController@delete')->name('landing.hosting-delete');
+            Route::get('hosting', 'HostingController@index')->name('hosting');
+            Route::get('hosting/create', 'HostingController@create')->name('hosting-create');
+            Route::get('hosting/edit/{id}', 'HostingController@edit')->name('hosting-edit');
+            Route::post('hosting/store', 'HostingController@store')->name('hosting-store');
+            Route::patch('hosting/update/{id}', 'HostingController@update')->name('hosting-update');
+            Route::delete('hosting/delete/{id}', 'HostingController@delete')->name('hosting-delete');
 
         });
 
@@ -101,13 +101,13 @@ Route::group(['middleware'=>['auth']], function() {
         // administradores, clientes y trabajadores 
         Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['1','2','3']], function () {
 
-            Route::get('landing/bill', 'BillController@index')->name('landing.bill');
-            Route::get('landing/projects', 'ProjectsController@index')->name('landing.projects');
-            Route::get('landing/projects/create', 'ProjectsController@create')->name('landing.projects-create');
-            Route::get('landing/projects/edit/{id}', 'ProjectsController@edit')->name('landing.projects-edit');
-            Route::post('landing/projects/store', 'ProjectsController@store')->name('landing.projects-store');
-            Route::patch('landing/projects/update/{id}', 'ProjectsController@update')->name('landing.projects-update');
-            Route::delete('landing/projects/delete/{id}', 'ProjectsController@delete')->name('landing.projects-delete');
+            Route::get('bill', 'BillController@index')->name('bill');
+            Route::get('projects', 'ProjectsController@index')->name('projects');
+            Route::get('projects/create', 'ProjectsController@create')->name('projects-create');
+            Route::get('projects/edit/{id}', 'ProjectsController@edit')->name('projects-edit');
+            Route::post('projects/store', 'ProjectsController@store')->name('projects-store');
+            Route::patch('projects/update/{id}', 'ProjectsController@update')->name('projects-update');
+            Route::delete('projects/delete/{id}', 'ProjectsController@delete')->name('projects-delete');
         });
 
 });

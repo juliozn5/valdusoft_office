@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
 
 class BillController extends Controller
 {
+    /**
+     * Vista factura
+     *
+     * @return void
+     */
     public function index()
     {
         return view('landing.bill.bill'); 

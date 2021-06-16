@@ -4,17 +4,17 @@
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('landing.projects') }}"><img src="{{ asset('images/icons/maletin.png') }}"/>
+    <a href="{{ route('projects') }}"><img src="{{ asset('images/icons/maletin.png') }}"/>
         <span class="menu-title ml-1" data-i18n="Email">Proyectos</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('landing.hosting') }}"><img src="{{ asset('images/icons/hosting.png') }}"/>
+    <a href="{{ route('hosting') }}"><img src="{{ asset('images/icons/hosting.png') }}"/>
         <span class="menu-title ml-1" data-i18n="Email">Hosting</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('landing.bill') }}"><img src="{{ asset('images/icons/fact.png') }}"/></i>
+    <a href="{{ route('bill') }}"><img src="{{ asset('images/icons/fact.png') }}"/></i>
         <span class="menu-title ml-1" data-i18n="Email">Facturaciòn</span></a>
 </li>
 

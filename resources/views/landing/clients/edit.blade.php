@@ -54,9 +54,9 @@ $(document).ready(function() {
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('landing.clients') }}">Cliente</a>
+                                <li class="breadcrumb-item"><a href="{{ route('clients') }}">Cliente</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('landing.clients-edit', $client->id) }}">Editar Cliente</a>
+                                <li class="breadcrumb-item"><a href="{{ route('clients-edit', $client->id) }}">Editar Cliente</a>
                                 </li>
                             </ol>
                         </div>
@@ -74,7 +74,7 @@ $(document).ready(function() {
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" action="{{ route('landing.clients-update', $client->id) }}" method="POST"
+                            <form class="form form-vertical" action="{{ route('clients-update', $client->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
@@ -162,7 +162,7 @@ $(document).ready(function() {
                                         <div class="col-12">
                                             <button type="submit"
                                                 class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
-                                            <a href="{{ route('landing.clients') }}"
+                                            <a href="{{ route('clients') }}"
                                                 class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                         </div>
                                     </div>

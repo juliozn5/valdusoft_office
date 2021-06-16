@@ -10,7 +10,10 @@ class Profile extends Model
         'profile'
     ];
 
+    // relacion de rol para cada usuario
     public function users(){
+        
         return $this->hasMany('App\Models\User');
+
     }
 }

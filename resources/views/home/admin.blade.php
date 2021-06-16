@@ -8,12 +8,17 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.6/datatables.min.css"/>
 
     <style>
+        .btn-primary{
+            border-color: #003573 !important;
+            background-color: #003573 !important;
+            color: #FFFFFF;
+        }
+
         .btn-client{
             border-color: #8f138f !important;
             background-color: #650865 !important;
             color: #FFFFFF;
         }
-
         @import url('https://fonts.googleapis.com/css?family=Poppins');
 
         * {
@@ -167,7 +172,7 @@
                                 <div class="card-body">
                                 <img src="{{ asset('images/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta todos los clientes</h4>
-                                <a href="{{ route('clients.home') }}" class="btn btn-primary btn-client mt-1"><b>Ver clientes</b></a>
+                                <a href="{{ route('clients.home') }}" class="btn btn-client mt-1"><b>Ver clientes</b></a>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +182,7 @@
                               <div class="card-body">
                               <img src="{{ asset('images/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                   <h4 class="pt-2">Consulta y paga la nomina</h4>
-                                <a href="{{ route('landing.payroll') }}" class="btn btn-primary btn-payroll mt-1"><b>Ver nomina</b></a>
+                                <a href="{{ route('payroll') }}" class="btn btn-primary mt-1"><b>Ver nomina</b></a>
                               </div>
                           </div>
                       </div>

@@ -72,8 +72,8 @@
                                             <td>{{ $item->phone }}</td>
                                             <td><a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></td>
                                             <td>
-                                                   <a href="{{ route('landing.clients-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
-                                                   <form action="{{ route('landing.clients-delete', $item->id) }}" method="POST">
+                                                   <a href="{{ route('clients-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
+                                                   <form action="{{ route('clients-delete', $item->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="feather icon-trash"></i>Eliminar</button>

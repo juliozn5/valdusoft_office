@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
 
 class DomainController extends Controller
 {
+
+    /**
+     * Vista dominio
+     *
+     * @return void
+     */
     public function index()
     {
-           return view('landing.domain.domain'); 
+
+        return view('landing.domain.domain'); 
         
     }
 }
