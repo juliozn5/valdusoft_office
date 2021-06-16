@@ -31,19 +31,13 @@
         </div>
 
         <div class="content-body">
-            
-
-
-
-
-
             <div class="row" id="table-head">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Hosting</h3>
                             @if (Auth::user()->profile_id == 1)
-                            <a href="{{ route('admin.clients.create') }}" class="btn btn-primary mb-2 p-1">&nbsp; Agregar Nuevo</a>
+                            <a href="{{ route('hosting-create') }}" class="btn btn-primary mb-2 p-1">&nbsp; Agregar Nuevo</a>
                                 @endif
                         </div>
                         <div class="card-content">
@@ -131,10 +125,6 @@
                                 </table>
 
                                 <div class="card-body" id="div-bottom-project">
-
-
-
-
                                     <div class="pl-2 pr-3 float-right">
                                         <div class="mt-1">
 
@@ -161,10 +151,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
                             </div>
                         </div>
