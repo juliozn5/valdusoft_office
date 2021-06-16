@@ -37,7 +37,7 @@
                                     <tbody>
                                         @foreach ($employes as $employe)
                                         <tr>
-                                            <td><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft.png') }}" /></td>
+                                            <td><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" /></td>
                                             <td>{{ $employe->name }}</td>
                                             <td>{{ $employe->last_name }}</td>
                                             <td>{{ date('d-m-Y', strtotime($employe->birthdate)) }}</td>

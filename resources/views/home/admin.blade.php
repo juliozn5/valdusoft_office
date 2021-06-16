@@ -170,7 +170,7 @@
                         <div class="card">
                             <div class="card-content pl-1">
                                 <div class="card-body">
-                                <img src="{{ asset('images/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
+                                <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta todos los clientes</h4>
                                 <a href="{{ route('clients.home') }}" class="btn btn-client mt-1"><b>Ver clientes</b></a>
                                 </div>
@@ -180,7 +180,7 @@
                         <div class="card">
                           <div class="card-content pl-1">
                               <div class="card-body">
-                              <img src="{{ asset('images/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
+                              <img src="{{ asset('images/svg/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                   <h4 class="pt-2">Consulta y paga la nomina</h4>
                                 <a href="{{ route('payroll') }}" class="btn btn-primary mt-1"><b>Ver nomina</b></a>
                               </div>
@@ -214,7 +214,7 @@
                                                 @if(!$item->getMedia('photo')->isEmpty())
                                                 <th><img class="rounded-circle" width="50px" height="50px" src="{{ $item->photoUrl }}" /></th>
                                                 @else
-                                                <th><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft.png') }}" /></th>
+                                                <th><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" /></th>
                                                 @endif
                                                 <td>{{ $item->name }}</td>
                                                 @if($item->position === '0')
@@ -270,7 +270,7 @@
                                                 @if(!$item->getMedia('photo')->isEmpty())
                                                 <th><img class="rounded-circle" width="50px" height="50px" src="{{ $item->photoUrl }}" /></th>
                                                 @else
-                                                <th><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft.png') }}" /></th>
+                                                <th><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" /></th>
                                                 @endif
                                                 <td>{{ $item->client }}</td>
                                                 <td><a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></td>

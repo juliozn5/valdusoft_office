@@ -11,7 +11,7 @@
                 @elseif (Auth()->user()->profile_id == 3)
                     <a class="navbar-brand" href="{{ route('employes.home') }}">
                 @endif
-                    <img class="img-fluid center-block logo-center mb-5" width="200px" height="200px" src="{{ asset('images/logo.png') }}" />
+                    <img class="img-fluid center-block logo-center mb-5" width="200px" height="200px" src="{{ asset('images/valdusoft/logo.png') }}" />
                 </a>
             </li>
         </ul>

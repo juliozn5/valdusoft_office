@@ -70,7 +70,7 @@
                                 @endif
                             </div>
                             <span>
-                                <span><img class="rounded-circle" src="{{ asset('images/valdusoft.png') }}" alt="avatar"
+                                <span><img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" alt="avatar"
                                         height="40" width="40"></span>
                             </span>
 

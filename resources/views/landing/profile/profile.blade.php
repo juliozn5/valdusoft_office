@@ -32,7 +32,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                                     <div class="col-md-4">
 
-                                        <img class="rounded-circle" src="{{ asset('images/Ellipse.png')}}" alt="" width="55px" height="55px">
+                                        <img class="rounded-circle" src="{{ asset('images/user/Ellipse.png')}}" alt="" width="55px" height="55px">
                                     </div>
 
                                     <div class="col-md-8">

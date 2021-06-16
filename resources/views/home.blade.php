@@ -21,7 +21,7 @@ class="vertical-layout vertical-menu-modern semi-dark-layout 1-column  navbar-fl
                         <div class="bg-auth p-2 text-white rounded">
                             <div class="card-header">
                                 <img class="img-fluid center-block logo-center pl-2 pr-2" width="250px" height="230px"
-                                    src="{{ asset('images/logo.png') }}" />
+                                    src="{{ asset('images/valdusoft/logo.png') }}" />
                             </div>
                             <h3 class="font-weight-bold text-white text-center pr-2 pl-2 ">Bienvenido al Backoffice</h3>
                             <h3 class="pl-2 pr-2 pt-0 text-white text-center"><b class="text-info">{{ Auth::user()->name }}</b></h3>
