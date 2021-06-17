@@ -23,7 +23,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{ route('projects') }}">Financiero</a>
+                            <li class="breadcrumb-item"><a href="#">Financiero</a>
                             </li>
                             <li class="breadcrumb-item"><a href="#">Pagos</a>
                             </li>
@@ -64,7 +64,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -74,7 +74,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -84,7 +84,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -94,7 +94,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -103,17 +103,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
-                                        <td>147$</td>
-                                        <td>---</td>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td>1587</td>
-                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -123,7 +113,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -133,7 +123,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
+                                        <td>147$</td>
+                                        <td>---</td>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td>1587</td>
+                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -144,7 +144,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -154,7 +154,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/l.uphold.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -164,7 +164,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
                                         <td>1587</td>
-                                        <td><img src="{{asset('images/paypal.png')}}" alt=""></td>
+                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
                                         <td>147$</td>
@@ -173,50 +173,42 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </tbody>
                             </table>
 
-                            <div class="card-body" id="div-bottom-project">
+                            <div class="bottom float-right" style="margin-right:20px;">
 
-                                <div class="pl-2 pr-3 float-right">
-                                    <div class="mt-1">
+                                <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
 
-                                        <div class="text-center text-white d-inline-block mr-1">
-                                            <div class="project-circle" id="div-bottom-background"><i class="fas fa-angle-left"></i></div>
-                                        </div>
+                                </button>
 
+                                <button class="btn btn-primary  btn-circle btn-lg">1
 
-                                        <div class="text-center d-inline-block">
-                                            <div class="project-circle" id="div-bottom-background2">
-                                                <h5 class="text-white">1</h5>
-                                            </div>
-                                        </div>
+                                </button>
 
-                                        <div class="text-center d-inline-block mr-1">
-                                            <div class="project-circle" id="div-bottom-background">
-                                                <h5>2</h5>
-                                            </div>
-                                        </div>
+                                <button style="color:black;" class="btn btn-circle btn-lg">2
 
+                                </button>
 
-                                        <div class="text-center text-white d-inline-block mr-1">
-                                            <div class="project-circle" id="div-bottom-background"><i class="fas fa-angle-right"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
 
+                                </button>
+                                <br><br>
 
                             </div>
+
+
                         </div>
                     </div>
+                </div>
 
-                    <!-- END: Content-->
-                    <!--
+                <!-- END: Content-->
+                <!--
         <div class="sidenav-overlay"></div>
         <div class="drag-target"></div>
 -->
-                    <!-- BEGIN: Footer
+                <!-- BEGIN: Footer
         <footer class="footer footer-static footer-dark">
             <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="text-bold-800 grey darken-2" href="https://valdusoft.com" target="_blank">Valdusoft,</a>All rights Reserved</span>
                 <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
             </p>-->
-                    <!--</footer>-->
-                    <!-- END: Footer-->
-                    @endsection
+                <!--</footer>-->
+                <!-- END: Footer-->
+                @endsection
