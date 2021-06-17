@@ -203,8 +203,8 @@
 /*/////////////////////////////*/
 
 #container-big-principal {
-    width: 1039px;
-    height: 750.57px;
+    width: 905px;
+    height: 700.57px;
     background: #ffffff;
 }
 
@@ -213,12 +213,9 @@
     align-items: center;
 }
 
-#card-body-items {
-    padding: 0px 0px !important;
-}
-#curiculum-email {
-    left: 15px;
-}
+
+
+
 /*/////////////////////////////*/
 /*   PERSONALIZED CLASSES      */
 /*         DASHBOARD            */
