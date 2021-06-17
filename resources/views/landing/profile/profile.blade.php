@@ -32,133 +32,138 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                                     <div class="col-md-4">
 
-                                        <img class="rounded-circle" src="{{ asset('images/user/Ellipse.png')}}" alt="" width="55px" height="55px">
+                                        <img class="rounded-circle ml-2" src="{{ asset('images/user/Ellipse.png')}}" alt="" width="55px" height="55px">
                                     </div>
 
-                                    <div class="col-md-8">
-                                        <h3 class="card-title">Gregorio Zambrano</h3>
-                                        gregorio_zambrano@gmail.com
-
-                                    </div>
                                 </div>
+
+                                <div class="col ml-1">
+                                    <h3 class="card-title mb-1">Gregorio Zambrano</h3>
+                                    gregorio_zambrano@gmail.com
+
+                                </div>
+
                             </div>
+
                         </div>
+
 
                         <div class="card-body">
 
-                            <!--PROYECTOS ASIGNADOS-->
-                            <br><br><br>
+                            <!--ASSIGNED PROJECTS-->
 
-                            <!--PROYECTO 1-->
+                            <!--PROJECT 1-->
                             <div class="pl-2 pr-2">
                                 <div class="project-detail-titles">Proyectos Asignados</div>
                                 <div class="mt-1">
 
 
-                                    <!--PROYECTO 1-->
+                                    <!--PROJECT 1-->
                                     <div class="text-center text-white d-inline-block mr-1">
                                         <div class="project-circle" style="background:#FF3F3F;">P1</div>
                                     </div>
 
-                                    <!--PROYECTO 2-->
+                                    <!--PROJECT 2-->
                                     <div class="text-center text-white d-inline-block mr-1">
                                         <div class="project-circle" style="background:#12A0B4;">P2</div>
                                     </div>
 
 
-                                    <!--PROYECTO 3-->
+                                    <!--PROJECT 3-->
                                     <div class="text-center text-white d-inline-block mr-1">
                                         <div class="project-circle" style="background:#940385;">P3</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!--SECCION DE FECHAS-->
+                            <!--DATE SECTION-->
 
-                            <!--FECHA DE NACIMIENTO-->
+                            <!--DATE OF BIRTH-->
                             <div class="row mt-3 pl-2 pr-2">
                                 <div class="col-3">
                                     <div class="project-detail-titles">Fecha de Nacimiento</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i>
+                                    <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
                                         02/10/1987
                                     </div>
                                 </div>
 
-                                <!--FECHA DE INGRESO-->
+                                <!--DATE OF ADMISSION-->
                                 <div class="col-3">
                                     <div class="project-detail-titles">Fecha de Ingreso</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i>
+                                    <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
                                         01/02/2021
                                     </div>
                                 </div>
 
-                                <!--PROXIMAS VACACIONES-->
+                                <!--NEXT VACATIONS-->
                                 <div class="col-3">
                                     <div class="project-detail-titles">Próximas Vacaciones</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i>
+                                    <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
                                         01/02/2021
                                     </div>
                                 </div>
                             </div>
 
-                            <!--SECCION DE SKILLS-->
+                            <!--SKILLS SECTION-->
 
                             <div class="mt-3 pl-2 pr-2">
                                 <div class="project-detail-titles">Skills</div>
                                 <div class="mt-1">
 
-                                    <br>
+
 
                                     <!--SKILL_1 (PHP)-->
                                     <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill">PHP</div>
+                                        <div class="p-2 mb-2 bg-primary text-white rounded-pill">PHP</div>
                                     </div>
 
                                     <!--SKILL_2 (VUE)-->
                                     <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill">Vue</div>
+                                        <div class="p-2 mb-2 bg-primary text-white rounded-pill">Vue</div>
                                     </div>
 
                                     <!--SKILL_3 (LARAVEL)-->
                                     <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill">Laravel</div>
+                                        <div class="p-2 mb-2 bg-primary text-white rounded-pill">LARAVEL</div>
                                     </div>
 
                                     <!--SKILL_4 (REACT)-->
                                     <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill">React</div>
+                                        <div class="p-2 mb-2 bg-primary text-white rounded-pill">REACT</div>
                                     </div>
 
                                     <!--SKILL_5 (IONIC)-->
                                     <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill">Ionic</div>
+                                        <div class="p-2 mb-2 bg-primary text-white rounded-pill">IONIC</div>
                                     </div>
 
-                                    <!--SECCION DE CURRICULUM-->
 
-                                    <div class="mt-3 pl-2 pr-2">
+                                    <div class="mt-3">
                                         <div class="project-detail-titles">Curriculum Vitae</div>
+
                                         <div class="mt-1">
 
-                                            <img src="{{asset('images/icons/arrow-down.png')}}" alt="">
-                                            <div class="col-4 mr-1" id="curiculum-email">CV_Gregorio_Zambrano.pdf</div>
+
+                                            <div class="col-4 ml-2 position-absolute">CV_Gregorio_Zambrano.pdf</div>
                                         </div>
+
+                                        <a href="#"><img class="mb-4" src="{{asset('images/icons/arrow-down.png')}}" alt=""></a>
+
                                     </div>
 
-                                    <!--SECCION DE SUELDO-->
 
-                                    <div class="row mt-3 pl-2 pr-2">
-                                        <div class="col-2">
+
+                                    <div class="row">
+                                        <div class="col-3">
                                             <div class="project-detail-titles">Precio Por Hora</div>
                                             <div class="mt-1 project-detail-dates">
                                                 <img src="{{ asset('images/icons/dollar.png')}}" alt="" class="mr-1">4 USD
                                             </div>
                                         </div>
 
-                                        <!--SECCION DE SUELDO (CUENTA DE UPHOLD)-->
                                         <div class="col-5">
                                             <div class="project-detail-titles">Cuenta Uphold</div>
                                             <div class="mt-1 project-detail-dates">
@@ -172,10 +177,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                 </div>
             </div>
-            </div>
         </div>
     </div>
-    
+</div>
+
 </div>
 
 @endsection

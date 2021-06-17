@@ -58,48 +58,61 @@
                 </div>
             </div>
 
-            <div class="card pl-1">
-                <div class="card-header">
-                    <h3 class="card-title mb-2">Proyectos</h3>
 
 
-                    <div class="container pb-2">
-                        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" style="margin-right: 90px;">
-
-                            <div class="col  rounded" style="right:20px;">
-                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2  text-white" id="shadow">Recomiendo
-                                </div>
-                            </div>
-
-                            <div class="col rounded" style="left:15px;">
-                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                                </div>
-                            </div>
-
-                            <div class="col   rounded" style="left:45px;">
-                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo                                </div>
-                            </div>
-                            <div class="col   rounded" style="left:80px;">
-                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                                </div>
-                            </div>
-
-                            <div class="col   rounded" style="left:108px;">
-                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                                </div>
+            <div class="container-xxl card">
+                <h3 class="card-title pl-2 mt-2">Proyectos</h3>
+                <div class="card-content">
 
 
-                            </div>
+                    <div class="d-inline-block rounded container-xxl" style="width:150px;">
+                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
                         </div>
                     </div>
-                </div>
 
+                    <div class="d-inline-block rounded" style="width:150px;">
+                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
+                        </div>
+                    </div>
+                    <div class="d-inline-block rounded" style="width:150px;">
+                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
+                        </div>
+                    </div>
+                    <div class="d-inline-block rounded" style="width:150px;">
+                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
+                        </div>
+                    </div>
+                    <div class="d-inline-block rounded" style="width:150px;">
+                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
             </div>
+
+
+
+            <!--
+
+
+
+  <div class="col rounded" style="left:15px;">
+                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
+                                </div>
+                            </div>
+
+
 
 
             <div class="row">
@@ -138,9 +151,9 @@
                             <img src="{{asset('/images/svg/ilustracion_clientes.svg')}}" style="position:absolute; margin-left:125px;top:20px; height:100px;" alt="">
                         </div>
                     </div>
-
                 </div>
             </div>
+-->
         </div>
     </div>
 </div>
