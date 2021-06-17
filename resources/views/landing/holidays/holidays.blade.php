@@ -15,9 +15,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
 
+        <section class="hosting">
         <div class="row" id="table-head">
-            <div class="col-12">
-                <div class="card" style="width: 695px;">
+            <div class="col-8">
+                <div class="card">
                     <div class="card-header" style="background-color: white">
                         <h3 class="card-title mb-2">Financiamiento</h3>
                     </div>
@@ -106,19 +107,23 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>
                 </div>
+                
+        </div>
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Proximas<br>Vacaciones</h5>
+                    <br>
+                    <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
+                    <img src="{{asset('/images/svg/ilustracion_clientes.svg')}}" style="position:absolute; margin-left:125px;top:20px; height:100px;" alt="">
+                </div>
+            </div>
             </div>
 
-            <div class="col-sm-4 col-lg-4">
-                <div class="card" style="left: 705px; width: 300px;
-                top: -590px; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Proximas<br>Vacaciones</h5>
-                        <br>
-                        <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
-                        <img src="{{asset('/images/svg/ilustracion_clientes.svg')}}" style="position:absolute; margin-left:125px;top:20px; height:100px;" alt="">
-                    </div>
-                </div>
-        </div>
+            
+
+        <section>
 <!-- END: Content-->
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
