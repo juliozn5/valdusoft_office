@@ -37,7 +37,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="content-body">
 
         <div id="table-head">
-            <div class="col-11" style="margin-left:25px;">
+            <div class="col-11" style="margin-left:50px;">
                 <div class="card" id="card-head1">
                     <div class="card-header">
                         <h3 class="card-title mb-1">Pagos</h3>
