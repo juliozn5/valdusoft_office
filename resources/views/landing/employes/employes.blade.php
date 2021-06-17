@@ -14,7 +14,7 @@
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-body">
-            <div class="row" id="table-head">
+         <!--  <div class="row" id="table-head">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -56,104 +56,104 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
+            
+            <div class="card">
+                <div class="ml-1 mb-1 mt-1"><h3>Proyectos</h3></div>
+                <div class="">
+                    
 
 
+                    <div class="card">
+                        <div class="row ">
 
-            <div class="container-xxl card">
-                <h3 class="card-title pl-2 mt-2">Proyectos</h3>
-                <div class="card-content">
-
-
-                    <div class="d-inline-block rounded container-xxl" style="width:150px;">
-                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                        </div>
-                    </div>
-
-                    <div class="d-inline-block rounded" style="width:150px;">
-                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                        </div>
-                    </div>
-                    <div class="d-inline-block rounded" style="width:150px;">
-                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                        </div>
-                    </div>
-                    <div class="d-inline-block rounded" style="width:150px;">
-                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                        </div>
-                    </div>
-                    <div class="d-inline-block rounded" style="width:150px;">
-                        <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                        <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                        </div>
-                    </div>
-
-
-
-
-
-
-                </div>
-            </div>
-
-
-
-            <!--
-
-
-
-  <div class="col rounded" style="left:15px;">
+                            <div class="container col-2 rounded">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
+                                <div class="pr-1 mt-2 h4 pb-2  text-white" id="shadow"><div style="
+                                    position: relative;top: 14px;"> Recomiendo</div>
                                 </div>
                             </div>
 
+                            <div class="container col-2 rounded">
+                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow"><div style="
+                                   position: relative;top: 14px;"> Recomiendo</div>
+                                </div>
+                            </div>
+
+                            <div class="container col-2 rounded">
+                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow"><div style="
+                                    position: relative;top: 14px;"> Recomiendo</div>                                </div>
+                            </div>
+                            <div class="container col-2  rounded">
+                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow"><div style="
+                                    position: relative;top: 14px;"> Recomiendo</div>
+                                </div>
+                            </div>
+
+                            <div class="container col-2 rounded">
+                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow"><div style="
+                                    position: relative;top: 14px;"> Recomiendo</div>
+                                </div>
 
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+
+            <section class="employes-home">
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="card">
+                <div class="col-4">
+                    <div class="card p-xl" style="height: 80%">
                         <div class="card-body">
-                            <h5 class="card-title">Ultima Factura de <br> la quincena</h5>
+                            <h5 class="col-6">Ultima Factura de la quincena</h5>
                             <br>
                             <a href="#" class="btn btn-primary">Descargar</a>
-                            <img src="{{asset('/images/Group.png')}}" style="position:absolute; margin-left:50px;top:20px; height:100px;" alt="">
+                            <div class=""><img src="{{asset('/images/figma/group_154.png')}}" style="position:absolute;margin-left: 155px;
+                                top: 18px;
+                                height: 125px;" alt=""></div>
                         </div>
                     </div>
                 </div>
 
 
-                <div class="col-sm-4">
-                    <div class="card" style="margin-left: 50px;">
+                <div class="col-4">
+                    <div class="card p-xl" style="height: 80%">
                         <div class="card-body">
-                            <h5 class="card-title">Valor de la hora<br>de trabajo</h5>
-
+                            <h5 class="col-6">Valor de la hora de trabajo</h5>
                             <br>
-                            <img src="{{asset('/images/icons/ilustre.png')}}" alt="">
-                            <img src="{{asset('/images/figma/dolar.png')}}" style="position:absolute; margin-left:89px;top:20px; height:100px;" alt="">
+                            <p class="h4 " id="holidays-date"><i class="far icon-big mr-1"></i>$ 0.00</p>
+                            <img src="{{asset('/images/figma/dolar.png')}}" style="position:absolute;margin-left: 130px;
+                            top: 8px;
+                            height: 132px;" alt="">
 
                         </div>
                     </div>
                 </div>
 
 
-                <div class="col-sm-4">
-                    <div class="card" style="margin-left:50px;">
+                <div class="col-4">
+                    <div class="card p-xl" style="height: 80%">
                         <div class="card-body">
-                            <h5 class="card-title">Proximas<br>Vacaciones</h5>
+                            <h5 class="col-6 mt-1">Proximas <br> Vacaciones</h5>
                             <br>
                             <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
-                            <img src="{{asset('/images/svg/ilustracion_clientes.svg')}}" style="position:absolute; margin-left:125px;top:20px; height:100px;" alt="">
+                            <img src="{{asset('/images/svg/ilustracion_clientes.svg')}}" style="position:absolute;margin-left: 150px;
+                            top: 5px;
+                            height: 140px;" alt="">
+
                         </div>
                     </div>
                 </div>
+
             </div>
--->
+        </section>
         </div>
     </div>
 </div>
