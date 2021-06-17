@@ -3631,6 +3631,13 @@ tr.group {
 }/*agregado*/
 
 
+@media only screen and (min-width: 1320px){
+  .card.p-1080{
+    width: 260px;
+  }
+}
+
+
 @media only screen and (max-width: 768px) {
   div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     -webkit-box-pack : center;
