@@ -172,7 +172,7 @@
                                 <div class="card-body">
                                 <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta todos los clientes</h4>
-                                <a href="{{ route('clients.home') }}" class="btn btn-client mt-1"><b>Ver clientes</b></a>
+                                <a href="{{ route('admin.clients.list') }}" class="btn btn-client mt-1"><b>Ver clientes</b></a>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                               <div class="card-body">
                               <img src="{{ asset('images/svg/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                   <h4 class="pt-2">Consulta y paga la nomina</h4>
-                                <a href="{{ route('payroll') }}" class="btn btn-primary mt-1"><b>Ver nomina</b></a>
+                                <a href="{{ route('admin.payrolls.list') }}" class="btn btn-primary mt-1"><b>Ver nómina</b></a>
                               </div>
                           </div>
                       </div>
@@ -209,26 +209,28 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($user as $item)
-                                            <tr>
-                                                <th>{{ $loop->iteration }}</th>
-                                                @if(!$item->getMedia('photo')->isEmpty())
-                                                <th><img class="rounded-circle" width="50px" height="50px" src="{{ $item->photoUrl }}" /></th>
-                                                @else
-                                                <th><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" /></th>
-                                                @endif
-                                                <td>{{ $item->name }}</td>
-                                                @if($item->position === '0')
-                                                <td>Desarrollador</td>
-                                                @elseif($item->position === '1')
-                                                <td>Diseñador</td>
-                                                @elseif($item->position === '2')
-                                                <td>Project Manager,</td>
-                                                @elseif($item->position === '3')
-                                                <td>Financiero</td>
-                                                @endif
-                                                <td>{{ $item->email }}</td>
-                                                <td>{{ $item->phone }}</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>
+                                                        @if (!is_null($item->photo))
+                                                            <img class="rounded-circle" width="50px" height="50px" src="{{ $item->photo }}" />
+                                                        @else
+                                                            <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $item->name }}</td>
+                                                    @if($item->position === '0')
+                                                    <td>Desarrollador</td>
+                                                    @elseif($item->position === '1')
+                                                    <td>Diseñador</td>
+                                                    @elseif($item->position === '2')
+                                                    <td>Project Manager,</td>
+                                                    @elseif($item->position === '3')
+                                                    <td>Financiero</td>
+                                                    @endif
+                                                    <td>{{ $item->email }}</td>
+                                                    <td>{{ $item->phone }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

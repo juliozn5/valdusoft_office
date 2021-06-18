@@ -46,9 +46,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('hosting') }}">Hosting</a>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.hostings.list') }}">Hosting</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('hosting-create') }}">Añadir
+                                <li class="breadcrumb-item"><a href="{{ route('admin.hostings.create') }}">Añadir
                                         Hosting</a>
                                 </li>
                             </ol>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" action="{{ route('hosting-store') }}" method="POST"
+                            <form class="form form-vertical" action="{{ route('admin.hostings.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
@@ -152,7 +152,7 @@
                                         <div class="col-12">
                                             <button type="submit"
                                                 class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Añadir</button>
-                                            <a href="{{ route('hosting') }}"
+                                            <a href="{{ route('admin.hostings.list') }}"
                                                 class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                         </div>
                                     </div>

@@ -20,7 +20,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('hosting') }}">Hosting</a>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.hostings.list') }}">Hosting</a>
                                 </li>
                             </ol>
                         </div>-->
@@ -36,9 +36,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Hosting</h3>
-                            @if (Auth::user()->profile_id == 1)
-                            <a href="{{ route('hosting-create') }}" class="btn btn-primary mb-2 p-1">&nbsp; Agregar Nuevo</a>
-                            @endif
+                            <a href="{{ route('admin.hostings.create') }}" class="btn btn-primary mb-2 p-1">&nbsp; Agregar Nuevo</a>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -211,7 +209,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Tabla de Hosting</h3>
-                             <a href="{{ route('hosting-create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Hosting</a>
+                             <a href="{{ route('admin.hostings.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Hosting</a>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -230,7 +228,7 @@
 
                                     <tbody>
                                         
-                                        @foreach ($hosting as $item)
+                                        @foreach ($hostings as $item)
                                         <tr>
                                             <th>{{ $loop->iteration }}</th>
 

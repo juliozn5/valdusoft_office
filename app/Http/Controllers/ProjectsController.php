@@ -4,61 +4,46 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;;
 use Illuminate\Http\Request;
+use Auth;
 
 class ProjectsController extends Controller
 {
+    /** Listado de Proyectos 
+    *** Perfil: Admin - Cliente - Empleados ***/
+    public function list(){
+        if (Auth::user()->profile_id == 1){
+            $projects = Project::orderBy('id', 'DESC')->get();
+            
+            return view('admin.projects.list')
+            ->with('projects', $projects); 
+        }else if (Auth::user()->profile_id == 2){
+            $projects = Project::where('user_id', '=', Auth::user()->id)
+                            ->orderBy('id', 'DESC')
+                            ->get();
 
-    /**
-     * Vista proyecto
-     *
-     * @return void
-     */
-    public function index()
-    {
+            return view('client.projects')
+            ->with('projects', $projects); 
+        }else if (Auth::user()->profile_id == 3){
+            /*$projects = Project::where('user_id', '=', Auth::user()->id)
+                            ->orderBy('id', 'DESC')
+                            ->get();
 
-        $projects = Project::all();
-        
-        return view('home.employe')
-        ->with('projects', $projects); 
-
-    }
-
-    /**
-     * Vista lista proyecto
-     *
-     * @return void
-     */
-    public function list()
-    {
-
-        $projects = Project::all();
-        
-        return view('landing.projects.projects')
-        ->with('projects', $projects); 
+            return view('client.projects')
+            ->with('projects', $projects); */
+            dd("Esperando ajuste");
+        }
 
     }
 
-    /**
-     * Vista crear proyecto
-     *
-     * @return void
-     */
-    public function create()
-    {
-
-        return view('landing.projects.create');
-
+    /** Crear Nuevo Proyecto
+    *** Perfil: Admin ***/
+    public function create(){
+        return view('admin.projects.create');
     }
 
-    /**
-     * Funcion crear proyecto
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function store(Request $request)
-    {
-
+    /** Guardar datos del Nuevo Proyecto
+    *** Perfil: Admin ***/
+    public function store(Request $request){
         $projects = Project::all();
 
         $fields = [   ];
@@ -71,35 +56,22 @@ class ProjectsController extends Controller
 
         $projects->save();
 
-        return redirect()->route('projects')->with('message','Se creo el Proyecto Exitosamente');
-        
+        return redirect()->route('admin.projects.list')->with('message','Se creo el Proyecto Exitosamente'); 
     }
 
-    /**
-     * Vista editar proyecto
-     *
-     * @param [type] $id
-     * @return void
-     */
-    public function edit($id)
-    {
+    /** Editar un Proyecto
+    *** Perfil: Admin ***/
+    public function edit($id){
 
         $projects = Project::find($id);
 
-           return view('landing.projects.edit')
-           ->with('projects', $projects); 
-        
+           return view('admin.projects.edit')
+           ->with('projects', $projects);   
     }
 
-    /**
-     * Funcion editar proyecto
-     *
-     * @param Request $request
-     * @param [type] $id
-     * @return void
-     */
-    public function update(Request $request, $id)
-    {
+    /** Guardar datos modificados del Proyecto
+    *** Perfil: Admin ***/
+    public function update(Request $request, $id){
         $projects = Project::find($id);
 
         $fields = [     ];
@@ -112,8 +84,7 @@ class ProjectsController extends Controller
       
         $projects->save();
 
-        return redirect()->route('projects')->with('message','Se actualizo el Proyecto Exitosamente');
-        
+        return redirect()->route('admin.projects.list')->with('message','Se actualizo el Proyecto Exitosamente');  
     }
 
     public function delete($id)
@@ -123,7 +94,7 @@ class ProjectsController extends Controller
     
         $projects->delete();
       
-        return redirect()->route('projects')->with('message','Se elimino el Proyecto'.' '.$projects->client.' '.'Exitosamente');
+        return redirect()->route('admin.projects.list')->with('message','Se elimino el Proyecto'.' '.$projects->client.' '.'Exitosamente');
 
     }
 }

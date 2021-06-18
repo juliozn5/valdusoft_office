@@ -1,39 +1,5 @@
 @extends('layouts.app')
 
-@push('custom_js')
-<script>
-
-$(document).ready(function() {
-      @if(!$client->getMedia('photo')->isEmpty())
-          @if(in_array($client->getMedia('photo')->first()->mime_type,array("image/png", "image/gif", "image/jpeg")))
-            previewPersistedFile("{{ $client->getMedia('photo')->first()->file }}", 'photo_preview');
-          @endif
-        @endif
-    });
-
-  function previewFile(input, preview_id) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-              $("#" + preview_id).attr('src', e.target.result);
-              $("#" + preview_id).css('height', '300px');
-              $("#" + preview_id).parent().parent().removeClass('d-none');
-          }
-          $("label[for='" + $(input).attr('id') + "']").text(input.files[0].name);
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
-
-  function previewPersistedFile(url, preview_id) {
-      $("#" + preview_id).attr('src', url);
-      $("#" + preview_id).css('height', '300px');
-      $("#" + preview_id).parent().parent().removeClass('d-none');
-
-  }
-
-</script>
-@endpush
-
 @section('content')
 
 @include('layouts.partials.navbar')
@@ -54,9 +20,9 @@ $(document).ready(function() {
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('clients') }}">Cliente</a>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.clients.list') }}">Cliente</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('clients-edit', $client->id) }}">Editar Cliente</a>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.clients.edit', $client->id) }}">Editar Cliente</a>
                                 </li>
                             </ol>
                         </div>
@@ -70,11 +36,11 @@ $(document).ready(function() {
             <div class="col-md-6 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Editando el cliente de <span class="text-primary font-weight-bold">{{ $client->client }}</span></h4>
+                        <h4 class="card-title">Editando el cliente <span class="text-primary font-weight-bold">{{ $client->name }}</span></h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" action="{{ route('clients-update', $client->id) }}" method="POST"
+                            <form class="form form-vertical" action="{{ route('admin.clients.update', $client->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
@@ -152,7 +118,11 @@ $(document).ready(function() {
                                                 <div class="row mb-4 mt-4 d-none" id="photo_preview_wrapper">
                                                     <div class="col"></div>
                                                     <div class="col-auto">
-                                                      <img id="photo_preview" class="img-fluid rounded" />
+                                                        @if (!is_null($client->photo))
+                                                            <img id="photo_preview" class="img-fluid rounded" src="{{ $client->photo }}"/>
+                                                        @else
+                                                            <img id="photo_preview" class="img-fluid rounded" src="{{ asset('images/valdusoft/valdusoft.png') }}"/>
+                                                        @endif
                                                     </div>
                                                     <div class="col"></div>
                                                 </div>
@@ -162,7 +132,7 @@ $(document).ready(function() {
                                         <div class="col-12">
                                             <button type="submit"
                                                 class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
-                                            <a href="{{ route('clients') }}"
+                                            <a href="{{ route('admin.clients.list') }}"
                                                 class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                         </div>
                                     </div>

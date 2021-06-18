@@ -1,14 +1,14 @@
 <li class=" nav-item btn-menu">
-    <a href="{{ route('employes.home') }}"><img src="{{ asset('images/icons/home.png') }}" />
+    <a href="{{ route('employee.home') }}"><img src="{{ asset('images/icons/home.png') }}" />
         <span class="menu-title ml-1" data-i18n="Email">Inicio</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('projects') }}"><img src="{{ asset('images/icons/maletin.png') }}" />
+    <a href="{{ route('employee.projects.list') }}"><img src="{{ asset('images/icons/maletin.png') }}" />
         <span class="menu-title ml-1" data-i18n="Email">Proyectos</span></a>
 </li>
 
-<li class=" nav-item">
+{{--  <li class=" nav-item">
     <a href="{{ route('bill') }}"><img src="{{ asset('images/icons/mone.png') }}" />
         <span class="menu-title ml-1" data-i18n="Email">Facturas</span></a>
 </li>
@@ -34,4 +34,4 @@
 <li class=" nav-item">
     <a href="{{ route('profile') }}"><img src="{{ asset('images/icons/perfil.png') }}" />
         <span class="menu-title ml-1" data-i18n="Email">Perfil</span></a>
-</li>
+</li>--}}
