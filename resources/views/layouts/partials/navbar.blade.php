@@ -14,9 +14,7 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 <span class="user-name text-bold-600">{{Auth::user()->name}}</span>
-                                @if(Auth::user()->profile_id == '0')
-                                <span class="user-status text-bold-600 role-color">Nuevo</span>
-                                @elseif(Auth::user()->profile_id == '1')
+                                @if(Auth::user()->profile_id == '1')
                                 <span class="user-status text-bold-600 role-color">Administrador</span>
                                 @elseif(Auth::user()->profile_id == '2')
                                 <span class="user-status text-bold-600 role-color">Cliente</span>

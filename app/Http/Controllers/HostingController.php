@@ -4,48 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Hosting;
 use Illuminate\Http\Request;
+use Auth;
 
 class HostingController extends Controller
 {
-
-    /**
-     * Vista hosting
-     *
-     * @return void
-     */
-    public function index()
-    {
-
-        $hosting = Hosting::all();
-
-           return view('landing.hosting.hosting')
-           ->with('hosting', $hosting); 
+    /** Listado de Hostings
+    *** Perfil: Admin - Cliente ***/
+    public function list(){
+        if (Auth::user()->profile_id == 1){
+            $hostings = Hosting::all();
         
+            return view('admin.hostings.list')->with('hostings', $hostings); 
+        }else if (Auth::user()->profile_id == 2){
+            $hostings = Hosting::where('user_id', '=', Auth::user()->id)->get();
+        
+            return view('client.hostings')->with('hostings', $hostings);   
+        }
     }
 
-    /**
-     * Vista crear hosting
-     *
-     * @return void
-     */
-    public function create()
-    {
-
-        return view('landing.hosting.create');
-
+    /** Crear Nuevo Hosting
+    *** Perfil: Admin ***/
+    public function create(){
+        return view('admin.hostings.create');
     }
 
-    /**
-     * Funcion crear hosting
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function store(Request $request)
-    {
-
-        $hosting = Hosting::all();
-
+    /** Guardar datos del Nuevo Hosting
+    *** Perfil: Admin ***/
+    public function store(Request $request){
         $fields = [   ];
 
         $msj = [    ];
@@ -53,39 +38,23 @@ class HostingController extends Controller
         $this->validate($request, $fields, $msj);
 
         $hosting = Hosting::create($request->all());
-   
         $hosting->save();
 
-        return redirect()->route('hosting')->with('message','Se creo el Hosting Exitosamente');
-        
+        return redirect()->route('admin.hostings.list')->with('message','Se creo el Hosting Exitosamente');
     }
 
-    /**
-     * Vista editar hosting
-     *
-     * @param [type] $id
-     * @return void
-     */
-    public function edit($id)
-    {
-
+    /** Editar datos de un Hosting
+    *** Perfil: Admin ***/
+    public function edit($id){
         $hosting = Hosting::find($id);
 
-           return view('landing.hosting.edit')
-           ->with('hosting', $hosting); 
-        
+        return view('admin.hostings.edit')
+           ->with('hosting', $hosting);  
     }
 
-    /**
-     * Funcion editar hosting
-     *
-     * @param Request $request
-     * @param [type] $id
-     * @return void
-     */
-    public function update(Request $request, $id)
-    {
-
+    /** Guardar datos modificados de un Hosting
+    *** Perfil: Admin ***/
+    public function update(Request $request, $id){
         $hosting = Hosting::find($id);
 
         $fields = [     ];
@@ -98,24 +67,17 @@ class HostingController extends Controller
 
         $hosting->save();
 
-        return redirect()->route('hosting')->with('message','Se actualizo el Hosting Exitosamente');
-
+        return redirect()->route('admin.hostings.list')->with('message','Se actualizo el Hosting Exitosamente');
     }
 
-    /**
-     * Funcion eliminar hosting
-     *
-     * @param [type] $id
-     * @return void
-     */
-    public function delete($id)
-    {
+    /** Eliminar un Hosting
+    *** Perfil: Admin ***/
+    public function delete($id){
 
         $hosting = Hosting::find($id);
     
         $hosting->delete();
       
-        return redirect()->route('hosting')->with('message','Se elimino el Hosting'.' '.$hosting->client.' '.'Exitosamente');
-
+        return redirect()->route('admin.hostings.list')->with('message','Se elimino el Hosting'.' '.$hosting->client.' '.'Exitosamente');
     }
 }

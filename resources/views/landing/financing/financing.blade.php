@@ -97,7 +97,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
         <p class="h4 position-absolute" id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
 
-        <img class="col-6 position-absolute" id="font-client" src="{{ asset('images/ilustracion_clientes.svg')}}" alt="">
+        <img class="col-6 position-absolute" id="font-client" src="{{ asset('images/svg/ilustracion_clientes.svg')}}" alt="">
 
         <div>
     </div>

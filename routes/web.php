@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,103 +13,120 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
-// usuarios logueado
+// USUARIO LOGUEADO
 Route::group(['middleware'=>['auth']], function() {
 
-            Route::get('/', 'HomeController@index')->name('home');
 
-            Route::get('profile', 'ProfileController@edit')->name('profile');
-            Route::patch('profile-update', 'ProfileController@update')->name('profile.update');
+    Route::get('/', 'HomeController@index')->name('home');
 
-            Route::get('change-password', 'ChangePasswordController@index');
-            Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+    Route::get('profile', 'ProfileController@edit')->name('profile');
+    Route::patch('profile-update', 'ProfileController@update')->name('profile.update');
 
-        //LISTADO DE RUTAS PARA EL ADMINISTRADOR
-        Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'profile'], 'profile' => ['1']], function(){
+    Route::get('change-password', 'ChangePasswordController@index');
+    Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
 
-            Route::get('/', 'AdminController@index')->name('admin.home');
+    //LISTADO DE RUTAS PARA EL ADMINISTRADOR
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'profile'], 'profile' => ['1']], function(){
+        Route::get('/', 'AdminController@index')->name('admin.home');
+        //VERIFICAR SI UN CORREO YA EXISTE EN LA BASE DE DATOS
+        Route::get('check-email/{email?}', 'AdminController@check_email')->name('admin.check-email');
 
-            //VERIFICAR SI UN CORREO YA EXISTE EN LA BASE DE DATOS
-            Route::get('check-email/{email?}', 'AdminController@check_email')->name('admin.check-email');
-
-
-            Route::get('payroll', 'PayrollController@index')->name('payroll');
-            Route::get('payments', 'PaymentsController@index')->name('payments');
-
+        //MÓDULO DE PROYECTOS
+        Route::group(['prefix' => 'projects'], function(){
+            Route::get('/', 'ProjectsController@list')->name('admin.projects.list');
+            Route::get('create', 'ProjectsController@create')->name('admin.projects.create');
+            Route::get('edit/{id}', 'ProjectsController@edit')->name('admin.projects.edit');
+            Route::post('store', 'ProjectsController@store')->name('admin.projects.store');
+            Route::patch('update/{id}', 'ProjectsController@update')->name('admin.projects.update');
+            Route::delete('delete/{id}', 'ProjectsController@delete')->name('admin.projects.delete');
         });
 
-
-        //LISTADO DE RUTAS PARA EL CLIENTE
-        Route::group(['prefix' => 'clients', 'middleware' => ['auth', 'profile'], 'profile' => ['1','2']], function(){
-
-            //MENÚ CLIENTES
-            Route::get('/', 'ClientsController@index')->name('clients.home');
+         //MÓDULO DE CLIENTES
+        Route::group(['prefix' => 'clients'], function(){
+            Route::get('/', 'ClientsController@list')->name('admin.clients.list');
             Route::get('create', 'ClientsController@create')->name('admin.clients.create');
             Route::get('edit/{id}', 'ClientsController@edit')->name('admin.clients.edit');
             Route::post('store', 'ClientsController@store')->name('admin.clients.store');
             Route::patch('update/{id}', 'ClientsController@update')->name('admin.clients.update');
             Route::delete('delete/{id}', 'ClientsController@delete')->name('admin.clients.delete');
+        });
 
-            // Route::get('home-client', 'HomeController@client')->name('client.home');
+        //MÓDULO DE EMPLEADOS
+        Route::group(['prefix' => 'employees'], function(){
+            Route::get('/', 'EmployeesController@list')->name('admin.employees.list');
+            Route::get('create', 'EmployeesController@create')->name('admin.employees.create');
+            Route::post('store', 'EmployeesController@store')->name('admin.employees.store');
+            Route::get('show/{slug}/{id}', 'EmployeesController@show')->name('admin.employees.show');
+            Route::post('assign-projects', 'EmployeesController@assign_projects')->name('admin.employees.assign-projects');
+        });
 
+        //MÓDULO DE HOSTINGS
+        Route::group(['prefix' => 'hostings'], function(){
+            Route::get('/', 'HostingController@list')->name('admin.hostings.list');
+            Route::get('create', 'HostingController@create')->name('admin.hostings.create');
+            Route::get('edit/{id}', 'HostingController@edit')->name('admin.hostings.edit');
+            Route::post('store', 'HostingController@store')->name('admin.hostings.store');
+            Route::patch('update/{id}', 'HostingController@update')->name('admin.hostings.update');
+            Route::delete('delete/{id}', 'HostingController@delete')->name('admin.hostings.delete');
+        });
+
+        //MÓDULO FINANCIERO
+        Route::group(['prefix' => 'financial'], function(){
+            //MÓDULO FINANCIERO - FACTURAS
+            Route::group(['prefix' => 'bills'], function(){
+                Route::get('/', 'BillController@list')->name('admin.bills.list');
+            });
+
+            //MÓDULO FINANCIERO - NÓMINA
+            Route::group(['prefix' => 'payroll'], function(){
+                Route::get('/', 'PayrollController@list')->name('admin.payrolls.list');
+            });
+
+            //MÓDULO FINANCIERO - PAGOS
+            Route::group(['prefix' => 'payments'], function(){
+                Route::get('/', 'PaymentsController@list')->name('admin.payments.list');
+            });
+        });
+    });
+
+    //LISTADO DE RUTAS PARA EL CLIENTE
+    Route::group(['prefix' => 'client', 'middleware' => ['auth', 'profile'], 'profile' => ['2']], function(){
+        Route::get('/', 'ClientsController@index')->name('client.home');
+
+        //MÓDULO DE PROYECTOS
+        Route::group(['prefix' => 'projects'], function(){
+            Route::get('/', 'ProjectsController@list')->name('client.projects.list');
+        });
+
+        //MÓDULO DE HOSTINGS
+        Route::group(['prefix' => 'hostings'], function(){
+            Route::get('/', 'HostingController@list')->name('client.hostings.list');
+        });
+
+        //MÓDULO DE FACTURAS
+        Route::group(['prefix' => 'bills'], function(){
+            Route::get('/', 'BillController@list')->name('client.bills.list');
+        });
+    });
+
+    //LISTADO DE RUTAS PARA EL EMPLEADO
+    Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'profile'], 'profile' => ['3']], function(){
+
+        Route::get('/', 'EmployeesController@index')->name('employee.home');
+
+        Route::group(['prefix' => 'projects'], function(){
+            Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
+        });
+
+        // Route::get('profile', 'ProfileController@index')->name('profile');
+        Route::get('holidays', 'HolidaysController@index')->name('holidays');
+        Route::get('financing', 'FinancingController@index')->name('financing');
+        Route::get('bonds', 'BondsController@index')->name('bonds');
    
-        });
-
-        //LISTADO DE RUTAS PARA EL EMPLEADOS
-        Route::group(['prefix' => 'employes', 'middleware' => ['auth', 'profile'], 'profile' => ['1','3']], function(){
-
-            //MENÚ EMPLEADOS
-            Route::get('/', 'EmployesController@index')->name('employes.home');
-            Route::get('create', 'EmployesController@create')->name('admin.employes.create');
-            Route::post('store', 'EmployesController@store')->name('admin.employes.store');
-            Route::get('show/{slug}/{id}', 'EmployesController@show')->name('admin.employes.show');
-            Route::post('assign-projects', 'EmployesController@assign_projects')->name('admin.employes.assign-projects');
-
-            // Route::get('home-employes', 'HomeController@employes')->name('home.employes');
-            Route::get('profile', 'ProfileController@index')->name('profile');
-            Route::get('holidays', 'HolidaysController@index')->name('holidays');
-            Route::get('financing', 'FinancingController@index')->name('financing');
-            Route::get('bonds', 'BondsController@index')->name('bonds');
-   
-        });
-
-        //LISTADO DE RUTAS PARA EL USUARIO NUEVO
-        // Route::group(['prefix' => 'new', 'middleware' => ['auth', 'profile'], 'profile' => ['0']], function(){
-
-        //     Route::get('/', 'HomeController@index')->name('home');
-   
-        // });
-
-
-
-        // administradores y clientes
-        Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['1','2']], function () {
-
-            Route::get('hosting', 'HostingController@index')->name('hosting');
-            Route::get('hosting/create', 'HostingController@create')->name('hosting-create');
-            Route::get('hosting/edit/{id}', 'HostingController@edit')->name('hosting-edit');
-            Route::post('hosting/store', 'HostingController@store')->name('hosting-store');
-            Route::patch('hosting/update/{id}', 'HostingController@update')->name('hosting-update');
-            Route::delete('hosting/delete/{id}', 'HostingController@delete')->name('hosting-delete');
-
-        });
-
-
-
-
-        // administradores, clientes y trabajadores 
-        Route::group(['middleware' => ['auth', 'profile'], 'profile' => ['1','2','3']], function () {
-
-            Route::get('bill', 'BillController@index')->name('bill');
-            Route::get('projects', 'ProjectsController@index')->name('projects');
-            Route::get('projects/create', 'ProjectsController@create')->name('projects-create');
-            Route::get('projects/edit/{id}', 'ProjectsController@edit')->name('projects-edit');
-            Route::post('projects/store', 'ProjectsController@store')->name('projects-store');
-            Route::patch('projects/update/{id}', 'ProjectsController@update')->name('projects-update');
-            Route::delete('projects/delete/{id}', 'ProjectsController@delete')->name('projects-delete');
-        });
+    });
 
 });
 

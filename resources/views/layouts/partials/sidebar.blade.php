@@ -9,7 +9,7 @@
                         @elseif (Auth()->user()->profile_id == 2)
                         <a class="navbar-brand" href="{{ route('client.home') }}">
                             @elseif (Auth()->user()->profile_id == 3)
-                            <a class="navbar-brand" href="{{ route('employes.home') }}">
+                            <a class="navbar-brand" href="{{ route('employee.home') }}">
                                 @endif
                                 <img class="img-fluid center-block logo-center mb-5" width="200px" height="200px"
                                     src="{{ asset('images/valdusoft/logo.png') }}" />
@@ -26,7 +26,7 @@
             @elseif (Auth()->user()->profile_id == 2)
             @include('layouts.partials.menu_sidebar.client')
             @elseif (Auth()->user()->profile_id == 3)
-            @include('layouts.partials.menu_sidebar.employe')
+            @include('layouts.partials.menu_sidebar.employee')
             @endif
         </ul>
     </div>

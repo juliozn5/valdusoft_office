@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 
 class BillController extends Controller
 {
-    /**
-     * Vista factura
-     *
-     * @return void
-     */
-    public function index()
-    {
-        return view('landing.bill.bill'); 
+    /** Listado de Facturas
+    *** Perfil: Admin ***/
+    public function list(){
+        if (Auth::user()->profile_id == 1){
+            return view('admin.bills.list'); 
+        }else if (Auth::user()->profile_id == 2){
+            return view('client.bills');
+        }
         
     }
 }
