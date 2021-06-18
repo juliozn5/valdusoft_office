@@ -32,7 +32,7 @@ class="vertical-layout vertical-menu-modern semi-dark-layout 1-column  navbar-fl
                                     @elseif ( Auth::user()->profile_id == 1)
                                     <a href="{{ route('admin.home') }}" class="btn btn-primary">Entrar al Backoffice</a>
                                     @elseif ( Auth::user()->profile_id == 2)
-                                    <a href="{{ route('client.home') }}" class="btn btn-primary">Entrar al Backoffice</a>
+                                    <a href="{{ route('clients.home') }}" class="btn btn-primary">Entrar al Backoffice</a>
                                     @elseif ( Auth::user()->profile_id == 3)
                                     <a href="{{ route('employes.home') }}" class="btn btn-primary">Entrar al Backoffice</a>
                                     @endif

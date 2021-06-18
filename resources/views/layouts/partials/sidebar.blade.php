@@ -7,7 +7,7 @@
                     @elseif (Auth()->user()->profile_id == 1)
                     <a class="navbar-brand" href="{{ route('admin.home') }}">
                         @elseif (Auth()->user()->profile_id == 2)
-                        <a class="navbar-brand" href="{{ route('client.home') }}">
+                        <a class="navbar-brand" href="{{ route('clients.home') }}">
                             @elseif (Auth()->user()->profile_id == 3)
                             <a class="navbar-brand" href="{{ route('employes.home') }}">
                                 @endif

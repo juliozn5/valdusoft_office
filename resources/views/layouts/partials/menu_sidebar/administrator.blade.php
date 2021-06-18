@@ -4,22 +4,22 @@
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('projects') }}"><img src="{{ asset('images/icons/maletin.png') }}" />
+    <a href="{{ route('projects.list') }}"><img src="{{ asset('images/icons/maletin.png') }}" />
         <span class="menu-title ml-1">Proyectos</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('clients.home') }}"><img src="{{ asset('images/icons/client.png') }}" /></i>
+    <a href="{{ route('clients.list') }}"><img src="{{ asset('images/icons/client.png') }}" /></i>
         <span class="menu-title ml-1">Clientes</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('employes.home') }}"><img src="{{ asset('images/icons/users-line.png') }}" />
+    <a href="{{ route('employes.list') }}"><img src="{{ asset('images/icons/users-line.png') }}" />
         <span class="menu-title ml-1">Empleados</span></a>
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('hosting') }}"><img src="{{ asset('images/icons/hosting.png') }}" />
+    <a href="{{ route('hosting.index') }}"><img src="{{ asset('images/icons/hosting.png') }}" />
         <span class="menu-title ml-1">Hosting</span></a>
 </li>
 
@@ -38,4 +38,5 @@
         </li>
 
     </ul> 
+
 </li>

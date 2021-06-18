@@ -19,10 +19,24 @@ class EmployesController extends Controller
      */
     public function index()
     {
+        $employes = Project::all();
+
+        return view('home.employe')->with('employes', $employes); 
+
+    }
+
+      /**
+     * Vista lista empleados
+     *
+     * @return void
+     */
+    public function list()
+    {
 
         $employes = User::where('profile_id', '=', 3)->paginate(10);
-
-        return view('landing.employes.employes')->with('employes', $employes); 
+        
+        return view('landing.employes.employes')
+        ->with('employes', $employes); 
 
     }
 

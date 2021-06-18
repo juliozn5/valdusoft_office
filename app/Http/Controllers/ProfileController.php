@@ -51,7 +51,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
 
-        $user = Auth::user()->id;
+        $user = Auth::user();
 
         $fields = [    ];
 

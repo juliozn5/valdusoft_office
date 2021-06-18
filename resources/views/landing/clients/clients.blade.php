@@ -36,7 +36,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Tabla de Client</h3>
-                             <a href="{{ route('admin.clients.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Client</a>
+                             <a href="{{ route('clients.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Client</a>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">

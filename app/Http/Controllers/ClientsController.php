@@ -17,6 +17,21 @@ class ClientsController extends Controller
 
         $client = Client::all();
 
+        return view('home.client')
+        ->with('client', $client); 
+ 
+    }
+
+      /**
+     * Vista lista clientes
+     *
+     * @return void
+     */
+    public function list()
+    {
+
+        $client = Client::all();
+
         return view('landing.clients.clients')
         ->with('client', $client); 
  

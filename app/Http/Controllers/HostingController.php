@@ -24,6 +24,21 @@ class HostingController extends Controller
     }
 
     /**
+     * Vista lista proyecto
+     *
+     * @return void
+     */
+    public function list()
+    {
+
+        $hosting = Hosting::all();
+        
+        return view('landing.hosting.list')
+        ->with('hosting', $hosting); 
+
+    }
+
+    /**
      * Vista crear hosting
      *
      * @return void

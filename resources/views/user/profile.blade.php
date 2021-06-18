@@ -233,8 +233,8 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
                               <label class="required" for="role">Role</label>
                               <select type="text"
                                   class="form-control @error('role') is-invalid @enderror"
-                                  id="role" name="role">
-                                <option value="{{Auth::user()->role}}" selected>{{Auth::user()->role}}</option>
+                                  id="profile_id" name="profile_id">
+                                <option value="{{Auth::user()->profile_id}}" selected>{{Auth::user()->profile_id}}</option>
                                 <option value="0">Nuevo (0)</option>
                                 <option value="1">Administrador (1)</option>
                                 <option value="2">Cliente (2)</option>

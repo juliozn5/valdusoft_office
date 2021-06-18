@@ -14,12 +14,12 @@
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-body">
-         <!--  <div class="row" id="table-head">
+         <div class="row" id="table-head">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Empleados</h3>
-                            <a href="{{ route('admin.employes.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i> Añadir Nuevo</a>
+                            <a href="{{ route('employes.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i> Añadir Nuevo</a>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -42,7 +42,7 @@
                                             <td>{{ $employe->last_name }}</td>
                                             <td>{{ date('d-m-Y', strtotime($employe->birthdate)) }}</td>
                                             <td>{{ date('d-m-Y', strtotime($employe->admission_date)) }}</td>
-                                            <td><a href="{{ route('admin.employes.show', [$employe->slug, $employe->id]) }}"><i class="fa fa-eye"></i></a></td>
+                                            <td><a href="{{ route('employes.show', [$employe->slug, $employe->id]) }}"><i class="fa fa-eye"></i></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -50,13 +50,13 @@
                             </div>
 
                             <div class="mr-3">
-                                {{ $employes->links() }}
+                                {{-- {{ $employes->links() }} --}}
                             </div>
 
                         </div>
                     </div>
                 </div>
-            </div>-->
+            </div>
             
             <div class="card">
                 <div class="ml-1 mb-1 mt-1"><h3>Proyectos</h3></div>

@@ -19,7 +19,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2 class="content-header-title float-left mb-0">Financiero</h2>
+                    <h2 class="content-header-title float-left mb-0">nominas</h2>
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>

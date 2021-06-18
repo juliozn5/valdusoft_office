@@ -18,6 +18,21 @@ class ProjectsController extends Controller
 
         $projects = Project::all();
         
+        return view('home.employe')
+        ->with('projects', $projects); 
+
+    }
+
+    /**
+     * Vista lista proyecto
+     *
+     * @return void
+     */
+    public function list()
+    {
+
+        $projects = Project::all();
+        
         return view('landing.projects.projects')
         ->with('projects', $projects); 
 
