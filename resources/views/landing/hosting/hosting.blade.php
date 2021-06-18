@@ -38,137 +38,175 @@
                             <h3 class="card-title mb-2">Hosting</h3>
                             @if (Auth::user()->profile_id == 1)
                             <a href="{{ route('hosting-create') }}" class="btn btn-primary mb-2 p-1">&nbsp; Agregar Nuevo</a>
-                                @endif
+                            @endif
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table mb-0">
-                                    <thead class="thead-gris">
+                                    <thead class="thead-light text-center">
                                         <tr>
                                             <th>DOMINIO</th>
                                             <th>FECHA DE INICIO</th>
-                                            <th>FECHA DE RENOVACION</th>
+                                            <th>CLIENTES</th>
                                             <th>AÑOS</th>
                                             <th>ACCIÓN</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                         <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
-                                            <td>03/09/22</td>
+                                            <td>Diego Tellez</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+
+                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
+                                            </td>
+                                        </tr>
+
                                         </tr>
 
                                         <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
-                                            <td>03/09/22</td>
+                                            <td>Diego Tellez</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+
+                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
+                                            </td>
+                                        </tr>
+
                                         </tr>
                                         <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
-                                            <td>03/09/22</td>
+                                            <td>Diego Tellez</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+
+                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                        <tr>
+                                            <td>trovimo.com</td>
+                                            <td>03/09/21</td>
+                                            <td>Diego Tellez</td>
+                                            <td>1</td>
+
+                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
+                                            </td>
+                                        </tr>
+
                                         </tr>
                                         <tr>
                                         <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
-                                            <td>03/09/22</td>
+                                            <td>Diego Tellez</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+
+                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
+                                            </td>
+                                        </tr>
+
                                         </tr>
                                         <tr>
                                         <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
-                                            <td>03/09/22</td>
+                                            <td>Diego Tellez</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+
+                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
+                                            </td>
+                                        </tr>
+
                                         </tr>
                                         <tr>
                                         <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
-                                            <td>03/09/22</td>
+                                            <td>Diego Tellez</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+
+                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>trovimo.com</td>
+                                            <td>03/09/21</td>
+                                            <td>Diego Tellez</td>
+                                            <td>1</td>
+
+                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
+                                            </td>
+                                        </tr>
+
                                         </tr>
                                         <tr>
-                                        <tr>
                                             <td>trovimo.com</td>
                                             <td>03/09/21</td>
-                                            <td>03/09/22</td>
+                                            <td>Diego Tellez</td>
                                             <td>1</td>
-                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>03/09/22</td>
-                                            <td>1</td>
-                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+
+                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>03/09/22</td>
-                                            <td>1</td>
-                                            <td><img src="{{asset('images/icons/Vector.png')}}" alt=""><img class="ml-1" src="{{asset('images/icons/Group.png')}}" alt=""></td>
+
                                         </tr>
 
                                     </tbody>
                                 </table>
+                                <div class="bottom float-right" style="margin-right:20px;">
 
-                                <div class="card-body" id="div-bottom-project">
-                                    <div class="pl-2 pr-3 float-right">
-                                        <div class="mt-1">
+                                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
 
-                                            <div class="text-center text-white d-inline-block mr-1">
-                                                <div class="project-circle" id="div-bottom-background"><i class="fas fa-angle-left"></i></div>
-                                            </div>
+                                    </button>
 
+                                    <button class="btn btn-primary  btn-circle btn-lg">1
 
-                                            <div class="text-center d-inline-block">
-                                                <div class="project-circle" id="div-bottom-background2">
-                                                    <h5 class="text-white">1</h5>
-                                                </div>
-                                            </div>
+                                    </button>
 
-                                            <div class="text-center d-inline-block mr-1">
-                                                <div class="project-circle" id="div-bottom-background">
-                                                    <h5>2</h5>
-                                                </div>
-                                            </div>
+                                    <button style="color:black;" class="btn btn-circle btn-lg">2
+
+                                    </button>
+
+                                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
 
 
-                                            <div class="text-center text-white d-inline-block mr-1">
-                                                <div class="project-circle" id="div-bottom-background"><i class="fas fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </button>
                                 </div>
+                                <br><br>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          <!--  <div class="row" id="table-head">
+
+
+
+
+
+
+
+
+
+
+<!--  <div class="row" id="table-head">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -223,9 +261,9 @@
                     </div>
                 </div>
             </div>-->
-        </div>
+</div>
 
 
-    </div>
+</div>
 </div>
 @endsection
