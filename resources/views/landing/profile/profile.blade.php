@@ -83,7 +83,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="col-3">
                                     <div class="project-detail-titles">Fecha de Nacimiento</div>
                                     <div class="mt-1 project-detail-dates">
-                                    <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
+                                        <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
                                         02/10/1987
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="col-3">
                                     <div class="project-detail-titles">Fecha de Ingreso</div>
                                     <div class="mt-1 project-detail-dates">
-                                    <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
+                                        <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
                                         01/02/2021
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="col-3">
                                     <div class="project-detail-titles">Próximas Vacaciones</div>
                                     <div class="mt-1 project-detail-dates">
-                                    <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
+                                        <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
                                         01/02/2021
                                     </div>
                                 </div>
