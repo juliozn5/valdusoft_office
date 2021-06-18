@@ -18,7 +18,6 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-1">Proyectos</h3>
-
                         </div>
 
                         <div class="card-content">
@@ -175,8 +174,8 @@
                                             <td>{{ $item->start_date }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
-                                                <a href="{{ route('projects-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
-                                                <form action="{{ route('projects-delete', $item->id) }}" method="POST">
+                                                <a href="{{ route('admin.projects.edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
+                                                <form action="{{ route('admin.projects.delete', $item->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger"><i class="feather icon-trash"></i>Eliminar</button>

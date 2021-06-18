@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Empleados</h3>
-                            <a href="{{ route('employes.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i> Añadir Nuevo</a>
+                            <a href="{{ route('admin.employees.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i> Añadir Nuevo</a>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -35,14 +35,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($employes as $employe)
+                                        @foreach ($employees as $employee)
                                         <tr>
                                             <td><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" /></td>
-                                            <td>{{ $employe->name }}</td>
-                                            <td>{{ $employe->last_name }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($employe->birthdate)) }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($employe->admission_date)) }}</td>
-                                            <td><a href="{{ route('employes.show', [$employe->slug, $employe->id]) }}"><i class="fa fa-eye"></i></a></td>
+                                            <td>{{ $employee->name }}</td>
+                                            <td>{{ $employee->last_name }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($employee->birthdate)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($employee->admission_date)) }}</td>
+                                            <td><a href="{{ route('admin.employees.show', [$employee->slug, $employee->id]) }}"><i class="fa fa-eye"></i></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>

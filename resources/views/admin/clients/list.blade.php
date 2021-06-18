@@ -20,7 +20,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('clients.home') }}">Cliente</a>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.clients.list') }}">Cliente</a>
                                 </li>
                             </ol>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Tabla de Client</h3>
-                             <a href="{{ route('clients.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Client</a>
+                             <a href="{{ route('admin.clients.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Client</a>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -58,22 +58,22 @@
                                         
                                         @foreach ($client as $item)
                                         <tr>
-                                            <th>{{ $loop->iteration }}</th>
-
-                                            @if(!$item->getMedia('photo')->isEmpty())
-                                            <th><img class="rounded-circle" width="50px" height="50px" src="{{ $item->photoUrl }}" /></th>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                            @if (!is_null($item->photo))
+                                                <img class="rounded-circle" width="50px" height="50px" src="{{ $item->photo }}" />
                                             @else
-                                            <th><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" /></th>
+                                                <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                             @endif
-
+                                            </td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->lastname }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->phone }}</td>
                                             <td><a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></td>
                                             <td>
-                                                   <a href="{{ route('clients-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
-                                                   <form action="{{ route('clients-delete', $item->id) }}" method="POST">
+                                                   <a href="{{ route('admin.clients.edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
+                                                   <form action="{{ route('admin.clients.delete', $item->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="feather icon-trash"></i>Eliminar</button>

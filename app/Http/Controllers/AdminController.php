@@ -16,11 +16,13 @@ class AdminController extends Controller
      */
     public function index(){
 
-        $user = User::all()->where('role', '=', 3);
+        $user = User::where('profile_id', '=', 3)
+                    ->orderBy('name', 'ASC')
+                    ->get();
 
         $hosting = Hosting::all();
 
-        return view('home.admin')
+        return view('admin.home')
             ->with('user', $user)
             ->with('hosting', $hosting); 
 

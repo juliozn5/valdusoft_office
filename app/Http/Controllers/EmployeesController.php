@@ -9,122 +9,86 @@ use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class EmployesController extends Controller
+class EmployeesController extends Controller
 { 
-
-    /**
-     * Vista empleado
-     *
-     * @return void
-     */
-    public function index()
-    {
+    /** Home del Empleado
+    *** Perfil: Empleado ***/
+    public function index(){
         $employes = Project::all();
 
-        return view('home.employe')->with('employes', $employes); 
-
+        return view('employee.home')->with('employes', $employes); 
     }
 
-      /**
-     * Vista lista empleados
-     *
-     * @return void
-     */
-    public function list()
-    {
-
-        $employes = User::where('profile_id', '=', 3)->paginate(10);
+    /** Listado de Empleados
+    *** Perfil: Admin ***/
+    public function list(){
+        $employees = User::where('profile_id', '=', 3)->paginate(10);
         
-        return view('landing.employes.employes')
-        ->with('employes', $employes); 
+        return view('admin.employees.list')
+        ->with('employes', $employees); 
 
     }
 
-
-    /**
-     * Vista crear empleado
-     *
-     * @return void
-     */
+    /** Crear nuevo empleado
+    *** Perfil: Admin ***/
     public function create(){
-
         $skills = DB::table('skills')
                     ->orderBy('skill', 'ASC')
                     ->get();
 
-        return view('landing.employes.create')->with(compact('skills'));
-
+        return view('admin.employees.create')->with(compact('skills'));
     }
 
-    /**
-     * Funcion crear empleado
-     *
-     * @param Request $request
-     * @return void
-     */
+    /** Guardar datos del nuevo empleado
+    *** Perfil: Admin ***/
     public function store(Request $request){
+        $employee = new User($request->all());
 
-        $employe = new User($request->all());
+        $employee->slug = Str::slug($request->name."-".$request->last_name);
 
-        $employe->slug = Str::slug($request->name."-".$request->last_name);
+        $employee->password = Hash::make($request->password);
 
-        $employe->password = Hash::make($request->password);
+        $employee->profile_id = 3;
 
-        $employe->profile_id = 3;
-
-        $employe->save();
+        $employee->save();
 
         if ($request->hasFile('photo')){
-
             $file = $request->file('photo');
             $name = $employe->id.".".$file->getClientOriginalExtension();
             $file->move(public_path().'/uploads/images/users/photos', $name);
-            $employe->photo = $name;
-
+            $employee->photo = $name;
         }
 
         if ($request->hasFile('curriculum')){
-
             $file2 = $request->file('curriculum');
             $name2 = $employe->id.".".$file2->getClientOriginalExtension();
             $file2->move(public_path().'/uploads/documents/curriculums', $name2);
-            $employe->curriculum = $name2;
-
+            $employee->curriculum = $name2;
         }
 
-        $employe->save();
+        $employee->save();
 
         if (!is_null($request->skills)) {
-
             foreach ($request->skills as $skill) {
                 DB::table('skills_users')->insert(
-                    ['skill_id' => $skill, 'user_id' => $employe->id]
+                    ['skill_id' => $skill, 'user_id' => $employee->id]
                 );
             }
-
         }
 
-        return redirect()->route('admin.employes')->with('msj-exitoso', 'true');
-
+        return redirect()->route('admin.employees.list')->with('msj-exitoso', 'true');
     }
 
-    /**
-     * Vista ver empleado
-     *
-     * @param [type] $slug
-     * @param [type] $id
-     * @return void
-     */
+    /** Ver datos de un empleado
+    *** Perfil: Admin ***/
     public function show($slug, $id){
-
-        $employe = User::where('id', '=', $id)
+        $employee = User::where('id', '=', $id)
                         ->with('projects', 'skills')
                         ->first();
 
         $projectsID = array();
 
-        foreach ($employe->projects as $project){
-
+        foreach ($employee->projects as $project){
             array_push($projectsID, $project->id);
 
         }
@@ -133,17 +97,11 @@ class EmployesController extends Controller
         
         $projectColors = ['#FF3F3F', '#12A0B4', '#940385'];
 
-        return view('landing.employes.show')->with(compact('employe', 'projectColors', 'availableProjects'));
-
+        return view('admin.employees.show')->with(compact('employee', 'projectColors', 'availableProjects'));
     }
 
-
-    /**
-     * Comentario
-     *
-     * @param Request $request
-     * @return void
-     */
+    /** Asignar proyecto a un empleado
+    *** Perfil: Admin ***/
     public function assign_projects(Request $request){
         $fecha = date('Y-m-d H:i:s');
         if (!is_null($request->projects)) {

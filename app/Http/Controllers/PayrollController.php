@@ -4,16 +4,9 @@ namespace App\Http\Controllers;
 
 class PayrollController extends Controller
 {
-
-    /**
-     * Vista nomina
-     *
-     * @return void
-     */
-    public function index()
-    {
-        
-           return view('landing.payroll.payroll'); 
-        
+    /** Listado de Nóminas
+    *** Perfil: Admin ***/
+    public function list(){
+        return view('admin.payrolls.list'); 
     }
 }

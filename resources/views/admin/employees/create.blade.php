@@ -52,7 +52,7 @@
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.employes') }}">Empleados</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.employees.list') }}">Empleados</a></li>
                                 <li class="breadcrumb-item">Nuevo Empleado</li>
                             </ol>
                         </div>
@@ -63,7 +63,7 @@
         </div>
         <div class="content-body">
             <div class="row" id="table-head">
-                <form class="form" action="{{ route('admin.employes.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="form" action="{{ route('admin.employees.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12">
                         <div class="card">

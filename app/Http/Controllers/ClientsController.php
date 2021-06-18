@@ -2,103 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 class ClientsController extends Controller
 {
+    /** Home del Cliente
+    *** Perfil: Cliente ***/
+    public function index(){
+        $client = User::all();
 
-    /**
-     * Vista clientes
-     *
-     * @return void
-     */
-    public function index()
-    {
-
-        $client = Client::all();
-
-        return view('home.client')
+        return view('client.home')
         ->with('client', $client); 
- 
     }
 
-      /**
-     * Vista lista clientes
-     *
-     * @return void
-     */
-    public function list()
-    {
+    /** Listado de Clientes
+    *** Perfil: Admin ***/
+    public function list(){
+        $client = User::where('profile_id', '=', 2)
+                    ->orderBy('name', 'ASC')
+                    ->get();
 
-        $client = Client::all();
-
-        return view('landing.clients.clients')
+        return view('admin.clients.list')
         ->with('client', $client); 
- 
     }
 
-    /**
-     * Vista crear cliente
-     *
-     * @return void
-     */
-    public function create()
-    {
-
-        return view('landing.clients.create');
+    /** Crear Nuevo Cliente
+    *** Perfil: Admin ***/
+    public function create(){
+        return view('admin.clients.create');
 
     }
 
-    /**
-     * Funcion crear cliente
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function store(Request $request)
-    {
-        $client = Client::all();
-
+    /** Guardar Datos del Nuevo Cliente
+    *** Perfil: Admin ***/
+    public function store(Request $request){
         $fields = [   ];
 
         $msj = [    ];
 
         $this->validate($request, $fields, $msj);
 
-        $client = Client::create($request->all());
-
+        $client = User::create($request->all());
         $client->save();
 
-        return redirect()->route('clients')->with('message','Se creo el Cliente Exitosamente');
+        return redirect()->route('admin.clients.list')->with('message','Se creo el Cliente Exitosamente');
         
     }
 
-    /**
-     * Vista editar cliente
-     *
-     * @param [type] $id
-     * @return void
-     */
-    public function edit($id)
-    {
+    /** Editar datos de un Cliente
+    *** Perfil: Admin ***/
+    public function edit($id){
+        $client = User::find($id);
 
-        $client = Client::find($id);
-
-           return view('landing.clients.edit')
+        return view('admin.clients.edit')
            ->with('client', $client); 
-        
     }
 
-    /**
-     * Funcion editar cliente
-     *
-     * @param Request $request
-     * @param [type] $id
-     * @return void
-     */
-    public function update(Request $request, $id)
-    {
-        $client = Client::find($id);
+    /** Guardar datos modificados de un Cliente
+    *** Perfil: Admin ***/
+    public function update(Request $request, $id){
+        $client = User::find($id);
 
         $fields = [     ];
 
@@ -110,24 +74,17 @@ class ClientsController extends Controller
 
         $client->save();
 
-        return redirect()->route('clients')->with('message','Se actualizo el Cliente Exitosamente');
-
+        return redirect()->route('admin.clients.list')->with('message','Se actualizo el Cliente Exitosamente');
     }
 
-    /**
-     * Funcion eliminar cliente
-     *
-     * @param [type] $id
-     * @return void
-     */
-    public function delete($id)
-    {
-
-        $client = Client::find($id);
+    /** Eliminar un Cliente
+    *** Perfil: Admin ***/
+    public function delete($id){
+        $client = User::find($id);
     
         $client->delete();
       
-        return redirect()->route('clients')->with('message','Se elimino el Cliente'.' '.$client->client.' '.'Exitosamente');
+        return redirect()->route('admin.clients.list')->with('message','Se elimino el Cliente'.' '.$client->client.' '.'Exitosamente');
         
     }
 }

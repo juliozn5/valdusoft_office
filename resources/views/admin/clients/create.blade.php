@@ -46,9 +46,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('clients') }}">Cliente</a>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.clients.list') }}">Cliente</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('clients-create') }}">Añadir
+                                <li class="breadcrumb-item"><a href="{{ route('admin.clients.create') }}">Añadir
                                         Cliente</a>
                                 </li>
                             </ol>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" action="{{ route('clients-store') }}" method="POST"
+                            <form class="form form-vertical" action="{{ route('admin.clients.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
@@ -154,7 +154,7 @@
                                         <div class="col-12">
                                             <button type="submit"
                                                 class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Añadir</button>
-                                            <a href="{{ route('clients') }}"
+                                            <a href="{{ route('admin.clients.list') }}"
                                                 class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                         </div>
                                     </div>

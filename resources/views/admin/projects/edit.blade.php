@@ -20,9 +20,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('projects') }}">Project</a>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.projects.list') }}">Project</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('projects-edit', $projects->id) }}">Editar Project</a>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.projects.edit', $projects->id) }}">Editar Project</a>
                                 </li>
                             </ol>
                         </div>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" action="{{ route('projects-update', $projects->id) }}" method="POST"
+                            <form class="form form-vertical" action="{{ route('admin.projects.update', $projects->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
@@ -100,7 +100,7 @@
                                         <div class="col-12">
                                             <button type="submit"
                                                 class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
-                                            <a href="{{ route('projects') }}"
+                                            <a href="{{ route('admin.projects.list') }}"
                                                 class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                         </div>
                                     </div>

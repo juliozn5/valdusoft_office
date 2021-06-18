@@ -42,7 +42,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="card" id="card-head1">
                     <div class="card-header">
                         <h3 class="card-title mb-1">Listado de las nominas</h3>
-                        <a href="{{ route('projects-create') }}" class="btn btn-primary mb-2 waves-effect waves-light">&nbsp; GENERAR</a>
+                        <a href="#" class="btn btn-primary mb-2 waves-effect waves-light">&nbsp; GENERAR</a>
                     </div>
 
                     <div class="card-content">
@@ -252,17 +252,4 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
         </div>
     </div>
-
-    <!-- END: Content
-
-    <div class="sidenav-overlay"></div>
-    <div class="drag-target"></div>
--->
-    <!-- BEGIN: Footer
-    <footer class="footer footer-static footer-dark">
-        <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="text-bold-800 grey darken-2" href="https://valdusoft.com" target="_blank">Valdusoft,</a>All rights Reserved</span>
-            <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
-        </p>
-    </footer>-->
-    <!-- END: Footer-->
-    @endsection
+@endsection
