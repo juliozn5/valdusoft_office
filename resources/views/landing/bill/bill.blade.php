@@ -19,7 +19,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="content-body jutify-content">
 
 
-
                 <div id="table-head">
                     <div class="">
                         <div class="card">
@@ -30,7 +29,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                             <div class="card-content">
                                 <div class="table-responsive">
-                                    <table class="table mb-0">
+                                    <table id="dataTable" class="table mb-0">
                                         <thead class="thead-gris">
                                             <tr>
                                                 <th># <i class="fas fa-sort"></i></th>
@@ -72,6 +71,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 </td>
                                                 <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
                                             </tr>
+
                                             <tr>
                                             <tr>
                                                 <th scope="row">#128</th>
@@ -83,6 +83,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 </td>
                                                 <td><a href=""><img id="bottom" src="{{ asset('images/icons/Vector.png')}}" alt=""></a></td>
                                             </tr>
+
                                             <tr>
                                             <tr>
                                                 <th scope="row">#129</th>
@@ -94,6 +95,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 </td>
                                                 <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
                                             </tr>
+
                                             <tr>
                                             <tr>
                                                 <th scope="row">#130</th>
@@ -105,6 +107,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 </td>
                                                 <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
                                             </tr>
+
                                             <tr>
                                             <tr>
                                                 <th scope="row">#131</th>
@@ -125,6 +128,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 </td>
                                                 <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
                                             </tr>
+
                                             <tr>
                                                 <th scope="row">#133</th>
                                                 <td>05 Sep</td>
@@ -137,6 +141,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             </tr>
                                         </tbody>
                                     </table>
+
 
                                     <div class="bottom float-right" style="margin-right:20px;">
 
@@ -157,8 +162,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                                         </button>
 
-                                    </div>
-
+                                    </div>   
                                     <br><br>
                                     </table>
 
@@ -170,17 +174,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                 </div>
 
-                <!-- END: Content-->
+                <!--END: Content
 
                 <div class="sidenav-overlay"></div>
                 <div class="drag-target"></div>
-
-                <!-- BEGIN: Footer-->
-                <!--
+-->
+                <!-- BEGIN: Footer
+                
                 <footer class="footer footer-static footer-dark">
                     <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="text-bold-800 grey darken-2" href="https://valdusoft.com" target="_blank">Valdusoft,</a>All rights Reserved</span>
                         <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
                     </p>
-                </footer>
+                </footer>-->
                 <!-- END: Footer-->
                 @endsection

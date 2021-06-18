@@ -18,14 +18,14 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-1">Proyectos</h3>
-                           
+
                         </div>
 
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table mb-0">
-                                      <thead class="thead-gris">
-                                        <tr>
+                                    <thead class="thead-gris">
+                                        <tr class="">
                                             <th>ID</th>
                                             <th>NOMBRE</th>
                                             <th>FECHA DE INICIO</th>
@@ -143,7 +143,7 @@
 
                                 <div class="bottom float-right" style="margin-right:20px;">
 
-                                    <button  class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
+                                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
 
                                     </button>
 
@@ -163,28 +163,29 @@
                                 </div>
 
                                 <br><br> </table>
+                                <br>
 
-                                    <table>
-                                        <tbody>
+                                <table>
+                                    <tbody>
 
-                                            @foreach ($projects as $item)
-                                            <tr>
-                                                <th>{{ $item->id }}</th>
-                                                <td>{{ $item->name }}</td>
-                                                <td>{{ $item->start_date }}</td>
-                                                <td>{{ $item->status }}</td>
-                                                <td>
-                                                    <a href="{{ route('projects-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
-                                                    <form action="{{ route('projects-delete', $item->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger"><i class="feather icon-trash"></i>Eliminar</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                        @foreach ($projects as $item)
+                                        <tr>
+                                            <th>{{ $item->id }}</th>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->start_date }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>
+                                                <a href="{{ route('projects-edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
+                                                <form action="{{ route('projects-delete', $item->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="feather icon-trash"></i>Eliminar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
