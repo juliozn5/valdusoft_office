@@ -12,36 +12,53 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="content-header row"></div>
         <div class="content-body">
 
-            <div class="card pl-1">
-                <div class="card-header">
-                    <h3 class="card-title mb-2">Proyectos</h3>
-                    <div class="container pb-2">
-                        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" style="margin-right: 90px;">
-                            <div class="col shadow  rounded" style="right:20px;">
+            <div class="card">
+                <div class="ml-1 mb-1 mt-1">
+                    <h3>Proyectos</h3>
+                </div>
+                <div class="">
+
+
+
+                    <div class="card">
+                        <div class="row ">
+
+                            <div class="container col-2 rounded">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2  text-white" id="shadow">Recomiendo
-                                </div>
-                            </div>
-                            <div class="col shadow  rounded" style="left:15px;">
-                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
+                                <div class="pr-1 mt-2 h4 pb-2  text-white" id="shadow">
+                                    <div style="
+                                    position: relative;top: 14px;"> Recomiendo</div>
                                 </div>
                             </div>
 
-                            <div class="col shadow  rounded" style="left:45px;">
+                            <div class="container col-2 rounded">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
-                                </div>
-                            </div>
-                            <div class="col shadow  rounded" style="left:80px;">
-                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">
+                                    <div style="
+                                   position: relative;top: 14px;"> Recomiendo</div>
                                 </div>
                             </div>
 
-                            <div class="col shadow  rounded" style="left:108px;">
+                            <div class="container col-2 rounded">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
-                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">Recomiendo
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">
+                                    <div style="
+                                    position: relative;top: 14px;"> Recomiendo</div>
+                                </div>
+                            </div>
+                            <div class="container col-2  rounded">
+                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">
+                                    <div style="
+                                    position: relative;top: 14px;"> Recomiendo</div>
+                                </div>
+                            </div>
+
+                            <div class="container col-2 rounded">
+                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="">
+                                <div class="pr-1 mt-2 h4 pb-2 text-white" id="shadow">
+                                    <div style="
+                                    position: relative;top: 14px;"> Recomiendo</div>
                                 </div>
                             </div>
                         </div>
@@ -49,15 +66,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
             </div>
 
-            <div class="card pl-1">
-                <div class="card-header">
-                    <h3 class="card-title mb-2">Facturas</h3>
-                    <div class="table-responsive pt-2">
+
+
+            <div class="card ">
+                <div class="">
+                    <h3 class="card-title mb-2 pl-2 pt-2">Facturas</h3>
+                    <div class="table-responsive ">
                         <table class="table">
-                            <thead class="thead-light">
+                            <thead class="thead-light ">
                                 <th>FECHA</th>
-                                <th>DESCRIPCIÓN</th>
-                                <th>MONTO</th>
+                                <th class="col-7">DESCRIPCIÓN</th>
+                                <th  class="col-1">MONTO</th>
                             </thead>
                             <tbody>
                                 <tr>
