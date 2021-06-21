@@ -365,8 +365,8 @@
 
 .vertical-overlay-menu .navbar .navbar-header {
   float : left;
-  /*width : 260px;*/
-  width : 300px;
+  width : 260px;
+ 
 }
 
 .vertical-overlay-menu .navbar.header-navbar.floating-nav {
