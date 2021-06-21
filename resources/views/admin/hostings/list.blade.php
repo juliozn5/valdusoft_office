@@ -35,7 +35,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title mb-2">Hosting</h3>
+                            <h3 class="card-title mb-2 font-weight-bold">Hosting</h3>
                             <a href="{{ route('admin.hostings.create') }}" class="btn btn-primary mb-2 p-1">&nbsp; Agregar Nuevo</a>
                         </div>
                         <div class="card-content">
@@ -184,7 +184,8 @@
 
                                     </button>
                                 </div>
-                                <br><br>
+                                
+                                <br><br><br><br>
                             </div>
                         </div>
                     </div>

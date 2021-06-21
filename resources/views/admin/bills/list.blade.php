@@ -30,7 +30,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="card-content">
                                 <div class="table-responsive">
                                     <table id="dataTable" class="table mb-0">
-                                        <thead class="thead-gris">
+                                        <thead class="thead-light">
                                             <tr>
                                                 <th># <i class="fas fa-sort"></i></th>
                                                 <th>FECHA <i class="fas fa-sort"></i></th>

@@ -230,7 +230,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
                       </div>
                   </div>
                   <hr>
-                      <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                      <div class=" col-12 d-flex flex-sm-row flex-column justify-content-end">
                           <button type="submit"
                               class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
                       </div>
