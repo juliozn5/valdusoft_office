@@ -25,8 +25,7 @@ class EmployeesController extends Controller
         $employees = User::where('profile_id', '=', 3)->paginate(10);
         
         return view('admin.employees.list')
-        ->with('employes', $employees); 
-
+        ->with('employees', $employees); 
     }
 
     /** Crear nuevo empleado

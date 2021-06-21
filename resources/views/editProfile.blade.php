@@ -228,25 +228,6 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
                               </div>
                           </div>
                       </div>
-                      <div class="col-6">
-                          <div class="form-group">
-                              <label class="required" for="role">Role</label>
-                              <select type="text"
-                                  class="form-control @error('role') is-invalid @enderror"
-                                  id="profile_id" name="profile_id">
-                                <option value="{{Auth::user()->profile_id}}" selected>{{Auth::user()->profile_id}}</option>
-                                <option value="0">Nuevo (0)</option>
-                                <option value="1">Administrador (1)</option>
-                                <option value="2">Cliente (2)</option>
-                                <option value="3">Trabajador (3)</option>
-                            </select>
-                              @error('role')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                              @enderror
-                          </div>
-                      </div>
                   </div>
                   <hr>
                       <div class=" col-12 d-flex flex-sm-row flex-column justify-content-end">
@@ -256,7 +237,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
                   </div>
               </form>
 
-              @include('user.changePassword')
+              @include('changePassword')
           </div>
         </div>
     </div>

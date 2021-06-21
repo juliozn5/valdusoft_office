@@ -56,15 +56,28 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Profile');
     }
 
-    //Relación de los empleados con los proyectos
-    public function projects(){
-
-        return $this->belongsToMany('App\Models\Project', 'projects_users', 'user_id', 'project_id');
-
+    //Relación del cliente con sus proyectos
+    public function projects_client(){
+        return $this->hasMany('App\Models\Project');
     }
 
-    public function skills(){
+    //Relación del cliente con sus hostings
+    public function hostings(){
+        return $this->hasMany('App\Models\Hosting');
+    }
 
+    //Relación del cliente con sus facturas
+    public function bills(){
+        return $this->hasMany('App\Models\Bill');
+    }
+    
+    //Relación de los empleados con los proyectos
+    public function projects(){
+        return $this->belongsToMany('App\Models\Project', 'projects_users', 'user_id', 'project_id');
+    }
+
+    //Relación de los empleados con los skills
+    public function skills(){
         return $this->belongsToMany('App\Models\Skill', 'skills_users', 'user_id', 'skill_id');
 
     }

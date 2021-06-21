@@ -16,8 +16,7 @@ class Project extends Model
     ];
 
     //Relación de los proyectos asignados a los empleados
-    public function employes(){
-
+    public function employees(){
         return $this->belongsToMany('App\Models\User', 'projects_users', 'project_id', 'user_id');
         
     }

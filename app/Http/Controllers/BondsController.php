@@ -4,16 +4,9 @@ namespace App\Http\Controllers;
 
 class BondsController extends Controller
 {
-    /**
-     * Vista bonos
-     *
-     * @return void
-     */
-    public function index()
-    {
-
-        return view('landing.bonds.bonds'); 
-
-        
+    /** De Interés - Bonos
+    *** Perfil: Empleado ***/
+    public function list(){
+        return view('employee.bonds');   
     }
 }

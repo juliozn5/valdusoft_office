@@ -8,30 +8,25 @@
         <span class="menu-title ml-1" data-i18n="Email">Proyectos</span></a>
 </li>
 
-{{--  <li class=" nav-item">
-    <a href="{{ route('bill') }}"><img src="{{ asset('images/icons/mone.png') }}" />
+<li class=" nav-item">
+    <a href="{{ route('employee.bills.list') }}"><img src="{{ asset('images/icons/mone.png') }}" />
         <span class="menu-title ml-1" data-i18n="Email">Facturas</span></a>
 </li>
 
 <li class="nav-item has-sub"><a href="#"><img src="{{ asset('images/icons/group_157.png') }}" />
-        <span class="menu-title ml-1" data-i18n="Ecommerce">De interes</span></a>
+    <span class="menu-title ml-1" data-i18n="Ecommerce">De interes</span></a>
 
     <ul>
-
-        <li><a href="{{ route('holidays') }}"><span class="menu-title ml-1">Vacaciones</span></a>
+        <li><a href="{{ route('employee.interest.holidays') }}"><span class="menu-title ml-1">Vacaciones</span></a>
         </li>
-
-        <li><a href="{{ route('financing') }}"><span class="menu-title ml-1">Financiamiento</span></a>
+        <li><a href="{{ route('employee.interest.financing') }}"><span class="menu-title ml-1">Financiamientos</span></a>
         </li>
-
-        <li><a href="{{ route('bonds') }}"><span class="menu-title ml-1">Bonos</span></a>
+        <li><a href="{{ route('employee.interest.bonds') }}"><span class="menu-title ml-1">Bonos</span></a>
         </li>
-
-
     </ul>
 </li>
 
 <li class=" nav-item">
     <a href="{{ route('profile') }}"><img src="{{ asset('images/icons/perfil.png') }}" />
         <span class="menu-title ml-1" data-i18n="Email">Perfil</span></a>
-</li>--}}
+</li>

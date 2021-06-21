@@ -18,7 +18,7 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
         </div>
         <div class="content-body">
         
-        <h1>bonds</h1>
+        <h1>Bonos</h1>
         
         </div>
     </div>

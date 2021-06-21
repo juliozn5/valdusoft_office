@@ -7,47 +7,18 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
 
-    /**
-     * Vista perfil
-     *
-     * @return void
-     */
-    public function index()
-    {
-
-        if (Auth::guest()){
-
-            return redirect('login');
-
-        }else{
-
-           return view('landing.profile.profile'); 
-
-        }
-        
-    }
-
-    /**
-     * Vista editar perfil
-     *
-     * @return void
-     */
-    public function edit()
-    {
-
+    /** Editar Perfil
+    *** Perfil: Admin - Empleado - Cliente ***/
+    public function edit(){
         $user = Auth::user();
 
-        return view('user.profile')
+        return view('editProfile')
         ->with('user',$user);
 
     }
 
-    /**
-     * Funcion editar perfil
-     *
-     * @param Request $request
-     * @return void
-     */
+    /** Guardar datos modificados del perfil
+    *** Perfil: Admin - Empleado - Cliente ***/
     public function update(Request $request)
     {
 
