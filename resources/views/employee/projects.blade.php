@@ -12,7 +12,7 @@
     <div class="content-wrapper">
 
         <div class="content-body">
-
+    
             <div id="table-head">
                 <div class="col">
                     <div class="card">
@@ -183,11 +183,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</div>
-</div>
 
-</div>
-</div>
-@endsection
+
+        @endsection
