@@ -24,15 +24,10 @@ class ProjectsController extends Controller
             return view('client.projects')
             ->with('projects', $projects); 
         }else if (Auth::user()->profile_id == 3){
-            /*$projects = Project::where('user_id', '=', Auth::user()->id)
-                            ->orderBy('id', 'DESC')
-                            ->get();
+            $projects = Auth::user()->projects;
 
-            return view('client.projects')
-            ->with('projects', $projects); */
-            dd("Esperando ajuste");
+            return view('employee.projects')->with('projects', $projects);
         }
-
     }
 
     /** Crear Nuevo Proyecto

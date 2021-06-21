@@ -14,6 +14,8 @@ class BillController extends Controller
             return view('admin.bills.list'); 
         }else if (Auth::user()->profile_id == 2){
             return view('client.bills');
+        }else if (Auth::user()->profile_id == 3){
+            return view('employee.bills');
         }
         
     }

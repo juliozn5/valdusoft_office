@@ -14,12 +14,16 @@ class Hosting extends Model
      * @var array
      */
     protected $fillable = [
-        'client',
+        'user_id',
         'url',
         'create_date',
         'due_date',
     ];
 
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+    
     public function getPhotoUrlAttribute()
     {
         if($this->getMedia('photo')->isEmpty())

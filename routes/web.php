@@ -114,18 +114,24 @@ Route::group(['middleware'=>['auth']], function() {
 
     //LISTADO DE RUTAS PARA EL EMPLEADO
     Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'profile'], 'profile' => ['3']], function(){
-
         Route::get('/', 'EmployeesController@index')->name('employee.home');
 
+        //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function(){
             Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
         });
 
-        // Route::get('profile', 'ProfileController@index')->name('profile');
-        Route::get('holidays', 'HolidaysController@index')->name('holidays');
-        Route::get('financing', 'FinancingController@index')->name('financing');
-        Route::get('bonds', 'BondsController@index')->name('bonds');
-   
+        //MÓDULO DE FACTURAS
+        Route::group(['prefix' => 'bills'], function(){
+            Route::get('/', 'BillController@list')->name('employee.bills.list');
+        });
+
+        //MÓDULO DE INTERÉS
+        Route::group(['prefix' => 'interest'], function(){
+            Route::get('financing', 'FinancingController@list')->name('employee.interest.financing'); 
+            Route::get('holidays', 'HolidaysController@list')->name('employee.interest.holidays');
+            Route::get('bonds', 'BondsController@list')->name('employee.interest.bonds');
+        });
     });
 
 });
