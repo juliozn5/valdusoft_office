@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="mr-3">
-                                {{-- {{ $employes->links() }} --}}
+                                {{ $employees->links() }} 
                             </div>
 
                         </div>

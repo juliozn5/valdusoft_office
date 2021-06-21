@@ -22,7 +22,7 @@ class EmployeesController extends Controller
     /** Listado de Empleados
     *** Perfil: Admin ***/
     public function list(){
-        $employees = User::where('profile_id', '=', 3)->paginate(10);
+        $employees = User::where('profile_id', '=', 3)->paginate(1);
         
         return view('admin.employees.list')
         ->with('employees', $employees); 
