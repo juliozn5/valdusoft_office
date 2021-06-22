@@ -113,4 +113,9 @@ class EmployeesController extends Controller
             return redirect()->back()->with('msj-exitoso', 'true');
         }
     }
+    public function profile(){
+        return view('landing.profile.profile');
+    }
+
 }
+
