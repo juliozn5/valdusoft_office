@@ -43,7 +43,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En proceso</div>
                                             </td>
-                                            <td><a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
+                                            <td><a href="{{ route('client.bills.detail') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -63,4 +63,4 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </section>
         </div>
     </div>
-                @endsection
+@endsection

@@ -109,6 +109,8 @@ Route::group(['middleware'=>['auth']], function() {
         //MÓDULO DE FACTURAS
         Route::group(['prefix' => 'bills'], function(){
             Route::get('/', 'BillController@list')->name('client.bills.list');
+            //FACTURA DETALLADA
+            Route::get('/detail', 'BillController@detail')->name('client.bills.detail');
         });
     });
 
