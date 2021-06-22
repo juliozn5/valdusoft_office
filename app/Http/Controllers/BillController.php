@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-
+use App\Models\Bill;
 
 class BillController extends Controller
 {
@@ -15,8 +15,10 @@ class BillController extends Controller
         }else if (Auth::user()->profile_id == 2){
             return view('client.bills');
         }else if (Auth::user()->profile_id == 3){
+            $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
             return view('employee.bills');
         }
         
     }
 }
+
