@@ -10,24 +10,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
 @include('layouts.partials.sidebar')
 
-@extends('layouts.app')
-
-@push('body-atribute')
-class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
-@endpush
-
-@section('content')
-
-@include('layouts.partials.navbar')
-
-@include('layouts.partials.sidebar')
-
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-body">
-         <div class="row" id="table-head">
+            <div class="row" id="table-head">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -68,8 +56,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                 </div>
             </div>
-            </div>
-        </section>
         </div>
+        </section>
     </div>
-                @endsection
+</div>
+@endsection
