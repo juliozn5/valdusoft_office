@@ -11,8 +11,7 @@ class BillController extends Controller
     *** Perfil: Admin ***/
     public function list(){
         if (Auth::user()->profile_id == 1){
-            $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
-            return view('employee.bills')->with('bills', $bills);
+            return view('admin.bills.list');
         }else if (Auth::user()->profile_id == 2){
             $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
             return view('client.bills')->with('bills', $bills); ;
