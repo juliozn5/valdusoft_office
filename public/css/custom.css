@@ -170,6 +170,27 @@
 /*         PROJECTS            */
 /*/////////////////////////////*/
 
+.status-label {
+    border-radius: 10px;
+    font-weight: 500;
+    color: white;
+    padding: 10px;
+}
+.status-label-gray{
+    background: #3c3232;
+}
+.status-label-purple{
+    background: #650865;
+}
+.status-label-blue{
+    background: #252856;
+}
+.status-label-green{
+    background: #26A30B;
+}
+.action-icon{
+    color: #3C3232 !important;
+}
 
 #process-project {
     background: #3c3232;

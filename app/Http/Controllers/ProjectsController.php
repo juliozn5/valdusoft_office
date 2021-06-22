@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str as Str;
 use Auth;
+use DB;
 
 class ProjectsController extends Controller
 {
@@ -12,7 +14,7 @@ class ProjectsController extends Controller
     *** Perfil: Admin - Cliente - Empleados ***/
     public function list(){
         if (Auth::user()->profile_id == 1){
-            $projects = Project::orderBy('id', 'DESC')->get();
+            $projects = Project::orderBy('id', 'DESC')->paginate(10);
             
             return view('admin.projects.list')
             ->with('projects', $projects); 
@@ -33,25 +35,79 @@ class ProjectsController extends Controller
     /** Crear Nuevo Proyecto
     *** Perfil: Admin ***/
     public function create(){
-        return view('admin.projects.create');
+        $clients = DB::table('users')
+                        ->select('id', 'name', 'last_name')
+                        ->where('profile_id', '=', 2)
+                        ->orderBy('name', 'ASC')
+                        ->get();
+        
+        $countries = DB::table('countries')
+                        ->select('id', 'name')
+                        ->orderBy('name', 'ASC')
+                        ->get();
+        
+        $technologies = DB::table('technologies')
+                        ->select('id', 'name')
+                        ->orderBy('name', 'ASC')
+                        ->get();
+
+        return view('admin.projects.create')->with(compact('clients', 'countries', 'technologies'));
     }
 
     /** Guardar datos del Nuevo Proyecto
     *** Perfil: Admin ***/
     public function store(Request $request){
-        $projects = Project::all();
+        $project = new Project($request->all());
+        $project->slug = Str::slug($request->name);
+        $project->status = '0';
+        $project->save();
 
-        $fields = [   ];
+        if ($request->hasFile('logo')){
+            $file = $request->file('logo');
+            $name = $project->id.".".$file->getClientOriginalExtension();
+            $file->move(public_path().'/uploads/images/projects', $name);
+            $project->logo = $name;
+            $project->save();
+        }
 
-        $msj = [    ];
+        if (!is_null($request->technologies)) {
+            foreach ($request->technologies as $technology) {
+                $project->technologies()->attach($technology);
+            }
+        }
 
-        $this->validate($request, $fields, $msj);
+        return redirect()->route('admin.projects.list')->with('msj-exitoso','done'); 
+    }
 
-        $projects = Project::create($request->all());
+    /** Ver detalles de un Proyecto
+    *** Perfil: Admin ***/
+    public function show($slug, $id){
+        $project = Project::find($id);
+        
+        $employeesID = array();
 
-        $projects->save();
+        foreach ($project->employees as $employee){
+            array_push($employeesID, $employee->id);
+        }
+        
+        $availableEmployees = DB::table('users')
+                                ->select('id', 'name', 'last_name')
+                                ->where('profile_id', '=', 3)
+                                ->whereNotIn('id', $employeesID)
+                                ->get();
+        
+        $technologiesID = array();
 
-        return redirect()->route('admin.projects.list')->with('message','Se creo el Proyecto Exitosamente'); 
+        foreach ($project->technologies as $technology){
+            array_push($technologiesID, $technology->id);
+        }
+        
+        $availableTechnologies = DB::table('technologies')
+                                    ->select('id', 'name')
+                                    ->whereNotIn('id', $technologiesID)
+                                    ->get();
+
+        return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies'));   
     }
 
     /** Editar un Proyecto
@@ -82,14 +138,47 @@ class ProjectsController extends Controller
         return redirect()->route('admin.projects.list')->with('message','Se actualizo el Proyecto Exitosamente');  
     }
 
-    public function delete($id)
-    {
-
-        $projects = Project::find($id);
-    
-        $projects->delete();
+    public function delete($id){
+        $project = Project::find($id);
+        foreach ($project->technologies as $technology){
+            $project->technologies()->detach($technology->id);
+        }
+        foreach ($project->employees as $employee){
+            $project->employees()->detach($employee->id);
+        }
+        $project->delete();
       
-        return redirect()->route('admin.projects.list')->with('message','Se elimino el Proyecto'.' '.$projects->client.' '.'Exitosamente');
+        return redirect()->route('admin.projects.list')->with('msj-deleted','done');
 
+    }
+
+     /** Asignar miembro a un proyecto
+    *** Perfil: Admin ***/
+    public function assign_members(Request $request){
+        $fecha = date('Y-m-d H:i:s');
+        if (!is_null($request->employees)) {
+            foreach ($request->employees as $employee) {
+                DB::table('projects_users')->insert(
+                    ['project_id' => $request->project_id, 'user_id' => $employee, 'created_at' => $fecha, 'updated_at' => $fecha]
+                );
+            }
+
+            return redirect()->back()->with('msj-exitoso', 'true');
+        }
+    }
+
+     /** Asignar tecnología a un proyecto
+    *** Perfil: Admin ***/
+    public function assign_technologies(Request $request){
+        $fecha = date('Y-m-d H:i:s');
+        if (!is_null($request->technologies)) {
+            foreach ($request->technologies as $technology) {
+                DB::table('projects_technologies')->insert(
+                    ['project_id' => $request->project_id, 'technology_id' => $technology, 'created_at' => $fecha, 'updated_at' => $fecha]
+                );
+            }
+
+            return redirect()->back()->with('msj-exitoso', 'true');
+        }
     }
 }

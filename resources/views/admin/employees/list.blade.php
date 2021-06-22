@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-@if (Session::has('msj-exitoso'))
-<script>
-    $(document).ready(function() toastr.success('El empleado ha sido creado con éxito.', 'Operación Completada');
-    });
-</script>
-@endif
+    @if (Session::has('msj-exitoso'))
+        <script>
+            $(document).ready(function() toastr.success('El empleado ha sido creado con éxito.', 'Operación Completada');
+            });
+        </script>
+    @endif
 
 
 <div class="app-content content">
@@ -14,7 +14,7 @@
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-body">
-         <div class="row" id="table-head">
+            <div class="row" id="table-head">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">

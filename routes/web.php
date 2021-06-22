@@ -38,10 +38,13 @@ Route::group(['middleware'=>['auth']], function() {
         Route::group(['prefix' => 'projects'], function(){
             Route::get('/', 'ProjectsController@list')->name('admin.projects.list');
             Route::get('create', 'ProjectsController@create')->name('admin.projects.create');
+            Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('admin.projects.show');
             Route::get('edit/{id}', 'ProjectsController@edit')->name('admin.projects.edit');
             Route::post('store', 'ProjectsController@store')->name('admin.projects.store');
             Route::patch('update/{id}', 'ProjectsController@update')->name('admin.projects.update');
             Route::delete('delete/{id}', 'ProjectsController@delete')->name('admin.projects.delete');
+            Route::post('assign-members', 'ProjectsController@assign_members')->name('admin.projects.assign-members');
+            Route::post('assign-technologies', 'ProjectsController@assign_technologies')->name('admin.projects.assign-technologies');
         });
 
          //MÓDULO DE CLIENTES

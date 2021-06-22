@@ -1,190 +1,85 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (Session::has('msj-exitoso'))
+        <script>
+            $(document).ready(function(){
+                toastr.success('El proyecto ha sido creado con éxito.', 'Operación Completada');
+            });
+        </script>
+    @endif
+    @if (Session::has('msj-deleted'))
+        <script>
+            $(document).ready(function(){
+                toastr.success('El proyecto ha sido eliminado con éxito.', 'Operación Completada');
+            });
+        </script>
+    @endif
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
 
-@include('layouts.partials.navbar')
+            <div class="content-body">
 
-@include('layouts.partials.sidebar')
+                <div id="table-head">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title mb-1">Proyectos</h3>
+                                <a href="{{ route('admin.projects.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"> Agregar nuevo proyecto</a>
+                            </div>
 
-<div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
-    <div class="content-wrapper">
-
-        <div class="content-body">
-
-            <div id="table-head">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title mb-1">Proyectos</h3>
-                        </div>
-
-                        <div class="card-content">
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead class="thead-gris">
-                                        <tr class="">
-                                            <th>ID</th>
-                                            <th>NOMBRE</th>
-                                            <th>FECHA DE INICIO</th>
-                                            <th>FECHA DE ENTREGA</th>
-                                            <th>ESTADO</th>
-                                            <th>ACCIÓN</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{ asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <div class="bottom float-right" style="margin-right:20px;">
-
-                                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
-
-                                    </button>
-
-                                    <button class="btn btn-primary  btn-circle btn-lg">1
-
-                                    </button>
-
-                                    <button style="color:black;" class="btn btn-circle btn-lg">2
-
-                                    </button>
-
-                                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
-
-
-                                    </button>
-
+                            <div class="card-content">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead class="thead-light">
+                                            <tr class="">
+                                                <th>ID</th>
+                                                <th>NOMBRE</th>
+                                                <th>FECHA DE INICIO</th>
+                                                <th>FECHA DE ENTREGA</th>
+                                                <th>ESTADO</th>
+                                                <th>ACCIÓN</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($projects as $project)
+                                                <tr>
+                                                    <th scope="row">{{ $project->id }}</th>
+                                                    <td>{{ $project->name }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($project->start_date)) }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($project->ending_date)) }}</td>
+                                                    <td>
+                                                        @if ($project->status == 0)
+                                                            <label class="label status-label status-label-purple">No Atendido</label>
+                                                        @elseif ($project->status == 1)
+                                                            <label class="label status-label status-label-gray">En Proceso</label>
+                                                        @elseif ($project->status == 2)
+                                                            <label class="label status-label status-label-blue">Testiando</label>
+                                                        @elseif ($project->status == 3)
+                                                            <label class="label status-label status-label-green">Completado</label>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <!--<a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
+                                                    -->
+                                                        <a href="{{ route('admin.projects.show', [$project->slug, $project->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                        <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('delete-form').submit();"><i class="fa fa-trash action-icon"></i></a>
+                                                        <form action="{{ route('admin.projects.delete', $project->id) }}" method="POST" id="delete-form">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
 
-                                <br><br> </table>
-                                <br>
-
-                                <table>
-                                    <tbody>
-
-                                        @foreach ($projects as $item)
-                                        <tr>
-                                            <th>{{ $item->id }}</th>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->start_date }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.projects.edit', $item->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
-                                                <form action="{{ route('admin.projects.delete', $item->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="feather icon-trash"></i>Eliminar</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                <div class="mr-3">
+                                    {{ $projects->links() }} 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -192,10 +87,4 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
 @endsection
