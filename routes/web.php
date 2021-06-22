@@ -115,10 +115,14 @@ Route::group(['middleware'=>['auth']], function() {
     //LISTADO DE RUTAS PARA EL EMPLEADO
     Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'profile'], 'profile' => ['3']], function(){
         Route::get('/', 'EmployeesController@index')->name('employee.home');
+        Route::get('/profile', 'EmployeesController@profile')->name('employee.profile');
+
 
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function(){
             Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
+            Route::get('/detail', 'ProjectsController@detail')->name('employee.projects.list');
+
         });
 
         //MÓDULO DE FACTURAS

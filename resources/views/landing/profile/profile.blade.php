@@ -18,7 +18,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="card container" id="container-big-principal">
 
             <div class="content-body">
-                <div class="row" id="table-head">
+                <div class="row" >
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">

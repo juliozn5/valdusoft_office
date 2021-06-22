@@ -92,4 +92,8 @@ class ProjectsController extends Controller
         return redirect()->route('admin.projects.list')->with('message','Se elimino el Proyecto'.' '.$projects->client.' '.'Exitosamente');
 
     }
+    //detalle del proyecto
+   public function detail(){
+    return view('employee.projectsdetail');
+}
 }

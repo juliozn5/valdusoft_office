@@ -27,6 +27,6 @@
 </li>
 
 <li class=" nav-item">
-    <a href="{{ route('profile') }}"><img src="{{ asset('images/icons/perfil.png') }}" />
+    <a href="{{ route('employee.profile') }}"><img src="{{ asset('images/icons/perfil.png') }}" />
         <span class="menu-title ml-1" data-i18n="Email">Perfil</span></a>
 </li>
