@@ -19,7 +19,11 @@ class BillController extends Controller
             $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
             return view('employee.bills')->with('bills', $bills);
         }
-        
+
     }
+
+    public function details(){
+            return view('employee.billdetail');
+        }
 }
 
