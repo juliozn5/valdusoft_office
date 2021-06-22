@@ -9,13 +9,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @include('layouts.partials.navbar')
 
 @include('layouts.partials.sidebar')
-
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
+        <div class="content-header row"> </div>
+       
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
