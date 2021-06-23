@@ -17,5 +17,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/vendors/css/extensions/toastr.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/plugins/extensions/toastr.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/vendors/css/animate/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/vendors/css/extensions/sweetalert2.min.css') }}">
 
 @stack('custom_css')

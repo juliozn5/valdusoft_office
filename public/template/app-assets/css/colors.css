@@ -4634,11 +4634,11 @@ input:focus ~ .bg-info {
 }
 
 .info {
-  color : #00CFE8 !important;
+  color : #252856 !important;
 }
 
 .bg-info {
-  background-color : #00CFE8 !important;
+  background-color : #252856 !important;
 }
 .bg-info .card-header, .bg-info .card-footer {
   background-color : transparent;
@@ -4646,7 +4646,7 @@ input:focus ~ .bg-info {
 
 .alert-info {
   background : rgba(0, 207, 232, 0.2) !important;
-  color : #00CFE8 !important;
+  color : #252856 !important;
 }
 .alert-info .alert-heading {
   box-shadow : rgba(0, 207, 232, 0.4) 0 6px 15px -7px;
@@ -4660,54 +4660,54 @@ input:focus ~ .bg-info {
 }
 
 .border-info {
-  border : 1px solid #00CFE8 !important;
+  border : 1px solid #252856 !important;
 }
 
 .border-top-info {
-  border-top : 1px solid #00CFE8;
+  border-top : 1px solid #252856;
 }
 
 .border-bottom-info {
-  border-bottom : 1px solid #00CFE8;
+  border-bottom : 1px solid #252856;
 }
 
 .border-left-info {
-  border-left : 1px solid #00CFE8;
+  border-left : 1px solid #252856;
 }
 
 .border-right-info {
-  border-right : 1px solid #00CFE8;
+  border-right : 1px solid #252856;
 }
 
 .bg-info.badge-glow, .border-info.badge-glow, .badge-info.badge-glow {
-  box-shadow : 0 0 10px #00CFE8;
+  box-shadow : 0 0 10px #252856;
 }
 
 .badge.badge-info {
-  background-color : #00CFE8;
+  background-color : #252856;
 }
 
 .badge.badge-light-info {
   background-color : #B5F7FF;
-  color : #00CFE8 !important;
+  color : #252856 !important;
   font-weight : 500;
 }
 
 .overlay-info {
-  background : #00CFE8;
+  background : #252856;
   /* The Fallback */
   background : rgba(0, 207, 232, 0.6);
 }
 
 .btn-info {
   border-color : #00A1B5 !important;
-  background-color : #00CFE8 !important;
+  background-color : #252856 !important;
   color : #FFFFFF;
 }
 .btn-info:hover {
   border-color : #00B8CF !important;
   color : #FFFFFF !important;
-  box-shadow : 0 8px 25px -8px #00CFE8;
+  box-shadow : 0 8px 25px -8px #252856;
 }
 .btn-info:focus, .btn-info:active {
   color : #FFFFFF !important;
@@ -4715,19 +4715,19 @@ input:focus ~ .bg-info {
 
 .btn-flat-info {
   background-color : transparent;
-  color : #00CFE8;
+  color : #252856;
 }
 .btn-flat-info:hover {
-  color : #00CFE8;
+  color : #252856;
   background-color : rgba(0, 207, 232, 0.1);
 }
 .btn-flat-info:active, .btn-flat-info:focus {
-  background-color : #00CFE8;
+  background-color : #252856;
   color : #FFFFFF !important;
 }
 
 .btn-relief-info {
-  background-color : #00CFE8;
+  background-color : #252856;
   box-shadow : inset 0 -3px 0 0 rgba(0, 0, 0, 0.2);
   color : #FFFFFF;
 }
@@ -4742,20 +4742,20 @@ input:focus ~ .bg-info {
 }
 
 .btn-outline-info {
-  border : 1px solid #00CFE8;
+  border : 1px solid #252856;
   background-color : transparent;
-  color : #00CFE8;
+  color : #252856;
 }
 .btn-outline-info:hover {
   background-color : rgba(0, 207, 232, 0.08);
-  color : #00CFE8;
+  color : #252856;
 }
 .btn-outline-info:active {
   color : #FFFFFF !important;
 }
 
 .btn-info ~ .dropdown-menu .dropdown-item.active, .btn-outline-info ~ .dropdown-menu .dropdown-item.active, .btn-flat-info ~ .dropdown-menu .dropdown-item.active {
-  background-color : #00CFE8;
+  background-color : #252856;
   color : #FFFFFF;
 }
 .btn-info ~ .dropdown-menu .dropdown-item.active:hover, .btn-outline-info ~ .dropdown-menu .dropdown-item.active:hover, .btn-flat-info ~ .dropdown-menu .dropdown-item.active:hover {
@@ -4763,11 +4763,11 @@ input:focus ~ .bg-info {
 }
 
 .btn-info ~ .dropdown-menu .dropdown-item:not(.active):not(:active):hover, .btn-outline-info ~ .dropdown-menu .dropdown-item:not(.active):not(:active):hover, .btn-flat-info ~ .dropdown-menu .dropdown-item:not(.active):not(:active):hover {
-  color : #00CFE8;
+  color : #252856;
 }
 
 .dropdown.dropdown-icon-wrapper .btn-info ~ .dropdown-menu .dropdown-item:hover i, .dropdown.dropdown-icon-wrapper .btn-outline-info ~ .dropdown-menu .dropdown-item:hover i, .dropdown.dropdown-icon-wrapper .btn-flat-info ~ .dropdown-menu .dropdown-item:hover i, .dropup.dropdown-icon-wrapper .btn-info ~ .dropdown-menu .dropdown-item:hover i, .dropup.dropdown-icon-wrapper .btn-outline-info ~ .dropdown-menu .dropdown-item:hover i, .dropup.dropdown-icon-wrapper .btn-flat-info ~ .dropdown-menu .dropdown-item:hover i, .dropright.dropdown-icon-wrapper .btn-info ~ .dropdown-menu .dropdown-item:hover i, .dropright.dropdown-icon-wrapper .btn-outline-info ~ .dropdown-menu .dropdown-item:hover i, .dropright.dropdown-icon-wrapper .btn-flat-info ~ .dropdown-menu .dropdown-item:hover i, .dropleft.dropdown-icon-wrapper .btn-info ~ .dropdown-menu .dropdown-item:hover i, .dropleft.dropdown-icon-wrapper .btn-outline-info ~ .dropdown-menu .dropdown-item:hover i, .dropleft.dropdown-icon-wrapper .btn-flat-info ~ .dropdown-menu .dropdown-item:hover i {
-  color : #00CFE8;
+  color : #252856;
 }
 
 .dropdown.dropdown-icon-wrapper .btn-info ~ .dropdown-menu .dropdown-item:active i, .dropdown.dropdown-icon-wrapper .btn-outline-info ~ .dropdown-menu .dropdown-item:active i, .dropdown.dropdown-icon-wrapper .btn-flat-info ~ .dropdown-menu .dropdown-item:active i, .dropup.dropdown-icon-wrapper .btn-info ~ .dropdown-menu .dropdown-item:active i, .dropup.dropdown-icon-wrapper .btn-outline-info ~ .dropdown-menu .dropdown-item:active i, .dropup.dropdown-icon-wrapper .btn-flat-info ~ .dropdown-menu .dropdown-item:active i, .dropright.dropdown-icon-wrapper .btn-info ~ .dropdown-menu .dropdown-item:active i, .dropright.dropdown-icon-wrapper .btn-outline-info ~ .dropdown-menu .dropdown-item:active i, .dropright.dropdown-icon-wrapper .btn-flat-info ~ .dropdown-menu .dropdown-item:active i, .dropleft.dropdown-icon-wrapper .btn-info ~ .dropdown-menu .dropdown-item:active i, .dropleft.dropdown-icon-wrapper .btn-outline-info ~ .dropdown-menu .dropdown-item:active i, .dropleft.dropdown-icon-wrapper .btn-flat-info ~ .dropdown-menu .dropdown-item:active i {
@@ -4775,11 +4775,11 @@ input:focus ~ .bg-info {
 }
 
 .bullet.bullet-info {
-  background-color : #00CFE8;
+  background-color : #252856;
 }
 
 .pagination-info .page-item.active .page-link {
-  background : #00CFE8;
+  background : #252856;
   color : #FFFFFF;
 }
 .pagination-info .page-item.active .page-link:hover {
@@ -4787,65 +4787,65 @@ input:focus ~ .bg-info {
 }
 
 .pagination-info .page-item .page-link:hover {
-  color : #00CFE8;
+  color : #252856;
 }
 
 .pagination-info .page-item.prev-item .page-link:hover, .pagination-info .page-item.next-item .page-link:hover {
-  background : #00CFE8;
+  background : #252856;
   color : #FFFFFF;
 }
 
 .nav-pill-info .nav-item .nav-link.active {
   color : #FFFFFF;
-  background-color : #00CFE8 !important;
+  background-color : #252856 !important;
 }
 
 .progress-bar-info {
   background-color : rgba(0, 207, 232, 0.1);
 }
 .progress-bar-info .progress-bar {
-  background-color : #00CFE8;
+  background-color : #252856;
 }
 
 .chip-info {
-  background-color : #00CFE8 !important;
+  background-color : #252856 !important;
 }
 .chip-info .chip-body {
   color : #FFFFFF !important;
 }
 
 .divider.divider-info .divider-text:before, .divider.divider-info .divider-text:after {
-  border-color : #00CFE8 !important;
+  border-color : #252856 !important;
 }
 
 input[type='checkbox'].bg-info + .custom-control-label:before, input[type='radio'].bg-info + .custom-control-label:before {
-  background-color : #00CFE8 !important;
+  background-color : #252856 !important;
 }
 
 input:focus ~ .bg-info {
-  box-shadow : 0 0 0 0.075rem #FFFFFF, 0 0 0 0.21rem #00CFE8 !important;
+  box-shadow : 0 0 0 0.075rem #FFFFFF, 0 0 0 0.21rem #252856 !important;
 }
 
 .vs-checkbox-info input:checked ~ .vs-checkbox {
-  border-color : #00CFE8 !important;
+  border-color : #252856 !important;
 }
 .vs-checkbox-info input:checked ~ .vs-checkbox .vs-checkbox--check {
-  background-color : #00CFE8 !important;
+  background-color : #252856 !important;
 }
 
 .vs-checkbox-info input:active:checked + .vs-checkbox .vs-checkbox--check {
-  background-color : #00CFE8 !important;
+  background-color : #252856 !important;
 }
 
 .custom-switch-info .custom-control-input:checked ~ .custom-control-label::before {
-  background-color : #00CFE8 !important;
+  background-color : #252856 !important;
   color : #FFFFFF;
   -webkit-transition : all 0.2s ease-out;
           transition : all 0.2s ease-out;
 }
 
 .vs-radio-info input:checked ~ .vs-radio .vs-radio--circle {
-  background : #00CFE8 !important;
+  background : #252856 !important;
   box-shadow : 0 3px 12px 0 rgba(0, 207, 232, 0.4) !important;
 }
 

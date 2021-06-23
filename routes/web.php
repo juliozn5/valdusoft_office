@@ -45,6 +45,9 @@ Route::group(['middleware'=>['auth']], function() {
             Route::delete('delete/{id}', 'ProjectsController@delete')->name('admin.projects.delete');
             Route::post('assign-members', 'ProjectsController@assign_members')->name('admin.projects.assign-members');
             Route::post('assign-technologies', 'ProjectsController@assign_technologies')->name('admin.projects.assign-technologies');
+            Route::post('add-attachment', 'ProjectsController@add_attachment')->name('admin.projects.add-attachment');
+            Route::post('update-attachment', 'ProjectsController@update_attachment')->name('admin.projects.update-attachment');
+            Route::delete('delete-attachment/{id}', 'ProjectsController@delete_attachment')->name('admin.projects.delete-attachment');
         });
 
          //MÓDULO DE CLIENTES

@@ -49,7 +49,9 @@
                                                     <th scope="row">{{ $project->id }}</th>
                                                     <td>{{ $project->name }}</td>
                                                     <td>{{ date('d-m-Y', strtotime($project->start_date)) }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($project->ending_date)) }}</td>
+                                                    <td>
+                                                        {{ (is_null($project->ending_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->ending_date)) }}
+                                                    </td>
                                                     <td>
                                                         @if ($project->status == 0)
                                                             <label class="label status-label status-label-purple">No Atendido</label>
