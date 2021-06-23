@@ -13,17 +13,9 @@
         <span class="menu-title ml-1" data-i18n="Email">Facturas</span></a>
 </li>
 
-<li class="nav-item has-sub"><a href="#"><img src="{{ asset('images/icons/group_157.png') }}" />
-    <span class="menu-title ml-1" data-i18n="Ecommerce">De interes</span></a>
-
-    <ul>
-        <li><a href="{{ route('employee.interest.holidays') }}"><span class="menu-title ml-1">Vacaciones</span></a>
-        </li>
-        <li><a href="{{ route('employee.interest.financing') }}"><span class="menu-title ml-1">Financiamientos</span></a>
-        </li>
-        <li><a href="{{ route('employee.interest.bonds') }}"><span class="menu-title ml-1">Bonos</span></a>
-        </li>
-    </ul>
+<li class=" nav-item">
+    <a href="{{ route('employee.interest.financing') }}"><img src="{{ asset('images/icons/group_157.png') }}" />
+        <span class="menu-title ml-1" data-i18n="Email">De interes</span></a>
 </li>
 
 <li class=" nav-item">
