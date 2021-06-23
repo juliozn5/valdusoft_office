@@ -41,7 +41,7 @@
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table mb-0">
-                                    <thead class="thead-dark">
+                                    <thead class="thead-gris">
                                         <tr>
                                             <th>#</th>
                                             <th>Foto</th>
