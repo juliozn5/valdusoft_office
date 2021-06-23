@@ -121,7 +121,7 @@ Route::group(['middleware'=>['auth']], function() {
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function(){
             Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
-            Route::get('/detail', 'ProjectsController@detail')->name('employee.projects.list');
+            Route::get('/detail', 'ProjectsController@detail')->name('employee.projects.detail');
 
         });
 
