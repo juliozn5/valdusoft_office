@@ -42,4 +42,9 @@ class Project extends Model
     public function attachments(){
         return $this->hasMany('App\Models\Attachment');
     }
+
+    //Relación de los proyectos con sus transacciones contables
+    public function accounting_transactions(){
+        return $this->hasMany('App\Models\AccountingTransaction');
+    }
 }
