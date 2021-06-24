@@ -25,10 +25,50 @@
             });
         });
 
+        function editProject($project){
+            $("#project_name").val($project.name);
+            $("#project_user_id option[value="+$project.user_id+"]").attr("selected", true);
+            $("#project_country_id option[value="+$project.country_id+"]").attr("selected", true);
+            $("#project_type option[value="+$project.type+"]").attr("selected", true);
+            $("#project_start_date").val($project.start_date);
+            $("#project_ending_date").val($project.ending_date);
+            $("#project_status option[value="+$project.status+"]").attr("selected", true);
+        }
+
         function editAttachment($attachment){
             $("#attachment_id").val($attachment.id);
             $("#name").val($attachment.name);
             $("#file_type option[value="+$attachment.file_type+"]").attr("selected", true);
+        }
+
+        function changeTransactionType($type){
+            $("#type option[value="+$type+"]").attr("selected", true);
+            if ($type == '+'){
+                $("#transaction_type_button").html('Ingreso');
+            }else{
+                $("#transaction_type_button").html('Egreso');
+            }
+        }
+
+        function addTransaction(){
+            if ($("#amount").val() == ""){
+                Swal.fire({
+                    title: "¡Ups!",
+                    text: "¡Debes especificar un monto primero!",
+                    type: "error",
+                    confirmButtonClass: 'btn btn-primary',
+                    buttonsStyling: false,
+                });
+            }else{
+                $("#amount-hidden").val($("#amount").val());
+                $("#newTransaction").modal("show");
+            }
+        }
+
+        function editTransaction($transaction){
+            $("#transaction_id").val($transaction.id);
+            $("#description").val($transaction.description);
+            $("#status option[value="+$transaction.status+"]").attr("selected", true);
         }
     </script>
 @endpush
@@ -54,6 +94,22 @@
         <script>
             $(document).ready(function(){
                 toastr.success('El archivo adjunto ha sido eliminado con éxito.', 'Operación Completada');
+            });
+        </script>
+    @endif
+
+    @if (Session::has('msj-transaction'))
+        <script>
+            $(document).ready(function(){
+                toastr.success('La transacción contable se ha agregado con éxito.', 'Operación Completada');
+            });
+        </script>
+    @endif
+
+    @if (Session::has('transaction-updated'))
+        <script>
+            $(document).ready(function(){
+                toastr.success('Los datos de la transacción contable se han modificado con éxito.', 'Operación Completada');
             });
         </script>
     @endif
@@ -89,7 +145,15 @@
                             </div>
 
                             <div class="p-2">
-                                <h3 class="card-title">{{ $project->name }}</h3>
+                                <div class="row">
+                                    <div class="col-6 text-left">
+                                        <h3 class="card-title">{{ $project->name }}</h3>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <a class="btn btn-primary btn-sm waves-effect waves-light" href="#editProject" data-toggle="modal" onclick="editProject({{ $project }});"><i class="fa fa-edit"></i> Editar</a>
+                                    </div>
+                                </div>
+                                
                                 
                                 {{-- Sección de Cliente --}}
                                 <div class="row mt-2">
@@ -184,20 +248,20 @@
                             <div class="pt-2 pl-2 pr-2 pb-0">
                                 <ul class="nav nav-pills nav-justified">
                                     <li class="nav-item">
-                                        <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments">Adjuntos</a>
+                                        <a class="nav-link nav-link-pills  @if (!Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#attachments">Adjuntos</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat">Chat</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link nav-link-pills" data-toggle="tab" href="#accountant">Contable</a>
+                                        <a class="nav-link nav-link-pills  @if (Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#accountant">Contable</a>
                                     </li>
                                 </ul>
                             </div>
                             
                             <div class="tab-content">
                                 {{-- Pestaña de Adjuntos --}}
-                                <div class="tab-pane active pl-2 pr-2 pt-1" id="attachments">
+                                <div class="tab-pane  @if (!Session::has('msj-transaction')) active @endif pl-2 pr-2 pt-1" id="attachments">
                                     <h3 class="card-title">Adjuntos</h3>
 
                                     <div class="row mt-1 mb-2">
@@ -245,7 +309,7 @@
                                 </div>
 
                                 {{-- Pestaña de Contable --}}
-                                <div class="tab-pane fade" id="accountant">
+                                <div class="tab-pane  @if (Session::has('msj-transaction')) active @else fade @endif" id="accountant">
                                     <h3 class="card-title ml-2">Contable</h3>
 
                                     <div class="table-responsive mt-1">
@@ -255,27 +319,169 @@
                                                     <th>FECHA</th>
                                                     <th>DESCRIPCIÓN</th>
                                                     <th>MONTO</th>
+                                                    <th>ACCIÓN</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>05 May 2021</td>
-                                                    <td>Pago de ejemplo<br> Completado</td>
-                                                    <td>400,03</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>05 May 2021</td>
-                                                    <td>Pago de ejemplo<br> Completado</td>
-                                                    <td>-300,14</td>
-                                                </tr>
+                                                @if ($project->accounting_transactions->count() > 0)
+                                                    @foreach ($project->accounting_transactions as $transaction)
+                                                        <tr>
+                                                            <td>{{ date('d-m-Y', strtotime($transaction->date)) }}</td>
+                                                            <td>
+                                                                <span class="transaction-description">{{ $transaction->description }}</span><br> 
+                                                                @if ($transaction->status == 0)
+                                                                    <span class="transaction-status">Pendiente</span>
+                                                                @elseif ($transaction->status == 1)
+                                                                    <span class="transaction-status">Completada</span>
+                                                                @elseif ($transaction->status == 2)
+                                                                    <span class="transaction-status">Cancelada</span>
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if ($transaction->type == '+')
+                                                                    <span class="text-success">
+                                                                        {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
+                                                                    </span>
+                                                                @else
+                                                                    <span class="text-danger">
+                                                                        {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
+                                                                    </span>
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <a href="#editTransaction" data-toggle="modal" onclick="editTransaction({{ $transaction }});"><i class="fa fa-edit mr-1 action-icon"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td colspan="3">El proyecto no posee transacciones contables...</td>
+                                                    </tr>
+                                                @endif
                                             </tbody>
                                         </table>
+                                    </div>
+
+                                    <div>
+                                        <div class="row pl-2 pr-2 pt-1">
+                                            <div class="col-8">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="amount" placeholder="0.00">
+                                                    <div class="input-group-append">
+                                                        <button type="button" class="btn btn-secondary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" id="transaction_type_button">
+                                                            Ingreso
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" >
+                                                            <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a>
+                                                            <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('-');">Egreso</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <button class="btn btn-info mb-2 waves-effect waves-light" onclick="addTransaction();">Guardar</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+     {{-- Modal para editar datos del proyecto --}}
+     <div class="modal fade text-left" id="editProject" tabindex="-1" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary white">
+                    <h5 class="modal-title">Editar Proyecto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
+                    @method('PATCH')
+                    @csrf
+                    <input type="hidden" name="project_id" value="{{ $project->id }}">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="name">Nombre</label>
+                                    <input type="text" name="name" id="project_name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="user_id">Cliente</label>
+                                    <select name="user_id" id="projet_user_id" class="form-control">
+                                        @foreach ($clients as $client)
+                                            <option value="{{ $client->id }}">{{ $client->name }} {{ $client->last_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="country">País</label>
+                                    <select name="country_id" id="project_country_id" class="form-control">
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="start_date">Fecha de inicio</label>
+                                    <input type="date" name="start_date" id="project_start_date" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="ending_date">Fecha de entrega</label>
+                                    <input type="date" name="ending_date" id="project_ending_date" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="type">Tipo</label>
+                                    <select name="type" id="project_type" class="form-control">
+                                        <option value="Fijo">Fijo</option>
+                                        <option value="Entrega">Entrega</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="type">Estado</label>
+                                    <select name="status" id="project_status" class="form-control">
+                                        <option value="0">No Atendido</option>
+                                        <option value="1">En Proceso</option>
+                                        <option value="2">Testiando</option>
+                                        <option value="3">Completado</option>
+                                        <option value="4">Eliminado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="logo">Logo</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="logo" id="logo">
+                                        <label class="custom-file-label" for="logo">Seleccione un logo</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -394,7 +600,10 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="file">Archivo adjunto</label>
-                                    <input type="file" name="file" class="form-control" required>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="file" id="file">
+                                        <label class="custom-file-label" for="logo">Seleccione un archivo</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -442,7 +651,107 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="file">Archivo adjunto</label>
-                                    <input type="file" name="file" id="file" class="form-control">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="file" id="file">
+                                        <label class="custom-file-label" for="logo">Seleccione un archivo</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal para agregar nueva transacción --}}
+    <div class="modal fade text-left" id="newTransaction" tabindex="-1" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary white">
+                    <h5 class="modal-title">Agregar Contable</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="{{ route('admin.projects.add-accounting-transaction') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="project_id" value="{{ $project->id }}">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="name">Descripción para la transacción</label>
+                                    <input type="text" name="description" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="amount">Monto</label>
+                                    <input type="text" name="amount" id="amount-hidden" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="type">Tipo</label>
+                                    <select name="type" id="type" class="form-control" required>
+                                        <option value="+" selected>Ingreso</option>
+                                        <option value="-">Egreso</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="status">Estado</label>
+                                    <select name="status" class="form-control" required>
+                                        <option value="" selected disabled>Seleccione un estado...</option>
+                                        <option value="0">Pendiente</option>
+                                        <option value="1">Completado</option>
+                                        <option value="2">Cancelado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal para editar una transacción --}}
+    <div class="modal fade text-left" id="editTransaction" tabindex="-1" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary white">
+                    <h5 class="modal-title">Editar Contable</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="{{ route('admin.projects.update-accounting-transaction') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="transaction_id" id="transaction_id">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="name">Descripción para la transacción</label>
+                                    <input type="text" name="description" id="description" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="status">Estado</label>
+                                    <select name="status" id="status" class="form-control" required>
+                                        <option value="0">Pendiente</option>
+                                        <option value="1">Completada</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

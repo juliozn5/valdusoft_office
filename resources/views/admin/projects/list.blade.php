@@ -64,8 +64,6 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <!--<a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-sm btn-primary mb-1"><i class="feather icon-edit"></i>Editar</a>
-                                                    -->
                                                         <a href="{{ route('admin.projects.show', [$project->slug, $project->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
                                                         <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('delete-form').submit();"><i class="fa fa-trash action-icon"></i></a>
                                                         <form action="{{ route('admin.projects.delete', $project->id) }}" method="POST" id="delete-form">

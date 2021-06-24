@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attachment;
 use App\Models\Project;
+use App\Models\AccountingTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str as Str;
 use Auth;
@@ -86,7 +87,7 @@ class ProjectsController extends Controller
     /** Ver detalles de un Proyecto
     *** Perfil: Admin ***/
     public function show($slug, $id){
-        $project = Project::with('employees', 'technologies', 'attachments')
+        $project = Project::with('employees', 'technologies', 'attachments', 'accounting_transactions')
                     ->where('id', '=', $id)
                     ->first();
         
@@ -118,35 +119,36 @@ class ProjectsController extends Controller
             $attachment->time = date('H:i', strtotime($attachment->created_at));
         }
 
-        return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies'));   
-    }
+        $clients = DB::table('users')
+                        ->select('id', 'name', 'last_name')
+                        ->where('profile_id', '=', 2)
+                        ->orderBy('name', 'ASC')
+                        ->get();
+        
+        $countries = DB::table('countries')
+                        ->select('id', 'name')
+                        ->orderBy('name', 'ASC')
+                        ->get();
 
-    /** Editar un Proyecto
-    *** Perfil: Admin ***/
-    public function edit($id){
-
-        $projects = Project::find($id);
-
-           return view('admin.projects.edit')
-           ->with('projects', $projects);   
+        return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries'));   
     }
 
     /** Guardar datos modificados del Proyecto
     *** Perfil: Admin ***/
     public function update(Request $request, $id){
-        $projects = Project::find($id);
+        $project = Project::find($id);
+        $project->fill($request->all());
 
-        $fields = [     ];
+        if ($request->hasFile('logo')){
+            $file = $request->file('logo');
+            $name = $project->id.".".$file->getClientOriginalExtension();
+            $file->move(public_path().'/uploads/images/projects', $name);
+            $project->logo = $name;
+        }
+        
+        $project->save();
 
-        $msj = [       ];
-
-        $this->validate($request, $fields, $msj);
-
-        $projects->update($request->all());
-      
-        $projects->save();
-
-        return redirect()->route('admin.projects.list')->with('message','Se actualizo el Proyecto Exitosamente');  
+        return redirect()->back()->with('project-updated','done');  
     }
 
     public function delete($id){
@@ -243,6 +245,45 @@ class ProjectsController extends Controller
         return redirect()->back()->with('attachment-deleted', 'done');
     }
 
+    /** Agregar una transacción contable al proyecto
+    *** Perfil: Admin ***/
+    public function add_accounting_transaction(Request $request){
+        $lastTransaction = DB::table('project_accounting_transactions')
+                                ->select('balance')
+                                ->where('project_id', '=', $request->project_id)
+                                ->orderBy('id', 'DESC')
+                                ->first();
+
+        $transaction = new AccountingTransaction($request->all());
+        $transaction->date = date('Y-m-d');
+        if (!is_null($lastTransaction)){
+            if ($transaction->type == '+'){
+                $transaction->balance = $lastTransaction->balance + $transaction->amount;
+            }else{
+                $transaction->balance = $lastTransaction->balance - $transaction->amount;
+            }
+        }else{
+            if ($transaction->type == '+'){
+                $transaction->balance = $transaction->amount;
+            }else{
+                $transaction->balance = -$transaction->amount;
+            }
+        }
+        $transaction->save();
+
+        return redirect()->back()->with('msj-transaction', 'true');
+    }
+
+    /** Modificar los datos una transacción del proyecto
+    *** Perfil: Admin ***/
+    public function update_accounting_transaction(Request $request){
+        $transaction = AccountingTransaction::find($request->transaction_id);
+        $transaction->fill($request->all());
+        $transaction->save();        
+      
+        return redirect()->back()->with('transaction-updated', 'done');
+    }
+    
     public function getMonthName($month){
         switch ($month){
             case 1:
