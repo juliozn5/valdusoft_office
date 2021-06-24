@@ -118,6 +118,8 @@ class ProjectsController extends Controller
             $attachment->time = date('H:i', strtotime($attachment->created_at));
         }
 
+       // dd($availableEmployees);
+
         return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies'));   
     }
 
