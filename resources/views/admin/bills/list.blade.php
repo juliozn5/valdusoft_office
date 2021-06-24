@@ -237,8 +237,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
                                         </td>
                                     </tr>
-
-
+                                    
                                     <tr>
                                         <th scope="row">#125</th>
                                         <td>Freddy Sanchez</td>
@@ -302,8 +301,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             </div>
 
                             <br><br><br>
-
-
                         </div>
                     </div>
                 </div>

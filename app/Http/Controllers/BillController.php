@@ -27,7 +27,6 @@ class BillController extends Controller
     }
 
     public function details(){
-            return view('employee.billdetail');
+            return view('employee.billdetail');                             
         }
-}
-
+  }
