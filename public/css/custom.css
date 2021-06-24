@@ -194,6 +194,16 @@
 .nav-link-pills{
     padding: 12px !important;
 }
+.transaction-description{
+    font-size: 15px; 
+    color: #650865; 
+    font-weight: 500;
+}
+.transaction-status{
+    font-size: 12px; 
+    color: #3C3232; 
+    font-weight: 400;
+}
 
 #process-project {
     background: #3c3232;

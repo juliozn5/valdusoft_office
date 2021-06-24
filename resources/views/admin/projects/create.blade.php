@@ -43,7 +43,10 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="logo">Logo</label>
-                                                <input type="file" name="logo" id="logo" class="form-control">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="logo" id="logo">
+                                                    <label class="custom-file-label" for="logo">Seleccione un logo</label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-12">

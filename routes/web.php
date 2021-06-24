@@ -39,7 +39,6 @@ Route::group(['middleware'=>['auth']], function() {
             Route::get('/', 'ProjectsController@list')->name('admin.projects.list');
             Route::get('create', 'ProjectsController@create')->name('admin.projects.create');
             Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('admin.projects.show');
-            Route::get('edit/{id}', 'ProjectsController@edit')->name('admin.projects.edit');
             Route::post('store', 'ProjectsController@store')->name('admin.projects.store');
             Route::patch('update/{id}', 'ProjectsController@update')->name('admin.projects.update');
             Route::delete('delete/{id}', 'ProjectsController@delete')->name('admin.projects.delete');
@@ -48,6 +47,8 @@ Route::group(['middleware'=>['auth']], function() {
             Route::post('add-attachment', 'ProjectsController@add_attachment')->name('admin.projects.add-attachment');
             Route::post('update-attachment', 'ProjectsController@update_attachment')->name('admin.projects.update-attachment');
             Route::delete('delete-attachment/{id}', 'ProjectsController@delete_attachment')->name('admin.projects.delete-attachment');
+            Route::post('add-accounting-transaction', 'ProjectsController@add_accounting_transaction')->name('admin.projects.add-accounting-transaction');
+            Route::post('update-accounting-transaction', 'ProjectsController@update_accounting_transaction')->name('admin.projects.update-accounting-transaction');
         });
 
          //MÓDULO DE CLIENTES
@@ -129,7 +130,7 @@ Route::group(['middleware'=>['auth']], function() {
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function(){
             Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
-            Route::get('/detail', 'ProjectsController@detail')->name('employee.projects.list');
+            Route::get('/detail', 'ProjectsController@detail')->name('employee.projects.detail');
 
         });
 
