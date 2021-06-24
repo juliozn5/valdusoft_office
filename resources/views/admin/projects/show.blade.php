@@ -156,8 +156,12 @@
                 <div class="col-6">
                     <div class="card">
                         <div style="height: 300px;">
-                            <img src="{{ asset('uploads/images/projects/'.$project->logo) }}" width="100%" height="100%">
-                        </div>
+                            @if (!is_null($project->logo))
+                                <img src="{{ asset('uploads/images/projects/'.$project->logo) }}" width="100%" height="100%">
+                            @else
+                                <img src="{{ asset('images/image.png') }}" width="100%" height="100%">
+                            @endif
+                        </div>s
 
                         <div class="p-2">
                             <div class="row">

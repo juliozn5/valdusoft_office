@@ -195,22 +195,19 @@
                                 <h3 class="card-title">Empleados</h3>
                             </div>
                             <div class="card-content">
-                                <div class="table-responsive p-1">
-                                    <table class="table nowrap scroll-horizontal-vertical myTable table-striped" data-page-length='2'>
-                                        <thead class="thead-dark">
+                                <div class="table-responsive pt-2">
+                                    <table class="table">
+                                        <thead class="thead-light">
                                             <tr>
-                                                <th>#</th>
                                                 <th>Foto</th>
                                                 <th>Nombre</th>
                                                 <th>Cargo</th>
                                                 <th>Email</th>
-                                                <th>Telefono</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($user as $item)
                                                 <tr>
-                                                    <td>{{ $loop->iteration }}</td>
                                                     <td>
                                                         @if (!is_null($item->photo))
                                                             <img class="rounded-circle" width="50px" height="50px" src="{{ $item->photo }}" />
@@ -218,18 +215,19 @@
                                                             <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                         @endif
                                                     </td>
-                                                    <td>{{ $item->name }}</td>
-                                                    @if($item->position === '0')
-                                                    <td>Desarrollador</td>
-                                                    @elseif($item->position === '1')
-                                                    <td>Diseñador</td>
-                                                    @elseif($item->position === '2')
-                                                    <td>Project Manager,</td>
-                                                    @elseif($item->position === '3')
-                                                    <td>Financiero</td>
-                                                    @endif
+                                                    <td>{{ $item->name }} {{ $item->last_name }}</td>
+                                                    <td>
+                                                        @if($item->position === '0')
+                                                            Desarrollador
+                                                        @elseif($item->position === '1')
+                                                            Diseñador
+                                                        @elseif($item->position === '2')
+                                                            Project Manager
+                                                        @elseif($item->position === '3')
+                                                            Financiero
+                                                        @endif
+                                                    </td>
                                                     <td>{{ $item->email }}</td>
-                                                    <td>{{ $item->phone }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -253,22 +251,20 @@
                                 <h3 class="card-title mb-2">Listado de Hosting</h3>
                             </div>
                             <div class="card-content">
-                                <div class="table-responsive p-1">
-                                    <table class="table nowrap scroll-horizontal-vertical myTable table-striped" data-page-length='5'>
-                                        <thead class="thead-dark">
+                                <div class="table-responsive pt-2">
+                                    <table class="table">
+                                        <thead class="thead-light">
                                             <tr>
-                                                <th>#</th>
-                                                <th>Avatar</th>
-                                                <th>Cliente</th>
+                                                <th>AVATAR</th>
+                                                <th>CLIENTE</th>
                                                 <th>URL</th>
-                                                <th>Fecha de creación</th>
-                                                <th>Fecha de vencimiento</th>
+                                                <th>FECHA DE CREACIÓN</th>
+                                                <th>FECHA DE VENCIMIENTO</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($hosting as $item)
                                             <tr>
-                                                <th>{{ $loop->iteration }}</th>
                                                 @if(!$item->getMedia('photo')->isEmpty())
                                                 <th><img class="rounded-circle" width="50px" height="50px" src="{{ $item->photoUrl }}" /></th>
                                                 @else
