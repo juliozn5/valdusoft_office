@@ -75,13 +75,13 @@
                                 <div class="col-2">
                                     <div class="project-detail-titles">Fecha de Nacimiento</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->birthdate)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employe->birthdate)) }}
+                                        <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->birthdate)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->birthdate)) }}
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="project-detail-titles">Fecha de Ingreso</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->admission_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employe->admission_date)) }}
+                                        <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->admission_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->admission_date)) }}
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -109,7 +109,7 @@
                                 <div class="project-detail-titles">Curriculum Vitae</div>
                                 <div class="mt-1">
                                     @if (!is_null($employee->curriculum))
-                                    <a href="{{ asset('uploads/documents/curriculums/'.$employee->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $employe->curriculum }}</a>
+                                    <a href="{{ asset('uploads/documents/curriculums/'.$employee->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $employee->curriculum }}</a>
                                     @else
                                     <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible
                                     @endif
@@ -124,10 +124,10 @@
                                         <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($employee->price_per_hour)) ? 'Dato no disponible' : $employee->price_per_hour.' USD' }}
                                     </div>
                                 </div>
-                                <div class="col-2">
-                                    <div class="project-detail-titles">Cuenta Uphold</div>
+                                <div class="col-3">
+                                    <div class="project-detail-titles">Billetera USDT-TRON</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <img src="{{ asset('images/icons/uphold.png') }}" class="mr-1"> {{ (is_null($employee->uphold_account)) ? 'Dato no disponible' : $employee->uphold_account }}
+                                        <img src="{{ asset('images/icons/uphold.png') }}" class="mr-1"> {{ (is_null($employee->tron_wallet)) ? 'Dato no disponible' : $employee->tron_wallet }}
                                     </div>
                                 </div>
                             </div>
@@ -140,37 +140,44 @@
                                 <div class="table-responsive pt-2">
                                     <table class="table">
                                         <thead class="thead-light">
+                                            <th>ID</th>
                                             <th>FECHA</th>
                                             <th>DESCRIPCIÓN</th>
                                             <th>MONTO</th>
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <td>001</td>
                                                 <td>05 May 2021</td>
                                                 <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
                                                 <td>640$</td>
                                             </tr>
                                             <tr>
+                                                <td>002</td>
                                                 <td>05 May 2021</td>
                                                 <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
                                                 <td>640$</td>
                                             </tr>
                                             <tr>
+                                                <td>003</td>
                                                 <td>05 May 2021</td>
                                                 <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
                                                 <td>640$</td>
                                             </tr>
                                             <tr>
+                                                <td>004</td>
                                                 <td>05 May 2021</td>
                                                 <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
                                                 <td>640$</td>
                                             </tr>
                                             <tr>
+                                                <td>005</td>
                                                 <td>05 May 2021</td>
                                                 <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
                                                 <td>640$</td>
                                             </tr>
                                             <tr>
+                                                <td>006</td>
                                                 <td>05 May 2021</td>
                                                 <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
                                                 <td>640$</td>

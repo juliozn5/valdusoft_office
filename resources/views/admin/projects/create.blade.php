@@ -52,7 +52,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="user_id">Cliente</label>
-                                                <select name="user_id" id="user_id" class="form-control">
+                                                <select name="user_id" id="user_id" class="form-control" required>
                                                     <option value="" selected disabled>Seleccione un cliente...</option>
                                                     @foreach ($clients as $client)
                                                         <option value="{{ $client->id }}">{{ $client->name }} {{ $client->last_name }}</option>
@@ -65,10 +65,10 @@
                                                 <div class="pb-1"><label for="technologies">Tecnologías</label></div>
                                                 <div class="row ml-1">
                                                     @foreach ($technologies as $technology)
-                                                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
-                                                        <input type="checkbox" class="form-check-input skills" value="{{ $technology->id }}" name="technologies[]">
-                                                        <label class="form-check-label">{{ $technology->name }}</label>
-                                                    </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                                                            <input type="checkbox" class="form-check-input skills" value="{{ $technology->id }}" name="technologies[]">
+                                                            <label class="form-check-label">{{ $technology->name }}</label>
+                                                        </div>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -76,7 +76,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="country">País</label>
-                                                <select name="country" id="country" class="form-control">
+                                                <select name="country" id="country" class="form-control" required>
                                                     <option value="" selected disabled>Seleccione un país...</option>
                                                     @foreach ($countries as $country)
                                                         <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -87,7 +87,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="type">Tipo</label>
-                                                <select name="type" id="type" class="form-control">
+                                                <select name="type" id="type" class="form-control" required>
                                                     <option value="" selected disabled>Seleccione un tipo...</option>
                                                     <option value="Fijo">Fijo</option>
                                                     <option value="Entrega">Entrega</option>
@@ -97,7 +97,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="start_date">Fecha de inicio</label>
-                                                <input type="date" name="start_date" id="start_date" class="form-control">
+                                                <input type="date" name="start_date" id="start_date" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-12">

@@ -29,6 +29,7 @@ class User extends Authenticatable
         'curriculum',
         'price_per_hour',
         'uphold_account',
+        'tron_wallet',
         'profile_id',
         'photo'
     ];

@@ -75,7 +75,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="name">Nombre</label>
-                                            <input type="text" name="name" id="name" class="form-control">
+                                            <input type="text" name="name" id="name" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -111,7 +111,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="email">Correo Electrónico</label>
-                                            <input type="text" name="email" id="email" class="form-control" data-route="{{ route('admin.check-email') }}" onblur="checkEmail();">
+                                            <input type="text" name="email" id="email" class="form-control" data-route="{{ route('admin.check-email') }}" onblur="checkEmail();" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -129,19 +129,19 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password">Contraseña</label>
-                                            <input type="password" name="password" id="password" class="form-control" onkeyup="checkPasswords();">
+                                            <input type="password" name="password" id="password" class="form-control" onkeyup="checkPasswords();" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password_confirmation">Repetir Contraseña</label>
-                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" onkeyup="checkPasswords();">
+                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" onkeyup="checkPasswords();" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="uphold_account">Cuenta Uphold</label>
-                                            <input type="text" name="uphold_account" id="uphold_account" class="form-control">
+                                            <label for="uphold_account">Billetera USDT-TRON</label>
+                                            <input type="text" name="tron_wallet" id="tron_wallet" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12 pl-3">
