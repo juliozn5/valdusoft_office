@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/core/colors/palette-gradient.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/pages/authentication.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/pages/app-chat.css') }}">   
 
 <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
