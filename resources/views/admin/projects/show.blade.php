@@ -148,256 +148,256 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="content-body">
-            <div class="row" id="table-head">
-                {{-- Sección Izquierda --}}
-                <div class="col-6">
-                    <div class="card">
-                        <div style="height: 300px;">
-                            @if (!is_null($project->logo))
-                                <img src="{{ asset('uploads/images/projects/'.$project->logo) }}" width="100%" height="100%">
-                            @else
-                                <img src="{{ asset('images/image.png') }}" width="100%" height="100%">
-                            @endif
-                        </div>s
+            <div class="content-body">
+                <div class="row" id="table-head">
+                    {{-- Sección Izquierda --}}
+                    <div class="col-6">
+                        <div class="card">
+                            <div style="height: 300px;">
+                                @if (!is_null($project->logo))
+                                    <img src="{{ asset('uploads/images/projects/'.$project->logo) }}" width="100%" height="100%">
+                                @else
+                                    <img src="{{ asset('images/image.png') }}" width="100%" height="100%">
+                                @endif
+                            </div>
 
-                        <div class="p-2">
-                            <div class="row">
-                                <div class="col-6 text-left">
-                                    <h3 class="card-title">{{ $project->name }}</h3>
-                                </div>
-                                <div class="col-6 text-right">
-                                    <a class="btn btn-primary btn-sm waves-effect waves-light" href="#editProject" data-toggle="modal" onclick="editProject({{ $project }});"><i class="fa fa-edit"></i> Editar</a>
-                                </div>
-                            </div>
-                                
-                                
-                            {{-- Sección de Cliente --}}
-                            <div class="row mt-2">
-                                <div class="col-6">
-                                    <div class="project-detail-titles">Cliente</div>
-                                    <div class="mt-1 project-detail-dates">
-                                    {{ $project->user->name }} {{ $project->user->last_name }}
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="project-detail-titles">País</div>
-                                <div class="mt-1 project-detail-dates">
-                                    {{ $project->country->name }}
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Sección de Miembros--}}
-                        <div class="row mt-2">
-                            <div class="col-12 pb-1">
-                                <div class="project-detail-titles">Miembros</div>
-                            </div>
-                            @foreach ($project->employees as $employee)
-                                <div class="col-1 mr-1">
-                                    <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
-                                </div>
-                            @endforeach
-                            <div class="col-1">
-                                <a href="#availableEmployees" data-toggle="modal">
-                                    <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Miembro" height="50" width="50">
-                                </a>
-                            </div>
-                        </div>
-
-                        {{-- Sección de Fechas --}}
-                        <div class="row mt-2">
-                            <div class="col-6">
-                                <div class="project-detail-titles">Fecha de Inicio</div>
-                                <div class="mt-1 project-detail-dates">
-                                    <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($project->start_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->start_date)) }}
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="project-detail-titles">Fecha de Entrega</div>
-                                <div class="mt-1 project-detail-dates">
-                                    <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($project->ending_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->ending_date)) }}
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Sección de Tecnologías --}}
-                        <div class="mt-2">
-                            <div class="project-detail-titles">Tecnologías</div>
-                            <div class="mt-1">
-                                @foreach ($project->technologies as $technology)
-                                    <div class="text-center text-white d-inline-block mr-1">
-                                        <div class="project-detail-skill">{{ $technology->name }}</div>
+                            <div class="p-2">
+                                <div class="row">
+                                    <div class="col-6 text-left">
+                                        <h3 class="card-title">{{ $project->name }}</h3>
                                     </div>
-                                @endforeach
-                                <div class="text-center text-white d-inline-block mr-1">
-                                    <a href="#availableTechnologies" data-toggle="modal">
-                                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
-                                    </a>
+                                    <div class="col-6 text-right">
+                                        <a class="btn btn-primary btn-sm waves-effect waves-light" href="#editProject" data-toggle="modal" onclick="editProject({{ $project }});"><i class="fa fa-edit"></i> Editar</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                                    
+                                {{-- Sección de Cliente --}}
+                                <div class="row mt-2">
+                                    <div class="col-6">
+                                        <div class="project-detail-titles">Cliente</div>
+                                        <div class="mt-1 project-detail-dates">
+                                            {{ $project->user->name }} {{ $project->user->last_name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="project-detail-titles">País</div>
+                                        <div class="mt-1 project-detail-dates">
+                                            {{ $project->country->name }}
+                                        </div>
+                                    </div>
+                                </div>
 
-                        {{-- Sección de Status --}}
-                        <div class="row mt-2">
-                            <div class="col-12">
-                                <div class="project-detail-titles">Estado</div>
-                                <div class="mt-1 project-detail-dates">
-                                    @if ($project->status == 0)
-                                        <label class="label status-label status-label-purple">No Atendido</label>
-                                    @elseif ($project->status == 1)
-                                        <label class="label status-label status-label-gray">En Proceso</label>
-                                    @elseif ($project->status == 2)
-                                        <label class="label status-label status-label-blue">Testiando</label>
-                                    @elseif ($project->status == 3)
-                                        <label class="label status-label status-label-green">Completado</label>
-                                    @endif
+                                {{-- Sección de Miembros--}}
+                                <div class="row mt-2">
+                                    <div class="col-12 pb-1">
+                                        <div class="project-detail-titles">Miembros</div>
+                                    </div>
+                                    @foreach ($project->employees as $employee)
+                                        <div class="col-1 mr-1">
+                                            <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
+                                        </div>
+                                    @endforeach
+                                    <div class="col-1">
+                                        <a href="#availableEmployees" data-toggle="modal">
+                                            <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Miembro" height="50" width="50">
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {{-- Sección de Fechas --}}
+                                <div class="row mt-2">
+                                    <div class="col-6">
+                                        <div class="project-detail-titles">Fecha de Inicio</div>
+                                        <div class="mt-1 project-detail-dates">
+                                            <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($project->start_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->start_date)) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="project-detail-titles">Fecha de Entrega</div>
+                                        <div class="mt-1 project-detail-dates">
+                                            <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($project->ending_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->ending_date)) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Sección de Tecnologías --}}
+                                <div class="mt-2">
+                                    <div class="project-detail-titles">Tecnologías</div>
+                                    <div class="mt-1">
+                                        @foreach ($project->technologies as $technology)
+                                            <div class="text-center text-white d-inline-block mr-1">
+                                                <div class="project-detail-skill">{{ $technology->name }}</div>
+                                            </div>
+                                        @endforeach
+                                        <div class="text-center text-white d-inline-block mr-1">
+                                            <a href="#availableTechnologies" data-toggle="modal">
+                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Sección de Status --}}
+                                <div class="row mt-2">
+                                    <div class="col-12">
+                                        <div class="project-detail-titles">Estado</div>
+                                        <div class="mt-1 project-detail-dates">
+                                            @if ($project->status == 0)
+                                                <label class="label status-label status-label-purple">No Atendido</label>
+                                            @elseif ($project->status == 1)
+                                                <label class="label status-label status-label-gray">En Proceso</label>
+                                            @elseif ($project->status == 2)
+                                                <label class="label status-label status-label-blue">Testiando</label>
+                                            @elseif ($project->status == 3)
+                                                <label class="label status-label status-label-green">Completado</label>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {{-- Sección Derecha --}}
-                <div class="col-6">
-                    <div class="card">
-                        <div class="pt-2 pl-2 pr-2 pb-0">
-                            <ul class="nav nav-pills nav-justified">
-                                <li class="nav-item">
-                                    <a class="nav-link nav-link-pills  @if (!Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#attachments">Adjuntos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat">Chat</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link nav-link-pills  @if (Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#accountant">Contable</a>
-                                </li>
-                            </ul>
-                        </div>
-                            
-                        <div class="tab-content">
-                            {{-- Pestaña de Adjuntos --}}
-                            <div class="tab-pane  @if (!Session::has('msj-transaction')) active @endif pl-2 pr-2 pt-1" id="attachments">
-                                <h3 class="card-title">Adjuntos</h3>
+                    {{-- Sección Derecha --}}
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="pt-2 pl-2 pr-2 pb-0">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li class="nav-item">
+                                        <a class="nav-link nav-link-pills  @if (!Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#attachments">Adjuntos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat">Chat</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link nav-link-pills  @if (Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#accountant">Contable</a>
+                                    </li>
+                                </ul>
+                            </div>
+                                
+                            <div class="tab-content">
+                                {{-- Pestaña de Adjuntos --}}
+                                <div class="tab-pane  @if (!Session::has('msj-transaction')) active @endif pl-2 pr-2 pt-1" id="attachments">
+                                    <h3 class="card-title">Adjuntos</h3>
 
-                                <div class="row mt-1 mb-2">
-                                    @if ($project->attachments->count() > 0)
-                                        @foreach ($project->attachments as $attachment)
-                                            <div class="col-4 pt-1">
-                                                @if ($attachment->file_type == 'image')
-                                                    <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
-                                                        <img src="{{ asset('uploads/attachments/'.$attachment->file_name) }}" alt="{{ $attachment->name }}" width="100%" height="200px">
-                                                    </a>
-                                                @else
-                                                    <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
-                                                        <img src="{{ asset('images/pdf.png') }}" alt="{{ $attachment->name }}" width="100%">
-                                                    </a>
-                                                @endif
-                                            </div>
-                                            <div class="col-8 pt-1">
-                                                <div style="font-size: 12px; font-weight: 500; color: #3C3232;">{{ $attachment->name }}</div>
-
-                                                <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
-                                                    Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
-                                                    <a href="javascript:;" class="delete-attachment" data-id="attachment-{{ $attachment->id }}">Eliminar</a> - <a href="#editAttachment" data-toggle="modal" onclick="editAttachment({{ $attachment }});">Editar</a>
+                                    <div class="row mt-1 mb-2">
+                                        @if ($project->attachments->count() > 0)
+                                            @foreach ($project->attachments as $attachment)
+                                                <div class="col-4 pt-1">
+                                                    @if ($attachment->file_type == 'image')
+                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                                            <img src="{{ asset('uploads/attachments/'.$attachment->file_name) }}" alt="{{ $attachment->name }}" width="100%" height="200px">
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                                            <img src="{{ asset('images/pdf.png') }}" alt="{{ $attachment->name }}" width="100%">
+                                                        </a>
+                                                    @endif
                                                 </div>
+                                                <div class="col-8 pt-1">
+                                                    <div style="font-size: 12px; font-weight: 500; color: #3C3232;">{{ $attachment->name }}</div>
+
+                                                    <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
+                                                        Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
+                                                        <a href="javascript:;" class="delete-attachment" data-id="attachment-{{ $attachment->id }}">Eliminar</a> - <a href="#editAttachment" data-toggle="modal" onclick="editAttachment({{ $attachment }});">Editar</a>
+                                                    </div>
+                                                </div>
+                                                <form action="{{ route('admin.projects.delete-attachment', $attachment->id) }}" method="POST" id="delete-attachment-{{ $attachment->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            @endforeach
+                                        @else
+                                            <div class="col-12 p-2">
+                                                No hay archivos adjuntos actualmente...
                                             </div>
-                                            <form action="{{ route('admin.projects.delete-attachment', $attachment->id) }}" method="POST" id="delete-attachment-{{ $attachment->id }}">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                        @endforeach
-                                    @else
-                                        <div class="col-12 p-2">
-                                            No hay archivos adjuntos actualmente...
-                                        </div>
-                                    @endif
+                                        @endif
+                                    </div>
+
+                                    <div>
+                                        <a href="#newAttachment" data-toggle="modal" class="btn btn-info mb-2 waves-effect waves-light"> Añadir un adjunto</a>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <a href="#newAttachment" data-toggle="modal" class="btn btn-info mb-2 waves-effect waves-light"> Añadir un adjunto</a>
+                                {{-- Pestaña del Chat --}}
+                                <div class="tab-pane fade pl-2 pr-2" id="chat">
+                                    <h3 class="card-title">Chat</h3>
                                 </div>
-                            </div>
 
-                            {{-- Pestaña del Chat --}}
-                            <div class="tab-pane fade pl-2 pr-2" id="chat">
-                                <h3 class="card-title">Chat</h3>
-                            </div>
+                                {{-- Pestaña de Contable --}}
+                                <div class="tab-pane  @if (Session::has('msj-transaction')) active @else fade @endif" id="accountant">
+                                    <h3 class="card-title ml-2">Contable</h3>
 
-                            {{-- Pestaña de Contable --}}
-                            <div class="tab-pane  @if (Session::has('msj-transaction')) active @else fade @endif" id="accountant">
-                                <h3 class="card-title ml-2">Contable</h3>
-
-                                <div class="table-responsive mt-1">
-                                    <table class="table mb-0">
-                                        <thead class="thead-light">
-                                            <tr class="">
-                                                <th>FECHA</th>
-                                                <th>DESCRIPCIÓN</th>
-                                                <th>MONTO</th>
-                                                <th>ACCIÓN</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if ($project->accounting_transactions->count() > 0)
-                                                @foreach ($project->accounting_transactions as $transaction)
-                                                    <tr>
-                                                        <td>{{ date('d-m-Y', strtotime($transaction->date)) }}</td>
-                                                        <td>
-                                                            <span class="transaction-description">{{ $transaction->description }}</span><br> 
-                                                            @if ($transaction->status == 0)
-                                                                <span class="transaction-status">Pendiente</span>
-                                                            @elseif ($transaction->status == 1)
-                                                                <span class="transaction-status">Completada</span>
-                                                            @elseif ($transaction->status == 2)
-                                                                <span class="transaction-status">Cancelada</span>
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            @if ($transaction->type == '+')
-                                                                <span class="text-success">
-                                                                    {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
-                                                                </span>
-                                                            @else
-                                                                <span class="text-danger">
-                                                                    {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
-                                                                </span>
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            <a href="#editTransaction" data-toggle="modal" onclick="editTransaction({{ $transaction }});"><i class="fa fa-edit mr-1 action-icon"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @else
-                                                <tr>
-                                                    <td colspan="3">El proyecto no posee transacciones contables...</td>
+                                    <div class="table-responsive mt-1">
+                                        <table class="table mb-0">
+                                            <thead class="thead-light">
+                                                <tr class="">
+                                                    <th>FECHA</th>
+                                                    <th>DESCRIPCIÓN</th>
+                                                    <th>MONTO</th>
+                                                    <th>ACCIÓN</th>
                                                 </tr>
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            </thead>
+                                            <tbody>
+                                                @if ($project->accounting_transactions->count() > 0)
+                                                    @foreach ($project->accounting_transactions as $transaction)
+                                                        <tr>
+                                                            <td>{{ date('d-m-Y', strtotime($transaction->date)) }}</td>
+                                                            <td>
+                                                                <span class="transaction-description">{{ $transaction->description }}</span><br> 
+                                                                @if ($transaction->status == 0)
+                                                                    <span class="transaction-status">Pendiente</span>
+                                                                @elseif ($transaction->status == 1)
+                                                                    <span class="transaction-status">Completada</span>
+                                                                @elseif ($transaction->status == 2)
+                                                                    <span class="transaction-status">Cancelada</span>
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if ($transaction->type == '+')
+                                                                    <span class="text-success">
+                                                                        {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
+                                                                    </span>
+                                                                @else
+                                                                    <span class="text-danger">
+                                                                        {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
+                                                                    </span>
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <a href="#editTransaction" data-toggle="modal" onclick="editTransaction({{ $transaction }});"><i class="fa fa-edit mr-1 action-icon"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td colspan="3">El proyecto no posee transacciones contables...</td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                <div>
-                                    <div class="row pl-2 pr-2 pt-1">
-                                        <div class="col-8">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="amount" placeholder="0.00">
-                                                <div class="input-group-append">
-                                                    <button type="button" class="btn btn-secondary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" id="transaction_type_button">
-                                                        Ingreso
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" >
-                                                        <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a>
-                                                        <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('-');">Egreso</a>
+                                    <div>
+                                        <div class="row pl-2 pr-2 pt-1">
+                                            <div class="col-8">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="amount" placeholder="0.00">
+                                                    <div class="input-group-append">
+                                                        <button type="button" class="btn btn-secondary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" id="transaction_type_button">
+                                                            Ingreso
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" >
+                                                            <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a>
+                                                            <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('-');">Egreso</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <button class="btn btn-info mb-2 waves-effect waves-light" onclick="addTransaction();">Guardar</button>
+                                            <div class="col-4 text-right">
+                                                <button class="btn btn-info mb-2 waves-effect waves-light" onclick="addTransaction();">Guardar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -533,21 +533,14 @@
                                 </div>
                             @endif
                         </div>
-                        @endforeach
-                        @else
-                        <div class="col-12">
-                            No hay miembros disponibles para asignar...
-                        </div>
-                        @endif
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Asignar</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Asignar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
     {{-- Modal para agregar Tecnologías --}}
     <div class="modal fade text-left" id="availableTechnologies" tabindex="-1" role="dialog" aria-modal="true">
@@ -565,18 +558,18 @@
                     <div class="modal-body">
                         <div class="row ml-2 mr-2">
                             @if ($availableTechnologies->count() > 0)
-                            @foreach ($availableTechnologies as $availableTechnology)
-                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                                <label class="form-check-label" for="technology-{{ $availableTechnology->id }}">
-                                    <input type="checkbox" class="form-check-input" id="technology-{{ $availableTechnology->id }}" value="{{ $availableTechnology->id }}" name="technologies[]">
-                                    {{ $availableTechnology->name }}
-                                </label>
-                            </div>
-                            @endforeach
+                                @foreach ($availableTechnologies as $availableTechnology)
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                        <label class="form-check-label" for="technology-{{ $availableTechnology->id }}">
+                                            <input type="checkbox" class="form-check-input" id="technology-{{ $availableTechnology->id }}" value="{{ $availableTechnology->id }}" name="technologies[]">
+                                            {{ $availableTechnology->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
                             @else
-                            <div class="col-12">
-                                No hay tecnologías disponibles para asignar...
-                            </div>
+                                <div class="col-12">
+                                    No hay tecnologías disponibles para asignar...
+                                </div>
                             @endif
                         </div>
                     </div>
