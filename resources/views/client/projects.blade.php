@@ -43,7 +43,7 @@
                                                 <div class="text-center text-white d-inline-block mr-2">
                                                     <div class="project-detail-skill" id="process-project">En Proceso</div>
                                             </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
+                                            <td><a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
                                         </tr>
 
                                         <tr>

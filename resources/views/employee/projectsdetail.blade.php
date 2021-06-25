@@ -21,7 +21,12 @@
                                 <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="#">Proyectos</a></li>
                                 <li class="breadcrumb-item">Detalle del Proyecto</li>
+                                
                             </ol>
+                            <div class=" d-md-flex justify-content-md-end ">
+                            <a href="{{route('employee.projects.list')}}" style="left:278px;" class="btn me-md-2 text-dark">Atrás</a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -33,9 +38,11 @@
 
                 <!-- Sección Izquierda -->
                 <div class="col-6">
+                
                     <div class="card rounded">
                         <div style="height: 300px;">
-                            <img src="#" width="100%" height="100%">
+                            <img src="{{asset('images/figma/big.png')}}" width="100%" height="100%">
+
                         </div>
 
                         <div class="p-2">
@@ -52,6 +59,7 @@
                                 <div class="col-6">
                                     <div class="project-detail-titles">País</div>
                                     <div class="mt-1 project-detail-dates">
+                                        <img src="{{asset('images/figma/Colombia.png')}}" alt="">
                                         Colombia
                                     </div>
                                 </div>
@@ -126,7 +134,7 @@
                                 <div class="col-12">
                                     <div class="project-detail-titles">Estado</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <label class="label status-label status-label-gray">En Proceso</label>
+                                        <label class="label status-label status-label-gray h6">En Proceso</label>
                                     </div>
                                 </div>
                             </div>
@@ -152,37 +160,38 @@
 
                         <div class="tab-content">
                             <!-- Pestaña de Adjuntos -->
-                            <div class="tab-pane active pl-2 pr-2 pt-1" id="attachments">
+                            <div class="tab-pane  active  pl-2 pr-2 pt-1" id="attachments">
                                 <h3 class="card-title">Adjuntos</h3>
+
                                 <div class="row mt-1 mb-2">
-                                    <div class="col-4 pt-1">
+                                   
+                                            <div class="col-4 pt-1">
 
-                                        <a href="#" target="_blank">
-                                            <img src="#" width="100%" height="100px">
-                                        </a>
+                                                    <a href="#" target="_blank">
+                                                    <img src="{{asset('images/figma/lg.png')}}" width="100%" height="100px">
+                                                    </a>
 
-                                    </div>
-                                    <div class="col-8 pt-1">
-                                        <div style="font-size: 12px; font-weight: 500; color: #3C3232;">Images.png</div>
+                                            </div>
+                                            <div class="col-8 pt-1">
+                                                <div style="font-size: 12px; font-weight: 500; color: #3C3232;"></div>
 
-                                        <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
-                                            Añadido: 2 de enero de 2021 a las 18:47<br>
-                                            <a href="#">Eliminar</a> - <a href="#">Editar</a>
-                                        </div>
-                                    </div>
+                                                <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
+                                                Añadido: 2 de enero de 2021 a las 18:47<br>
+                                                <br>
+                                                    <a href="#" >Eliminar</a> - <a href="#"">Editar</a>
+                                                </div>
+                                            </div>
 
-                                    <div>
-                                        <a href="#" class="btn btn-info waves-effect mt-3 waves-light"> Añadir un adjunto</a>
-                                    </div>
                                 </div>
 
-                                <!-- Pestaña del Chat -->
-                                <div class="tab-pane fade pl-2 pr-2" id="chat">
-                                    <h3 class="card-title">Chat</h3>
+                                <div>
+                                    <a href="#newAttachment" data-toggle="modal" class="btn btn-info mb-2 waves-effect waves-light"> Añadir un adjunto</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+                            <!-- Pestaña del Chat-->
+                            <div class="tab-pane fade pl-2 pr-2" id="chat">
+                                <h3 class="card-title">Chat</h3>
+                                
+                            </div>
             @endsection

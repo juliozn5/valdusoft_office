@@ -106,6 +106,7 @@ Route::group(['middleware'=>['auth']], function() {
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function(){
             Route::get('/', 'ProjectsController@list')->name('client.projects.list');
+
         });
 
         //MÓDULO DE HOSTINGS

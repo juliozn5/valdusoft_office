@@ -40,14 +40,15 @@
                                                 <td>{{ date('d-m-Y', strtotime($project->start_date)) }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($project->ending_date)) }}</td>
                                            </tr>
-                                           <td><a href="{{ route('employee.bills.details') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
+                                           <td><a href="{{ route('employee.projects.detail') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
                                         @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
 ​
                             <div class="mr-3">
-                                
+                            
                             </div>
                         </div>
                     </div>
