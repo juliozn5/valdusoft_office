@@ -3630,6 +3630,14 @@ tr.group {
   font-size: 1rem;
 }/*agregado*/
 
+.capa-left{
+  position: absolute;
+  margin-left:300px;
+  }/*agregado*/
+
+  .margen{
+    margin-left: 1rem;
+  }/*agregado*/
 
 @media only screen and (min-width: 1320px){
   .card.p-1080{
@@ -3641,8 +3649,26 @@ tr.group {
   html body .content{
     margin-left: 0px;
   }
+  .text-small{
+    text-align: center;
+  }
+  .capa-left{
+    display:none;
+    }/*agregado*/
+
+    .margen{
+      margin-left: 0rem;
+      margin-bottom: 1rem;
+    }/*agregado*/
+  
 }
 
+@media only screen and (max-width: 1300px){
+  .capa-left{
+    display:none;
+    }/*agregado*/
+  
+}
 
 
 @media only screen and (max-width: 768px) {

@@ -11,21 +11,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @include('layouts.partials.sidebar')
 
 <div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row"> </div>
-        <div class="card container" id="container-big-principal">
+        <div class="card container">
 
             <div class="content-body">
-                <div class="row" >
-                    <div class="col-12">
+                    <div class="card">
                         <div class="card">
                             <div class="card-header">
 
-                                <div class="row" id="all-center-items">
+                                <div class="" id="">
 
-                                    <div class="col-md-4">
+                                    <div class="">
 
                                         <img class="rounded-circle ml-2" src="{{ asset('images/user/Ellipse.png')}}" alt="" width="55px" height="55px">
                                     </div>
@@ -75,7 +71,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                             <!--DATE OF BIRTH-->
                             <div class="row mt-3 pl-2 pr-2">
-                                <div class="col-3">
+                                <div class="col-md-3 col-sm-1">
                                     <div class="project-detail-titles">Fecha de Nacimiento</div>
                                     <div class="mt-1 project-detail-dates">
                                         <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
@@ -84,7 +80,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
 
                                 <!--DATE OF ADMISSION-->
-                                <div class="col-3">
+                                <div class="col-md-3 col-sm-1">
                                     <div class="project-detail-titles">Fecha de Ingreso</div>
                                     <div class="mt-1 project-detail-dates">
                                         <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
@@ -93,7 +89,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
 
                                 <!--NEXT VACATIONS-->
-                                <div class="col-3">
+                                <div class="col-md-3 col-sm-1">
                                     <div class="project-detail-titles">Próximas Vacaciones</div>
                                     <div class="mt-1 project-detail-dates">
                                         <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
@@ -142,7 +138,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="mt-1">
 
 
-                                            <div class="col-4 ml-2 position-absolute">CV_Gregorio_Zambrano.pdf</div>
+                                            <div class="col-md-4 ml-2 position-absolute">CV_Gregorio_Zambrano.pdf</div>
                                         </div>
 
                                         <a href="#"><img class="mb-4" src="{{asset('images/icons/arrow-down.png')}}" alt=""></a>
@@ -152,20 +148,23 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
 
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-md-3 col-sm-1">
                                             <div class="project-detail-titles">Precio Por Hora</div>
                                             <div class="mt-1 project-detail-dates">
                                                 <img src="{{ asset('images/icons/dollar.png')}}" alt="" class="mr-1">4 USD
                                             </div>
                                         </div>
 
-                                        <div class="col-5">
-                                            <div class="project-detail-titles">Cuenta Uphold</div>
+                                        <div class="col-md-5 col-sm-1">
+                                            <div class="project-detail-titles">Billetera USDT Red tron</div>
                                             <div class="mt-1 project-detail-dates">
                                                 <img src="{{ asset('images/icons/uphold.png')}}" alt="" class="mr-1"> Gregorio_Zambrano@gmail.com
                                             </div>
                                         </div>
                                     </div>
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -174,8 +173,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             </div>
         </div>
     </div>
-</div>
 
-</div>
 
 @endsection

@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
+@push('body-atribute')
+class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
+@endpush
+
 @section('content')
 
 @include('layouts.partials.navbar')
 
 @include('layouts.partials.sidebar')
-
 
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -105,30 +108,36 @@
                     <div class="card-header">
                         <h3 class="card-title mb-2">Hosting</h3>
                         <div class="container pb-2">
-                            <div class="row col-md-12">
+                            <div class="row">
+                                <div class="text-small col-md-6 col-sm-1 mb-1">
                                 <div class="card-body rounded" style="background: #252856;">
-                                    <img class="float-right align-self-end" src="{{asset('images/icons/background.png')}}" alt="" style="position: absolute; margin-left:300px;">
+                                    
+                                    <img class="capa-left" src="{{asset('images/icons/background.png')}}" alt="">
+                                    
                                     <p class="card-text h6 text-white">Fecha de Renovación</p>
                                     <br>
                                     <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
                                     
-                                    <a type="submit" class="btn" id="btn-guardar" style="background-color:#FF4D00;color: white;width: 180px;"><img src="{{asset('images/valdusoft/cpanel-logo.png')}}" style="width: 19px;" alt="" class="mr-1" >Ir al Cpanel</a>
+                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#FF4D00;color: white;width: 180px;"><img src="{{asset('images/valdusoft/cpanel-logo.png')}}" style="width: 19px;" alt="" class="mr-1" >Ir al Cpanel</a>
                                     
-                                    <a type="submit" class="btn ml-1" id="btn-guardar" style="background-color:#06B054;
+                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
                                     ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1"> Renovar</a>
                                 </div>
+                            </div>
 
-                                <div class="card-body rounded ml-1" style="background: #252856;">
-                                    <img class="float-right align-self-end" src="{{asset('images/icons/background.png')}}" alt="" style="position: absolute; margin-left:300px;">
+                            <div class="text-small col-md-6 col-sm-1 mb-1">
+                                <div class="card-body rounded" style="background: #252856;">
+                                    <img class="capa-left" src="{{asset('images/icons/background.png')}}" alt="" >
                                     <p class="card-text h6 text-white">Fecha de Renovación</p>
                                     <br>
                                     <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
                                     
-                                    <a type="submit" class="btn" id="btn-guardar" style="background-color:#FF4D00;color: white;width: 180px;"><img src="{{asset('images/valdusoft/cpanel-logo.png')}}" style="width: 19px;"alt="" class="mr-1" >Ir al Cpanel</a>
+                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#FF4D00;color: white;width: 180px;"><img src="{{asset('images/valdusoft/cpanel-logo.png')}}" style="width: 19px;"alt="" class="mr-1" >Ir al Cpanel</a>
                                     
-                                    <a type="submit" class="btn ml-1" id="btn-guardar" style="background-color:#06B054;
+                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
                                     ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1" >Renovar</a>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -137,33 +146,37 @@
                     <div class="card-header">
                         <h3 class="card-title mb-2">Dominios</h3>
                         <div class="container pb-2">
-                            <div class="row col-md-12">
+                            <div class="row">
+                                <div class="text-small col-md-6 col-sm-1 mb-1">
                                 <div class="card-body rounded" style="background: #252856;">
-                                    <img class="float-right align-self-end" src="{{asset('images/valdusoft/world.png')}}" alt="" style="position: absolute; margin-left:300px;">
+                                    <img class="capa-left" src="{{asset('images/valdusoft/world.png')}}" alt="" style="position: absolute; margin-left:300px;">
                                     <p class="card-text h6 text-white">Fecha de Renovación</p>
                                     <br>
                                     <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
                                     
-                                    <a type="submit" class="btn" id="btn-guardar" style="background-color:#0065DC;color: white;width: 180px;"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
+                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#0065DC;color: white;width: 180px;"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
                                     
-                                    <a type="submit" class="btn ml-1" id="btn-guardar" style="background-color:#06B054;
+                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
                                     ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1"> Renovar</a>
                                 </div>
+                            </div>
 
-                                <div class="card-body rounded ml-1" style="background: #252856;">
-                                    <img class="float-right align-self-end" src="{{asset('images/valdusoft/world.png')}}" alt="" style="position: absolute; margin-left:300px;">
+                            <div class="text-small col-md-6 col-sm-1 mb-1">
+                                <div class="card-body rounded" style="background: #252856;">
+                                    <img class="capa-left" src="{{asset('images/valdusoft/world.png')}}" alt="" style="position: absolute; margin-left:300px;">
                                     <p class="card-text h6 text-white">Fecha de Renovación</p>
                                     <br>
                                     <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
                                     
-                                    <a type="submit" class="btn" id="btn-guardar" style="background-color:#0065DC;color: white;width: 180px;"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1" >Ir al Cpanel</a>
+                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#0065DC;color: white;width: 180px;"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1" >Ir al Cpanel</a>
                                     
-                                    <a type="submit" class="btn ml-1" id="btn-guardar" style="background-color:#06B054;
+                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
                                     ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1" >Renovar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
 
 

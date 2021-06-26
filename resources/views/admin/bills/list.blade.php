@@ -51,19 +51,19 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>-->
 <div id="table-head">
-    <div class="col-11" style="margin-left:50px">
+    <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <div class="d-grid gap-2 d-md-block mb-2 col-8">
+                <div class="d-grid gap-2 d-md-block mb-2 col-md-8 col-sm-1">
                     <ul class="nav nav-pills nav-justified">
                         <li class="">
                             <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments"><strong> EMPLEADOS </strong></a>
                         </li>
                         <li class="">
-                            <a class="nav-link nav-link-pills ml-3" data-toggle="tab" href="#chat"><strong> CLIENTES </strong></a>
+                            <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat"><strong> CLIENTES </strong></a>
                         </li>
                         <li class="">
-                            <a class="nav-link nav-link-pills ml-3" data-toggle="tab" href="#accountant"><strong> HOSTING </strong></a>
+                            <a class="nav-link nav-link-pills" data-toggle="tab" href="#accountant"><strong> HOSTING </strong></a>
                         </li>
                     </ul>
                 </div>
