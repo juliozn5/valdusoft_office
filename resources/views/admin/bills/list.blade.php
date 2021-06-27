@@ -377,12 +377,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         </div>
                                     </div>                
 
+                      
                                     <!-- Pestaña de Hosting -->
-                                    <div class="tab-pane fade" id="accountant">
-    
-                                        <div class="table-responsive mt-1">
-                                            <table class="table mb-0">
-                                                <thead class="thead-light tex-center">
+                                    <div class="tab-pane fade" id="accountant">    
+                                   <div class="table-responsive mt-1">
+                                      <table class="table mb-0">
+                                     <thead class="thead-light text-center">
+
+                                  
                                                     <tr>
                                                         <th>#</th>
                                                         <th>NOMBRE</th>
