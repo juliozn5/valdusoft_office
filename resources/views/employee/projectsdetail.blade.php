@@ -23,8 +23,10 @@
                                 <li class="breadcrumb-item">Detalle del Proyecto</li>
                                 
                             </ol>
+
                             <div class=" d-md-flex justify-content-md-end ">
-                            <a href="{{route('employee.projects.list')}}" style="left:278px;" class="btn me-md-2 text-dark">Atrás</a>
+                            <a href="{{route('employee.projects.list')}}" style="left:240px;" class="btn me-md-2 text-dark">Atrás</a>
+
                             </div>
 
                         </div>
@@ -34,7 +36,7 @@
         </div>
 
         <div class="content-body">
-            <div class="row" id="table-head">
+            <div class="row" >
 
                 <!-- Sección Izquierda -->
                 <div class="col-6">
@@ -75,11 +77,11 @@
                                     <img class="rounded-circle" src="{{asset('images/figma/Ellipse_2.png')}}" alt="#" height="50" width="50">
                                 </div>
 
-                                <div class="col-1 mr-1">
+                                <div class="col-1 mr-1 ml-1">
                                     <img class="rounded-circle" src="{{asset('images/figma/Ellipse_3.png')}}" alt="#" height="50" width="50">
                                 </div>
 
-                                <div class="col-1 mr-1">
+                                <div class="col-1 mr-1 ml-1">
                                     <img class="rounded-circle" src="{{asset('images/figma/Ellipse_4.png')}}" alt="#" height="50" width="50">
                                 </div>
 
@@ -96,7 +98,7 @@
                                 <div class="col-6">
                                     <div class="project-detail-titles">Fecha de Entrega</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i> Viernes 28 de Febrero
+                                        <i class="far fa-calendar icon-big "></i> Viernes 28 de Febrero
                                     </div>
                                 </div>
                             </div>
@@ -192,6 +194,8 @@
                             <!-- Pestaña del Chat-->
                             <div class="tab-pane fade pl-2 pr-2" id="chat">
                                 <h3 class="card-title">Chat</h3>
+
+                                
                                 
                             </div>
             @endsection

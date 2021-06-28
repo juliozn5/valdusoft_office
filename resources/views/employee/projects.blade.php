@@ -39,10 +39,13 @@
                                                 <td>{{ $project->name }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($project->start_date)) }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($project->ending_date)) }}</td>
+                                                <td>
+                                                            <label class="label status-label status-label-gray">En Proceso</label>
+                                                    </td>
+                                                   <td> <a href="{{ route('employee.projects.detail') }}"><i class="fa fa-eye mr-1 action-icon"></i></a></td>
                                            </tr>
-                                           <td><a href="{{ route('employee.projects.detail') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
+                                           <!---->
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
