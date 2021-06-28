@@ -23,9 +23,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Financiero</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.payments.list') }}">Financiero</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Pagos</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.payments.list') }}">Pagos</a>
                             </li>
                         </ol>
                     </div>
@@ -41,7 +41,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="card" id="card-head1">
                     <div class="card-header">
                         <h3 class="card-title mb-1">Pagos</h3>
-                        <a href="#" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Agregar Nuevo</a>
+                        <a href="#" class="btn btn-primary  mb-2 waves-effect waves-light" data-toggle="modal" data-target="#exampleModalToggle"><i class="feather icon-plus "></i>&nbsp; Agregar Nuevo</a>
                     </div>
 
                     <div class="card-content">
@@ -217,9 +217,38 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <br><br>
 
                             </div>
-
-
                         </div>
                     </div>
+
+
+                        <!--MODAL CONTENT-->
+                        <div class="container">
+                        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                    
+                    <h5 class="modal-title" id="exampleModalToggleLabel">@Abraham</h5>
+                    <button  class="close mr-1" style="margin-top:1px;" data-dismiss="modal" aria-label="Close">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dicta rerum nam commodi ea tenetur doloribus incidunt vero iure, reiciendis numquam nisi cupiditate nostrum illo odio quo impedit amet accusantium.
+                         </div>
+
+                      <div class="modal-footer">
+
+                      <button type="button" class="btn btn-secundary text-dark" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+                    </div>
+
                 </div>
                 @endsection
