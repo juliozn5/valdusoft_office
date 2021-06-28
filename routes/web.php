@@ -86,6 +86,8 @@ Route::group(['middleware'=>['auth']], function() {
             //MÓDULO FINANCIERO - FACTURAS
             Route::group(['prefix' => 'bills'], function(){
                 Route::get('/', 'BillController@list')->name('admin.bills.list');
+                Route::get('bill', 'BillController@bill')->name('admin.bills.billadmin');
+
             });
 
             //MÓDULO FINANCIERO - NÓMINA
@@ -95,8 +97,6 @@ Route::group(['middleware'=>['auth']], function() {
                 Route::get('bill', 'PaymentsController@bill')->name('admin.payments.billpayment');
 
 
-
-                
 
             });
 
