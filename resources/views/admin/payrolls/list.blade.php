@@ -65,7 +65,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
-                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <td><a href="{{asset('financieronomina.html')}}"><i id="eye" href="facebook.com" style="font-size:15px;" class="far fa-eye"></i></a>
                                         
                                         <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>

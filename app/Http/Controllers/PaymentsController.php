@@ -9,4 +9,7 @@ class PaymentsController extends Controller
     public function list(){
         return view('admin.payments.list');    
     }
+    public function bill(){
+        return view('admin.payments.billpayment');    
+    }
 }

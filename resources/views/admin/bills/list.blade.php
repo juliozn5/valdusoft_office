@@ -57,7 +57,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </ul>
                 </div>
     <div class="d-grid gap-2 d-md-block mb-2 col-4">
-        <button class="btn btn-primary font-weight-bold" data-toggle="tab" href="#emp" style="margin-left: 50%;">GENERAR</button>
+    
+    <a href="#prestamo" data-toggle="modal" class="btn btn-primary mb-2 waves-effect" style="margin-left:130px;"> GENERAR</a>
     </div>
 </div>
 <div class="tab-content" >
@@ -563,6 +564,42 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 </button>
  
 
+</div>
+
+<!--  MODAL DEL CLIENTE  -->
+
+
+<div class="modal  fade" id="prestamo" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+      <p>Generar Factura</p>
+        <button class="close" data-dismiss="modal">&times;</button>
+
+      </div>
+
+      <div class="">
+      <div class="table-responsive">
+                            <table class="table col-12">
+                                <thead class="thead-light ">
+
+                                    <tr>
+                                        <th>DESCRIPCIÓN</th>
+                                        <th>UNIDADES</th>
+                                        <th>PRECIO UNITARIO</th>
+                                        <th>PRECIO</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <input type="text" class=" form-control">
+
+                                </table>
+      
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
 </div>
 
                     

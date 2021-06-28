@@ -92,6 +92,9 @@ Route::group(['middleware'=>['auth']], function() {
             Route::group(['prefix' => 'payroll'], function(){
                 Route::get('/', 'PayrollController@list')->name('admin.payrolls.list');
                 Route::get('generate', 'PayrollController@generate')->name('admin.payrolls.generate');
+                Route::get('bill', 'PaymentsController@bill')->name('admin.payments.billpayment');
+
+
 
                 
 
@@ -100,6 +103,7 @@ Route::group(['middleware'=>['auth']], function() {
             //MÓDULO FINANCIERO - PAGOS
             Route::group(['prefix' => 'payments'], function(){
                 Route::get('/', 'PaymentsController@list')->name('admin.payments.list');
+
             });
         });
     });
