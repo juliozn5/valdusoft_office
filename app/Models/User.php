@@ -92,4 +92,8 @@ class User extends Authenticatable
             return $this->getMedia('photo')->first()->file;
         }
     }
+      //Relación de pagos con sus pagos
+      public function payments(){
+        return $this->hasMany('App\Models\Payments');
+    }
 }
