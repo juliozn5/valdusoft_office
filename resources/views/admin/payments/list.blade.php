@@ -23,9 +23,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Financiero</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.payments.list') }}">Financiero</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Pagos</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.payments.list') }}">Pagos</a>
                             </li>
                         </ol>
                     </div>
@@ -36,12 +36,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     </div>
     <div class="content-body">
 
-        <div id="table-head">
-            <div class="col-11" style="margin-left:50px;">
+        <div >
+            <div class="" style="margin-left:15px; width:980px;">
                 <div class="card" id="card-head1">
                     <div class="card-header">
                         <h3 class="card-title mb-1">Pagos</h3>
-                        <a href="#" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Agregar Nuevo</a>
+                        <a href="#" class="btn btn-primary  mb-2 waves-effect waves-light" data-toggle="modal" data-target="#exampleModalToggle"><i class="feather icon-plus "></i>&nbsp; Agregar Nuevo</a>
                     </div>
 
                     <div class="card-content">
@@ -49,124 +49,148 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <table class="table mb-0">
                                 <thead class="thead-light ">
                                     <tr>
+                                    <th scope="col"># DE FACTURA</th>
                                         <th scope="col">FECHA</th>
                                         <th scope="col">CLIENTE</th>
-                                        <th scope="col"># DE FACTURA</th>
                                         <th scope="col">PLATAFORMA DE PAGO</th>
                                         <th scope="col">MONTO</th>
                                         <th scope="col">FEE</th>
+                                        <th>ESTADO</th>
+                                        <th>ACCIÓN</th>
                                         <th scope="col">TOTAL</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <tr>
+                                    <td>1587</td>
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
-                                        <td>1587</td>
                                         <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>147$</td>
+                                        <td>20.36$</td>
                                         <td>---</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
                                     <tr>
+                                    <td>1587</td>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>    
+                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
+                                        <td>20.36$</td>
+                                        <td>---</td>
+                                          <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                          <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                    <td>1587</td>
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
-                                        <td>1587</td>
+                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
+                                        <td>20.36$</td>         
+                                        <td>---</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                    <td>1587</td>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
+                                        <td>20.36$</td>
+                                        <td>---</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <td>147$</td>
+                                    </tr>
+                                    <tr>
+                                    <td>1587</td>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
+                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
+                                        <td>20.36$</td>
+                                        <td>---</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                    <td>1587</td>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
                                         <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
                                         <td>147$</td>
                                         <td>---</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
                                     <tr>
+                                    <td>1587</td>
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
-                                        <td>1587</td>
                                         <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>147$</td>
-                                        <td>---</td>
+                                        <td>20.36$</td>
+                                         <td>---</td>
+                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                         <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
                                     <tr>
+                                    <td>1587</td>
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
-                                        <td>1587</td>
                                         <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
-                                        <td>147$</td>
+                                        <td>20.36$</td>                                        
                                         <td>---</td>
-                                        <td>147$</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td>1587</td>
-                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>147$</td>
-                                        <td>---</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
                                     <tr>
+                                    <td>1587</td>
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
-                                        <td>1587</td>
+                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
+                                        <td>20.36$</td>
+                                        <td>---</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <td>147$</td>
+                                    </tr>
+
+                                    <tr>
+                                    <td>1587</td>
+                                        <th scope="row">03/09/21</th>
+                                        <td>Pedro Perez</td>
                                         <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
-                                        <td>147$</td>
+                                        <td>20.36$</td>
                                         <td>---</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
                                     <tr>
+                                    <td>1587</td>
                                         <th scope="row">03/09/21</th>
                                         <td>Pedro Perez</td>
-                                        <td>1587</td>
                                         <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>147$</td>
+                                        <td>20.36$</td>
                                         <td>---</td>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td>1587</td>
-                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
-                                        <td>147$</td>
-                                        <td>---</td>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td>1587</td>
-                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>147$</td>
-                                        <td>---</td>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td>1587</td>
-                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
-                                        <td>147$</td>
-                                        <td>---</td>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td>1587</td>
-                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>147$</td>
-                                        <td>---</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -193,9 +217,38 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <br><br>
 
                             </div>
-
-
                         </div>
                     </div>
+
+
+                        <!--MODAL CONTENT-->
+                        <div class="container">
+                        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                    
+                    <h5 class="modal-title" id="exampleModalToggleLabel">@Abraham</h5>
+                    <button  class="close mr-1" style="margin-top:1px;" data-dismiss="modal" aria-label="Close">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dicta rerum nam commodi ea tenetur doloribus incidunt vero iure, reiciendis numquam nisi cupiditate nostrum illo odio quo impedit amet accusantium.
+                         </div>
+
+                      <div class="modal-footer">
+
+                      <button type="button" class="btn btn-secundary text-dark" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+                    </div>
+
                 </div>
                 @endsection
