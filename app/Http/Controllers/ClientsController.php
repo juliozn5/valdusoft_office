@@ -34,6 +34,11 @@ class ClientsController extends Controller
 
     }
 
+       //detalle del proyecto
+       public function detail(){
+        return view('admin.clients.detail');
+    }
+
     /** Guardar Datos del Nuevo Cliente
     *** Perfil: Admin ***/
     public function store(Request $request){

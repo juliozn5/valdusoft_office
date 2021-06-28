@@ -17,7 +17,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="content-wrapper">
         <section class="hosting">
             <div class="row" id="table-head">
-                <div class="col-8 col-md-8">
+                <div class="col-md-8 col-sm-12">
                     <div class="card">
                         <div class="card-header" style="background-color: white">
                             <h3 class="card-title mb-2">Financiamiento</h3>
@@ -36,60 +36,60 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <tbody>
                                         <tr>
                                             <td>05 ABR 2021</td>
-                                            <td>40$</td>
-                                            <td>20$</td>
-                                            <td>20$</td>
+                                            <td>40.00$</td>
+                                            <td>20.00$</td>
+                                            <td>20.00$</td>
                                         </tr>
                                         <tr>
                                             <td>05 ABR 2021</td>
-                                            <td>60$</td>
-                                            <td>20$</td>
-                                            <td>40$</td>
+                                            <td>60.00$</td>
+                                            <td>20.00$</td>
+                                            <td>40.00$</td>
                                         </tr>
                                         <tr>
                                             <td>05 ABR 2021</td>
-                                            <td>80$</td>
-                                            <td>20$</td>
-                                            <td>60$</td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>100$</td>
-                                            <td>20$</td>
-                                            <td>80$</td>
+                                            <td>80.00$</td>
+                                            <td>20.00$</td>
+                                            <td>60.00$</td>
                                         </tr>
                                         <tr>
                                         <tr>
                                             <td>05 ABR 2021</td>
-                                            <td>120$</td>
-                                            <td>20$</td>
-                                            <td>100$</td>
+                                            <td>100.00$</td>
+                                            <td>20.00$</td>
+                                            <td>80.00$</td>
                                         </tr>
                                         <tr>
                                         <tr>
                                             <td>05 ABR 2021</td>
-                                            <td>140$</td>
-                                            <td>20$</td>
-                                            <td>120$</td>
+                                            <td>120.00$</td>
+                                            <td>20.00$</td>
+                                            <td>100.00$</td>
                                         </tr>
                                         <tr>
                                         <tr>
                                             <td>05 ABR 2021</td>
-                                            <td>160$</td>
-                                            <td>20$</td>
-                                            <td>140$</td>
+                                            <td>140.00$</td>
+                                            <td>20.00$</td>
+                                            <td>120.00$</td>
+                                        </tr>
+                                        <tr>
                                         <tr>
                                             <td>05 ABR 2021</td>
-                                            <td>180$</td>
-                                            <td>20$</td>
-                                            <td>160$</td>
+                                            <td>160.00$</td>
+                                            <td>20.00$</td>
+                                            <td>140.00$</td>
+                                        <tr>
+                                            <td>05 ABR 2021</td>
+                                            <td>180.00$</td>
+                                            <td>20.00$</td>
+                                            <td>160.00$</td>
                                         </tr>
                                         <tr>
                                             <td>05 ABR 2021</td>
-                                            <td>40$</td>
-                                            <td>200$</td>
-                                            <td>180$</td>
+                                            <td>200.00$</td>
+                                            <td>40.00$</td>
+                                            <td>180.00$</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -97,31 +97,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>
                 </div>
-                <div class="col-4 col-md-4">
-                    <div class="card p-1080">
-                        <div class="card-body">
-                            <h5 class="card-title">Proximas<br>Vacaciones</h5>
-                            <br>
-                            <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
-                            <img src="{{asset('/images/svg/ilustracion_clientes.svg')}}" style="position:absolute; margin-left:125px;top:20px; height:100px;" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="col-md-4 col-sm-12">
+    <div class="card p-1080">
+        <div class="card-body">
+            <h5 class="card-title">Proximas<br>Vacaciones</h5>
+            <br>
+            <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
+            <img src="{{asset('/images/svg/ilustracion_clientes.svg')}}" style="position:absolute; margin-left:125px;top:20px; height:100px;" alt="">
+        </div>
     </div>
 </div>
-</div>
-
-
-
-<!--
-<div class="sidenav-overlay"></div>
-<div class="drag-target"></div>
-
-<footer class="footer footer-static footer-dark">
-    <p class=" clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="text-bold-800 grey darken-2" href="https://valdusoft.com" target="_blank">Valdusoft,</a>All rights Reserved</span>
-        <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
-    </p>
-</footer>-->
-<!-- END: Footer-->
+    </div>
+        </div>
+            </div>
 @endsection

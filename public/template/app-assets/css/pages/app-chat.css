@@ -259,8 +259,10 @@
   margin : 0 20px 10px 0;
   clear : both;
   color : #FFFFFF;
-  background : -webkit-linear-gradient(332deg, #003573, rgba(115, 103, 240, 0.7));
-  background :         linear-gradient(118deg, #003573, rgba(115, 103, 240, 0.7));
+  /*background : -webkit-linear-gradient(332deg, #003573, rgba(115, 103, 240, 0.7));
+  background :         linear-gradient(118deg, #003573, rgba(115, 103, 240, 0.7));*/
+  background : -webkit-linear-gradient(332deg, #003573, #252856);
+  background :         linear-gradient(118deg, #003573, #252856);
   border-radius : 0.5rem;
   box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
 }
@@ -281,9 +283,12 @@
   text-align : left;
   float : left;
   margin : 0 0 10px 20px;
-  color : #626262;
+  color: white;
+  /*color : #626262;
   background : none;
-  background-color : white;
+  background-color : white;*/
+  background : -webkit-linear-gradient(332deg, #650865, #252856);
+  background :         linear-gradient(118deg, #650865, #252856);
 }
 
 .chat-application .user-profile-sidebar {

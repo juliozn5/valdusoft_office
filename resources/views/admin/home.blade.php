@@ -5,8 +5,6 @@
 @endpush
 
 @push('custom_css')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.6/datatables.min.css"/>
-
     <style>
         .btn-primary{
             border-color: #003573 !important;
@@ -27,7 +25,7 @@
 
         #chart {
             max-width: auto;
-            margin: 35px auto;
+            /*margin: 35px auto;*/
             opacity: 0.9;
         }
 
@@ -40,7 +38,7 @@
 
 @push('custom_js')
     <script>
-        var options = {
+       /* var options = {
         chart: {
             type: "area",
             height: 500,
@@ -124,32 +122,79 @@
         chart.render();
 
         function generateDayWiseTimeSeries(s, count) {
-        var values = [[
-            4,3,10,9,29,19,25,9,12,7,19,5,13,9,17,2,7,5
-        ], [
-            2,3,8,7,22,16,23,7,11,5,12,5,10,4,15,2,6,2
-        ]];
-        var i = 0;
-        var series = [];
-        var x = new Date().getTime();
-        while (i < count) {
-            series.push([x, values[s][i]]);
-            x += 86400000;
-            i++;
+            var values = [[
+                4,3,10,9,29,19,25,9,12,7,19,5,13,9,17,2,7,5
+            ], [
+                2,3,8,7,22,16,23,7,11,5,12,5,10,4,15,2,6,2
+            ]];
+            var i = 0;
+            var series = [];
+            var x = new Date().getTime();
+            while (i < count) {
+                series.push([x, values[s][i]]);
+                x += 86400000;
+                i++;
+            }
+            return series;
+        }*/
+        var lineAreaOptions = {
+            chart: {
+                height: 350,
+                type: 'area',
+                foreColor: "#999",
+                stacked: true,
+                dropShadow: {
+                    enabled: true,
+                    enabledSeries: [0],
+                    top: 0,
+                    left: 0,
+                    blur: 0,
+                    opacity: 1
+                },
+                zoom: {
+                    enabled: false
+                }
+            },
+            colors: ['#650865', '#003573'],
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: "smooth",
+                width: 3
+            },
+            series: [
+                {
+                    name: 'Costos',
+                    data: [310, 400, 280, 510, 420, 1090, 1000, 310, 400, 280, 510, 420]
+                }, 
+                {
+                    name: 'Ganancias',
+                    data: [110, 320, 450, 320, 340, 520, 410, 110, 320, 450, 320, 340]
+                }
+            ],
+            xaxis: {
+                type: 'year',
+                categories: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            },
+            yaxis: {
+                opposite: false,
+                labels: {
+                    formatter: function (value) {
+                        return value + "K";
+                    }
+                },
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'left'
+            },
         }
-        return series;
-        }
-        
-    </script>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.6/datatables.min.js"></script>
-
-    <script>
-        $('.myTable').DataTable({
-            responsive: true
-        })
+        var lineAreaChart = new ApexCharts(
+            document.querySelector("#timeline-chart"),
+            lineAreaOptions
+        );
+        lineAreaChart.render();
     </script>
 @endpush
 
@@ -236,15 +281,20 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
+                
                 <div id="chart">
-                    <div id="timeline-chart"></div>
-                  </div>
-
+                    <div class="card p-1">
+                        <div class="card-header">
+                            <h3 class="card-title mb-2">Costos vs Ganancias</h3>
+                        </div>
+                        <div class="card-content">
+                            <div id="timeline-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="row">
-                    
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
