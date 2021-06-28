@@ -41,7 +41,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="card" id="card-head1">
                     <div class="card-header">
                         <h3 class="card-title mb-1">Pagos</h3>
-                        <a href="#" class="btn btn-primary  mb-2 waves-effect waves-light" data-toggle="modal" data-target="#exampleModalToggle"><i class="feather icon-plus "></i>&nbsp; Agregar Nuevo</a>
+                        <a href="#" class="btn btn-primary  mb-2 waves-effect " data-toggle="modal" data-target="#exampleModalToggle"><i class="feather icon-plus "></i>&nbsp; Agregar Nuevo</a>
                     </div>
 
                     <div class="card-content">
@@ -71,7 +71,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <td>---</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -83,7 +83,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <td>---</td>
                                           <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                          <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                          <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -95,7 +95,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>         
                                         <td>---</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -107,7 +107,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <td>---</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
                                     <tr>
@@ -118,7 +118,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <td>---</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -130,7 +130,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>147$</td>
                                         <td>---</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -142,7 +142,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                          <td>---</td>
                                          <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                         <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                         <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -154,7 +154,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>                                        
                                         <td>---</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -166,7 +166,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <td>---</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -178,7 +178,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <td>---</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 
@@ -190,7 +190,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <td>---</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i class="far fa-eye ml-1"></i></a></th>
+                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
                                         <td>147$</td>
                                     </tr>
 

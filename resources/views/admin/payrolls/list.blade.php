@@ -23,9 +23,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Financiero</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.payrolls.list') }}">Financiero</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Nómina</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.payrolls.list') }}">Nómina</a>
                             </li>
                         </ol>
                     </div>
@@ -41,7 +41,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="card" id="card-head1">
                     <div class="card-header">
                         <h3 class="card-title mb-1">Listado de las nominas</h3>
-                        <a href="#" class="btn btn-primary mb-2 waves-effect waves-light">&nbsp; GENERAR</a>
+                        <a href="{{ route('admin.payrolls.generate') }}" class="btn btn-primary mb-2 waves-effect waves-light">&nbsp; GENERAR</a>
                     </div>
 
                     <div class="card-content">
@@ -63,13 +63,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -77,13 +75,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -91,13 +87,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -105,13 +98,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -119,13 +109,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -133,13 +120,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
-
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -147,13 +130,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -161,13 +141,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
-
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -175,13 +151,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -189,13 +162,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -203,13 +173,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>03/09/21</td>
                                       
                                         <td>20.36$</td>
-                                        <td>
-                                            <div class="text-center text-white d-inline-block mr-2">
-                                                <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                        </td>
-
-                                        <td><a href="#"><i href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
 

@@ -90,6 +90,10 @@ Route::group(['middleware'=>['auth']], function() {
             //MÓDULO FINANCIERO - NÓMINA
             Route::group(['prefix' => 'payroll'], function(){
                 Route::get('/', 'PayrollController@list')->name('admin.payrolls.list');
+                Route::get('generate', 'PayrollController@generate')->name('admin.payrolls.generate');
+
+                
+
             });
 
             //MÓDULO FINANCIERO - PAGOS

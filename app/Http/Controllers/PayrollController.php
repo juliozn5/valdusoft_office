@@ -9,4 +9,9 @@ class PayrollController extends Controller
     public function list(){
         return view('admin.payrolls.list'); 
     }
+    
+    public function generate(){
+        return view('admin.payrolls.generate');                             
+    }
+
 }
