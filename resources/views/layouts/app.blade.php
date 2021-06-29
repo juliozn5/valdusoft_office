@@ -5,6 +5,8 @@
     @include('layouts.partials.head')
     @include('layouts.partials.style')
 
+    @livewireStyles
+
     @stack('styles')
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
@@ -17,9 +19,13 @@
 
     @yield('content')
 
-    @include('layouts.partials.scripts')
+    @include('layouts.partials.scripts') 
+    
+    @livewireScripts
 
     @stack('scripts')
+
+   
 
 </body>
 
