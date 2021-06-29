@@ -58,38 +58,51 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-
-                                        <td scope="row">57</td>
-
-                                        <td>03/09/21</td>
-
-                                        <td>20.36$</td>
+                                @foreach ($payrolls as $payroll)
                                         
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <tr>
+                                        <td class="text-center">{{ $payroll->id}}</td>
 
-                                        <td><a href="{{asset('financieronomina.html')}}"><i id="eye" href="facebook.com" style="font-size:15px;" class="far fa-eye"></i></a>
+
+                                        <td>{{ date('d-m-Y', strtotime($payroll->date)) }}</td>
+
+                                                <td class="text-center">{{ $payroll->amount }}</td>
+
+
+                                                <td>
+                                                @if ($payroll->status == 0)
+                                                    <label class="label status-label status-label-purple ">No Atendido</label>
+                                                @elseif ($payroll->status == 1)
+                                                    <label class="label status-label status-label-gray">En Proceso</label>
+                                                @elseif ($payroll->status == 2)
+                                                    <label class="label status-label status-label-blue">Testiando</label>
+                                                @elseif ($payroll->status == 3)
+                                                    <label class="label status-label status-label-green">Completado</label>
+                                                @endif
+                                            </td>
+
+                                               
+                                      <td><a href="{{asset('financieronomina.html')}}"><i id="eye" href="facebook.com" style="font-size:15px;" class="far fa-eye"></i></a>
                                         
                                         <a href="#edit" data-toggle="modal"><i id="eye"  href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                    
-                                    </tr>
-
-
+                                            
+                                              </tr>
+                                              
+                                    @endforeach
                                 </tbody>
                             </table>
-                            <br>
+                        </div>
 
+                    <div class="mr-3">
 
-                            </div>
-
+                    </div>
 
                         </div>
                     </div>
                 </div>
             </div>
+
 
                     <!--  MODAL EDITAR NOMINA  -->
 

@@ -75,6 +75,8 @@
                                 </div>
 
                             <div class="mr-3">
+                            {{ $payments->links() }}
+
 
                             </div>
 
