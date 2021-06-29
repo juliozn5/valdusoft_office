@@ -1,236 +1,79 @@
 @extends('layouts.app')
 
-@push('body-atribute')
-class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
-@endpush
-
 @section('content')
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
 
-@include('layouts.partials.navbar')
+            <div class="content-body">
 
-@include('layouts.partials.sidebar')
+                <div id="table-head">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title mb-1">Pagos</h3>
 
-<div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
-    <div class="content-wrapper">
-        <div class="content-header row"></div>
-        <div class="content-header-left col-md-9 col-12 mb-2">
-            <div class="row breadcrumbs-top">
-                <div class="col-12">
-                    <h2 class="content-header-title float-left mb-0">Pagos</h2>
-                    <div class="breadcrumb-wrapper col-12">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.payments.list') }}">Financiero</a>
-                            </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.payments.list') }}">Pagos</a>
-                            </li>
-                        </ol>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead class="thead-light">
+                                            <tr class="">
+                                            <th>FECHA</th>
+                                                <th># DE FACTURA</th>    
+                                                <th>CLIENTE</th>
+                                                <th>PLATAFORMA DE PAGO</th>
+                                                <th>MONTO</th>
+                                                <th>FEE</th>
+                                                <th>ESTADO</th>
+                                                <th>ACCIÓN</th>
+                                                <th>TOTAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($payments as $payment)
+                                                <tr>
+
+                                                <td>{{ date('d-m-Y', strtotime($payment->date)) }}</td>
+
+
+                                                <td>{{ $payment->user_id}}</td>
+
+                                            
+                                                        <td>{{ $payment->bill_id }}</td>
+
+                                                        <td>{{ $payment->payment_method }}</td>
+
+                                                        <td>{{ $payment->amount }}</td>
+
+                                                        <td>{{ $payment->total}}</td> 
+                                                        
+                                                         
+
+                                                        <td>{{ $payment->fee}}</td>   
+ 
+
+
+                                                        <td><a href="{{route('admin.payments.billpayment')}}"><i id="eye"  style="font-size:15px;" class="far fa-eye"></i></a>    
+                                                    
+                                                    
+                                                      </tr>
+                                                      
+                                                      
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mr-3">
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="content-body">
-
-        <div >
-            <div class="" style="margin-left:15px; width:980px;">
-                <div class="card" id="card-head1">
-                    <div class="card-header">
-                        <h3 class="card-title mb-1">Pagos</h3>
-                       
-                    </div>
-
-                    <div class="card-content">
-                        <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead class="thead-light ">
-                                    <tr>
-                                    <th scope="col"># DE FACTURA</th>
-                                        <th scope="col">FECHA</th>
-                                        <th scope="col">CLIENTE</th>
-                                        <th scope="col">PLATAFORMA DE PAGO</th>
-                                        <th scope="col">MONTO</th>
-                                        <th scope="col">FEE</th>
-                                        <th>ESTADO</th>
-                                        <th>ACCIÓN</th>
-                                        <th scope="col">TOTAL</th>
-                                       
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>20.36$</td>
-                                        <td>---</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="{{route('admin.payments.billpayment')}}"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>    
-                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
-                                        <td>20.36$</td>
-                                        <td>---</td>
-                                          <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                          <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>20.36$</td>         
-                                        <td>---</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
-                                        <td>20.36$</td>
-                                        <td>---</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>20.36$</td>
-                                        <td>---</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
-                                        <td>147$</td>
-                                        <td>---</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>20.36$</td>
-                                         <td>---</td>
-                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                         <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
-                                        <td>20.36$</td>                                        
-                                        <td>---</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>20.36$</td>
-                                        <td>---</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/figma/l.uphold.png')}}" alt=""></td>
-                                        <td>20.36$</td>
-                                        <td>---</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                    <tr>
-                                    <td>1587</td>
-                                        <th scope="row">03/09/21</th>
-                                        <td>Pedro Perez</td>
-                                        <td><img src="{{asset('images/valdusoft/paypal.png')}}" alt=""></td>
-                                        <td>20.36$</td>
-                                        <td>---</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <th><a href="#"><i id="eye" class="far fa-eye ml-1"></i></a></th>
-                                        <td>147$</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-
-                            <div class="bottom float-right" style="margin-right:20px;">
-
-                                <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
-
-                                </button>
-
-                                <button class="btn btn-primary  btn-circle btn-lg">1
-
-                                </button>
-
-                                <button style="color:black;" class="btn btn-circle btn-lg">2
-
-                                </button>
-
-                                <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
-
-                                </button>
-                                <br><br>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                   
-
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-                    </div>
-
-                </div>
-                @endsection
+@endsection

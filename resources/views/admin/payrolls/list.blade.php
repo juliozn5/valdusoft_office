@@ -67,7 +67,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                                         <td><a href="{{asset('financieronomina.html')}}"><i id="eye" href="facebook.com" style="font-size:15px;" class="far fa-eye"></i></a>
                                         
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye"  href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -79,7 +79,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                                         <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
 
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -90,7 +90,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
                                         <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <ahref="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -101,7 +101,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
                                         <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -112,7 +112,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
                                         <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -122,28 +122,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
                                         <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    <td scope="row">57</td>
-                                        <td>03/09/21</td>
-                                      
-                                        <td>20.36$</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-
-                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    <td scope="row">57</td>
-                                        <td>03/09/21</td>
-                                      
-                                        <td>20.36$</td>
-                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
-                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -154,7 +133,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
                                         <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <td scope="row">57</td>
+                                        <td>03/09/21</td>
+                                      
+                                        <td>20.36$</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -165,7 +154,18 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
 
                                         <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <td scope="row">57</td>
+                                        <td>03/09/21</td>
+                                      
+                                        <td>20.36$</td>
+                                        <th><label class="label status-label status-label-gray">En Proceso</label></th>
+
+                                        <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -175,7 +175,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td>20.36$</td>
                                         <th><label class="label status-label status-label-gray">En Proceso</label></th>
                                         <td><a href="#"><i id="eye" href="#" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        <a href="#"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
                                     </tr>
 
@@ -212,6 +212,85 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                 </div>
             </div>
+
+
+
+            <div class="modal fade text-left" id="edit" tabindex="-1" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary white">
+                    <h5 class="modal-title">Editar Nómina</h5>
+                    <button class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <form action="actualizacion del proyecto" method="POST" enctype="multipart/form-data">
+                 
+                   
+                    <input type="hidden" name="project_id" value="">
+                    <div class="modal-body">
+                       
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="user_id">ID</label>
+                                    <select name="user_id" id="projet_user_id" class="form-control">
+                                        
+                                            <option value="#">ID</option>
+                                       
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class=" col-6">
+                                <div class="form-group">
+                                    <label for="start_date">Fecha</label>
+                                    <input type="date" name="start_date" id="project_start_date" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="country">Monto</label>
+                                    <select name="country_id" id="project_country_id" class="form-control">
+                                        
+                                            <option value="">Monto</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            
+                    
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="type">Estado</label>
+                                    <select name="status" id="project_status" class="form-control">
+                                        <option value="0">No Atendido</option>
+                                        <option value="1">En Proceso</option>
+                                        <option value="2">Testiando</option>
+                                        <option value="3">Completado</option>
+                                        <option value="4">Eliminado</option>
+                                    </select>
+                                </div>
+                            </div>
+                          
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
 
         </div>
     </div>

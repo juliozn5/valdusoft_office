@@ -10,8 +10,8 @@ class PaymentsController extends Controller
     *** Perfil: Admin ***/
     public function list(){
         if (Auth::user()->profile_id == 1){
-            $Payments = Payments::where('user_id', '=', Auth::user()->id)->paginate(10);
-            return view('admin.payments.list')->with('Payments', $Payments);
+            $payments = payments::where('user_id', '=', Auth::user()->id)->paginate(10);
+            return view('admin.payments.list')->with('payments', $payments);
         }
 
     }
