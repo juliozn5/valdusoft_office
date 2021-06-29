@@ -49,10 +49,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments"><strong> EMPLEADOS </strong></a>
                         </li>
                         <li class="">
-                            <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat"><strong> CLIENTES </strong></a>
+                            <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat"><strong> CLIENTES </strong></a>
                         </li>
                         <li class="">
-                            <a class="nav-link nav-link-pills" data-toggle="tab" href="#accountant"><strong> HOSTING </strong></a>
+                            <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant"><strong> HOSTING </strong></a>
                         </li>
                     </ul>
                 </div>
@@ -89,7 +89,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="project-detail-skill" id="process-project">En Proceso</div>
                                 </td>
                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
+                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
                                 </td>
                             </tr>
@@ -103,7 +103,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="project-detail-skill" id="process-project">En Proceso</div>
                                 </td>
                                 <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
+                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
                                 </td>
 
@@ -118,7 +118,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="project-detail-skill" id="process-project">En Proceso</div>
                                 </td>
                                 <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
+                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
                                 </td>
                             </tr>
@@ -133,7 +133,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="project-detail-skill" id="process-project">En Proceso</div>
                                 </td>
                                 <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
+                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
                                 </td>
                             </tr>
@@ -148,7 +148,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="project-detail-skill" id="process-project">En Proceso</div>
                                 </td>
                                 <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
+                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
                                 </td>
 
@@ -164,7 +164,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="project-detail-skill" id="process-project">En Proceso</div>
                                 </td>
                                 <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
+                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
                                 </td>
                             </tr>
@@ -179,7 +179,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="project-detail-skill" id="process-project">En Proceso</div>
                                 </td>
                                 <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
+                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
                                 </td>
 
@@ -195,7 +195,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="project-detail-skill" id="process-project">En Proceso</div>
                                 </td>
                                 <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
+                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
                                 </td>
 
@@ -210,7 +210,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <div class="project-detail-skill" id="process-project">En Proceso</div>
                                 </td>
                                 <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
+                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
                                 </td>
                             </tr>
