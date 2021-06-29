@@ -20,7 +20,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-2">Clientes</h3>
-                             <a href="{{ route('admin.clients.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Client</a>
+                             <a href="{{ route('admin.clients.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Añadir Cliente</a>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -50,11 +50,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                             @endif
                                             </td>
+                                            <td>{{ $item->id }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->lastname }}</td>
+                                            <td>{{ $item->last_name }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->phone }}</td>
-                                            <td><a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></td>
                                             <td>
                                                 <a href="{{ route('admin.clients.detail') }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
                                                 @csrf
