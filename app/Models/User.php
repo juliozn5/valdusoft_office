@@ -83,6 +83,11 @@ class User extends Authenticatable
 
     }
 
+    //Relación del usuario con el chat
+    public function chats(){
+        return $this->hasMany('App\Models\Chat');
+    }
+
     public function getPhotoUrlAttribute()
     {
         if($this->getMedia('photo')->isEmpty())

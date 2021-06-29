@@ -327,59 +327,10 @@
                                 {{-- Pestaña del Chat --}}
                                 <div class="tab-pane fade pl-2 pr-2" id="chat">
                                     <h3 class="card-title">Chat</h3>
+                                    
+                                    @livewire("chat-list")
 
-                                    <div class="user-chats">
-                                        <div class="chats">
-                                            <div class="chat">
-                                                <div class="chat-avatar">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                        <img src="{{ asset('template/app-assets/images/portrait/small/avatar-s-1.jpg') }}" alt="avatar" height="40" width="40" />
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                        <p>How can we help? We're here for you!</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="chat chat-left">
-                                                <div class="chat-avatar">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                        <img src="{{ asset('template/app-assets/images/portrait/small/avatar-s-7.jpg') }}" alt="avatar" height="40" width="40" />
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                        <p>Hey John, I am looking for the best admin template.</p>
-                                                        <p>Could you please help me to find it out?</p>
-                                                    </div>
-                                                    <div class="chat-content">
-                                                        <p>It should be Bootstrap 4 compatible.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="divider">
-                                                <div class="divider-text">Yesterday</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="chat-app-form">
-                                        <form class="chat-app-input" action="javascript:void(0);">
-                                            <div class="row">
-                                                <div class="col-9">
-                                                    <input type="text" class="form-control message mr-1"placeholder="Type your message">
-                                                </div>
-                                                <div class="col-3">
-                                                     <button type="button" class="btn btn-info send">
-                                                        <i class="fa fa-paper-plane-o d-lg-none"></i> 
-                                                        <span class="d-none d-lg-block">Enviar</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            
-                                           
-                                        </form>
-                                    </div>
+                                    @livewire("chat-form")
                                 </div>
 
                                 {{-- Pestaña de Contable --}}
