@@ -98,10 +98,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column"
                                                 class="btn btn-auth-1 btn-lg btn-block">Ingresar</button>
                                         </div>
 
-                                        <div class="text-right mt-1"><a href="{{route ('register') }}"
+                                        <!--<div class="text-right mt-1"><a href="{{route ('register') }}"
                                                 class="card-link text-info ">¿Aún no tienes una cuenta?
                                                 <b>Regístrate.</b></a>
-                                        </div>
+                                        </div>-->
 
                                         <div class="text-left mt-2">
                                             <fieldset class="checkbox">
