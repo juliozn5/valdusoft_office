@@ -1,6 +1,7 @@
 <!-- BEGIN: Vendor JS-->
 <script src="https://kit.fontawesome.com/d6f2727f64.js" crossorigin="anonymous"></script>
 <script src="{{ asset('template/app-assets/vendors/js/vendors.min.js') }}"></script>
+<script src="https://js.pusher.com/6.0/pusher.min.js"></script>
 <!-- BEGIN Vendor JS-->
 
 <!-- BEGIN: Page Vendor JS-->

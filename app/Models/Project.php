@@ -47,4 +47,10 @@ class Project extends Model
     public function accounting_transactions(){
         return $this->hasMany('App\Models\AccountingTransaction');
     }
+
+    //Relación del proyecto con el chat
+    public function chats(){
+        return $this->hasMany('App\Models\Chat');
+    }
+
 }
