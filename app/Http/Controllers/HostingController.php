@@ -12,7 +12,7 @@ class HostingController extends Controller
     *** Perfil: Admin - Cliente ***/
     public function list(){
         if (Auth::user()->profile_id == 1){
-            $hostings = Hosting::all();
+            $hostings = Hosting::paginate(10);
         
             return view('admin.hostings.list')->with('hostings', $hostings); 
         }else if (Auth::user()->profile_id == 2){

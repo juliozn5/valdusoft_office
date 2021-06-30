@@ -36,7 +36,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
     </div>
 
-
     <div class="content-body">
 
 <div id="table-head">
@@ -46,25 +45,44 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="d-grid gap-2 d-md-block mb-2 col-md-8 col-sm-1">
                     <ul class="nav nav-pills nav-justified">
                         <li class="">
-                            <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments"><strong> EMPLEADOS </strong></a>
+                            <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments" id="empleado" onclick="ocultar()" ><strong> EMPLEADOS </strong></a>
                         </li>
                         <li class="">
-                            <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat"><strong> CLIENTES </strong></a>
+                            <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat" id="mostrar" onClick="mostrar('generar')"><strong> CLIENTES </strong></a>
                         </li>
                         <li class="">
-                            <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant"><strong> HOSTING </strong></a>
+                            <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant" id="mostrar" onClick="mostrar('generar')"><strong> HOSTING </strong></a>
                         </li>
                     </ul>
                 </div>
     <div class="d-grid gap-2 d-md-block mb-2 col-4">
-    
-    <a href="#prestamo" data-toggle="modal" class="btn btn-primary mb-2 waves-effect" style="margin-left:130px;"> GENERAR</a>
+    <a href="#prestamo" data-toggle="modal" class="btn1 btn btn-primary mb-2 waves-effect" style="margin-left:130px;" id="generar"> GENERAR</a>
     </div>
 </div>
+
+
+<script>//el boton al entrar en la vista esta pero al hacer click desaparece, Tenemos que hacer que cuando entre en la vista el boton no este
+
+function ocultar(){
+document.getElementById('generar').style.display = 'none';
+}
+
+function mostrar(){
+document.getElementById('generar').style.display = 'block';
+}
+
+</script>
+
+
+
+
+
+
 <div class="tab-content" >
 
+
 <!-- Pestaña de Empleado -->
-    <div class="tab-pane active " id="attachments">
+    <div class="tab-pane active " id="attachments" id="empleado">
         <div class="table-responsive mt-1">
             <table class="table mb-0">
                 <thead class="thead-light text-center">                                    
@@ -228,7 +246,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                
                                              
 <!-- Pestaña de Cliente -->
-<div class="tab-pane fade" id="chat">    
+
+<div class="tab-pane fade" id="chat"  onClick="muestra_oculta('generar')" >    
     <div class="table-responsive mt-1">
         <table class="table mb-0">
             <thead class="thead-light text-center">
@@ -385,7 +404,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                       
                                     <!-- Pestaña de Hosting -->
-                                    <div class="tab-pane fade" id="accountant">    
+                                    <div class="tab-pane fade" id="accountant" onClick="muestra_oculta('generar')" >    
                                    <div class="table-responsive mt-1">
                                       <table class="table mb-0">
                                      <thead class="thead-light text-center">
@@ -549,27 +568,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </div>                
                     </div>  
 
-                    <div class="bottom " style="margin-left:700px; height:50px; ">
-
-<button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
-
-</button>
-
-<button class="btn btn-primary  btn-circle btn-lg">1
-
-</button>
-
-<button style="color:black;" class="btn btn-circle btn-lg">2
-
-</button>
-
-<button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
-
-
-</button>
- 
-
-</div>
+  
 
 <!--  MODAL DEL CLIENTE  -->
 
