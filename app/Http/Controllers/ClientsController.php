@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str as Str;
+use Illuminate\Support\Facades\Hash;
 
 class ClientsController extends Controller
 {
@@ -30,7 +33,11 @@ class ClientsController extends Controller
     /** Crear Nuevo Cliente
     *** Perfil: Admin ***/
     public function create(){
-        return view('admin.clients.create');
+        $skills = DB::table('skills')
+        ->orderBy('skill', 'ASC')
+        ->get();
+
+    return view('admin.clients.create')->with(compact('skills'));
 
     }
 
@@ -42,15 +49,33 @@ class ClientsController extends Controller
     /** Guardar Datos del Nuevo Cliente
     *** Perfil: Admin ***/
     public function store(Request $request){
-        $fields = [   ];
 
-        $msj = [    ];
+        $client = new User($request->all());
 
-        $this->validate($request, $fields, $msj);
+        $client->slug = Str::slug($request->name."-".$request->last_name);
 
-        $client = User::create($request->all());
+        $client->password = Hash::make($request->password);
+
+        $client->profile_id = 2;
+
         $client->save();
 
+        if ($request->hasFile('photo')){
+            $file = $request->file('photo');
+            $name = $client->id.".".$file->getClientOriginalExtension();
+            $file->move(public_path().'/uploads/images/users/photos', $name);
+            $client->photo = $name;
+        }
+
+        $client->save();
+ 
+        if (!is_null($request->skills)) {
+            foreach ($request->skills as $skill) {
+                DB::table('skills_users')->insert(
+                    ['skill_id' => $skill, 'user_id' => $client->id]
+                );
+            }
+        }
         return redirect()->route('admin.clients.list')->with('message','Se creo el Cliente Exitosamente');
         
     }
