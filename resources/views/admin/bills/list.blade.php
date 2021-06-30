@@ -5,6 +5,24 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @section('content')
 @include('layouts.partials.navbar')
 @include('layouts.partials.sidebar')
+
+<!--SCRIPT PARA OCULTAR Y MOSTRAR EL BOTON DE GENERAR-->
+
+<script>
+
+//OCULTAR BOTON DE GENERAR
+function ocultar(){
+document.getElementById('generar').style.display = 'none';
+}
+
+//MOSTRAR BOTON DE GENERAR 
+
+function mostrar(){
+document.getElementById('generar').style.display = 'block';
+}
+
+</script>
+
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -52,20 +70,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     </div>
 </div>
 
-
-<script>//el boton al entrarTenemos que hacer que cuando entre en la vista el boton no este
-
-function ocultar(){
-document.getElementById('generar').style.display = 'none';
-}
-
-function mostrar(){
-document.getElementById('generar').style.display = 'block';
-}
-
-</script>
-
-
 <div class="tab-content" >
 
 <!-- Pestaña de Empleado -->
@@ -109,7 +113,9 @@ document.getElementById('generar').style.display = 'block';
 
 
 
-<!-- Pestaña de Cliente --><!--
+
+<!-- Pestaña de Cliente -->
+
 <div class="tab-pane fade" id="chat">
     <div class="table-responsive mt-1">
         <table class="table mb-0">
@@ -153,20 +159,20 @@ document.getElementById('generar').style.display = 'block';
 
 
 
-                                    <!-- Pestaña de Hosting --><!--
-                                    <div class="tab-pane fade" id="accountant">
-                                   <div class="table-responsive mt-1">
-                                      <table class="table mb-0">
-                                     <thead class="thead-light text-center">
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>NOMBRE</th>
-                                                        <th>FECHA</th>
-                                                        <th>MONTO</th>
-                                                        <th>ESTADO</th>
-                                                        <th class="col-3">ACCIÓN</th>
-                                                    </tr>
-                                                </thead>
+                         <!-- Pestaña de Hosting -->
+                 <div class="tab-pane fade" id="accountant">
+          <div class="table-responsive mt-1">
+                    <table class="table mb-0">
+             <thead class="thead-light text-center">
+                      <tr>
+               <th>#</th>
+               <th>NOMBRE</th>
+                <th>FECHA</th>
+                <th>MONTO</th>
+                <th>ESTADO</th>
+                <th class="col-3">ACCIÓN</th>
+                </tr>
+                    </thead>
             <tbody class="text-center">
                 @foreach ($hostings as $hosting)
                 <tr>
@@ -190,7 +196,7 @@ document.getElementById('generar').style.display = 'block';
 
  
 
--->
+
 <!--  MODAL DEL CLIENTE  -->
 
 <div class="modal fade" id="prestamo" aria-hidden="true"  tabindex="-1">

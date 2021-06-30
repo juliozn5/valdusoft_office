@@ -104,11 +104,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
             </div>
 
-
                     <!--  MODAL EDITAR NOMINA  -->
 
-            <div class="modal fade text-left" id="edit" tabindex="-1" role="dialog" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal  fade text-left " id="edit" tabindex="-1" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary white">
                     <h5 class="modal-title">Editar Nómina</h5>
@@ -124,39 +123,40 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                        
                             </div>
 
-                            <div class="col-6 ">
-                                <div class="form-group">
-                                    <label for="user_id">ID</label>
-                                    <select name="user_id" id="projet_user_id" class="form-control">
+                            <div class="container">
+                            <div class="row">
+                            <div class="col-6">
+                            <label for="user_id">ID</label>
+                           <select name="user_id" id="projet_user_id" class="form-control">
                                         
-                                            <option value="#"></option>
+                            <option value="#">Id</option>
                                        
                                     </select>
-                                </div>
-                            </div>
-
-                            <div class=" col-6">
-                                <div class="form-group">
-                                    <label for="start_date">Fecha</label>
-                                    <input type="date" name="start_date" id="project_start_date" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="country">Monto</label>
-                                    <select name="country_id" id="project_country_id" class="form-control">
+                                 </div>
+  
+                                <div class="col-6">
+                                <label for="country">Monto</label>
+                                <select name="country_id" id="project_country_id" class="form-control">
                                         
                                             <option value="">Monto</option>
                                         
                                     </select>
-                                </div>
-                            </div>
-                            
-                    
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="type">Estado</label>
+                                    </div>
+                                     </div>
+                                    </div>
+                                    <br>
+
+                                <div class="container">
+                                <div class="row">
+                                <div class="col-6">
+                                <label for="start_date">Fecha</label>
+                                    <input type="date" name="start_date" id="project_start_date" class="form-control">
+                              </div>
+  
+
+                               <div class="col-6">
+
+                               <label for="type">Estado</label>
                                     <select name="status" id="project_status" class="form-control">
                                         <option value="0">No Atendido</option>
                                         <option value="1">En Proceso</option>
@@ -164,9 +164,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <option value="3">Completado</option>
                                         <option value="4">Eliminado</option>
                                     </select>
-                                </div>
-                            </div>
-                          
+                                      </div>
+                                    </div>
+                                    </div>
+
+                                    <br><br>
+
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
                     </div>
@@ -174,17 +177,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
 @endsection
