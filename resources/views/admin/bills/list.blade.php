@@ -221,6 +221,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>            
 
         
+
+
+
+
+                               
                                              
 <!-- Pestaña de Cliente -->
 <div class="tab-pane fade" id="chat">    
@@ -568,43 +573,73 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
 <!--  MODAL DEL CLIENTE  -->
 
-
-<div class="modal  fade" id="prestamo" aria-hidden="true" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="prestamo" aria-hidden="true"  tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-      <p>Generar Factura</p>
-        <button class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar Factura</strong></h5>
+        <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
 
       </div>
+      <div class="modal-body">
 
-      <div class="">
-      <div class="table-responsive">
-                            <table class="table col-12">
-                                <thead class="thead-light ">
+    
+     <table class="table">
+     <thead class="thead-light text-center">
+           <th class="col-2">DESCRIPCIÓN</th>
+           <th class="col-3">UNIDADES</th>
+           <th class="col-3">PRECIO UNITARIO</th>
+           <th class="" style="margin-left:50px;">PRECIO</th>
+           </thead>
+</table>
 
-                                    <tr>
-                                        <th>DESCRIPCIÓN</th>
-                                        <th>UNIDADES</th>
-                                        <th>PRECIO UNITARIO</th>
-                                        <th>PRECIO</th>
-                                        
-                                    </tr>
-                                </thead>
-                                <input type="text" class=" form-control">
+         
+     <div class="container ">
+ <div class="row "> 
+   <div class="col " >
+     <input class="col form-control" type="text"  id="" style="margin-left:px;">
+   </div>
+   <div class="col">
+   <input class="col form-control" type="text"  id="" style="margin-left:;">
 
-                                </table>
-      
-      </div>
+   </div>
+   <div class="col">
+   <input class="col form-control" type="text"  id="" style="margin-left:;">
+
+   </div>
+   <div class="col">
+   <input class="col form-control" type="text"  id="" style="margin-left:45px;">
+
+   
+ </div>
+ <div class="col">
+
+ <a href="#" class="float-right"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+ </div>
+ 
+</div>
+
+        <br>
+         <br>                  
+     
+<ul class="list list-group-flush float mr-3">
+  <li class="list-group-item"><strong>TOTAL PARCIAL</strong></li>
+  <li class="list-group-item"><strong>DESCUENTO</strong></li>
+  <li class="list-group-item"><strong>PAGADO</strong></li>
+
+</ul>
+
+     </div>
+           </div>
+
       <div class="modal-footer">
+
+        <button class="btn btn-primary" data-target="#exampleModalToggle2" data-toggle="modal" data-dismiss="modal">Guardar</button>
       </div>
     </div>
   </div>
 </div>
 
-                    
-                </div>
-                
-        </div>
-    </div>
+    
 @endsection
