@@ -24,13 +24,4 @@ class Hosting extends Model
         return $this->belongsTo('App\Models\User');
     }
     
-    public function getPhotoUrlAttribute()
-    {
-        if($this->getMedia('photo')->isEmpty())
-        {
-            return $this->role == "completion specialist" ?  "/img/completion_photo.png" : "/img/user_photo.jpg";
-        } else {
-            return $this->getMedia('photo')->first()->file;
-        }
-    }
 }

@@ -27,7 +27,9 @@
 @endpush
 
 @section('content')
-
+@push('body-atribute')
+class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
+@endpush
 @include('layouts.partials.navbar')
 
 @include('layouts.partials.sidebar')
@@ -56,114 +58,59 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-        <div class="row d-flex justify-content-center mt-5 pb-3">
-            <div class="col-md-6 col-12">
+<div class="content-body">
+    <div class="row" id="table-head">
+        <form class="form" action="{{ route('admin.hostings.store') }}" method="POST">
+        @csrf
+            <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Añadir Hosting</h4>
+                        <h3 class="card-title mb-2">Nuevo Hosting</h3>
                     </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                            <form class="form form-vertical" action="{{ route('admin.hostings.store') }}" method="POST"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="h5" for="client">Cliente</label>
-                                                <div class="position-relative has-icon-left">
-                                                    <input type="text" class="form-control" name="client"
-                                                        placeholder="Nombre del Cliente">
-                                                    <div class="form-control-position">
-                                                        <i class="feather icon-user"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="h5" for="url">URL</label>
-                                                <div class="position-relative has-icon-left">
-                                                    <input type="text" class="form-control" name="url"
-                                                        placeholder="URL del Hosintg">
-                                                    <div class="form-control-position">
-                                                        <i class="feather icon-globe"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="h5" for="create_date">Fecha de Creacion</label>
-                                                <div class="position-relative has-icon-left">
-                                                    <input type="date" class="form-control" name="create_date"
-                                                        placeholder="Fecha de creacion del Hosting">
-                                                    <div class="form-control-position">
-                                                        <i class="feather icon-calendar"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="h5" for="due_date">Fecha de Expiración</label>
-                                                <div class="position-relative has-icon-left">
-                                                    <input type="date" class="form-control" name="due_date"
-                                                        placeholder="Fecha de Expiración del Hosting">
-                                                    <div class="form-control-position">
-                                                        <i class="feather icon-calendar"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-12">
-                                            <fieldset>
-                                                <label class="h5" for="due_date">Imagen para el Cliente</label>
-                                                <div class="media">
-                                                    <div class="custom-file">
-                                                        <label class="custom-file-label" for="photo"><b>Seleccione una imagen para el Cliente</b></label>
-                                                        <input type="file" id="photo"
-                                                            class="custom-file-input @error('photo') is-invalid @enderror"
-                                                            name="photo" onchange="previewFile(this, 'photo_preview')"
-                                                            accept="image/*">
-                                                        @error('photo')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                              
-                                                <div class="row mb-4 mt-4 d-none" id="photo_preview_wrapper">
-                                                    <div class="col"></div>
-                                                    <div class="col-auto">
-                                                      <img id="photo_preview" class="img-fluid rounded" />
-                                                    </div>
-                                                    <div class="col"></div>
-                                                </div>
-
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-12">
-                                            <button type="submit"
-                                                class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Añadir</button>
-                                            <a href="{{ route('admin.hostings.list') }}"
-                                                class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+<div class="card-body">
+    <div class="row">
+        <div class="col-md-4 col-12">
+            <div class="form-group">
+                <label for="url">Nombre</label>
+                    <input type="text" name="url" id="url" class="form-control" required>
             </div>
         </div>
-
+<div class="col-md-4 col-12">
+    <div class="form-group">
+        <label for="create_date">Fecha de inicio</label>
+            <input type="date" name="create_date" id="create_date" class="form-control" required>
     </div>
 </div>
+<div class="col-md-4 col-12">
+        <div class="form-group">
+            <label for="due_date">cantidad de años</label>
+                <input type="date" name="due_date" id="due_date" class="form-control">
+        </div>
+    </div>
+<div class="col-md-4 col-12">
+    <div class="form-group">
+        <label for="user_id">Cliente</label>
+            <select name="user_id" id="user_id" class="form-control" required>
+                <option value="" selected disabled>Seleccione un cliente...</option>
+                    @foreach ($clients as $client)
+                        <option value="{{ $client->id }}">{{ $client->name }} {{ $client->last_name }}</option>
+                    @endforeach
+            </select>
+        </div>
+    </div>
+<div class="col-12 alert alert-danger" id="errors_div" style="display: none;">
+</div>
+    </div>
+        </div>
+    </div>
+</div>
+<div class="col-12 text-right">
+    <button type="submit" class="btn btn-primary mr-1 waves-effect waves-float waves-light" id="btn-guardar">GUARDAR</button>
+</div>
+    </form>
+</div>
+    </div>            
+        </div>
+    </div>
 @endsection

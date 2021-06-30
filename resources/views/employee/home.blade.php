@@ -9,7 +9,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
             <div class="content-wrapper">
-                <div class="content-body">
+                <div class="content-body mb-5 mt-2">
                     <div class="card">
                         <div class="ml-1 mb-1 mt-1">
                             <h3>Proyectos</h3>
@@ -50,39 +50,46 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
             </div>
                 </div>
-<section class="employes-home mt-5">
+<section id="dashboard-analytics">
     <div class="row">
-        <div class="col-md-4 col-sm-1 mb-2">
-            <div class="card" style="height: 80%">
-                <div class="card-body">
-                    <h5 class="col-6">Ultima Factura de la quincena</h5>
-                    <br>
-                    <a href="#" class="btn btn-primary ml-1">Descargar</a>
-                    <div class=""><img src="{{asset('/images/figma/group_154.png')}}" style="position:absolute;margin-left: 155px;top: 18px;height: 125px;" alt=""></div>
+        <div class="col-md-4 col-sm-12">
+            <div class="card">
+                <div class="">
+                    <div class="card-body">
+                        <img src="{{ asset('images/figma/group_154.png') }}" class="float-right pl-2" width="120" height="120" alt="">
+                        <h6 class="pt-2">Ultima factura de la quincena</h6>
+                        <a href="#" class="btn btn-primary mt-1 pb-1"><b>descargar</b></a>
+                    </div>
                 </div>
             </div>
         </div>
-<div class="col-md-4 col-sm-1 mb-2">
-    <div class="card" style="height: 80%">
-        <div class="card-body">
-            <h5 class="col-6">Valor de la hora de trabajo</h5>
-            <br>
-            <p class="h4 " id="holidays-date"><i class="far icon-big mr-1"></i>$ 0.00</p>
-            <img src="{{asset('/images/figma/dolar.png')}}" style="position:absolute;margin-left: 130px;top:8px;height: 132px;" alt="">
+        <div class="col-md-4 col-sm-12">
+            <div class="card">
+                <div class="">
+                    <div class="card-body">
+                        <img src="{{ asset('images/figma/dolar.png') }}" class="float-right pl-2" width="120" height="120" alt="">
+                        <h5 class="pt-2">Valor de la hora de trabajo</h5>
+                        <br>
+                        <p class="h4" id="holidays-date">$ 0.00</p>
+                    </div>
+                </div>
+            </div>                
         </div>
-    </div>
-</div>
-<div class="col-md-4 col-sm-1 mb-2">
-    <div class="card" style="height: 80%">
-        <div class="card-body">
-            <h5 class="col-6">Proximas <br> Vacaciones</h5>
-            <br>
-            <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1 mt-1"></i>30 Agosto</p>
-            <img src="{{asset('/images/svg/ilustracion_clientes.svg')}}" style="position:absolute;margin-left:150px;top: 5px;height: 140px;" alt="">
-        </div>
-    </div>
-</div>
-    </div>
-        </div>
+
+    <div class="col-md-4 col-sm-12">
+        <div class="card">
+            <div class="">
+                <div class="card-body">
+                    <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="120" height="120" alt="">
+                    <h5 class="pt-2">Proximas <br> Vacaciones</h5>
+                    <br>
+                    <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
+                </div>
             </div>
+        </div>                        
+    </div>
+</div>
+</section>                
+    </div>
+        </div>
 @endsection

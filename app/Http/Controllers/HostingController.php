@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Hosting;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 class HostingController extends Controller
 {
@@ -25,7 +26,13 @@ class HostingController extends Controller
     /** Crear Nuevo Hosting
     *** Perfil: Admin ***/
     public function create(){
-        return view('admin.hostings.create');
+        $clients = DB::table('users')
+        ->select('id', 'name', 'last_name')
+        ->where('profile_id', '=', 2)
+        ->orderBy('name', 'ASC')
+        ->get();
+
+        return view('admin.hostings.create')->with(compact('clients'));
     }
 
     /** Guardar datos del Nuevo Hosting

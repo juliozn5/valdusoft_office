@@ -313,19 +313,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($hosting as $item)
-                                            <tr>
-                                                @if(!$item->getMedia('photo')->isEmpty())
-                                                <th><img class="rounded-circle" width="50px" height="50px" src="{{ $item->photoUrl }}" /></th>
-                                                @else
-                                                <th><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" /></th>
-                                                @endif
-                                                <td>{{ $item->client }}</td>
-                                                <td><a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></td>
-                                                <td>{{ $item->create_date }}</td>
-                                                <td>{{ $item->due_date }}</td>
-                                            </tr>
-                                            @endforeach
+                                            
                                         </tbody>
                                     </table>
                                 </div>
