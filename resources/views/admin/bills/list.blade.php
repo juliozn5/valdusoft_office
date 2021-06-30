@@ -1,21 +1,15 @@
 @extends('layouts.app')
-
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
-
 @section('content')
-
 @include('layouts.partials.navbar')
-
 @include('layouts.partials.sidebar')
-
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row"> </div>
-
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
@@ -33,9 +27,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
             </div>
         </div>
-
     </div>
-
     <div class="content-body">
 
 <div id="table-head">
@@ -61,7 +53,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 </div>
 
 
-<script>//el boton al entrar en la vista esta pero al hacer click desaparece, Tenemos que hacer que cuando entre en la vista el boton no este
+<script>//el boton al entrarTenemos que hacer que cuando entre en la vista el boton no este
 
 function ocultar(){
 document.getElementById('generar').style.display = 'none';
@@ -74,18 +66,13 @@ document.getElementById('generar').style.display = 'block';
 </script>
 
 
-
-
-
-
 <div class="tab-content" >
 
-
 <!-- Pestaña de Empleado -->
-    <div class="tab-pane active " id="attachments" id="empleado">
+    <div class="tab-pane active " id="attachments">
         <div class="table-responsive mt-1">
             <table class="table mb-0">
-                <thead class="thead-light text-center">                                    
+                <thead class="thead-light text-center">
                     <tr>
                         <th>#</th>
                         <th>NOMBRE</th>
@@ -96,158 +83,34 @@ document.getElementById('generar').style.display = 'block';
                     </tr>
                 </thead>
             <tbody class="text-center">
-                    
-                            <tr>
-                                <th scope="row">#125</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                               <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <th scope="row">#126</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-                            <th scope="row">#127</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#128</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#129</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#130</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#131</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-
-                            <th scope="row">#132</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-                            <th scope="row">#133</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="{{route('admin.bills.billadmin')}}"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
+                @foreach ($bills as $bill)
+                <tr>
+                    <th scope="row">#{{ $bill->id }}</th>
+                    <td>{{ $bill->date }}</td>
+                    <td>{{ $bill->amount }}$</td>
+                    <td>
+                        @if ($bill->status == 0)
+                            <label class="label status-label status-label-purple">No Atendido</label>
+                        @elseif ($bill->status == 1)
+                            <label class="label status-label status-label-gray">En Proceso</label>
+                        @elseif ($bill->status == 2)
+                            <label class="label status-label status-label-blue">Testiando</label>
+                        @elseif ($bill->status == 3)
+                            <label class="label status-label status-label-green">Completado</label>
+                        @endif
+                    </td>
+                    <td><a href="{{ route('client.bills.detail') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
+                </tr>
+                @endforeach
                     </tbody>
                 </table>
-            </div>                                        
-        </div>            
-
-        
+            </div>
+        </div>
 
 
 
-
-                               
-                                             
-<!-- Pestaña de Cliente -->
-
-<div class="tab-pane fade" id="chat"  onClick="muestra_oculta('generar')" >    
+<!-- Pestaña de Cliente --><!--
+<div class="tab-pane fade" id="chat">
     <div class="table-responsive mt-1">
         <table class="table mb-0">
             <thead class="thead-light text-center">
@@ -260,156 +123,41 @@ document.getElementById('generar').style.display = 'block';
                 <th class="col-3">ACCIÓN</th>
             </tr>
             <tbody class="text-center">
-           
-                    
-                            <tr>
-                                <th scope="row">#125</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                               <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <th scope="row">#126</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-                            <th scope="row">#127</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#128</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#129</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#130</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#131</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-
-                            <th scope="row">#132</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-                            <th scope="row">#133</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
+                @foreach ($client as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>
+                    @if (!is_null($item->photo))
+                        <img class="rounded-circle" width="50px" height="50px" src="{{ $item->photo }}" />
+                    @else
+                        <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                    @endif
+                    </td>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->last_name }}</td>
+                    <td>{{ $item->email }}</td>
+                    <td>{{ $item->phone }}</td>
+                    <td>
+                        <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                       
+                    </td>
+                </tr>
+                @endforeach
                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>                
+                                    </div>-->
 
-                      
-                                    <!-- Pestaña de Hosting -->
-                                    <div class="tab-pane fade" id="accountant" onClick="muestra_oculta('generar')" >    
+
+
+
+
+                                    <!-- Pestaña de Hosting --><!--
+                                    <div class="tab-pane fade" id="accountant">
                                    <div class="table-responsive mt-1">
                                       <table class="table mb-0">
                                      <thead class="thead-light text-center">
-
-                                  
                                                     <tr>
                                                         <th>#</th>
                                                         <th>NOMBRE</th>
@@ -419,157 +167,30 @@ document.getElementById('generar').style.display = 'block';
                                                         <th class="col-3">ACCIÓN</th>
                                                     </tr>
                                                 </thead>
-                                                
             <tbody class="text-center">
-           
-                    
-                            <tr>
-                                <th scope="row">#125</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                               <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <th scope="row">#126</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-                            <th scope="row">#127</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#128</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#129</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#130</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                            <th scope="row">#131</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-
-                            <th scope="row">#132</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-
-                            </tr>
-
-                            <th scope="row">#133</th>
-                                <td>Freddy Sanchez </td>
-                                <td>05/12/21</td>
-                                <td>20.36$</td>
-                                <td>
-                                    <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                </td>
-                                <td><a href="#"><i class="fas fa-paper-plane"></i></a>
-                                <a href="#"><i class="far fa-eye ml-1"></i></a>
-                                <a href="#"><i class="fas fa-ellipsis-v ml-1"></i></a>
-                                </td>
-                            </tr>
-
-                
+                @foreach ($hostings as $hosting)
+                <tr>
+                    <td>{{ $hosting->url }}</td>
+                    <td>{{ date('d-m-Y', strtotime($hosting->create_date)) }}</td>
+                    <td>{{ $hosting->user->name }} {{ $hosting->user->last_name }}</td>
+                    <td>
+                        {{ (is_null($hosting->due_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($hosting->due_date)) }}
+                    </td>
+                    <td>
+                        <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                    </td>
+                </tr>
+                @endforeach
                                                 </tbody>
                                             </table>
-                                            
                                         </div>
-                                        
-                                    </div>                
-                    </div>  
+                                    </div>
+                    </div>
+        
 
-  
+ 
 
+-->
 <!--  MODAL DEL CLIENTE  -->
 
 <div class="modal fade" id="prestamo" aria-hidden="true"  tabindex="-1">
@@ -640,5 +261,10 @@ document.getElementById('generar').style.display = 'block';
   </div>
 </div>
 
-    
 @endsection
+
+
+
+
+
+11:58

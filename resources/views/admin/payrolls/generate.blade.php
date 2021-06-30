@@ -69,131 +69,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <tr>
                                         <td scope="row">Fernando Torres</td>
                                         <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
+                                        <td class="text-center">4</td>
                                         <td>84</td>
                                         <td><a href="#bono" data-toggle="modal">
                                                 <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td>4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                                <td><a href="#prestamo" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td scope="row">Fernando Torres</td>
-                                        <td><input type="text" class="col-7 form-control"></td>
-                                        <td >4</td>
-                                        <td>84</td>
-                                        <td><a href="#bono" data-toggle="modal">
-                                                <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-
                                                 <td><a href="#prestamo" data-toggle="modal">
                                                 <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
                                     </tr>
@@ -212,6 +91,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                 </div>
             </div>
+
+
             <!--  MODAL DE LOS BONOS  -->
 
 

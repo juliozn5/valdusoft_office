@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Bill;
+use App\Models\User;
+use App\Models\Hosting;
 
 class BillController extends Controller
 {
@@ -11,7 +13,13 @@ class BillController extends Controller
     *** Perfil: Admin ***/
     public function list(){
         if (Auth::user()->profile_id == 1){
-            return view('admin.bills.list');
+            $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
+            $client = User::where('profile_id', '=', 2)->orderBy('name', 'ASC')->get();
+            $hostings = Hosting::all();
+            return view('admin.bills.list')->with('bills', $bills)->with('client',$client)->with('hostings', $hostings);
+            
+
+            
         }else if (Auth::user()->profile_id == 2){
             $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
             return view('client.bills')->with('bills', $bills);
