@@ -36,7 +36,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title mb-1">Proyectos</h3>
+                    <h3 class="card-title mb-1">Hosting</h3>
                     <a href="{{ route('admin.hostings.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"> Agregar nuevo proyecto</a>
                 </div>
 <div class="card-content">
