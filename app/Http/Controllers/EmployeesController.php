@@ -123,6 +123,8 @@ class EmployeesController extends Controller
         $availableSkills = DB::table('skills')
                               ->orderBy('skill', 'ASC')
                               ->get();
+
+
         return view('landing.profile.profile')->with(compact('user', 'skillsActivos',  'availableSkills'));
     }
 
@@ -140,6 +142,32 @@ class EmployeesController extends Controller
             }
 
         return redirect()->back()->with('msj-exitoso', 'true');
+    }
+
+    public function update_wallet(Request $request){
+
+        // $user = User::find($request);
+
+        // DB::table('users')
+        // ->where('user_id', '=', $user->id)
+        // ->delete();
+        // if (!is_null($request->	tron_wallet)){
+        // foreach ($request->	tron_wallet as $wallet){
+        //     $user->	tron_wallet()->attach($wallet);
+        // }
+    //}
+
+    $user = Auth::user();
+
+    $user->update($request->all());
+
+    $user->tron_wallet = $request->tron_wallet;
+
+    $user->save();
+
+
+        return redirect()->back()->with('msj-exitoso', 'Billetera Guardada Exitosamente');
+        
     }
 }
 
