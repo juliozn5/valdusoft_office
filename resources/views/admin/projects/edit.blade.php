@@ -41,8 +41,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" action="{{ route('admin.projects.update', $projects->id) }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form class="form form-vertical" action="{{ route('admin.projects.update', $projects->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <div class="form-body">
@@ -51,8 +50,7 @@
                                             <div class="form-group">
                                                 <label class="h5" for="client">Cliente</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" class="form-control" name="client"
-                                                        value="{{ $projects->name }}">
+                                                    <input type="text" class="form-control" name="client" value="{{ $projects->name }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-user"></i>
                                                     </div>
@@ -63,8 +61,7 @@
                                             <div class="form-group">
                                                 <label class="h5" for="create_date">Fecha de Creacion</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="date" class="form-control" name="create_date"
-                                                        value="{{ $projects->start_date }}">
+                                                    <input type="date" class="form-control" name="create_date" value="{{ $projects->start_date }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-calendar"></i>
                                                     </div>
@@ -75,8 +72,7 @@
                                             <div class="form-group">
                                                 <label class="h5" for="create_date">Fecha de Inicio</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="date" class="form-control" name="create_date"
-                                                        placeholder="Fecha de Inicio">
+                                                    <input type="date" class="form-control" name="create_date" placeholder="Fecha de Inicio">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-calendar"></i>
                                                     </div>
@@ -88,8 +84,7 @@
                                                 <div class="form-group">
                                                     <label class="h5" for="due_date">Fecha de Expiración</label>
                                                     <div class="position-relative has-icon-left">
-                                                        <input type="date" class="form-control" name="due_date"
-                                                            placeholder="{{ $projects->status }}">
+                                                        <input type="date" class="form-control" name="due_date" placeholder="{{ $projects->status }}">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-calendar"></i>
                                                         </div>
@@ -98,10 +93,8 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-12">
-                                            <button type="submit"
-                                                class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
-                                            <a href="{{ route('admin.projects.list') }}"
-                                                class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
+                                            <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
+                                            <a href="{{ route('admin.projects.list') }}" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

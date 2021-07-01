@@ -15,7 +15,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-body">
-         <div class="row" id="table-head">
+            <div class="row" id="table-head">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -51,16 +51,16 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             </div>
 
                             <div class="mr-3">
-                                {{ $bills->links() }} 
+                                {{ $bills->links() }}
                             </div>
 
                         </div>
                     </div>
                 </div>
             </div>
-         
-            </div>
-        </section>
+
         </div>
+        </section>
     </div>
+</div>
 @endsection

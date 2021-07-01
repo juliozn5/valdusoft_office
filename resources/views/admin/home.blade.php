@@ -1,44 +1,45 @@
 @extends('layouts.app')
 
 @push('body-atribute')
-    class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
+class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
 
 @push('custom_css')
-    <style>
-        .btn-primary{
-            border-color: #003573 !important;
-            background-color: #003573 !important;
-            color: #FFFFFF;
-        }
+<style>
+    .btn-primary {
+        border-color: #003573 !important;
+        background-color: #003573 !important;
+        color: #FFFFFF;
+    }
 
-        .btn-client{
-            border-color: #8f138f !important;
-            background-color: #650865 !important;
-            color: #FFFFFF;
-        }
-        @import url('https://fonts.googleapis.com/css?family=Poppins');
+    .btn-client {
+        border-color: #8f138f !important;
+        background-color: #650865 !important;
+        color: #FFFFFF;
+    }
 
-        * {
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+    * {
         font-family: 'Poppins', sans-serif;
-        }
+    }
 
-        #chart {
-            max-width: auto;
-            /*margin: 35px auto;*/
-            opacity: 0.9;
-        }
+    #chart {
+        max-width: auto;
+        /*margin: 35px auto;*/
+        opacity: 0.9;
+    }
 
-        #timeline-chart .apexcharts-toolbar {
-            opacity: 1;
-            border: 0;
-        }
-    </style>
+    #timeline-chart .apexcharts-toolbar {
+        opacity: 1;
+        border: 0;
+    }
+</style>
 @endpush
 
 @push('custom_js')
-    <script>
-       /* var options = {
+<script>
+    /* var options = {
         chart: {
             type: "area",
             height: 500,
@@ -137,65 +138,64 @@
             }
             return series;
         }*/
-        var lineAreaOptions = {
-            chart: {
-                height: 350,
-                type: 'area',
-                foreColor: "#999",
-                stacked: true,
-                dropShadow: {
-                    enabled: true,
-                    enabledSeries: [0],
-                    top: 0,
-                    left: 0,
-                    blur: 0,
-                    opacity: 1
-                },
-                zoom: {
-                    enabled: false
-                }
+    var lineAreaOptions = {
+        chart: {
+            height: 350,
+            type: 'area',
+            foreColor: "#999",
+            stacked: true,
+            dropShadow: {
+                enabled: true,
+                enabledSeries: [0],
+                top: 0,
+                left: 0,
+                blur: 0,
+                opacity: 1
             },
-            colors: ['#650865', '#003573'],
-            dataLabels: {
+            zoom: {
                 enabled: false
+            }
+        },
+        colors: ['#650865', '#003573'],
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: "smooth",
+            width: 3
+        },
+        series: [{
+                name: 'Costos',
+                data: [310, 400, 280, 510, 420, 1090, 1000, 310, 400, 280, 510, 420]
             },
-            stroke: {
-                curve: "smooth",
-                width: 3
-            },
-            series: [
-                {
-                    name: 'Costos',
-                    data: [310, 400, 280, 510, 420, 1090, 1000, 310, 400, 280, 510, 420]
-                }, 
-                {
-                    name: 'Ganancias',
-                    data: [110, 320, 450, 320, 340, 520, 410, 110, 320, 450, 320, 340]
+            {
+                name: 'Ganancias',
+                data: [110, 320, 450, 320, 340, 520, 410, 110, 320, 450, 320, 340]
+            }
+        ],
+        xaxis: {
+            type: 'year',
+            categories: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        },
+        yaxis: {
+            opposite: false,
+            labels: {
+                formatter: function(value) {
+                    return value + "K";
                 }
-            ],
-            xaxis: {
-                type: 'year',
-                categories: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
             },
-            yaxis: {
-                opposite: false,
-                labels: {
-                    formatter: function (value) {
-                        return value + "K";
-                    }
-                },
-            },
-            legend: {
-                position: 'top',
-                horizontalAlign: 'left'
-            },
-        }
-        var lineAreaChart = new ApexCharts(
-            document.querySelector("#timeline-chart"),
-            lineAreaOptions
-        );
-        lineAreaChart.render();
-    </script>
+        },
+        legend: {
+            position: 'top',
+            horizontalAlign: 'left'
+        },
+    }
+    var lineAreaChart = new ApexCharts(
+        document.querySelector("#timeline-chart"),
+        lineAreaOptions
+    );
+    lineAreaChart.render();
+</script>
 @endpush
 
 @section('content')
@@ -215,23 +215,23 @@
                         <div class="card">
                             <div class="card-content pl-1">
                                 <div class="card-body">
-                                <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
+                                    <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta todos los clientes</h4>
-                                <a href="{{ route('admin.clients.list') }}" class="btn btn-client mt-1"><b>Ver clientes</b></a>
+                                    <a href="{{ route('admin.clients.list') }}" class="btn btn-client mt-1"><b>Ver clientes</b></a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="card">
-                          <div class="card-content pl-1">
-                              <div class="card-body">
-                              <img src="{{ asset('images/svg/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
-                                  <h4 class="pt-2">Consulta y paga la nomina</h4>
-                                <a href="{{ route('admin.payrolls.list') }}" class="btn btn-primary mt-1"><b>Ver nómina</b></a>
-                              </div>
-                          </div>
-                      </div>
-                        
+                            <div class="card-content pl-1">
+                                <div class="card-body">
+                                    <img src="{{ asset('images/svg/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
+                                    <h4 class="pt-2">Consulta y paga la nomina</h4>
+                                    <a href="{{ route('admin.payrolls.list') }}" class="btn btn-primary mt-1"><b>Ver nómina</b></a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="col-7">
@@ -252,28 +252,28 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($user as $item)
-                                                <tr>
-                                                    <td>
-                                                        @if (!is_null($item->photo))
-                                                            <img class="rounded-circle" width="50px" height="50px" src="{{ $item->photo }}" />
-                                                        @else
-                                                            <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
-                                                        @endif
-                                                    </td>
-                                                    <td>{{ $item->name }} {{ $item->last_name }}</td>
-                                                    <td>
-                                                        @if($item->position === '0')
-                                                            Desarrollador
-                                                        @elseif($item->position === '1')
-                                                            Diseñador
-                                                        @elseif($item->position === '2')
-                                                            Project Manager
-                                                        @elseif($item->position === '3')
-                                                            Financiero
-                                                        @endif
-                                                    </td>
-                                                    <td>{{ $item->email }}</td>
-                                                </tr>
+                                            <tr>
+                                                <td>
+                                                    @if (!is_null($item->photo))
+                                                    <img class="rounded-circle" width="50px" height="50px" src="{{ $item->photo }}" />
+                                                    @else
+                                                    <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                    @endif
+                                                </td>
+                                                <td>{{ $item->name }} {{ $item->last_name }}</td>
+                                                <td>
+                                                    @if($item->position === '0')
+                                                    Desarrollador
+                                                    @elseif($item->position === '1')
+                                                    Diseñador
+                                                    @elseif($item->position === '2')
+                                                    Project Manager
+                                                    @elseif($item->position === '3')
+                                                    Financiero
+                                                    @endif
+                                                </td>
+                                                <td>{{ $item->email }}</td>
+                                            </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -282,7 +282,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div id="chart">
                     <div class="card p-1">
                         <div class="card-header">
@@ -293,7 +293,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -313,7 +313,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
+
                                         </tbody>
                                     </table>
                                 </div>

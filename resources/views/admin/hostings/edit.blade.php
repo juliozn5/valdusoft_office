@@ -2,35 +2,33 @@
 
 @push('custom_js')
 <script>
-
-$(document).ready(function() {
-      @if(!$hosting->getMedia('photo')->isEmpty())
-          @if(in_array($hosting->getMedia('photo')->first()->mime_type,array("image/png", "image/gif", "image/jpeg")))
-            previewPersistedFile("{{ $hosting->getMedia('photo')->first()->file }}", 'photo_preview');
-          @endif
+    $(document).ready(function() {
+        @if(!$hosting - > getMedia('photo') - > isEmpty())
+        @if(in_array($hosting - > getMedia('photo') - > first() - > mime_type, array("image/png", "image/gif", "image/jpeg")))
+        previewPersistedFile("{{ $hosting->getMedia('photo')->first()->file }}", 'photo_preview');
+        @endif
         @endif
     });
 
-  function previewFile(input, preview_id) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-              $("#" + preview_id).attr('src', e.target.result);
-              $("#" + preview_id).css('height', '300px');
-              $("#" + preview_id).parent().parent().removeClass('d-none');
-          }
-          $("label[for='" + $(input).attr('id') + "']").text(input.files[0].name);
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
+    function previewFile(input, preview_id) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#" + preview_id).attr('src', e.target.result);
+                $("#" + preview_id).css('height', '300px');
+                $("#" + preview_id).parent().parent().removeClass('d-none');
+            }
+            $("label[for='" + $(input).attr('id') + "']").text(input.files[0].name);
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
-  function previewPersistedFile(url, preview_id) {
-      $("#" + preview_id).attr('src', url);
-      $("#" + preview_id).css('height', '300px');
-      $("#" + preview_id).parent().parent().removeClass('d-none');
+    function previewPersistedFile(url, preview_id) {
+        $("#" + preview_id).attr('src', url);
+        $("#" + preview_id).css('height', '300px');
+        $("#" + preview_id).parent().parent().removeClass('d-none');
 
-  }
-
+    }
 </script>
 @endpush
 
@@ -75,8 +73,7 @@ $(document).ready(function() {
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" action="{{ route('admin,hostings.update', $hosting->id) }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form class="form form-vertical" action="{{ route('admin,hostings.update', $hosting->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <div class="form-body">
@@ -85,8 +82,7 @@ $(document).ready(function() {
                                             <div class="form-group">
                                                 <label class="h5" for="client">Cliente</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" class="form-control" name="client"
-                                                        value="{{ $hosting->client }}">
+                                                    <input type="text" class="form-control" name="client" value="{{ $hosting->client }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-user"></i>
                                                     </div>
@@ -97,8 +93,7 @@ $(document).ready(function() {
                                             <div class="form-group">
                                                 <label class="h5" for="url">URL</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" class="form-control" name="url"
-                                                        value="{{ $hosting->url }}">
+                                                    <input type="text" class="form-control" name="url" value="{{ $hosting->url }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-globe"></i>
                                                     </div>
@@ -109,8 +104,7 @@ $(document).ready(function() {
                                             <div class="form-group">
                                                 <label class="h5" for="create_date">Fecha de Creacion</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="date" class="form-control" name="create_date"
-                                                        value="{{ $hosting->create_date }}">
+                                                    <input type="date" class="form-control" name="create_date" value="{{ $hosting->create_date }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-calendar"></i>
                                                     </div>
@@ -121,8 +115,7 @@ $(document).ready(function() {
                                             <div class="form-group">
                                                 <label class="h5" for="due_date">Fecha de Expiración</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="date" class="form-control" name="due_date"
-                                                        value="{{ $hosting->due_date }}">
+                                                    <input type="date" class="form-control" name="due_date" value="{{ $hosting->due_date }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-calendar"></i>
                                                     </div>
@@ -135,10 +128,7 @@ $(document).ready(function() {
                                                 <div class="media">
                                                     <div class="custom-file">
                                                         <label class="custom-file-label" for="photo"><b>Seleccione una imagen para el Cliente</b></label>
-                                                        <input type="file" id="photo"
-                                                            class="custom-file-input @error('photo') is-invalid @enderror"
-                                                            name="photo" onchange="previewFile(this, 'photo_preview')"
-                                                            accept="image/*">
+                                                        <input type="file" id="photo" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" onchange="previewFile(this, 'photo_preview')" accept="image/*">
                                                         @error('photo')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -146,11 +136,11 @@ $(document).ready(function() {
                                                         @enderror
                                                     </div>
                                                 </div>
-                              
+
                                                 <div class="row mb-4 mt-4 d-none" id="photo_preview_wrapper">
                                                     <div class="col"></div>
                                                     <div class="col-auto">
-                                                      <img id="photo_preview" class="img-fluid rounded" />
+                                                        <img id="photo_preview" class="img-fluid rounded" />
                                                     </div>
                                                     <div class="col"></div>
                                                 </div>
@@ -158,10 +148,8 @@ $(document).ready(function() {
                                             </fieldset>
                                         </div>
                                         <div class="col-12">
-                                            <button type="submit"
-                                                class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
-                                            <a href="{{ route('admin.hostings.list') }}"
-                                                class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
+                                            <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
+                                            <a href="{{ route('admin.hostings.list') }}" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

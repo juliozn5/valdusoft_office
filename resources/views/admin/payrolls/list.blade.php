@@ -14,7 +14,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row"> </div>
-       
+
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
@@ -33,7 +33,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             </div>
         </div>
     </div>
-    
+
     <div class="content-body">
 
         <div id="table-head">
@@ -58,105 +58,101 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($payrolls as $payroll)
-                                        
-                                        <tr>
-                                        <td>{{ $payroll->id}}</td>
+                                    @foreach ($payrolls as $payroll)
 
+                                    <tr>
+                                        <td>{{ $payroll->id}}</td>
 
                                         <td>{{ date('d-m-Y', strtotime($payroll->date)) }}</td>
 
-                                                <td>{{ $payroll->amount }}</td>
+                                        <td>{{ $payroll->amount }}$</td>
 
-
-                                                <td>
-                                                @if ($payroll->status == 0)
-                                                    <label class="label status-label status-label-purple ">No Atendido</label>
-                                                @elseif ($payroll->status == 1)
-                                                    <label class="label status-label status-label-gray">En Proceso</label>
-                                                @elseif ($payroll->status == 2)
-                                                    <label class="label status-label status-label-blue">Testiando</label>
-                                                @elseif ($payroll->status == 3)
-                                                    <label class="label status-label status-label-green">Completado</label>
-                                                @endif
-                                            </td>
-
-                                               
-                                      <td><a href="#"><i id="eye" href="facebook.com" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        
-                                        <a href="#edit" data-toggle="modal"><i id="eye"  href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        <td>
+                                            @if ($payroll->status == 0)
+                                            <label class="label status-label status-label-purple ">No Atendido</label>
+                                            @elseif ($payroll->status == 1)
+                                            <label class="label status-label status-label-gray">En Proceso</label>
+                                            @elseif ($payroll->status == 2)
+                                            <label class="label status-label status-label-blue">Testiando</label>
+                                            @elseif ($payroll->status == 3)
+                                            <label class="label status-label status-label-green">Completado</label>
+                                            @endif
                                         </td>
-                                            
-                                              </tr>
-                                              
+
+                                        <td><a href="#"><i id="eye" href="facebook.com" style="font-size:15px;" class="far fa-eye"></i></a>
+
+                                            <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                        </td>
+
+                                    </tr>
+
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
 
-                    <div class="mr-3">
-                    {{ $payrolls->links() }}
-
-                    </div>
-
+                        <div class="mr-3">
+                            {{ $payrolls->links() }}
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-                    <!--  MODAL EDITAR NOMINA  -->
 
-            <div class="modal  fade text-left " id="edit" tabindex="-1" role="dialog" aria-modal="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary white">
-                    <h5 class="modal-title">Editar Nómina</h5>
-                    
-                    <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
+        <!--  MODAL EDITAR NOMINA  -->
 
-                </div>
-                <form action="actualizacion del proyecto" method="POST" enctype="multipart/form-data">
-                 
-                   
-                    <input type="hidden" name="project_id" value="">
-                    <div class="modal-body">
-                       
-                            </div>
+        <div class="modal  fade text-left " id="edit" tabindex="-1" role="dialog" aria-modal="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary white">
+                        <h5 class="modal-title">Editar Nómina</h5>
 
-                            <div class="container">
+                        <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
+
+                    </div>
+                    <form action="actualizacion del proyecto" method="POST" enctype="multipart/form-data">
+
+
+                        <input type="hidden" name="project_id" value="">
+                        <div class="modal-body">
+
+                        </div>
+
+                        <div class="container">
                             <div class="row">
-                            <div class="col-6">
-                            <label for="user_id">ID</label>
-                           <select name="user_id" id="projet_user_id" class="form-control">
-                                        
-                            <option value="#">Id</option>
-                                       
-                                    </select>
-                                 </div>
-  
                                 <div class="col-6">
-                                <label for="country">Monto</label>
-                                <select name="country_id" id="project_country_id" class="form-control">
-                                        
-                                            <option value="">Monto</option>
-                                        
-                                    </select>
-                                    </div>
-                                     </div>
-                                    </div>
-                                    <br>
+                                    <label for="user_id">ID</label>
+                                    <select name="user_id" id="projet_user_id" class="form-control">
 
-                                <div class="container">
-                                <div class="row">
+                                        <option value="#">Id</option>
+
+                                    </select>
+                                </div>
+
                                 <div class="col-6">
-                                <label for="start_date">Fecha</label>
+                                    <label for="country">Monto</label>
+                                    <select name="country_id" id="project_country_id" class="form-control">
+
+                                        <option value="">Monto</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="start_date">Fecha</label>
                                     <input type="date" name="start_date" id="project_start_date" class="form-control">
-                              </div>
-  
+                                </div>
 
-                               <div class="col-6">
 
-                               <label for="type">Estado</label>
+                                <div class="col-6">
+
+                                    <label for="type">Estado</label>
                                     <select name="status" id="project_status" class="form-control">
                                         <option value="0">No Atendido</option>
                                         <option value="1">En Proceso</option>
@@ -164,19 +160,19 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <option value="3">Completado</option>
                                         <option value="4">Eliminado</option>
                                     </select>
-                                      </div>
-                                    </div>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                    <br><br>
+                        <br><br>
 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-        </div>
-    </div>
+</div>
 @endsection
