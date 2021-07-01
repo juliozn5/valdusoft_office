@@ -18,7 +18,9 @@ class PayrollController extends Controller
     public function generate(){
         return view('admin.payrolls.generate');                             
     }
-    
+    public function DetailPayroll(){
+        return view('admin.payrolls.DetailPayroll');                             
+    }
+
   
-   
 }

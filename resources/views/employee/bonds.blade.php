@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('body-atribute')
-class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
+class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
 
 @section('content')
@@ -17,23 +17,23 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
         <div class="content-header row">
         </div>
         <div class="content-body">
-        
-        <h1>Bonos</h1>
-        
+
+            <h1>Bonos</h1>
+
         </div>
     </div>
 </div>
 
-        <!-- END: Content-->
+<!-- END: Content-->
 
-        <div class="sidenav-overlay"></div>
-        <div class="drag-target"></div>
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
 
-        <!-- BEGIN: Footer-->
-        <footer class="footer footer-static footer-dark">
-            <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="text-bold-800 grey darken-2" href="https://valdusoft.com" target="_blank">Valdusoft,</a>All rights Reserved</span>
-                <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
-            </p>
-        </footer>
-        <!-- END: Footer-->
+<!-- BEGIN: Footer-->
+<footer class="footer footer-static footer-dark">
+    <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="text-bold-800 grey darken-2" href="https://valdusoft.com" target="_blank">Valdusoft,</a>All rights Reserved</span>
+        <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
+    </p>
+</footer>
+<!-- END: Footer-->
 @endsection
