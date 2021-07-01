@@ -42,7 +42,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
           <div class="ml-1 mt-2 mb-2 flex-nowrap">
             <p class="h6">Fecha de inicio</p>
-            <input type="text" class="col-4 form-control " placeholder="📅 Selecciona una fecha" aria-describedby="addon-wrapping">
+            <input type="date" class="col-4 form-control " placeholder=" Selecciona una fecha" aria-describedby="addon-wrapping">
           </div>
 
 
@@ -123,9 +123,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
       </div>
 
+
       <!--  MODAL DE LOS PRESTAMOS  -->
-
-
       <div class="modal fade" id="prestamo" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -145,9 +144,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
           </div>
         </div>
       </div>
-
-
-
     </div>
   </div>
   @endsection

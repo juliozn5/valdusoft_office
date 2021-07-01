@@ -36,12 +36,11 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     <h2 class="content-header-title float-left mb-0">Financiero</h2>
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-client"><a href="{{ route('admin.home') }}"><i
-                                        class="fas fa-home"></i></a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-client"><a href="#">Financiero</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.bills.list') }}">Financiero</a>
                             </li>
-                            <li class="breadcrumb-client"><a href="#">Facturas</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.bills.list') }}">Factura</a>
                             </li>
                         </ol>
                     </div>
@@ -58,22 +57,18 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                         <div class="d-grid gap-2 d-md-block mb-2 col-md-8 col-sm-1">
                             <ul class="nav nav-pills nav-justified">
                                 <li class="">
-                                    <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments"
-                                        id="empleado" onclick="ocultar()"><strong> EMPLEADOS </strong></a>
+                                    <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments" id="empleado" onclick="ocultar()"><strong> EMPLEADOS </strong></a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat" id="mostrar"
-                                        onClick="mostrar('generar')"><strong> CLIENTES </strong></a>
+                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat" id="mostrar" onClick="mostrar('generar')"><strong> CLIENTES </strong></a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant"
-                                        id="mostrar" onClick="mostrar('generar')"><strong> HOSTING </strong></a>
+                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant" id="mostrar" onClick="mostrar('generar')"><strong> HOSTING </strong></a>
                                 </li>
                             </ul>
                         </div>
                         <div class="d-grid gap-2 d-md-block mb-2 col-4">
-                            <a href="#prestamo" data-toggle="modal" class="btn1 btn btn-primary mb-2 waves-effect"
-                                style="margin-left:130px;" id="generar"> GENERAR</a>
+                            <a href="#prestamo" data-toggle="modal" class="btn1 btn btn-primary mb-2 waves-effect" style="margin-left:130px;" id="generar"> GENERAR</a>
                         </div>
                     </div>
 
@@ -112,16 +107,13 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-                                            <td><a href=""><img id="bottom"
-                                                        src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
+                                            <td><a href="#"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
-
 
 
                         <!-- Pestaña de Cliente -->
@@ -157,7 +149,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-                                            
+
                                             <td>
                                                 <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
 
@@ -168,8 +160,6 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                 </table>
                             </div>
                         </div>
-
-
 
 
                         <!-- Pestaña de Hosting -->
@@ -187,124 +177,38 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                      
-                                       
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-content">
-
-                        <!-- Pestaña de Empleado -->
-                        <div class="tab-pane active " id="attachments">
-                            <div class="table-responsive mt-1">
-                                <table class="table mb-0">
-                                    <thead class="thead-light text-center">
+                                        @foreach ($hosting as $hostin)
                                         <tr>
-                                            <th>#</th>
-                                            <th>NOMBRE</th>
-                                            <th>FECHA</th>
-                                            <th>MONTO</th>
-                                            <th>ESTADO</th>
-                                            <th class="col-3">ACCIÓN</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                        @foreach ($bills as $bill)
-                                        <tr>
-                                            <th scope="row">#{{ $bill->id }}</th>
-                                            <td>{{ $bill->date }}</td>
-                                            <td>{{ $bill->amount }}$</td>
+                                            <th scope="row">#{{ $hostin->id }}</th>
+                                            <td>{{ $hostin->user_id }}</td>
+                                            <td>{{ $hostin->date }}</td>
+                                            <td>{{ $hostin->amount }}$</td>
                                             <td>
-                                                @if ($bill->status == 0)
-                                                <label class="label status-label status-label-purple">No Atendido</label>
-                                                @elseif ($bill->status == 1)
+                                                @if ($hostin->status == 0)
+                                                <label class="label status-label status-label-purple">No
+                                                    Atendido</label>
+                                                @elseif ($hostin->status == 1)
                                                 <label class="label status-label status-label-gray">En Proceso</label>
-                                                @elseif ($bill->status == 2)
+                                                @elseif ($hostin->status == 2)
                                                 <label class="label status-label status-label-blue">Testiando</label>
-                                                @elseif ($bill->status == 3)
+                                                @elseif ($hostin->status == 3)
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-                                            <td><a href="{{ route('client.bills.detail') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
 
-                        <!-- Pestaña de Cliente -->
-
-                        <div class="tab-pane fade" id="chat">
-                            <div class="table-responsive mt-1">
-                                <table class="table mb-0">
-                                    <thead class="thead-light text-center">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>NOMBRE</th>
-                                            <th>FECHA</th>
-                                            <th>MONTO</th>
-                                            <th>ESTADO</th>
-                                            <th class="col-3">ACCIÓN</th>
-                                        </tr>
-                                    <tbody>
-                                        @foreach ($bills as $bill)
-                                        <tr>
-                                            <th scope="row">#{{ $bill->id }}</th>
-                                            <td>{{ $bill->date }}</td>
-                                            <td>{{ $bill->amount }}$</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En proceso</div>
-                                            </td>
-                                            <td><a href="{{ route('client.bills.detail') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="mr-3">
-                                {{ $bills->links() }}
-                            </div>
-                        </div>
-
-                        <!-- Pestaña de Hosting -->
-                        <div class="tab-pane fade" id="accountant">
-                            <div class="table-responsive mt-1">
-                                <table class="table mb-0">
-                                    <thead class="thead-light text-center">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>NOMBRE</th>
-                                            <th>FECHA</th>
-                                            <th>MONTO</th>
-                                            <th>ESTADO</th>
-                                            <th class="col-3">ACCIÓN</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                        @foreach ($hostings as $hosting)
-                                        <tr>
-                                            <td>{{ $hosting->url }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($hosting->create_date)) }}</td>
-                                            <td>{{ $hosting->user->name }} {{ $hosting->user->last_name }}</td>
-                                            <td>
-                                                {{ (is_null($hosting->due_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($hosting->due_date)) }}
-                                            </td>
                                             <td>
                                                 <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
+
                                             </td>
                                         </tr>
                                         @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
+
 
                     <!--  MODAL DEL CLIENTE  Y HOSTING -->
                     <div class="modal fade" id="prestamo" aria-hidden="true" tabindex="-1">
@@ -365,8 +269,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 
                                     <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar
                                             Factura</strong></h5>
-                                    <button class="close" style="margin-right:10px; margin-top:1px;"
-                                        data-dismiss="modal">&times;</button>
+                                    <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
 
                                 </div>
                                 <div class="modal-body">
@@ -385,8 +288,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                     <div class="container ">
                                         <div class="row ">
                                             <div class="col ">
-                                                <input class="col form-control" type="text" id=""
-                                                    style="margin-left:px;">
+                                                <input class="col form-control" type="text" id="" style="margin-left:px;">
                                             </div>
                                             <div class="col">
                                                 <input class="col form-control" type="text" id="" style="margin-left:;">
@@ -397,16 +299,13 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 
                                             </div>
                                             <div class="col">
-                                                <input class="col form-control" type="text" id=""
-                                                    style="margin-left:45px;">
+                                                <input class="col form-control" type="text" id="" style="margin-left:45px;">
 
 
                                             </div>
                                             <div class="col">
 
-                                                <a href="#" class="float-right"><img class="rounded-circle"
-                                                        src="{{ asset('images/icons/plus-circle.png') }}"
-                                                        alt="Agregar Tecnología" height="40" width="40">
+                                                <a href="#" class="float-right"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
                                             </div>
 
                                         </div>
@@ -426,8 +325,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 
                                 <div class="modal-footer">
 
-                                    <button class="btn btn-primary" data-target="#exampleModalToggle2"
-                                        data-toggle="modal" data-dismiss="modal">Guardar</button>
+                                    <button class="btn btn-primary" data-target="#exampleModalToggle2" data-toggle="modal" data-dismiss="modal">Guardar</button>
                                 </div>
                             </div>
                         </div>
