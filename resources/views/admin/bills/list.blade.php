@@ -6,15 +6,16 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @include('layouts.partials.navbar')
 @include('layouts.partials.sidebar')
 
-<!--SCRIPT PARA OCULTAR Y MOSTRAR EL BOTON DE GENERAR-->
+
+<!--Script to hide and show the generate button-->
 
 <script>
-    //OCULTAR BOTON DE GENERAR
+    //Hide generate button
     function ocultar() {
         document.getElementById('generar').style.display = 'none';
     }
 
-    //MOSTRAR BOTON DE GENERAR 
+    //Show generate button
 
     function mostrar() {
         document.getElementById('generar').style.display = 'block';
@@ -180,7 +181,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>
 
-
                     <!--  MODAL DEL CLIENTE  Y HOSTING -->
 
                     <div class="modal fade" id="prestamo" aria-hidden="true" tabindex="-1">
@@ -194,7 +194,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                                 <div class="modal-body">
 
-
                                     <table class="table">
                                         <thead class="thead-light text-center">
                                             <th class="col-2">DESCRIPCIÓN</th>
@@ -203,7 +202,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <th class="" style="margin-left:50px;">PRECIO</th>
                                         </thead>
                                     </table>
-
 
                                     <div class="container ">
                                         <div class="row ">
@@ -221,15 +219,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <div class="col">
                                                 <input class="col form-control" type="text" id="" style="margin-left:100px;">
 
-
                                             </div>
                                             <div class="col">
 
                                                 <a href="#" class="float-right d-inline-block"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
                                             </div>
-
                                         </div>
-
                                         <br>
                                     </div>
                                 </div>
@@ -237,7 +232,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="modal-body">
                                     <br>
 
-                                    <ul class="list list-group-flush" style="margin-left: 500px;">
+                                    <ul class="list list-group-flush" id="ls" style="margin-left: 500px;">
                                         <li class="list-group-item"><strong>TOTAL PARCIAL</strong> 00 </li>
                                         <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
                                         <li class="list-group-item"><strong>PAGADO</strong> 00</li>
@@ -258,5 +253,4 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
 
 
-
-                    11:58
+                    

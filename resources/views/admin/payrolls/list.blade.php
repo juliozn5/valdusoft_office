@@ -78,14 +78,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <label class="label status-label status-label-green">Completado</label>
                                             @endif
                                         </td>
-
+                                        
                                         <td><a href="#"><i id="eye" href="facebook.com" style="font-size:15px;" class="far fa-eye"></i></a>
 
                                             <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
 
                                     </tr>
-
                                     @endforeach
                                 </tbody>
                             </table>
@@ -112,7 +111,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                     </div>
                     <form action="actualizacion del proyecto" method="POST" enctype="multipart/form-data">
-
 
                         <input type="hidden" name="project_id" value="">
                         <div class="modal-body">
@@ -148,7 +146,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <label for="start_date">Fecha</label>
                                     <input type="date" name="start_date" id="project_start_date" class="form-control">
                                 </div>
-
 
                                 <div class="col-6">
 
