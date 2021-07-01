@@ -115,6 +115,12 @@ class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-st
 @push('custom_js')
 <script>
 
+$(document).ready(function() {
+          @if($user->photo != NULL)
+                previewPersistedFile("{{asset('storage/photo-profile/'.$user->photo)}}", 'photo_preview');
+          @endif
+        });
+
   function previewFile(input, preview_id) {
       if (input.files && input.files[0]) {
           var reader = new FileReader();
