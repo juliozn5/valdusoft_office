@@ -138,6 +138,9 @@ Route::group(['middleware'=>['auth']], function() {
     Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'profile'], 'profile' => ['3']], function(){
         Route::get('/', 'EmployeesController@index')->name('employee.home');
         Route::get('/profile', 'EmployeesController@profile')->name('employee.profile');
+        Route::post('update-skills', 'EmployeesController@update_skills')->name('employee.profile.update-skills');
+
+
 
 
         //MÓDULO DE PROYECTOS
