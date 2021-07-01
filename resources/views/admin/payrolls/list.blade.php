@@ -78,8 +78,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <label class="label status-label status-label-green">Completado</label>
                                             @endif
                                         </td>
-                                        
-                                        <td><a href="#"><i id="eye" href="facebook.com" style="font-size:15px;" class="far fa-eye"></i></a>
+
+                                        <td><a href="{{route('admin.payrolls.DetailPayroll')}}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
 
                                             <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeesController extends Controller
 { 
@@ -114,8 +115,31 @@ class EmployeesController extends Controller
         }
     }
     public function profile(){
-        return view('landing.profile.profile');
+        $user = Auth::user();
+        $skillsActivos = [];
+        foreach ($user->skills as $skill){
+        array_push($skillsActivos, $skill->id);
+        }
+        $availableSkills = DB::table('skills')
+                              ->orderBy('skill', 'ASC')
+                              ->get();
+        return view('landing.profile.profile')->with(compact('user', 'skillsActivos',  'availableSkills'));
     }
 
+    /*actualizar los skills*/
+    public function update_skills(Request $request){
+        $user = User::find($request->user_id);/*buscar el usuario legeado*/
+
+        DB::table('skills_users')
+                ->where('user_id', '=', $user->id)
+                ->delete();
+            if (!is_null($request->skills)){
+                foreach ($request->skills as $skill){
+                    $user->skills()->attach($skill);
+                }
+            }
+
+        return redirect()->back()->with('msj-exitoso', 'true');
+    }
 }
 

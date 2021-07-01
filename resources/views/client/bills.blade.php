@@ -40,8 +40,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>{{ $bill->date }}</td>
                                             <td>{{ $bill->amount }}$</td>
                                             <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En proceso</div>
+                                                @if ($bill->status == 0)
+                                                    <label class="label status-label status-label-purple">No Atendido</label>
+                                                @elseif ($bill->status == 1)
+                                                    <label class="label status-label status-label-gray">En Proceso</label>
+                                                @elseif ($bill->status == 2)
+                                                    <label class="label status-label status-label-blue">Testiando</label>
+                                                @elseif ($bill->status == 3)
+                                                    <label class="label status-label status-label-green">Completado</label>
+                                                @endif
                                             </td>
                                             <td><a href="{{ route('client.bills.detail') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
                                         </tr>
