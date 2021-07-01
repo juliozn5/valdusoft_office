@@ -139,6 +139,7 @@ Route::group(['middleware'=>['auth']], function() {
         Route::get('/', 'EmployeesController@index')->name('employee.home');
         Route::get('/profile', 'EmployeesController@profile')->name('employee.profile');
         Route::post('update-skills', 'EmployeesController@update_skills')->name('employee.profile.update-skills');
+        Route::post('update-wallet', 'EmployeesController@update_wallet')->name('employee.profile.update-wallet');
 
 
 

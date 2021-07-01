@@ -136,11 +136,42 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <img src="{{ asset('images/icons/dollar.png')}}" alt="" class="mr-1"><span>{{ $user->price_per_hour}} USDT</span>
                 </div>
             </div>
-        <div class="col-md-5 col-sm-1">
+        <div class="col-md-6 col-sm-1 mr-3">
             <div class="project-detail-titles"><strong>Billetera USDT Red tron<strong></div>            
                 <div class="mt-1 project-detail-dates">
                     <img src="{{ asset('images/icons/uphold.png')}}" alt="" class="mr-1"><span>{{ $user->tron_wallet}}</span>
+                    <a href="#availableWallet" data-toggle="modal">
+                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                    </a>
                 </div>
+
+                <div class="modal fade text-left" id="availableWallet" tabindex="-1" role="dialog" aria-modal="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary white">
+                                <h5 class="modal-title" id="myModalLabel110">Modificar Billetera</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                                <form method="POST" action="{{route('employee.profile.update-wallet')}}">
+                                    @csrf
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                <div class="modal-body">
+                                    <div class="row ml-1 mr-2">
+                                    <input class="form-control" type="text" name="tron_wallet" value="{{ $user->tron_wallet}}">
+                                    
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
         </div>
     </div>
 </div>
@@ -150,4 +181,5 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
             </div>
         </div>
+
 @endsection
