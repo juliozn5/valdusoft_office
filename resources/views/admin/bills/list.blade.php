@@ -274,7 +274,6 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                 </div>
                                 <div class="modal-body">
 
-
                                     <table class="table">
                                         <thead class="thead-light text-center">
                                             <th class="col-2">DESCRIPCIÓN</th>
@@ -288,14 +287,14 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                     <div class="container ">
                                         <div class="row ">
                                             <div class="col ">
-                                                <input class="col form-control" type="text" id="" style="margin-left:px;">
+                                                <input class="col form-control" type="text" id="" >
                                             </div>
                                             <div class="col">
-                                                <input class="col form-control" type="text" id="" style="margin-left:;">
+                                                <input class="col form-control" type="text" id="">
 
                                             </div>
                                             <div class="col">
-                                                <input class="col form-control" type="text" id="" style="margin-left:;">
+                                                <input class="col form-control" type="text" id="">
 
                                             </div>
                                             <div class="col">
@@ -304,26 +303,29 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 
                                             </div>
                                             <div class="col">
-
+                                 
                                                 <a href="#" class="float-right"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
                                             </div>
-
-                                        </div>
-
-                                        <br>
-                                        <br>
-
-                                        <ul class="list list-group-flush float mr-3">
+                                            <ul class="list list-group-flush float mr-3">
                                             <li class="list-group-client"><strong>TOTAL PARCIAL</strong></li>
                                             <li class="list-group-client"><strong>DESCUENTO</strong></li>
                                             <li class="list-group-client"><strong>PAGADO</strong></li>
 
                                         </ul>
+                                        </div>
+
+                                        <br>
+                                        <br>
+
+                                    
 
                                     </div>
                                 </div>
+                              
 
                                 <div class="modal-footer">
+
+                                    
 
                                     <button class="btn btn-primary" data-target="#exampleModalToggle2" data-toggle="modal" data-dismiss="modal">Guardar</button>
                                 </div>

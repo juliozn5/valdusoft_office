@@ -123,7 +123,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <label for="user_id">ID</label>
                                     <select name="user_id" id="projet_user_id" class="form-control">
 
-                                        <option value="#">Id</option>
+                                        <option value="#">{{ $payroll->id}}</option>
 
                                     </select>
                                 </div>
@@ -132,7 +132,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <label for="country">Monto</label>
                                     <select name="country_id" id="project_country_id" class="form-control">
 
-                                        <option value="">Monto</option>
+                                        <option value="">{{ $payroll->amount }}$</option>
 
                                     </select>
                                 </div>
@@ -144,18 +144,24 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="row">
                                 <div class="col-6">
                                     <label for="start_date">Fecha</label>
-                                    <input type="date" name="start_date" id="project_start_date" class="form-control">
+                                    <input type="date" name="start_date" id="project_start_date" class="form-control"></input>
                                 </div>
 
                                 <div class="col-6">
 
                                     <label for="type">Estado</label>
                                     <select name="status" id="project_status" class="form-control">
+                                    @if ($payroll->status == 0)
                                         <option value="0">No Atendido</option>
+                                        @elseif ($payroll->status == 1)
                                         <option value="1">En Proceso</option>
+                                        @elseif ($payroll->status == 2)
                                         <option value="2">Testiando</option>
+                                        @elseif ($payroll->status == 3)
                                         <option value="3">Completado</option>
-                                        <option value="4">Eliminado</option>
+                                        @endif
+
+                
                                     </select>
                                 </div>
                             </div>
