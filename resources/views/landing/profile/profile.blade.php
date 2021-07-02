@@ -16,7 +16,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="content-body">
                 <div class="card">
                     <div class="card-header">
-                        <img class="rounded-circle ml-2" src="{{ asset('images/user/Ellipse.png')}}" alt="" width="55px" height="55px">
+                        <img class="rounded-circle ml-2" src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px">
                         <div class="col ml-1">
                         <h3 class="card-title mb-1">{{ $user->name }}</h3>
                             <p>{{ $user->email }}</p>
@@ -29,18 +29,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="pl-2 pr-2">
         <div class="project-detail-titles">Proyectos Asignados</div>
             <div class="mt-1">
+                @foreach ($project as $item)
                 <!--PROJECT 1-->
                 <div class="text-center text-white d-inline-block mr-1">
-                    <div class="project-circle" style="background:#FF3F3F;">P1</div>
+                    <div class="project-circle" style="background:#FF3F3F;"><strong> P{{$loop->iteration}}</strong></div>
                 </div>
-                <!--PROJECT 2-->
-                <div class="text-center text-white d-inline-block mr-1">
-                    <div class="project-circle" style="background:#12A0B4;">P2</div>
-                </div>
-                <!--PROJECT 3-->
-                <div class="text-center text-white d-inline-block mr-1">
-                    <div class="project-circle" style="background:#940385;">P3</div>
-                </div>
+                @endforeach
             </div>
     </div>
 <!--DATE SECTION-->
@@ -50,7 +44,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="project-detail-titles">Fecha de Nacimiento</div>
             <div class="mt-1 project-detail-dates">
             <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
-            <span>{{ $user->birthdate}}</span>
+            <span>{{ date('d/m/Y', strtotime($user->birthdate)) }}</span>
             </div>
         </div>
 <!--DATE OF ADMISSION-->
@@ -58,7 +52,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="project-detail-titles">Fecha de Ingreso</div>
         <div class="mt-1 project-detail-dates">
             <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
-               <span>{{ $user->admission_date}}</span>
+               <span>{{ date('d/m/Y', strtotime($user->admission_date)) }}</span>
             </div>
         </div>
 <!--NEXT VACATIONS-->
@@ -66,7 +60,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="project-detail-titles">Próximas Vacaciones</div>
         <div class="mt-1 project-detail-dates">
             <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
-               <span>{{ $user->birthdate}}</span>
+               <span>{{ date('d/m/Y', strtotime($user->birthdate)) }}</span>
         </div>
     </div>
 </div>

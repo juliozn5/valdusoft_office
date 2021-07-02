@@ -115,7 +115,11 @@ class EmployeesController extends Controller
         }
     }
     public function profile(){
+
         $user = Auth::user();
+
+        $project = Project::all()->where('user_id', Auth::user()->id);
+
         $skillsActivos = [];
         foreach ($user->skills as $skill){
         array_push($skillsActivos, $skill->id);
@@ -125,7 +129,11 @@ class EmployeesController extends Controller
                               ->get();
 
 
-        return view('landing.profile.profile')->with(compact('user', 'skillsActivos',  'availableSkills'));
+        return view('landing.profile.profile')
+        ->with('user', $user)
+        ->with('skillsActivos', $skillsActivos)
+        ->with('project', $project)
+        ->with('availableSkills', $availableSkills);
     }
 
     /*actualizar los skills*/
