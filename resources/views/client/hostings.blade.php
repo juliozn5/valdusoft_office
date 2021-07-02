@@ -15,15 +15,6 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <!--<h2 class="content-header-title float-left mb-0">Hosting</h2>
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('client.home') }}">Inicio</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="{{ route('client.hostings.list') }}">Hosting</a>
-                                </li>
-                            </ol>
-                        </div>-->
                     </div>
                 </div>
             </div>
@@ -50,140 +41,24 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>Diego Tellez</td>
-                                            <td>1</td>
-
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
-                                            </td>
-                                        </tr>
-
-                                        </tr>
-
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>Diego Tellez</td>
-                                            <td>1</td>
-
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
-                                            </td>
-                                        </tr>
-
-                                        </tr>
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>Diego Tellez</td>
-                                            <td>1</td>
-
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>Diego Tellez</td>
-                                            <td>1</td>
-
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
-                                            </td>
-                                        </tr>
-
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>Diego Tellez</td>
-                                            <td>1</td>
-
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
-                                            </td>
-                                        </tr>
-
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>Diego Tellez</td>
-                                            <td>1</td>
-
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
-                                            </td>
-                                        </tr>
-
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>Diego Tellez</td>
-                                            <td>1</td>
-
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>Diego Tellez</td>
-                                            <td>1</td>
-
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
-                                            </td>
-                                        </tr>
-
-                                        </tr>
-                                        <tr>
-                                            <td>trovimo.com</td>
-                                            <td>03/09/21</td>
-                                            <td>Diego Tellez</td>
-                                            <td>1</td>
-
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a href=""><img id="bottom" src="{{asset('images/svg/edit.svg')}}" alt=""></a>
-                                            </td>
-                                        </tr>
-
-                                        </tr>
-
+                                            @foreach ($hostings as $item)
+                                            <tr>
+                                                <td>{{ $item->url }}</td>
+                                                <td>{{ $item->create_date }}</td>
+                                                <td>{{ $item->user->name }}</td>
+                                                <td>{{ $item->due_date }}</td>
+                                                <td>
+                                                    <a href="{{route('client.bills.detail')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
                                     </tbody>
                                 </table>
-                                <div class="bottom float-right" style="margin-right:20px;">
-
-                                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
-
-                                    </button>
-
-                                    <button class="btn btn-primary  btn-circle btn-lg">1
-
-                                    </button>
-
-                                    <button style="color:black;" class="btn btn-circle btn-lg">2
-
-                                    </button>
-
-                                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
-
-
-                                    </button>
-                                </div>
-                                <br><br><br>
+                                
+                            </div>
+                            <div class="mr-3">
+                                {{ $hostings->links() }}
                             </div>
                         </div>
                     </div>

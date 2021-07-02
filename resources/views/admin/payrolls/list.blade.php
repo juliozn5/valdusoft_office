@@ -3,6 +3,19 @@
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
+@push('scripts')
+<script>
+
+function editPayroll($payroll) {
+
+    $("#payroll_id").val($payroll.id);
+    $("#payroll_amount").val($payroll.amount);
+    $("#date").val($payroll.date);
+    $("#payroll_status option[value=" + $payroll.status + "]").attr("selected", true);
+}
+
+</script>
+@endpush
 
 @section('content')
 
@@ -81,7 +94,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                                         <td><a href="{{route('admin.payrolls.DetailPayroll')}}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
 
-                                            <a href="#edit" data-toggle="modal"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                            <a href="#edit" data-toggle="modal" onclick="editPayroll({{$payroll}});"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
 
                                     </tr>
@@ -110,59 +123,45 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
 
                     </div>
-                    <form action="actualizacion del proyecto" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.payrolls.updatePayroll') }}" method="POST">
+                        @csrf
 
-                        <input type="hidden" name="project_id" value="">
+                        <input type="hidden" name="payroll_id" id="payroll_id" value="">
                         <div class="modal-body">
 
                         </div>
-
+                        <div class="modal-body">
                         <div class="container">
                             <div class="row">
                                 <div class="col-6">
-                                    <label for="user_id">ID</label>
-                                    <select name="user_id" id="projet_user_id" class="form-control">
-
-                                        <option value="#">Id</option>
-
-                                    </select>
-                                </div>
-
-                                <div class="col-6">
-                                    <label for="country">Monto</label>
-                                    <select name="country_id" id="project_country_id" class="form-control">
-
-                                        <option value="">Monto</option>
-
-                                    </select>
+                                    <label for="payroll_amount">Monto</label>
+                                    <input name="payroll_amount" id="payroll_amount" class="form-control">
                                 </div>
                             </div>
                         </div>
+
                         <br>
 
                         <div class="container">
                             <div class="row">
                                 <div class="col-6">
-                                    <label for="start_date">Fecha</label>
-                                    <input type="date" name="start_date" id="project_start_date" class="form-control">
+                                    <label for="date">Fecha</label>
+                                    <input type="date" name="date" id="date" class="form-control">
                                 </div>
 
                                 <div class="col-6">
 
-                                    <label for="type">Estado</label>
-                                    <select name="status" id="project_status" class="form-control">
-                                        <option value="0">No Atendido</option>
-                                        <option value="1">En Proceso</option>
-                                        <option value="2">Testiando</option>
-                                        <option value="3">Completado</option>
-                                        <option value="4">Eliminado</option>
+                                    <label for="payroll_status">Estado</label>
+                                    <select name="status" id="payroll_status" class="form-control">
+                                        <option value="0">Pendiente</option>
+                                        <option value="1">Completado</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-                        <br><br>
-
+                    </div>                        <br><br>
+                            
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
                         </div>

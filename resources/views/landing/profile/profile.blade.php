@@ -117,20 +117,53 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 </div>
 
 <div class="mt-3">
-    <div class="project-detail-titles"><strong>Curriculum Vitae<strong></div>
-        <div class="mt-1">
-            <div class="col-md-4 ml-2 position-absolute"><span>{{ $user->curriculum}}</span></div>
+    <div class="project-detail-titles mb-1"><strong>Curriculum Vitae<strong></div>
+        <div class="">
+            <div class="ml-2 pl-1 pt-1 position-absolute"><span>{{ $user->curriculum}}</span></div>
+        </div> 
+            <a href="{{ asset('storage/flie-curriculum/'.$user->curriculum) }}" download><img class="" src="{{asset('images/icons/arrow-down.png')}}" alt=""></a>
+
+            <div class="d-inline-block mr-1 ml-5">
+                <a href="#availableCurriculum" data-toggle="modal">
+                    <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                </a>
+            </div>
+
+           
+</div>
+
+<div class="modal fade text-left" id="availableCurriculum" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h5 class="modal-title" id="myModalLabel110">Modificar Billetera</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <form method="POST" action="{{route('employee.profile.upload-curriculum')}}" accept-charset="UTF-8" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <div class="row ml-1 mr-2">
+                        <input type="file" name="archivo" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <input class="btn btn-primary waves-effect waves-light" type="submit" value="Enviar" >
+                </div>
+              </form>
         </div>
-            <a href="#"><img class="mb-4" src="{{asset('images/icons/arrow-down.png')}}" alt=""></a>
+    </div>
 </div>
     <div class="row">
-        <div class="col-md-3 col-sm-1">
+        <div class="col-md-3 col-sm-1 mt-3">
             <div class="project-detail-titles"><strong>Precio Por Hora</strong></div>
                 <div class="mt-1 project-detail-dates">
                     <img src="{{ asset('images/icons/dollar.png')}}" alt="" class="mr-1"><span>{{ $user->price_per_hour}} USDT</span>
                 </div>
             </div>
-        <div class="col-md-6 col-sm-1 mr-3">
+        <div class="col-md-6 col-sm-1 mr-3 mt-3">
             <div class="project-detail-titles"><strong>Billetera USDT Red tron<strong></div>            
                 <div class="mt-1 project-detail-dates">
                     <img src="{{ asset('images/icons/uphold.png')}}" alt="" class="mr-1"><span>{{ $user->tron_wallet}}</span>
