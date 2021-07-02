@@ -105,256 +105,256 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             </div>
                         </div>
 
-                    <div class="card-header">
-                        <h3 class="card-title mb-2">Hosting</h3>
-                        <div class="container pb-2">
-                            <div class="row">
-                                <div class="text-small col-md-6 col-sm-1 mb-1">
-                                <div class="card-body rounded" style="background: #252856;">
-                                    
-                                    <img class="capa-left" src="{{asset('images/icons/background.png')}}" alt="">
-                                    
-                                    <p class="card-text h6 text-white">Fecha de Renovación</p>
-                                    <br>
-                                    <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
-                                    
-                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#FF4D00;color: white;width: 180px;"><img src="{{asset('images/valdusoft/cpanel-logo.png')}}" style="width: 19px;" alt="" class="mr-1" >Ir al Cpanel</a>
-                                    
-                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
+                        <div class="card-header">
+                            <h3 class="card-title mb-2">Hosting</h3>
+                            <div class="container pb-2">
+                                <div class="row">
+                                    <div class="text-small col-md-6 col-sm-1 mb-1">
+                                        <div class="card-body rounded" style="background: #252856;">
+
+                                            <img class="capa-left" src="{{asset('images/icons/background.png')}}" alt="">
+
+                                            <p class="card-text h6 text-white">Fecha de Renovación</p>
+                                            <br>
+                                            <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
+
+                                            <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#FF4D00;color: white;width: 180px;"><img src="{{asset('images/valdusoft/cpanel-logo.png')}}" style="width: 19px;" alt="" class="mr-1">Ir al Cpanel</a>
+
+                                            <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
                                     ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1"> Renovar</a>
-                                </div>
-                            </div>
+                                        </div>
+                                    </div>
 
-                            <div class="text-small col-md-6 col-sm-1 mb-1">
-                                <div class="card-body rounded" style="background: #252856;">
-                                    <img class="capa-left" src="{{asset('images/icons/background.png')}}" alt="" >
-                                    <p class="card-text h6 text-white">Fecha de Renovación</p>
-                                    <br>
-                                    <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
-                                    
-                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#FF4D00;color: white;width: 180px;"><img src="{{asset('images/valdusoft/cpanel-logo.png')}}" style="width: 19px;"alt="" class="mr-1" >Ir al Cpanel</a>
-                                    
-                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
-                                    ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1" >Renovar</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+                                    <div class="text-small col-md-6 col-sm-1 mb-1">
+                                        <div class="card-body rounded" style="background: #252856;">
+                                            <img class="capa-left" src="{{asset('images/icons/background.png')}}" alt="">
+                                            <p class="card-text h6 text-white">Fecha de Renovación</p>
+                                            <br>
+                                            <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
 
+                                            <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#FF4D00;color: white;width: 180px;"><img src="{{asset('images/valdusoft/cpanel-logo.png')}}" style="width: 19px;" alt="" class="mr-1">Ir al Cpanel</a>
 
-                    <div class="card-header">
-                        <h3 class="card-title mb-2">Dominios</h3>
-                        <div class="container pb-2">
-                            <div class="row">
-                                <div class="text-small col-md-6 col-sm-1 mb-1">
-                                <div class="card-body rounded" style="background: #252856;">
-                                    <img class="capa-left" src="{{asset('images/valdusoft/world.png')}}" alt="" style="position: absolute; margin-left:300px;">
-                                    <p class="card-text h6 text-white">Fecha de Renovación</p>
-                                    <br>
-                                    <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
-                                    
-                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#0065DC;color: white;width: 180px;"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
-                                    
-                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
-                                    ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1"> Renovar</a>
-                                </div>
-                            </div>
-
-                            <div class="text-small col-md-6 col-sm-1 mb-1">
-                                <div class="card-body rounded" style="background: #252856;">
-                                    <img class="capa-left" src="{{asset('images/valdusoft/world.png')}}" alt="" style="position: absolute; margin-left:300px;">
-                                    <p class="card-text h6 text-white">Fecha de Renovación</p>
-                                    <br>
-                                    <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
-                                    
-                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#0065DC;color: white;width: 180px;"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1" >Ir al Cpanel</a>
-                                    
-                                    <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
-                                    ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1" >Renovar</a>
+                                            <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
+                                    ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1">Renovar</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="card-header">
+                            <h3 class="card-title mb-2">Dominios</h3>
+                            <div class="container pb-2">
+                                <div class="row">
+                                    <div class="text-small col-md-6 col-sm-1 mb-1">
+                                        <div class="card-body rounded" style="background: #252856;">
+                                            <img class="capa-left" src="{{asset('images/valdusoft/world.png')}}" alt="" style="position: absolute; margin-left:300px;">
+                                            <p class="card-text h6 text-white">Fecha de Renovación</p>
+                                            <br>
+                                            <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
+
+                                            <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#0065DC;color: white;width: 180px;"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
+
+                                            <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
+                                    ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1"> Renovar</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-small col-md-6 col-sm-1 mb-1">
+                                        <div class="card-body rounded" style="background: #252856;">
+                                            <img class="capa-left" src="{{asset('images/valdusoft/world.png')}}" alt="" style="position: absolute; margin-left:300px;">
+                                            <p class="card-text h6 text-white">Fecha de Renovación</p>
+                                            <br>
+                                            <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
+
+                                            <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#0065DC;color: white;width: 180px;"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
+
+                                            <a type="submit" class="btn margen" id="btn-guardar" style="background-color:#06B054;
+                                    ;color: white;width: 180px; "><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1">Renovar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div>
+                            <div>
+                                <h3 class="card-title mb-2 pl-2 pt-2">Facturas</h3>
+                                <div class="table-responsive ">
+                                    <table class="table">
+                                        <thead class="thead-light ">
+                                            <th class="col-1">#</th>
+                                            <th class="col-3">FECHA</th>
+                                            <th class="col-2">MONTO</th>
+                                            <th class="col-2">ESTADO</th>
+                                            <th class="col-2">ACCION</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">#125</th>
+                                                <td>05 Sep</td>
+                                                <td>20.36$</td>
+                                                <td>
+                                                    <div class="text-center text-white d-inline-block mr-2">
+                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#126</th>
+                                                <td>05 Sep</td>
+                                                <td>20.36$</td>
+                                                <td>
+                                                    <div class="text-center text-white d-inline-block mr-2">
+                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#127</th>
+                                                <td>05 Sep</td>
+                                                <td>20.36$</td>
+                                                <td>
+                                                    <div class="text-center text-white d-inline-block mr-2">
+                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#128</th>
+                                                <td>05 Sep</td>
+                                                <td>20.36$</td>
+                                                <td>
+                                                    <div class="text-center text-white d-inline-block mr-2">
+                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#129</th>
+                                                <td>05 Sep</td>
+                                                <td>20.36$</td>
+                                                <td>
+                                                    <div class="text-center text-white d-inline-block mr-2">
+                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#130</th>
+                                                <td>05 Sep</td>
+                                                <td>20.36$</td>
+                                                <td>
+                                                    <div class="text-center text-white d-inline-block mr-2">
+                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#131</th>
+                                                <td>05 Sep</td>
+                                                <td>20.36$</td>
+                                                <td>
+                                                    <div class="text-center text-white d-inline-block mr-2">
+                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#132</th>
+                                                <td>05 Sep</td>
+                                                <td>20.36$</td>
+                                                <td>
+                                                    <div class="text-center text-white d-inline-block mr-2">
+                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#133</th>
+                                                <td>05 Sep</td>
+                                                <td>20.36$</td>
+                                                <td>
+                                                    <div class="text-center text-white d-inline-block mr-2">
+                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="bottom float-right" style="margin-right:20px; height:100px; ">
+
+                                <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
+
+                                </button>
+
+                                <button class="btn btn-primary  btn-circle btn-lg">1
+
+                                </button>
+
+                                <button style="color:black;" class="btn btn-circle btn-lg">2
+
+                                </button>
+
+                                <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
+
+
+                                </button>
+                            </div>
+
+                        </div>
+
+
+
                     </div>
                 </div>
-
-
-
-            <div>
-                <div>
-                    <h3 class="card-title mb-2 pl-2 pt-2">Facturas</h3>
-                    <div class="table-responsive ">
-                        <table class="table">
-                            <thead class="thead-light ">
-                                <th class="col-1">#</th>
-                                <th class="col-3">FECHA</th>
-                                <th class="col-2">MONTO</th>
-                                <th class="col-2">ESTADO</th>
-                                <th class="col-2">ACCION</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">#125</th>
-                                    <td>05 Sep</td>
-                                    <td>20.36$</td>
-                                    <td>
-                                        <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                    </td>
-                                    <td>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#126</th>
-                                    <td>05 Sep</td>
-                                    <td>20.36$</td>
-                                    <td>
-                                        <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                    </td>
-                                    <td>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#127</th>
-                                    <td>05 Sep</td>
-                                    <td>20.36$</td>
-                                    <td>
-                                        <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                    </td>
-                                    <td>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#128</th>
-                                    <td>05 Sep</td>
-                                    <td>20.36$</td>
-                                    <td>
-                                        <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                    </td>
-                                    <td>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#129</th>
-                                    <td>05 Sep</td>
-                                    <td>20.36$</td>
-                                    <td>
-                                        <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                    </td>
-                                    <td>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#130</th>
-                                    <td>05 Sep</td>
-                                    <td>20.36$</td>
-                                    <td>
-                                        <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                    </td>
-                                    <td>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#131</th>
-                                    <td>05 Sep</td>
-                                    <td>20.36$</td>
-                                    <td>
-                                        <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                    </td>
-                                    <td>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#132</th>
-                                    <td>05 Sep</td>
-                                    <td>20.36$</td>
-                                    <td>
-                                        <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                    </td>
-                                    <td>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#133</th>
-                                    <td>05 Sep</td>
-                                    <td>20.36$</td>
-                                    <td>
-                                        <div class="text-center text-white d-inline-block mr-2">
-                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                    </td>
-                                    <td>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                        <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="bottom float-right" style="margin-right:20px; height:100px; ">
-
-                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
-
-                    </button>
-
-                    <button class="btn btn-primary  btn-circle btn-lg">1
-
-                    </button>
-
-                    <button style="color:black;" class="btn btn-circle btn-lg">2
-
-                    </button>
-
-                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
-
-
-                    </button>
-                </div>
-
             </div>
-
 
 
         </div>
     </div>
-</div>
-
-
-</div>
-</div>
 </div>
 </div>
 @endsection

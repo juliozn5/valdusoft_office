@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (Session::has('msj-exitoso'))
-        <script>
-            $(document).ready(function() toastr.success('El empleado ha sido creado con éxito.', 'Operación Completada');
-            });
-        </script>
-    @endif
+@if (Session::has('msj-exitoso'))
+<script>
+    $(document).ready(function() toastr.success('El empleado ha sido creado con éxito.', 'Operación Completada');
+    });
+</script>
+@endif
 
 
 <div class="app-content content">
@@ -50,18 +50,18 @@
                             </div>
 
                             <div class="mr-3">
-                                {{ $employees->links() }} 
+                                {{ $employees->links() }}
                             </div>
 
                         </div>
                     </div>
                 </div>
             </div>
-         
-            </div>
-        </section>
+
         </div>
+        </section>
     </div>
+</div>
 </div>
 </div>
 </div>

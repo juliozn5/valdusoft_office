@@ -21,11 +21,11 @@
                                 <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="#">Proyectos</a></li>
                                 <li class="breadcrumb-item">Detalle del Proyecto</li>
-                                
+
                             </ol>
 
                             <div class=" d-md-flex justify-content-md-end ">
-                            <a href="{{route('employee.projects.list')}}" style="left:240px;" class="btn me-md-2 text-dark">Atrás</a>
+                                <a href="{{route('employee.projects.list')}}" style="left:240px;" class="btn me-md-2 text-dark">Atrás</a>
 
                             </div>
 
@@ -36,11 +36,11 @@
         </div>
 
         <div class="content-body">
-            <div class="row" >
+            <div class="row">
 
                 <!-- Sección Izquierda -->
                 <div class="col-6">
-                
+
                     <div class="card rounded">
                         <div style="height: 300px;">
                             <img src="{{asset('images/figma/big.png')}}" width="100%" height="100%">
@@ -166,36 +166,36 @@
                                 <h3 class="card-title">Adjuntos</h3>
 
                                 <div class="row mt-1 mb-2">
-                                   
-                                            <div class="col-4 pt-1">
 
-                                                    <a href="#" target="_blank">
-                                                    <img src="{{asset('images/figma/lg.png')}}" width="100%" height="100px">
-                                                    </a>
+                                    <div class="col-4 pt-1">
 
-                                            </div>
-                                            <div class="col-8 pt-1">
-                                                <div style="font-size: 12px; font-weight: 500; color: #3C3232;"></div>
+                                        <a href="#" target="_blank">
+                                            <img src="{{asset('images/figma/lg.png')}}" width="100%" height="100px">
+                                        </a>
 
-                                                <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
-                                                Añadido: 2 de enero de 2021 a las 18:47<br>
-                                                <br>
-                                                    <a href="#" >Eliminar</a> - <a href="#"">Editar</a>
+                                    </div>
+                                    <div class="col-8 pt-1">
+                                        <div style="font-size: 12px; font-weight: 500; color: #3C3232;"></div>
+
+                                        <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
+                                            Añadido: 2 de enero de 2021 a las 18:47<br>
+                                            <br>
+                                            <a href="#">Eliminar</a> - <a href="#"">Editar</a>
                                                 </div>
                                             </div>
 
                                 </div>
 
                                 <div>
-                                    <a href="#newAttachment" data-toggle="modal" class="btn btn-info mb-2 waves-effect waves-light"> Añadir un adjunto</a>
-                                </div>
-                            </div>
+                                    <a href=" #newAttachment" data-toggle="modal" class="btn btn-info mb-2 waves-effect waves-light"> Añadir un adjunto</a>
+                                        </div>
+                                    </div>
 
-                            <!-- Pestaña del Chat-->
-                            <div class="tab-pane fade pl-2 pr-2" id="chat">
-                                <h3 class="card-title">Chat</h3>
+                                    <!-- Pestaña del Chat-->
+                                    <div class="tab-pane fade pl-2 pr-2" id="chat">
+                                        <h3 class="card-title">Chat</h3>
 
-                                
-                                
-                            </div>
-            @endsection
+
+
+                                    </div>
+                                    @endsection

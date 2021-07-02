@@ -40,8 +40,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" action="{{ route('admin.clients.update', $client->id) }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form class="form form-vertical" action="{{ route('admin.clients.update', $client->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <div class="form-body">
@@ -50,8 +49,7 @@
                                             <div class="form-group">
                                                 <label class="h5" for="name">Nombre</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" class="form-control" name="name"
-                                                        value="{{ $client->name }}">
+                                                    <input type="text" class="form-control" name="name" value="{{ $client->name }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-user"></i>
                                                     </div>
@@ -62,8 +60,7 @@
                                             <div class="form-group">
                                                 <label class="h5" for="lastname">Apellido</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" class="form-control" name="lastname"
-                                                        value="{{ $client->lastname }}">
+                                                    <input type="text" class="form-control" name="lastname" value="{{ $client->lastname }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-user"></i>
                                                     </div>
@@ -74,8 +71,7 @@
                                             <div class="form-group">
                                                 <label class="h5" for="email">Email</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="email" class="form-control" name="email"
-                                                        value="{{ $client->email }}">
+                                                    <input type="email" class="form-control" name="email" value="{{ $client->email }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-globe"></i>
                                                     </div>
@@ -87,15 +83,14 @@
                                             <div class="form-group">
                                                 <label class="h5" for="phone">Telefono</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" class="form-control" name="phone"
-                                                        value="{{ $client->phone }}">
+                                                    <input type="text" class="form-control" name="phone" value="{{ $client->phone }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-phone"></i>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
 
                                         <div class="form-group col-12">
                                             <fieldset>
@@ -103,10 +98,7 @@
                                                 <div class="media">
                                                     <div class="custom-file">
                                                         <label class="custom-file-label" for="photo"><b>Seleccione una imagen para el Cliente</b></label>
-                                                        <input type="file" id="photo"
-                                                            class="custom-file-input @error('photo') is-invalid @enderror"
-                                                            name="photo" onchange="previewFile(this, 'photo_preview')"
-                                                            accept="image/*">
+                                                        <input type="file" id="photo" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" onchange="previewFile(this, 'photo_preview')" accept="image/*">
                                                         @error('photo')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -114,14 +106,14 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                              
+
                                                 <div class="row mb-4 mt-4 d-none" id="photo_preview_wrapper">
                                                     <div class="col"></div>
                                                     <div class="col-auto">
                                                         @if (!is_null($client->photo))
-                                                            <img id="photo_preview" class="img-fluid rounded" src="{{ $client->photo }}"/>
+                                                        <img id="photo_preview" class="img-fluid rounded" src="{{ $client->photo }}" />
                                                         @else
-                                                            <img id="photo_preview" class="img-fluid rounded" src="{{ asset('images/valdusoft/valdusoft.png') }}"/>
+                                                        <img id="photo_preview" class="img-fluid rounded" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                         @endif
                                                     </div>
                                                     <div class="col"></div>
@@ -130,10 +122,8 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-12">
-                                            <button type="submit"
-                                                class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
-                                            <a href="{{ route('admin.clients.list') }}"
-                                                class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
+                                            <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
+                                            <a href="{{ route('admin.clients.list') }}" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>
