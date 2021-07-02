@@ -3682,6 +3682,10 @@ tr.group {
       margin-bottom: 1rem;
     }/*agregado*/
   
+    .padding{
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
 }
 
 @media only screen and (max-width: 1300px){

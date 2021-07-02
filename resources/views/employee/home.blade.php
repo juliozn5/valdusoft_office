@@ -16,31 +16,31 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
 <div class="card">
     <div class="row ">
-        <div class="container col-md-2 col-sm-1 mb-2 rounded">
+        <div class="container col-md-2 col-sm-1 mb-2 padding rounded">
             <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
                 <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
                     <div style="position: relative;top: 14px;"> Recomiendo</div>
                 </div>
         </div>
-<div class="container col-md-2 col-sm-1 mb-2 rounded">
+<div class="container col-md-2 col-sm-1 mb-2 padding rounded">
     <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
         <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
             <div style="position: relative;top: 14px;"> Recomiendo</div>
         </div>
 </div>
-<div class="container col-md-2 col-sm-1 mb-2 rounded">
+<div class="container col-md-2 col-sm-1 mb-2 padding rounded">
     <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
         <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
             <div style="position: relative;top: 14px;"> Recomiendo</div>
         </div>
 </div>
-<div class="container col-md-2 col-sm-1 mb-2  rounded">
+<div class="container col-md-2 col-sm-1 mb-2 padding rounded">
     <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
         <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
             <div style="position: relative;top: 14px;"> Recomiendo</div>
         </div>
 </div>
-<div class="container col-md-2 col-sm-1 rounded">
+<div class="container col-md-2 col-sm-1 padding rounded">
     <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
         <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
             <div style="position: relative;top: 14px;"> Recomiendo</div>
