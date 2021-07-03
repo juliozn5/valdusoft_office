@@ -42,14 +42,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                         <div class="col-md-4">
 
-                            <img class="rounded-circle" src="{{ asset('images/user/logonew.png')}}" alt="" width="55px" height="55px">
+                            <img class="rounded-circle" src="{{ asset('storage/photo-profile/'.$client->photo) }}" alt="" width="55px" height="55px">
                         </div>
 
                     </div>
 
                     <div class="col ml-1">
-                        <h3 class="card-title mb-1">Smart Bunny</h3>
-                        +5735021596 / info@smartbunny.com
+                        <h3 class="card-title mb-1">{{$client->name}}</h3>
+                        +{{$client->phone}} / {{$client->email}}
 
                     </div>
 
@@ -193,132 +193,29 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <th class="col-2">ACCION</th>
                                         </thead>
                                         <tbody>
+                                            @foreach ($client_bill as $client)
                                             <tr>
-                                                <th scope="row">#125</th>
-                                                <td>05 Sep</td>
-                                                <td>20.36$</td>
+                                                <th scope="row">#{{ $client->id }}</th>
+                                                <td>{{ $client->date }}</td>
+                                                <td>{{ $client->amount }}$</td>
                                                 <td>
-                                                    <div class="text-center text-white d-inline-block mr-2">
-                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
+                                                    @if ($client->status == 0)
+                                                    <label class="label status-label status-label-purple">No
+                                                        Atendido</label>
+                                                    @elseif ($client->status == 1)
+                                                    <label class="label status-label status-label-gray">En Proceso</label>
+                                                    @elseif ($client->status == 2)
+                                                    <label class="label status-label status-label-blue">Testiando</label>
+                                                    @elseif ($client->status == 3)
+                                                    <label class="label status-label status-label-green">Completado</label>
+                                                    @endif
                                                 </td>
                                                 <td>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
+                                                    <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
+    
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">#126</th>
-                                                <td>05 Sep</td>
-                                                <td>20.36$</td>
-                                                <td>
-                                                    <div class="text-center text-white d-inline-block mr-2">
-                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                                </td>
-                                                <td>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#127</th>
-                                                <td>05 Sep</td>
-                                                <td>20.36$</td>
-                                                <td>
-                                                    <div class="text-center text-white d-inline-block mr-2">
-                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                                </td>
-                                                <td>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#128</th>
-                                                <td>05 Sep</td>
-                                                <td>20.36$</td>
-                                                <td>
-                                                    <div class="text-center text-white d-inline-block mr-2">
-                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                                </td>
-                                                <td>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#129</th>
-                                                <td>05 Sep</td>
-                                                <td>20.36$</td>
-                                                <td>
-                                                    <div class="text-center text-white d-inline-block mr-2">
-                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                                </td>
-                                                <td>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#130</th>
-                                                <td>05 Sep</td>
-                                                <td>20.36$</td>
-                                                <td>
-                                                    <div class="text-center text-white d-inline-block mr-2">
-                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                                </td>
-                                                <td>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#131</th>
-                                                <td>05 Sep</td>
-                                                <td>20.36$</td>
-                                                <td>
-                                                    <div class="text-center text-white d-inline-block mr-2">
-                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                                </td>
-                                                <td>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#132</th>
-                                                <td>05 Sep</td>
-                                                <td>20.36$</td>
-                                                <td>
-                                                    <div class="text-center text-white d-inline-block mr-2">
-                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                                </td>
-                                                <td>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#133</th>
-                                                <td>05 Sep</td>
-                                                <td>20.36$</td>
-                                                <td>
-                                                    <div class="text-center text-white d-inline-block mr-2">
-                                                        <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                                </td>
-                                                <td>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/plug.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                    <a href="#"><img id="bottom" src="{{asset('images/figma/puntos.png')}}" alt=""></a>
-                                                </td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
