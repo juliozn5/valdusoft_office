@@ -57,7 +57,7 @@ Route::group(['middleware'=>['auth']], function() {
          //MÓDULO DE CLIENTES
         Route::group(['prefix' => 'clients'], function(){
             Route::get('/', 'ClientsController@list')->name('admin.clients.list');
-            Route::get('/detail', 'ClientsController@detail')->name('admin.clients.detail');
+            Route::get('show/{slug}/{id}', 'ClientsController@show')->name('admin.clients.detail');
             Route::get('create', 'ClientsController@create')->name('admin.clients.create');
             Route::get('edit/{id}', 'ClientsController@edit')->name('admin.clients.edit');
             Route::post('store', 'ClientsController@store')->name('admin.clients.store');
@@ -77,6 +77,7 @@ Route::group(['middleware'=>['auth']], function() {
         //MÓDULO DE HOSTINGS
         Route::group(['prefix' => 'hostings'], function(){
             Route::get('/', 'HostingController@list')->name('admin.hostings.list');
+            Route::get('detail', 'HostingController@detail')->name('admin.hostings.detail');
             Route::get('create', 'HostingController@create')->name('admin.hostings.create');
             Route::get('edit/{id}', 'HostingController@edit')->name('admin.hostings.edit');
             Route::post('store', 'HostingController@store')->name('admin.hostings.store');

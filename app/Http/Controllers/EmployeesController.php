@@ -127,13 +127,11 @@ class EmployeesController extends Controller
         $availableSkills = DB::table('skills')
                               ->orderBy('skill', 'ASC')
                               ->get();
-
+        
+        $itemColors = ['#FF3F3F', '#12A0B4', '#940385'];
 
         return view('landing.profile.profile')
-        ->with('user', $user)
-        ->with('skillsActivos', $skillsActivos)
-        ->with('project', $project)
-        ->with('availableSkills', $availableSkills);
+        ->with(compact('user','skillsActivos','project','availableSkills','itemColors',));
     }
 
     /*actualizar los skills*/

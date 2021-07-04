@@ -44,10 +44,11 @@ class ClientsController extends Controller
     }
 
        //detalle del proyecto
-       public function detail(){
-        $client = Auth::user();
-        $client_bill = Bill::all()->where('type', 'C');
-        
+       public function show($slug,$id){
+        $client = User::where('id', '=', $id)
+                        ->first();
+
+        $client_bill = Bill::all()->where('type', 'C');        
 
         return view('admin.clients.detail')
         ->with(compact('client','client_bill'));
