@@ -19,10 +19,6 @@ data-menu="vertical-menu-modern" data-col="2-columns"
     function mostrar() {
         document.getElementById('generar').style.display = 'block';
     }
-
-    function mostrar() {
-        document.getElementById('generar').style.display = 'block';
-    }
 </script>
 
 <div class="app-content content">
@@ -36,12 +32,11 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     <h2 class="content-header-title float-left mb-0">Financiero</h2>
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i
-                                        class="fas fa-home"></i></a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Financiero</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.bills.list') }}">Financiero</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Facturas</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.bills.list') }}">Factura</a>
                             </li>
                         </ol>
                     </div>
@@ -58,22 +53,18 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                         <div class="d-grid gap-2 d-md-block mb-2 col-md-8 col-sm-1">
                             <ul class="nav nav-pills nav-justified">
                                 <li class="">
-                                    <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments"
-                                        id="empleado" onclick="ocultar()"><strong> EMPLEADOS </strong></a>
+                                    <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments" id="empleado" onclick="ocultar()"><strong> EMPLEADOS </strong></a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat" id="mostrar"
-                                        onClick="mostrar('generar')"><strong> CLIENTES </strong></a>
+                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat" id="mostrar" onClick="mostrar('generar')"><strong> CLIENTES </strong></a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant"
-                                        id="mostrar" onClick="mostrar('generar')"><strong> HOSTING </strong></a>
+                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant" id="mostrar" onClick="mostrar('generar')"><strong> HOSTING </strong></a>
                                 </li>
                             </ul>
                         </div>
                         <div class="d-grid gap-2 d-md-block mb-2 col-4">
-                            <a href="#prestamo" data-toggle="modal" class="btn1 btn btn-primary mb-2 waves-effect"
-                                style="margin-left:130px;" id="generar"> GENERAR</a>
+                            <a href="#prestamo" data-toggle="modal" class="btn1 btn btn-primary mb-2 waves-effect" style="margin-left:130px;" id="generar"> GENERAR</a>
                         </div>
                     </div>
 
@@ -112,16 +103,13 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-                                            <td><a href=""><img id="bottom"
-                                                        src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
+                                            <td><a href="{{route('admin.bills.BillList')}}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
-
 
 
                         <!-- Pestaña de Cliente -->
@@ -157,9 +145,9 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-                                            
+
                                             <td>
-                                                <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                <a href="{{route('admin.bills.BillList')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
 
                                             </td>
                                         </tr>
@@ -167,10 +155,9 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="mr-3">
+                            </div>
                         </div>
-
-
-
 
                         <!-- Pestaña de Hosting -->
                         <div class="tab-pane fade" id="accountant">
@@ -187,15 +174,39 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                      
-                                       
+                                        @foreach ($hosting as $hosting)
+                                        <tr>
+                                            <th scope="row">#{{ $hosting->id }}</th>
+                                            <td>{{ $hosting->user->name }}</td>
+                                            <td>{{ $hosting->date }}</td>
+                                            <td>{{ $hosting->amount }}$</td>
+                                            <td>
+                                                @if ($hosting->status == 0)
+                                                <label class="label status-label status-label-purple">No
+                                                    Atendido</label>
+                                                @elseif ($hosting->status == 1)
+                                                <label class="label status-label status-label-gray">En Proceso</label>
+                                                @elseif ($hosting->status == 2)
+                                                <label class="label status-label status-label-blue">Testiando</label>
+                                                @elseif ($hosting->status == 3)
+                                                <label class="label status-label status-label-green">Completado</label>
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                <a href="{{route('admin.bills.BillList')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+
+                                            </td>
+                                        </tr>
+
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
 
-              
+
                     <!--  MODAL DEL CLIENTE  Y HOSTING -->
                     <div class="modal fade" id="prestamo" aria-hidden="true" tabindex="-1">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -217,31 +228,44 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         </thead>
                                     </table>
 
-                                    <div class="container ">
-                                        <div class="row ">
-                                            <div class="col ">
-                                                <input class="col form-control" type="text">
-                                            </div>
-                                            <div class="col">
-                                                <input class="col form-control" type="text" id="" style="margin-left :20px;">
+                                    <form id="form" name="form" method="POST">
 
-                                            </div>
-                                            <div class="col">
-                                                <input class="col form-control" type="text" id="" style="margin-left:35px;">
 
+                                        <div class="row " style="width: 550px;">
+                                            <div class="col ml-2">
+                                                <input type="text" class="  input-group">
                                             </div>
-                                            <div class="col">
-                                                <input class="col form-control" type="text" id="" style="margin-left:100px;">
 
+                                            <div class="col ml-4">
+                                                <input type="text" class="  input-group">
                                             </div>
-                                            <div class="col">
 
-                                                <a href="#" class="float-right d-inline-block"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                                            <div class="col ml-5">
+                                                <input type="text" class="  input-group">
+                                            </div>
+
+                                            <div class="col" style="margin-left: 250px;">
+                                                <input type="text" class="  input-group" >
                                             </div>
                                         </div>
-                                        <br>
-                                    </div>
+
+                                        <div class="col">
+                                            <a href="#" class="float-right d-inline-block"><img class="rounded-circle" onclick="AgregarCampos();" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                                        </div>
+                                    </form>
                                 </div>
+
+                                <div class="modal-footer">
+                                    <ul class="list-group list-group-flush">
+
+                                        <li class="list-group-item"> <strong>TOTAL PARCIAL</strong> 00</li>
+                                        <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
+                                        <li class="list-group-item"><strong>PAGADO</strong> 00</li>
+                                    </ul>
+                                </div>
+                                <button type="submit" class="btn btn-primary float-right waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>
+
+
                             </div>
                         </div>
                     </div>

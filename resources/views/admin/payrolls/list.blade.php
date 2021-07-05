@@ -48,12 +48,11 @@ function editPayroll($payroll) {
     </div>
 
     <div class="content-body">
-
         <div id="table-head">
             <div class="col-11" style="margin-left:15px">
                 <div class="card" id="card-head1">
                     <div class="card-header">
-                        <h3 class="card-title mb-1">Listado de las nominas</h3>
+                        <h3 class="card-title mb-1">Listado de las Nóminas</h3>
                         <a href="{{ route('admin.payrolls.generate') }}" class="btn btn-primary mb-2 waves-effect waves-light">&nbsp; GENERAR</a>
                     </div>
 
@@ -110,7 +109,7 @@ function editPayroll($payroll) {
                 </div>
             </div>
         </div>
-
+    </div>
 
         <!--  MODAL EDITAR NOMINA  -->
 
@@ -119,48 +118,34 @@ function editPayroll($payroll) {
                 <div class="modal-content">
                     <div class="modal-header bg-primary white">
                         <h5 class="modal-title">Editar Nómina</h5>
-
                         <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
-
                     </div>
                     <form action="{{ route('admin.payrolls.updatePayroll') }}" method="POST">
                         @csrf
 
                         <input type="hidden" name="payroll_id" id="payroll_id" value="">
                         <div class="modal-body">
-
-                        </div>
-                        <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="payroll_amount">Monto</label>
-                                    <input name="payroll_amount" id="payroll_amount" class="form-control">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="payroll_amount">Monto</label>
+                                        <input name="payroll_amount" id="payroll_amount" class="form-control">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="date">Fecha</label>
+                                        <input type="date" name="date" id="date" class="form-control">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="payroll_status">Estado</label>
+                                        <select name="status" id="payroll_status" class="form-control">
+                                            <option value="0">Pendiente</option>
+                                            <option value="1">Completado</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <br>
-
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="date">Fecha</label>
-                                    <input type="date" name="date" id="date" class="form-control">
-                                </div>
-
-                                <div class="col-6">
-
-                                    <label for="payroll_status">Estado</label>
-                                    <select name="status" id="payroll_status" class="form-control">
-                                        <option value="0">Pendiente</option>
-                                        <option value="1">Completado</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>                        <br><br>
+                        </div>                        
+                        <br><br>
                             
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
@@ -169,6 +154,4 @@ function editPayroll($payroll) {
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+    @endsection

@@ -34,10 +34,6 @@ class BillController extends Controller
          }
 
 
-
-
-        
-
     }
 
     public function detail(){
@@ -49,10 +45,11 @@ class BillController extends Controller
             return
              view('employee.billdetail');                             
         }
-        public function bill(){
-            return
-             view('admin.bills.billadmin');                             
-        }
+   
+        public function BillList(){
+          return
+           view('admin.bills.BillList');                             
+      }
 
 
     }

@@ -16,7 +16,7 @@ class PaymentsController extends Controller
 
     }
 
-    public function bill(){
+    public function billpayment(){
         return view('admin.payments.billpayment');    
     }
 }
