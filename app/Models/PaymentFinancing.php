@@ -5,21 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Payrolls extends Model
+class FinancingPayment extends Model
 {
     use HasFactory;
 
-    protected $table = 'payrolls';
+    protected $table = 'financing_payments';
 
     protected $fillable =[
-        'id',
+        'financing_id',
         'amount',
-        'status',
         'date',
     ];
-    
-    public function employees(){
-        return $this->hasMany('App\Models\PayrollEmployee');
-    }
 
+    public function financing(){
+        return $this->belongsTo('App\Models\Financing');
+    }
 }
