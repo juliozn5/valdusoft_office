@@ -26,7 +26,7 @@ class ProjectsController extends Controller
             $projects = Project::where('user_id', '=', Auth::user()->id)
                             ->where('status', '<>', '4')
                             ->orderBy('id', 'DESC')
-                            ->get();
+                            ->paginate(10);
 
             return view('client.projects')
             ->with('projects', $projects); 
@@ -190,12 +190,16 @@ class ProjectsController extends Controller
         }
     }
 
-    //detalle del proyecto
+    //detalle del empleado
     public function detail(){
         return view('employee.projectsdetail');
     }
 
-    
+    //detalle del cliente
+    public function detailclient(){
+
+        return view('client.detailprojects');
+    }
 
     /** Agregar un archivo adjunto al proyecto
     *** Perfil: Admin ***/

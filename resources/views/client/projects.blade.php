@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+
+@push('body-atribute')
+class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
+@endpush
+
 @section('content')
 
 @include('layouts.partials.navbar')
@@ -34,150 +39,36 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href="#"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{ asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">125966548</th>
-                                            <td>lorem ipsu dolor</td>
-                                            <td>01/01/2021</td>
-                                            <td>01/04/2021</td>
-                                            <td>
-                                                <div class="text-center text-white d-inline-block mr-2">
-                                                    <div class="project-detail-skill" id="process-project">En Proceso</div>
-                                            </td>
-                                            <td><a href=""><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <div class="bottom float-right" style="margin-right:20px;">
-
-                                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
-
-                                    </button>
-
-                                    <button class="btn btn-primary  btn-circle btn-lg">1
-
-                                    </button>
-
-                                    <button style="color:black;" class="btn btn-circle btn-lg">2
-
-                                    </button>
-
-                                    <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
-
-
-                                    </button>
-
-                                </div>
-
-                                <br><br> </table>
-                                <br>
-
-                                <table>
-                                    <tbody>
-
                                         @foreach ($projects as $item)
                                         <tr>
-                                            <th>{{ $item->id }}</th>
+                                            <th>{{ $loop->iteration }}</th>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->start_date }}</td>
-                                            <td>{{ $item->status }}</td>
+                                            <td>{{ $item->ending_date }}</td>
+                                            <td>
+                                                @if ($item->status == 0)
+                                                <label class="label status-label status-label-purple">No Atendido</label>
+                                                @elseif ($item->status == 1)
+                                                <label class="label status-label status-label-gray">En Proceso</label>
+                                                @elseif ($item->status == 2)
+                                                <label class="label status-label status-label-blue">Testiando</label>
+                                                @elseif ($item->status == 3)
+                                                <label class="label status-label status-label-green">Completado</label>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{route('client.projects.detail')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+
                             </div>
+                            <div class="mr-3">
+                                {{ $projects->links() }}
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

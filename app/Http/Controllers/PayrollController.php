@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Payrolls;
+use Illuminate\Http\Request;
 
 class PayrollController extends Controller
 {
@@ -15,6 +16,21 @@ class PayrollController extends Controller
         }
     }
     
+
+
+    public function update(Request $request){
+
+        $payrolls = Payrolls::find($request->payroll_id);
+
+        $payrolls->update($request->all());
+
+        $payrolls->amount = $request->payroll_amount;
+
+        $payrolls->save();
+
+        return redirect()->route('admin.payrolls.list');
+    }
+
     public function generate(){
         return view('admin.payrolls.generate');                             
     }

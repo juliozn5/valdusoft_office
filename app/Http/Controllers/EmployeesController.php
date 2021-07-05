@@ -177,5 +177,28 @@ class EmployeesController extends Controller
         return redirect()->back()->with('msj-exitoso', 'Billetera Guardada Exitosamente');
         
     }
+
+    public function upload_curriculum(Request $request){
+        
+        $user = User::find(Auth::user()->id);
+
+        $user->update($request->all());
+
+        if ($request->hasFile('archivo')){
+        $file = $request->file('archivo');
+        $name = $user->id.".".$file->getClientOriginalExtension();
+        $file->move(public_path('storage') . '/flie-curriculum', $name);
+        $user->curriculum = $name;
+        
+        }
+        
+
+        $user->save();
+
+        return redirect()->route('employee.profile')->with('message','Se actualizo tu perfil');
+
+    }
+
+
 }
 

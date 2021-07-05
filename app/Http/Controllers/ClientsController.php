@@ -117,4 +117,6 @@ class ClientsController extends Controller
         return redirect()->route('admin.clients.list')->with('message','Se elimino el Cliente'.' '.$client->client.' '.'Exitosamente');
         
     }
+
+
 }

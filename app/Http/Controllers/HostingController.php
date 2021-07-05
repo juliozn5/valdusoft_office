@@ -17,7 +17,7 @@ class HostingController extends Controller
         
             return view('admin.hostings.list')->with('hostings', $hostings); 
         }else if (Auth::user()->profile_id == 2){
-            $hostings = Hosting::where('user_id', '=', Auth::user()->id)->get();
+            $hostings = Hosting::where('user_id', '=', Auth::user()->id)->paginate(10);
         
             return view('client.hostings')->with('hostings', $hostings);   
         }

@@ -42,7 +42,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
           <div class="ml-1 mt-2 mb-2 flex-nowrap">
             <p class="h6">Fecha de inicio</p>
-            <input type="date" class="col-4 form-control " placeholder=" Selecciona una fecha" aria-describedby="addon-wrapping">
+            <input type="text" class="col-4 form-control" value="" placeholder=" Selecciona una fecha" aria-describedby="addon-wrapping">
           </div>
 
 
