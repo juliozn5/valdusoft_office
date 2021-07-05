@@ -272,16 +272,43 @@
 #shadow {
     background: linear-gradient(rgba(37, 40, 86, 0) 0%, #252856 100%);
     border-radius: 7px;
-}
-
-#eye{
-    font-size: 15px;
-}
-#eye:hover{
-color:#252856
-  
+    align-items: center;
+ /*   width: 140px;*/
 }
 
 
+/*/////////////////////////////*/
+/*   PERSONALIZED CLASSES      */
+/*         Responsive            */
+/*/////////////////////////////*/
+
+#recomiendo{
+    right: 5px;
+
+}
+
+
+@media screen and (max-width: 531px) {
+    #recomiendo { display: flex; flex-flow: column; }
+    #recomiendo {
+        width: 180px;
+    
+}}
+
+#position {
+    margin: 0px 15px 0px 0px;
+}
+
+#size {
+    margin: 0px 15px 0px 15px;
+}
+
+
+@media only screen and (max-width: 800px) {
+
+    #position {
+        margin: 0px 10px 20px 0px;
+    }
+}
 
 

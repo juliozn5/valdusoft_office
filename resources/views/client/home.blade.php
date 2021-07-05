@@ -26,31 +26,34 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="card">
                     <div class="container">
                         <div class="row ">
-                            <div class="container-fluid col-md-2 col-sm-1 mb-2 rounded">
+                            <div class="container-fluid col-md-2 col-sm-1 mb-2 rounded" id="recomiendo">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
                                 <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
                                     <div style="position: relative;top: 14px;"> Recomiendo</div>
                                 </div>
                             </div>
-                            <div class="container-fluid  col-md-2 col-sm-1 mb-2 rounded">
+
+                            <div class="container-fluid  col-md-2 col-sm-1 mb-2 rounded" id="recomiendo">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
                                 <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
                                     <div style="position: relative;top: 14px;"> Recomiendo</div>
                                 </div>
                             </div>
-                            <div class="container-fluid col-md-2 col-sm-1 mb-2 rounded">
+                            <div class="container-fluid col-md-2 col-sm-1 mb-2 rounded" id="recomiendo">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
                                 <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
                                     <div style="position: relative;top: 14px;"> Recomiendo</div>
                                 </div>
                             </div>
-                            <div class="container-fluid col-md-2 col-sm-1 mb-2  rounded">
+
+                            <div class="container-fluid col-md-2 col-sm-1 mb-2  rounded" id="recomiendo">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
                                 <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
                                     <div style="position: relative;top: 14px;"> Recomiendo</div>
                                 </div>
                             </div>
-                            <div class="container-fluid col-md-2 col-sm-1 rounded">
+
+                            <div class="container-fluid col-md-2 col-sm-1 rounded" id="recomiendo">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
                                 <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
                                     <div style="position: relative;top: 14px;"> Recomiendo</div>
@@ -118,7 +121,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <h3 class="card-title mb-2">Hosting</h3>
                     <div class="container pb-2">
                         <div class="row container-xxl">
-                            <div class="card-body rounded " style="background: #252856;">
+                            <div class="card-body rounded" id="position" id="size" style="background: #252856;">
                                 <img class="float-right" src="{{asset('images/icons/background.png')}}" alt="">
                                 <h5 class="card-title text-white">Recomiendo.com</h5>
                                 <br>
@@ -127,7 +130,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>02/10/2021</p>
                             </div>
 
-                            <div class="card-body rounded " style="background: #252856;margin-left:2px;">
+                            <div class="card-body rounded" id="position"  style="background: #252856;margin-left:2px;">
                                 <img class="float-right" src="{{asset('images/icons/background.png')}}" alt="">
                                 <h5 class="card-title text-white">Recomiendo.com</h5>
                                 <br>
