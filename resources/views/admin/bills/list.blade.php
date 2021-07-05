@@ -217,6 +217,8 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                     <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
 
                                 </div>
+
+                                <!--BODY DEL MODAL-->
                                 <div class="modal-body">
 
                                     <table class="table">
@@ -228,33 +230,41 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         </thead>
                                     </table>
 
-                                    <form id="form" name="form" method="POST">
 
-
-                                        <div class="row " style="width: 550px;">
-                                            <div class="col ml-2">
-                                                <input type="text" class="  input-group">
-                                            </div>
-
-                                            <div class="col ml-4">
-                                                <input type="text" class="  input-group">
-                                            </div>
-
-                                            <div class="col ml-5">
-                                                <input type="text" class="  input-group">
-                                            </div>
-
-                                            <div class="col" style="margin-left: 250px;">
-                                                <input type="text" class="  input-group" >
-                                            </div>
+                                    <div class="input-group">
+                                        <div class="text">
                                         </div>
+                                        <input type="text" class="form-control col-2" id="principal">
+                                        <input type="text" class="form-control col-2" id="segundo">
+                                        <input type="text" class="form-control col-2" id="tercero">
+                                        <input type="text" class="form-control col-2" id="cuarto">
+                                    </div>
 
-                                        <div class="col">
-                                            <a href="#" class="float-right d-inline-block"><img class="rounded-circle" onclick="AgregarCampos();" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
-                                        </div>
-                                    </form>
+
+
+                                    <style>
+                                        #cuarto {
+                                            margin-left: 110px;
+                                        }
+
+                                        #tercero {
+                                            margin-left: 45px;
+                                        }
+
+                                        #segundo {
+                                            margin-left: 60px;
+                                        }
+                                    </style>
+
+
+                                    <div class="col">
+                                        <a href="#" class="float-right d-inline-block mt-2"><img class="rounded-circle" id="add_field" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40">
+                                    </div>
+
+
                                 </div>
 
+                                <!--FOOTER DEL MODAL-->
                                 <div class="modal-footer">
                                     <ul class="list-group list-group-flush">
 
@@ -272,3 +282,31 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 
 
                     @endsection
+
+
+
+
+                    <script>
+                        var campos_max = 10; //max de 10 campos
+
+                        var x = 0;
+                        $('#add_field').click(function(e) {
+                            e.preventDefault(); //prevenir novos clicks
+                            if (x < campos_max) {
+                                $('#listas').append('<div>\
+                        <input type="text" name="campo[]">\
+                        <input type="text" name="campo[]">\
+                        <input type="text" name="campo[]">\
+                        <input type="text" name="campo[]">\
+                        <a href="#" class="remover_campo">Remover</a>\
+                        </div>');
+                                x++;
+                            }
+                        });
+                        // Remover o div anterior
+                        $('#listas').on("click", ".remover_campo", function(e) {
+                            e.preventDefault();
+                            $(this).parent('div').remove();
+                            x--;
+                        });
+                    </script>
