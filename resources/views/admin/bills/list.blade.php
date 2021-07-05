@@ -19,10 +19,6 @@ data-menu="vertical-menu-modern" data-col="2-columns"
     function mostrar() {
         document.getElementById('generar').style.display = 'block';
     }
-
-    function mostrar() {
-        document.getElementById('generar').style.display = 'block';
-    }
 </script>
 
 <div class="app-content content">
@@ -107,7 +103,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-                                            <td><a href="#"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
+                                            <td><a href="{{route('admin.bills.BillList')}}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -151,7 +147,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             </td>
 
                                             <td>
-                                                <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                <a href="{{route('admin.bills.BillList')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
 
                                             </td>
                                         </tr>
@@ -159,8 +155,9 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="mr-3">
+                            </div>
                         </div>
-
 
                         <!-- Pestaña de Hosting -->
                         <div class="tab-pane fade" id="accountant">
@@ -177,32 +174,32 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                        @foreach ($hosting as $hostin)
+                                        @foreach ($hosting as $hosting)
                                         <tr>
-                                            <th scope="row">#{{ $hostin->id }}</th>
-                                            <td>{{ $hostin->user_id }}</td>
-                                            <td>{{ $hostin->date }}</td>
-                                            <td>{{ $hostin->amount }}$</td>
+                                            <th scope="row">#{{ $hosting->id }}</th>
+                                            <td>{{ $hosting->user->name }}</td>
+                                            <td>{{ $hosting->date }}</td>
+                                            <td>{{ $hosting->amount }}$</td>
                                             <td>
-                                                @if ($hostin->status == 0)
+                                                @if ($hosting->status == 0)
                                                 <label class="label status-label status-label-purple">No
                                                     Atendido</label>
-                                                @elseif ($hostin->status == 1)
+                                                @elseif ($hosting->status == 1)
                                                 <label class="label status-label status-label-gray">En Proceso</label>
-                                                @elseif ($hostin->status == 2)
+                                                @elseif ($hosting->status == 2)
                                                 <label class="label status-label status-label-blue">Testiando</label>
-                                                @elseif ($hostin->status == 3)
+                                                @elseif ($hosting->status == 3)
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
 
                                             <td>
-                                                <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                <a href="{{route('admin.bills.BillList')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
 
                                             </td>
                                         </tr>
-                                        @endforeach
 
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -231,106 +228,47 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         </thead>
                                     </table>
 
-                                    <div class="container ">
-                                        <div class="row ">
-                                            <div class="col ">
-                                                <input class="col form-control" type="text">
-                                            </div>
-                                            <div class="col">
-                                                <input class="col form-control" type="text" id="" style="margin-left :20px;">
+                                    <form id="form" name="form" method="POST">
 
-                                            </div>
-                                            <div class="col">
-                                                <input class="col form-control" type="text" id="" style="margin-left:35px;">
 
+                                        <div class="row " style="width: 550px;">
+                                            <div class="col ml-2">
+                                                <input type="text" class="  input-group">
                                             </div>
-                                            <div class="col">
-                                                <input class="col form-control" type="text" id="" style="margin-left:100px;">
 
+                                            <div class="col ml-4">
+                                                <input type="text" class="  input-group">
                                             </div>
-                                            <div class="col">
 
-                                                <a href="#" class="float-right d-inline-block"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                                            <div class="col ml-5">
+                                                <input type="text" class="  input-group">
+                                            </div>
+
+                                            <div class="col" style="margin-left: 250px;">
+                                                <input type="text" class="  input-group" >
                                             </div>
                                         </div>
-                                        <br>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!--  MODAL DEL CLIENTE  -->
-
-                    <div class="modal fade" id="prestamo" aria-hidden="true" tabindex="-1">
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-
-                                    <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar
-                                            Factura</strong></h5>
-                                    <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
-
-                                </div>
-                                <div class="modal-body">
-
-                                    <table class="table">
-                                        <thead class="thead-light text-center">
-                                            <th class="col-2">DESCRIPCIÓN</th>
-                                            <th class="col-3">UNIDADES</th>
-                                            <th class="col-3">PRECIO UNITARIO</th>
-                                            <th class="" style="margin-left:50px;">PRECIO</th>
-                                        </thead>
-                                    </table>
-
-
-                                    <div class="container ">
-                                        <div class="row ">
-                                            <div class="col ">
-                                                <input class="col form-control" type="text" id="" >
-                                            </div>
-                                            <div class="col">
-                                                <input class="col form-control" type="text" id="">
-
-                                            </div>
-                                            <div class="col">
-                                                <input class="col form-control" type="text" id="">
-
-                                            </div>
-                                            <div class="col">
-                                                <input class="col form-control" type="text" id="" style="margin-left:45px;">
-
-
-                                            </div>
-                                            <div class="col">
-                                 
-                                                <a href="#" class="float-right"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
-                                            </div>
-                                            <ul class="list list-group-flush float mr-3">
-                                            <li class="list-group-client"><strong>TOTAL PARCIAL</strong></li>
-                                            <li class="list-group-client"><strong>DESCUENTO</strong></li>
-                                            <li class="list-group-client"><strong>PAGADO</strong></li>
-
-                                        </ul>
+                                        <div class="col">
+                                            <a href="#" class="float-right d-inline-block"><img class="rounded-circle" onclick="AgregarCampos();" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
                                         </div>
-
-                                        <br>
-                                        <br>
-
-                                    
-
-                                    </div>
+                                    </form>
                                 </div>
-                              
 
                                 <div class="modal-footer">
+                                    <ul class="list-group list-group-flush">
 
-                                    
-
-                                    <button class="btn btn-primary" data-target="#exampleModalToggle2" data-toggle="modal" data-dismiss="modal">Guardar</button>
+                                        <li class="list-group-item"> <strong>TOTAL PARCIAL</strong> 00</li>
+                                        <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
+                                        <li class="list-group-item"><strong>PAGADO</strong> 00</li>
+                                    </ul>
                                 </div>
+                                <button type="submit" class="btn btn-primary float-right waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>
+
+
                             </div>
                         </div>
                     </div>
+
 
                     @endsection

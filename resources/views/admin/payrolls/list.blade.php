@@ -40,7 +40,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="col-11" style="margin-left:15px">
                 <div class="card" id="card-head1">
                     <div class="card-header">
-                        <h3 class="card-title mb-1">Listado de las nominas</h3>
+                        <h3 class="card-title mb-1">Listado de las Nóminas</h3>
                         <a href="{{ route('admin.payrolls.generate') }}" class="btn btn-primary mb-2 waves-effect waves-light">&nbsp; GENERAR</a>
                     </div>
 
@@ -110,33 +110,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
 
                     </div>
-                    <form action="actualizacion del proyecto" method="POST" enctype="multipart/form-data">
+                    <form action="">
+                    <input type="hidden" name="" value="">
+                    <div class="modal-body">
 
-                        <input type="hidden" name="project_id" value="">
-                        <div class="modal-body">
+                        <div class="col-6">
+                            <label>Monto</label>
+                            <select name="" id="" class="form-control">
 
-                        </div>
+                                <option value="">Monto</option>
 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="user_id">ID</label>
-                                    <select name="user_id" id="projet_user_id" class="form-control">
-
-                                        <option value="#">{{ $payroll->id}}</option>
-
-                                    </select>
-                                </div>
-
-                                <div class="col-6">
-                                    <label for="country">Monto</label>
-                                    <select name="country_id" id="project_country_id" class="form-control">
-
-                                        <option value="">{{ $payroll->amount }}$</option>
-
-                                    </select>
-                                </div>
-                            </div>
+                            </select>
                         </div>
                         <br>
 
@@ -144,38 +128,32 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="row">
                                 <div class="col-6">
                                     <label for="start_date">Fecha</label>
-                                    <input type="date" name="start_date" id="project_start_date" class="form-control"></input>
+                                    <input type="date" name="" class="form-control">
                                 </div>
 
                                 <div class="col-6">
 
                                     <label for="type">Estado</label>
-                                    <select name="status" id="project_status" class="form-control">
-                                    @if ($payroll->status == 0)
+                                    <select name="status" class="form-control">
                                         <option value="0">No Atendido</option>
-                                        @elseif ($payroll->status == 1)
                                         <option value="1">En Proceso</option>
-                                        @elseif ($payroll->status == 2)
                                         <option value="2">Testiando</option>
-                                        @elseif ($payroll->status == 3)
                                         <option value="3">Completado</option>
-                                        @endif
-
-                
+                                        <option value="4">Eliminado</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-
+                        </form>
+                        
                         <br><br>
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

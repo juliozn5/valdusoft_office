@@ -22,5 +22,9 @@ class PayrollController extends Controller
         return view('admin.payrolls.DetailPayroll');                             
     }
 
+    public function PayrollList(){
+        return view('admin.payrolls.PayrollList');                             
+    }
+
   
 }
