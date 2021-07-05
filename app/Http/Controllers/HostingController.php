@@ -23,6 +23,10 @@ class HostingController extends Controller
         }
     }
 
+    function detail(){
+        return view('admin.hostings.detail');
+    }
+
     /** Crear Nuevo Hosting
     *** Perfil: Admin ***/
     public function create(){

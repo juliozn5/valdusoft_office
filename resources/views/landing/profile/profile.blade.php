@@ -25,18 +25,28 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
 <div class="card-body">
     <!--ASSIGNED PROJECTS-->
-    <!--PROJECT 1-->
-    <div class="pl-2 pr-2">
-        <div class="project-detail-titles">Proyectos Asignados</div>
-            <div class="mt-1">
-                @foreach ($project as $item)
-                <!--PROJECT 1-->
-                <div class="text-center text-white d-inline-block mr-1">
-                    <div class="project-circle" style="background:#FF3F3F;"><strong> P{{$loop->iteration}}</strong></div>
-                </div>
-                @endforeach
+{{-- Sección de Proyectos Asignados --}}
+<div class="pl-2 pr-2">
+    <div class="project-detail-titles">Proyectos Asignados</div>
+    <div class="mt-1">
+        @php $cont = 0; @endphp
+        @foreach ($project as $item)
+        <a href="">
+            <div class="text-center text-white d-inline-block mr-1">
+                <div class="project-circle" style="background-color: {{ $itemColors[$cont] }};"><strong> P{{ $item->id }}</strong></div>
             </div>
+        </a>
+        @php
+        if ($cont == 2){
+        $cont = 0;
+        }else{
+        $cont++;
+        }
+        @endphp
+        @endforeach
     </div>
+</div>
+
 <!--DATE SECTION-->
 <!--DATE OF BIRTH-->
 <div class="row mt-3 pl-2 pr-2">
@@ -122,14 +132,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="ml-2 pl-1 pt-1 position-absolute"><span>{{ $user->curriculum}}</span></div>
         </div> 
             <a href="{{ asset('storage/flie-curriculum/'.$user->curriculum) }}" download><img class="" src="{{asset('images/icons/arrow-down.png')}}" alt=""></a>
-
             <div class="d-inline-block mr-1 ml-5">
                 <a href="#availableCurriculum" data-toggle="modal">
                     <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
                 </a>
             </div>
-
-           
 </div>
 
 <div class="modal fade text-left" id="availableCurriculum" tabindex="-1" role="dialog" aria-modal="true">

@@ -48,7 +48,7 @@
                                                 <td>{{ $item->user->name }}</td>
                                                 <td>{{ $item->due_date }}</td>
                                                 <td>
-                                                    <a href="{{route('client.bills.detail')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                    <a href="{{route('client.projects.detail')}}"><img id="bottom"src="{{asset('images/icons/Vector.png')}}" alt=""></a>
                                                 </td>
                                             </tr>
                                             @endforeach

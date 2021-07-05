@@ -36,12 +36,12 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     <h2 class="content-header-title float-left mb-0">Financiero</h2>
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-client"><a href="{{ route('admin.home') }}"><i
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i
                                         class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-client"><a href="#">Financiero</a>
+                            <li class="breadcrumb-item"><a href="#">Financiero</a>
                             </li>
-                            <li class="breadcrumb-client"><a href="#">Facturas</a>
+                            <li class="breadcrumb-item"><a href="#">Facturas</a>
                             </li>
                         </ol>
                     </div>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Bill;
 
 class ClientsController extends Controller
 {
@@ -42,8 +44,14 @@ class ClientsController extends Controller
     }
 
        //detalle del proyecto
-       public function detail(){
-        return view('admin.clients.detail');
+       public function show($slug,$id){
+        $client = User::where('id', '=', $id)
+                        ->first();
+
+        $client_bill = Bill::all()->where('type', 'C');        
+
+        return view('admin.clients.detail')
+        ->with(compact('client','client_bill'));
     }
 
     /** Guardar Datos del Nuevo Cliente
@@ -63,7 +71,7 @@ class ClientsController extends Controller
         if ($request->hasFile('photo')){
             $file = $request->file('photo');
             $name = $client->id.".".$file->getClientOriginalExtension();
-            $file->move(public_path().'/uploads/images/users/photos', $name);
+            $file->move(public_path('storage') . '/photo-profile', $name);
             $client->photo = $name;
         }
 
@@ -86,7 +94,8 @@ class ClientsController extends Controller
         $client = User::find($id);
 
         return view('admin.clients.edit')
-           ->with('client', $client); 
+           ->with('client', $client);
+           
     }
 
     /** Guardar datos modificados de un Cliente
@@ -111,8 +120,8 @@ class ClientsController extends Controller
     *** Perfil: Admin ***/
     public function delete($id){
         $client = User::find($id);
-    
-        $client->delete();
+        $client->profile_id = 0;
+        $client->save();
       
         return redirect()->route('admin.clients.list')->with('message','Se elimino el Cliente'.' '.$client->client.' '.'Exitosamente');
         

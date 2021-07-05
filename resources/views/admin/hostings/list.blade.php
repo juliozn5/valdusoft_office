@@ -64,10 +64,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 {{$hosting->due_date}}
                                             </td>
                                             <td>
-                                                <a href="" class="mr-2" ><img id="bottom"src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a href="{{route('admin.hostings.detail')}}" class="mr-2" ><img id="bottom"src="{{asset('images/icons/Vector.png')}}" alt=""></a>
                                                  <a href=""><img id="bottom"src="{{asset('images/icons/Group.png')}}" alt=""></a>
                                             </td>
-                                        
                                         </tr>
                                         @endforeach
                                     </tbody>
