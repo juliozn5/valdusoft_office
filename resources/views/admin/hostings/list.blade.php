@@ -56,12 +56,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         @foreach ($hostings as $hosting)
                                         <tr>
                                             <th scope="row">{{ $hosting->url }}</th>
-                                            <td>{{ date('d-m-Y', strtotime($hosting->start_date)) }}</td>
+                                            <td>{{ date('d/m/Y', strtotime($hosting->create_date)) }}</td>
                                             <td>
                                                 {{$hosting->user->name}}
                                             </td>
                                             <td>
-                                                {{$hosting->due_date}}
+                                                {{ date('d/m/Y', strtotime($hosting->due_date))}}
                                             </td>
                                             <td>
                                                 <a href="{{route('admin.hostings.detail')}}" class="mr-2" ><img id="bottom"src="{{asset('images/icons/Vector.png')}}" alt=""></a>
@@ -71,6 +71,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="mr-3">
+                                {{ $hostings->links() }}
                             </div>
                         </div>
                     </div>

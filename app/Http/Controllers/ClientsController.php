@@ -9,6 +9,7 @@ use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bill;
+use App\Models\Hosting;
 
 class ClientsController extends Controller
 {
@@ -44,14 +45,18 @@ class ClientsController extends Controller
     }
 
        //detalle del proyecto
-       public function show($slug,$id){
+       public function show(Request $request, $slug,$id){
         $client = User::where('id', '=', $id)
                         ->first();
 
-        $client_bill = Bill::all()->where('type', 'C');        
+        $client_bill = Bill::all()->where('user_id', $request->id);
 
-        return view('admin.clients.detail')
-        ->with(compact('client','client_bill'));
+        $hosting = Hosting::all()->where('user_id', $request->id);
+
+       
+
+        return view('admin.clients.show')
+        ->with(compact('client','client_bill','hosting'));
     }
 
     /** Guardar Datos del Nuevo Cliente

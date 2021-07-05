@@ -3651,14 +3651,17 @@ tr.group {
   font-size: 1rem;
 }/*agregado*/
 
-.capa-left{
-  position: absolute;
-  margin-left:300px;
+  .margen-green{
+    margin-left: 1rem;
+    width: 180px;
+    z-index: 1;
+    position: absolute;
   }/*agregado*/
 
-  .margen{
-    margin-left: 1rem;
-  }/*agregado*/
+  .text-a{
+    position: absolute;
+    margin-left: 300px;
+  }
 
 @media only screen and (min-width: 1320px){
   .card.p-1080{
@@ -3677,11 +3680,20 @@ tr.group {
     display:none;
     }/*agregado*/
 
-    .margen{
+    .margen-green{
+      position: inherit;
       margin-left: 0rem;
       margin-bottom: 1rem;
     }/*agregado*/
-  
+
+    .margen-b{
+      margin-bottom: 1rem;
+    }
+    
+    .text-a{
+      position:relative;
+      margin-left: 0px;
+    }
     .padding{
       padding-top: 3rem;
       padding-bottom: 3rem;

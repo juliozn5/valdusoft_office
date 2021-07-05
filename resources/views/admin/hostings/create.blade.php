@@ -81,12 +81,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="user_id">Cantidad de años</label>
-                                            <select name="user_id" id="user_id" class="form-control" required>
-                                            <option value="" selected disabled>Seleccione los años para el hosting...<option>
-                                                <option>1 Año<option>
-                                                <option>2 Años<option>
-                                                <option>3 Anos<option>
+                                            <label for="cantidad_de_años">Cantidad de años</label>
+                                            <select name="cantidad_de_años" id="cantidad_de_años" class="form-control" required>
+                                            <option value="" selected disabled>Seleccione los años para el hosting...</option>
+                                                <option value="1" id="cantidad_de_años">1 Año</option>
+                                                <option value="2" id="cantidad_de_años">2 Años</option>
+                                                <option value="3" id="cantidad_de_años">3 Anos</option>
                                             </select>
                                         </div>
                                     </div>
