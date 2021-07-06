@@ -33,66 +33,20 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <th>PEDIENTE</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody>  
+                                    @foreach ($employes as $item)
                                         <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>40.00$</td>
-                                            <td>20.00$</td>
-                                            <td>20.00$</td>
+                                        <td>{{date('d/m/Y', strtotime($item->date))}}</td>
+                                        <td>{{$item->total_hours}}</td>
+                                        <td>{{$item->price_by_hour}}</td>
+                                        <td>{{$item->total_amount}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>60.00$</td>
-                                            <td>20.00$</td>
-                                            <td>40.00$</td>
-                                        </tr>
-                                        <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>80.00$</td>
-                                            <td>20.00$</td>
-                                            <td>60.00$</td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>100.00$</td>
-                                            <td>20.00$</td>
-                                            <td>80.00$</td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>120.00$</td>
-                                            <td>20.00$</td>
-                                            <td>100.00$</td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>140.00$</td>
-                                            <td>20.00$</td>
-                                            <td>120.00$</td>
-                                        </tr>
-                                        <tr>
-                                        <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>160.00$</td>
-                                            <td>20.00$</td>
-                                            <td>140.00$</td>
-                                        <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>180.00$</td>
-                                            <td>20.00$</td>
-                                            <td>160.00$</td>
-                                        </tr>
-                                        <tr>
-                                            <td>05 ABR 2021</td>
-                                            <td>200.00$</td>
-                                            <td>40.00$</td>
-                                            <td>180.00$</td>
-                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="mr-3">
+                                {{$employes->links()}}
                             </div>
                         </div>
                     </div>
