@@ -54,7 +54,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="table-responsive">
               <table class="table mb-0">
                 <thead class="thead-light ">
-
+      
                   <tr>
                     <th>NOMBRE</th>
                     <th class="col-3">VALOR DE HORA</th>
@@ -64,19 +64,25 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <th>PRESTAMO</th>
                   </tr>
                 </thead>
+                
                 <tbody>
+                @foreach ($payroll as $item)
 
                   <tr>
-                    <td scope="row">Fernando Torres</td>
+                    <td scope="row">{{$item ->user->name}}</td>
+
                     <td><input type="text" class="col-7 form-control"></td>
-                    <td class="text-center">4</td>
-                    <td>84</td>
+
+                    <td class="text-center">{{$item -> price_by_hour}}</td>
+
+                    <td>{{$item -> total_hours}}</td>
+
                     <td><a href="#bono" data-toggle="modal">
                         <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
                     <td><a href="#prestamo" data-toggle="modal">
                         <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
                   </tr>
-
+                  @endforeach
                 </tbody>
               </table>
               </table>

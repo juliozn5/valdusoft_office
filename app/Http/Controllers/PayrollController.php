@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Payrolls;
 use Illuminate\Http\Request;
-use App\Models\PayrollsEmployee;
+use App\Models\PayrollEmployee;
 
 class PayrollController extends Controller
 {
@@ -34,8 +34,12 @@ class PayrollController extends Controller
         return redirect()->route('admin.payrolls.list');
     }
 
-    public function generate(){
-        return view('admin.payrolls.generate');                             
+    public function generate(){ 
+        if(Auth::user()->profile_id == 1){
+            $payroll = PayrollEmployee::where('user_id', Auth::id())->paginate(10);
+            return view('admin.payrolls.generate')->with('payroll', $payroll);                             
+
+        }
     }
     public function DetailPayroll(){
         return view('admin.payrolls.DetailPayroll');                             
