@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Hosting;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Carbon\Carbon;
-use DB;
-
+use Illuminate\Support\Facades\DB;
 class HostingController extends Controller
 {
     /** Listado de Hostings
@@ -15,12 +15,12 @@ class HostingController extends Controller
     public function list(){
         if (Auth::user()->profile_id == 1){
             $hostings = Hosting::paginate(10);
-        
-            return view('admin.hostings.list')->with('hostings', $hostings); 
+            $client = User::all()->where ('profile_id', '2');
+            return view('admin.hostings.list')->with(compact('client','hostings'));
         }else if (Auth::user()->profile_id == 2){
             $hostings = Hosting::where('user_id', '=', Auth::user()->id)->paginate(10);
-        
-            return view('client.hostings')->with('hostings', $hostings);   
+            return view('client.hostings')
+            ->with('hostings', $hostings);   
         }
     }
 
@@ -63,6 +63,7 @@ class HostingController extends Controller
     *** Perfil: Admin ***/
     public function edit($id){
         $hosting = Hosting::find($id);
+        dd($hosting);
 
         return view('admin.hostings.edit')
            ->with('hosting', $hosting);  
@@ -70,9 +71,11 @@ class HostingController extends Controller
 
     /** Guardar datos modificados de un Hosting
     *** Perfil: Admin ***/
-    public function update(Request $request, $id){
-        $hosting = Hosting::find($id);
+    public function update(Request $request){
 
+        $hosting = Hosting::find($request->hosting_id);
+        
+        
         $fields = [     ];
 
         $msj = [       ];
@@ -80,6 +83,12 @@ class HostingController extends Controller
         $this->validate($request, $fields, $msj);
 
         $hosting->update($request->all());
+
+        $hosting->url = $request->hosting_url;
+        $hosting->user_id = $request->client;
+        $hosting->create_date = $request->date;
+        $hosting->due_date = $request->date_end;
+        
 
         $hosting->save();
 

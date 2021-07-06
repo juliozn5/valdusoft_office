@@ -145,11 +145,4 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
     </div>
 </div>
-
-
-
-</div>
-</div>
-</div>
-</div>
 @endsection

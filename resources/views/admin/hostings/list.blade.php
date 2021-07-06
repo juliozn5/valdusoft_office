@@ -4,6 +4,20 @@
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
+@push('scripts')
+<script>
+
+function edithosting($hosting) {
+
+    $("#hosting_id").val($hosting.id);
+    $("#hosting_url").val($hosting.url);
+    $("#date").val($hosting.create_date);
+    $("#client option[value=" + $hosting.user_id + "]").attr("selected", true);
+    $("#date_end").val($hosting.due_date);
+}
+
+</script>
+@endpush
 @include('layouts.partials.navbar')
 
 @include('layouts.partials.sidebar')
@@ -48,7 +62,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <th>DOMINIO</th>
                                             <th>FECHA DE INICIO</th>
                                             <th>CLIENTE</th>
-                                            <th>AÑOS</th>
+                                            <th>FECHA DE VENCIMIENTO</th>
+                                            <th>PRECIO</th>
+                                            <th>PRECIO DE RENOVACION</th>
                                             <th>ACCIÓN</th>
                                         </tr>
                                     </thead>
@@ -63,9 +79,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>
                                                 {{ date('d/m/Y', strtotime($hosting->due_date))}}
                                             </td>
+                                            <td>Null</td>
+                                            <td>Null</td>
                                             <td>
-                                                <a href="{{route('admin.hostings.detail')}}" class="mr-2" ><img id="bottom"src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                 <a href=""><img id="bottom"src="{{asset('images/icons/Group.png')}}" alt=""></a>
+                                                <a href="{{route('admin.hostings.detail')}}" class="mr-2" ><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                
+                                                 <a href="#edit" data-toggle="modal" onclick="edithosting({{$hosting}});"><img id="bottom"src="{{asset('images/icons/Group.png')}}" alt=""></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -81,6 +100,55 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             </div>
         </div>
 
+                <!--  MODAL EDITAR NOMINA  -->
+
+        <div class="modal  fade text-left " id="edit" tabindex="-1" role="dialog" aria-modal="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary white">
+                        <h5 class="modal-title">Editar Nómina</h5>
+                        <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form action="{{ route('admin.hostings.update') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="hosting_id" id="hosting_id" value="">
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="hosting_url"><strong>Dominio</strong></label>
+                                        <input name="hosting_url" id="hosting_url" class="form-control">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="date"><strong>Fecha</strong></label>
+                                        <input type="date" name="date" id="date" class="form-control">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="client"><strong>Cliente</strong></label>
+                                        <select name="client" id="client" class="form-control">
+                                            <option value="" selected disabled>Seleccione un cliente...</option>
+                                            @foreach ($client as $item)
+                                               <option value="{{ $item->id }}">{{ $item->name}} </option> 
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-6"> 
+                                        <label for="date_end"><strong>Fecha de vencimiento</strong></label>
+                                        <input type="date" name="date_end" id="date_end" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <br><br>
+                            
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
