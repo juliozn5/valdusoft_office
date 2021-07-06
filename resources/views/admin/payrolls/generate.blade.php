@@ -110,8 +110,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                   elemValorNombre.innerText = cambio;
                 }
 
-
-                //Acá se asocia el evento con la funcion cambio()
                 elemNombre.addEventListener('input', cambio);
               </script>
 
