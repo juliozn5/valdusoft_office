@@ -39,13 +39,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
       <div class="col-11" style="margin-left:15px">
 
         <div class="card" id="card-head1">
+          @foreach ($payroll as $item )
+
 
           <div class="ml-1 mt-2 mb-2 flex-nowrap">
             <p class="h6">Fecha de inicio</p>
-            <input type="text" class="col-4 form-control" value="" placeholder=" Selecciona una fecha" aria-describedby="addon-wrapping">
+            <input type="text" class="col-4 form-control" value="{{$item ->date}}" placeholder=" Selecciona una fecha" aria-describedby="addon-wrapping">
           </div>
 
-
+          @endforeach
           <div class="card-header">
             <h3 class="card-title mb-1">Empleados</h3>
           </div>
@@ -54,7 +56,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="table-responsive">
               <table class="table mb-0">
                 <thead class="thead-light ">
-      
+
                   <tr>
                     <th>NOMBRE</th>
                     <th class="col-3">VALOR DE HORA</th>
@@ -64,16 +66,21 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <th>PRESTAMO</th>
                   </tr>
                 </thead>
-                
+
                 <tbody>
-                @foreach ($payroll as $item)
+                  @foreach ($payroll as $item)
 
                   <tr>
                     <td scope="row">{{$item ->user->name}}</td>
 
-                    <td><input type="text" class="col-7 form-control"></td>
+                    <td>
+                      <form action="" method="post">
+                        <input type="text" name="nombre" class="col-7 form-control" id="nombre">
 
-                    <td class="text-center">{{$item -> price_by_hour}}</td>
+                      </form>
+                    </td>
+
+                    <td id="valor_nombre" class="text-center">{{$item -> price_by_hour}}</td>
 
                     <td>{{$item -> total_hours}}</td>
 
@@ -86,7 +93,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </tbody>
               </table>
               </table>
-
               <br>
 
               <div class="bottom float-right" style="margin-right:20px;">
@@ -94,6 +100,20 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <button class="btn  btn-primary ">GENERAR</button>
                 <br><br>
               </div>
+              <!--SCRIPT PARA AÑADIR INPUT DINAMICAMENTE-->
+              <script>
+                const elemNombre = document.getElementById("nombre"),
+                  elemValorNombre = document.getElementById("valor_nombre");
+
+                function cambio(evento) {
+                  let cambio = elemNombre.value;
+                  elemValorNombre.innerText = cambio;
+                }
+
+
+                //Acá se asocia el evento con la funcion cambio()
+                elemNombre.addEventListener('input', cambio);
+              </script>
 
             </div>
           </div>
