@@ -102,7 +102,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Payments');
     }
     //Relación de nominas con sus pagos
-    public function payroll(){
-        return $this->hasMany('App\Models\Payroll');
+    public function payrolls(){
+        return $this->hasMany('App\Models\PayrollEmployee');
+    }
+
+    //Relación con los pagos de abonos de financiamiento
+    public function financing_payments(){
+        return $this->hasMany('App\Models\FinancePayment');
     }
 }

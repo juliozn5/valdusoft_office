@@ -65,6 +65,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                   </tr>
                 </thead>
                 <tbody>
+
                   <tr>
                     <td scope="row">Fernando Torres</td>
                     <td><input type="text" class="col-7 form-control"></td>

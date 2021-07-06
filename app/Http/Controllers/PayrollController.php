@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Payrolls;
 use Illuminate\Http\Request;
+use App\Models\PayrollsEmployee;
 
 class PayrollController extends Controller
 {
@@ -14,6 +15,8 @@ class PayrollController extends Controller
             $payrolls = Payrolls::paginate(10);
              return view('admin.payrolls.list')->with('payrolls', $payrolls);
         }
+        
+
     }
     
 

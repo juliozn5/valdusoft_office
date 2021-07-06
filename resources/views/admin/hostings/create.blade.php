@@ -58,7 +58,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             </div>
         </div>
         <div class="content-body">
-            <div class="row" id="table-head">
                 <form class="form" action="{{ route('admin.hostings.store') }}" method="POST">
                     @csrf
                     <div class="col-12">
@@ -82,8 +81,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="due_date">cantidad de años</label>
-                                            <input type="date" name="due_date" id="due_date" class="form-control">
+                                            <label for="cantidad_de_años">Cantidad de años</label>
+                                            <select name="cantidad_de_años" id="cantidad_de_años" class="form-control" required>
+                                            <option value="" selected disabled>Seleccione los años para el hosting...</option>
+                                                <option value="1" id="cantidad_de_años">1 Año</option>
+                                                <option value="2" id="cantidad_de_años">2 Años</option>
+                                                <option value="3" id="cantidad_de_años">3 Anos</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -107,7 +111,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <button type="submit" class="btn btn-primary mr-1 waves-effect waves-float waves-light" id="btn-guardar">GUARDAR</button>
                     </div>
                 </form>
-            </div>
         </div>
     </div>
 </div>

@@ -4,6 +4,20 @@
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
+@if (Session::has('msj-exitoso'))
+<script>
+    $(document).ready(function() {
+        toastr.success('El proyecto ha sido creado con éxito.', 'Operación Completada');
+    });
+</script>
+@endif
+@if (Session::has('msj-deleted'))
+<script>
+    $(document).ready(function() {
+        toastr.success('El cliente ha sido eliminado con éxito.', 'Operación Completada');
+    });
+</script>
+@endif
 @include('layouts.partials.navbar')
 
 @include('layouts.partials.sidebar')
@@ -45,7 +59,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 @if (!is_null($item->photo))
-                                                <img class="rounded-circle" width="50px" height="50px" src="{{ $item->photo }}" />
+                                                <img class="rounded-circle" width="50px" height="50px" src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
                                                 @else
                                                 <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                 @endif
@@ -56,10 +70,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->phone }}</td>
                                             <td>
-                                                <a href="{{ route('admin.clients.detail') }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <a type="submit" class="fa fa-trash action-icon"></a>
+                                                <a href="{{ route('admin.clients.show', [$item->slug,$item->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('delete-form').submit();"><i class="fa fa-trash action-icon"></i></a>
+                                                <form action="{{ route('admin.clients.delete', $item->id) }}" method="POST" id="delete-form">
+                                                    @csrf
+                                                    @method('DELETE')
                                                 </form>
                                             </td>
 

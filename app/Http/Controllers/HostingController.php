@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Hosting;
 use Illuminate\Http\Request;
 use Auth;
+use Carbon\Carbon;
 use DB;
 
 class HostingController extends Controller
@@ -21,6 +22,10 @@ class HostingController extends Controller
         
             return view('client.hostings')->with('hostings', $hostings);   
         }
+    }
+
+    function detail(){
+        return view('admin.hostings.detail');
     }
 
     /** Crear Nuevo Hosting
@@ -45,6 +50,10 @@ class HostingController extends Controller
         $this->validate($request, $fields, $msj);
 
         $hosting = Hosting::create($request->all());
+
+        $fecha = new Carbon($hosting->create_date);
+        $hosting->due_date = $fecha->addYears($request->cantidad_de_años);
+
         $hosting->save();
 
         return redirect()->route('admin.hostings.list')->with('message','Se creo el Hosting Exitosamente');
