@@ -311,4 +311,37 @@
     }
 }
 
+/*////////// FINANCIERO FACTURAS, MODAL (GENERAR) //////////*/
+
+#listas{
+    margin-bottom: 50px;
+}
+
+#input-principal {
+margin-left: 25px;
+}
+
+#fourth-input {
+margin-left: 25px;
+
+}
+
+#third-input {
+margin-left: 25px;
+
+}
+
+#second-input {
+margin-left: 25px;
+
+}
+
+#add_field {
+margin-left: 700px;
+
+}
+#botom{
+    width: 150px;
+    margin-left: 620px;
+}
 
