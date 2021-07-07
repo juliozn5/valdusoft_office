@@ -14,6 +14,9 @@ function edithosting($hosting) {
     $("#date").val($hosting.create_date);
     $("#client option[value=" + $hosting.user_id + "]").attr("selected", true);
     $("#date_end").val($hosting.due_date);
+    $("#date_end").val($hosting.years);
+    $("#price").val($hosting.price);
+    $("#renewal_price").val($hosting.renewal_price);
 }
 
 </script>
@@ -26,26 +29,7 @@ function edithosting($hosting) {
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
-            <div class="content-header-left col-md-9 col-12 mb-2">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Hosting</h2>
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.hostings.list') }}">Hosting</a>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
         <div class="content-body">
-
             <div id="table-head">
                 <div class="col">
                     <div class="card">
@@ -79,10 +63,10 @@ function edithosting($hosting) {
                                             <td>
                                                 {{ date('d/m/Y', strtotime($hosting->due_date))}}
                                             </td>
-                                            <td>Null</td>
-                                            <td>Null</td>
+                                            <td>${{$hosting->price}}</td>
+                                            <td>${{$hosting->renewal_price}}</td>
                                             <td>
-                                                <a href="{{route('admin.hostings.detail')}}" class="mr-2" ><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                <a href="{{route('admin.hostings.show', [$hosting->id])}}" class="mr-2" ><i class="fa fa-eye mr-1 action-icon"></i></a>
                                                 
                                                  <a href="#edit" data-toggle="modal" onclick="edithosting({{$hosting}});"><img id="bottom"src="{{asset('images/icons/Group.png')}}" alt=""></a>
                                             </td>
@@ -132,17 +116,24 @@ function edithosting($hosting) {
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-6"> 
-                                        <label for="date_end"><strong>Fecha de vencimiento</strong></label>
-                                        <input type="date" name="date_end" id="date_end" class="form-control">
+                                    <div class="col-6 ">
+                                        <div class="form-group">
+                                            <label for="date_end">Cantidad de años</label>
+                                            <select name="date_end" id="date_end" class="form-control" required>
+                                            <option value="" selected disabled>Seleccione los años para el hosting...</option>
+                                                <option value="1" id="date_end">1 Año</option>
+                                                <option value="2" id="date_end">2 Años</option>
+                                                <option value="3" id="date_end">3 Anos</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-6">
-                                        <label for="hosting_url"><strong>Precio</strong></label>
-                                        <input name="hosting_url" id="hosting_url" class="form-control">
+                                        <label for="price"><strong>Precio</strong></label>
+                                        <input name="price" id="price" class="form-control">
                                     </div>
                                     <div class="col-6">
-                                        <label for="hosting_url"><strong>Precio de Renovacion</strong></label>
-                                        <input name="hosting_url" id="hosting_url" class="form-control">
+                                        <label for="renewal_price"><strong>Precio de Renovacion</strong></label>
+                                        <input name="renewal_price" id="renewal_price" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -157,10 +148,7 @@ function edithosting($hosting) {
                 </div>
             </div>
         </div>
+
     </div>
 </div>
-
-
-
-
 @endsection

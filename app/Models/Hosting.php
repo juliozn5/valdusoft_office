@@ -18,10 +18,14 @@ class Hosting extends Model
         'url',
         'create_date',
         'due_date',
+        'price',
+        'renewal_price',
+        'years'
+
     ];
 
     public function user(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
     
 }
