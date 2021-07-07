@@ -43,7 +43,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <tr>
                                             <th>#</th>
                                             <th>Foto</th>
-                                            <th>ID</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Email</th>
@@ -56,7 +55,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                                         @foreach ($client as $item)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->id }}</td>
                                             <td>
                                                 @if (!is_null($item->photo))
                                                 <img class="rounded-circle" width="50px" height="50px" src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
@@ -64,7 +63,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                 @endif
                                             </td>
-                                            <td>{{ $item->id }}</td>
+                                            
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->last_name }}</td>
                                             <td>{{ $item->email }}</td>
@@ -77,7 +76,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                     @method('DELETE')
                                                 </form>
                                             </td>
-
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -148,7 +148,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 </div>
                                                 <br>
                                                
-                                                <div class="col-md-4 col-sm-12 text-a">
+                                                <div class="col-md-4 col-sm-12 text-a text-center">
                                                     <p class="card-text h6 text-white">{{$item->url}}</p>
                                                 </div>
                                                 </div>

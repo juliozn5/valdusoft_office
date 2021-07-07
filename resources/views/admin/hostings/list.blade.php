@@ -136,6 +136,14 @@ function edithosting($hosting) {
                                         <label for="date_end"><strong>Fecha de vencimiento</strong></label>
                                         <input type="date" name="date_end" id="date_end" class="form-control">
                                     </div>
+                                    <div class="col-6">
+                                        <label for="hosting_url"><strong>Precio</strong></label>
+                                        <input name="hosting_url" id="hosting_url" class="form-control">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="hosting_url"><strong>Precio de Renovacion</strong></label>
+                                        <input name="hosting_url" id="hosting_url" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>                        
