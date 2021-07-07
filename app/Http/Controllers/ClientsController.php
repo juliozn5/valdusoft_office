@@ -10,17 +10,21 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bill;
 use App\Models\Hosting;
+use App\Models\Project;
 
 class ClientsController extends Controller
 {
     /** Home del Cliente
     *** Perfil: Cliente ***/
     public function index(){
-        $client = User::all();
+        $clients = Bill::all()->where('type', 'C');
+        $hostings = Hosting::paginate(10);
+        $projects = Project::paginate(10);
+        return view('client.home')->with(compact('clients', 'hostings', 'projects'));
 
-        return view('client.home')
-        ->with('client', $client); 
+      
     }
+    
 
     /** Listado de Clientes
     *** Perfil: Admin ***/

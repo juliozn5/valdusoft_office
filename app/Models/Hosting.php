@@ -18,6 +18,7 @@ class Hosting extends Model
         'url',
         'create_date',
         'due_date',
+        'updated_at',
     ];
 
     public function user(){

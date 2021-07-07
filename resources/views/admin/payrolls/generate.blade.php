@@ -118,9 +118,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
       </div>
 
-
       <!--  MODAL DE LOS BONOS  -->
-
 
       <div class="modal fade" id="bono" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
