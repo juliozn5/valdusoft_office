@@ -226,41 +226,53 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             <th class="col-2">DESCRIPCIÓN</th>
                                             <th class="col-3">UNIDADES</th>
                                             <th class="col-3">PRECIO UNITARIO</th>
-                                            <th class="" style="margin-left:50px;">PRECIO</th>
+                                            <th class="" style="margin-right:15px;">PRECIO</th>
                                         </thead>
                                     </table>
 
+                                    <div id="listas">
 
-                                    <div class="input-group">
-                                        <div class="text">
+                                        <div class="row">
+
+                                            <input type="text" name="campo[]" class="form-control col-2" id="input-principal">
+
+                                            <input type="text" name="campo[]" class="form-control col-2" id="second-input">
+
+                                            <input type="text" name="campo[]" class="form-control col-2" id="third-input">
+
+                                            <input type="text" name="campo[]" class="form-control col-2" id="fourth-input">
+
                                         </div>
-                                        <input type="text" class="form-control col-2" id="principal">
-                                        <input type="text" class="form-control col-2" id="segundo">
-                                        <input type="text" class="form-control col-2" id="tercero">
-                                        <input type="text" class="form-control col-2" id="cuarto">
+                                        <a id="add_field"><img class=" rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"></a>
                                     </div>
 
+                                    <!--SCRIPT PARA GENERAR UN NUEVO INPUT-->
 
+                                    <script>
+                                        let campos_max = 10; //Campos de input Maximos
 
-                                    <style>
-                                        #cuarto {
-                                            margin-left: 110px;
-                                        }
-
-                                        #tercero {
-                                            margin-left: 45px;
-                                        }
-
-                                        #segundo {
-                                            margin-left: 60px;
-                                        }
-                                    </style>
-
-
-                                    <div class="col">
-                                        <a href="#" class="float-right d-inline-block mt-2"><img class="rounded-circle" id="add_field" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40">
-                                    </div>
-
+                                        let x = 0;
+                                        $('#add_field').click(function(e) {
+                                            e.preventDefault(); //Pervenir Nuevos Click
+                                            if (x < campos_max) {
+                                                $('#listas').append('<div id="listas">\
+                                                <div class="row">\
+                                                <input type="text" name="campo[]" class="form-control col-2" id="input-principal">\
+                                                <input type="text" name="campo[]" class="form-control col-2" id="second-input">\
+                                                <input type="text" name="campo[]" class="form-control col-2" id="third-input">\
+                                                <input type="text" name="campo[]" class="form-control col-2" id="fourth-input">\
+                                <a href="#" class="remover_campo ml-2"><i class="fas fa-times"></i></a>\
+                                </div>');
+                                                x++;
+                                            }
+                                        });
+                                        // Remover Grupo de div
+                                        $('#listas').on("click", ".remover_campo", function(e) {
+                                            e.preventDefault();
+                                            $(this).parent('div').remove();
+                                            x--;
+                                        });
+                                    </script>
 
                                 </div>
 
@@ -273,40 +285,12 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         <li class="list-group-item"><strong>PAGADO</strong> 00</li>
                                     </ul>
                                 </div>
-                                <button type="submit" class="btn btn-primary float-right waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>
-
-
+                                <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>
                             </div>
+
                         </div>
                     </div>
+                </div>
 
 
-                    @endsection
-
-
-
-
-                    <script>
-                        var campos_max = 10; //max de 10 campos
-
-                        var x = 0;
-                        $('#add_field').click(function(e) {
-                            e.preventDefault(); //prevenir novos clicks
-                            if (x < campos_max) {
-                                $('#listas').append('<div>\
-                        <input type="text" name="campo[]">\
-                        <input type="text" name="campo[]">\
-                        <input type="text" name="campo[]">\
-                        <input type="text" name="campo[]">\
-                        <a href="#" class="remover_campo">Remover</a>\
-                        </div>');
-                                x++;
-                            }
-                        });
-                        // Remover o div anterior
-                        $('#listas').on("click", ".remover_campo", function(e) {
-                            e.preventDefault();
-                            $(this).parent('div').remove();
-                            x--;
-                        });
-                    </script>
+                @endsection
