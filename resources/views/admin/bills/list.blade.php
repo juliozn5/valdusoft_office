@@ -103,9 +103,8 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-                                            <td><a href="{{route('admin.bills.BillList')}}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
-                                        </tr>
-                                        @endforeach
+
+                                            @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -236,11 +235,14 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 
                                             <input type="text" name="campo[]" class="form-control col-2" id="input-principal">
 
-                                            <input type="text" name="campo[]" class="form-control col-2" id="second-input">
 
-                                            <input type="text" name="campo[]" class="form-control col-2" id="third-input">
 
-                                            <input type="text" name="campo[]" class="form-control col-2" id="fourth-input">
+                                            <input type="text" name="campo[]" class="monto form-control col-2" id="second-input">
+
+                                            <input type="text" name="campo[]" class="monto form-control col-2" id="third-input">
+
+                                            <input  name="campo[]" class="form-control col-2" id="fourth-input">
+
 
                                         </div>
                                         <a id="add_field"><img class=" rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"></a>
@@ -249,6 +251,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                     <!--SCRIPT PARA GENERAR UN NUEVO INPUT-->
 
                                     <script>
+                    
                                         let campos_max = 10; //Campos de input Maximos
 
                                         let x = 0;
