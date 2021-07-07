@@ -81,7 +81,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('create', 'HostingController@create')->name('admin.hostings.create');
             Route::get('edit/{id}', 'HostingController@edit')->name('admin.hostings.edit');
             Route::post('store', 'HostingController@store')->name('admin.hostings.store');
-            Route::patch('update/{id}', 'HostingController@update')->name('admin.hostings.update');
+            Route::post('update', 'HostingController@update')->name('admin.hostings.update');
             Route::delete('delete/{id}', 'HostingController@delete')->name('admin.hostings.delete');
         });
 
@@ -101,6 +101,9 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('DetailPayroll', 'PayrollController@DetailPayroll')->name('admin.payrolls.DetailPayroll');
                 Route::post('update', 'PayrollController@update')->name('admin.payrolls.updatePayroll');
                 Route::get('PayrollList', 'PayrollController@PayrollList')->name('admin.payrolls.PayrollList');
+ 
+                Route::POST('upgenerate', 'PayrollController@upgenerate')->name('admin.payrolls.upgenerate');
+
             });
 
             //MÓDULO FINANCIERO - PAGOS

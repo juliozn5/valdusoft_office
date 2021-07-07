@@ -49,9 +49,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            ​
                             <div class="mr-3">
-
+                                {{$projects->links()}}
                             </div>
                         </div>
                     </div>

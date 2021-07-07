@@ -206,27 +206,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="mr-3">
+                                    {{$client_bill->links()}}
+                                </div>
                             </div>
 
-                            <div class="bottom float-right" style="margin-right:20px; height:100px; ">
-
-                                <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-left"></i>
-
-                                </button>
-
-                                <button class="btn btn-primary  btn-circle btn-lg">1
-
-                                </button>
-
-                                <button style="color:black;" class="btn btn-circle btn-lg">2
-
-                                </button>
-
-                                <button class="btn  btn-circle btn-lg "><i style="color:black;" class="fas fa-angle-right"></i>
-
-
-                                </button>
-                            </div>
+                        
 
                         </div>
 

@@ -16,6 +16,7 @@ class Payrolls extends Model
         'amount',
         'status',
         'date',
+        
     ];
     
     public function employees(){

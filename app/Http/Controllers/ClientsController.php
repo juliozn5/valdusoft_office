@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Bill;
 use App\Models\Hosting;
 use App\Models\Project;
@@ -52,12 +51,8 @@ class ClientsController extends Controller
        public function show(Request $request, $slug,$id){
         $client = User::where('id', '=', $id)
                         ->first();
-
-        $client_bill = Bill::all()->where('user_id', $request->id);
-
+        $client_bill =Bill::where('user_id', $request->id)->paginate(10);
         $hosting = Hosting::all()->where('user_id', $request->id);
-
-       
 
         return view('admin.clients.show')
         ->with(compact('client','client_bill','hosting'));
