@@ -69,26 +69,29 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                 <tbody>
                   @foreach ($payroll as $item)
+                  
+                  
+                    <tr>
+                      <td scope="row">{{$item ->user->name}}</td>
+                     
+                      <td>
+                      <form action="{{ route('admin.payrolls.upgenerate') }}" method="POST">
+                      @csrf
 
-                  <tr>
-                    <td scope="row">{{$item ->user->name}}</td>
+                        <input type="text" name="price_by_hour" value="{{$item ->price_by_hour}}" class="col-7 form-control" id="nombre">
 
-                    <td>
-                      <form action="" method="post">
-                        <input type="text" name="nombre" class="col-7 form-control" id="nombre">
+                      </td>
 
-                      </form>
-                    </td>
+                      <td id="valor_nombre"  class="text-center">{{$item ->price_by_hour}}</td>
 
-                    <td id="valor_nombre" class="text-center">{{$item -> price_by_hour}}</td>
 
-                    <td>{{$item -> total_hours}}</td>
+                      <td>{{$item -> total_hours}}</td>
 
-                    <td><a href="#bono" data-toggle="modal">
-                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                    <td><a href="#prestamo" data-toggle="modal">
-                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                  </tr>
+                      <td><a href="#bono" data-toggle="modal">
+                          <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
+                      <td><a href="#prestamo" data-toggle="modal">
+                          <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
+                    </tr>
                   @endforeach
                 </tbody>
               </table>
@@ -97,7 +100,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
               <div class="bottom float-right" style="margin-right:20px;">
 
-                <button class="btn  btn-primary ">GENERAR</button>
+                <button type="submit" class="btn  btn-primary ">GENERAR</button>
+                </form>
+
                 <br><br>
               </div>
               <!--SCRIPT PARA AÑADIR INPUT DINAMICAMENTE-->
@@ -118,9 +123,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
       </div>
 
-
       <!--  MODAL DE LOS BONOS  -->
-
 
       <div class="modal fade" id="bono" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
