@@ -244,47 +244,6 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         </div>
                                         <a id="add_field"><img class=" rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"></a>
                                     </div>
-
-                                    <!--SCRIPT PARA GENERAR UN NUEVO INPUT-->
-
-                                    <script>
-                                        let campos_max = 10; //Campos de input Maximos
-
-                                        let x = 0;
-                                        $('#add_field').click(function(e) {
-                                            e.preventDefault(); //Pervenir Nuevos Click
-                                            if (x < campos_max) {
-                                                $('#listas').append('<div id="listas">\
-                                                <div class="row">\
-                                                <input type="text" name="campo[]" class="form-control col-2" id="principal">\
-                                            <input type="text" name="campo[]" oninput="calcular()" class="monto form-control col-2" id="second">\
-                                            <input type="text" name="campo[]" oninput="calcular()" class="monto form-control col-2" id="third">\
-                                            <input name="campo[]" class="form-control col-2" id="fourth">\
-                                <a href="#" class="remover_campo ml-2"><i class="fas fa-times"></i></a>\
-                                </div>');
-                                                x++;
-                                            }
-                                        });
-
-                                        function calcular() {
-                                            try {
-                                                let a = parseFloat(document.getElementById("second").value) || 0;
-                                                b = parseFloat(document.getElementById("third").value) || 0;
-
-                                                document.getElementById("fourth").value = a * b;
-                                            } catch (e) {}
-                                        }
-
-
-
-                                        // Remover Grupo de div
-                                        $('#listas').on("click", ".remover_campo", function(e) {
-                                            e.preventDefault();
-                                            $(this).parent('div').remove();
-                                            x--;
-                                        });
-                                    </script>
-
                                 </div>
 
                                 <!--FOOTER DEL MODAL-->

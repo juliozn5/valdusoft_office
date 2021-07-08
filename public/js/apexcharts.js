@@ -30885,3 +30885,53 @@
   return ApexCharts$1;
 
 })));
+
+/* function to calculate value of units by unit price */ 
+function calcular() {
+ try {
+let a = parseFloat(document.getElementById("second").value) || 0;
+b = parseFloat(document.getElementById("third").value) || 0;
+
+document.getElementById("fourth").value = a * b;
+} catch (e) {}
+}
+
+/*This function generates and removes entries, the index of this function is in admin / bill / list*/ 
+
+let campos_max = 10; //Campos de input Maximos
+
+let x = 0;
+$('#add_field').click(function(e) {
+    e.preventDefault(); //Pervenir Nuevos Click
+    if (x < campos_max) {
+        $('#listas').append('<div id="listas">\
+        <div class="row">\
+    <input type="text" name="campo[]" class="form-control col-2" id="principal">\
+    <input type="text" name="campo[]" oninput="calcular()" class="monto form-control col-2" id="second">\
+    <input type="text" name="campo[]" oninput="calcular()" class="monto form-control col-2" id="third">\
+    <input name="campo[]" class="form-control col-2" id="fourth">\
+<a href="#" class="remover_campo ml-2"><i class="fas fa-times"></i></a>\
+</div>');
+        x++;
+    }
+
+});
+
+// Remover Grupo de div
+$('#listas').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    x--;
+});
+
+/*This function changes the value of the "Value of the hour" and then that will be the cost of the hour*/
+
+const elemNombre = document.getElementById("nombre"),
+elemValorNombre = document.getElementById("valor_nombre");
+
+function cambio(evento) {
+let cambio = elemNombre.value;
+elemValorNombre.innerText = cambio;
+}
+
+elemNombre.addEventListener('input', cambio);

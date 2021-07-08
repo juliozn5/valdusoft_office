@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Payrolls;
 use Illuminate\Http\Request;
 use App\Models\PayrollEmployee;
+use App\Models\User;
 
 class PayrollController extends Controller
 {
@@ -16,9 +17,7 @@ class PayrollController extends Controller
              return view('admin.payrolls.list')->with('payrolls', $payrolls);
         }
         
-
     }
-    
     public function update(Request $request){
 
         $payrolls = Payrolls::find($request->payroll_id);
@@ -33,27 +32,17 @@ class PayrollController extends Controller
     }
 
     public function generate(){ 
-        if(Auth::user()->profile_id == 1){
-            $payroll = PayrollEmployee::where('user_id', Auth::id())->paginate(10);
-            return view('admin.payrolls.generate')->with('payroll', $payroll);                             
-
-        }
+        $employee = User::where('profile_id', '=',3)->get();
+        return view('admin.payrolls.generate')->with(compact('employee'));                             
     }
+
     public function DetailPayroll(){
         return view('admin.payrolls.DetailPayroll');                             
     }
+    
 
     public function PayrollList(){
         return view('admin.payrolls.PayrollList');                             
     }
-
-
-
-        public  function upgenerate(Request $request){
-
-            return $request;
-
-    }
-
 
 }

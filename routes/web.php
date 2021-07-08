@@ -102,7 +102,7 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::post('update', 'PayrollController@update')->name('admin.payrolls.updatePayroll');
                 Route::get('PayrollList', 'PayrollController@PayrollList')->name('admin.payrolls.PayrollList');
  
-                Route::POST('upgenerate', 'PayrollController@upgenerate')->name('admin.payrolls.upgenerate');
+                Route::post('upgenerate', 'PayrollEmployeeController@upgenerate')->name('admin.payrolls.upgenerate');
 
             });
 
