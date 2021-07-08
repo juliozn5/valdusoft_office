@@ -89,7 +89,7 @@ function edithosting($hosting) {
 <div class="pl-2 pr-2 mt-3">
     <div class="row mt-3 pl-2 pr-2">
         <div class="col-md-3 col-sm-1">
-            <div class="project-detail-titles">Ciente</div>
+            <div class="project-detail-titles">Cliente</div>
                 <div class="mt-1 project-detail-dates">
                 <span>{{$hosting->user->name}}</span>
                 </div>
