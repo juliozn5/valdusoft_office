@@ -19,8 +19,6 @@ class PayrollController extends Controller
 
     }
     
-
-
     public function update(Request $request){
 
         $payrolls = Payrolls::find($request->payroll_id);
@@ -49,5 +47,13 @@ class PayrollController extends Controller
         return view('admin.payrolls.PayrollList');                             
     }
 
-  
+
+
+        public  function upgenerate(Request $request){
+
+            return $request;
+
+    }
+
+
 }

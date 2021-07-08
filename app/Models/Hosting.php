@@ -20,8 +20,8 @@ class Hosting extends Model
         'due_date',
         'price',
         'renewal_price',
-        'years'
-
+        'years',
+        'updated_at',
     ];
 
     public function user(){
