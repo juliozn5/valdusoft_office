@@ -103,16 +103,17 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
+                                            <td>
+                                                <a href="{{route('admin.bills.BillList')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
 
+                                            </td>
                                             @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
-
                         <!-- Pestaña de Cliente -->
-
                         <div class="tab-pane fade" id="chat">
                             <div class="table-responsive mt-1">
                                 <table class="table mb-0">
