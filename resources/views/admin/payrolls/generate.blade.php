@@ -41,10 +41,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="card" id="card-head1">
 
 
-        <form action="" method="POST">
+        <form action="{{ route('admin.payrolls.upgenerate') }}" method="post">
+        @csrf
           <div class="ml-1 mt-2 mb-2 flex-nowrap">
             <p class="h6">Fecha de inicio</p>
-            <input type="text" class="col-4 form-control" value="" placeholder=" Selecciona una fecha" aria-describedby="addon-wrapping">
+            <input type="date" class="col-4 form-control" name="date" required>
           </div>
 
 
@@ -68,24 +69,28 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </thead>
 
                 <tbody>
-
-                  @foreach ($employee as $employee)
+                @php $cont = 0; @endphp
+                  @foreach ($employees as $employee)
+                    @php $cont++; @endphp
+                    <input type="hidden" name="employees_count" value="{{ $cont }}">
+                    <input type="hidden" name="employee_id_{{ $cont }}" value="{{ $employee->id }}">
                   <tr>
                     <td scope="row">{{$employee->name}}</td>
 
                     <td>
                       
-                  <input type="text" name="price_by_hour" id="nombre" class="col-7 form-control">
+                  <input type="text" name="price_by_hour_{{ $cont }}" id="nombre_{{ $cont }}" class="col-7 form-control">
                       
                     </td>
 
-                    <td id="valor_nombre" class="text-center">{{$employee->price_per_hour}}</td>
+                    <td id="valor_nombre_{{ $cont }}" class="text-center">{{$employee->price_per_hour}}</td>
 
-                    <td><input type="text" name="price_by_hour"  class="col-7 form-control">
+                    <td><input type="text" name="total_hours_{{ $cont }}"  class="col-7 form-control">
                     </td>
 
                     <td><a href="#bono" data-toggle="modal">
-                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
+                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png')}}" alt="Agregar Tecnología" height="40" width="40"></td>
+                        
                     <td><a href="#prestamo" data-toggle="modal">
                         <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
                   </tr>
@@ -106,7 +111,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
           </div>
         </div>
       </div>
-
       <!--  MODAL DE LOS BONOS  -->
 
       <div class="modal fade" id="bono" aria-hidden="true" tabindex="-1">

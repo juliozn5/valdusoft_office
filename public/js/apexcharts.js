@@ -30886,6 +30886,19 @@
 
 })));
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* function to calculate value of units by unit price */ 
 function calcular() {
  try {
@@ -30895,6 +30908,7 @@ b = parseFloat(document.getElementById("third").value) || 0;
 document.getElementById("fourth").value = a * b;
 } catch (e) {}
 }
+
 
 /*This function generates and removes entries, the index of this function is in admin / bill / list*/ 
 
@@ -30923,6 +30937,18 @@ $('#listas').on("click", ".remover_campo", function(e) {
     $(this).parent('div').remove();
     x--;
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*This function changes the value of the "Value of the hour" and then that will be the cost of the hour*/
 

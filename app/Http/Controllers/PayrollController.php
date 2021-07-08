@@ -32,8 +32,8 @@ class PayrollController extends Controller
     }
 
     public function generate(){ 
-        $employee = User::where('profile_id', '=',3)->get();
-        return view('admin.payrolls.generate')->with(compact('employee'));                             
+        $employees = User::where('profile_id', '=',3)->get();
+        return view('admin.payrolls.generate')->with(compact('employees'));                             
     }
 
     public function DetailPayroll(){
