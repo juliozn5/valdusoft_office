@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE HOSTINGS
         Route::group(['prefix' => 'hostings'], function () {
             Route::get('/', 'HostingController@list')->name('admin.hostings.list');
-            Route::get('detail', 'HostingController@detail')->name('admin.hostings.detail');
+            Route::get('show/{id}', 'HostingController@show')->name('admin.hostings.show');
             Route::get('create', 'HostingController@create')->name('admin.hostings.create');
             Route::get('edit/{id}', 'HostingController@edit')->name('admin.hostings.edit');
             Route::post('store', 'HostingController@store')->name('admin.hostings.store');

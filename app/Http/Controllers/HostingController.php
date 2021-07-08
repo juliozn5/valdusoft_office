@@ -24,8 +24,12 @@ class HostingController extends Controller
         }
     }
 
-    function detail(){
-        return view('admin.hostings.detail');
+    function show(Request $request, $id){
+        $hosting = Hosting::where('id', '=', $id)
+                        ->first();
+        $client = User::all()->where ('profile_id', '2');
+
+        return view('admin.hostings.show')->with(compact('hosting','client'));
     }
 
     /** Crear Nuevo Hosting
@@ -52,7 +56,7 @@ class HostingController extends Controller
         $hosting = Hosting::create($request->all());
 
         $fecha = new Carbon($hosting->create_date);
-        $hosting->due_date = $fecha->addYears($request->cantidad_de_años);
+        $hosting->due_date = $fecha->addYears($request->years);
 
         $hosting->save();
 
@@ -87,12 +91,16 @@ class HostingController extends Controller
         $hosting->url = $request->hosting_url;
         $hosting->user_id = $request->client;
         $hosting->create_date = $request->date;
-        $hosting->due_date = $request->date_end;
+        $fecha = new Carbon($hosting->create_date);
+        $hosting->due_date = $fecha->addYears($request->date_end);
+        $hosting->years = $request->date_end;
+        $hosting->price = $request->price;
+        $hosting->renewal_price = $request->renewal_price;
         
 
         $hosting->save();
 
-        return redirect()->route('admin.hostings.list')->with('message','Se actualizo el Hosting Exitosamente');
+        return redirect()->back()->with('message','Se actualizo el Hosting Exitosamente');
     }
 
     /** Eliminar un Hosting

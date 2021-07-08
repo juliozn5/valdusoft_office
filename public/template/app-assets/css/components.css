@@ -3690,6 +3690,13 @@ tr.group {
       margin-bottom: 1rem;
     }
     
+    .btn-hos_show{
+      align-content: center;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .text-a{
       position:relative;
       margin-left: 0px;
