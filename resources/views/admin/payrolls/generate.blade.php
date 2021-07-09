@@ -83,7 +83,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                       
                     </td>
 
-                    <td id="valor_nombre_{{ $cont }}" class="text-center">{{$employee->price_per_hour}}</td>
+                    <td id="valor_nombre_{{ $cont }}" oninput="cambio(evento)" class="text-center">{{$employee->price_per_hour}}</td>
 
                     <td><input type="text" name="total_hours_{{ $cont }}"  class="col-7 form-control">
                     </td>
