@@ -39,15 +39,16 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
       <div class="col-11" style="margin-left:15px">
 
         <div class="card" id="card-head1">
-          @foreach ($payroll as $item )
 
 
+        <form action="{{ route('admin.payrolls.upgenerate') }}" method="post">
+        @csrf
           <div class="ml-1 mt-2 mb-2 flex-nowrap">
             <p class="h6">Fecha de inicio</p>
-            <input type="text" class="col-4 form-control" value="{{$item ->date}}" placeholder=" Selecciona una fecha" aria-describedby="addon-wrapping">
+            <input type="date" class="col-4 form-control" name="date" required>
           </div>
 
-          @endforeach
+
           <div class="card-header">
             <h3 class="card-title mb-1">Empleados</h3>
           </div>
@@ -68,30 +69,31 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </thead>
 
                 <tbody>
-                  @foreach ($payroll as $item)
-                  
-                  
-                    <tr>
-                      <td scope="row">{{$item ->user->name}}</td>
-                     
-                      <td>
-                      <form action="{{ route('admin.payrolls.upgenerate') }}" method="POST">
-                      @csrf
+                @php $cont = 0; @endphp
+                  @foreach ($employees as $employee)
+                    @php $cont++; @endphp
+                    <input type="hidden" name="employees_count" value="{{ $cont }}">
+                    <input type="hidden" name="employee_id_{{ $cont }}" value="{{ $employee->id }}">
+                  <tr>
+                    <td scope="row">{{$employee->name}}</td>
 
-                        <input type="text" name="price_by_hour" value="{{$item ->price_by_hour}}" class="col-7 form-control" id="nombre">
+                    <td>
+                      
+                  <input type="text" name="price_by_hour_{{ $cont }}" id="nombre_{{ $cont }}" class="col-7 form-control">
+                      
+                    </td>
 
-                      </td>
+                    <td id="valor_nombre_{{ $cont }}" class="text-center">{{$employee->price_per_hour}}</td>
 
-                      <td id="valor_nombre"  class="text-center">{{$item ->price_by_hour}}</td>
+                    <td><input type="text" name="total_hours_{{ $cont }}"  class="col-7 form-control">
+                    </td>
 
-
-                      <td>{{$item -> total_hours}}</td>
-
-                      <td><a href="#bono" data-toggle="modal">
-                          <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                      <td><a href="#prestamo" data-toggle="modal">
-                          <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
-                    </tr>
+                    <td><a href="#bono" data-toggle="modal">
+                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png')}}" alt="Agregar Tecnología" height="40" width="40"></td>
+                        
+                    <td><a href="#prestamo" data-toggle="modal">
+                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40"></td>
+                  </tr>
                   @endforeach
                 </tbody>
               </table>
@@ -101,28 +103,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
               <div class="bottom float-right" style="margin-right:20px;">
 
                 <button type="submit" class="btn  btn-primary ">GENERAR</button>
-                </form>
+              </form>
 
                 <br><br>
               </div>
-              <!--SCRIPT PARA AÑADIR INPUT DINAMICAMENTE-->
-              <script>
-                const elemNombre = document.getElementById("nombre"),
-                  elemValorNombre = document.getElementById("valor_nombre");
-
-                function cambio(evento) {
-                  let cambio = elemNombre.value;
-                  elemValorNombre.innerText = cambio;
-                }
-
-                elemNombre.addEventListener('input', cambio);
-              </script>
-
             </div>
           </div>
         </div>
       </div>
-
       <!--  MODAL DE LOS BONOS  -->
 
       <div class="modal fade" id="bono" aria-hidden="true" tabindex="-1">
@@ -150,7 +138,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
           </div>
         </div>
       </div>
-
 
       <!--  MODAL DE LOS PRESTAMOS  -->
       <div class="modal fade" id="prestamo" aria-hidden="true" tabindex="-1">
