@@ -317,27 +317,32 @@
     margin-bottom: 50px;
 }
 
-#principal {
+#principal{
 margin-left: 25px;
+display:inline-block;
 }
 
-#fourth {
+#fourth{
 margin-left: 50px;
+display:inline-block;
 
 }
 
-#third {
+#third{
 margin-left: 25px;
+display:inline-block;
 
 }
 
-#second {
+#second{
 margin-left: 25px;
+display:inline-block;
 
 }
 
 #add_field {
 margin-left: 700px;
+
 
 }
 #botom{

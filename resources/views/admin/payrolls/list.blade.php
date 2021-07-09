@@ -5,15 +5,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @endpush
 @push('scripts')
 <script>
+    function editPayroll($payroll) {
 
-function editPayroll($payroll) {
-
-    $("#payroll_id").val($payroll.id);
-    $("#payroll_amount").val($payroll.amount);
-    $("#date").val($payroll.date);
-    $("#payroll_status option[value=" + $payroll.status + "]").attr("selected", true);
-}
-
+        $("#payroll_id").val($payroll.id);
+        $("#payroll_amount").val($payroll.amount);
+        $("#date").val($payroll.date);
+        $("#payroll_status option[value=" + $payroll.status + "]").attr("selected", true);
+    }
 </script>
 @endpush
 
@@ -111,47 +109,46 @@ function editPayroll($payroll) {
         </div>
     </div>
 
-        <!--  MODAL EDITAR NOMINA  -->
+    <!--  MODAL EDITAR NOMINA  -->
 
-        <div class="modal  fade text-left " id="edit" tabindex="-1" role="dialog" aria-modal="true">
-            <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary white">
-                        <h5 class="modal-title">Editar Nómina</h5>
-                        <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
-                    </div>
-                    <form action="{{ route('admin.payrolls.updatePayroll') }}" method="POST">
-                        @csrf
-
-                        <input type="hidden" name="payroll_id" id="payroll_id" value="">
-                        <div class="modal-body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label for="payroll_amount">Monto</label>
-                                        <input name="payroll_amount" id="payroll_amount" class="form-control">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="date">Fecha</label>
-                                        <input type="date" name="date" id="date" class="form-control">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="payroll_status">Estado</label>
-                                        <select name="status" id="payroll_status" class="form-control">
-                                            <option value="0">Pendiente</option>
-                                            <option value="1">Completado</option>
-                                        </select>
-                                    </div>
+    <div class="modal  fade text-left " id="edit" tabindex="-1" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary white">
+                    <h5 class="modal-title">Editar Nómina</h5>
+                    <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
+                </div>
+                <form action="{{ route('admin.payrolls.updatePayroll') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="payroll_id" id="payroll_id" value="">
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="payroll_amount">Monto</label>
+                                    <input name="payroll_amount" id="payroll_amount" class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label for="date">Fecha</label>
+                                    <input type="date" name="date" id="date" class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label for="payroll_status">Estado</label>
+                                    <select name="status" id="payroll_status" class="form-control">
+                                        <option value="0">Pendiente</option>
+                                        <option value="1">Completado</option>
+                                    </select>
                                 </div>
                             </div>
-                        </div>                        
-                        <br><br>
-                            
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <br><br>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
     @endsection
