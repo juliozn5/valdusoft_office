@@ -230,38 +230,41 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         </thead>
                                     </table>
 
+
+
+                                    
                                     <div id="listas">
 
                                         <div class="row">
 
                                             <input type="text" name="campo[]" class="form-control col-2" id="principal">
 
-                                            <input type="text" name="campo[]" oninput="calcular()" class="monto form-control col-2" id="second">
+                                            <input type="text" name="campo[]" oninput="cal()" class="monto form-control col-2" id="one">
 
-                                            <input type="text" name="campo[]" oninput="calcular()" class="monto form-control col-2" id="third">
+                                            <input type="text" name="campo[]" oninput="cal()" class="monto form-control col-2" id="two">
 
-                                            <input name="campo[]" class="form-control col-2" id="fourth">
+                                            <input name="campo[]" class="form-control col-2" id="three">
 
                                         </div>
                                         <a id="add_field"><img class=" rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"></a>
                                     </div>
                                 </div>
 
-                                <!--FOOTER DEL MODAL-->
-                                <div class="modal-footer">
-                                    <ul class="list-group list-group-flush">
+                                    <!--FOOTER DEL MODAL-->
+                                    <div class="modal-footer">
+                                        <ul class="list-group list-group-flush">
 
-                                        <li class="list-group-item"> <strong>TOTAL PARCIAL</strong> 00</li>
-                                        <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
-                                        <li class="list-group-item"><strong>PAGADO</strong> 00</li>
-                                    </ul>
+                                            <li class="list-group-item"> <strong>TOTAL PARCIAL</strong> 00</li>
+                                            <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
+                                            <li class="list-group-item"><strong>PAGADO</strong> 00</li>
+                                        </ul>
+                                    </div>
+                                    <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>
                                 </div>
-                                <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                @endsection
+                    @endsection

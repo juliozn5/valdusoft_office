@@ -30891,14 +30891,6 @@
 
 
 
-
-
-
-
-
-
-
-
 /* function to calculate value of units by unit price */ 
 function calcular() {
  try {
@@ -30909,10 +30901,20 @@ document.getElementById("fourth").value = a * b;
 } catch (e) {}
 }
 
+function cal() {
+  try {
+ let a = parseFloat(document.getElementById("one").value) || 0;
+ b = parseFloat(document.getElementById("two").value) || 0;
+ 
+ document.getElementById("three").value = a * b;
+ } catch (e) {}
+ }
+
+ 
 
 /*This function generates and removes entries, the index of this function is in admin / bill / list*/ 
 
-let campos_max = 10; //Campos de input Maximos
+let campos_max = 1; //Campos de input Maximos
 
 let x = 0;
 $('#add_field').click(function(e) {
@@ -30921,8 +30923,8 @@ $('#add_field').click(function(e) {
         $('#listas').append('<div id="listas">\
         <div class="row">\
     <input type="text" name="campo[]" class="form-control col-2" id="principal">\
-    <input type="text" name="campo[]" oninput="calcular()" class="monto form-control col-2" id="second">\
-    <input type="text" name="campo[]" oninput="calcular()" class="monto form-control col-2" id="third">\
+    <input type="text" id="second" name="campo[]" oninput="calcular()" class="monto form-control col-2" >\
+    <input type="text" id="third" name="campo[]" oninput="calcular()" class="monto form-control col-2" >\
     <input name="campo[]" class="form-control col-2" id="fourth">\
 <a href="#" class="remover_campo ml-2"><i class="fas fa-times"></i></a>\
 </div>');
@@ -30937,17 +30939,6 @@ $('#listas').on("click", ".remover_campo", function(e) {
     $(this).parent('div').remove();
     x--;
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*This function changes the value of the "Value of the hour" and then that will be the cost of the hour*/
