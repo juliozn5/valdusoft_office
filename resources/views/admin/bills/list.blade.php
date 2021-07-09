@@ -231,19 +231,16 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                     </table>
 
 
-
-                                    
                                     <div id="listas">
-
                                         <div class="row">
 
-                                            <input type="text" name="campo[]" class="form-control col-2" id="principal">
+                                            <input type="text" name="descripcion[]" class="form-control col-2" id="principal_0">
 
-                                            <input type="text" name="campo[]" oninput="cal()" class="monto form-control col-2" id="one">
+                                            <input type="text" name="unidades[]" oninput="calcular(0)" class="monto form-control col-2" id="second_0">
 
-                                            <input type="text" name="campo[]" oninput="cal()" class="monto form-control col-2" id="two">
+                                            <input type="text" name="valor[]" oninput="calcular(0)" class="monto form-control col-2" id="third_0">
 
-                                            <input name="campo[]" class="form-control col-2" id="three">
+                                            <input name="precio[]" class="form-control col-2" id="fourth_0">
 
                                         </div>
                                         <a id="add_field"><img class=" rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"></a>
