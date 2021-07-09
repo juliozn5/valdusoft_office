@@ -122,10 +122,9 @@ class ClientsController extends Controller
 
     /** Eliminar un Cliente
     *** Perfil: Admin ***/
-    public function delete($id){
-        $client = User::find($id);
-        $client->profile_id = 0;
-        $client->save();
+    public function delete(Request $request){
+        $client = User::find($request->id);
+        $client->delete();
       
         return redirect()->route('admin.clients.list')->with('message','Se elimino el Cliente'.' '.$client->client.' '.'Exitosamente');
         

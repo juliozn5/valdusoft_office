@@ -70,8 +70,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>{{ $item->phone }}</td>
                                             <td>
                                                 <a href="{{ route('admin.clients.show', [$item->slug,$item->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
-                                                <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('delete-form').submit();"><i class="fa fa-trash action-icon"></i></a>
-                                                <form action="{{ route('admin.clients.delete', $item->id) }}" method="POST" id="delete-form">
+                                                
+                                                <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('delete{{$item->id}}').submit();"><i class="fa fa-trash action-icon"></i></a>
+                                                <form action="{{ route('admin.clients.delete', $item->id) }}" method="POST" id="delete{{$item->id}}">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
