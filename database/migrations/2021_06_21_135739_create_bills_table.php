@@ -22,7 +22,7 @@ class CreateBillsTable extends Migration
             $table->enum('status', [0, 1])->default(0)->comment('0 - Pendiente, 1 - Pagada');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -21,7 +21,7 @@ class CreateProjectAttachmentsTable extends Migration
             $table->string('file_type')->nullable();
             $table->timestamps();
 
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
     }
 

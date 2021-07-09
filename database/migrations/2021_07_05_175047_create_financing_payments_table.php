@@ -20,7 +20,7 @@ class CreateFinancingPaymentsTable extends Migration
             $table->date('date');
             $table->timestamps();
 
-            $table->foreign('financing_id')->references('id')->on('financing');
+            $table->foreign('financing_id')->references('id')->on('financing')->onDelete('cascade');;
         });
     }
 

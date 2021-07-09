@@ -24,8 +24,8 @@ class CreatePaymentsTable extends Migration
             $table->date('date');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('bill_id')->references('id')->on('bills');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('bill_id')->references('id')->on('bills')->onDelete('cascade');;
         });
     }
 

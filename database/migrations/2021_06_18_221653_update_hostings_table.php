@@ -16,7 +16,7 @@ class UpdateHostingsTable extends Migration
         Schema::table('hostings', function (Blueprint $table) {
             $table->dropColumn('client');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

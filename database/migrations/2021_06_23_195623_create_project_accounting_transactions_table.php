@@ -24,7 +24,7 @@ class CreateProjectAccountingTransactionsTable extends Migration
             $table->enum('status', [0, 1])->default(0)->comment('0 - Pendiente, 1 - Completada');
             $table->timestamps();
 
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
     }
 

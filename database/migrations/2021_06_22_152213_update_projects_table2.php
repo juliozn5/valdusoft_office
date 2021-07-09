@@ -20,7 +20,7 @@ class UpdateProjectsTable2 extends Migration
             $table->unsignedBigInteger('country_id')->nullable();
             $table->string('type')->nullable();
 
-            $table->foreign('country_id')->references('id')->on('countries');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
         });
     }
 

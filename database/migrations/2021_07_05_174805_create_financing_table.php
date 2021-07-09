@@ -21,7 +21,7 @@ class CreateFinancingTable extends Migration
             $table->enum('status', [0, 1, 2])->default(0)->comment('0 - Activo, 1 - Pagago, 2 - Cancelado');
             $table->timestamps();
             
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
         });
     }
 

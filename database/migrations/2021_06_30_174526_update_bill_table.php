@@ -18,7 +18,7 @@ class UpdateBillTable extends Migration
             $table->unsignedBigInteger('hosting_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable()->change();
 
-            $table->foreign('hosting_id')->references('id')->on('hostings');
+            $table->foreign('hosting_id')->references('id')->on('hostings')->onDelete('cascade');;
         });
     }
 

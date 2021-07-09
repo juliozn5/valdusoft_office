@@ -24,8 +24,8 @@ class CreatePayrollsEmployeeTable extends Migration
             $table->enum('status', [0, 1])->default(0)->comment('0 - Pendiente, 1 - Completada');
             $table->timestamps();
 
-            $table->foreign('payroll_id')->references('id')->on('payrolls');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('payroll_id')->references('id')->on('payrolls')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
         });
     }
 
