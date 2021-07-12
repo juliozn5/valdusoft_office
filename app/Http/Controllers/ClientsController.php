@@ -30,7 +30,8 @@ class ClientsController extends Controller
     public function list(){
         $client = User::where('profile_id', '=', 2)
                     ->orderBy('name', 'ASC')
-                    ->get();
+                    ->paginate(10);
+                    
 
         return view('admin.clients.list')
         ->with('client', $client); 
@@ -52,10 +53,13 @@ class ClientsController extends Controller
         $client = User::where('id', '=', $id)
                         ->first();
         $client_bill =Bill::where('user_id', $request->id)->paginate(10);
+        
+        $projects= Project::where('user_id', $request->id)->paginate(5);
+       
         $hosting = Hosting::all()->where('user_id', $request->id);
 
         return view('admin.clients.show')
-        ->with(compact('client','client_bill','hosting'));
+        ->with(compact('client','client_bill','hosting','projects'));
     }
 
     /** Guardar Datos del Nuevo Cliente

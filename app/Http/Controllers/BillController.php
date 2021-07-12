@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Bill;
-use App\Models\User;
-use App\Models\Hosting;
 
 class BillController extends Controller
 {
@@ -41,12 +39,12 @@ class BillController extends Controller
 
     public function details(){
             return
-             view('employee.billdetail');                             
+             view('employee.billdetail');
         }
    
         public function BillList(){
           return
-           view('admin.bills.BillList');                             
+           view('admin.bills.BillList');
       }
       
      

@@ -99,15 +99,15 @@ function edithosting($hosting) {
                         <div class="modal-body">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <label for="hosting_url"><strong>Dominio</strong></label>
                                         <input name="hosting_url" id="hosting_url" class="form-control">
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <label for="date"><strong>Fecha</strong></label>
                                         <input type="date" name="date" id="date" class="form-control">
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <label for="client"><strong>Cliente</strong></label>
                                         <select name="client" id="client" class="form-control">
                                             <option value="" selected disabled>Seleccione un cliente...</option>
@@ -116,7 +116,7 @@ function edithosting($hosting) {
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-6 ">
+                                    <div class="col-md-6 col-sm-12 ">
                                         <div class="form-group">
                                             <label for="date_end">Cantidad de años</label>
                                             <select name="date_end" id="date_end" class="form-control" required>
@@ -127,11 +127,11 @@ function edithosting($hosting) {
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <label for="price"><strong>Precio</strong></label>
                                         <input name="price" id="price" class="form-control">
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <label for="renewal_price"><strong>Precio de Renovacion</strong></label>
                                         <input name="renewal_price" id="renewal_price" class="form-control">
                                     </div>

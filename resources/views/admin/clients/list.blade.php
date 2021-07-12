@@ -82,6 +82,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="mr-3">
+                                {{ $client->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

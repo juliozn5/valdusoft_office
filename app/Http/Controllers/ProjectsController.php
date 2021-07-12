@@ -7,8 +7,8 @@ use App\Models\Project;
 use App\Models\AccountingTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str as Str;
-use Auth;
-use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller
 {
@@ -70,7 +70,7 @@ class ProjectsController extends Controller
         if ($request->hasFile('logo')){
             $file = $request->file('logo');
             $name = $project->id.".".$file->getClientOriginalExtension();
-            $file->move(public_path().'/uploads/images/projects', $name);
+            $file->move(public_path('storage') . '/photo-logo', $name);
             $project->logo = $name;
             $project->save();
         }

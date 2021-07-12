@@ -53,7 +53,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="col-md-3 col-sm-1">
         <div class="project-detail-titles">Fecha de Nacimiento</div>
             <div class="mt-1 project-detail-dates">
-            <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
+            <img src="{{ asset('images/svg/calendar.svg')}}">
             <span>{{ date('d/m/Y', strtotime($user->birthdate)) }}</span>
             </div>
         </div>
@@ -61,7 +61,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 <div class="col-md-3 col-sm-1">
     <div class="project-detail-titles">Fecha de Ingreso</div>
         <div class="mt-1 project-detail-dates">
-            <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
+            <img  src="{{ asset('images/svg/calendar.svg')}}">
                <span>{{ date('d/m/Y', strtotime($user->admission_date)) }}</span>
             </div>
         </div>
@@ -69,13 +69,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 <div class="col-md-3 col-sm-1">
     <div class="project-detail-titles">Próximas Vacaciones</div>
         <div class="mt-1 project-detail-dates">
-            <img class="rounded-circle" src="{{ asset('images/svg/calendar.svg')}}">
+            <img  src="{{ asset('images/svg/calendar.svg')}}">
                <span>{{ date('d/m/Y', strtotime($user->birthdate)) }}</span>
         </div>
     </div>
 </div>
 <!--SKILLS SECTION-->
-<div class="mt-3 pl-2 pr-2">
+<div class="mt-3 pr-2">
+    <div class="project-detail-titles">Habilidades</div>
+    <br>
     @foreach ($user->skills as $skill)
     <div class="text-center text-white d-inline-block mr-1">
         <div class="project-detail-skill">{{ $skill->skill }}</div>
@@ -143,7 +145,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary white">
-                <h5 class="modal-title" id="myModalLabel110">Modificar Billetera</h5>
+                <h5 class="modal-title" id="myModalLabel110">Subir Curriculo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
