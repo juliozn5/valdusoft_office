@@ -236,18 +236,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                     <div class="col-7">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Empleados</h3>
-                            </div>
                             <div class="card-content">
-                                <div class="table-responsive pt-2">
+                                <div class="table-responsive">
                                     <table class="table">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>Foto</th>
                                                 <th>Nombre</th>
-                                                <th>Cargo</th>
                                                 <th>Email</th>
+                                                <th>Telefono</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -255,24 +252,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <tr>
                                                 <td>
                                                     @if (!is_null($item->photo))
-                                                    <img class="rounded-circle" width="50px" height="50px" src="{{ $item->photo }}" />
+                                                    <img class="rounded-circle" width="32px" height="32px" src="{{ $item->photo }}" />
                                                     @else
-                                                    <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                    <img class="rorounded-circleund" width="32px" height="32px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                     @endif
                                                 </td>
                                                 <td>{{ $item->name }} {{ $item->last_name }}</td>
-                                                <td>
-                                                    @if($item->position === '0')
-                                                    Desarrollador
-                                                    @elseif($item->position === '1')
-                                                    Diseñador
-                                                    @elseif($item->position === '2')
-                                                    Project Manager
-                                                    @elseif($item->position === '3')
-                                                    Financiero
-                                                    @endif
-                                                </td>
                                                 <td>{{ $item->email }}</td>
+                                                <td><a href="https://api.whatsapp.com/send?phone={{ $item->phone }}"></a>{{ $item->phone }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
