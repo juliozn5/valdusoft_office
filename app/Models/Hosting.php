@@ -21,6 +21,7 @@ class Hosting extends Model
         'price',
         'renewal_price',
         'years',
+        'renewal_hosting',
         'updated_at',
     ];
 

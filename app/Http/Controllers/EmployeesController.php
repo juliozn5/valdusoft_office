@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PayrollEmployee;
 use App\Models\User;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -15,9 +16,12 @@ class EmployeesController extends Controller
     /** Home del Empleado
     *** Perfil: Empleado ***/
     public function index(){
-        $employes = Project::all();
-
-        return view('employee.home')->with('employes', $employes); 
+        $project = Project::all()->where('user_id', Auth::user()->id);
+        $payrolls = PayrollEmployee::all()->where('user_id', Auth::user()->id);
+        
+        $user = User::all()->where('user_id', Auth::user()->id);
+        
+        return view('employee.home')->with(compact('project','payrolls','user')); 
     }
 
     /** Listado de Empleados

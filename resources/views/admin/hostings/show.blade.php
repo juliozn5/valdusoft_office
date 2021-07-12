@@ -16,24 +16,17 @@ function edithosting($hosting) {
     $("#date_end").val($hosting.due_date);
     $("#date_end").val($hosting.years);
     $("#price").val($hosting.price);
-    $("#renewal_price").val($hosting.renewal_price);
+    
 }
 
 function renovarhosting($hosting) {
-$("#hosting_id").val($hosting.id);
-$("#hosting_url").val($hosting.url);
-$("#date").val($hosting.create_date);
-$("#client option[value=" + $hosting.user_id + "]").attr("selected", true);
-$("#date_end").val($hosting.due_date);
-$("#date_end").val($hosting.years);
-$("#price").val($hosting.price);
+$("#renewal_hosting").val($hosting.renewal_hosting);
 $("#renewal_price").val($hosting.renewal_price);
 }
 
 </script>
 @endpush
 @include('layouts.partials.navbar')
-
 @include('layouts.partials.sidebar')
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -57,7 +50,6 @@ $("#renewal_price").val($hosting.renewal_price);
         </div>
 
 <div class="card">
-    
 <div class="card-body">
     <div class="card-header">
         <div class="h3 col-md-4 col-sm-12">{{$hosting->url}}</div>
@@ -92,6 +84,16 @@ $("#renewal_price").val($hosting.renewal_price);
             <div class="project-detail-titles">Cantidad de años</div>
                 <div class="mt-1 project-detail-dates">
                 <span>{{$hosting->years}} años</span>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="pl-2 pr-2 mt-5">
+    <div class="row mt-3 pl-2 pr-2">
+        <div class="col-md-3 col-sm-1">
+            <div class="project-detail-titles">Cantidad de años de renovacion</div>
+                <div class="mt-1 project-detail-dates">
+                <span>{{$hosting->renewal_hosting}} años</span>
                 </div>
         </div>
     </div>
@@ -137,7 +139,7 @@ $("#renewal_price").val($hosting.renewal_price);
             </div>
 <form action="{{ route('admin.hostings.update') }}" method="POST">
     @csrf
-<input type="hidden" name="hosting_id" id="hosting_id" value="">
+<input type="hidden" name="hosting_id" id="hosting_id"value="{{$hosting->id}}">
     <div class="modal-body">
         <div class="container">
             <div class="row">
@@ -173,10 +175,7 @@ $("#renewal_price").val($hosting.renewal_price);
                     <label for="price"><strong>Precio</strong></label>
                     <input name="price" id="price" class="form-control">
                 </div>
-                <div class="col-md-6 col-sm-12">
-                    <label for="renewal_price"><strong>Precio de Renovacion</strong></label>
-                    <input name="renewal_price" id="renewal_price" class="form-control">
-                </div>
+              
             </div>
         </div>
     </div>                        
@@ -191,7 +190,6 @@ $("#renewal_price").val($hosting.renewal_price);
 
 
               <!--  MODAL RENOVAR HOSTING  -->
-
 <div class="modal  fade text-left " id="renovar" tabindex="-1" role="dialog" aria-modal="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -199,22 +197,26 @@ $("#renewal_price").val($hosting.renewal_price);
                 <h5 class="modal-title">Renovar Hosting</h5>
                 <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
             </div>
-<form action="{{ route('admin.hostings.update') }}" method="POST">
+<form action="{{ route('admin.hostings.renewal') }}" method="POST">
     @csrf
-<input type="hidden" name="hosting_id" id="hosting_id" value="">
+<input type="hidden" name="hosting_id" id="hosting_id" value="{{$hosting->id}}">
     <div class="modal-body">
         <div class="container">
             <div class="row">   
-                <div class="col-12">
+                <div class="col-md-6 col-sm-12 ">
                     <div class="form-group">
-                        <label for="date_end">Cantidad de la renovacion</label>
-                        <select name="date_end" id="date_end" class="form-control" required>
+                        <label for="renewal_hosting">Cantidad de la renovacion</label>
+                        <select name="renewal_hosting" id="renewal_hosting" class="form-control" required>
                             <option value="" selected disabled>Seleccione los años para la renovacion...</option>
-                            <option value="1" id="date_end">1 Año</option>
-                            <option value="2" id="date_end">2 Años</option>
-                            <option value="3" id="date_end">3 Anos</option>
+                            <option value="1" id="renewal_hosting">1 Año</option>
+                            <option value="2" id="renewal_hosting">2 Años</option>
+                            <option value="3" id="renewal_hosting">3 Anos</option>
                         </select>
-                    </div>
+                    </div>                    
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label for="renewal_price"><strong>Precio de Renovacion</strong></label>
+                    <input name="renewal_price" id="renewal_price" class="form-control">
                 </div>
             </div>
         </div>
