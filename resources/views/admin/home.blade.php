@@ -213,7 +213,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="col-5">
 
                         <div class="card">
-                            <div class="card-content pl-1">
+                            <div class="card-content p-1">
                                 <div class="card-body">
                                     <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta todos los clientes</h4>
@@ -223,7 +223,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
 
                         <div class="card">
-                            <div class="card-content pl-1">
+                            <div class="card-content p-1">
                                 <div class="card-body">
                                     <img src="{{ asset('images/svg/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta y paga la nomina</h4>
@@ -236,18 +236,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                     <div class="col-7">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Empleados</h3>
-                            </div>
                             <div class="card-content">
-                                <div class="table-responsive pt-2">
+                                <div class="table-responsive">
                                     <table class="table">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>Foto</th>
                                                 <th>Nombre</th>
-                                                <th>Cargo</th>
                                                 <th>Email</th>
+                                                <th>Telefono</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -255,24 +252,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <tr>
                                                 <td>
                                                     @if (!is_null($item->photo))
-                                                    <img class="rounded-circle" width="50px" height="50px" src="{{ $item->photo }}" />
+                                                    <img class="rounded-circle" width="32px" height="32px" src="{{ $item->photo }}" />
                                                     @else
-                                                    <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                    <img class="rorounded-circleund" width="32px" height="32px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                     @endif
                                                 </td>
                                                 <td>{{ $item->name }} {{ $item->last_name }}</td>
-                                                <td>
-                                                    @if($item->position === '0')
-                                                    Desarrollador
-                                                    @elseif($item->position === '1')
-                                                    Diseñador
-                                                    @elseif($item->position === '2')
-                                                    Project Manager
-                                                    @elseif($item->position === '3')
-                                                    Financiero
-                                                    @endif
-                                                </td>
-                                                <td>{{ $item->email }}</td>
+                                                <td><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
+                                                <td><a href="https://api.whatsapp.com/send?phone={{ $item->phone }}" Target="_blank">{{ $item->phone }}</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
