@@ -258,8 +258,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                     @endif
                                                 </td>
                                                 <td>{{ $item->name }} {{ $item->last_name }}</td>
-                                                <td>{{ $item->email }}</td>
-                                                <td><a href="https://api.whatsapp.com/send?phone={{ $item->phone }}"></a>{{ $item->phone }}</td>
+                                                <td><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
+                                                <td><a href="https://api.whatsapp.com/send?phone={{ $item->phone }}" Target="_blank">{{ $item->phone }}</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
