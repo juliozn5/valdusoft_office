@@ -62,33 +62,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="mr-3">
         {{$projects->links()}}
     </div>
+
 <div class="card-header">
-    <h3 class="card-title mb-2">Hosting</h3>
-        <div class="container pb-2">
-            <div class="row">
-                @foreach ($hosting as $item)
-                    <div class="text-small col-md-6 col-sm-1 mb-1">
-                        <div class="card-body rounded" style="background: #252856;">
-                            <img class="float-right capa-left" src="{{asset('images/icons/background.png')}}" alt="">
-                                <p class="card-text h6 text-white">Fecha de Renovación</p>
-                                    <br>       
-                                <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>{{date('d/m/Y', strtotime($item->create_date))}}</p>
-                                <a type="submit" class="btn margen-b" id="btn-guardar" style="background-color:#FF4D00;color: white;width: 180px;"><img src="{{asset('images/valdusoft/cpanel-logo.png')}}" style="width: 19px;" alt="" class="mr-1">Ir al Cpanel</a>
-                                <a type="submit" class="btn margen-green" id="btn-guardar" style="background-color: #06B054;color: white;"><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1"> Renovar</a>
-                            </div>
-                        </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-<div class="card-header">
-    <h3 class="card-title mb-2">Dominios</h3>
+    <h3 class="card-title mb-2">Hosting y Dominios</h3>
         <div class="container pb-2">
             <div class="row">
                 @foreach ($hosting as $item)
                     <div class="text-small col-md-6 col-sm-1 mb-1">
                         <div class="card-body rounded" style="background: #252856;">                    
-                            <img class="float-right capa-left" src="{{asset('images/valdusoft/world.png')}}" alt="">
+                            <img class="float-right capa-left" src="{{asset('images/icons/background.png')}}" alt="">
                                 <div class="row">                
                                     <div class="col-md-8 col-sm-12">
                                         <p class="card-text h6 text-white mb-1">Fecha de Vencimiento</p>
@@ -100,7 +82,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                             <br>
                             <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>{{date('d/m/Y', strtotime($item->due_date))}}</p>        
-                            <a type="submit" class="btn margen-b" style="background-color:#0065DC;color: white;" id="btn-guardar"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
+                            <a type="submit" class="btn margen-b" style="background-color:#FF4D00;color: white;" id="btn-guardar"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
                             <a type="submit" class="btn margen-green" style="background-color: #06B054;color: white;" id="btn-guardar"><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1"> Renovar</a>
                         </div>
                     </div>

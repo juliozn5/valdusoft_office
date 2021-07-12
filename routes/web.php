@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('edit/{id}', 'HostingController@edit')->name('admin.hostings.edit');
             Route::post('store', 'HostingController@store')->name('admin.hostings.store');
             Route::post('update', 'HostingController@update')->name('admin.hostings.update');
+            Route::post('renewal', 'HostingController@renewal')->name('admin.hostings.renewal');
             Route::delete('delete/{id}', 'HostingController@delete')->name('admin.hostings.delete');
         });
 

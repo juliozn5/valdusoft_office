@@ -79,15 +79,12 @@ class HostingController extends Controller
 
         $hosting = Hosting::find($request->hosting_id);
         
-        
         $fields = [     ];
 
         $msj = [       ];
 
         $this->validate($request, $fields, $msj);
-
         $hosting->update($request->all());
-
         $hosting->url = $request->hosting_url;
         $hosting->user_id = $request->client;
         $hosting->create_date = $request->date;
@@ -95,12 +92,28 @@ class HostingController extends Controller
         $hosting->due_date = $fecha->addYears($request->date_end);
         $hosting->years = $request->date_end;
         $hosting->price = $request->price;
-        $hosting->renewal_price = $request->renewal_price;
         
+        
+        $hosting->renewal_price = $request->renewal_price;
+        $hosting->renewal_hosting = $request->renewal_hosting;
 
         $hosting->save();
 
         return redirect()->back()->with('message','Se actualizo el Hosting Exitosamente');
+    }
+
+    public function renewal(Request $request){
+        $hosting = Hosting::find($request->hosting_id);
+        
+        $hosting->update($request->all());
+
+        $hosting->renewal_price = $request->renewal_price;
+        $hosting->renewal_hosting = $request->renewal_hosting;
+
+        $hosting->save();
+        
+        return redirect()->back()->with('message','Se actualizo el Hosting Exitosamente');
+
     }
 
     /** Eliminar un Hosting
