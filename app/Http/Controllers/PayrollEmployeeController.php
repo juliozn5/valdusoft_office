@@ -37,6 +37,6 @@ class PayrollEmployeeController extends Controller
         $payroll->amount = $payroll_total;
         $payroll->save();
 
-        return redirect('');
+        return redirect()->route('admin.payrolls.generate');
     }
 }
