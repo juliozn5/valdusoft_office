@@ -213,7 +213,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="col-5">
 
                         <div class="card">
-                            <div class="card-content pl-1">
+                            <div class="card-content p-1">
                                 <div class="card-body">
                                     <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta todos los clientes</h4>
@@ -223,7 +223,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
 
                         <div class="card">
-                            <div class="card-content pl-1">
+                            <div class="card-content p-1">
                                 <div class="card-body">
                                     <img src="{{ asset('images/svg/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
                                     <h4 class="pt-2">Consulta y paga la nomina</h4>
