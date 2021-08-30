@@ -187,7 +187,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <div class="col-6">
                                     <div class="project-detail-titles">País</div>
                                     <div class="mt-1 project-detail-dates">
-                                        {{ $project->country->name }}
+                                       @if (!is_null($project->country_id)) {{ $project->country->name }} @else No Definido @endif
                                     </div>
                                 </div>
                             </div>
@@ -531,7 +531,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                             <label class="form-check-label" for="employee-{{ $availableEmployee->id }}">
                                 <input type="checkbox" class="form-check-input" id="employee-{{ $availableEmployee->id }}" value="{{ $availableEmployee->id }}" name="employees[]">
-                                {{ $availableEmployee->name }}
+                                {{ $availableEmployee->name }} {{ $availableEmployee->last_name }}
                             </label>
                         </div>
                         @endforeach

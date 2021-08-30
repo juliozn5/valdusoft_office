@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-07-2021 a las 21:45:50
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Tiempo de generación: 30-08-2021 a las 20:54:10
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `valdusoft`
+-- Base de datos: `valdusof_backoffice`
 --
 
 -- --------------------------------------------------------
@@ -29,13 +29,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bills` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `amount` double NOT NULL,
   `date` date NOT NULL,
   `payed_at` date NOT NULL,
   `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 - Pendiente, 1 - Pagada',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `type` enum('C','E','H') COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'C - Cliente, E - Empleado, H - Hosting',
+  `hosting_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -345,6 +347,37 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `financing`
+--
+
+CREATE TABLE `financing` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `total_amount` double NOT NULL,
+  `date` date NOT NULL,
+  `status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 - Activo, 1 - Pagago, 2 - Cancelado',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `financing_payments`
+--
+
+CREATE TABLE `financing_payments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `financing_id` bigint(20) UNSIGNED NOT NULL,
+  `amount` double NOT NULL,
+  `date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `hostings`
 --
 
@@ -353,6 +386,10 @@ CREATE TABLE `hostings` (
   `url` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `create_date` date DEFAULT NULL,
   `due_date` date DEFAULT NULL,
+  `price` double NOT NULL,
+  `renewal_price` double NOT NULL,
+  `years` double NOT NULL,
+  `renewal_hosting` double NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL
@@ -362,15 +399,15 @@ CREATE TABLE `hostings` (
 -- Volcado de datos para la tabla `hostings`
 --
 
-INSERT INTO `hostings` (`id`, `url`, `create_date`, `due_date`, `created_at`, `updated_at`, `user_id`) VALUES
-(1, 'camilo.com', '2021-07-01', '2021-07-30', '2021-07-01 19:53:00', '2021-07-01 19:53:00', 10),
-(2, 'breve.com.co/', '2020-04-26', '2022-04-26', '2021-07-06 21:08:01', '2021-07-06 21:08:01', 22),
-(3, 'lisosylisos.co', '2020-10-07', '2021-10-07', '2021-07-06 21:13:03', '2021-07-06 21:13:04', 23),
-(4, 'redvida.biz', '2021-03-04', '2022-03-04', '2021-07-06 21:15:50', '2021-07-06 21:15:51', 24),
-(5, 'royalgreen.company', '2020-10-01', '2021-10-01', '2021-07-06 21:16:42', '2021-07-06 21:16:43', 16),
-(6, 'sellofintrust.co', '2021-06-18', '2022-06-18', '2021-07-06 21:17:33', '2021-07-06 21:17:34', 19),
-(7, 'tiendaimpaz.cl', '2021-03-23', '2022-03-23', '2021-07-06 21:19:45', '2021-07-06 21:19:45', 25),
-(8, 'transformatepro.com', '2020-01-15', '2022-01-15', '2021-07-06 21:21:59', '2021-07-06 21:21:59', 26);
+INSERT INTO `hostings` (`id`, `url`, `create_date`, `due_date`, `price`, `renewal_price`, `years`, `renewal_hosting`, `created_at`, `updated_at`, `user_id`) VALUES
+(1, 'camilo.com', '2021-07-01', '2021-07-30', 0, 0, 0, 0, '2021-07-01 19:53:00', '2021-07-01 19:53:00', 10),
+(2, 'breve.com.co/', '2020-04-26', '2022-04-26', 0, 0, 0, 0, '2021-07-06 21:08:01', '2021-07-06 21:08:01', 22),
+(3, 'lisosylisos.co', '2020-10-07', '2021-10-07', 0, 0, 0, 0, '2021-07-06 21:13:03', '2021-07-06 21:13:04', 23),
+(4, 'redvida.biz', '2021-03-04', '2022-03-04', 0, 0, 0, 0, '2021-07-06 21:15:50', '2021-07-06 21:15:51', 24),
+(5, 'royalgreen.company', '2020-10-01', '2021-10-01', 0, 0, 0, 0, '2021-07-06 21:16:42', '2021-07-06 21:16:43', 16),
+(6, 'sellofintrust.co', '2021-06-18', '2022-06-18', 0, 0, 0, 0, '2021-07-06 21:17:33', '2021-07-06 21:17:34', 19),
+(7, 'tiendaimpaz.cl', '2021-03-23', '2022-03-23', 0, 0, 0, 0, '2021-07-06 21:19:45', '2021-07-06 21:19:45', 25),
+(8, 'transformatepro.com', '2020-01-15', '2022-01-15', 0, 0, 0, 0, '2021-07-06 21:21:59', '2021-07-06 21:21:59', 26);
 
 -- --------------------------------------------------------
 
@@ -412,7 +449,16 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (21, '2021_06_23_195623_create_project_accounting_transactions_table', 2),
 (22, '2021_06_24_193424_update_users_table2', 3),
 (23, '2021_06_28_150008_create_chat_table', 3),
-(24, '2021_06_28_193725_create_payments_table', 3);
+(24, '2021_06_28_193725_create_payments_table', 3),
+(25, '2021_06_29_133255_update_table_payments', 4),
+(26, '2021_06_29_151810_create_payrolls_table', 4),
+(27, '2021_06_30_174526_update_bill_table', 5),
+(28, '2021_07_05_174407_create_payrolls_employee_table', 5),
+(29, '2021_07_05_174805_create_financing_table', 5),
+(30, '2021_07_05_175047_create_financing_payments_table', 5),
+(31, '2021_07_07_125951_add_price_renewal_price_to_hostings', 5),
+(32, '2021_07_07_184636_add_years_to_hostings', 5),
+(33, '2021_07_12_124633_update_hosting_add_table_renewall', 5);
 
 -- --------------------------------------------------------
 
@@ -451,6 +497,41 @@ CREATE TABLE `payments` (
   `fee` double NOT NULL DEFAULT 0,
   `total` double NOT NULL,
   `date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 - Pendiente, 1 - Completado, 2 - Rechazado'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `payrolls`
+--
+
+CREATE TABLE `payrolls` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `amount` double NOT NULL,
+  `date` date NOT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 - Pendiente, 1 - Completada',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `payrolls_employee`
+--
+
+CREATE TABLE `payrolls_employee` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `payroll_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `price_by_hour` double NOT NULL,
+  `total_hours` double NOT NULL,
+  `total_amount` double NOT NULL,
+  `date` date NOT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 - Pendiente, 1 - Completada',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -705,7 +786,7 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `slug`, `email`, `phone`, `birth
 (5, 'joel', 'andres', 'joel', 'joel@hotmail.com', '555555555555', '2021-06-25', '2021-06-26', '2021-06-27 13:44:57', '$2y$10$ko6hbqyQZsVJYvQYZJ4b8OLnTfzXd0LROhrI.CCbS/FdCXMiZO47q', '1', 1, 'aBtwT4jVOsPLC0TkjTYgKnuOdglUhWb1tnoQjCSWzShUYu7klZwbE7LfWMvf', '2021-06-24 00:02:18', '2021-06-24 00:02:18', '10', NULL, 4, 'a', NULL, NULL),
 (6, 'Freddy', 'Millan', '', 'freddymillan@valdusoft.com', '+584120924853', '2021-06-23', '2021-06-23', '2021-06-23 20:03:12', '12345678', NULL, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 'Carlos', 'Gonzalez', '', 'carlosgonzalez@valdusoft.com', '+584123597875', '2021-06-23', '2021-06-23', '2021-06-23 20:03:12', '12345678', NULL, 3, NULL, NULL, '2021-07-06 20:03:41', NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'Luisana', 'Marin', '', 'luisanamarin@valdusoft.com', '+584120924871', NULL, NULL, NULL, '$2y$10$4NOMGOX/cB.e.AhOGKeAcu9bdwOpj/2rsRmKxcpZ0c17vvt25N5E2', NULL, 3, NULL, '2021-06-24 18:41:19', '2021-06-24 18:41:19', NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'Luisana', 'Marin', '', 'luisanamarin@valdusoft.com', '+584120924871', NULL, NULL, NULL, '$2y$10$yfar1ISof2qxLW7nZe6LzuzPyrU/9N9oyHZQqbMSxJQrdIQhj024W', NULL, 3, NULL, '2021-06-24 18:41:19', '2021-06-24 18:41:19', NULL, NULL, NULL, NULL, NULL, NULL),
 (9, 'Luis', 'Briceno', '', 'luisbriceno@valdusoft.com', NULL, NULL, NULL, NULL, '$2y$10$9lTjXzVWycwiDNDPZ4iPbuLi4jaR0hg9ae8Zuk6TJdYQozAKJr966', NULL, 3, NULL, '2021-06-28 18:50:57', '2021-06-28 18:50:57', NULL, NULL, NULL, NULL, NULL, NULL),
 (10, 'Camilo', 'Vergara', 'camilo-vergara', 'camilovergara@gmail.com', '+584269315724', NULL, NULL, NULL, '$2y$10$WkPjgGXp3VAVZE/cy7Zcf.ShIjrVtvNzOfbnXoy.Q5w5cjelDjK2S', NULL, 0, NULL, '2021-07-01 19:51:46', '2021-07-06 20:03:38', NULL, NULL, NULL, NULL, '10.png', NULL),
 (11, 'Lester', 'Morales', 'lester-morales', 'lester@gmail.com', '+584269315724', NULL, NULL, NULL, '$2y$10$DC6Wt5PwzpZBg/qfukwFHOUl7XZXDibbeJ1asCk3yqso85Tu5i3QS', NULL, 0, NULL, '2021-07-06 20:03:32', '2021-07-06 20:03:44', NULL, NULL, NULL, NULL, '11.jpeg', NULL),
@@ -736,7 +817,8 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `slug`, `email`, `phone`, `birth
 --
 ALTER TABLE `bills`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `bills_user_id_foreign` (`user_id`);
+  ADD KEY `bills_user_id_foreign` (`user_id`),
+  ADD KEY `bills_hosting_id_foreign` (`hosting_id`);
 
 --
 -- Indices de la tabla `chat`
@@ -766,6 +848,20 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indices de la tabla `financing`
+--
+ALTER TABLE `financing`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `financing_user_id_foreign` (`user_id`);
+
+--
+-- Indices de la tabla `financing_payments`
+--
+ALTER TABLE `financing_payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `financing_payments_financing_id_foreign` (`financing_id`);
+
+--
 -- Indices de la tabla `hostings`
 --
 ALTER TABLE `hostings`
@@ -791,6 +887,20 @@ ALTER TABLE `payments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `payments_user_id_foreign` (`user_id`),
   ADD KEY `payments_bill_id_foreign` (`bill_id`);
+
+--
+-- Indices de la tabla `payrolls`
+--
+ALTER TABLE `payrolls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `payrolls_employee`
+--
+ALTER TABLE `payrolls_employee`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payrolls_employee_payroll_id_foreign` (`payroll_id`),
+  ADD KEY `payrolls_employee_user_id_foreign` (`user_id`);
 
 --
 -- Indices de la tabla `profiles`
@@ -899,6 +1009,18 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `financing`
+--
+ALTER TABLE `financing`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `financing_payments`
+--
+ALTER TABLE `financing_payments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `hostings`
 --
 ALTER TABLE `hostings`
@@ -908,12 +1030,24 @@ ALTER TABLE `hostings`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `payments`
 --
 ALTER TABLE `payments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `payrolls`
+--
+ALTER TABLE `payrolls`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `payrolls_employee`
+--
+ALTER TABLE `payrolls_employee`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -984,6 +1118,7 @@ ALTER TABLE `users`
 -- Filtros para la tabla `bills`
 --
 ALTER TABLE `bills`
+  ADD CONSTRAINT `bills_hosting_id_foreign` FOREIGN KEY (`hosting_id`) REFERENCES `hostings` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `bills_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
@@ -992,6 +1127,18 @@ ALTER TABLE `bills`
 ALTER TABLE `chat`
   ADD CONSTRAINT `chat_project_id_foreign` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`),
   ADD CONSTRAINT `chat_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Filtros para la tabla `financing`
+--
+ALTER TABLE `financing`
+  ADD CONSTRAINT `financing_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `financing_payments`
+--
+ALTER TABLE `financing_payments`
+  ADD CONSTRAINT `financing_payments_financing_id_foreign` FOREIGN KEY (`financing_id`) REFERENCES `financing` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `hostings`
@@ -1005,6 +1152,13 @@ ALTER TABLE `hostings`
 ALTER TABLE `payments`
   ADD CONSTRAINT `payments_bill_id_foreign` FOREIGN KEY (`bill_id`) REFERENCES `bills` (`id`),
   ADD CONSTRAINT `payments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Filtros para la tabla `payrolls_employee`
+--
+ALTER TABLE `payrolls_employee`
+  ADD CONSTRAINT `payrolls_employee_payroll_id_foreign` FOREIGN KEY (`payroll_id`) REFERENCES `payrolls` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `payrolls_employee_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `projects`
