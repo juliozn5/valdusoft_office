@@ -70,7 +70,7 @@ class ProjectsController extends Controller
         if ($request->hasFile('logo')){
             $file = $request->file('logo');
             $name = $project->id.".".$file->getClientOriginalExtension();
-            $file->move(public_path('storage') . '/photo-logo', $name);
+            $file->move(public_path().'/uploads/images/projects', $name);
             $project->logo = $name;
             $project->save();
         }
