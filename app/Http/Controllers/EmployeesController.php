@@ -88,6 +88,7 @@ class EmployeesController extends Controller
     public function show($slug, $id){
         $employee = User::where('id', '=', $id)
                         ->with('projects', 'skills')
+                        ->withCount('skills')
                         ->first();
 
         $projectsID = array();

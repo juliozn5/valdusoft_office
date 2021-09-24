@@ -64,12 +64,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="card-header">
                         <h3 class="card-title mb-2">Nuevo Hosting</h3>
                     </div>
-            <div class="card-body">
+            <div class="card-body pl-3 pr-3">
                 <div class="row">
                     <div class="col-md-4 col-12">
                         <div class="form-group">
-                            <label for="url">Nombre</label>
-                            <input type="text" name="url" id="url" class="form-control" required>
+                            <label for="url">URL</label>
+                            <input type="text" name="url" id="url" class="form-control" required autofocus>
                         </div>
                     </div>
                     <div class="col-md-4 col-12">
@@ -103,13 +103,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="col-md-4 col-12">
                         <div class="form-group">
                             <label for="price">Precio</label>
-                            <input type="text" name="price" id="price" class="form-control" required>
+                            <input type="text" name="price" id="price" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-4 col-12">
                         <div class="form-group">
                             <label for="renewal_price">Precio de Renovacion</label>
-                            <input type="text" name="renewal_price" id="renewal_price" class="form-control" required>
+                            <input type="text" name="renewal_price" id="renewal_price" class="form-control">
                         </div>
                     </div>
                       <div class="col-12 alert alert-danger" id="errors_div" style="display: none;"></div>

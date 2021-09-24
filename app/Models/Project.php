@@ -12,12 +12,17 @@ class Project extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'slug',
         'status',
         'start_date',
         'ending_date',
         'logo',
         'country_id',
-        'type'
+        'type',
+        'status',
+        'link',
+        'description',
+        'visible_landing'
     ];
 
     public function user(){

@@ -58,13 +58,25 @@ function edithosting($hosting) {
                                             <th scope="row">{{ $hosting->url }}</th>
                                             <td>{{ date('d/m/Y', strtotime($hosting->create_date)) }}</td>
                                             <td>
-                                                {{$hosting->user->name}}
+                                                {{$hosting->user->name}} {{$hosting->user->last_name}}
                                             </td>
                                             <td>
                                                 {{ date('d/m/Y', strtotime($hosting->due_date))}}
                                             </td>
-                                            <td>${{$hosting->price}}</td>
-                                            <td>${{$hosting->renewal_price}}</td>
+                                            <td>
+                                                @if (!is_null($hosting->price))
+                                                    ${{$hosting->price}}
+                                                @else
+                                                    Dato no disponible
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if (!is_null($hosting->renewal_price))
+                                                    {{$hosting->renewal_price}}
+                                                @else
+                                                    Dato no disponible
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a href="{{route('admin.hostings.show', [$hosting->id])}}" class="mr-2" ><i class="fa fa-eye mr-1 action-icon"></i></a>
                                                 

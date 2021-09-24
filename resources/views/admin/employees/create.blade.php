@@ -70,12 +70,12 @@
                             <div class="card-header">
                                 <h3 class="card-title mb-2">Nuevo Empleado</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body pl-3 pr-3">
                                 <div class="row">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="name">Nombre</label>
-                                            <input type="text" name="name" id="name" class="form-control" required>
+                                            <input type="text" name="name" id="name" class="form-control" autofocus required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -114,7 +114,7 @@
                                             <input type="text" name="email" id="email" class="form-control" data-route="{{ route('admin.check-email') }}" onblur="checkEmail();" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-8 col-12">
                                         <div class="form-group">
                                             <label for="curriculum">CV</label>
                                             <input type="file" name="curriculum" id="curriculum" class="form-control">
@@ -122,8 +122,27 @@
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
+                                            <label for="position">Posición</label>
+                                            <select name="position" id="position" class="form-control" required>
+                                                <option value="" selected disabled>Seleccione una opción...</option>
+                                                <option value="0">Desarrollador</option>
+                                                <option value="1">Diseñador</option>
+                                                <option value="2">Project Manager</option>
+                                                <option value="3">Financiero</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
                                             <label for="price_per_hour">Precio por Hora</label>
                                             <input type="text" name="price_per_hour" id="price_per_hour" class="form-control">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label for="uphold_account">Billetera USDT-TRON</label>
+                                            <input type="text" name="tron_wallet" id="tron_wallet" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -136,12 +155,6 @@
                                         <div class="form-group">
                                             <label for="password_confirmation">Repetir Contraseña</label>
                                             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" onkeyup="checkPasswords();" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="uphold_account">Billetera USDT-TRON</label>
-                                            <input type="text" name="tron_wallet" id="tron_wallet" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12 pl-3">

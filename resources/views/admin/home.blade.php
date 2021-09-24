@@ -17,6 +17,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         background-color: #650865 !important;
         color: #FFFFFF;
     }
+    .btn-client:hover{
+        color: #FFFFFF !important;
+    }
 
     @import url('https://fonts.googleapis.com/css?family=Poppins');
 

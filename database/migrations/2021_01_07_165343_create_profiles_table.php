@@ -18,6 +18,14 @@ class CreateProfilesTable extends Migration
             $table->string('profile');
             $table->timestamps();
         });
+
+        $date = date('Y-m-d H:i:s');
+
+        DB::table('profiles')->insert([
+            ['profile' => 'admin', 'created_at' => $date, 'updated_at' => $date],
+            ['profile' => 'client', 'created_at' => $date, 'updated_at' => $date],
+            ['profile' => 'employee', 'created_at' => $date, 'updated_at' => $date]
+        ]);
     }
 
     /**

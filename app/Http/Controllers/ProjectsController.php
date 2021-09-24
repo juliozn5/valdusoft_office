@@ -64,7 +64,6 @@ class ProjectsController extends Controller
     public function store(Request $request){
         $project = new Project($request->all());
         $project->slug = Str::slug($request->name);
-        $project->status = '0';
         $project->save();
 
         if ($request->hasFile('logo')){

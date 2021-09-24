@@ -62,12 +62,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="card-header">
                                 <h3 class="card-title mb-2">Nuevo Cliente</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body pl-3 pr-3">
                                 <div class="row">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="name">Nombre</label>
-                                            <input type="text" name="name" id="name" class="form-control" required>
+                                            <input type="text" name="name" id="name" class="form-control" autofocus required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">

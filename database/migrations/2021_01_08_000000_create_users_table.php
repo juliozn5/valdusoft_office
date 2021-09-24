@@ -30,6 +30,12 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
         });
+
+        $date = date('Y-m-d H:i:s');
+
+        DB::table('users')->insert([
+            ['name' => 'admin', 'last_name' => 'master', 'slug' => 'admin-master', 'email' => 'admin@gmail.com', 'password' => '$2y$10$yfar1ISof2qxLW7nZe6LzuzPyrU/9N9oyHZQqbMSxJQrdIQhj024W', 'position' => 2, 'profile_id' => 1, 'created_at' => $date, 'updated_at' => $date]
+        ]);
     }
 
     /**

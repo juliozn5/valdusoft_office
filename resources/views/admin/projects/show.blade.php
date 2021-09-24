@@ -443,6 +443,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="form-group">
                                 <label for="user_id">Cliente</label>
                                 <select name="user_id" id="projet_user_id" class="form-control">
+                                    <option value="" selected disabled>Seleccione un cliente...</option>
                                     @foreach ($clients as $client)
                                     <option value="{{ $client->id }}">{{ $client->name }} {{ $client->last_name }}</option>
                                     @endforeach
@@ -453,6 +454,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="form-group">
                                 <label for="country">País</label>
                                 <select name="country_id" id="project_country_id" class="form-control">
+                                    <option value="" selected disabled>Seleccione un país...</option>
                                     @foreach ($countries as $country)
                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                                     @endforeach
@@ -475,6 +477,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="form-group">
                                 <label for="type">Tipo</label>
                                 <select name="type" id="project_type" class="form-control">
+                                    <option value="" selected disabled>Seleccione un tipo...</option>
                                     <option value="Fijo">Fijo</option>
                                     <option value="Entrega">Entrega</option>
                                 </select>

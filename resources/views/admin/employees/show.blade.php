@@ -34,7 +34,11 @@
                         <div class="card-header">
                             <div class="row" style="display: flex; align-items: center;">
                                 <div class="col-md-4">
-                                    <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->fullname }}" height="100" width="100">
+                                    @if (!is_null($employee->photo))
+                                        <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->fullname }}" height="100" width="100">
+                                    @else
+                                        <img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
+                                    @endif
                                 </div>
                                 <div class="col-md-8">
                                     <h3 class="card-title">{{ $employee->name }} {{ $employee->last_name }}</h3>
@@ -72,22 +76,23 @@
 
                             {{-- Sección de Fechas --}}
                             <div class="row mt-3 pl-2 pr-2">
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Fecha de Nacimiento</div>
                                     <div class="mt-1 project-detail-dates">
                                         <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->birthdate)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->birthdate)) }}
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Fecha de Ingreso</div>
                                     <div class="mt-1 project-detail-dates">
                                         <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->admission_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->admission_date)) }}
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Próximas Vacaciones</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i> 29/12/1992
+                                        <i class="far fa-calendar icon-big mr-1"></i> 
+                                        Dato no disponible
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +101,7 @@
                             <div class="mt-3 pl-2 pr-2">
                                 <div class="project-detail-titles">Skills</div>
                                 <div class="mt-1">
-                                    @if (!is_null($employee->skills))
+                                    @if ($employee->skills_count)
                                         @foreach ($employee->skills as $skill)
                                             <div class="text-center text-white d-inline-block mr-1">
                                                 <div class="project-detail-skill">{{ $skill->skill }}</div>
@@ -122,7 +127,7 @@
 
                             {{-- Sección de Sueldo --}}
                             <div class="row mt-3 pl-2 pr-2">
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Precio por hora</div>
                                     <div class="mt-1 project-detail-dates">
                                         <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($employee->price_per_hour)) ? 'Dato no disponible' : $employee->price_per_hour.' USD' }}

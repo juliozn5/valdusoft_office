@@ -36,7 +36,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="card-header mb-3">
             <div class="row" id="all-center-items">
                 <div class="col-md-4">
-                    <img class="rounded-circle" src="{{ asset('storage/photo-profile/'.$client->photo) }}" alt="" width="55px" height="55px">
+                    @if (!is_null($client->photo))
+                        <img class="rounded-circle" src="{{ asset('storage/photo-profile/'.$client->photo) }}" alt="" width="55px" height="55px">
+                    @else
+                        <img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
+                    @endif
                 </div>
             </div>
             <div class="col ml-1">

@@ -18,6 +18,15 @@ class CreateTagsTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        $date = date('Y-m-d H:i:s');
+
+        DB::table('tags')->insert([
+            ['name' => 'Apps', 'created_at' => $date, 'updated_at' => $date],
+            ['name' => 'Diseño Web', 'created_at' => $date, 'updated_at' => $date],
+            ['name' => 'Desarrollo Web', 'created_at' => $date, 'updated_at' => $date],
+            ['name' => 'Diseño Gráfico', 'created_at' => $date, 'updated_at' => $date]
+        ]);
     }
 
     /**
