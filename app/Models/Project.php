@@ -43,6 +43,11 @@ class Project extends Model
         return $this->belongsToMany('App\Models\Technology', 'projects_technologies', 'project_id', 'technology_id');
     }
 
+     //Relación de los proyectos con las etiquetas
+     public function tags(){
+        return $this->belongsToMany('App\Models\Tag', 'projects_tags', 'project_id', 'tag_id');
+    }
+
     //Relación de los proyectos con sus archivos adjuntos
     public function attachments(){
         return $this->hasMany('App\Models\Attachment');

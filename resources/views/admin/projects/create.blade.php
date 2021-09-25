@@ -115,16 +115,29 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="start_date">Fecha de inicio</label>
                                             <input type="date" name="start_date" id="start_date" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="ending_date">Fecha de entrega</label>
                                             <input type="date" name="ending_date" id="ending_date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="pb-1"><label for="tags">Etiquetas</label></div>
+                                            <div class="row ml-1">
+                                                @foreach ($tags as $tag)
+                                                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                                                    <input type="checkbox" class="form-check-input skills" value="{{ $tag->id }}" name="tags[]">
+                                                    <label class="form-check-label">{{ $tag->name }}</label>
+                                                </div>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">

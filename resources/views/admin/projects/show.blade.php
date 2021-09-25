@@ -162,7 +162,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             @if (!is_null($project->logo))
                             <img src="{{ asset('uploads/images/projects/'.$project->logo) }}" width="100%" height="100%">
                             @else
-                            <img src="{{ asset('images/image.png') }}" width="100%" height="100%">
+                            <img src="{{ asset('images/logo.webp') }}" width="100%" height="100%">
                             @endif
                         </div>
 
@@ -244,7 +244,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                             {{-- Sección de Status --}}
                             <div class="row mt-2">
-                                <div class="col-12">
+                                <div class="col-4">
                                     <div class="project-detail-titles">Estado</div>
                                     <div class="mt-1 project-detail-dates">
                                         @if ($project->status == 0)
@@ -256,6 +256,17 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                         @elseif ($project->status == 3)
                                         <label class="label status-label status-label-green">Completado</label>
                                         @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-8">
+                                    <div class="project-detail-titles">Etiquetas</div>
+                                    <div class="mt-1">
+                                        @foreach ($project->tags as $tag)
+                                            <div class="text-center text-white d-inline-block mr-1">
+                                                <div class="project-detail-skill">{{ $tag->name }}</div>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -495,12 +506,31 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-12 col-12">
                             <div class="form-group">
                                 <label for="logo">Logo</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="logo" id="logo">
                                     <label class="custom-file-label" for="logo">Seleccione un logo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="pb-1"><label for="tags">Etiquetas</label></div>
+                                <div class="row ml-1">
+                                    @foreach ($tags as $tag)
+                                        @php
+                                            $check = 0;
+                                            if (in_array($tag->id, $tagsID)){
+                                                $check = 1;
+                                            }
+                                        @endphp
+                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                                            <input type="checkbox" class="form-check-input skills" value="{{ $tag->id }}" name="tags[]" @if ($check == 1) checked @endif>
+                                            <label class="form-check-label">{{ $tag->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

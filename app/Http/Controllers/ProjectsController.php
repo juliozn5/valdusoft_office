@@ -55,8 +55,13 @@ class ProjectsController extends Controller
                         ->select('id', 'name')
                         ->orderBy('name', 'ASC')
                         ->get();
+        
+        $tags = DB::table('tags')
+            ->select('id', 'name')
+            ->orderBy('id', 'ASC')
+            ->get();
 
-        return view('admin.projects.create')->with(compact('clients', 'countries', 'technologies'));
+        return view('admin.projects.create')->with(compact('clients', 'countries', 'technologies', 'tags'));
     }
 
     /** Guardar datos del Nuevo Proyecto
@@ -80,18 +85,28 @@ class ProjectsController extends Controller
             }
         }
 
+        if (!is_null($request->tags)) {
+            foreach ($request->tags as $tag) {
+                $project->tags()->attach($tag);
+            }
+        }
+
         return redirect()->route('admin.projects.list')->with('msj-exitoso','done'); 
     }
 
     /** Ver detalles de un Proyecto
     *** Perfil: Admin ***/
     public function show($slug, $id){
-        $project = Project::with('employees', 'technologies', 'attachments', 'accounting_transactions')
+        $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
                     ->where('id', '=', $id)
                     ->first();
         
+        $tagsID = array();
+        foreach ($project->tags as $tag){
+            array_push($tagsID, $tag->id);
+        }
+        
         $employeesID = array();
-
         foreach ($project->employees as $employee){
             array_push($employeesID, $employee->id);
         }
@@ -128,8 +143,13 @@ class ProjectsController extends Controller
                         ->select('id', 'name')
                         ->orderBy('name', 'ASC')
                         ->get();
+        
+        $tags = DB::table('tags')
+                    ->select('id', 'name')
+                    ->orderBy('id', 'ASC')
+                    ->get();
 
-        return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries'));   
+        return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID'));   
     }
 
     /** Guardar datos modificados del Proyecto
@@ -146,6 +166,16 @@ class ProjectsController extends Controller
         }
         
         $project->save();
+    
+        DB::table('projects_tags')
+            ->where('project_id', '=', $project->id)
+            ->delete();
+
+        if (!is_null($request->tags)){
+            foreach ($request->tags as $tag){
+                $project->tags()->attach($tag);
+            }
+        }
 
         return redirect()->back()->with('project-updated','done');  
     }
