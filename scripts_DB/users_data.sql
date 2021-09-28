@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 13-09-2021 a las 15:57:32
+-- Tiempo de generación: 28-09-2021 a las 13:14:25
 -- Versión del servidor: 5.7.35
 -- Versión de PHP: 7.3.28
 
@@ -21,36 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `valdusof_backoffice`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `users`
---
-
-CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `birthdate` date DEFAULT NULL,
-  `admission_date` date DEFAULT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `position` enum('0','1','2','3') COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '0 - Desarrollador, 1 - Diseñador, 2 - Project-Manager, 3 - Financiero',
-  `profile_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0' COMMENT '0 - Nuevo, 1 - Administrador, 2 - Cliente, 3 - Trabajador',
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `curriculum` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `price_per_hour` double DEFAULT NULL,
-  `uphold_account` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tron_wallet` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Logo en caso de que sea un Cliente'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
@@ -86,39 +56,8 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `slug`, `email`, `phone`, `birth
 (27, 'Julio', 'Jimenez', 'julio-jimenez', 'juliozn5dev@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$M3pmKrzOyUGv0PmJVoJuL.if2r6UWdWVXVtEhWp.jTNBbBgHB6SLK', '0', 3, NULL, '2021-09-14 01:35:18', '2021-09-14 01:35:18', NULL, NULL, NULL, NULL, NULL, NULL),
 (28, 'Eulin', 'Palma', 'eulin-palma', 'eulinpr@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$UUOGkkmfUCeJDVzvoKlWVu9KaZOi/RspB2DedBqsdTCW/Hjy5Idsa', '0', 3, NULL, '2021-09-14 01:35:48', '2021-09-14 01:35:48', NULL, NULL, NULL, NULL, NULL, NULL),
 (29, 'Cesar', 'Montevideo', 'cesar-montevideo', 'cesarmontevideo@valdusoft.com', '+584243561272', '1999-05-20', NULL, NULL, '$2y$10$0A/jyzwOA2phRXk4CZb6Yuc.YJ.Qd/uHub/1U2gSdrxOPkylEJnaW', '0', 3, NULL, '2021-09-14 01:36:47', '2021-09-14 01:36:47', NULL, NULL, NULL, NULL, NULL, NULL),
-(30, 'María', 'Valera', 'maria-valera', 'mariavalera@valdusoft.com', NULL, NULL, NULL, NULL, '$2y$10$ZkC52Nam6tCljal7to41OeOjhWTFB8mIWUwljuxCbNypzGDcXURQy', '0', 3, NULL, '2021-09-14 01:37:37', '2021-09-14 01:37:37', NULL, NULL, NULL, NULL, NULL, NULL);
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`),
-  ADD KEY `users_profile_id_foreign` (`profile_id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_profile_id_foreign` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`) ON DELETE CASCADE;
+(30, 'María', 'Valera', 'maria-valera', 'mariavalera@valdusoft.com', NULL, NULL, NULL, NULL, '$2y$10$ZkC52Nam6tCljal7to41OeOjhWTFB8mIWUwljuxCbNypzGDcXURQy', '0', 3, NULL, '2021-09-14 01:37:37', '2021-09-14 01:37:37', NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 'Alexis', 'Valera', 'alexis-valera', 'alexisjoseva95@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$eI.D5GTAEZI1qyQ8F/ng8u9e4SG81Hr8S/I9poUXa4xgPWJ7bE1YG', NULL, 2, NULL, '2021-09-14 03:42:45', '2021-09-14 03:42:45', NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
