@@ -15,6 +15,7 @@ class UpdateUsersTable3 extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('logo')->nullable()->comment('Logo en caso de que sea un Cliente');
+            $table->enum('status', [0, 1])->default(1)->comment('0 - inactivo, 1 - activo');
         });
     }
 

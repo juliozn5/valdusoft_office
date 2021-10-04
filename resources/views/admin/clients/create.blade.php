@@ -67,37 +67,78 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="name">Nombre</label>
-                                            <input type="text" name="name" id="name" class="form-control" autofocus required>
+                                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus required>
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="last_name">Apellido</label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control" required>
+                                            <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" required>
+                                            @error('last_name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-2 col-12">
                                         <div class="form-group">
                                             <label for="photo">Foto</label>
-                                            <input type="file" name="photo" id="photo" class="form-control">
+                                            <input type="file" name="photo" id="photo" class="form-control @error('photo') is-invalid @enderror">
+                                            @error('photo')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-12">
+                                        <div class="form-group">
+                                            <label for="logo">Logo Empresa</label>
+                                            <input type="file" name="logo" id="logo" class="form-control @error('logo') is-invalid @enderror">
+                                            @error('logo')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password">Contraseña</label>
-                                            <input type="password" name="password" id="password" class="form-control" onkeyup="checkPasswords();" required>
+                                            <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" onkeyup="checkPasswords();" required>
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="email">Correo Electrónico</label>
-                                            <input type="text" name="email" id="email" class="form-control" data-route="{{ route('admin.check-email') }}" onblur="checkEmail();" required>
+                                            <input type="text" name="email" id="email" class="form-control  @error('email') is-invalid @enderror" data-route="{{ route('admin.check-email') }}" onblur="checkEmail();" value="{{ old('email') }}" required>
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="phone">Teléfono</label>
-                                            <input type="text" name="phone" id="phone" class="form-control">
+                                            <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
+                                            @error('phone')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
 

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
 use App\Models\User;
+use App\Models\Hosting;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str as Str;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Bill;
-use App\Models\Hosting;
-use App\Models\Project;
 
 class ClientsController extends Controller
 {
@@ -64,28 +65,53 @@ class ClientsController extends Controller
 
     /** Guardar Datos del Nuevo Cliente
     *** Perfil: Admin ***/
-    public function store(Request $request){
-
-        $client = new User($request->all());
-
-        $client->slug = Str::slug($request->name."-".$request->last_name);
-
-        $client->password = Hash::make($request->password);
-
-        $client->profile_id = 2;
-
-        $client->save();
-
-        if ($request->hasFile('photo')){
-            $file = $request->file('photo');
-            $name = $client->id.".".$file->getClientOriginalExtension();
-            $file->move(public_path().'/uploads/images/users/photos', $name);
-            $client->photo = $name;
+    public function store(Request $request)
+    {
+        $msj = [
+            'name.required' => 'El nombre es requerido.',
+            'name.max' => 'El nombre debe tener como máximo 50 caracteres.',
+            'last_name.required' => 'El apellido es requerido.',
+            'last_name.max' => 'El apellido debe tener como máximo 50 caracteres.',
+            'email.unique' => 'El correo ya se encuentra registrado.',
+            'phone' => 'El teléfono es requerido',
+            'photo.mimes' => 'Archivos no permitido, solo jpeg, jpg y png',
+            'photo.max' => 'La imagen no debe ser mayor de 2048 Kilobytes',
+            'logo.mimes' => 'Archivos no permitido, solo jpeg, jpg y png',
+            'logo.max' => 'La imagen no debe ser mayor de 2048 Kilobytes'
+        ];
+        $validate = $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'last_name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'max:18'],
+            'password' => ['required', 'string', 'min:6'],
+            'photo' => ['nullable', 'mimes:jpeg,png', 'max:2048'],
+            'logo' => ['nullable', 'mimes:jpeg,png', 'max:2048']
+        ], $msj);
+        
+        
+        if ($validate) {
+            $client = New User($request->all());
+            $client->slug = Str::slug($request->name."-".$request->last_name);
+            $client->profile_id = 2;
+            $client->password = Hash::make($request->password);
+            $client->save();
+            if ($request->hasFile('photo')){
+                $file = $request->file('photo');
+                $name = $client->id.".".$file->getClientOriginalExtension();
+                $file->move(public_path('storage').'/uploads/images/users/photos', $name);
+                $client->photo = 'uploads/images/users/photos/'.$name;
+            }
+            if ($request->hasFile('logo')){
+                $file = $request->file('logo');
+                $name = $client->id.".".$file->getClientOriginalExtension();
+                $file->move(public_path('storage').'/uploads/images/users/logos', $name);
+                $client->logo = 'uploads/images/users/logos/'.$name;
+            }
+            $client->save();
         }
 
-        $client->save();
- 
-        return redirect()->route('admin.clients.list')->with('message','Se creo el Cliente Exitosamente');
+            return redirect()->route('admin.clients.list')->with('message','Se creo el Cliente Exitosamente');
         
     }
 
@@ -101,20 +127,51 @@ class ClientsController extends Controller
 
     /** Guardar datos modificados de un Cliente
     *** Perfil: Admin ***/
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
+        // dd($request);
         $client = User::find($id);
+        $msj = [
+            'name.required' => 'El nombre es requerido.',
+            'name.max' => 'El nombre debe tener como máximo 50 caracteres.',
+            'last_name.required' => 'El apellido es requerido.',
+            'last_name.max' => 'El apellido debe tener como máximo 50 caracteres.',
+            'email.unique' => 'El correo ya se encuentra registrado.',
+            'phone' => 'El teléfono es requerido',
+            'photo.mimes' => 'Archivos no permitido, solo jpeg, jpg y png',
+            'photo.max' => 'La imagen no debe ser mayor de 2048 Kilobytes',
+            'logo.mimes' => 'Archivos no permitido, solo jpeg, jpg y png',
+            'logo.max' => 'La imagen no debe ser mayor de 2048 Kilobytes'
+        ];
+        $validate = $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'last_name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$client->id.',id'],
+            'phone' => ['required', 'string', 'max:18'],
+            'photo' => ['nullable', 'mimes:jpeg,png', 'max:2048'],
+            'logo' => ['nullable', 'mimes:jpeg,png', 'max:2048']
+        ], $msj);
 
-        $fields = [     ];
+        if($validate){
+            $client->slug = Str::slug($request->name."-".$request->last_name);
+            if ($request->hasFile('photo')){
+                $file = $request->file('photo');
+                $name = $client->id.".".$file->getClientOriginalExtension();
+                $file->move(public_path('storage').'/uploads/images/users/photos', $name);
+                $client->photo = 'uploads/images/users/photos/'.$name;
+                // dd($client->photo);
+            }
+            if ($request->hasFile('logo')){
+                $file = $request->file('logo');
+                $name = $client->id.".".$file->getClientOriginalExtension();
+                $file->move(public_path('storage').'/uploads/images/users/logos', $name);
+                $client->logo = 'uploads/images/users/logos/'.$name;
+            }
+            $client->save();
+            $client->update($request->all());
+            return redirect()->route('admin.clients.list')->with('message','Se actualizó el Cliente Exitosamente');
+        }
 
-        $msj = [       ];
-
-        $this->validate($request, $fields, $msj);
-
-        $client->update($request->all());
-
-        $client->save();
-
-        return redirect()->route('admin.clients.list')->with('message','Se actualizo el Cliente Exitosamente');
     }
 
     /** Eliminar un Cliente
