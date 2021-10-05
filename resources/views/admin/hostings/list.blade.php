@@ -46,7 +46,7 @@ function edithosting($hosting) {
                                             <th>DOMINIO</th>
                                             <th>FECHA DE INICIO</th>
                                             <th>CLIENTE</th>
-                                            <th>FECHA DE VENCIMIENTO</th>
+                                            <th>F. VENCIMIENTO</th>
                                             <th>PRECIO</th>
                                             <th>PRECIO DE RENOVACION</th>
                                             <th>ACCIÓN</th>
@@ -61,7 +61,7 @@ function edithosting($hosting) {
                                                 {{$hosting->user->name}} {{$hosting->user->last_name}}
                                             </td>
                                             <td>
-                                                {{ date('d/m/Y', strtotime($hosting->due_date))}}
+                                                {{date('d/m/Y', $hosting->renewal_hosting)}}
                                             </td>
                                             <td>
                                                 @if (!is_null($hosting->price))

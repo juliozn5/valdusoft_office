@@ -73,12 +73,29 @@ $("#renewal_price").val($hosting.renewal_price);
             <div class="project-detail-titles">Fecha de Vencimiento</div>
                 <div class="mt-1 project-detail-dates">
                 <img src="{{ asset('images/svg/calendar.svg')}}">
-                <span>{{date('d/m/Y', strtotime($hosting->due_date))}}</span>
+                <span>{{date('d/m/Y', $hosting->renewal_hosting)}}</span>
                 </div>
             </div>
         </div> 
 </div>
+
 <div class="pl-2 pr-2 mt-5">
+    <div class="row mt-3 pl-2 pr-2">
+        <div class="col-md-3 col-sm-1">
+            <div class="project-detail-titles">Precio</div>
+                <div class="mt-1 project-detail-dates">
+                <span>{{$hosting->price}}$</span>
+                </div>
+            </div>
+        <div class="col-md-3 col-sm-1">
+            <div class="project-detail-titles">Precio de Renovacion</div>
+                <div class="mt-1 project-detail-dates">
+                <span>{{$hosting->renewal_price}}$</span>
+                </div>
+            </div>
+        </div> 
+</div>
+{{-- <div class="pl-2 pr-2 mt-5">
     <div class="row mt-3 pl-2 pr-2">
         <div class="col-md-3 col-sm-1">
             <div class="project-detail-titles">Cantidad de años</div>
@@ -97,7 +114,7 @@ $("#renewal_price").val($hosting.renewal_price);
                 </div>
         </div>
     </div>
-</div>
+</div> --}}
 <div class="pl-2 pr-2 mt-3">
     <div class="row mt-3 pl-2 pr-2">
         <div class="col-md-3 col-sm-1">

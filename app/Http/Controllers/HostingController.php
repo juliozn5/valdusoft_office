@@ -47,18 +47,22 @@ class HostingController extends Controller
     /** Guardar datos del Nuevo Hosting
     *** Perfil: Admin ***/
     public function store(Request $request){
-        $fields = [   ];
 
-        $msj = [    ];
 
-        $this->validate($request, $fields, $msj);
+        $fecha = new Carbon($request->create_date);
+        $renewal_hosting = $fecha->addYears($request->years);
+        
+      Hosting::create([
+            'user_id' => $request->user_id,
+            'url' => $request->url,
+            'create_date' => $request->create_date,
+            'due_date' => $request->due_date,
+            'renewal_hosting'=> strtotime(date($renewal_hosting)),
+            'price' => $request->price,
+            'renewal_price' => $request->renewal_price,
+            'years' => $request->years,
+        ]);
 
-        $hosting = Hosting::create($request->all());
-
-        $fecha = new Carbon($hosting->create_date);
-        $hosting->due_date = $fecha->addYears($request->years);
-
-        $hosting->save();
 
         return redirect()->route('admin.hostings.list')->with('message','Se creo el Hosting Exitosamente');
     }
