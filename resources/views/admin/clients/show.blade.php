@@ -56,7 +56,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="row ">
             @foreach ($projects as $item)
                 <div class="container col-md-2 col-sm-1 mb-2 rounded">
-                    <img src="{{ asset('storage/photo-logo/'.$item->logo) }}"class="mt-2" alt="" style="width:100%;">
+                    <img src="{{ asset('uploads/images/projects/'.$item->logo) }}"class="mt-2" alt="" style="width:100%;">
                         <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
                             <div style="position: relative;top: 14px;"> {{$item->name}}</div>
                         </div>
@@ -73,7 +73,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="row">
                 @foreach ($hosting as $item)
                     <div class="text-small col-md-6 col-sm-1 mb-1">
-                        <div class="card-body rounded" style="background: #252856;">                    
+                        <div class="card-body rounded p-1" style="background: #252856;">                    
                             <img class="float-right capa-left" src="{{asset('images/icons/background.png')}}" alt="">
                                 <div class="row">                
                                     <div class="col-md-8 col-sm-12">
@@ -85,9 +85,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </div>
                                 </div>
                             <br>
-                            <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>{{date('d/m/Y', strtotime($item->due_date))}}</p>        
-                            <a type="submit" class="btn margen-b" style="background-color:#FF4D00;color: white;" id="btn-guardar"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
-                            <a type="submit" class="btn margen-green" style="background-color: #06B054;color: white;" id="btn-guardar"><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1"> Renovar</a>
+                            <p class="h4 text-white"><i class="fa fa-calendar icon-big mr-1"></i>{{date('d/m/Y', strtotime($item->due_date))}}</p>        
+                            <a type="button" class="btn margen-b" style="background-color:#FF4D00;color: white;" id="btn-guardar"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
+                            <a type="button" class="btn margen-green" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalRenovar" id="btn-guardar"><img src="{{asset('images/valdusoft/refresh.png')}}" alt="" class="mr-1"> Renovar</a>
                         </div>
                     </div>
                 @endforeach
@@ -143,4 +143,36 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalRenovar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Renovación</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h4 class="text-center">Seleccione el método de retiro</h4>
+            <div class="d-flex justify-content-center p-2">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="billetera">
+                    <label class="form-check-label" for="inlineRadio1">Billetera</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="bancolombia">
+                    <label class="form-check-label" for="inlineRadio2">Bancolombia</label>
+                  </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
