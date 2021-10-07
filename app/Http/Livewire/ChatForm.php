@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Chat;
 use App\Events\NuevoMensaje;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ChatForm extends Component
 {

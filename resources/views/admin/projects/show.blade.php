@@ -302,16 +302,24 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <div class="col-4 pt-1">
                                         @if ($attachment->file_type == 'image')
                                         <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
-                                            <img src="{{ asset('uploads/attachments/'.$attachment->file_name) }}" alt="{{ $attachment->name }}" width="100%" height="200px">
+                                            <img src="{{ asset('images/icons/files/image.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="img">
                                         </a>
-                                        @else
+                                        @elseif($attachment->file_type == 'pdf')
                                         <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
-                                            <img src="{{ asset('images/pdf.png') }}" alt="{{ $attachment->name }}" width="100%">
+                                            <img src="{{ asset('images/icons/files/pdf.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="pdf">
+                                        </a>
+                                        @elseif($attachment->file_type == 'excel')
+                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                            <img src="{{ asset('images/icons/files/excel.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="excel">
+                                        </a>
+                                        @elseif($attachment->file_type == 'ppt')
+                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                            <img src="{{ asset('images/icons/files/powerpoint.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="ppt">
                                         </a>
                                         @endif
                                     </div>
                                     <div class="col-8 pt-1">
-                                        <div style="font-size: 12px; font-weight: 500; color: #3C3232;">{{ $attachment->name }}</div>
+                                        <div style="font-size: 12px; font-weight: 500; color: #3C3232;">{{ $attachment->name }} - {{$attachment->file_type }}</div>
 
                                         <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
                                             Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
@@ -405,10 +413,10 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                 <input type="text" class="form-control" id="amount" placeholder="0.00">
                                                 <div class="input-group-append">
                                                     <button type="button" class="btn btn-secondary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" id="transaction_type_button">
-                                                        Ingreso
+                                                        Egreso
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end">
-                                                        <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a>
+                                                        {{-- <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a> --}}
                                                         <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('-');">Egreso</a>
                                                     </div>
                                                 </div>
@@ -756,7 +764,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="form-group">
                                 <label for="type">Tipo</label>
                                 <select name="type" id="type" class="form-control" required>
-                                    <option value="+" selected>Ingreso</option>
+                                    {{-- <option value="+" selected>Ingreso</option> --}}
                                     <option value="-">Egreso</option>
                                 </select>
                             </div>
