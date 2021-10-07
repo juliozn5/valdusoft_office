@@ -1,7 +1,5 @@
 <div class="chat-app-form">
-    <form class="chat-app-input" action="javascript:void(0);">
-        <!--<input type="hidden" wire:model="usuario" class="form-control" id="usuario">    
-        <input type="hidden" >-->
+    <form class="chat-app-input" action="javascript:void(0);">    
         <div class="row">
             <div class="col-9">
                 <input type="text" id="mensaje" class="form-control message mr-1" wire:model="message" wire:keydown.enter="enviarMensaje">
