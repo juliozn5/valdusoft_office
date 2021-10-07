@@ -30,28 +30,7 @@ class PaymentsController extends Controller
     {
     
        $data = request();
-
-       $msj = [
-        'user_id.required' => 'El usuario es requerido.',
-        'name.max' => 'El nombre debe tener como máximo 50 caracteres.',
-        'bill_id.required' => 'La factura es requerido.',
-        'payment_method.required' => 'El metodo de pago es requerido.',
-        'amount.required' => 'El monto es requerido.',
-        'fee.required' => 'La tarifa es requerido',
-        'total.required' => 'El total es requerido',
-        'date.required' => 'La fecha es requerida'
-    ];
-    $validate = $request->validate([
-        'user_id' => ['required'],
-        'bill_id' => ['required'],
-        'payment_method' => ['required'],
-        'amount' => ['required'],
-        'fee' => ['required'],
-        'total' => ['required'],
-        'date' => ['required']
-    ], $msj);
     
-
        DB::table('payments')->insert([
            'user_id' => $data['user_id'],
            'bill_id' => $data['bill_id'],
