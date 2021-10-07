@@ -35,8 +35,7 @@ class ChatForm extends Component
     public function mount()
     {                
         // Instanciamos Faker
-        //$this->faker = \Faker\Factory::create();       
-        $this->project = 7;
+        //$this->faker = \Faker\Factory::create();  
         $this->user = Auth::user()->name." ".Auth::user()->last_name;     
         $this->user_id = Auth::user()->id;       
     }
