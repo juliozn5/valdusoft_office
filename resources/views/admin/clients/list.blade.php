@@ -43,6 +43,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <tr>
                                             <th>#</th>
                                             <th>Foto</th>
+                                            <th>Logo Empresa</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Email</th>
@@ -57,10 +58,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>
-                                                @if (!is_null($item->photo))
-                                                <img class="rounded-circle" width="50px" height="50px" src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
+                                                @if (isset($item->photo))
+                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/'.$item->photo) }}" />
                                                 @else
-                                                <img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if (isset($item->logo))
+                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/'.$item->logo) }}" />
+                                                @else
+                                                <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                 @endif
                                             </td>
                                             
@@ -70,6 +78,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>{{ $item->phone }}</td>
                                             <td>
                                                 <a href="{{ route('admin.clients.show', [$item->slug,$item->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+
+                                                <a href="{{ route('admin.clients.edit', $item->id) }}"><i class="fa fa-edit mr-1 action-icon"></i></a>
                                                 
                                                 <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('delete{{$item->id}}').submit();"><i class="fa fa-trash action-icon"></i></a>
                                                 <form action="{{ route('admin.clients.delete', $item->id) }}" method="POST" id="delete{{$item->id}}">
