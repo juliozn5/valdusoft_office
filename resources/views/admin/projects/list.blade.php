@@ -63,6 +63,8 @@
                                                 <label class="label status-label status-label-blue">Testiando</label>
                                                 @elseif ($project->status == 3)
                                                 <label class="label status-label status-label-green">Completado</label>
+                                                @elseif ($project->status == 4)
+                                                <label class="label status-label status-label-red">Eliminado</label>
                                                 @endif
                                             </td>
                                             <td>

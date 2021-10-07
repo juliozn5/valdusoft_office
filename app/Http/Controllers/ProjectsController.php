@@ -182,7 +182,7 @@ class ProjectsController extends Controller
 
     public function delete($id){
         $project = Project::find($id);
-        $project->status = 4;
+        $project->status = "4";
         $project->save();
       
         return redirect()->route('admin.projects.list')->with('msj-deleted','done');
