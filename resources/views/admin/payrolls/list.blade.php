@@ -6,7 +6,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @push('scripts')
 <script>
     function editPayroll($payroll) {
-
         $("#payroll_id").val($payroll.id);
         $("#payroll_amount").val($payroll.amount);
         $("#date").val($payroll.date);
