@@ -118,7 +118,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::group(['prefix' => 'payments'], function () {
                 Route::get('/', 'PaymentsController@list')->name('admin.payments.list');
                 Route::get('billpayment', 'PaymentsController@billpayment')->name('admin.payments.billpayment');
-                Route::get('/create', 'PaymentsController@create')->name('payments.create');
                 Route::post('/generate', 'PaymentsController@generate')->name('payments.generate');
             });
         });
