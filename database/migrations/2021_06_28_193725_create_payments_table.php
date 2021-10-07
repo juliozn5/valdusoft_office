@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('bill_id');
-            $table->enum('payment_method', ['0', '1'])->comment('0 - Paypal, 1 - Uphold');
+            $table->string('payment_method');          
             $table->double('amount');
             $table->double('fee')->default(0);
             $table->double('total');

@@ -115,34 +115,34 @@
                       <br>
                       <br>
                       <label>Seleccione un usuario</label>
-                      <select name="user_id" required class="form-control  @error('user_id') is-invalid @enderror" >
+                      <select name="user_id" required class="form-control" >
                             <option value="">Seleccione un usuario</option>
                             @foreach ($users as $user)
                               <option value="{{$user->id}}">{{$user->slug}}</option>
                             @endforeach
                       </select>
                        
-                       <label class="mt-2">Seleccione la factura</label>
-                       <select name="bill_id" required class="form-control  @error('bill_id') is-invalid @enderror">
+                      <label class="mt-2">Seleccione la factura</label>
+                      <select name="bill_id" required class="form-control">
                             <option value="">Seleccione una factura</option>
                             @foreach ($bills as $bill)
                               <option value="{{$bill->id}}">{{$bill->id}}</option>
                             @endforeach
-                       </select>
+                      </select>
 
-                        <label class="mt-2">Seleccione metodo de pago</label>
-                        <select name="payment_method" id="payment_method"
-                              class="form-control  @error('payment_method') is-invalid @enderror"
+                      <label class="mt-2">Seleccione metodo de pago</label>
+                      <select name="payment_method" id="payment_method"
+                              class="form-control"
                               required data-toggle="select">
                               <option value="">Seleccione un metodo de pago</option>
                               <option value="0">Paypal</option>
                               <option value="1">Uphold</option>
-                        </select>
+                      </select>
 
-                       <div class="form-group mt-2">
+                      <div class="form-group mt-2">
                             <label for="amount">monto</label>
                             <input type="text" name="amount" class="form-control" id="amount" placeholder="monto" required >
-                       </div> 
+                      </div> 
                              
                       <div class="form-group">
                             <label for="fee">feed de pago</label>
@@ -152,19 +152,19 @@
                       <div class="form-group">
                            <label for="total">total a pagar</label>
                            <input type="text" name="total" class="form-control" id="total" placeholder="total" required >
-                     </div>
+                      </div>
                                                      
-                     <div class="form-group">
+                      <div class="form-group">
                            <label for="date">Fecha</label>
                            <input type="date" name="date" class="form-control" id="date" required >
-                     </div> 
+                      </div> 
                             
-                     <div class="modal-footer">
+                      <div class="modal-footer">
                          <button type="submit" class="btn btn-primary 
                           waves-effect waves-light">Guardar</button>
                           <button type="button" class="btn btn-danger"
                           data-dismiss="modal">Cancelar</button>          
-                     </div>
+                      </div>
                   </div>    
              </form>
           </div>
