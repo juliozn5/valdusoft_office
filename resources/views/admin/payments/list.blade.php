@@ -68,7 +68,7 @@
                                                     @endif
                                                  </td>
                                                  <td class="text-center">{{number_format($payment->amount, 2, ',', '.')}} $</td>
-                                                 <td class="text-center">{{number_format($payment->fee,2)}}</td> 
+                                                 <td class="text-center">{{number_format($payment->fee, 2, ',', '.')}}</td>
                                                  <td class="text-center">{{number_format($payment->total, 2, ',', '.')}} $</td>
                                                  <td>
                                                    @if ($payment->status == 0)
@@ -117,17 +117,17 @@
                       <label>Seleccione un usuario</label>
                       <select name="user_id" required class="form-control  @error('user_id') is-invalid @enderror" >
                             <option value="">Seleccione un usuario</option>
-                                @foreach ($users as $user)
-                                    <option value="{{$user->id}}">{{$user->slug}}</option>
-                                @endforeach
+                            @foreach ($users as $user)
+                              <option value="{{$user->id}}">{{$user->slug}}</option>
+                            @endforeach
                       </select>
                        
                        <label class="mt-2">Seleccione la factura</label>
                        <select name="bill_id" required class="form-control  @error('bill_id') is-invalid @enderror">
                             <option value="">Seleccione una factura</option>
-                               @foreach ($bills as $bill)
-                               <option value="{{$bill->id}}">{{$bill->id}}</option>
-                               @endforeach
+                            @foreach ($bills as $bill)
+                              <option value="{{$bill->id}}">{{$bill->id}}</option>
+                            @endforeach
                        </select>
 
                         <label class="mt-2">Seleccione metodo de pago</label>
@@ -140,18 +140,18 @@
                         </select>
 
                        <div class="form-group mt-2">
-                              <label for="amount">monto</label>
-                              <input type="number" name="amount" class="form-control" id="amount" placeholder="monto" required >
+                            <label for="amount">monto</label>
+                            <input type="text" name="amount" class="form-control" id="amount" placeholder="monto" required >
                        </div> 
                              
                       <div class="form-group">
-                             <label for="fee">feed de pago</label>
-                             <input type="number" name="fee" class="form-control" id="fee" placeholder="fee" required >
+                            <label for="fee">feed de pago</label>
+                            <input type="text" name="fee" class="form-control" id="fee" placeholder="fee" required >
                       </div>
    
                       <div class="form-group">
                            <label for="total">total a pagar</label>
-                           <input type="number" name="total" class="form-control" id="total" placeholder="total" required >
+                           <input type="text" name="total" class="form-control" id="total" placeholder="total" required >
                      </div>
                                                      
                      <div class="form-group">
