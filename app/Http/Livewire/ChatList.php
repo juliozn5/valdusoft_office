@@ -7,6 +7,7 @@ use App\Models\Chat;
 
 class ChatList extends Component
 {
+    public $project;
     public $user;
     public $user_id;
     public $messages;
@@ -19,7 +20,9 @@ class ChatList extends Component
         $this->lastId = 0;
         $this->messages = [];         
         
-        $messages = Chat::orderBy("id", "ASC")->get();          
+        $messages = Chat::where('project_id', '=', $this->project)
+                        ->orderBy("id", "ASC")
+                        ->get();          
         
         foreach($messages as $message){
             $this->lastId = $message->id;
@@ -54,7 +57,9 @@ class ChatList extends Component
         // El contenido de la Push
         //$data = \json_decode(\json_encode($data));
             
-        $message = Chat::orderBy("id", "DESC")->first();          
+        $message = Chat::where('project_id', '=', $this->project)
+                        ->orderBy("id", "DESC")
+                        ->first();          
 
         if (!is_null($message)){
             $item = [

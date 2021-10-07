@@ -340,7 +340,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="tab-pane fade pl-2 pr-2" id="chat">
                                 <h3 class="card-title">Chat</h3>
 
-                                @livewire("chat-list")
+                                @livewire("chat-list", ['project' => $project->id])
 
                                 @livewire("chat-form", ['project' => $project->id])
                             </div>
