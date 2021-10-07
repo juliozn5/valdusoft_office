@@ -3,6 +3,7 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
+        
         $('.delete-attachment').on('click', function() {
             var id = $(this).attr('data-id').split("-");
             Swal.fire({
@@ -341,7 +342,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                                 @livewire("chat-list")
 
-                                @livewire("chat-form")
+                                @livewire("chat-form", ['project' => $project->id])
                             </div>
 
                             {{-- Pestaña de Contable --}}
