@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('bill_id');
-            $table->string('payment_method');
+            $table->string('payment_method');          
             $table->double('amount');
             $table->double('fee')->default(0);
             $table->double('total');

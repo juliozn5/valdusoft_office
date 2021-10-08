@@ -109,7 +109,7 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('DetailPayroll', 'PayrollController@DetailPayroll')->name('admin.payrolls.DetailPayroll');
                 Route::post('update', 'PayrollController@update')->name('admin.payrolls.updatePayroll');
                 Route::get('PayrollList', 'PayrollController@PayrollList')->name('admin.payrolls.PayrollList');
- 
+                
                 Route::post('upgenerate', 'PayrollEmployeeController@upgenerate')->name('admin.payrolls.upgenerate');
 
             });
@@ -118,6 +118,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::group(['prefix' => 'payments'], function () {
                 Route::get('/', 'PaymentsController@list')->name('admin.payments.list');
                 Route::get('billpayment', 'PaymentsController@billpayment')->name('admin.payments.billpayment');
+                Route::post('/generate', 'PaymentsController@generate')->name('payments.generate');
             });
         });
     });
