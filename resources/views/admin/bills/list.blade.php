@@ -7,7 +7,11 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 @include('layouts.partials.navbar')
 @include('layouts.partials.sidebar')
 
-
+<style>
+.modal-body{
+    padding: 0rem;
+}
+</style>
 <script>
     //OCULTAR BOTON DE GENERAR
     function ocultar() {
@@ -242,7 +246,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             <input name="precio[]" class="form-control four col-2" id="fourth_0">
 
                                         </div>
-                                        <a id="add_field"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"></a>
+                                       
                                     </div>
                                 </div>
 
@@ -255,7 +259,11 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             <li class="list-group-item"><strong>PAGADO</strong> 00</li>
                                         </ul>
                                     </div>
-                                    <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>
+                                 
+                                    <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>      
+                                    <a id="add_field"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40">Agregar otra fila</a>
+                                   
+                                   
                                 </div>
 
                             </div>
