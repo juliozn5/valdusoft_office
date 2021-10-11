@@ -341,7 +341,7 @@ display:inline-block;
 }
 
 #add_field {
-margin-left: 725px;
+float: left;
 padding:5px;
 
 }
