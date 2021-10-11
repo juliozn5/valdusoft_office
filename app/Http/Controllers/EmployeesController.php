@@ -16,12 +16,12 @@ class EmployeesController extends Controller
     /** Home del Empleado
     *** Perfil: Empleado ***/
     public function index(){
-        $project = Project::all()->where('user_id', Auth::user()->id);
-        $payrolls = PayrollEmployee::all()->where('user_id', Auth::user()->id);
+        $project = Project::where('user_id', Auth::id());
+        $payrolls = PayrollEmployee::where('user_id', Auth::id());
+        $proyects_user = Auth::user()->projects;
+        $user = Auth::user();
         
-        $user = User::all()->where('user_id', Auth::user()->id);
-        
-        return view('employee.home')->with(compact('project','payrolls','user')); 
+        return view('employee.home')->with(compact('project','payrolls','user', 'proyects_user')); 
     }
 
     /** Listado de Empleados
