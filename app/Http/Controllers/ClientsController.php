@@ -30,7 +30,7 @@ class ClientsController extends Controller
     *** Perfil: Admin ***/
     public function list(){
         $client = User::where('profile_id', '=', 2)
-                    ->where('status', '1')
+                    // ->where('status', '1')
                     ->orderBy('name', 'ASC')
                     ->paginate(10);
                     

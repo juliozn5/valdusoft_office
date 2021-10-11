@@ -15,6 +15,7 @@
 <script src="{{ asset('template/app-assets/js/core/app.js') }}"></script>
 <script src="{{ asset('template/app-assets/js/scripts/components.js') }}"></script>
 <script src="{{ asset('js/apexcharts.js') }}"></script>
+<script src="{{ asset('js/axios.min.js') }}"></script>
 <script src="{{ asset('template/app-assets/vendors/js/extensions/toastr.min.js') }}"></script>
 <script src="{{ asset('template/app-assets/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
 <script src="{{ asset('template/app-assets/js/scripts/pages/app-chat.js') }}"></script>
