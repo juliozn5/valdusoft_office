@@ -121,6 +121,9 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::post('/generate', 'PaymentsController@generate')->name('payments.generate');
             });
         });
+
+        Route::get('dataGrafica', 'AdminController@dataGrafica')->name('dataGrafica');
+
     });
 
     //LISTADO DE RUTAS PARA EL CLIENTE

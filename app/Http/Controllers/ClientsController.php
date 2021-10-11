@@ -30,8 +30,10 @@ class ClientsController extends Controller
     public function list()
     {
         $client = User::where('profile_id', '=', 2)
-            ->orderBy('name', 'ASC')
-            ->paginate(10);
+                    // ->where('status', '1')
+                    ->orderBy('name', 'ASC')
+                    ->paginate(10);
+                    
 
         return view('admin.clients.list')
             ->with('client', $client);

@@ -40,166 +40,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 </style>
 @endpush
 
-@push('custom_js')
-<script>
-    /* var options = {
-        chart: {
-            type: "area",
-            height: 500,
-            foreColor: "#999",
-            stacked: true,
-            dropShadow: {
-            enabled: true,
-            enabledSeries: [0],
-            top: -2,
-            left: 2,
-            blur: 5,
-            opacity: 0.06
-            }
-        },
-        colors: ['#650865', '#003573'],
-        stroke: {
-            curve: "smooth",
-            width: 3
-        },
-        dataLabels: {
-            enabled: false
-        },
-        series: [{
-            name: 'Costos',
-            data: generateDayWiseTimeSeries(0, 18)
-        }, {
-            name: 'Ganancias',
-            data: generateDayWiseTimeSeries(1, 18)
-        }],
-        markers: {
-            size: 0,
-            strokeColor: "#fff",
-            strokeWidth: 3,
-            strokeOpacity: 1,
-            fillOpacity: 1,
-            hover: {
-            size: 6
-            }
-        },
-        xaxis: {
-            type: "datetime",
-            axisBorder: {
-            show: true
-            },
-            axisTicks: {
-            show: true
-            }
-        },
-        yaxis: {
-            labels: {
-            offsetX: 14,
-            offsetY: -5
-            },
-            tooltip: {
-            enabled: true
-            }
-        },
-        grid: {
-            padding: {
-            left: -5,
-            right: 5
-            }
-        },
-        tooltip: {
-            x: {
-            format: "dd MMM yyyy"
-            },
-        },
-        legend: {
-            position: 'top',
-            horizontalAlign: 'left'
-        },
-        fill: {
-            type: "solid",
-            fillOpacity: 0.7
-        }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#timeline-chart"), options);
-
-        chart.render();
-
-        function generateDayWiseTimeSeries(s, count) {
-            var values = [[
-                4,3,10,9,29,19,25,9,12,7,19,5,13,9,17,2,7,5
-            ], [
-                2,3,8,7,22,16,23,7,11,5,12,5,10,4,15,2,6,2
-            ]];
-            var i = 0;
-            var series = [];
-            var x = new Date().getTime();
-            while (i < count) {
-                series.push([x, values[s][i]]);
-                x += 86400000;
-                i++;
-            }
-            return series;
-        }*/
-    var lineAreaOptions = {
-        chart: {
-            height: 350,
-            type: 'area',
-            foreColor: "#999",
-            stacked: true,
-            dropShadow: {
-                enabled: true,
-                enabledSeries: [0],
-                top: 0,
-                left: 0,
-                blur: 0,
-                opacity: 1
-            },
-            zoom: {
-                enabled: false
-            }
-        },
-        colors: ['#650865', '#003573'],
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            curve: "smooth",
-            width: 3
-        },
-        series: [{
-                name: 'Costos',
-                data: [310, 400, 280, 510, 420, 1090, 1000, 310, 400, 280, 510, 420]
-            },
-            {
-                name: 'Ganancias',
-                data: [110, 320, 450, 320, 340, 520, 410, 110, 320, 450, 320, 340]
-            }
-        ],
-        xaxis: {
-            type: 'year',
-            categories: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-        },
-        yaxis: {
-            opposite: false,
-            labels: {
-                formatter: function(value) {
-                    return value + "K";
-                }
-            },
-        },
-        legend: {
-            position: 'top',
-            horizontalAlign: 'left'
-        },
-    }
-    var lineAreaChart = new ApexCharts(
-        document.querySelector("#timeline-chart"),
-        lineAreaOptions
-    );
-    lineAreaChart.render();
-</script>
-@endpush
+@include('admin.partials.graficaCxG')
 
 @section('content')
 
@@ -213,8 +54,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <!-- Dashboard Analytics Start -->
             <section id="dashboard-analytics">
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-12 col-sm-5">
 
+                        {{-- Consulta todos los clientes --}}
                         <div class="card">
                             <div class="card-content p-1">
                                 <div class="card-body">
@@ -225,6 +67,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             </div>
                         </div>
 
+                        {{-- Consulta y paga la nomina --}}
                         <div class="card">
                             <div class="card-content p-1">
                                 <div class="card-body">
@@ -237,10 +80,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                     </div>
 
-                    <div class="col-7">
+                    {{-- Tabla "Empleados" --}}
+                    <div class="col-12 col-sm-7">
                         <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Empleados</h3>
+                            </div>
                             <div class="card-content">
-                                <div class="table-responsive">
+                                <div class="table-responsive pt-2">
                                     <table class="table">
                                         <thead class="thead-light">
                                             <tr>
@@ -255,9 +102,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <tr>
                                                 <td>
                                                     @if (!is_null($item->photo))
-                                                    <img class="rounded-circle" width="32px" height="32px" src="{{ $item->photo }}" />
+                                                    <img class="rounded-circle" width="32px" height="32px" src="{{ asset('/uploads/images/users/photos/'.$item->photo) }}" />
                                                     @else
-                                                    <img class="rorounded-circleund" width="32px" height="32px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                    <img class="rounded-circle" width="32px" height="32px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                     @endif
                                                 </td>
                                                 <td>{{ $item->name }} {{ $item->last_name }}</td>
@@ -273,6 +120,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                 </div>
 
+                {{-- Sección "Costos vs Ganancias" --}}
                 <div id="chart">
                     <div class="card p-1">
                         <div class="card-header">
@@ -284,11 +132,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                 </div>
 
+                {{-- Sección "Listado de Hosting" --}}
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title mb-2">Listado de Hosting</h3>
+                                <h3 class="card-title">Listado de Hosting</h3>
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive pt-2">
@@ -303,7 +152,23 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach ($hostings as $hosting)
+                                                <tr>
+                                                    <td>
+                                                        @if (isset($hosting->user->logo))
+                                                        <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/'.$hosting->user->logo) }}" />
+                                                        @else
+                                                        <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        {{$hosting->user->name}} {{$hosting->user->last_name}}
+                                                    </td>
+                                                    <th scope="row">{{ $hosting->url }}</th>
+                                                    <td>{{ date('d/m/Y', strtotime($hosting->create_date)) }}</td>
+                                                    <td>{{date('d/m/Y', $hosting->renewal_hosting)}}</td>                                                  
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
