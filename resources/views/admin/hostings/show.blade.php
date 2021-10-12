@@ -73,7 +73,8 @@ $("#renewal_price").val($hosting.renewal_price);
             <div class="project-detail-titles">Fecha de Vencimiento</div>
                 <div class="mt-1 project-detail-dates">
                 <img src="{{ asset('images/svg/calendar.svg')}}">
-                <span>{{date('d/m/Y', $hosting->renewal_hosting)}}</span>
+                {{-- <span>{{date('d/m/Y', $hosting->renewal_hosting)}}</span> --}}
+                <span>{{date('d/m/Y', strtotime($hosting->due_date) )}}</span>
                 </div>
             </div>
         </div> 
@@ -129,7 +130,7 @@ $("#renewal_price").val($hosting.renewal_price);
 <div class="pl-2 pr-2 mt-3 mb-3">
     <div class="row mt-3 pl-2 pr-2">
         <div class="col-md-12 col-sm-1">
-            <div class="project-detail-titles">Accesos</div>
+            <div class="project-detail-titles">Integración con cPanel</div>
                 <div class="mt-1 project-detail-dates">
                     <div class="row">
                         <div class="col-md-3">
@@ -188,6 +189,7 @@ $("#renewal_price").val($hosting.renewal_price);
                         </select>
                     </div>
                 </div>
+                 
                 <div class="col-md-6 col-sm-12">
                     <label for="price"><strong>Precio</strong></label>
                     <input name="price" id="price" class="form-control">
