@@ -260,9 +260,9 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                     </ul>
                                 </div>
 
-                                <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>
+                                <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2 mb-3"><strong>Guardar</strong></button>
                                 </form>
-                                <a id="add_field"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"> <span class="ml-1" style="font-weight: bold;">Agregar otra fila</span></a>
+                                <a id="add_field"><img class="rounded-circle ml-2" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"> <span class="ml-1" style="font-weight: bold;">Agregar otra fila</span></a>
 
 
                             </div>
