@@ -8,9 +8,9 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 @include('layouts.partials.sidebar')
 
 <style>
-.modal-body{
-    padding: 0rem;
-}
+    .modal-body {
+        padding: 0rem;
+    }
 </style>
 <script>
     //OCULTAR BOTON DE GENERAR
@@ -219,7 +219,6 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 
                                     <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar Factura</strong></h5>
                                     <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
-
                                 </div>
 
                                 <!--BODY DEL MODAL-->
@@ -233,42 +232,44 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             <th class="" style="margin-right:15px;">PRECIO</th>
                                         </thead>
                                     </table>
+                                    <form action="{{ route('billsPost')}}" method="post">
+                                        @csrf
+                                        <div id="listas">
+                                            <div class="row mt-2">
 
-                                    <div id="listas">
-                                        <div class="row">
+                                                <input type="text" name="descripcion[]" class="one form-control col-2" id="principal_0">
 
-                                            <input type="text" name="descripcion[]" class="one form-control col-2" id="principal_0">
+                                                <input type="text" name="unidades[]" oninput="calcular(0)" class="monto two form-control col-2" id="second_0">
 
-                                            <input type="text" name="unidades[]" oninput="calcular(0)" class="monto two form-control col-2" id="second_0">
+                                                <input type="text" name="valor[]" oninput="calcular(0)" class="monto three form-control col-2" id="third_0">
 
-                                            <input type="text" name="valor[]" oninput="calcular(0)" class="monto three form-control col-2" id="third_0">
+                                                <input name="precio[]" class="form-control four col-2" id="fourth_0">
 
-                                            <input name="precio[]" class="form-control four col-2" id="fourth_0">
+                                            </div>
 
                                         </div>
-                                       
-                                    </div>
                                 </div>
 
-                                    <!--FOOTER DEL MODAL-->
-                                    <div class="modal-footer">
-                                        <ul class="list-group list-group-flush">
+                                <!--FOOTER DEL MODAL-->
+                                <div class="modal-footer">
+                                    <ul class="list-group list-group-flush">
 
-                                            <li class="list-group-item"> <strong>TOTAL PARCIAL</strong> 00</li>
-                                            <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
-                                            <li class="list-group-item"><strong>PAGADO</strong> 00</li>
-                                        </ul>
-                                    </div>
-                                 
-                                    <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>      
-                                    <a id="add_field"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40">Agregar otra fila</a>
-                                   
-                                   
+                                        <li class="list-group-item"> <strong>TOTAL PARCIAL</strong> 00</li>
+                                        <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
+                                        <li class="list-group-item"><strong>PAGADO</strong> 00</li>
+                                    </ul>
                                 </div>
+
+                                <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2"><strong>Guardar</strong></button>
+                                </form>
+                                <a id="add_field"><img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"> <span class="ml-1" style="font-weight: bold;">Agregar otra fila</span></a>
+
 
                             </div>
+
                         </div>
                     </div>
+                </div>
 
 
-                    @endsection
+                @endsection
