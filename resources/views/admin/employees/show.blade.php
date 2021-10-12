@@ -92,8 +92,9 @@
                                 <div class="col-3">
                                     <div class="project-detail-titles">Próximas Vacaciones</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i>
-                                        {{$employee->admission_date}}
+                                        <i class="far fa-calendar icon-big mr-1"></i>{{
+                                        (is_null($fechaUser)) ? 'Dato no disponible' : date('d-m-Y', strtotime($fechaUser)) }}
+
                                     </div>
                                 </div>
                             </div>

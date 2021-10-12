@@ -96,10 +96,11 @@ class EmployeesController extends Controller
             ->with('projects', 'skills')
             ->withCount('skills')
             ->first();
+
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($employee->admission_date);
-        $fechaUser->addYear(1) >= $employee->admission_date;
-
+        $fechaUser->addYear(1);
+        
         $projectsID = array();
 
         foreach ($employee->projects as $project) {
@@ -110,7 +111,7 @@ class EmployeesController extends Controller
 
         $projectColors = ['#FF3F3F', '#12A0B4', '#940385'];
 
-        return view('admin.employees.show')->with(compact('employee', 'projectColors', 'availableProjects'));
+        return view('admin.employees.show')->with(compact('employee', 'projectColors', 'availableProjects', 'fechaUser'));
     }
 
     /** Asignar proyecto a un empleado
