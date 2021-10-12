@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use App\Models\Bill;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class BillController extends Controller
 {
@@ -37,9 +38,10 @@ class BillController extends Controller
 
     }
 
-    public function details(){
-            return
-             view('employee.billdetail');
+    public function details($id){
+          $factura = Bill::find($id);
+          $user = User::find($factura->user_id);
+            return view('employee.billdetail', compact('factura', 'user'));
         }
    
         public function BillList(){
