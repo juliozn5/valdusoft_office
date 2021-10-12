@@ -42,7 +42,7 @@
                                             <td>
                                                 <label class="label status-label status-label-gray">En Proceso</label>
                                             </td>
-                                            <td> <a href="{{ route('employee.projects.detail') }}"><i class="fa fa-eye mr-1 action-icon"></i></a></td>
+                                            <td> <a href="{{ route('employee.projects.detail', [$project->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a></td>
                                         </tr>
 
                                         @endforeach
