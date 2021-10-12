@@ -98,8 +98,8 @@ class HostingController extends Controller
         $hosting->price = $request->price;
         
         
-        $hosting->renewal_price = $request->renewal_price;
-        $hosting->renewal_hosting = $request->renewal_hosting;
+        // $hosting->renewal_price = $request->renewal_price;
+        // $hosting->renewal_hosting = $request->renewal_hosting;
 
         $hosting->save();
 

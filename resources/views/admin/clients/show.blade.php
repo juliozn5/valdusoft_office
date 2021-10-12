@@ -154,6 +154,49 @@
                                     <div class="mr-3">
                                         {{ $client_bill->links() }}
                                     </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3 class="card-title mb-2 pl-2 pt-2">Facturas</h3>
+                                <div class="table-responsive ">
+                                    <table class="table">
+                                        <thead class="thead-light ">
+                                            <th class="col-1">#</th>
+                                            <th class="col-3">FECHA</th>
+                                            <th class="col-2">MONTO</th>
+                                            <th class="col-2">ESTADO</th>
+                                            <th class="col-2">ACCION</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($client_bill as $client)
+                                            <tr>
+                                                <th scope="row">#{{ $client->id }}</th>
+                                                <td>{{ $client->date }}</td>
+                                                <td>{{ $client->amount }}$</td>
+                                                <td>
+                                                    @if ($client->status == 0)
+                                                    <label class="label status-label status-label-purple">No Atendido</label>
+                                                    @elseif ($client->status == 1)
+                                                    <label class="label status-label status-label-gray">En Proceso</label>
+                                                    @elseif ($client->status == 2)
+                                                    <label class="label status-label status-label-blue">Testiando</label>
+                                                    @elseif ($client->status == 3)
+                                                    <label class="label status-label status-label-green">Completado</label>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mr-3">
+                                    {{$client_bill->links()}}
                                 </div>
                             </div>
                         </div>
