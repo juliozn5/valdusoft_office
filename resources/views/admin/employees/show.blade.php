@@ -7,6 +7,7 @@
     });
 </script>
 @endif
+
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -35,9 +36,9 @@
                             <div class="row" style="display: flex; align-items: center;">
                                 <div class="col-md-4">
                                     @if (!is_null($employee->photo))
-                                        <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->fullname }}" height="100" width="100">
+                                    <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->fullname }}" height="100" width="100">
                                     @else
-                                        <img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
+                                    <img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
                                     @endif
                                 </div>
                                 <div class="col-md-8">
@@ -91,8 +92,9 @@
                                 <div class="col-3">
                                     <div class="project-detail-titles">Próximas Vacaciones</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i> 
-                                        Dato no disponible
+                                        <i class="far fa-calendar icon-big mr-1"></i>{{
+                                        (is_null($fechaUser)) ? 'Dato no disponible' : date('d-m-Y', strtotime($fechaUser)) }}
+
                                     </div>
                                 </div>
                             </div>
@@ -102,13 +104,13 @@
                                 <div class="project-detail-titles">Skills</div>
                                 <div class="mt-1">
                                     @if ($employee->skills_count)
-                                        @foreach ($employee->skills as $skill)
-                                            <div class="text-center text-white d-inline-block mr-1">
-                                                <div class="project-detail-skill">{{ $skill->skill }}</div>
-                                            </div>
-                                        @endforeach
+                                    @foreach ($employee->skills as $skill)
+                                    <div class="text-center text-white d-inline-block mr-1">
+                                        <div class="project-detail-skill">{{ $skill->skill }}</div>
+                                    </div>
+                                    @endforeach
                                     @else
-                                        El empleado no posee ningún skill asociado
+                                    El empleado no posee ningún skill asociado
                                     @endif
                                 </div>
                             </div>
