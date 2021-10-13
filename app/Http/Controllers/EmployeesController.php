@@ -41,6 +41,8 @@ class EmployeesController extends Controller
             ->with('employees', $employees);
     }
 
+    
+
     /** Crear nuevo empleado
      *** Perfil: Admin ***/
     public function create()
@@ -136,6 +138,7 @@ class EmployeesController extends Controller
     }
     public function profile()
     {
+
         $user = Auth::user();
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($user->admission_date);

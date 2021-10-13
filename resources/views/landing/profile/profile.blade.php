@@ -155,9 +155,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="modal-content">
                 <div class="modal-header bg-primary">
                     <h5 class="modal-title" id="exampleModalLabel">Cambiar numero de telefono</h5>
-                    <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></a>
+                    <a type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></a>
                 </div>
-                <form method="POST" action="{{ route('employee.profiles') }}">
+                <form method="post" action="{{ route('employee.profile') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="col-8 mt-1 ml-5">
@@ -190,7 +190,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
                 <div class="modal-body">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('change.password') }}">
+                        <form method="POST" action="{{ route('passwords') }}">
                             @csrf
                             @foreach ($errors->all() as $error)
                             <p class="text-danger">{{ $error }}</p>
