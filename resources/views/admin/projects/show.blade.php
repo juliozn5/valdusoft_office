@@ -157,7 +157,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
         <div class="content-body">
             <div class="row" id="table-head">
                 {{-- Sección Izquierda --}}
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                     <div class="card">
                         <div style="height: 300px;">
                             @if (!is_null($project->logo))
@@ -291,7 +291,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                 </div>
 
                 {{-- Sección Derecha --}}
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                     <div class="card">
                         <div class="pt-2 pl-2 pr-2 pb-0">
                             <ul class="nav nav-pills nav-justified">
