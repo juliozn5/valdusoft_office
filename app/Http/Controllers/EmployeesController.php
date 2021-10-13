@@ -131,7 +131,6 @@ class EmployeesController extends Controller
     }
     public function profile()
     {
-
         $user = Auth::user();
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($user->admission_date);
