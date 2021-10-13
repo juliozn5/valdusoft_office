@@ -139,7 +139,7 @@
                                 <div class="col-3">
                                     <div class="project-detail-titles">Billetera USDT-TRON</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <img src="{{ asset('images/icons/uphold.png') }}" class="mr-1"> {{ (is_null($employee->tron_wallet)) ? 'Dato no disponible' : $employee->tron_wallet }}
+                                        <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($employee->tron_wallet)) ? 'Dato no disponible' : $employee->tron_wallet }}
                                     </div>
                                 </div>
                             </div>
