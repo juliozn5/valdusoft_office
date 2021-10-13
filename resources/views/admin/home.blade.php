@@ -107,7 +107,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                     <img class="rounded-circle" width="32px" height="32px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                     @endif
                                                 </td>
-                                                <td>{{ $item->name }} {{ $item->last_name }}</td>
+                                                <td><a href="{{ route('admin.employees.show', [$item->slug, $item->id]) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
                                                 <td><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
                                                 <td><a href="https://api.whatsapp.com/send?phone={{ $item->phone }}" Target="_blank">{{ $item->phone }}</a></td>
                                             </tr>
