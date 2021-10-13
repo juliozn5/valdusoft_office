@@ -54,9 +54,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="col-md-4 col-sm-12">
                     <div class="card">
                         <div class="">
-                            <div class="card-body">
+                            <div class="card-body p-1">
                                 <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="120" height="120" alt="">
-                                <h5 class="pt-2">Proximas <br> Vacaciones</h5>
+                                <h5 class="pt-2">Próximas <br> Vacaciones</h5>
                                 <br>
                                 <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
                             </div>
