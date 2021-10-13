@@ -127,6 +127,12 @@
                                             <input type="date" name="ending_date" id="ending_date" class="form-control">
                                         </div>
                                     </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label for="amount">Monto</label>
+                                            <input type="number" name="amount" id="amount" class="form-control">
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="pb-1"><label for="tags">Etiquetas</label></div>

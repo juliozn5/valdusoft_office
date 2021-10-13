@@ -62,7 +62,11 @@
                                     <div class="project-detail-titles">País</div>
                                     <div class="mt-1 project-detail-dates">
                                         <img src="{{asset('images/figma/Colombia.png')}}" alt="">
-                                        {{$proyect->country->name}}
+                                        @if (!is_null($proyect->country_id))
+                                            {{$proyect->country->name}}
+                                        @else
+                                            Dato no disponible
+                                        @endif
                                     </div>
                                 </div>
                             </div>

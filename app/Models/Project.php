@@ -22,7 +22,8 @@ class Project extends Model
         'status',
         'link',
         'description',
-        'visible_landing'
+        'visible_landing',
+        'amount'
     ];
 
     public function user(){
