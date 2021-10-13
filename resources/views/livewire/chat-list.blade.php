@@ -1,28 +1,42 @@
 <div class="user-chats overflow-auto">
-    <div class="chats" style="overflow-y: scroll; height:400px;" id="chating">
-        @foreach($messages as $mensaje)
-        @if($mensaje["recibido"])
-        <div class="chat">
-            @else
-            <div class="chat chat-left">
-                @endif
-                <div class="chat-avatar">
-                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title=""
-                        data-original-title="">
-                        <img src="{{ asset('template/app-assets/images/portrait/small/avatar-s-1.jpg') }}" alt="avatar"
-                            height="40" width="40" />
-                    </a>
-                </div>
-                <div class="chat-body">
-                    <div class="chat-content">
-                        <p>{{$mensaje["mensaje"]}}</p>
+    <div class="chats">
+        @foreach($messages as $mensaje)  
+            @if($mensaje["usuario_id"] == Auth::user()->id)   
+                <div class="chat">
+                    <div class="chat-avatar">
+                        <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
+                            <img src="{{ asset('template/app-assets/images/portrait/small/avatar-s-1.jpg') }}" alt="avatar" height="40" width="40" />
+                        </a>
+                    </div>
+                    <div class="chat-body">
+                        <div class="text-right pr-2 chat-username">
+                            {{$mensaje["usuario"]}}
+                        </div>
+                        <div class="chat-content">
+                            <p>{{$mensaje["mensaje"]}}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
-            <div class="divider">
-                <div class="divider-text">Yesterday</div>
-            </div>
+            @else
+                <div class="chat chat-left">
+                    <div class="chat-avatar">
+                        <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
+                            <img src="{{ asset('template/app-assets/images/portrait/small/avatar-s-1.jpg') }}" alt="avatar" height="40" width="40" />
+                        </a>
+                    </div>
+                    <div class="chat-body">
+                        <div class="chat-username pl-2">
+                            {{$mensaje["usuario"]}}
+                        </div>
+                        <div class="chat-content">
+                            <p>{{$mensaje["mensaje"]}}</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+        <div class="divider">
+            <div class="divider-text">Yesterday</div>
         </div>
 
         <script src="https://js.pusher.com/7.0/pusher.min.js"></script>

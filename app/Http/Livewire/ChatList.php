@@ -31,9 +31,8 @@ class ChatList extends Component
                     "id" => $message->id,
                     "usuario_id" => $message->user_id,
                     "usuario" => $message->user->name." ".$message->user->last_name,
-                    "mensaje" => $message->message,
-                    "recibido" => ($message->user_id != $this->user_id),
-                    //"fecha" => $mensaje->created_at->diffForHumans()
+                    "mensaje" => $message->message, 
+                    "fecha" => $message->created_at->diffForHumans()
                 ];
                 
                 array_push($this->messages, $item);      
@@ -67,8 +66,7 @@ class ChatList extends Component
                 "usuario_id" => $message->user_id,
                 "usuario" => $message->user->name." ".$message->user->last_name,
                 "mensaje" => $message->message,
-                "recibido" => ($message->user_id != $this->user_id),
-                //"fecha" => $mensaje->created_at->diffForHumans()
+                "fecha" => $message->created_at->diffForHumans()
             ];
                 
             array_push($this->messages, $item);
