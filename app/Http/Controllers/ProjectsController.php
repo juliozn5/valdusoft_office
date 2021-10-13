@@ -101,6 +101,8 @@ class ProjectsController extends Controller
                     ->where('id', '=', $id)
                     ->first();
         
+        // $cost = AccountingTransaction::where('project_id', )
+
         $tagsID = array();
         foreach ($project->tags as $tag){
             array_push($tagsID, $tag->id);

@@ -177,6 +177,21 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 </div>
                             </div>
 
+                            @if (Auth::user()->profile_id == 1)
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <div class="project-detail-titles">Presupuesto</div>
+                                    <div class="mt-1 project-detail-dates">{{ $project->amount }} $</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="project-detail-titles">Asignado | Costo</div>
+                                    <div class="mt-1 project-detail-dates">
+                                      dato | datos
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+
                             {{-- Sección de Cliente --}}
                             <div class="row mt-2">
                                 <div class="col-6">
@@ -284,7 +299,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <a class="nav-link nav-link-pills  @if (!Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#attachments">Adjuntos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat">Chat</a>
+                                    <a class="nav-link nav-link-pills" data-toggle="tab" id="scrolling" href="#chat">Chat</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link nav-link-pills  @if (Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#accountant">Contable</a>
@@ -351,6 +366,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 @livewire("chat-list", ['project' => $project->id])
 
                                 @livewire("chat-form", ['project' => $project->id])
+
                             </div>
 
                             {{-- Pestaña de Contable --}}
@@ -505,7 +521,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label for="type">Estado</label>
+                                <label for="type">Estado</label> 
                                 <select name="status" id="project_status" class="form-control">
                                     <option value="0">No Atendido</option>
                                     <option value="1">En Proceso</option>
@@ -515,9 +531,18 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-12 col-12">
+                        <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="logo">Logo</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="logo" id="logo">
+                                    <label class="custom-file-label" for="logo">Seleccione un logo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="logo">Monto</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="logo" id="logo">
                                     <label class="custom-file-label" for="logo">Seleccione un logo</label>
