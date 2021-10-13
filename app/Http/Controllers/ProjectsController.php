@@ -99,61 +99,75 @@ class ProjectsController extends Controller
     /** Ver detalles de un Proyecto
     *** Perfil: Admin ***/
     public function show($slug, $id){
-        $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
-                    ->where('id', '=', $id)
-                    ->first();
-        
-        // $cost = AccountingTransaction::where('project_id', )
+        if (Auth::user()->profile_id == 1){
+            $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
+                        ->where('id', '=', $id)
+                        ->first();
+            
+            // $cost = AccountingTransaction::where('project_id', )
 
-        $tagsID = array();
-        foreach ($project->tags as $tag){
-            array_push($tagsID, $tag->id);
-        }
-        
-        $employeesID = array();
-        foreach ($project->employees as $employee){
-            array_push($employeesID, $employee->id);
-        }
-        
-        $availableEmployees = DB::table('users')
-                                ->select('id', 'name', 'last_name')
-                                ->where('profile_id', '=', 3)
-                                ->whereNotIn('id', $employeesID)
-                                ->get();
-        
-        $technologiesID = array();
-
-        foreach ($project->technologies as $technology){
-            array_push($technologiesID, $technology->id);
-        }
-        
-        $availableTechnologies = DB::table('technologies')
-                                    ->select('id', 'name')
-                                    ->whereNotIn('id', $technologiesID)
+            $tagsID = array();
+            foreach ($project->tags as $tag){
+                array_push($tagsID, $tag->id);
+            }
+            
+            $employeesID = array();
+            foreach ($project->employees as $employee){
+                array_push($employeesID, $employee->id);
+            }
+            
+            $availableEmployees = DB::table('users')
+                                    ->select('id', 'name', 'last_name')
+                                    ->where('profile_id', '=', 3)
+                                    ->whereNotIn('id', $employeesID)
                                     ->get();
-        
-        foreach ($project->attachments as $attachment){
-            $attachment->date = date('d', strtotime($attachment->created_at)).' de '.$this->getMonthName(date('m', strtotime($attachment->created_at))).' de '.date('Y', strtotime($attachment->created_at));
-            $attachment->time = date('H:i', strtotime($attachment->created_at));
-        }
+            
+            $technologiesID = array();
 
-        $clients = DB::table('users')
-                        ->select('id', 'name', 'last_name')
-                        ->where('profile_id', '=', 2)
-                        ->orderBy('name', 'ASC')
-                        ->get();
-        
-        $countries = DB::table('countries')
+            foreach ($project->technologies as $technology){
+                array_push($technologiesID, $technology->id);
+            }
+            
+            $availableTechnologies = DB::table('technologies')
+                                        ->select('id', 'name')
+                                        ->whereNotIn('id', $technologiesID)
+                                        ->get();
+            
+            foreach ($project->attachments as $attachment){
+                $attachment->date = date('d', strtotime($attachment->created_at)).' de '.$this->getMonthName(date('m', strtotime($attachment->created_at))).' de '.date('Y', strtotime($attachment->created_at));
+                $attachment->time = date('H:i', strtotime($attachment->created_at));
+            }
+
+            $clients = DB::table('users')
+                            ->select('id', 'name', 'last_name')
+                            ->where('profile_id', '=', 2)
+                            ->orderBy('name', 'ASC')
+                            ->get();
+            
+            $countries = DB::table('countries')
+                            ->select('id', 'name')
+                            ->orderBy('name', 'ASC')
+                            ->get();
+            
+            $tags = DB::table('tags')
                         ->select('id', 'name')
-                        ->orderBy('name', 'ASC')
+                        ->orderBy('id', 'ASC')
                         ->get();
-        
-        $tags = DB::table('tags')
-                    ->select('id', 'name')
-                    ->orderBy('id', 'ASC')
-                    ->get();
 
-        return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID'));   
+            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID'));   
+        }else if(Auth::user()->profile_id == 2){
+            $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
+                        ->where('id', '=', $id)
+                        ->first();
+
+            return view('client.showProject')->with(compact('project'));
+        }else{
+            $project = Project::with('user:id,name,last_name', 'employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
+                        ->where('id', '=', $id)
+                        ->first();
+
+            return view('employee.showProject')->with(compact('project'));
+        }   
     }
 
     /** Guardar datos modificados del Proyecto
@@ -221,19 +235,6 @@ class ProjectsController extends Controller
 
             return redirect()->back()->with('msj-exitoso', 'true');
         }
-    }
-
-    //detalle del empleado
-    public function detail($id){
-        $proyect = Project::find($id);
-        // dd($proyect);
-        return view('employee.projectsdetail', compact('proyect'));
-    }
-
-    //detalle del cliente
-    public function detailclient(){
-
-        return view('client.detailprojects');
     }
 
     /** Agregar un archivo adjunto al proyecto

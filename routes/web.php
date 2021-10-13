@@ -131,6 +131,7 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('client.projects.list');
+            Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('client.projects.show')->middleware('project_user');
             Route::get('/detail', 'ProjectsController@detailclient')->name('client.projects.detail');
         });
 
@@ -158,7 +159,7 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
-            Route::get('/detail/{id}', 'ProjectsController@detail')->name('employee.projects.detail');
+            Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('employee.projects.show')->middleware('project_user');
         });
 
         //MÓDULO DE FACTURAS
