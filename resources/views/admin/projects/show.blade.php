@@ -279,7 +279,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <div class="project-detail-titles">Etiquetas</div>
                                     <div class="mt-1">
                                         @foreach ($project->tags as $tag)
-                                            <div class="text-center text-white d-inline-block mr-1">
+                                            <div class="text-center text-white d-inline-block mr-1 pb-1">
                                                 <div class="project-detail-skill">{{ $tag->name }}</div>
                                             </div>
                                         @endforeach
