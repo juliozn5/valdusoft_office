@@ -47,6 +47,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <p class="h6">Fecha de inicio</p>
             <input type="date" class="col-4 form-control" name="date" required>
           </div>
+          <div class="ml-1 mt-2 mb-2 flex-nowrap">
+            <p class="h6">Fecha de Cierre</p>
+            <input type="date" class="col-4 form-control" name="fecha_de_cierre" required>
+          </div>
 
 
           <div class="card-header">
@@ -60,7 +64,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                   <tr>
                     <th>NOMBRE</th>
-                    <th class="col-3">VALOR DE HORA</th>
+                    <th class="col-3">CANT. DE HORA</th>
                     <th class="col-2">COSTO DE HORA</th>
                     <th>TOTAL</th>
                     <th>BONO</th>
@@ -117,20 +121,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-footer">
-              <button class="close" data-dismiss="modal">&times;</button>
-
+              <button class="close" data-dismiss="modal">&times;</button> 
             </div>
-
             <div class="modal-body">
-              <p>Dinero a descontar</p>
+              <p>Monto a Ingresar</p>
               <input type="text" class=" form-control">
               <br>
-              <p>Meses</p>
+              <p>Concepto</p>
               <input type="text" class=" form-control">
-              <br>
-              <p>Porcentaje a descontar</p>
-              <input type="text" class=" form-control">
-
             </div>
             <div class="modal-footer">
               <button class="btn btn-primary" data-toggle="modal" data-dismiss="modal">GUARDAR</button>
@@ -150,6 +148,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
             <div class="modal-body">
               <p>Valor del Prestamo</p>
+              <input type="text" class=" form-control">
+              <br>
+              <p>Porcentaje a descontar</p>
               <input type="text" class=" form-control">
 
             </div>

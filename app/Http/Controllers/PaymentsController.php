@@ -14,7 +14,7 @@ class PaymentsController extends Controller
     *** Perfil: Admin ***/
     public function list(){ 
          $users = User::all();
-         $bills = bill::all();
+         $bills = bill::where('status', '0')->get();
 
          if (Auth::user()->profile_id == 1){
             $payments = payments::where('user_id', '=', Auth::user()->id)->paginate(10);

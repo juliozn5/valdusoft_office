@@ -50,8 +50,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <thead class="thead-light">
 
                                     <tr>
-                                        <th>NOMBRE</th>
-                                        <th>UPHOLD</th>
+                                        <th class="text-center">NOMBRE</th>
+                                        <th class="text-center">UPHOLD</th>
                                         <th class="text-center">HORAS</th>
                                         <th class="text-center">PRECIO HORA NORMAL</th>
                                         <th class="text-center">TOTAL QUINCENA</th>
@@ -59,27 +59,24 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    <tr>
-                                        <td>Pedro Sanchez</td>
-
-                                        <td>pedro_sanchez@gmail.com</td>
-
-                                        <td class="text-center">28</td>
-
-                                        <td class="text-center">4</td>
-
-                                        <td class="text-center">96</td>
-
-                                        <td class="text-center">25</td>
-                                    </tr>
+                                  @foreach($employees as $item)
+                                     <tr>
+                                        <td class="text-center">{{$item->user->name}}</td>
+                                        <td class="text-center">{{$item->user->uphold_account}}</td>
+                                        <td class="text-center">{{$item->total_hours}}</td>
+                                        <td class="text-center">{{number_format($item->price_by_hour, 2, ',', '.')}} $</td>       
+                                        <td class="text-center">{{$item->total_amount}}</td>
+                                        <td class="text-center">{{$item->total_amount}}</td>
+                                        
+                                    </tr>  
+                                  @endforeach
                                 </tbody>
                             </table>
                         </div>
 
-                        <div class="float-right mr-3 mb-2">
+                        {{-- <div class="float-right mr-3 mb-2">
                             <strong>TOTAL</strong>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
