@@ -21,10 +21,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         @else
                         <img src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40">
                         @endif
-
                         <div class="col ml-1">
-                            <h3 class="card-title mb-1">{{ $user->name }}</h3>
-                            <p>{{ $user->email }}</p>
+                            <h3 class="card-title">{{ $user->name }} {{ $user->last_name }}</h3>
+                            {{ $user->email }}
                         </div>
                     </div>
                 </div>
