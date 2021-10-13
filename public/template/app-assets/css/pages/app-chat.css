@@ -256,7 +256,7 @@
   display : block;
   float : right;
   padding : 0.75rem 1rem;
-  margin : 0 20px 10px 0;
+  margin : 0 20px 2px 0;
   clear : both;
   color : #FFFFFF;
   /*background : -webkit-linear-gradient(332deg, #003573, rgba(115, 103, 240, 0.7));
@@ -282,7 +282,7 @@
 .chat-application .chats .chat-left .chat-content {
   text-align : left;
   float : left;
-  margin : 0 0 10px 20px;
+  margin : 0 0 2px 20px;
   color: white;
   /*color : #626262;
   background : none;
