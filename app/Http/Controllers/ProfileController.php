@@ -22,7 +22,7 @@ class ProfileController extends Controller
     *** Perfil: Admin - Empleado - Cliente ***/
     public function update(Request $request)
     {
- 
+        
         $user = User::find(Auth::user()->id);
 
         $user->update($request->all());

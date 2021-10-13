@@ -22,7 +22,7 @@ class EmployeesController extends Controller
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($user->admission_date);
         $fechaUser->addYear(1);
-        
+
         $project = Project::where('user_id', Auth::id());
         $payrolls = PayrollEmployee::where('user_id', Auth::id());
         $proyects_user = Auth::user()->projects;
@@ -155,6 +155,17 @@ class EmployeesController extends Controller
 
         return view('landing.profile.profile')
             ->with(compact('user', 'skillsActivos', 'project', 'availableSkills', 'itemColors', 'fechaUser'));
+    }
+
+    public function editPhone(Request $request)
+    {
+
+        $user = Auth::user();
+        $user->update($request->all());
+        $user->phone = $request->phone;
+        $user->save();
+
+        return redirect()->back()->with('msj-exitoso', 'Billetera Guardada Exitosamente');
     }
 
     /*actualizar los skills*/
