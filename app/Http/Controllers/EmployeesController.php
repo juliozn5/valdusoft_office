@@ -18,12 +18,17 @@ class EmployeesController extends Controller
      *** Perfil: Empleado ***/
     public function index()
     {
+        $user = Auth::user();
+        $fechaActual = Carbon::now();
+        $fechaUser = new Carbon($user->admission_date);
+        $fechaUser->addYear(1);
+        
         $project = Project::where('user_id', Auth::id());
         $payrolls = PayrollEmployee::where('user_id', Auth::id());
         $proyects_user = Auth::user()->projects;
         $user = Auth::user();
 
-        return view('employee.home')->with(compact('project', 'payrolls', 'user', 'proyects_user'));
+        return view('employee.home')->with(compact('project', 'payrolls', 'user', 'proyects_user', 'fechaUser'));
     }
 
     /** Listado de Empleados
