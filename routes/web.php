@@ -155,10 +155,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('update-wallet', 'EmployeesController@update_wallet')->name('employee.profile.update-wallet');
         Route::post('upload-curriculum', 'EmployeesController@upload_curriculum')->name('employee.profile.upload-curriculum');
 
-
-
-
-
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
