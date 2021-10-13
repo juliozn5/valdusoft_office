@@ -4,9 +4,7 @@
             <div class="navbar-collapse" id="navbar-mobile">
                 <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item mobile-menu d-xl-none mr-auto"><a
-                                class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
-                                    class="ficon feather icon-menu"></i></a></li>
+                        <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
@@ -24,8 +22,7 @@
                             </div>
 
                             <span>
-                                <span><img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}"
-                                        alt="avatar" height="40" width="40"></span>
+                                <span><img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" alt="avatar" height="40" width="40"></span>
                             </span>
 
                         </a>
@@ -33,9 +30,7 @@
                             <a class="dropdown-item" href="{{ route('profile') }}"><i class="feather icon-user"></i> Mi
                                 perfil</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                    class="feather icon-power"></i> Salir</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Salir</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

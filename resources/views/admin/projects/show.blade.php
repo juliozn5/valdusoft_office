@@ -157,7 +157,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
         <div class="content-body">
             <div class="row" id="table-head">
                 {{-- Sección Izquierda --}}
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                     <div class="card">
                         <div style="height: 300px;">
                             @if (!is_null($project->logo))
@@ -176,6 +176,21 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <a class="btn btn-primary btn-sm waves-effect waves-light" href="#editProject" data-toggle="modal" onclick="editProject({{ $project }});"><i class="fa fa-edit"></i> Editar</a>
                                 </div>
                             </div>
+
+                            @if (Auth::user()->profile_id == 1)
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <div class="project-detail-titles">Presupuesto</div>
+                                    <div class="mt-1 project-detail-dates">{{ $project->amount }} $</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="project-detail-titles">Asignado | Costo</div>
+                                    <div class="mt-1 project-detail-dates">
+                                      dato | datos
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
 
                             {{-- Sección de Cliente --}}
                             <div class="row mt-2">
@@ -264,7 +279,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <div class="project-detail-titles">Etiquetas</div>
                                     <div class="mt-1">
                                         @foreach ($project->tags as $tag)
-                                            <div class="text-center text-white d-inline-block mr-1">
+                                            <div class="text-center text-white d-inline-block mr-1 pb-1">
                                                 <div class="project-detail-skill">{{ $tag->name }}</div>
                                             </div>
                                         @endforeach
@@ -276,7 +291,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                 </div>
 
                 {{-- Sección Derecha --}}
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                     <div class="card">
                         <div class="pt-2 pl-2 pr-2 pb-0">
                             <ul class="nav nav-pills nav-justified">
@@ -284,7 +299,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <a class="nav-link nav-link-pills  @if (!Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#attachments">Adjuntos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat">Chat</a>
+                                    <a class="nav-link nav-link-pills" data-toggle="tab" id="scrolling" href="#chat">Chat</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link nav-link-pills  @if (Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#accountant">Contable</a>
@@ -351,6 +366,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 @livewire("chat-list", ['project' => $project->id])
 
                                 @livewire("chat-form", ['project' => $project->id])
+
                             </div>
 
                             {{-- Pestaña de Contable --}}
@@ -505,7 +521,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label for="type">Estado</label>
+                                <label for="type">Estado</label> 
                                 <select name="status" id="project_status" class="form-control">
                                     <option value="0">No Atendido</option>
                                     <option value="1">En Proceso</option>
@@ -515,9 +531,18 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-12 col-12">
+                        <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="logo">Logo</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="logo" id="logo">
+                                    <label class="custom-file-label" for="logo">Seleccione un logo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="logo">Monto</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="logo" id="logo">
                                     <label class="custom-file-label" for="logo">Seleccione un logo</label>

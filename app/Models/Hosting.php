@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Hosting extends Model
 {
     use HasFactory;
 
-      /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -22,11 +23,14 @@ class Hosting extends Model
         'renewal_price',
         'years',
         'renewal_hosting',
+        'cpanel_url',
+        'cpanel_email',
+        'cpanel_password',
         'updated_at',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
-    
 }

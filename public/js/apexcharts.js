@@ -30907,7 +30907,7 @@ $('#add_field').click(function (e) {
     e.preventDefault(); //Pervenir Nuevos Click
     if (x < campos_max) {
         $('#listas').append('<div id="listas">\
-        <div class="row">\
+        <div class="row mt-4">\
     <input type="text" name="descripcion[]" class="one form-control col-2" id="principal_'+x+'">\
     <input type="text" id="second_'+x+'" name="unidades[]" oninput="calcular('+x+')" class="two monto form-control col-2" >\
     <input type="text" id="third_'+x+'" name="valor[]" oninput="calcular('+x+')"  class="three monto form-control col-2" >\

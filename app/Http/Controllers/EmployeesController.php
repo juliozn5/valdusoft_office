@@ -15,14 +15,15 @@ use Illuminate\Support\Facades\Auth;
 class EmployeesController extends Controller
 {
     /** Home del Empleado
-    *** Perfil: Empleado ***/
-    public function index(){
+     *** Perfil: Empleado ***/
+    public function index()
+    {
         $project = Project::where('user_id', Auth::id());
         $payrolls = PayrollEmployee::where('user_id', Auth::id());
         $proyects_user = Auth::user()->projects;
         $user = Auth::user();
-        
-        return view('employee.home')->with(compact('project','payrolls','user', 'proyects_user')); 
+
+        return view('employee.home')->with(compact('project', 'payrolls', 'user', 'proyects_user'));
     }
 
     /** Listado de Empleados
@@ -99,7 +100,7 @@ class EmployeesController extends Controller
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($employee->admission_date);
         $fechaUser->addYear(1);
-        
+
         $projectsID = array();
 
         foreach ($employee->projects as $project) {
@@ -132,6 +133,9 @@ class EmployeesController extends Controller
     {
 
         $user = Auth::user();
+        $fechaActual = Carbon::now();
+        $fechaUser = new Carbon($user->admission_date);
+        $fechaUser->addYear(1);
 
         $project = Project::all()->where('user_id', Auth::user()->id);
 
@@ -146,7 +150,7 @@ class EmployeesController extends Controller
         $itemColors = ['#FF3F3F', '#12A0B4', '#940385'];
 
         return view('landing.profile.profile')
-            ->with(compact('user', 'skillsActivos', 'project', 'availableSkills', 'itemColors',));
+            ->with(compact('user', 'skillsActivos', 'project', 'availableSkills', 'itemColors', 'fechaUser'));
     }
 
     /*actualizar los skills*/

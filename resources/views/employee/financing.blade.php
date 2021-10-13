@@ -33,15 +33,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <th>PEDIENTE</th>
                                         </tr>
                                     </thead>
-                                    <tbody>  
-                                    @foreach ($employes as $item)
+                                    <tbody>
+                                        @foreach ($employes as $item)
                                         <tr>
-                                        <td>{{date('d/m/Y', strtotime($item->date))}}</td>
-                                        <td>{{$item->total_hours}}</td>
-                                        <td>{{$item->price_by_hour}}</td>
-                                        <td>{{$item->total_amount}}</td>
+                                            <td>{{date('d/m/Y', strtotime($item->date))}}</td>
+                                            <td>{{$item->total_hours}}</td>
+                                            <td>{{$item->price_by_hour}}</td>
+                                            <td>{{$item->total_amount}}</td>
                                         </tr>
-                                    @endforeach
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -54,11 +54,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="col-md-4 col-sm-12">
                     <div class="card">
                         <div class="">
-                            <div class="card-body">
+                            <div class="card-body p-1">
                                 <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="120" height="120" alt="">
-                                <h5 class="pt-2">Proximas <br> Vacaciones</h5>
+                                <h5 class="pt-2">Próximas <br> Vacaciones</h5>
                                 <br>
-                                <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
+                                <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>{{$fechaUser->toFormattedDateString()}}</p>
                             </div>
                         </div>
                     </div>

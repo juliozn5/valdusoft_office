@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('config:clear');
     $exitCode = Artisan::call('cache:clear');
     $exitCode = Artisan::call('config:cache');
@@ -99,7 +99,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::group(['prefix' => 'bills'], function () {
                 Route::get('/', 'BillController@list')->name('admin.bills.list');
                 Route::get('bill', 'BillController@BillList')->name('admin.bills.BillList');
-
+                Route::post('bill', 'BillController@bill')->name('billsPost');
             });
 
             //MÓDULO FINANCIERO - NÓMINA
@@ -109,9 +109,8 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('DetailPayroll', 'PayrollController@DetailPayroll')->name('admin.payrolls.DetailPayroll');
                 Route::post('update', 'PayrollController@update')->name('admin.payrolls.updatePayroll');
                 Route::get('PayrollList', 'PayrollController@PayrollList')->name('admin.payrolls.PayrollList');
-                
-                Route::post('upgenerate', 'PayrollEmployeeController@upgenerate')->name('admin.payrolls.upgenerate');
 
+                Route::post('upgenerate', 'PayrollEmployeeController@upgenerate')->name('admin.payrolls.upgenerate');
             });
 
             //MÓDULO FINANCIERO - PAGOS
@@ -123,7 +122,6 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::get('dataGrafica', 'AdminController@dataGrafica')->name('dataGrafica');
-
     });
 
     //LISTADO DE RUTAS PARA EL CLIENTE
@@ -133,6 +131,7 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('client.projects.list');
+            Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('client.projects.show')->middleware('project_user');
             Route::get('/detail', 'ProjectsController@detailclient')->name('client.projects.detail');
         });
 
@@ -157,20 +156,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('update-wallet', 'EmployeesController@update_wallet')->name('employee.profile.update-wallet');
         Route::post('upload-curriculum', 'EmployeesController@upload_curriculum')->name('employee.profile.upload-curriculum');
 
-
-
-
-
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
-            Route::get('/detail/{id}', 'ProjectsController@detail')->name('employee.projects.detail');
+            Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('employee.projects.show')->middleware('project_user');
         });
 
         //MÓDULO DE FACTURAS
         Route::group(['prefix' => 'bills'], function () {
             Route::get('/', 'BillController@list')->name('employee.bills.list');
-            Route::get('/details', 'BillController@details')->name('employee.bills.details');
+            Route::get('/details/{id}', 'BillController@details')->name('employee.bills.details');
         });
 
         //MÓDULO DE INTERÉS
