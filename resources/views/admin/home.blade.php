@@ -102,12 +102,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <tr>
                                                 <td>
                                                     @if (!is_null($item->photo))
-                                                    <img class="rounded-circle" width="32px" height="32px" src="{{ asset('/uploads/images/users/photos/'.$item->photo) }}" />
+                                                    <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;" src="{{ asset('/storage/photo-profile/'.$item->photo) }}" />
                                                     @else
-                                                    <img class="rounded-circle" width="32px" height="32px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                    <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                     @endif
                                                 </td>
-                                                <td>{{ $item->name }} {{ $item->last_name }}</td>
+                                                <td><a href="{{ route('admin.employees.show', [$item->slug, $item->id]) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
                                                 <td><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
                                                 <td><a href="https://api.whatsapp.com/send?phone={{ $item->phone }}" Target="_blank">{{ $item->phone }}</a></td>
                                             </tr>
