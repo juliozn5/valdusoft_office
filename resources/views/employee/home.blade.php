@@ -19,7 +19,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="row">
                         @foreach ($proyects_user as $item)
                             <div class="container-fluid col-md-2 col-sm-1 mb-2 rounded" id="recomiendo">
-                            <img src="{{ asset('storage/photo-logo/'.$item->logo) }}" class="mt-2" alt="" style="width:100%;">
+                            <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="mt-2" alt="" style="width:100%;">
                             <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
                                 <div style="position: relative;top: 14px;"> {{$item->name}}</div>
                             </div>

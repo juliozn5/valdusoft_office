@@ -1879,7 +1879,7 @@
         <td class="column2 style1 null"></td>
         <td class="column3 style6 null"></td>
         <td class="column4 style1 null"></td>
-        <td class="column5 style32 s">27.04.2021</td>+
+        <td class="column5 style32 s">{{$factura->date}}</td>
         <td class="column6 style7 null"></td>
       </tr>
       <tr class="row5">
@@ -1897,7 +1897,7 @@
         <td class="column2 style1 null"></td>
         <td class="column3 style1 null"></td>
         <td class="column4 style1 null"></td>
-        <td class="column5 style34 s">138</td>
+        <td class="column5 style34 s">{{$factura->id}}</td>
         <td class="column6 style1 null"></td>
       </tr>
       <tr class="row7">
@@ -2132,7 +2132,7 @@
         <td class="column5 style22 null"></td>
         <td class="column6 style22 null"></td>
       </tr>
-      <tr class="row36">+
+      <tr class="row36">
         <td class="column0 style11 null"></td>
         <td class="column1 style21 null"></td>
         <td class="column2 style23 null"></td>
