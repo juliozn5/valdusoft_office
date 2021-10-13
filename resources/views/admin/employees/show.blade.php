@@ -36,10 +36,11 @@
                             <div class="row" style="display: flex; align-items: center;">
                                 <div class="col-md-4">
                                     @if (!is_null($employee->photo))
-                                    <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->fullname }}" height="100" width="100">
+                                    <img class="rounded-circle" src="{{ asset('storage/photo-profile/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="100" width="100">
                                     @else
                                     <img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
                                     @endif
+                                    
                                 </div>
                                 <div class="col-md-8">
                                     <h3 class="card-title">{{ $employee->name }} {{ $employee->last_name }}</h3>
@@ -47,9 +48,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body" style="padding: 0px 0px !important;">
+                        <div class="card-body" >
                             {{-- Sección de Proyectos Asignados --}}
-                            <div class="pl-2 pr-2">
+                            <div class="pl-4 pr-2 mt-1">
                                 <div class="project-detail-titles">Proyectos Asignados</div>
                                 <div class="mt-1">
                                     @php $cont = 0; @endphp
@@ -76,7 +77,7 @@
                             </div>
 
                             {{-- Sección de Fechas --}}
-                            <div class="row mt-3 pl-2 pr-2">
+                            <div class="row mt-3 pl-4 pr-2">
                                 <div class="col-3">
                                     <div class="project-detail-titles">Fecha de Nacimiento</div>
                                     <div class="mt-1 project-detail-dates">
@@ -100,7 +101,7 @@
                             </div>
 
                             {{-- Sección de Skills --}}
-                            <div class="mt-3 pl-2 pr-2">
+                            <div class="mt-3 pl-4 pr-2">
                                 <div class="project-detail-titles">Skills</div>
                                 <div class="mt-1">
                                     @if ($employee->skills_count)
@@ -116,7 +117,7 @@
                             </div>
 
                             {{-- Sección de Curriculum --}}
-                            <div class="mt-3 pl-2 pr-2">
+                            <div class="mt-3 pl-4 pr-2">
                                 <div class="project-detail-titles">Curriculum Vitae</div>
                                 <div class="mt-1">
                                     @if (!is_null($employee->curriculum))
@@ -128,7 +129,7 @@
                             </div>
 
                             {{-- Sección de Sueldo --}}
-                            <div class="row mt-3 pl-2 pr-2">
+                            <div class="row mt-3 pl-4 pr-2">
                                 <div class="col-3">
                                     <div class="project-detail-titles">Precio por hora</div>
                                     <div class="mt-1 project-detail-dates">
