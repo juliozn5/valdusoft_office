@@ -64,4 +64,32 @@ class Project extends Model
         return $this->hasMany('App\Models\Chat');
     }
 
+    //Nombre del cliente
+    public function cliente(){
+        $usuario = User::find($this->user_id);
+        $nombreCompleto = $usuario->name . ' ' . $usuario->last_name;
+        return $nombreCompleto;
+    }
+
+    //Muestra el Status del proyecto
+    public function status(){
+        switch ($this->status) {
+            case '0':
+                return 'No atendido';
+                break;
+            case '1':
+                return 'En Proceso';
+                break;
+            case '2':
+                return 'Testeando';
+                break;
+            case '3':
+                return 'Completado';
+                break;
+            
+            default:
+                return 'Sin Status';
+                break;
+        }
+    }
 }

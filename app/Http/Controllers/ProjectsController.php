@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attachment;
+use App\Models\User;
 use App\Models\Project;
-use App\Models\AccountingTransaction;
+use App\Models\Attachment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Models\AccountingTransaction;
 
 class ProjectsController extends Controller
 {
@@ -31,7 +32,8 @@ class ProjectsController extends Controller
             return view('client.projects')
             ->with('projects', $projects); 
         }else if (Auth::user()->profile_id == 3){
-            $projects = Project::where('user_id', Auth::id())->paginate(10);
+            $projects = User::find(Auth::id())->projects()->orderBy('id', 'DESC')
+            ->paginate(10);
 
             return view('employee.projects')->with('projects', $projects);
         }
@@ -222,8 +224,10 @@ class ProjectsController extends Controller
     }
 
     //detalle del empleado
-    public function detail(){
-        return view('employee.projectsdetail');
+    public function detail($id){
+        $proyect = Project::find($id);
+        // dd($proyect);
+        return view('employee.projectsdetail', compact('proyect'));
     }
 
     //detalle del cliente

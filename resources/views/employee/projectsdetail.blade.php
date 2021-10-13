@@ -48,21 +48,21 @@
                         </div>
 
                         <div class="p-2">
-                            <h3 class="card-title">Proyecto #1</h3>
+                            <h3 class="card-title">Proyecto #{{$proyect->id}}</h3>
 
                             <!-- Sección de Cliente -->
                             <div class="row mt-2">
                                 <div class="col-6">
                                     <div class="project-detail-titles">Cliente</div>
                                     <div class="mt-1 project-detail-dates">
-                                        Cliente Pedro Perez
+                                        {{$proyect->cliente()}}
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="project-detail-titles">País</div>
                                     <div class="mt-1 project-detail-dates">
                                         <img src="{{asset('images/figma/Colombia.png')}}" alt="">
-                                        Colombia
+                                        {{$proyect->country->name}}
                                     </div>
                                 </div>
                             </div>
@@ -72,18 +72,11 @@
                                 <div class="col-12 pb-1">
                                     <div class="project-detail-titles">Miembros</div>
                                 </div>
-
-                                <div class="col-1 mr-1">
-                                    <img class="rounded-circle" src="{{asset('images/figma/Ellipse_2.png')}}" alt="#" height="50" width="50">
-                                </div>
-
-                                <div class="col-1 mr-1 ml-1">
-                                    <img class="rounded-circle" src="{{asset('images/figma/Ellipse_3.png')}}" alt="#" height="50" width="50">
-                                </div>
-
-                                <div class="col-1 mr-1 ml-1">
-                                    <img class="rounded-circle" src="{{asset('images/figma/Ellipse_4.png')}}" alt="#" height="50" width="50">
-                                </div>
+                                @foreach ($proyect->employees as $employee)
+                                    <div class="col-1 mr-1">
+                                        <img class="rounded-circle" style="object-fit: cover;" src="{{asset('storage/photo-profile/'.$employee->photo)}}" alt=" {{$employee->name .' '. $employee->last_name}}" title=" {{$employee->name .' '. $employee->last_name}}" height="50" width="50">
+                                    </div>  
+                                @endforeach
 
                             </div>
                             <!-- Sección de Fechas -->
@@ -92,13 +85,14 @@
                                     <div class="project-detail-titles">Fecha de Inicio</div>
                                     <div class="mt-1 project-detail-dates">
                                         <i class="far fa-calendar icon-big mr-1"></i>
-                                        Lunes 14 de Enero
+                                        {{$proyect->start_date}}
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="project-detail-titles">Fecha de Entrega</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big "></i> Viernes 28 de Febrero
+                                        <i class="far fa-calendar icon-big "></i>
+                                        {{$proyect->ending_date}}
                                     </div>
                                 </div>
                             </div>
@@ -107,27 +101,12 @@
                             <div class="mt-2">
                                 <div class="project-detail-titles">Tecnologías</div>
                                 <div class="mt-1">
-
-                                    <div class="text-center text-white d-inline-block mr-1">
-                                        <div class="project-detail-skill">PHP</div>
-                                    </div>
-
-                                    <div class="text-center text-white d-inline-block mr-1">
-                                        <div class="project-detail-skill">Vue</div>
-                                    </div>
-
-                                    <div class="text-center text-white d-inline-block mr-1">
-                                        <div class="project-detail-skill">Laravel</div>
-                                    </div>
-
-                                    <div class="text-center text-white d-inline-block mr-1">
-                                        <div class="project-detail-skill">React</div>
-                                    </div>
-
-                                    <div class="text-center text-white d-inline-block mr-1">
-                                        <div class="project-detail-skill">Ionic</div>
-                                    </div>
-
+                                    @foreach ($proyect->technologies as $tech)
+                                        <div class="text-center text-white d-inline-block mr-1">
+                                            <div class="project-detail-skill">{{$tech->name}}</div>
+                                        </div>
+                                     @endforeach
+                                    
                                 </div>
                             </div>
 
@@ -136,7 +115,7 @@
                                 <div class="col-12">
                                     <div class="project-detail-titles">Estado</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <label class="label status-label status-label-gray h6">En Proceso</label>
+                                        <label class="label status-label status-label-gray h6">{{$proyect->status()}}</label>
                                     </div>
                                 </div>
                             </div>
