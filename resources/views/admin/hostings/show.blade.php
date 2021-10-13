@@ -77,7 +77,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                 </div>
             </div>
-            <div class="pl-2 pr-2 mt-1">
+            <div class="pl-2 pr-2 ">
                 <div class="row mt-3 pl-2 pr-2">
                     <div class="col-md-3 col-sm-1">
                         <div class="project-detail-titles">Cantidad de años</div>
@@ -88,7 +88,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                 </div>
             </div>
-            <div class="pl-2 pr-2 mt-1">
+            <div class="pl-2 pr-2 ">
                 <div class="row mt-3 pl-2 pr-2">
                     <div class="col-md-3 col-sm-1">
                         <div class="project-detail-titles">Cliente</div>
@@ -98,7 +98,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                 </div>
             </div>
-            <div class="pl-2 pr-2 mt-1 mb-3">
+            <div class="pl-2 pr-2  mb-3">
                 <div class="row mt-3 pl-2 pr-2">
                     <div class="col-md-12 col-sm-1">
                         <div class="project-detail-titles">Integración con Cpanel</div>

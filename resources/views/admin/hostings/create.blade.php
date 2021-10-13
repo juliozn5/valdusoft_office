@@ -121,14 +121,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="cpanel_user">Username</label>
-                                        <input type="text" name="cpanel_user" id="cpanel_user" class="form-control">
+                                        <label for="cpanel_email">Email Cpanel</label>
+                                        <input type="text" name="cpanel_email" id="cpanel_email" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="cpanel_password">password</label>
-                                        <input type="password" name="cpanel_password" id="cpanel_password" class="form-control">
+                                        <label for="cpanel_password">password Cpanel</label>
+                                        <input type="password" name="cpanel_password" id="cpanel_password" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-12 alert alert-danger" id="errors_div" style="display: none;"></div>

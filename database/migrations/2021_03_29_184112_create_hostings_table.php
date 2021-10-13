@@ -18,7 +18,7 @@ class CreateHostingsTable extends Migration
             $table->string('client')->nullable();
             $table->longText('url')->nullable();
             $table->string('cpanel_url')->nullable();
-            $table->string('cpanel_user')->nullable();
+            $table->string('cpanel_email')->uniqid();
             $table->string('cpanel_password')->nullable();
             $table->date('create_date')->nullable();
             $table->date('due_date')->nullable();

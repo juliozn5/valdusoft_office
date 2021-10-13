@@ -50,26 +50,25 @@ class HostingController extends Controller
      *** Perfil: Admin ***/
     public function store(Request $request)
     {
-
-
+      
         $fecha = new Carbon($request->create_date);
         $renewal_hosting = $fecha->addYears($request->years);
 
-        Hosting::create([
-            'user_id' => $request->user_id,
-            'url' => $request->url,
-            'create_date' => $request->create_date,
-            'due_date' => $request->due_date,
-            'renewal_hosting' => strtotime(date($renewal_hosting)),
-            'price' => $request->price,
-            'renewal_price' => $request->renewal_price,
-            'years' => $request->years,
-            'cpanel_url' =>$request->cpanel_url,
-            'cpanel_user' => $request->cpanel_user,
-            'cpanel_password' => $request->cpanel_password,
-        ]);
-
-
+       
+            Hosting::create([
+                'user_id' => $request->user_id,
+                'url' => $request->url,
+                'create_date' => $request->create_date,
+                'due_date' => $request->due_date,
+                'renewal_hosting' => strtotime(date($renewal_hosting)),
+                'price' => $request->price,
+                'renewal_price' => $request->renewal_price,
+                'years' => $request->years,
+                'cpanel_url' => $request->cpanel_url,
+                'cpanel_email' => $request->cpanel_email,
+                'cpanel_password' => $request->cpanel_password,
+            ]);
+        
         return redirect()->route('admin.hostings.list')->with('message', 'Se creo el Hosting Exitosamente');
     }
 

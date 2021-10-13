@@ -6,19 +6,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @endpush
 @push('scripts')
 <script>
+    function edithosting($hosting) {
 
-function edithosting($hosting) {
-
-    $("#hosting_id").val($hosting.id);
-    $("#hosting_url").val($hosting.url);
-    $("#date").val($hosting.create_date);
-    $("#client option[value=" + $hosting.user_id + "]").attr("selected", true);
-    $("#date_end").val($hosting.due_date);
-    $("#date_end").val($hosting.years);
-    $("#price").val($hosting.price);
-    $("#renewal_price").val($hosting.renewal_price);
-}
-
+        $("#hosting_id").val($hosting.id);
+        $("#hosting_url").val($hosting.url);
+        $("#date").val($hosting.create_date);
+        $("#client option[value=" + $hosting.user_id + "]").attr("selected", true);
+        $("#date_end").val($hosting.due_date);
+        $("#date_end").val($hosting.years);
+        $("#price").val($hosting.price);
+        $("#renewal_price").val($hosting.renewal_price);
+    }
 </script>
 @endpush
 @include('layouts.partials.navbar')
@@ -52,7 +50,7 @@ function edithosting($hosting) {
                                             <th>ACCIÓN</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                         @foreach ($hostings as $hosting)
                                         <tr>
                                             <th scope="row">{{ $hosting->url }}</th>
@@ -65,22 +63,22 @@ function edithosting($hosting) {
                                             </td>
                                             <td>
                                                 @if (!is_null($hosting->price))
-                                                    ${{$hosting->price}}
+                                                ${{$hosting->price}}
                                                 @else
-                                                    Dato no disponible
+                                                Dato no disponible
                                                 @endif
                                             </td>
                                             <td>
                                                 @if (!is_null($hosting->renewal_price))
-                                                    {{$hosting->renewal_price}}
+                                                {{$hosting->renewal_price}}
                                                 @else
-                                                    Dato no disponible
+                                                Dato no disponible
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{route('admin.hostings.show', [$hosting->id])}}" class="mr-2" ><i class="fa fa-eye mr-1 action-icon"></i></a>
-                                                
-                                                 <a href="#edit" data-toggle="modal" onclick="edithosting({{$hosting}});"><img id="bottom"src="{{asset('images/icons/Group.png')}}" alt=""></a>
+                                                <a href="{{route('admin.hostings.show', [$hosting->id])}}" class="mr-2"><i class="fa fa-eye mr-1 action-icon"></i></a>
+
+                                                <a href="#edit" data-toggle="modal" onclick="edithosting({{$hosting}});"><img id="bottom" src="{{asset('images/icons/Group.png')}}" alt=""></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -96,7 +94,7 @@ function edithosting($hosting) {
             </div>
         </div>
 
-                <!--  MODAL EDITAR NOMINA  -->
+        <!--  MODAL EDITAR NOMINA  -->
 
         <div class="modal  fade text-left " id="edit" tabindex="-1" role="dialog" aria-modal="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -124,7 +122,7 @@ function edithosting($hosting) {
                                         <select name="client" id="client" class="form-control">
                                             <option value="" selected disabled>Seleccione un cliente...</option>
                                             @foreach ($client as $item)
-                                               <option value="{{ $item->id }}">{{ $item->name}} </option> 
+                                            <option value="{{ $item->id }}">{{ $item->name}} </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -132,7 +130,7 @@ function edithosting($hosting) {
                                         <div class="form-group">
                                             <label for="date_end">Cantidad de años</label>
                                             <select name="date_end" id="date_end" class="form-control" required>
-                                            <option value="" selected disabled>Seleccione los años para el hosting...</option>
+                                                <option value="" selected disabled>Seleccione los años para el hosting...</option>
                                                 <option value="1" id="date_end">1 Año</option>
                                                 <option value="2" id="date_end">2 Años</option>
                                                 <option value="3" id="date_end">3 Anos</option>
@@ -149,9 +147,9 @@ function edithosting($hosting) {
                                     </div>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                         <br><br>
-                            
+
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
                         </div>

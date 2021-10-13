@@ -24,7 +24,7 @@ class Hosting extends Model
         'years',
         'renewal_hosting',
         'cpanel_url',
-        'cpanel_user',
+        'cpanel_email',
         'cpanel_password',
         'updated_at',
     ];
