@@ -37,7 +37,8 @@ class PayrollController extends Controller
     }
 
     public function DetailPayroll(){
-        return view('admin.payrolls.DetailPayroll');                             
+        $employees = PayrollEmployee::all();
+        return view('admin.payrolls.DetailPayroll', compact('employees'));                             
     }
     
 

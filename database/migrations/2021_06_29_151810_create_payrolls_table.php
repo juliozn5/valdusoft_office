@@ -17,6 +17,7 @@ class CreatePayrollsTable extends Migration
             $table->id();
             $table->double('amount');
             $table->date('date');
+            $table->date('fecha_de_cierre');
             $table->enum('status', [0, 1])->default(0)->comment('0 - Pendiente, 1 - Completada');
             $table->timestamps();
         });

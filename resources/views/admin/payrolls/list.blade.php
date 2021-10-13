@@ -60,40 +60,33 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <thead class="thead-light ">
 
                                     <tr>
-                                        <th>ID</th>
-                                        <th>FECHA</th>
-                                        <th>MONTO</th>
-                                        <th>ESTADO</th>
-                                        <th class="col-2">ACCIÓN</th>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">FECHA DE INICIO</th>
+                                        <th class="text-center">FECHA DE CIERRE</th>
+                                        <th class="text-center">MONTO</th>
+                                        <th class="text-center">ESTADO</th>
+                                        <th class="text-center">ACCIÓN</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($payrolls as $payroll)
 
                                     <tr>
-                                        <td>{{ $payroll->id}}</td>
-
-                                        <td>{{ date('d-m-Y', strtotime($payroll->date)) }}</td>
-
-                                        <td>{{ $payroll->amount }}$</td>
-
-                                        <td>
+                                        <td class="text-center">{{ $payroll->id}}</td>
+                                        <td class="text-center">{{ date('d-m-Y', strtotime($payroll->date)) }}</td>
+                                        <td class="text-center">{{ date('d-m-Y', strtotime($payroll->fecha_de_cierre)) }}</td>                                      
+                                        <td class="text-center">{{number_format($payroll->amount, 2, ',', '.')}} </td>
+                                        <td class="text-center">
                                             @if ($payroll->status == 0)
-                                            <label class="label status-label status-label-purple ">No Atendido</label>
+                                              <label class="label status-label status-label-purple ">En Espera</label>
                                             @elseif ($payroll->status == 1)
-                                            <label class="label status-label status-label-gray">En Proceso</label>
-                                            @elseif ($payroll->status == 2)
-                                            <label class="label status-label status-label-blue">Testiando</label>
-                                            @elseif ($payroll->status == 3)
-                                            <label class="label status-label status-label-green">Completado</label>
+                                              <label class="label status-label status-label-gray">pagado</label>
                                             @endif
                                         </td>
-
-                                        <td><a href="{{route('admin.payrolls.DetailPayroll')}}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
+                                        <td class="text-center"><a href="{{route('admin.payrolls.DetailPayroll')}}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
 
                                             <a href="#edit" data-toggle="modal" onclick="editPayroll({{$payroll}});"><i id="eye" href="#" style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                         </td>
-
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -135,8 +128,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <div class="col-6">
                                     <label for="payroll_status">Estado</label>
                                     <select name="status" id="payroll_status" class="form-control">
-                                        <option value="0">Pendiente</option>
-                                        <option value="1">Completado</option>
+                                        <option value="0">En espera</option>
+                                        <option value="1">Pagada</option>
                                     </select>
                                 </div>
                             </div>
