@@ -179,14 +179,18 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                             @if (Auth::user()->profile_id == 1)
                             <div class="row mt-3">
-                                <div class="col-6">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Presupuesto</div>
                                     <div class="mt-1 project-detail-dates">{{ $project->amount }} $</div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="project-detail-titles">Beneficio</div>
+                                    <div class="mt-1 project-detail-dates">facturas asignadas al proyecto ene stado completado - el costo $</div>
                                 </div>
                                 <div class="col-6">
                                     <div class="project-detail-titles">Asignado | Costo</div>
                                     <div class="mt-1 project-detail-dates">
-                                      dato | datos
+                                        tendra el 60%  de las facturas en estado completado que pertenezcan al proyecto | seran los egresos asigandos a los proyectos ne la parte contable,
                                     </div>
                                 </div>
                             </div>
