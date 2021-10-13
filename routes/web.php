@@ -170,7 +170,7 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE FACTURAS
         Route::group(['prefix' => 'bills'], function () {
             Route::get('/', 'BillController@list')->name('employee.bills.list');
-            Route::get('/details', 'BillController@details')->name('employee.bills.details');
+            Route::get('/details/{id}', 'BillController@details')->name('employee.bills.details');
         });
 
         //MÓDULO DE INTERÉS
