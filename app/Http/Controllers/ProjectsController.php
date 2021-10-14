@@ -66,6 +66,12 @@ class ProjectsController extends Controller
         return view('admin.projects.create')->with(compact('clients', 'countries', 'technologies', 'tags'));
     }
 
+
+    public function detailclient()
+    {
+        return redirect()->back()->with('message','En espera de Respuesta'); 
+    }
+
     /** Guardar datos del Nuevo Proyecto
     *** Perfil: Admin ***/
     public function store(Request $request){
@@ -290,27 +296,8 @@ class ProjectsController extends Controller
     /** Agregar una transacción contable al proyecto
     *** Perfil: Admin ***/
     public function add_accounting_transaction(Request $request){
-        $lastTransaction = DB::table('project_accounting_transactions')
-                                ->select('balance')
-                                ->where('project_id', '=', $request->project_id)
-                                ->orderBy('id', 'DESC')
-                                ->first();
-
         $transaction = new AccountingTransaction($request->all());
         $transaction->date = date('Y-m-d');
-        if (!is_null($lastTransaction)){
-            if ($transaction->type == '+'){
-                $transaction->balance = $lastTransaction->balance + $transaction->amount;
-            }else{
-                $transaction->balance = $lastTransaction->balance - $transaction->amount;
-            }
-        }else{
-            if ($transaction->type == '+'){
-                $transaction->balance = $transaction->amount;
-            }else{
-                $transaction->balance = -$transaction->amount;
-            }
-        }
         $transaction->save();
 
         return redirect()->back()->with('msj-transaction', 'true');

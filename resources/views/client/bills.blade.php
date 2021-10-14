@@ -24,7 +24,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table mb-0">
-                                    <thead class="thead-light">
+                                    <thead class="thead-light text-center">
                                         <tr>
                                             <th># <i class="fas fa-sort"></i></th>
                                             <th>FECHA <i class="fas fa-sort"></i></th>
@@ -33,7 +33,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <th>ACCIÓN</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
+
+
                                         @foreach ($bills as $bill)
                                         <tr>
                                             <th scope="row">#{{ $bill->id }}</th>
@@ -41,13 +43,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>{{ $bill->amount }}$</td>
                                             <td>
                                                 @if ($bill->status == 0)
-                                                    <label class="label status-label status-label-purple">No Atendido</label>
+                                                <label class="label status-label status-label-purple">No Atendido</label>
                                                 @elseif ($bill->status == 1)
-                                                    <label class="label status-label status-label-gray">En Proceso</label>
+                                                <label class="label status-label status-label-gray">En Proceso</label>
                                                 @elseif ($bill->status == 2)
-                                                    <label class="label status-label status-label-blue">Testiando</label>
+                                                <label class="label status-label status-label-blue">Testiando</label>
                                                 @elseif ($bill->status == 3)
-                                                    <label class="label status-label status-label-green">Completado</label>
+                                                <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
                                             <td><a href="{{ route('client.bills.detail') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
