@@ -66,9 +66,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <td class="text-center">{{$item->total_hours}}</td>
                                         <td class="text-center">{{number_format($item->price_by_hour, 2, ',', '.')}} $</td>       
                                         <td class="text-center">{{$item->total_amount}}</td>
-                                        <td class="text-center">{{$item->total_amount}}</td>
-                                        
-                                    </tr>  
+                                        @foreach($bons as $item)
+                                          <td class="text-center">{{$item->amount}}</td>  
+                                        @endforeach
+                                    </tr>
                                   @endforeach
                                 </tbody>
                             </table>
@@ -81,14 +82,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
     </div>
-    @endsection
+</div>
+@endsection

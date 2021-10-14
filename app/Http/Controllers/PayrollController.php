@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+
+use App\Models\User;
 use App\Models\Payrolls;
+use App\Models\Financing;
 use Illuminate\Http\Request;
 use App\Models\PayrollEmployee;
-use App\Models\User;
+use App\Models\PaymentFinancing;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PayrollController extends Controller
 {
@@ -38,12 +42,37 @@ class PayrollController extends Controller
 
     public function DetailPayroll(){
         $employees = PayrollEmployee::all();
-        return view('admin.payrolls.DetailPayroll', compact('employees'));                             
+        $bons = financing::all();
+        return view('admin.payrolls.DetailPayroll', compact('employees','bons'));                             
     }
     
 
     public function PayrollList(){
         return view('admin.payrolls.PayrollList');                             
     }
+    public function generateloan(Request $request)
+    { 
+        $data = request();
 
+        DB::table('financing')->insert([
+            'total_amount'=> $data['total_amount'],
+            'percentage'=> $data['percentage'],
+            'user_id' => Auth::user()->id,
+           ]);
+
+       return redirect( route('admin.payrolls.generate'));
+    }
+    public function generatebond(Request $request)
+    {
+        $data = request();
+
+        DB::table('financing_payments')->insert([
+            'amount'=> $data['amount'],
+            'description'=> $data['description'],
+            // 'financing_id' => ,
+        ]);
+       
+       return redirect( route('admin.payrolls.generate'));
+
+    }
 }

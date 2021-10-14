@@ -116,6 +116,8 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('PayrollList', 'PayrollController@PayrollList')->name('admin.payrolls.PayrollList');
 
                 Route::post('upgenerate', 'PayrollEmployeeController@upgenerate')->name('admin.payrolls.upgenerate');
+                Route::post('generateloan', 'PayrollController@generateloan')->name('admin.payrolls.generateloan');
+                Route::post('generatebond', 'PayrollController@generatebond')->name('admin.payrolls.generatebond');
             });
 
             //MÓDULO FINANCIERO - PAGOS
