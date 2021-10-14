@@ -18,7 +18,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div> 
+
 
         <div class="content-body">
             <div class="row" id="table-head">
