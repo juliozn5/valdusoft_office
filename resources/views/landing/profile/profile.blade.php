@@ -128,7 +128,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="mt-3" style="padding:0px 0px 0px 50px;">
                         <div class="project-detail-titles mb-1"><strong>Curriculum Vitae<strong></div>
                         <div class="">
-                            <div class="ml-2 pl-1 pt-1 position-absolute"><span>{{ $user->curriculum}}</span></div>
+                            <div class="ml-2 pl-1 pt-1 position-absolute"><span>
+                            {{ (is_null($user->curriculum)) ? 'Dato no disponible' : $user->curriculum }}    
+                          
                         </div>
                         <a href="{{ asset('storage/flie-curriculum/'.$user->curriculum) }}" download><img class="" src="{{asset('images/icons/arrow-down.png')}}" alt=""></a>
                     </div>
@@ -141,10 +143,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <img src="{{ asset('images/icons/dollar.png')}}" alt="" class="mr-1"><span>{{ $user->price_per_hour}} USDT</span>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-1 mr-3 mt-3">
-                        <div class="project-detail-titles"><strong>Billetera USDT Red tron<strong></div>
+                    <div class="col-3 mt-3">
+                        <div class="project-detail-titles">Billetera USDT-TRON</div>
                         <div class="mt-1 project-detail-dates">
-                            <img src="{{ asset('images/icons/uphold.png')}}" alt="" class="mr-1"><span>{{ $user->tron_wallet}}</span>
+                            <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($user->tron_wallet)) ? 'Dato no disponible' : $user->tron_wallet }}
                         </div>
                     </div>
                 </div>
@@ -190,7 +192,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class=" col-12 d-flex flex-sm-row flex-column justify-content-end">
                         <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
                     </div>
-               </div>
+            </div>
             </form>
         </div>
     </div>
