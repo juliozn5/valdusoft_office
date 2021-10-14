@@ -18,10 +18,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="card">
                     <div class="card-header" style="padding:30px 0px 0px 30px;">
                         @if (Auth::user()->photo != NULL)
-                        <a data-toggle="modal" data-target="#fotos" data-tooltip="I’m the tooltip text."><img  class="rounded-circle ml-2" src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px"></a>
-                        <span class="tooltip">Praesent ut tincidunt ligula. Donec at sem sit amet nulla porttitor consequat sit amet quis velit. Phasellus imperdiet mi in velit gravida tincidunt.</span>
+                        <a><img class="rounded-circle ml-2" src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
+                        
                         @else
-                        <a data-toggle="modal" data-target="#fotos"><img src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40"></a>
+                        <a><img src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
                         @endif
                         <div class="col ml-1">
                             <h3 class="card-title mb-1">{{ $user->name }} {{ $user->last_name }}</h3>
@@ -30,7 +30,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                 </div>
 
-                
+
                 <div class="card-body">
                     <div class="ml-4 mb-3">
                         <div class="row">
@@ -38,14 +38,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 project-detail-titles">Cambiar Contraseña</div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-sm-5 col-md-5 col-lg-6">{{$user->phone}}
-                                <a data-toggle="modal" data-target="#telefono">
-                                    <i class="fas fa-edit ml-1" style="font-size:20px"></i>
-                                </a>
+                            <div class="col-sm-7 col-md-7 col-lg-6"><p style="font-size: 17px;">{{$user->phone}} <a data-toggle="modal" data-target="#telefono">
+                               <i class="far fa-edit ml-2" style="font-size:21px;"></i></p> 
+                             </a>
                             </div>
                             <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
                                 <a data-toggle="modal" data-target="#modal20">
-                                <button type="button" class="btn  btn-primary" >Cambiar</button>
+                                    <button type="button" class="btn  btn-primary ml-2">Cambiar</button>
                                 </a>
                             </div>
                         </div>
@@ -149,6 +148,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
     </div>
 
+
     <!--Cambiar Numero de Celular-->
     <div class="modal fade" id="telefono" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -157,7 +157,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <h5 class="modal-title" id="exampleModalLabel">Cambiar numero de telefono</h5>
                     <a type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></a>
                 </div>
-                <form method="post" action="{{ route('employee.profile') }}">
+                <form method="post" action="{{ route('employee.profiles') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="col-8 mt-1 ml-5">
@@ -168,7 +168,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>
                     <div class="modal-footer">
-                        
                         <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
@@ -190,7 +189,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
                 <div class="modal-body">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('passwords') }}">
+                        <form method="POST" action="{{ route('change-password') }}">
                             @csrf
                             @foreach ($errors->all() as $error)
                             <p class="text-danger">{{ $error }}</p>
@@ -241,7 +240,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <h5 class="modal-title" id="myModalLabel110">Modificar Skills</h5>
                     <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i class="fas fa-times"></i>
-                        </a>
+                    </a>
                 </div>
                 <form action="{{ route('employee.profile.update-skills') }}" method="POST">
                     @csrf
@@ -281,7 +280,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <h5 class="modal-title" id="myModalLabel110">Subir Curriculo</h5>
                     <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i class="fas fa-times"></i>
-                        </a>
+                    </a>
                 </div>
 
                 <form method="POST" action="{{route('employee.profile.upload-curriculum')}}" accept-charset="UTF-8" enctype="multipart/form-data">
@@ -309,51 +308,77 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
                 <div class="modal-body">
 
+                    <form action="{{ route('profile.updates',$user->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <div class="media">
+                            <div class="custom-file">
+                                <label class="custom-file-label" for="photo">Seleccione su
+                                    Foto <b>(Se permiten JPG o PNG.
+                                        Tamaño máximo de 800kB)</b></label>
+                                <input type="file" id="photo" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" onchange="previewFile(this, 'photo_preview')" accept="image/*">
+                                @error('photo')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Guardar</button>
-                    </div>
-                    </form>
+                        <div class="row mb-4 mt-4 d-none" id="photo_preview_wrapper">
+                            <div class="col"></div>
+                            <div class="col-auto">
+                                <img id="photo_preview" class="img-fluid rounded" />
+                            </div>
+                            <div class="col"></div>
+                        </div>
+
+                        <div class=" col-12 d-flex flex-sm-row flex-column justify-content-end">
+                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
+                        </div>
                 </div>
+                </form>
+
             </div>
         </div>
-
-
-
-
-        @push('custom_js')
-        <script>
-            $(document).ready(function() {
-                @if($user -> photo != NULL)
-                previewPersistedFile("{{asset('storage/photo-profile/'.$user->photo)}}", 'photo_preview');
-                @endif
-            });
-
-            function previewFile(input, preview_id) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        $("#" + preview_id).attr('src', e.target.result);
-                        $("#" + preview_id).css('height', '300px');
-                        $("#" + preview_id).parent().parent().removeClass('d-none');
-                    }
-                    $("label[for='" + $(input).attr('id') + "']").text(input.files[0].name);
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            function previewPersistedFile(url, preview_id) {
-                $("#" + preview_id).attr('src', url);
-                $("#" + preview_id).css('height', '300px');
-                $("#" + preview_id).parent().parent().removeClass('d-none');
-
-            }
-        </script>
-        @endpush
-
-
-
     </div>
+
+
+
+
+    @push('custom_js')
+    <script>
+        $(document).ready(function() {
+            @if($user -> photo != NULL)
+            previewPersistedFile("{{asset('storage/photo-profile/'.$user->photo)}}", 'photo_preview');
+            @endif
+        });
+
+        function previewFile(input, preview_id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $("#" + preview_id).attr('src', e.target.result);
+                    $("#" + preview_id).css('height', '300px');
+                    $("#" + preview_id).parent().parent().removeClass('d-none');
+                }
+                $("label[for='" + $(input).attr('id') + "']").text(input.files[0].name);
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function previewPersistedFile(url, preview_id) {
+            $("#" + preview_id).attr('src', url);
+            $("#" + preview_id).css('height', '300px');
+            $("#" + preview_id).parent().parent().removeClass('d-none');
+
+        }
+    </script>
+    @endpush
+
+
+
+</div>
 </div>
 </div>
 </div>

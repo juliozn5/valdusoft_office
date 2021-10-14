@@ -168,7 +168,7 @@ class EmployeesController extends Controller
         $user->phone = $request->phone;
         $user->save();
 
-        return redirect()->back()->with('msj-exitoso', 'Billetera Guardada Exitosamente');
+        return redirect()->back()->with('message','Se actualizo tu perfil');
     }
 
     /*actualizar los skills*/
