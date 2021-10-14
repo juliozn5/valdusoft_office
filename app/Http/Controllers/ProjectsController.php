@@ -69,7 +69,7 @@ class ProjectsController extends Controller
 
     public function detailclient()
     {
-        
+        return redirect()->back()->with('message','En espera de Respuesta'); 
     }
 
     /** Guardar datos del Nuevo Proyecto
