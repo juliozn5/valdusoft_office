@@ -87,15 +87,40 @@ class HostingController extends Controller
      *** Perfil: Admin ***/
     public function update(Request $request)
     {
-
+        // dd($request);
         $hosting = Hosting::find($request->hosting_id);
 
-        $fields = [];
 
-        $msj = [];
+        $fields = [
+
+             "hosting_id" => ['required'],
+             "hosting_url" => [
+                'required',
+                'max:255',
+            ],
+            "date" => ['required'],
+            "client" => ['required'],
+            "date_end" => ['required'],
+            "price" => ['required'],
+            "cpanel_url" => ['string'],
+            "cpanel_email" => ['string', 'email'],
+            "cpanel_password" => ['string']
+            
+
+        ];
+
+        $msj = [
+            'hosting_url.required' => 'La URL es requerida',
+            'date.required' => 'La Fecha es requerida',
+            'client.required' => 'El cliente es requerido',
+            'date_end.required' => 'Los Años de vencimiento son requeridos',
+            'price.required' => 'El Precio es requerido',
+           
+        ];
 
         $this->validate($request, $fields, $msj);
-        $hosting->update($request->all());
+        // dd("Pasó Validación");
+        // $hosting->update($request->all());
         $hosting->url = $request->hosting_url;
         $hosting->user_id = $request->client;
         $hosting->create_date = $request->date;
@@ -104,12 +129,12 @@ class HostingController extends Controller
         $hosting->years = $request->date_end;
         $hosting->price = $request->price;
         $hosting->cpanel_url = $request->cpanel_url;
-        $hosting->cpanel_user = $request->cpanel_user;
+        $hosting->cpanel_email = $request->cpanel_email;
         $hosting->cpanel_password = $request->cpanel_password;
+        $hosting->renewal_price = $request->renewal_price;
 
 
-        // $hosting->renewal_price = $request->renewal_price;
-        // $hosting->renewal_hosting = $request->renewal_hosting;
+        // $hosting->renewal_hosting = $request->reDFGBnewal_hosting;
 
         $hosting->save();
 

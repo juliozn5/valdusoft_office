@@ -101,14 +101,14 @@ class ClientsController extends Controller
             if ($request->hasFile('photo')) {
                 $file = $request->file('photo');
                 $name = $client->id . "." . $file->getClientOriginalExtension();
-                $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
-                $client->photo = 'uploads/images/users/photos/' . $name;
+                $file->move(public_path('storage') . '/photo-profile', $name);
+                $client->photo = $name;
             }
             if ($request->hasFile('logo')) {
                 $file = $request->file('logo');
                 $name = $client->id . "." . $file->getClientOriginalExtension();
-                $file->move(public_path('storage') . '/uploads/images/users/logos', $name);
-                $client->logo = 'uploads/images/users/logos/' . $name;
+                $file->move(public_path('storage') . '/logo-user', $name);
+                $client->logo = 'logo-user/' . $name;
             }
             $client->save();
         }
@@ -158,15 +158,15 @@ class ClientsController extends Controller
             if ($request->hasFile('photo')) {
                 $file = $request->file('photo');
                 $name = $client->id . "." . $file->getClientOriginalExtension();
-                $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
-                $client->photo = 'uploads/images/users/photos/' . $name;
+                $file->move(public_path('storage') . '/photo-profile', $name);
+                $client->photo = $name;
                 // dd($client->photo);
             }
             if ($request->hasFile('logo')) {
                 $file = $request->file('logo');
                 $name = $client->id . "." . $file->getClientOriginalExtension();
-                $file->move(public_path('storage') . '/uploads/images/users/logos', $name);
-                $client->logo = 'uploads/images/users/logos/' . $name;
+                $file->move(public_path('storage') . '/logo-user', $name);
+                $client->logo = 'logo-user/' . $name;
             }
             $client->save();
             $client->update($request->all());
