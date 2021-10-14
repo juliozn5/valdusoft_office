@@ -59,7 +59,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>{{ $item->id }}</td>
                                             <td>
                                                 @if (isset($item->photo))
-                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/'.$item->photo) }}" />
+                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
                                                 @else
                                                 <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                 @endif
