@@ -104,7 +104,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="project-detail-titles">Próximas Vacaciones</div>
                             <div class="mt-1 project-detail-dates">
                                 <img src="{{ asset('images/svg/calendar.svg')}}">
-                                <span> {{(is_null($fechaUser)) ? 'Dato no disponible' : date('d-m-Y', strtotime($fechaUser)) }}</span>
+                                <span> {{(is_null($fechaUser)) ? 'Dato no disponible' : date('d/m/Y', strtotime($fechaUser)) }}</span>
                             </div>
                         </div>
                     </div>
