@@ -18,7 +18,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="content-body">
@@ -41,21 +40,20 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                            @foreach ($hostings as $item)
-                                            <tr>
-                                                <td>{{ $item->url }}</td>
-                                                <td>{{ $item->create_date }}</td>
-                                                <td>{{ $item->user->name }}</td>
-                                                <td>{{ $item->due_date }}</td>
-                                                <td>
-                                                    <a href="{{route('client.projects.detail')}}"><img id="bottom"src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
+                                        @foreach ($hostings as $item)
+                                        <tr>
+                                            <td>{{ $item->url }}</td>
+                                            <td>{{ $item->create_date }}</td>
+                                            <td>{{ $item->user->name }}</td>
+                                            <td>{{ $item->years }}</td>
+                                            <td>
+                                                <a href="{{route('client.projects.detail')}}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
                                     </tbody>
                                 </table>
-                                
                             </div>
                             <div class="mr-3">
                                 {{ $hostings->links() }}

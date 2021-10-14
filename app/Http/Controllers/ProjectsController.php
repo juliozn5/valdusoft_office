@@ -66,6 +66,12 @@ class ProjectsController extends Controller
         return view('admin.projects.create')->with(compact('clients', 'countries', 'technologies', 'tags'));
     }
 
+
+    public function detailclient()
+    {
+        
+    }
+
     /** Guardar datos del Nuevo Proyecto
     *** Perfil: Admin ***/
     public function store(Request $request){
