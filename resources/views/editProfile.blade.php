@@ -63,7 +63,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
   #edit-area-left {
     width: 400px;
-    morgin: 0;
+
     float: left;
   }
 
@@ -113,12 +113,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
 @push('custom_js')
 <script>
-
-$(document).ready(function() {
-          @if($user->photo != NULL)
-                previewPersistedFile("{{asset('storage/photo-profile/'.$user->photo)}}", 'photo_preview');
-          @endif
-        });
+  $(document).ready(function() {
+    @if($user -> photo != NULL)
+    previewPersistedFile("{{asset('storage/photo-profile/'.$user->photo)}}", 'photo_preview');
+    @endif
+  });
 
   function previewFile(input, preview_id) {
     if (input.files && input.files[0]) {

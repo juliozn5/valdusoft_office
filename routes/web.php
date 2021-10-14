@@ -34,9 +34,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('profile', 'ProfileController@edit')->name('profile');
     Route::patch('profile-update', 'ProfileController@update')->name('profile.update');
+    Route::post('profile-update', 'ProfileController@updatePhoto')->name('profile.updates');
 
     Route::get('change-password', 'ChangePasswordController@index');
     Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
+    Route::post('change', 'ChangePasswordController@change')->name('change-password');
 
     //LISTADO DE RUTAS PARA EL ADMINISTRADOR
     Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'profile'], 'profile' => ['1']], function () {
@@ -154,6 +157,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'profile'], 'profile' => ['3']], function () {
         Route::get('/', 'EmployeesController@index')->name('employee.home');
         Route::get('/profile', 'EmployeesController@profile')->name('employee.profile');
+        Route::post('profile', 'EmployeesController@editPhone')->name('employee.profiles');
         Route::post('update-skills', 'EmployeesController@update_skills')->name('employee.profile.update-skills');
         Route::post('update-wallet', 'EmployeesController@update_wallet')->name('employee.profile.update-wallet');
         Route::post('upload-curriculum', 'EmployeesController@upload_curriculum')->name('employee.profile.upload-curriculum');

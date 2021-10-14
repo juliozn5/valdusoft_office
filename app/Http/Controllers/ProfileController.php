@@ -22,7 +22,6 @@ class ProfileController extends Controller
     *** Perfil: Admin - Empleado - Cliente ***/
     public function update(Request $request)
     {
- 
         $user = User::find(Auth::user()->id);
 
         $user->update($request->all());
@@ -37,7 +36,26 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect()->route('profile')->with('message','Se actualizo tu perfil');
+        return redirect()->route('employee.profile')->with('message', 'Se actualizo tu perfil');
+        }
+
+    public function updatePhoto(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+
+        $user->update($request->all());
+
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $name = $user->id.".".$file->getClientOriginalExtension();
+            $file->move(public_path('storage') . '/photo-profile', $name);
+            $user->photo = $name;
+         }  
+
+
+        $user->save();
+
+        return redirect()->route('employee.profile')->with('message','Se actualizo tu perfil');
         
     }
 
