@@ -19,32 +19,38 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="card-header" style="padding:30px 0px 0px 30px;">
                         @if (Auth::user()->photo != NULL)
                         <a><img class="rounded-circle ml-2" src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
-                        
+
                         @else
                         <a><img src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
                         @endif
                         <div class="col ml-1">
-                            <h3 class="card-title mb-1">{{ $user->name }} {{ $user->last_name }}</h3>
+                            <h3 class="card-title mb-1" title="Hello from speech bubble!">{{ $user->name }} {{ $user->last_name }}</h3>
                             {{ $user->email }}
                         </div>
                     </div>
                 </div>
 
-
+                <!--Data-->
                 <div class="card-body">
                     <div class="ml-4 mb-3">
                         <div class="row">
-                            <div class="col-sm-5 col-md-6 project-detail-titles">Numero de telefono</div>
+                            <div class="col-sm-8 col-md-6 project-detail-titles">Numero de telefono</div>
                             <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 project-detail-titles">Cambiar Contraseña</div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-sm-7 col-md-7 col-lg-6"><p style="font-size: 17px;">{{$user->phone}} <a data-toggle="modal" data-target="#telefono">
-                               <i class="far fa-edit ml-2" style="font-size:21px;"></i></p> 
-                             </a>
+                            <div class="col-sm-7 col-md-7 col-lg-6">
+                                <p style="font-size: 17px;">{{$user->phone}} <a data-toggle="modal" data-target="#telefono">
+                                        <i class="far fa-edit ml-2" style="font-size:21px;"></i></p>
+                                </a>
                             </div>
-                            <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
-                                <a data-toggle="modal" data-target="#modal20">
-                                    <button type="button" class="btn  btn-primary ml-2">Cambiar</button>
+                            <div class="col-sm-6 col-md-5 offset-md-2  offset-lg-0">
+                                <div class="row">
+                                    <div class="col-sm-5 col-md-6"><input id="password" type="password" class="form-control" value="$user->password" name="current_password" disabled></div>
+                                    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0"><a data-toggle="modal" data-target="#modal20"><i class="far fa-edit ml-2" style="font-size:21px;"></i></a></div>
+                                </div>
+                                <div class="col-md-6 row ">
+
+                                </div>
                                 </a>
                             </div>
                         </div>
@@ -59,7 +65,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             @foreach ($project as $item)
                             <a href="">
                                 <div class="text-center text-white d-inline-block mr-1">
-                                    <div class="project-circle" style="background-color: {{ $itemColors[$cont] }};"><strong> P{{ $item->id }}</strong></div>
+                                    <div class="project-circle" style="background-color:{{ $itemColors[$cont] }}"><strong> {{ $item->id }}</strong></div>
                                 </div>
                             </a>
                             @php
@@ -73,7 +79,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>
 
-                    <!--DATE SECTION-->
+
+
                     <!--DATE OF BIRTH-->
                     <div class="row mt-3 " style="padding:0px 0px 0px 50px;">
                         <div class="col-md-3 col-sm-1">
@@ -83,6 +90,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <span>{{ date('d/m/Y', strtotime($user->birthdate)) }}</span>
                             </div>
                         </div>
+
                         <!--DATE OF ADMISSION-->
                         <div class="col-md-3 col-sm-1">
                             <div class="project-detail-titles">Fecha de Ingreso</div>
@@ -91,6 +99,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <span>{{ date('d/m/Y', strtotime($user->admission_date)) }}</span>
                             </div>
                         </div>
+
                         <!--NEXT VACATIONS-->
                         <div class="col-md-3 col-sm-1">
                             <div class="project-detail-titles">Próximas Vacaciones</div>
@@ -100,6 +109,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             </div>
                         </div>
                     </div>
+
                     <!--SKILLS SECTION-->
                     <div class="mt-3 pr-2" style="padding:0px 0px 0px 50px;">
                         <div class="project-detail-titles">Habilidades</div>
@@ -149,6 +159,49 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     </div>
 
 
+    <div class="modal" tabindex="-1" id="fotos">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title">Editar foto de perfil</h5>
+                    <a type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></a>
+                </div>
+                <div class="modal-body">
+
+                    <form action="{{ route('profile.updates',$user->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <div class="media">
+                            <div class="custom-file">
+                                <label class="custom-file-label" for="photo">Seleccione su foto <b>(Se permiten JPG o PNG.
+                                        Tamaño máximo de 800kB)</b></label>
+                                <input type="file" id="photo" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" onchange="previewFile(this, 'photo_preview')" accept="image/*">
+                                @error('photo')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-4 mt-4 d-none" id="photo_preview_wrapper">
+                            <div class="col"></div>
+                            <div class="col-auto">
+                                <img id="photo_preview" class="img-fluid rounded" />
+                            </div>
+                            <div class="col"></div>
+                        </div>
+
+                        <div class=" col-12 d-flex flex-sm-row flex-column justify-content-end">
+                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <!--Cambiar Numero de Celular-->
     <div class="modal fade" id="telefono" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -160,15 +213,16 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <form method="post" action="{{ route('employee.profiles') }}">
                     @csrf
                     <div class="modal-body">
-                        <div class="col-8 mt-1 ml-5">
+                        <div class="col-10 mt-1 ml-3">
                             <div class="form-group">
                                 <label>Telefono</label>
                                 <input type="text" id="phone" class="form-control" value="{{$user->phone}}" name="phone">
                             </div>
                         </div>
                     </div>
+                    <hr>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
                     </div>
                 </form>
 
@@ -199,7 +253,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña actual</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password">
+                                    <input id="password" type="password" class="form-control" name="current_password">
                                 </div>
                             </div>
 
@@ -207,7 +261,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Nueva Contraseña</label>
 
                                 <div class="col-md-6">
-                                    <input id="new_password" type="password" class="form-control" name="new_password" autocomplete="current-password">
+                                    <input id="new_password" type="password" class="form-control" name="new_password">
                                 </div>
                             </div>
 
@@ -215,11 +269,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Confirmar Contraseña</label>
 
                                 <div class="col-md-6">
-                                    <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password">
+                                    <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password">
                                 </div>
                             </div>
                     </div>
                 </div>
+                <hr>
                 <div class="modal-footer">
                     <div class="col offset-md-4">
                         <button type="submit" class="btn btn-primary">
@@ -232,13 +287,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
     </div>
 
-
+    <!--Modificar Skills-->
     <div class="modal fade text-left" id="availableSkills" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary white">
                     <h5 class="modal-title" id="myModalLabel110">Modificar Skills</h5>
-                    <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <a data-dismiss="modal" aria-label="Close">
                         <i class="fas fa-times"></i>
                     </a>
                 </div>
@@ -263,6 +318,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             @endforeach
                         </div>
                     </div>
+                    <hr>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
                     </div>
@@ -271,14 +327,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
     </div>
 
-
-
+    <!--Subir Curriculum-->
     <div class="modal fade text-left" id="availableCurriculum" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary white">
-                    <h5 class="modal-title" id="myModalLabel110">Subir Curriculo</h5>
-                    <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="myModalLabel110">Subir Curriculum</h5>
+                    <a data-dismiss="modal" aria-label="Close">
                         <i class="fas fa-times"></i>
                     </a>
                 </div>
@@ -290,6 +345,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <input type="file" name="archivo" required>
                         </div>
                     </div>
+                    <hr>
                     <div class="modal-footer">
                         <input class="btn btn-primary waves-effect waves-light" type="submit" value="Enviar">
                     </div>
@@ -299,49 +355,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     </div>
 
 
-    <div class="modal" tabindex="-1" id="fotos">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-primary">
-                    <h5 class="modal-title">Editar foto de perfil</h5>
-                    <a type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></a>
-                </div>
-                <div class="modal-body">
-
-                    <form action="{{ route('profile.updates',$user->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PATCH')
-                        <div class="media">
-                            <div class="custom-file">
-                                <label class="custom-file-label" for="photo">Seleccione su
-                                    Foto <b>(Se permiten JPG o PNG.
-                                        Tamaño máximo de 800kB)</b></label>
-                                <input type="file" id="photo" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" onchange="previewFile(this, 'photo_preview')" accept="image/*">
-                                @error('photo')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-4 mt-4 d-none" id="photo_preview_wrapper">
-                            <div class="col"></div>
-                            <div class="col-auto">
-                                <img id="photo_preview" class="img-fluid rounded" />
-                            </div>
-                            <div class="col"></div>
-                        </div>
-
-                        <div class=" col-12 d-flex flex-sm-row flex-column justify-content-end">
-                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
-                        </div>
-                </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
 
 
 
