@@ -48,14 +48,14 @@
         $("#file_type option[value=" + $attachment.file_type + "]").attr("selected", true);
     }
 
-    function changeTransactionType($type) {
+    /*function changeTransactionType($type) {
         $("#type option[value=" + $type + "]").attr("selected", true);
         if ($type == '+') {
             $("#transaction_type_button").html('Ingreso');
         } else {
             $("#transaction_type_button").html('Egreso');
         }
-    }
+    }*/
 
     function addTransaction() {
         if ($("#amount").val() == "") {
@@ -179,14 +179,18 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                             @if (Auth::user()->profile_id == 1)
                             <div class="row mt-3">
-                                <div class="col-6">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Presupuesto</div>
                                     <div class="mt-1 project-detail-dates">{{ $project->amount }} $</div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="project-detail-titles">Beneficio</div>
+                                    <div class="mt-1 project-detail-dates">facturas asignadas al proyecto ene stado completado - el costo $</div>
                                 </div>
                                 <div class="col-6">
                                     <div class="project-detail-titles">Asignado | Costo</div>
                                     <div class="mt-1 project-detail-dates">
-                                      dato | datos
+                                        tendra el 60%  de las facturas en estado completado que pertenezcan al proyecto | seran los egresos asigandos a los proyectos ne la parte contable,
                                     </div>
                                 </div>
                             </div>
@@ -385,39 +389,33 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                         </thead>
                                         <tbody>
                                             @if ($project->accounting_transactions->count() > 0)
-                                            @foreach ($project->accounting_transactions as $transaction)
-                                            <tr>
-                                                <td>{{ date('d-m-Y', strtotime($transaction->date)) }}</td>
-                                                <td>
-                                                    <span class="transaction-description">{{ $transaction->description }}</span><br>
-                                                    @if ($transaction->status == 0)
-                                                    <span class="transaction-status">Pendiente</span>
-                                                    @elseif ($transaction->status == 1)
-                                                    <span class="transaction-status">Completada</span>
-                                                    @elseif ($transaction->status == 2)
-                                                    <span class="transaction-status">Cancelada</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($transaction->type == '+')
-                                                    <span class="text-success">
-                                                        {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
-                                                    </span>
-                                                    @else
-                                                    <span class="text-danger">
-                                                        {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
-                                                    </span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <a href="#editTransaction" data-toggle="modal" onclick="editTransaction({{ $transaction }});"><i class="fa fa-edit mr-1 action-icon"></i></a>
-                                                </td>
-                                            </tr>
-                                            @endforeach
+                                                @foreach ($project->accounting_transactions as $transaction)
+                                                    <tr>
+                                                        <td>{{ date('d-m-Y', strtotime($transaction->date)) }}</td>
+                                                        <td>
+                                                            <span class="transaction-description">{{ $transaction->description }}</span><br>
+                                                            @if ($transaction->status == 0)
+                                                            <span class="transaction-status">Pendiente</span>
+                                                            @elseif ($transaction->status == 1)
+                                                            <span class="transaction-status">Completada</span>
+                                                            @elseif ($transaction->status == 2)
+                                                            <span class="transaction-status">Cancelada</span>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-danger">
+                                                                - {{ number_format($transaction->amount, 2, ',', '.') }}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="#editTransaction" data-toggle="modal" onclick="editTransaction({{ $transaction }});"><i class="fa fa-edit mr-1 action-icon"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             @else
-                                            <tr>
-                                                <td colspan="3">El proyecto no posee transacciones contables...</td>
-                                            </tr>
+                                                <tr>
+                                                    <td colspan="3">El proyecto no posee transacciones contables...</td>
+                                                </tr>
                                             @endif
                                         </tbody>
                                     </table>
@@ -429,13 +427,13 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="amount" placeholder="0.00">
                                                 <div class="input-group-append">
-                                                    <button type="button" class="btn btn-secondary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" id="transaction_type_button">
+                                                    <button type="button" class="btn btn-secondary waves-effect waves-light" id="transaction_type_button" disabled>
                                                         Egreso
                                                     </button>
-                                                    <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end">
-                                                        {{-- <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a> --}}
+                                                   {{-- <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end">
+                                                         <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a> 
                                                         <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('-');">Egreso</a>
-                                                    </div>
+                                                    </div>--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -780,22 +778,13 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <input type="text" name="description" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="amount">Monto</label>
                                 <input type="text" name="amount" id="amount-hidden" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="type">Tipo</label>
-                                <select name="type" id="type" class="form-control" required>
-                                    {{-- <option value="+" selected>Ingreso</option> --}}
-                                    <option value="-">Egreso</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="status">Estado</label>
                                 <select name="status" class="form-control" required>
@@ -837,7 +826,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <input type="text" name="description" id="description" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="status">Estado</label>
                                 <select name="status" id="status" class="form-control" required>

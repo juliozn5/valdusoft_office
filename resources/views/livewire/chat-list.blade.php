@@ -78,28 +78,12 @@
 
             //setTimeout(function(){ window.livewire.emit('solicitaUsuario'); }, 100);
 
-
-
-            // $('#scrolling').on('click',function()
+            
             $(document).ready(function () {
 
                 $('#chating').scrollTop($('#chating').prop('scrollHeight'));
 
             });
-
-            // function scrolling()
-            // {
-            //     //Obtengo el div
-            //     var e = document.getElementById('chating');
-
-            //     //Llevo el scroll al fondo
-            //     var objDiv = document.getElementById("chating");
-            //     objDiv.scrollTop = objDiv.scrollHeight;
-
-            // console.log('sho no fui')
-
-            // }
-
         </script>
     </div>
 </div>

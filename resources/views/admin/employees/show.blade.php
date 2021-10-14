@@ -36,9 +36,9 @@
                             <div class="row" style="display: flex; align-items: center;">
                                 <div class="col-md-4">
                                     @if (!is_null($employee->photo))
-                                    <img class="rounded-circle" src="{{ asset('storage/photo-profile/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="100" width="100">
+                                    <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/photo-profile/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="100" width="100">
                                     @else
-                                    <img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
+                                    <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
                                     @endif
                                     
                                 </div>
@@ -57,7 +57,7 @@
                                     @foreach ($employee->projects as $project)
                                     <a href="">
                                         <div class="text-center text-white d-inline-block mr-1">
-                                            <div class="project-circle" style="background-color: {{ $projectColors[$cont] }};">P{{ $project->id }}</div>
+                                            <a href="{{ route('admin.projects.show', [$project->slug, $project->id]) }}"><div class="project-circle text-white" style="background-color: {{ $projectColors[$cont] }};"> P{{ $project->id }}</div></a>
                                         </div>
                                     </a>
                                     @php
@@ -139,7 +139,17 @@
                                 <div class="col-3">
                                     <div class="project-detail-titles">Billetera USDT-TRON</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <img src="{{ asset('images/icons/uphold.png') }}" class="mr-1"> {{ (is_null($employee->tron_wallet)) ? 'Dato no disponible' : $employee->tron_wallet }}
+                                        <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($employee->tron_wallet)) ? 'Dato no disponible' : $employee->tron_wallet }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Sección de Sueldo --}}
+                            <div class="row mt-3 pl-4 pr-2">
+                                <div class="col-6">
+                                    <div class="project-detail-titles">Financiamiento</div>
+                                    <div class="mt-1 project-detail-dates">
+                                        <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($financiamiento)) ? 'Dato no disponible' : $financiamiento.' USD' }}
                                     </div>
                                 </div>
                             </div>
@@ -151,49 +161,36 @@
 
                                 <div class="table-responsive pt-2">
                                     <table class="table">
-                                        <thead class="thead-light">
+                                        <thead class="thead-light text-center">
                                             <th>ID</th>
                                             <th>FECHA</th>
-                                            <th>DESCRIPCIÓN</th>
                                             <th>MONTO</th>
+                                            <th>STATUS</th>
+                                            <th>ACCIÓN</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>001</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>002</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>003</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>004</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>005</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>006</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
+                                            @foreach ($facturas as $factura)
+                                            <tr class="text-center">
+                                                <td>{{$factura->id}}</td>
+                                                <td>{{$factura->date}}</td>
+                                                <td>{{$factura->amount}}$</td>
+                                                <td>
+                                                    @if($factura->status == '0')
+                                                        <div class="badge badge-warning">
+                                                            En Espera
+                                                        </div>
+                                                    @elseif($factura->status == '1')
+                                                        <div class="badge badge-success">
+                                                            Pagado
+                                                        </div>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="" class="btn btn-primary waves-effect waves-light" title="Ver Factura"><i class="fa fa-eye"></i></a>
+                                                    <a href="" class="btn btn-primary waves-effect waves-light" title="Descargar Factura"><i class="fa fa-download"></i></a>
+                                                </td>
+                                            </tr> 
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
