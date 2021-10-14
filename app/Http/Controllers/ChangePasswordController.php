@@ -62,6 +62,6 @@ class ChangePasswordController extends Controller
         user::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
 
 
-        return redirect()->back()->with('message', 'Se actualizo tu Contraseña');
+        return redirect()->back()->with('message', 'Se actualizo su Contraseña');
     }
 }
