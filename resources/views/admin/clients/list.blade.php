@@ -18,9 +18,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     });
 </script>
 @endif
-@include('layouts.partials.navbar')
-
-@include('layouts.partials.sidebar')
 
 <div class="app-content content">
     <div class="content-overlay"></div>

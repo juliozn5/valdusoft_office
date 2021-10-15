@@ -99,7 +99,7 @@
                                                         style="background-color:#FF4D00;color: white;" id="btn-guardar"><img
                                                             src="{{ asset('images/valdusoft/admin.png') }}" alt=""
                                                             class="mr-1">Ir al Cpanel</a>
-                                                    <a type="button" class="btn margen-green"
+                                                    <a type="button" onclick="editBill({{$item}});" class="btn margen-green"
                                                         style="background-color: #06B054;color: white;" data-toggle="modal"
                                                         data-target="#modalRenovar" id="btn-guardar"><img
                                                             src="{{ asset('images/valdusoft/refresh.png') }}" alt=""
@@ -154,49 +154,6 @@
                                     <div class="mr-3">
                                         {{ $client_bill->links() }}
                                     </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3 class="card-title mb-2 pl-2 pt-2">Facturas</h3>
-                                <div class="table-responsive ">
-                                    <table class="table">
-                                        <thead class="thead-light ">
-                                            <th class="col-1">#</th>
-                                            <th class="col-3">FECHA</th>
-                                            <th class="col-2">MONTO</th>
-                                            <th class="col-2">ESTADO</th>
-                                            <th class="col-2">ACCION</th>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($client_bill as $client)
-                                            <tr>
-                                                <th scope="row">#{{ $client->id }}</th>
-                                                <td>{{ $client->date }}</td>
-                                                <td>{{ $client->amount }}$</td>
-                                                <td>
-                                                    @if ($client->status == 0)
-                                                    <label class="label status-label status-label-purple">No Atendido</label>
-                                                    @elseif ($client->status == 1)
-                                                    <label class="label status-label status-label-gray">En Proceso</label>
-                                                    @elseif ($client->status == 2)
-                                                    <label class="label status-label status-label-blue">Testiando</label>
-                                                    @elseif ($client->status == 3)
-                                                    <label class="label status-label status-label-green">Completado</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="mr-3">
-                                    {{$client_bill->links()}}
                                 </div>
                             </div>
                         </div>
@@ -234,87 +191,27 @@
                         </div>
                     </div>
 
-                    <form class="form form-vertical" action="{{ route('admin.clients.update', $client) }}"
+                    <form class="form form-vertical" action="{{ route('save-invoice') }}"
                         method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PATCH')
+                        <input type="hidden" id="payment_type" name="payment_type">
+                        <input type="hidden" id="hosting_id" name="hosting_id">
+                        <input type="hidden" id="user_id" name="user_id">
+                        
                         @include('admin.clients.partials.bancolombia')
                         @include('admin.clients.partials.billetera')
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
                     </form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 
-<style>
-    .image-wrapper{
-        position: relative;
-        padding-bottom: 56.25%;            
-    }
+@include('admin.clients.partials.js')
 
-    .image-wrapper img{
-        position: absolute;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-@push('custom_js')
-<script>
-    function previewFile(input, preview_id) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("#" + preview_id).attr('src', e.target.result);
-                $("#" + preview_id).css('height', '100px');
-                $("#" + preview_id).parent().parent().removeClass('d-none');
-            }
-            $("label[for='" + $(input).attr('id') + "']").text(input.files[0].name);
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    function previewPersistedFile(url, preview_id) {
-        $("#" + preview_id).attr('src', url);
-        $("#" + preview_id).css('height', '100px');
-        $("#" + preview_id).parent().parent().removeClass('d-none');
-
-    }
-
-    function showContent() {
-        element = document.getElementById("bancolombia");
-        element2 = document.getElementById("billetera");
-        check = document.getElementById("inlineRadio1");
-        if (check.checked) {
-            element.style.display='block';
-            element2.style.display='none';
-        }
-        else {
-            element.style.display='none';
-            element2.style.display='block';
-        }
-    }
-
-    function showContent2() {
-        element = document.getElementById("billetera");
-        element2 = document.getElementById("bancolombia");
-        check = document.getElementById("inlineRadio2");
-        if (check.checked) {
-            element.style.display='block';
-            element2.style.display='none';
-        }
-        else {
-            element.style.display='none';
-            element2.style.display='block';
-        }
-    }
-
-
-</script>
-@endpush

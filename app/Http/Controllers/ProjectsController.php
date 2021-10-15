@@ -106,11 +106,9 @@ class ProjectsController extends Controller
     *** Perfil: Admin ***/
     public function show($slug, $id){
         if (Auth::user()->profile_id == 1){
-            $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
+            $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions', 'bills')
                         ->where('id', '=', $id)
                         ->first();
-            
-            // $cost = AccountingTransaction::where('project_id', )
 
             $tagsID = array();
             foreach ($project->tags as $tag){
@@ -144,6 +142,22 @@ class ProjectsController extends Controller
                 $attachment->time = date('H:i', strtotime($attachment->created_at));
             }
 
+            $budget['cost'] = 0;
+            $budget['assigned'] = 0;
+            $budget['benefit'] = 0;
+            foreach ($project->bills as $bill) {
+                if ($bill->status == 1){
+                    $budget['benefit'] += $bill->amount;
+                }
+            }
+            $budget['assigned'] = ($budget['benefit']*60)/100;
+
+            foreach ($project->accounting_transactions as $transaction) {
+                if ($transaction->status == 1){
+                    $budget['cost'] += $transaction->amount;
+                }
+            }
+
             $clients = DB::table('users')
                             ->select('id', 'name', 'last_name')
                             ->where('profile_id', '=', 2)
@@ -160,7 +174,7 @@ class ProjectsController extends Controller
                         ->orderBy('id', 'ASC')
                         ->get();
 
-            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID'));   
+            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID', 'budget'));   
         }else if(Auth::user()->profile_id == 2){
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
                         ->where('id', '=', $id)

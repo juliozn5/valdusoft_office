@@ -58,7 +58,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="120" height="120" alt="">
                                 <h5 class="pt-2">Próximas <br> Vacaciones</h5>
                                 <br>
-                                <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>{{$fechaUser->toFormattedDateString()}}</p>
+                                <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>{{$fechaUser->toDateString()}}</p>
                             </div>
                         </div>
                     </div>
