@@ -20,7 +20,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <a><img class="rounded-circle ml-2" src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
 
                         @else
-                        <a><img src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
+                        <a><img class="rounded-circle ml-2"  src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
                         @endif
                         <div class="col ml-1">
                             <h3 class="card-title mb-1" title="Hello from speech bubble!">{{ $user->name }} {{ $user->last_name }}</h3>
@@ -38,9 +38,16 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-7 col-md-7 col-lg-6">
-                                <p style="font-size: 17px;">{{$user->phone}} <a data-toggle="modal" data-target="#telefono">
-                                        <i class="far fa-edit ml-2" style="font-size:21px;"></i></p>
-                                </a>
+                                <p style="font-size: 17px;"><span> {{(is_null($user->phone)) ? 'Dato no disponible' : ($user->phone) }}</span><a data-toggle="modal" data-target="#telefono">
+
+                                        @if(is_null($user->phone))
+                                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                                        @else
+                                        <i class="far fa-edit ml-2" style="font-size:21px;"></i>
+                                        @endif
+
+
+                                    </a>
                             </div>
                             <div class="col-sm-6 col-md-5 offset-md-2  offset-lg-0">
                                 <div class="row">
@@ -180,7 +187,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     </div>
 
 
-
+    <!--Editar foto de perfil-->
     <div class="modal" tabindex="-1" id="fotos">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
