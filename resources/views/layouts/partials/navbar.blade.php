@@ -22,12 +22,16 @@
                             </div>
 
                             <span>
-                                <span><img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" alt="avatar" height="40" width="40"></span>
+                                @if (is_null(Auth::user()->photo))
+                                    <span><img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" alt="avatar" height="40" width="40"></span>
+                                @else
+                                <span><img class="rounded-circle" src="{{ asset('storage/photo-profile/'.Auth::user()->photo) }}" alt="avatar" height="40" width="40"></span>
+                                @endif
                             </span>
 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{ route('employee.profile') }}"><i class="feather icon-user"></i> Mi
+                            <a class="dropdown-item" href="{{ route('profile') }}"><i class="feather icon-user"></i> Mi
                                 perfil</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Salir</a>
