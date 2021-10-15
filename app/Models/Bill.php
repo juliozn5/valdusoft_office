@@ -10,6 +10,8 @@ class Bill extends Model{
 
     protected $fillable = [
         'user_id',
+        'hosting_id',
+        'project_id',
         'amount',
         'date',
         'payed_at',
@@ -22,5 +24,13 @@ class Bill extends Model{
 
     public function user(){
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function hosting(){
+        return $this->belongsTo('App\Models\Hosting');
+    }
+
+    public function project(){
+        return $this->belongsTo('App\Models\Project');
     }
 }
