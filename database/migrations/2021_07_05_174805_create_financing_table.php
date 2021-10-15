@@ -17,6 +17,7 @@ class CreateFinancingTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->double('total_amount');
+            $table->string('percentage');
             $table->date('date');
             $table->enum('status', [0, 1, 2])->default(0)->comment('0 - Activo, 1 - Pagago, 2 - Cancelado');
             $table->timestamps();

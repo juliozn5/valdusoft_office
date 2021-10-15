@@ -3,59 +3,36 @@
         <div class="col-12">
             <div class="form-group">
                 <label class="h5" for="name">Nombre</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror"
-                    name="name" value="Estefanny Torrado">
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <input type="text" class="form-control" value="Estefanny Torrado" readonly>
             </div>
 
             <div class="form-group">
                 <label class="h5" for="name">Cuenta</label>
-                <input type="text" class="form-control @error('cuenta') is-invalid @enderror"
-                    name="cuenta" value="91201530453">
-                @error('cuenta')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <input type="text" class="form-control" value="91201530453" readonly>               
             </div>
 
             <div class="form-group">
                 <label class="h5" for="name">Tipo de Cuenta</label>
-                <input type="text" class="form-control @error('tipo') is-invalid @enderror"
-                    name="tipo" value="Ahorro">
-                @error('tipo')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <input type="text" class="form-control" value="Ahorro" readonly>               
             </div>
 
             <div class="form-group">
                 <label class="h5" for="name">Cedula Ciudadana</label>
-                <input type="text" class="form-control @error('cedula') is-invalid @enderror"
-                    name="cedula" value="1.148.456.331">
-                @error('cedula')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <input type="text" class="form-control" value="1.148.456.331" readonly>
             </div>                                    
 
             <div class="form-group">
-                <label class="h5" for="due_date">Imagen para el Cliente</label>
+                <label class="h5" for="due_date">Imagen del Comprobante <span style="color: red;">*</span></label>
                 <div class="media">
                     <div class="custom-file">
-                        <label class="custom-file-label" for="photo"><b>Foto del Cliente</b></label>
-                        <input type="file" id="photo"
-                            class="custom-file-input @error('photo') is-invalid @enderror"
-                            name="photo"
+                        <label class="custom-file-label" for="photo"><b>Clic para seleccionar una imagen</b></label>
+                        <input type="file" id="comprobante"
+                            class="custom-file-input @error('comprobante') is-invalid @enderror"
+                            name="comprobante"
                             onchange="previewFile(this, 'photo_preview')"
                             accept="image/*">
-                        @error('photo')
+
+                        @error('comprobante')                        
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -63,7 +40,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 text-center">
+
+            <div class="col-12 text-center mb-2">
                 @if (isset($client->photo))
                 <img id="photo_preview" class="rounded" style="object-fit: cover;"
                     width="140px" height="100px"

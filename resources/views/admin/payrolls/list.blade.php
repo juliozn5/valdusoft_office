@@ -74,13 +74,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <tr>
                                         <td class="text-center">{{ $payroll->id}}</td>
                                         <td class="text-center">{{ date('d-m-Y', strtotime($payroll->date)) }}</td>
-                                        <td class="text-center">{{ date('d-m-Y', strtotime($payroll->fecha_de_cierre)) }}</td>                                      
+                                        <td class="text-center">{{ date('d-m-Y', strtotime($payroll->dead_line)) }}</td>                                      
                                         <td class="text-center">{{number_format($payroll->amount, 2, ',', '.')}} </td>
                                         <td class="text-center">
                                             @if ($payroll->status == 0)
                                               <label class="label status-label status-label-purple ">En Espera</label>
                                             @elseif ($payroll->status == 1)
-                                              <label class="label status-label status-label-gray">pagado</label>
+                                              <label class="label status-label status-label-gray">pagada</label>
                                             @endif
                                         </td>
                                         <td class="text-center"><a href="{{route('admin.payrolls.DetailPayroll')}}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
@@ -118,12 +118,16 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class="container">
                             <div class="row">
                                 <div class="col-6">
-                                    <label for="payroll_amount">Monto</label>
-                                    <input name="payroll_amount" id="payroll_amount" class="form-control">
+                                    <label for="date">Fecha de inicio</label>
+                                    <input type="date" name="date" id="date" class="form-control">
+                                </div>
+                                 <div class="col-6">
+                                    <label for="dead_line">Fecha de cierre</label>
+                                    <input type="date" name="dead_line" id="dead_line" class="form-control">
                                 </div>
                                 <div class="col-6">
-                                    <label for="date">Fecha</label>
-                                    <input type="date" name="date" id="date" class="form-control">
+                                    <label for="payroll_amount">Monto</label>
+                                    <input name="payroll_amount" id="payroll_amount" class="form-control">
                                 </div>
                                 <div class="col-6">
                                     <label for="payroll_status">Estado</label>
@@ -136,7 +140,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>
                     <br><br>
-
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
                     </div>
@@ -144,4 +147,5 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             </div>
         </div>
     </div>
-    @endsection
+</div>    
+@endsection

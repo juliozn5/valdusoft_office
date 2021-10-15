@@ -16,7 +16,7 @@ class Payrolls extends Model
         'amount',
         'status',
         'date',
-        'fecha_de_cierre',
+        'dead_line',
         
     ];
     

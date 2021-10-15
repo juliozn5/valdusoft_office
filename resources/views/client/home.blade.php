@@ -22,6 +22,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     }
                 </style>
 
+
                 <div class="card">
                     <div class="container">
                         <div class="row ">
@@ -36,13 +37,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
 
         <div class="card ">
             <div class="">
-                <h3 class="card-title mb-2 pl-2 pt-2">Facturas</h3>
+                <h3 class="h3 mb-2 pl-2 pt-2">Facturas</h3>
                 <div class="table-responsive ">
                     <table class="table">
                         <thead class="thead-light ">
@@ -66,9 +68,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     @endif
                                 </td>
                                 <td>{{ $client->amount }}$</td>
-
                             </tr>
-
                             @endforeach
                         </tbody>
                     </table>
@@ -77,27 +77,45 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
 
 
-        <div class="content-body">
 
-            <div class="card">
-                <div class="card-header mb-2">
-                    <h3 class="card-title mb-3">Hosting</h3>
-                    <div class="container pb-2">
-                        <div class="row container-xxl">
+        <div class="container card">
+            <div class="card-header mb-2">
+                <h3 class=" h3 mb-3">Hosting</h3>
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-6 card" style="height:150px;">
+
                             @foreach ($hostings as $hostings)
 
                             <div class="card-body rounded" id="position" style="background: #252856;margin-left:2px;">
-                                <img class="float-right" src="{{asset('images/icons/background.png')}}" alt="">
-                                <h5 class="card-title text-white">{{$hostings->url}}</h5>
+                                <img class="float-right mr-2 mt-2" src="{{asset('images/icons/background.png')}}" alt="">
+                                <h5 class="card-title text-white mt-2 ml-2">{{$hostings->url}}</h5>
                                 <br>
-                                <p class="card-text h6 text-white">Fecha de renovación</p>
+                                <p class="card-text h5 text-white ml-1">Fecha de renovación</p>
                                 <br>
-                                <p class="h4 text-white"><i class="far fa-calendar icon-big mr-1"></i>{{ $hostings->updated_at }}</p>
+                                <p class="h5 text-white ml-1"><i class="far fa-calendar icon-big mr-1"></i>{{ $hostings->updated_at->format('d-m-Y') }}</p>
                             </div>
-                            @endforeach
                         </div>
+
+                        <div class="col-6 card" style="height:150px;">
+
+                            <div class="card-body rounded" id="position" style="background: #252856;margin-left:2px;">
+                                <img class="float-right mr-2 mt-2" src="{{asset('images/icons/background.png')}}" alt="">
+                                <h5 class="card-title text-white mt-2 ml-2">{{$hostings->url}}</h5>
+                                <br>
+                                <p class="card-text h5 text-white ml-1">Fecha de renovación</p>
+                                <br>
+                                <p class="h5 text-white ml-1"><i class="far fa-calendar icon-big mr-1"></i>{{ $hostings->updated_at->format('d-m-Y') }}</p>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-        @endsection
+    </div>
+
+
+
+</div>
+@endsection

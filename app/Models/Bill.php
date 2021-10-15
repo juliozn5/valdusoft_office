@@ -14,6 +14,10 @@ class Bill extends Model{
         'date',
         'payed_at',
         'status',
+        'payment_type',
+        'billetera',
+        'bancolombia',
+        'comprobante'
     ];
 
     public function user(){
