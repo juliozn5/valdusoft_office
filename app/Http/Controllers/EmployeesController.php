@@ -43,7 +43,7 @@ class EmployeesController extends Controller
             ->with('employees', $employees);
     }
 
-    
+
 
     /** Crear nuevo empleado
      *** Perfil: Admin ***/
@@ -64,7 +64,7 @@ class EmployeesController extends Controller
         return view('admin.employees.edit', compact('employee'));
     }
 
-        /** Guardar datos modificados de un empleado
+    /** Guardar datos modificados de un empleado
      *** Perfil: Admin ***/
     public function update(Request $request, $id)
     {
@@ -217,7 +217,7 @@ class EmployeesController extends Controller
         $user->phone = $request->phone;
         $user->save();
 
-        return redirect()->back()->with('message','Se actualizo tu perfil');
+        return redirect()->back()->with('message', 'Se actualizo tu perfil');
     }
 
     /*actualizar los skills*/
@@ -260,7 +260,7 @@ class EmployeesController extends Controller
         $user->save();
 
 
-        return redirect()->back()->with('msj-exitoso', 'Billetera Guardada Exitosamente');
+        return redirect()->back()->with('message', 'Se actualizo tu perfil');
     }
 
     public function upload_curriculum(Request $request)
