@@ -354,9 +354,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="modal-content">
                 <div class="modal-header bg-primary white">
                     <h5 class="modal-title" id="myModalLabel110">Modificar Billetera</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+                    <a data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                        </a>
                 </div>
                 <form method="POST" action="{{route('employee.profile.update-wallet')}}">
                     @csrf
