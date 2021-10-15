@@ -18,11 +18,10 @@ class PayrollEmployee extends Model
         'total_hours',
         'total_amount',
         'status',
-        'date',
     ];
 
     public function payroll(){
-        return $this->belongsTo('App\Models\Payroll');
+        return $this->belongsTo('App\Models\Payroll', 'payroll_id');
     }
 
     public function user(){

@@ -150,7 +150,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 <option value="" selected disabled>Seleccione los años para el hosting...</option>
                                                 <option value="1" id="date_end">1 Año</option>
                                                 <option value="2" id="date_end">2 Años</option>
-                                                <option value="3" id="date_end">3 Anos</option>
+                                                <option value="3" id="date_end">3 Años</option>
                                             </select>
                                             @error('date_end')
                                                 <span class="invalid-feedback" role="alert">

@@ -85,7 +85,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <option value="" selected disabled>Seleccione los años para el hosting...</option>
                                             <option value="1" id="years">1 Año</option>
                                             <option value="2" id="years">2 Años</option>
-                                            <option value="3" id="years">3 Anos</option>
+                                            <option value="3" id="years">3 Años</option>
                                         </select>
                                     </div>
                                 </div>

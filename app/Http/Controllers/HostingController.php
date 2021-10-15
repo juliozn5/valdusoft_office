@@ -126,15 +126,15 @@ class HostingController extends Controller
         $hosting->create_date = $request->date;
         $fecha = new Carbon($hosting->create_date);
         $hosting->due_date = $fecha->addYears($request->date_end);
+        $hosting->renewal_hosting = strtotime(date($hosting->due_date));
         $hosting->years = $request->date_end;
         $hosting->price = $request->price;
-        $hosting->cpanel_url = $request->cpanel_url;
-        $hosting->cpanel_email = $request->cpanel_email;
-        $hosting->cpanel_password = $request->cpanel_password;
         $hosting->renewal_price = $request->renewal_price;
-
-
-        // $hosting->renewal_hosting = $request->reDFGBnewal_hosting;
+        // $hosting->cpanel_url = $request->cpanel_url;
+        // $hosting->cpanel_email = $request->cpanel_email;
+        // $hosting->cpanel_password = $request->cpanel_password;
+        
+        
 
         $hosting->save();
 

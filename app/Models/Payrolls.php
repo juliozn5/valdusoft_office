@@ -15,13 +15,13 @@ class Payrolls extends Model
         'id',
         'amount',
         'status',
-        'date',
+        'start_date',
         'dead_line',
         
     ];
     
-    public function employees(){
-        return $this->hasMany('App\Models\PayrollEmployee');
+    public function payrolls_employee(){
+        return $this->hasMany('App\Models\PayrollEmployee', 'payroll_id', 'id');
     }
 
 }
