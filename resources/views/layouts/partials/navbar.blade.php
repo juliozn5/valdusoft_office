@@ -27,7 +27,7 @@
 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{ route('profile') }}"><i class="feather icon-user"></i> Mi
+                            <a class="dropdown-item" href="{{ route('employee.profile') }}"><i class="feather icon-user"></i> Mi
                                 perfil</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Salir</a>
