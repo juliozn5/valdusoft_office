@@ -90,7 +90,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class="mt-1 project-detail-dates">
                             <img src="{{ asset('images/svg/calendar.svg')}}">
                             {{-- <span>{{date('d/m/Y', $hosting->renewal_hosting)}}</span> --}}
-                            <span>{{$hosting->due_date}}</span>
+                            <span>{{date('d/m/Y', strtotime($hosting->due_date))}}</span>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="col-md-3 col-sm-1">
                         <div class="project-detail-titles">Cantidad de años</div>
                         <div class="mt-1 project-detail-dates">
-                            <span>{{$hosting->years}} Año</span>
+                            <span>{{($hosting->years <2) ? "$hosting->years Año" : "$hosting->years Años"}}</span>
                         </div>
                     </div>
 
@@ -201,7 +201,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <option value="" selected disabled>Seleccione los años para el hosting...</option>
                                         <option value="1" id="date_end">1 Año</option>
                                         <option value="2" id="date_end">2 Años</option>
-                                        <option value="3" id="date_end">3 Anos</option>
+                                        <option value="3" id="date_end">3 Años</option>
                                     </select>
                                     @error('date_end')
                                         <span class="invalid-feedback" role="alert">
@@ -229,8 +229,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 @enderror
                             </div>
                         </div>
-                        <hr>
-                        <div class="row">
+                        {{-- <hr> --}}
+                        {{-- <div class="row">
                             <div class="col-sm-6">
                                 <label for="cpanel_url"><strong>URL Cpanel</strong></label>
                                 <input name="cpanel_url" id="cpanel_url" class="form-control @error('cpanel_url') is-invalid @enderror">
@@ -258,7 +258,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <br><br>
