@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ClientsController extends Controller
@@ -18,9 +19,9 @@ class ClientsController extends Controller
      *** Perfil: Cliente ***/
     public function index()
     {
-        $clients = Bill::all()->where('type', 'C');
-        $hostings = Hosting::paginate(10);
-        $projects = Project::paginate(10);
+        $clients = bill::where('user_id', '=', Auth::user()->id)->get();
+        $hostings = Hosting::where('user_id', '=', Auth::user()->id)->paginate(10);
+        $projects = Project::where('user_id', '=', Auth::user()->id)->paginate(10);
         return view('client.home')->with(compact('clients', 'hostings', 'projects'));
     }
 

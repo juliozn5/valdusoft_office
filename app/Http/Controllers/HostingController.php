@@ -166,4 +166,11 @@ class HostingController extends Controller
 
         return redirect()->route('admin.hostings.list')->with('message', 'Se elimino el Hosting' . ' ' . $hosting->client . ' ' . 'Exitosamente');
     }
+    /**detalles de Hosting 
+     * para cliente */
+    public function showHosting($id)
+    {   
+        $hosting = Hosting::find($id); 
+      return view('client.showHosting', compact('hosting'));
+    }
 }
