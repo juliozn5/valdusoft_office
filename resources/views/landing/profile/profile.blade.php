@@ -20,7 +20,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <a><img class="rounded-circle ml-2" src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
 
                         @else
-                        <a><img class="rounded-circle ml-2"  src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
+                        <a><img class="rounded-circle ml-2" src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
                         @endif
                         <div class="col ml-1">
                             <h3 class="card-title mb-1" title="Hello from speech bubble!">{{ $user->name }} {{ $user->last_name }}</h3>
@@ -132,29 +132,34 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div> -->
                     </div>
 
-                    <div class="mt-3" style="padding:0px 0px 0px 50px;">
-                        <div class="project-detail-titles mb-1"><strong>Curriculum Vitae<strong></div>
-                        <div class="">
-                            <div class="ml-2 pl-1 pt-1 position-absolute"><span>
-                                    {{ (is_null($user->curriculum)) ? 'Dato no disponible ' : $user->curriculum}}</span>
-                                <div class="d-inline-block mr-1 ml-2">
 
+                    <div class="container px-4">
+                        <div class="row gx-5">
+                            <div class="col">
+                                <div class="mt-5">
+                                    <div class="project-detail-titles">Curriculum Vitae</div>
+                                    <div class="mt-1">
+                                        @if (!is_null($user->curriculum))
+                                        <a href="{{ asset('uploads/documents/curriculums/'.$employee->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $user->curriculum }}</a>
+                                        @else
+                                        <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-8">
+                                <div class="p-1 mt-5">
                                     <a href="#availableCurriculum" data-toggle="modal">
                                         @if(is_null($user->curriculum))
-
                                         <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
-
                                         @else
-
                                         <i class="far fa-edit ml-2" style="font-size:21px;"></i>
-
                                         @endif
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ asset('storage/flie-curriculum/'.$user->curriculum) }}" download><img class="" src="{{asset('images/icons/arrow-down.png')}}" alt=""></a>
-
                     </div>
 
                     <div class="row">
@@ -164,19 +169,20 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <img src="{{ asset('images/icons/dollar.png')}}" alt="" class="mr-1"><span>{{ $user->price_per_hour}} USDT</span>
                             </div>
                         </div>
+
                         <div class="col-3 mt-5">
+                            
                             <div class="project-detail-titles">Billetera USDT-TRON</div>
                             <div class="mt-1 project-detail-dates">
                                 <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($user->tron_wallet)) ? 'Dato no disponible' : $user->tron_wallet }} <a href="#availableWallet" data-toggle="modal">
-                                    @if(is_null($user->tron_wallet))
 
+                                    @if(is_null($user->tron_wallet))
                                     <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
 
                                     @else
-
                                     <i class="far fa-edit ml-2" style="font-size:21px;"></i>
-
                                     @endif
+
                                 </a>
                             </div>
                         </div>
@@ -254,7 +260,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <button type="button" class="btn btn-primary">Guardar Cambios</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -349,9 +354,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="modal-content">
                 <div class="modal-header bg-primary white">
                     <h5 class="modal-title" id="myModalLabel110">Modificar Billetera</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+                    <a data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                        </a>
                 </div>
                 <form method="POST" action="{{route('employee.profile.update-wallet')}}">
                     @csrf
