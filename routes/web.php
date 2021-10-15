@@ -129,6 +129,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::get('dataGrafica', 'AdminController@dataGrafica')->name('dataGrafica');
+        Route::post('', 'BillController@saveInvoice')->name('save-invoice');
     });
 
     //LISTADO DE RUTAS PARA EL CLIENTE
