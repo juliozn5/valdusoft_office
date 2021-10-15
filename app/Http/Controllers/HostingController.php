@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Hosting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class HostingController extends Controller
 {
@@ -50,26 +52,67 @@ class HostingController extends Controller
      *** Perfil: Admin ***/
     public function store(Request $request)
     {
-      
-        $fecha = new Carbon($request->create_date);
-        $renewal_hosting = $fecha->addYears($request->years);
-
-       
-            Hosting::create([
-                'user_id' => $request->user_id,
-                'url' => $request->url,
-                'create_date' => $request->create_date,
-                'due_date' => $request->due_date,
-                'renewal_hosting' => strtotime(date($renewal_hosting)),
-                'price' => $request->price,
-                'renewal_price' => $request->renewal_price,
-                'years' => $request->years,
-                'cpanel_url' => $request->cpanel_url,
-                'cpanel_email' => $request->cpanel_email,
-                'cpanel_password' => $request->cpanel_password,
-            ]);
         
-        return redirect()->route('admin.hostings.list')->with('message', 'Se creo el Hosting Exitosamente');
+        $fields = [
+            "hosting_url" => ['required', 'min:4', 'max:255'],
+            "date" => ['required'],
+            "client" => ['required'],
+            "date_end" => ['required'],
+            "price" => ['required'],
+            "cpanel_url" => ['string'],
+            "cpanel_email" => ['string', 'email'],
+            "cpanel_password" => ['string']
+        ];
+
+        $msj = [
+            'hosting_url.required' => 'La URL es requerida',
+            'hosting_url.min' => 'La URL debe tener al menos 4 caracteres',
+            'hosting_url.max' => 'La URL no puede sobrepasar 255 caracteres',
+            'date.required' => 'La Fecha es requerida',
+            'client.required' => 'El cliente es requerido',
+            'date_end.required' => 'Los Años de vencimiento son requeridos',
+            'price.required' => 'El Precio es requerido',
+            'cpanel_email' => 'El Email es inválido'
+        ];
+        // dd($request);
+        $validate = $this->validate($request, $fields, $msj);
+        try {
+            if($validate){
+                DB::beginTransaction();
+                $fecha = new Carbon($request->date);
+                    $hosting = Hosting::create([
+                        'url' => $request->hosting_url,
+                        'create_date' => $request->date,
+                        'due_date' => $fecha->addYears($request->date_end),
+                        'renewal_hosting' => strtotime(date($request->date_end)),
+                        'price' => $request->price,
+                        'renewal_price' => $request->renewal_price,
+                        'years' => $request->date_end,
+                        'cpanel_url' => $request->cpanel_url,
+                        'cpanel_email' => $request->cpanel_email,
+                        'cpanel_password' => $request->cpanel_password,
+                        'user_id' => $request->client
+                    ]);
+
+                    $bill = Bill::create([
+                        'user_id' => $hosting->user_id,
+                        'amount' => $hosting->price,
+                        'date' => $hosting->create_date,
+                        'payed_at' => null,
+                        'status' => '0',
+                        'type' => 'H',
+                        'hosting_id' => $hosting->id
+                    ]);
+                    
+
+                DB::commit();
+                return redirect()->route('admin.hostings.list')->with('message', 'Se creo el Hosting Exitosamente');
+            }
+        } catch (\Throwable $th) {
+            DB::rollback();
+            Log::error('HostingController - store -> Error: '.$th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
     }
 
     /** Editar datos de un Hosting
@@ -92,12 +135,7 @@ class HostingController extends Controller
 
 
         $fields = [
-
-             "hosting_id" => ['required'],
-             "hosting_url" => [
-                'required',
-                'max:255',
-            ],
+            "hosting_url" => ['required', 'min:4', 'max:255'],
             "date" => ['required'],
             "client" => ['required'],
             "date_end" => ['required'],
@@ -105,17 +143,17 @@ class HostingController extends Controller
             "cpanel_url" => ['string'],
             "cpanel_email" => ['string', 'email'],
             "cpanel_password" => ['string']
-            
-
         ];
 
         $msj = [
             'hosting_url.required' => 'La URL es requerida',
+            'hosting_url.min' => 'La URL debe tener al menos 4 caracteres',
+            'hosting_url.max' => 'La URL no puede sobrepasar 255 caracteres',
             'date.required' => 'La Fecha es requerida',
             'client.required' => 'El cliente es requerido',
             'date_end.required' => 'Los Años de vencimiento son requeridos',
             'price.required' => 'El Precio es requerido',
-           
+            'cpanel_email.email' => 'El Email es inválido'
         ];
 
         $this->validate($request, $fields, $msj);

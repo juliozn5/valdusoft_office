@@ -16,6 +16,7 @@ class Bill extends Model{
         'date',
         'payed_at',
         'status',
+        'type',
         'payment_type',
         'billetera',
         'bancolombia',

@@ -68,67 +68,112 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="row">
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="url">URL</label>
-                                        <input type="text" name="url" id="url" class="form-control" required autofocus>
+                                        <label for="hosting_url">URL</label>
+                                        <input name="hosting_url" id="hosting_url" class="form-control @error('hosting_url') is-invalid @enderror">
+                                        @error('hosting_url')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="create_date">Fecha de inicio</label>
-                                        <input type="date" name="create_date" id="create_date" class="form-control" required>
+                                        <label for="date">Fecha de Inicio</label>
+                                        <input type="date" name="date" id="date" class="form-control @error('date') is-invalid @enderror">
+                                        @error('date')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="years">Cantidad de años</label>
-                                        <select name="years" id="years" class="form-control" required>
+                                        <label for="date_end">Cantidad de años</label>
+                                        <select name="date_end" id="date_end" class="form-control @error('date_end') is-invalid @enderror" required>
                                             <option value="" selected disabled>Seleccione los años para el hosting...</option>
-                                            <option value="1" id="years">1 Año</option>
-                                            <option value="2" id="years">2 Años</option>
-                                            <option value="3" id="years">3 Años</option>
+                                            <option value="1" id="date_end">1 Año</option>
+                                            <option value="2" id="date_end">2 Años</option>
+                                            <option value="3" id="date_end">3 Años</option>
                                         </select>
+                                        @error('date_end')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="user_id">Cliente</label>
-                                        <select name="user_id" id="user_id" class="form-control" required>
+                                        <label for="client">Cliente</label>
+                                        <select name="client" id="client" class="form-control @error('client') is-invalid @enderror">
                                             <option value="" selected disabled>Seleccione un cliente...</option>
-                                            @foreach ($clients as $client)
-                                            <option value="{{ $client->id }}">{{ $client->name }} {{ $client->last_name }}</option>
+                                            @foreach ($clients as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name}} </option>
                                             @endforeach
                                         </select>
+                                        @error('client')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="price">Precio</label>
-                                        <input type="text" name="price" id="price" class="form-control">
+                                        <label for="price"><strong>Precio</strong></label>
+                                        <input name="price" id="price" class="form-control @error('price') is-invalid @enderror">
+                                        @error('price')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="renewal_price">Precio de Renovacion</label>
-                                        <input type="text" name="renewal_price" id="renewal_price" class="form-control">
+                                        <label for="renewal_price"><strong>Precio de Renovacion</strong></label>
+                                        <input name="renewal_price" id="renewal_price" class="form-control @error('renewal_price') is-invalid @enderror">
+                                        @error('renewal_price')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="cpanel_url">Url Cpanel</label>
-                                        <input type="text" name="cpanel_url" id="cpanel_url" class="form-control">
+                                        <label for="cpanel_url"><strong>URL Cpanel</strong></label>
+                                        <input name="cpanel_url" id="cpanel_url" class="form-control @error('cpanel_url') is-invalid @enderror">
+                                        @error('cpanel_url')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="cpanel_email">Email Cpanel</label>
-                                        <input type="text" name="cpanel_email" id="cpanel_email" class="form-control" required>
+                                        <label for="cpanel_email"><strong>Email Cpanel</strong></label>
+                                        <input name="cpanel_email" id="cpanel_email" class="form-control @error('cpanel_email') is-invalid @enderror">
+                                        @error('cpanel_email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="cpanel_password">password Cpanel</label>
-                                        <input type="password" name="cpanel_password" id="cpanel_password" class="form-control" required>
+                                        <label for="cpanel_password"><strong>Password Cpanel</strong></label>
+                                        <input name="cpanel_password" id="cpanel_password" class="form-control @error('cpanel_password') is-invalid @enderror">
+                                        @error('cpanel_password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 alert alert-danger" id="errors_div" style="display: none;"></div>
