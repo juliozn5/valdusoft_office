@@ -48,7 +48,7 @@
                                             <td>
                                                 <a href="{{route('client.hosting.showHosting', $item->id)}}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
                                             </td>
-                                            @foreach($variable as $key => $value)
+                                            {{-- @foreach($variable as $key => $value)
                                               <td>
                                                   @if ($client->status == 0)
                                                      <label class="label status-label status-label-purple">Activo</label>
@@ -56,7 +56,7 @@
                                                      <label class="label status-label status-label-gray">Inactivo</label>
                                                   @endif
                                               </td>  
-                                            @endforeach
+                                            @endforeach --}}
                                         </tr>
                                         @endforeach
                                     </tbody>
