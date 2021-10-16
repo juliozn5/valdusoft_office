@@ -14,9 +14,9 @@ class UpdatePayrollsTable extends Migration
     public function up()
     {
         Schema::table('payrolls', function (Blueprint $table) {
-            $table->dropColumn(['date']);
+            $table->dropColumn(['date', 'dead_line']);
             $table->date('start_date');
-            $table->date('dead_lines');
+            $table->date('dead_line');
         });
     }
 
