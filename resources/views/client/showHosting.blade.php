@@ -72,7 +72,13 @@
                     <div class="col-md-3 col-sm-1">
                         <div class="project-detail-titles">Estado de Hosting</div>
                         <div class="mt-1 project-detail-dates">
-                            <span>{{$hosting->status}}</span>
+                            <span>
+                                @if ($hosting->status == 0)
+                                  <label class="label status-label status-label-purple">Activo</label>
+                                @elseif ($hosting->status == 1)
+                                  <label class="label status-label status-label-gray">Inactivo</label>
+                                @endif
+                            </span>
                         </div>
                     </div>
                 </div>

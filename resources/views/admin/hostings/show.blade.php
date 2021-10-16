@@ -103,15 +103,26 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <span>{{($hosting->years <2) ? "$hosting->years Año" : "$hosting->years Años"}}</span>
                         </div>
                     </div>
-
+                     <div class="col-md-3 col-sm-1">
+                        <div class="project-detail-titles">Cliente</div>
+                        <div class="mt-1 project-detail-dates">
+                            <span>{{$hosting->user->name}} {{$hosting->user->last_name}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="pl-2 pr-2 ">
                 <div class="row mt-3 pl-2 pr-2">
-                    <div class="col-md-3 col-sm-1">
-                        <div class="project-detail-titles">Cliente</div>
+                     <div class="col-md-3 col-sm-1">
+                        <div class="project-detail-titles">Estado</div>
                         <div class="mt-1 project-detail-dates">
-                            <span>{{$hosting->user->name}} {{$hosting->user->last_name}}</span>
+                            <span>
+                             @if ($hosting->status == 0)
+                               <label class="label status-label status-label-purple">Activo</label>
+                             @elseif ($hosting->status == 1)
+                               <label class="label status-label status-label-gray">Inactivo</label>
+                             @endif
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -189,6 +200,19 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     @endforeach
                                 </select>
                                 @error('client')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <label for="status"><strong>Estado</strong></label>
+                                <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
+                                    <option value="" selected disabled>Seleccione un estado...</option>
+                                    <option value="0">Activo</option>
+                                    <option value="1">Inactivo</option>
+                                </select>
+                                @error('status')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -46,17 +46,15 @@
                                             <td>{{ date('d/m/Y', strtotime($item->due_date))}}</td>
                                             <td>{{ $item->years }}</td>
                                             <td>
+                                               @if ($item->status == 0)
+                                                    <label class="label status-label status-label-purple">Activo</label>
+                                               @elseif ($item->status == 1)
+                                                    <label class="label status-label status-label-gray">Inactivo</label>
+                                                @endif
+                                            </td> 
+                                            <td>
                                                 <a href="{{route('client.hosting.showHosting', $item->id)}}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                            </td>
-                                            {{-- @foreach($variable as $key => $value)
-                                              <td>
-                                                  @if ($client->status == 0)
-                                                     <label class="label status-label status-label-purple">Activo</label>
-                                                  @elseif ($client->status == 1)
-                                                     <label class="label status-label status-label-gray">Inactivo</label>
-                                                  @endif
-                                              </td>  
-                                            @endforeach --}}
+                                            </td> 
                                         </tr>
                                         @endforeach
                                     </tbody>
