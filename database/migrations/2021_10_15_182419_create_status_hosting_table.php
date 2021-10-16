@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdatePayrollsTable extends Migration
+class CreateStatusHostingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class UpdatePayrollsTable extends Migration
      */
     public function up()
     {
-        Schema::table('payrolls', function (Blueprint $table) {
-            $table->dropColumn(['date', 'dead_line']);
-            $table->date('start_date');
-            $table->date('dead_line');
+        Schema::create('status_hosting', function (Blueprint $table) {
+            $table->id();
+            $table->enum('status', [0, 1])->default(0)->comment('0 - Activo, 1 - Inactivo');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class UpdatePayrollsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('status_hosting');
     }
 }

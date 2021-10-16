@@ -147,6 +147,7 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE HOSTINGS
         Route::group(['prefix' => 'hostings'], function () {
             Route::get('/', 'HostingController@list')->name('client.hostings.list');
+            Route::get('/{id}', 'HostingController@showHosting')->name('client.hosting.showHosting');
         });
 
         //MÓDULO DE FACTURAS
