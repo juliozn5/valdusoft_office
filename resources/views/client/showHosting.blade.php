@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-header">
-                    <div class="h3 col-md-4 col-sm-12">Hosting:<a target="_blank" href="{{$hosting->url}}"> {{$hosting->url}}</a></div>
+                    <div class="h3 col-4 col-sm-6">Hosting:<a target="_blank" href="{{$hosting->url}}"> {{$hosting->url}}</a></div>
                     <div class="col-4 text-right pr-2">
                        <a type="button" class="btn btn-hos_show mr-1 center btn btn-primary" style="color: white;" href="{{route('client.hostings.list')}}">Atras</a>
                     </div>
