@@ -110,12 +110,13 @@ Route::group(['middleware' => ['auth']], function () {
             //MÓDULO FINANCIERO - NÓMINA
             Route::group(['prefix' => 'payroll'], function () {
                 Route::get('/', 'PayrollController@list')->name('admin.payrolls.list');
-                Route::get('generate', 'PayrollController@generate')->name('admin.payrolls.generate');
-                Route::get('DetailPayroll', 'PayrollController@DetailPayroll')->name('admin.payrolls.DetailPayroll');
-                Route::post('update', 'PayrollController@update')->name('admin.payrolls.updatePayroll');
-                Route::get('PayrollList', 'PayrollController@PayrollList')->name('admin.payrolls.PayrollList');
+                Route::get('create', 'PayrollController@create')->name('admin.payrolls.create');
+                Route::post('store', 'PayrollController@store')->name('admin.payrolls.store');
+                Route::get('show/{id}', 'PayrollController@show')->name('admin.payrolls.show');
+                Route::get('edit/{id}', 'PayrollController@edit')->name('admin.payrolls.edit');
 
-                Route::post('upgenerate', 'PayrollEmployeeController@upgenerate')->name('admin.payrolls.upgenerate');
+                Route::post('update', 'PayrollController@update')->name('admin.payrolls.update');
+
                 Route::post('generateloan', 'PayrollController@generateloan')->name('admin.payrolls.generateloan');
                 Route::post('generatebond', 'PayrollController@generatebond')->name('admin.payrolls.generatebond');
             });
