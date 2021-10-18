@@ -13,8 +13,14 @@ class UpdatePayrollsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasColumn('payrolls', 'dead_line')){
+            Schema::table('payrolls', function (Blueprint $table){
+                $table->dropColumn('dead_line');
+            });
+        }
+
         Schema::table('payrolls', function (Blueprint $table) {
-            $table->dropColumn(['date', 'dead_line']);
+            $table->dropColumn(['date']);
             $table->date('start_date');
             $table->date('dead_line');
         });
