@@ -9,28 +9,27 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row"> </div>
-
-            <div class="content-header-left col-md-9 col-12 mb-2">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Nóminas</h2>
-                        <div class="breadcrumb-wrapper col-12">
+            <div class="content-header row">
+               <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
+                            Detalles de Nómina
+                            </div>
+                            <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="#">Financiero</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.payrolls.list') }}">Nómina</a>
-                                </li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#">Financiero</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.payrolls.list') }}">Nóminas</a>
                             </ol>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="content-body">
+         <div class="content-body">
             <div id="table-head">
                 <div class="col">
                     <div class="card" id="card-head1">
@@ -45,11 +44,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <thead class="thead-light">
                                         <tr>
                                             <th class="text-center">EMPLEADO</th>
-                                            <th class="text-center">BULLETERA</th>
+                                            <th class="text-center">BILLETERA</th>
                                             <th class="text-center">HORAS</th>
                                             <th class="text-center">PRECIO POR HORA</th>
-                                            <th class="text-center">TOTAL QUINCENA</th>
+                                            <th class="text-center">QUINCENA</th>
                                             <th class="text-center">BONOS</th>
+                                            <th class="text-center">TOTAL</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,12 +64,22 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 @endif 
                                             </td>
                                             <td class="text-center">{{ $item->total_hours }} horas</td>
-                                            <td class="text-center">{{ number_format($item->price_by_hour, 2, ',', '.') }} $</td>       
-                                            <td class="text-center">{{ number_format($item->total_amount, 2, ',', '.') }} $</td>
-                                            <td class="text-center"></td>
-                                            {{--  @foreach($bons as $item)
-                                            <td class="text-center">{{$item->amount}}</td>  
-                                            @endforeach--}}
+                                            <td class="text-center">{{ number_format($item->price_by_hour, 2, ',', '.') }}$</td>       
+                                            <td class="text-center">{{ number_format($item->total_amount, 2, ',', '.') }}$</td>
+                                            <td class="text-center">
+                                                @if (!is_null($item->bond))
+                                                    <span title="{{ $item->bond->description }}">{{ number_format($item->bond->amount, 2, ',', '.') }}$</span>
+                                                @else
+                                                    0$
+                                                @endif
+                                            </td>
+                                            <td class="text-center">
+                                                @if (!is_null($item->bond))
+                                                    {{ number_format($item->bond->amount + $item->total_amount, 2, ',', '.') }}$
+                                                @else
+                                                    {{ number_format($item->total_amount, 2, ',', '.') }}$
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

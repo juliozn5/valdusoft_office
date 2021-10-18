@@ -84,6 +84,10 @@ class User extends Authenticatable
 
     }
 
+    public function bonds(){
+        return $this->hasMany('App\Models\Bond');
+    }
+
     //Relación del usuario con el chat
     public function chats(){
         return $this->hasMany('App\Models\Chat');
