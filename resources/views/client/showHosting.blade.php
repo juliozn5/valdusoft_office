@@ -90,7 +90,7 @@
                         <div class="mt-1 project-detail-dates">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <span><strong>Usuarios: </strong><strong id="cpanel-email">{{$hosting->cpanel_email}}</strong></span>
+                                    <span><strong>Usuario: </strong><strong id="cpanel-email">{{$hosting->cpanel_email}}</strong></span>
                                     <i class="fa fa-copy fa-1x ml-1 text-info cursor-pointer" onclick="copiar('cpanel-email', this);"></i>
                                 </div>
                                 <div class="col-md-3">
