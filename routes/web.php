@@ -80,8 +80,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', 'EmployeesController@list')->name('admin.employees.list');
             Route::get('create', 'EmployeesController@create')->name('admin.employees.create');
             Route::post('store', 'EmployeesController@store')->name('admin.employees.store');
-            Route::patch('update/{id}', 'EmployeesController@update')->name('admin.employees.update');
-            Route::get('edit/{id}', 'EmployeesController@edit')->name('admin.employees.edit');
+            Route::patch('update/{employee}', 'EmployeesController@update')->name('admin.employees.update');
+            Route::get('edit/{employee}', 'EmployeesController@edit')->name('admin.employees.edit');
             Route::get('show/{slug}/{id}', 'EmployeesController@show')->name('admin.employees.show');
             Route::post('assign-projects', 'EmployeesController@assign_projects')->name('admin.employees.assign-projects');
         });

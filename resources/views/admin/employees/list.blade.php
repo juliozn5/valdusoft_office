@@ -39,7 +39,7 @@
                                         <tr>
                                             <td>
                                                 @if (!is_null($employee->photo))
-                                                <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/photo-profile/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="50" width="50">
+                                                <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="50" width="50">
                                                 @else
                                                 <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="50" width="50">
                                                 @endif
