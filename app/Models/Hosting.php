@@ -26,6 +26,7 @@ class Hosting extends Model
         'cpanel_url',
         'cpanel_email',
         'cpanel_password',
+        'status',
         'updated_at',
     ];
 

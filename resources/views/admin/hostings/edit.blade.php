@@ -122,6 +122,17 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="status">Estado</label>
+                                                <select name="status" id="status" class="form-control" required>
+                                                    <option value="" selected disabled>Seleccione un estado...</option>
+                                                    <option value="0">Activo</option>
+                                                    <option value="1">Inactivo</option>
+                                            
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group col-12">
                                             <fieldset>
                                                 <label class="h5" for="due_date">Imagen para el Cliente</label>

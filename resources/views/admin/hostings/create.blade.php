@@ -112,7 +112,16 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <input type="text" name="renewal_price" id="renewal_price" class="form-control">
                                     </div>
                                 </div>
-
+                                 <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="status">Estado</label>
+                                        <select name="status" id="status" class="form-control" required>
+                                            <option value="" selected disabled>Seleccione un estado...</option>
+                                            <option value="0">Activo</option>
+                                            <option value="1">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
                                         <label for="cpanel_url">Url Cpanel</label>

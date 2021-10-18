@@ -66,6 +66,7 @@ class HostingController extends Controller
                 'years' => $request->years,
                 'cpanel_url' => $request->cpanel_url,
                 'cpanel_email' => $request->cpanel_email,
+                'status' => $request->status,
                 'cpanel_password' => $request->cpanel_password,
             ]);
         
@@ -103,6 +104,7 @@ class HostingController extends Controller
             "date_end" => ['required'],
             "price" => ['required'],
             "cpanel_url" => ['string'],
+            "status" => ['required'],
             "cpanel_email" => ['string', 'email'],
             "cpanel_password" => ['string']
             
@@ -129,6 +131,7 @@ class HostingController extends Controller
         $hosting->renewal_hosting = strtotime(date($hosting->due_date));
         $hosting->years = $request->date_end;
         $hosting->price = $request->price;
+        $hosting->status = $request->status;
         $hosting->renewal_price = $request->renewal_price;
         // $hosting->cpanel_url = $request->cpanel_url;
         // $hosting->cpanel_email = $request->cpanel_email;
