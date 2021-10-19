@@ -38,7 +38,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
     function renovarhosting($hosting) {
         $("#renewal_hosting").val($hosting.renewal_hosting);
-        $("#renewal_price").val($hosting.renewal_price);
+        $("#renewal_price2").val($hosting.renewal_price);
     }
 </script>
 @endpush
@@ -312,15 +312,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <label for="renewal_hosting">Cantidad de la renovacion</label>
                                     <select name="renewal_hosting" id="renewal_hosting" class="form-control" required>
                                         <option value="" selected disabled>Seleccione los años para la renovacion...</option>
-                                        <option value="1" id="renewal_hosting">1 Año</option>
-                                        <option value="2" id="renewal_hosting">2 Años</option>
-                                        <option value="3" id="renewal_hosting">3 Anos</option>
+                                        <option value="1">1 Año</option>
+                                        <option value="2">2 Años</option>
+                                        <option value="3">3 Anos</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <label for="renewal_price"><strong>Precio de Renovacion</strong></label>
-                                <input name="renewal_price" id="renewal_price" class="form-control">
+                                <label for="renewal_price2"><strong>Precio de Renovacion</strong></label>
+                                <input name="renewal_price" id="renewal_price2" class="form-control">
                             </div>
                         </div>
                     </div>
