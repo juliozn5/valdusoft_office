@@ -49,6 +49,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <th>F. VENCIMIENTO</th>
                                             <th>PRECIO</th>
                                             <th>PRECIO DE RENOVACION</th>
+                                            <th>ESTADO</th>
                                             <th>ACCIÓN</th>
                                         </tr>
                                     </thead>
@@ -75,6 +76,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 ${{$hosting->renewal_price}}
                                                 @else
                                                 Dato no disponible
+                                                @endif
+                                            </td>
+                                            <td>
+                                               @if ($hosting->status == 0)
+                                                    <label class="label status-label status-label-purple">Activo</label>
+                                               @elseif ($hosting->status == 1)
+                                                    <label class="label status-label status-label-gray">Inactivo</label>
                                                 @endif
                                             </td>
                                             <td>

@@ -54,7 +54,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                      <label class="label status-label status-label-gray">Pagada</label>
                                     @endif
                                 </td>
-                                <td class="text-center"></td>
+                                <td class="text-center">{{ $client->description }}</td>
                                 <td class="text-center">{{ $client->amount }}$</td>
                             </tr>
                             @endforeach

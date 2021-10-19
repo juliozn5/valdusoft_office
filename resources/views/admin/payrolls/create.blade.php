@@ -10,9 +10,67 @@
          let id = $(this).attr("id").split("_");
 
          let total = parseFloat($("#price_per_hour_"+id[1]).val()) * parseFloat($("#hours_"+id[1]).val());
-         $("#data_total_"+id[1]).html(total+"$");
+         $("#data_total_"+id[1]).html(total + parseFloat($("#bond_amount_"+id[1]).val()) +"$");
          $("#total_"+id[1]).val(total);
       });
+
+      function addBond($number){
+         $("#modal-user-number").val($number);
+      }
+
+      $("#add_bond_form").submit(function(event){
+         event.preventDefault();
+
+         let number = $("#modal-user-number").val();
+         $("#bond_"+number).val(1);
+         $("#bond_amount_"+number).val($("#modal-amount").val());
+         $("#bond_description_"+number).val($("#modal-description").val());
+
+         let total = parseFloat($("#total_"+number).val()) + parseFloat($("#bond_amount_"+number).val());
+         $("#data_total_"+number).html(total+"$");
+
+         $("#modal-amount").val("");
+         $("#modal-description").val("");
+         $("#addBondModal").modal("hide");
+         $("#addBondLink-"+number).addClass("hidden");
+         $("#showBondLink-"+number).removeClass("hidden");
+      });
+      
+      $("#update_bond_form").submit(function(event){
+         event.preventDefault();
+
+         let number = $("#modal-user-number2").val();
+         $("#bond_amount_"+number).val($("#modal-amount2").val());
+         $("#bond_description_"+number).val($("#modal-description2").val());
+
+         let total = parseFloat($("#total_"+number).val()) + parseFloat($("#bond_amount_"+number).val());
+         $("#data_total_"+number).html(total+"$");
+
+         $("#modal-amount2").val("");
+         $("#modal-description2").val("");
+         $("#showBondModal").modal("hide");
+      });
+
+      function showBond($number){
+         $("#modal-user-number2").val($number);
+         $("#modal-amount2").val($("#bond_amount_"+$number).val());
+         $("#modal-description2").val($("#bond_description_"+$number).val());
+      }
+
+      function deleteBond(){
+         let number = $("#modal-user-number2").val();
+         $("#bond_"+number).val(0);
+         $("#bond_amount_"+number).val("0");
+         $("#bond_description_"+number).val("");
+
+         $("#data_total_"+number).html($("#total_"+number).val()+"$");
+
+         $("#modal-amount2").val("");
+         $("#modal-description2").val("");
+         $("#showBondModal").modal("hide");
+         $("#showBondLink-"+number).addClass("hidden");
+         $("#addBondLink-"+number).removeClass("hidden");
+      }
    </script>
 @endpush
 
@@ -21,21 +79,20 @@
       <div class="content-overlay"></div>
       <div class="header-navbar-shadow"></div>
       <div class="content-wrapper">
-         <div class="content-header row"> </div>
-
-         <div class="content-header-left col-md-9 col-12 mb-2">
-            <div class="row breadcrumbs-top">
-               <div class="col-12">
-                  <h2 class="content-header-title float-left mb-0">Nóminas</h2>
-                  <div class="breadcrumb-wrapper col-12">
-                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="#">Financiero</a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.payrolls.list') }}">Nómina</a>
-                        </li>
-                     </ol>
+         <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+               <div class="row breadcrumbs-top">
+                  <div class="col-12">
+                     <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
+                        Generar Nómina
+                     </div>
+                     <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                           <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
+                           <li class="breadcrumb-item"><a href="#">Financiero</a></li>
+                           <li class="breadcrumb-item"><a href="{{ route('admin.payrolls.list') }}">Nóminas</a>
+                        </ol>
+                     </div>
                   </div>
                </div>
             </div>
@@ -47,6 +104,9 @@
          <div id="table-head table-responsive">
             <div class="col">
                <div class="card" id="card-head1">
+                  <div class="alert alert-info m-2">
+                     <i class="fa fa-exclamation-circle"></i> Solo se muestran los empleados que tienen el precio de su hora de trabajo asignada.
+                  </div>
                   <form action="{{ route('admin.payrolls.store') }}" method="post">
                      @csrf
                      <div class="row p-2">
@@ -81,11 +141,11 @@
                                  @foreach ($employees as $employee)
                                     @php $cont++; @endphp
                                     <input type="hidden" name="employees_count" value="{{ $cont }}">
-                                    <input type="hidden" name="employee_id_{{ $cont }}" value="{{ $employee->id }}">
+                                    <input type="hidden" name="employee_id_{{ $cont }}" id="employee_id_{{ $cont }}" value="{{ $employee->id }}">
                                     <tr>
                                        <td scope="row">{{ $employee->name }} {{ $employee->last_name }}</td>
                                        <td>   
-                                          <input type="text" name="hours_{{ $cont }}" id="hours_{{ $cont }}" class="col-7 form-control hours" @if (is_null($employee->price_per_hour)) disabled @endif>  
+                                          <input type="text" name="hours_{{ $cont }}" id="hours_{{ $cont }}" class="col-7 form-control hours">  
                                        </td>
                                        <td>
                                           <input type="hidden" name="price_per_hour_{{ $cont }}" id="price_per_hour_{{ $cont }}" value="{{$employee->price_per_hour}}$">
@@ -96,12 +156,19 @@
                                           @endif
                                        </td>
                                        <td>
-                                          <input type="hidden" name="total_{{ $cont }}" id="total_{{ $cont }}">
+                                          <input type="hidden" name="total_{{ $cont }}" id="total_{{ $cont }}" value="0">
                                           <b id="data_total_{{ $cont }}">0$</b>
                                        </td>
                                        <td>
-                                          <a href="#bono" data-toggle="modal">
-                                             <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png')}}" alt="Agregar Tecnología" height="40" width="40">
+                                          <input type="hidden" name="bond_{{ $cont }}" id="bond_{{ $cont }}" value="0">
+                                          <input type="hidden" name="bond_amount_{{ $cont }}" id="bond_amount_{{ $cont }}" value="0">
+                                          <input type="hidden" name="bond_description_{{ $cont }}" id="bond_description_{{ $cont }}">
+                                          
+                                          <a href="#addBondModal" data-toggle="modal" onclick="addBond({{ $cont }});" id="addBondLink-{{ $cont }}" title="Agregar Bono">
+                                             <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png')}}" alt="Agregar Bono" height="40" width="40">
+                                          </a>
+                                          <a class="hidden" href="#showBondModal" data-toggle="modal" onclick="showBond({{ $cont }});" id="showBondLink-{{ $cont }}" title="Ver Bono">
+                                             <img class="rounded-circle" src="{{ asset('images/svg/coin.svg')}}" alt="Ver Bono" height="40" width="40">
                                           </a>
                                        </td>    
                                        <td>
@@ -127,27 +194,54 @@
       </div>
    </div>
 
-   <!--  MODAL DE LOS BONOS  -->
-   <div class="modal fade" id="bono" aria-hidden="true" tabindex="-1">
+   {{--   MODAL PARA AGREGAR BONO  --}} 
+   <div class="modal fade" id="addBondModal" aria-hidden="true" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar Bono </strong></h5>
-            <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
-         </div>  
-         <form action="{{ route('admin.payrolls.generatebond')}}" method="post">
-            @csrf  
-            <div class="modal-body"> 
-            <p>Monto a Ingresar</p>
-            <input type="text" class=" form-control" name="amount" id="amount">
-            <br>
-            <p>Concepto</p>
-            <input type="text" class=" form-control" name="description" id="description">
-            <div class="modal-footer">
-               <button class="btn btn-primary" type="submit" id="bono" >GUARDAR</button>
-            </div>
-         </form>
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar Bono </strong></h5>
+               <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
+            </div>  
+            <form id="add_bond_form">
+               <div class="modal-body"> 
+                  <input type="hidden" id="modal-user-number">
+                  <p>Monto</p>
+                  <input type="text" class=" form-control" id="modal-amount" required>
+                  <br>
+                  <p>Concepto</p>
+                  <input type="text" class=" form-control" id="modal-description" required>
+               </div>
+               <div class="modal-footer">
+                  <button class="btn btn-primary">CARGAR BONO</button>
+               </div>
+            </form>
+         </div>
       </div>
+   </div>
+
+   {{--   MODAL PARA VER BONO  --}} 
+   <div class="modal fade" id="showBondModal" aria-hidden="true" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Detalles del Bono </strong></h5>
+               <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
+            </div>  
+            <form id="update_bond_form">
+               <div class="modal-body"> 
+                  <input type="hidden" id="modal-user-number2">
+                  <p>Monto</p>
+                  <input type="text" class=" form-control" id="modal-amount2" required>
+                  <br>
+                  <p>Concepto</p>
+                  <input type="text" class=" form-control" id="modal-description2" required>
+               </div>
+               <div class="modal-footer">
+                  <a class="btn btn-danger text-white" onclick="deleteBond();">ELIMINAR BONO</a>
+                  <button class="btn btn-primary">ACTUALIZAR BONO</button>
+               </div>
+            </form>
+         </div>
       </div>
    </div>
 

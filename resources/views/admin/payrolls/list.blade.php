@@ -37,25 +37,24 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row"> </div>
-
-            <div class="content-header-left col-md-9 col-12 mb-2">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Financiero</h2>
-                        <div class="breadcrumb-wrapper col-12">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                   <div class="row breadcrumbs-top">
+                      <div class="col-12">
+                         <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
+                            Listado de Nóminas
+                         </div>
+                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.payrolls.list') }}">Financiero</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.payrolls.list') }}">Nómina</a>
-                                </li>
+                               <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
+                               <li class="breadcrumb-item"><a href="#">Financiero</a></li>
+                               <li class="breadcrumb-item"><a href="{{ route('admin.payrolls.list') }}">Nóminas</a>
                             </ol>
-                        </div>
-                    </div>
+                         </div>
+                      </div>
+                   </div>
                 </div>
-            </div>
+             </div>
         </div>
 
         <div class="content-body">

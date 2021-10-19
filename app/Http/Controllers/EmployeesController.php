@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmployeeRequest;
 use App\Models\Bill;
 use App\Models\Financing;
 use App\Models\PayrollEmployee;
@@ -56,55 +57,57 @@ class EmployeesController extends Controller
         return view('admin.employees.create')->with(compact('skills'));
     }
 
+
     /** Editar datos de un empleado
      *** Perfil: Admin ***/
     public function edit($id)
     {
         $employee = User::find($id);
-        return view('admin.employees.edit', compact('employee'));
+
+        $skills = DB::table('skills')
+        ->orderBy('skill', 'ASC')
+        ->get();
+        
+        return view('admin.employees.edit', compact('employee', 'skills'));
     }
 
-    /** Guardar datos modificados de un empleado
+        /** Guardar datos modificados de un empleado
      *** Perfil: Admin ***/
-    public function update(Request $request, $id)
+    public function update(EmployeeRequest $request, User $employee)
     {
-        // dd($request);
-        $employee = User::find($id);
-        $msj = [
-            'name.required' => 'El nombre es requerido.',
-            'name.max' => 'El nombre debe tener como máximo 50 caracteres.',
-            'last_name.required' => 'El apellido es requerido.',
-            'last_name.max' => 'El apellido debe tener como máximo 50 caracteres.',
-            'email.unique' => 'El correo ya se encuentra registrado.',
-            'phone' => 'El teléfono es requerido',
-            'photo.mimes' => 'Archivos no permitido, solo jpeg, jpg y png',
-            'photo.max' => 'La imagen no debe ser mayor de 2048 Kilobytes'
-        ];
-        $validate = $request->validate([
-            'name' => ['required', 'string', 'max:50'],
-            'last_name' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $employee->id . ',id'],
-            'phone' => ['required', 'string', 'max:18'],
-            'photo' => ['nullable', 'mimes:jpeg,png', 'max:2048']
-        ], $msj);
-
-        if ($validate) {
-            $employee->update($request->all());
-            $employee->slug = Str::slug($request->name . "-" . $request->last_name);
-            if ($request->hasFile('photo')) {
-                $file = $request->file('photo');
-                $name = $employee->id . "." . $file->getClientOriginalExtension();
-                $file->move(public_path('storage') . '/photo-profile', $name);
-                $employee->photo = $name;
-            }
-            $employee->save();
-            return redirect()->route('admin.employees.list')->with('message', 'Se actualizó el Empleado Exitosamente');
+        if($employee->password != $request->password){
+            $nuevaClave = Hash::make($request->password);
         }
-    }
 
+        $employee->update($request->all());
+        $employee->slug = Str::slug($request->name . "-" . $request->last_name);
+        if(isset($nuevaClave)){
+            $employee->password = $nuevaClave;
+        }
+        $employee->save();
+
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $name = $employee->id . "." . $file->getClientOriginalExtension();
+            $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
+            $employee->photo = 'uploads/images/users/photos/' . $name;
+        }
+
+        if ($request->hasFile('curriculum')) {
+            $file2 = $request->file('curriculum');
+            $name2 = $employee->id . "." . $file2->getClientOriginalExtension();
+            $file->move(public_path('storage') . '/uploads/documents/curriculums', $name2);
+            $employee->curriculum = 'uploads/documents/curriculums'. $name2;
+        }
+
+        $employee->save();
+
+        return redirect()->route('admin.employees.list')->with('message', 'Se actualizó el Empleado Exitosamente');
+        // }
+    }
     /** Guardar datos del nuevo empleado
      *** Perfil: Admin ***/
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
         $employee = new User($request->all());
 
@@ -119,15 +122,15 @@ class EmployeesController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $name = $employee->id . "." . $file->getClientOriginalExtension();
-            $file->move(public_path() . '/uploads/images/users/photos', $name);
-            $employee->photo = $name;
+            $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
+            $employee->photo = 'uploads/images/users/photos/' . $name;
         }
 
         if ($request->hasFile('curriculum')) {
             $file2 = $request->file('curriculum');
             $name2 = $employee->id . "." . $file2->getClientOriginalExtension();
-            $file2->move(public_path() . '/uploads/documents/curriculums', $name2);
-            $employee->curriculum = $name2;
+            $file->move(public_path('storage') . '/uploads/documents/curriculums', $name2);
+            $employee->curriculum = 'uploads/documents/curriculums'. $name2;
         }
 
         $employee->save();

@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-header">
-                    <div class="h3 col-md-4 col-sm-12">Hosting:<a target="_blank" href="{{$hosting->url}}"> {{$hosting->url}}</a></div>
+                    <div class="h3 col-4 col-sm-6">Hosting:<a target="_blank" href="{{$hosting->url}}"> {{$hosting->url}}</a></div>
                     <div class="col-4 text-right pr-2">
                        <a type="button" class="btn btn-hos_show mr-1 center btn btn-primary" style="color: white;" href="{{route('client.hostings.list')}}">Atras</a>
                     </div>
@@ -72,7 +72,13 @@
                     <div class="col-md-3 col-sm-1">
                         <div class="project-detail-titles">Estado de Hosting</div>
                         <div class="mt-1 project-detail-dates">
-                            <span>{{$hosting->status}}</span>
+                            <span>
+                                @if ($hosting->status == 0)
+                                  <label class="label status-label status-label-purple">Activo</label>
+                                @elseif ($hosting->status == 1)
+                                  <label class="label status-label status-label-gray">Inactivo</label>
+                                @endif
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -84,7 +90,7 @@
                         <div class="mt-1 project-detail-dates">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <span><strong>Usuarios: </strong><strong id="cpanel-email">{{$hosting->cpanel_email}}</strong></span>
+                                    <span><strong>Usuario: </strong><strong id="cpanel-email">{{$hosting->cpanel_email}}</strong></span>
                                     <i class="fa fa-copy fa-1x ml-1 text-info cursor-pointer" onclick="copiar('cpanel-email', this);"></i>
                                 </div>
                                 <div class="col-md-3">

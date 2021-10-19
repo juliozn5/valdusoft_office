@@ -80,8 +80,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', 'EmployeesController@list')->name('admin.employees.list');
             Route::get('create', 'EmployeesController@create')->name('admin.employees.create');
             Route::post('store', 'EmployeesController@store')->name('admin.employees.store');
-            Route::patch('update/{id}', 'EmployeesController@update')->name('admin.employees.update');
-            Route::get('edit/{id}', 'EmployeesController@edit')->name('admin.employees.edit');
+            Route::patch('update/{employee}', 'EmployeesController@update')->name('admin.employees.update');
+            Route::get('edit/{employee}', 'EmployeesController@edit')->name('admin.employees.edit');
             Route::get('show/{slug}/{id}', 'EmployeesController@show')->name('admin.employees.show');
             Route::post('assign-projects', 'EmployeesController@assign_projects')->name('admin.employees.assign-projects');
         });
@@ -114,11 +114,13 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::post('store', 'PayrollController@store')->name('admin.payrolls.store');
                 Route::get('show/{id}', 'PayrollController@show')->name('admin.payrolls.show');
                 Route::get('edit/{id}', 'PayrollController@edit')->name('admin.payrolls.edit');
-
                 Route::post('update', 'PayrollController@update')->name('admin.payrolls.update');
 
+                Route::group(['prefix' => 'bonds'], function () {
+                    Route::post('store', 'PayrollController@store')->name('admin.payrolls.store');
+                });
+
                 Route::post('generateloan', 'PayrollController@generateloan')->name('admin.payrolls.generateloan');
-                Route::post('generatebond', 'PayrollController@generatebond')->name('admin.payrolls.generatebond');
             });
 
             //MÓDULO FINANCIERO - PAGOS
@@ -183,7 +185,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['prefix' => 'interest'], function () {
             Route::get('financing', 'FinancingController@list')->name('employee.interest.financing');
             Route::get('holidays', 'HolidaysController@list')->name('employee.interest.holidays');
-            Route::get('bonds', 'BondsController@list')->name('employee.interest.bonds');
+            Route::get('bonds', 'BondController@list')->name('employee.interest.bonds');
         });
     });
 });
