@@ -85,7 +85,6 @@ class HostingController extends Controller
                         'url' => $request->hosting_url,
                         'create_date' => $request->date,
                         'due_date' => $fecha->addYears($request->date_end),
-                        'renewal_hosting' => strtotime(date($request->date_end)),
                         'price' => $request->price,
                         'renewal_price' => $request->renewal_price,
                         'years' => $request->date_end,
@@ -165,7 +164,7 @@ class HostingController extends Controller
         $hosting->create_date = $request->date;
         $fecha = new Carbon($hosting->create_date);
         $hosting->due_date = $fecha->addYears($request->date_end);
-        $hosting->renewal_hosting = strtotime(date($hosting->due_date));
+        // $hosting->renewal_hosting = strtotime(date($hosting->due_date));
         $hosting->years = $request->date_end;
         $hosting->price = $request->price;
         $hosting->renewal_price = $request->renewal_price;
@@ -194,7 +193,7 @@ class HostingController extends Controller
         $msj = [
             'renewal_price.required' => 'El precio de renovación es requerido',
             'years.required' => 'Los años de renovación son requeridos',
-            'created_at.required' => 'La Fecha es requerida'
+            'created_date.required' => 'La Fecha es requerida'
         ];
 
         $validate = $this->validate($request, $fields, $msj);
@@ -211,7 +210,7 @@ class HostingController extends Controller
                         'expire_date' => $fecha->addYears($request->years)
                     ]);
 
-                    $bill = Bill::create([
+                    Bill::create([
                         'user_id' => $hosting->user_id,
                         'amount' => $renewal->renewal_price,
                         'date' => $renewal->create_date,
@@ -223,7 +222,7 @@ class HostingController extends Controller
                     
 
                 DB::commit();
-                return redirect()->route('admin.hostings.list')->with('message', 'Se creo el Hosting Exitosamente');
+                return redirect()->back()->with('message', 'Renovación creada Exitosamente');
             }
         } catch (\Throwable $th) {
             DB::rollback();
@@ -231,16 +230,6 @@ class HostingController extends Controller
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
 
-        $this->validate($request, $fields, $msj);
-
-        $hosting->update($request->all());
-
-        $hosting->renewal_price = $request->renewal_price;
-        $hosting->renewal_hosting = $request->renewal_hosting;
-
-        $hosting->save();
-
-        return redirect()->back()->with('message', 'Se actualizo el Hosting Exitosamente');
     }
 
     /** Eliminar un Hosting
