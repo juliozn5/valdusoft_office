@@ -29,7 +29,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         $("#client option[value=" + $hosting.user_id + "]").attr("selected", true);
         $("#date_end").val($hosting.years);
         $("#price").val($hosting.price);
-        $("#renewal_price").val($hosting.renewal_price);
         $("#cpanel_url").val($hosting.cpanel_url);
         $("#cpanel_email").val($hosting.cpanel_email);
         $("#cpanel_password").val($hosting.cpanel_password);
@@ -37,8 +36,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     }
 
     function renovarhosting($hosting) {
-        $("#renewal_hosting").val($hosting.renewal_hosting);
-        $("#renewal_price2").val($hosting.renewal_price);
+        $("#years").val($hosting.renewal_hosting);
+        $("#renewal_price").val($hosting.renewal_price);
     }
 </script>
 @endpush
@@ -243,15 +242,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-6 col-sm-12">
-                                <label for="renewal_price"><strong>Precio de Renovacion</strong></label>
-                                <input name="renewal_price" id="renewal_price" class="form-control @error('renewal_price') is-invalid @enderror">
-                                @error('renewal_price')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
                         </div>
                         {{-- <hr> --}}
                         {{-- <div class="row">
@@ -309,8 +299,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class="row">
                             <div class="col-md-6 col-sm-12 ">
                                 <div class="form-group">
-                                    <label for="renewal_hosting">Cantidad de la renovacion</label>
-                                    <select name="renewal_hosting" id="renewal_hosting" class="form-control" required>
+                                    <label for="years">Cantidad de la renovacion</label>
+                                    <select name="years" id="years" class="form-control" required>
                                         <option value="" selected disabled>Seleccione los años para la renovacion...</option>
                                         <option value="1">1 Año</option>
                                         <option value="2">2 Años</option>
@@ -319,8 +309,22 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <label for="renewal_price2"><strong>Precio de Renovacion</strong></label>
-                                <input name="renewal_price" id="renewal_price2" class="form-control">
+                                <label for="renewal_price"><strong>Precio de Renovacion</strong></label>
+                                <input name="renewal_price" id="renewal_price" class="form-control  @error('renewal_price') is-invalid @enderror">
+                                @error('renewal_price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <label for="create_date">Fecha de Inicio</label>
+                                <input type="date" name="create_date" id="create_date" class="form-control @error('create_date') is-invalid @enderror">
+                                @error('create_date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                     </div>

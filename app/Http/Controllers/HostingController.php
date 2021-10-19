@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bill;
 use Carbon\Carbon;
+use App\Models\Bill;
 use App\Models\User;
 use App\Models\Hosting;
 use Illuminate\Http\Request;
+use App\Models\RenewalHosting;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -182,6 +183,55 @@ class HostingController extends Controller
     public function renewal(Request $request)
     {
         $hosting = Hosting::find($request->hosting_id);
+
+        $fields = [
+            "hosting_id" => ['required'],
+            "renewal_price" => ['required'],
+            "years" => ['required'],
+            "create_date" => ['required']
+        ];
+
+        $msj = [
+            'renewal_price.required' => 'El precio de renovación es requerido',
+            'years.required' => 'Los años de renovación son requeridos',
+            'created_at.required' => 'La Fecha es requerida'
+        ];
+
+        $validate = $this->validate($request, $fields, $msj);
+        try {
+            if($validate){
+                // dd($validate);
+                DB::beginTransaction();
+                $fecha = new Carbon($request->create_date);
+                    $renewal = RenewalHosting::create([
+                        'hosting_id' => $request->hosting_id,
+                        'renewal_price' => $request->renewal_price,
+                        'years' => $request->years,
+                        'create_date' => $request->create_date,
+                        'expire_date' => $fecha->addYears($request->years)
+                    ]);
+
+                    $bill = Bill::create([
+                        'user_id' => $hosting->user_id,
+                        'amount' => $renewal->renewal_price,
+                        'date' => $renewal->create_date,
+                        'payed_at' => null,
+                        'status' => '0',
+                        'type' => 'H',
+                        'hosting_id' => $renewal->hosting_id
+                    ]);
+                    
+
+                DB::commit();
+                return redirect()->route('admin.hostings.list')->with('message', 'Se creo el Hosting Exitosamente');
+            }
+        } catch (\Throwable $th) {
+            DB::rollback();
+            Log::error('HostingController - store -> Error: '.$th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+
+        $this->validate($request, $fields, $msj);
 
         $hosting->update($request->all());
 
