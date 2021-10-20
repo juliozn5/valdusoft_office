@@ -4,7 +4,6 @@
 class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
 
-
 @section('content')
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -13,11 +12,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="content-body mb-5 mt-2">
             <div class="card">
                 <div class="mb-1 ">
-                    <h3>Proyectos</h3>
+                    <h3 style="padding: 5px">Proyectos</h3>
                 </div>
                 <div class="card">
                     <div class="container">
-                        <div class="row ">
+                        <div class="row">
                             @foreach ($projects as $project)
                             <div class="container-fluid col-md-2 col-sm-1 rounded" id="recomiendo">
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
@@ -34,7 +33,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
         <div class="card ">
             <div class="">
-                <h3 class="card-title mb-2 pt-2">Facturas</h3>
+                <h3 class="card-title mb-2 pt-2" style="padding: 5px">Facturas</h3>
                 <div class="table-responsive ">
                     <table class="table">
                         <thead class="thead-light ">
@@ -63,10 +62,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
             </div>
         </div>
-         <div class="content-body">
+        <div class="content-body">
             <div class="card">
                 <div class="">
-                    <h3 class="card-title mb-2 pt-2">Hosting</h3>
+                    <h3 class="card-title mb-2" style="padding: 5px">Hosting</h3>
                     <div class="container">
                         <div class="row">
                             @foreach ($hostings as $hostings)
