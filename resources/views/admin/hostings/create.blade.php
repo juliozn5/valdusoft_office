@@ -152,7 +152,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-12">
+                                {{-- <div class="col-md-4 col-12">
                                     <div class="form-group">
                                         <label for="cpanel_url"><strong>URL Cpanel</strong></label>
                                         <input name="cpanel_url" id="cpanel_url" class="form-control @error('cpanel_url') is-invalid @enderror">
@@ -184,7 +184,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-12 alert alert-danger" id="errors_div" style="display: none;"></div>
                             </div>
                         </div>
