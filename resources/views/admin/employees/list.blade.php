@@ -38,10 +38,10 @@
                                         @foreach ($employees as $employee)
                                         <tr>
                                             <td>
-                                                @if (!is_null($employee->photo))
-                                                <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="50" width="50">
+                                                @if (isset($employee->photo))
+                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/photo-profile/'.$employee->photo) }}" />
                                                 @else
-                                                <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="50" width="50">
+                                                <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                 @endif
                                             </td>
                                             <td>{{ $employee->name }}</td>
