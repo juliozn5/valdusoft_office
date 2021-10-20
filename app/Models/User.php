@@ -41,7 +41,8 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'remember_token'
+        
     ];
 
     /**
@@ -81,6 +82,10 @@ class User extends Authenticatable
     public function skills(){
         return $this->belongsToMany('App\Models\Skill', 'skills_users', 'user_id', 'skill_id');
 
+    }
+
+    public function bonds(){
+        return $this->hasMany('App\Models\Bond');
     }
 
     //Relación del usuario con el chat

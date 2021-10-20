@@ -66,6 +66,12 @@ class ProjectsController extends Controller
         return view('admin.projects.create')->with(compact('clients', 'countries', 'technologies', 'tags'));
     }
 
+
+    public function detailclient()
+    {
+        return redirect()->back()->with('message','En espera de Respuesta'); 
+    }
+
     /** Guardar datos del Nuevo Proyecto
     *** Perfil: Admin ***/
     public function store(Request $request){
@@ -99,61 +105,89 @@ class ProjectsController extends Controller
     /** Ver detalles de un Proyecto
     *** Perfil: Admin ***/
     public function show($slug, $id){
-        $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
-                    ->where('id', '=', $id)
-                    ->first();
-        
-        // $cost = AccountingTransaction::where('project_id', )
+        if (Auth::user()->profile_id == 1){
+            $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions', 'bills')
+                        ->where('id', '=', $id)
+                        ->first();
 
-        $tagsID = array();
-        foreach ($project->tags as $tag){
-            array_push($tagsID, $tag->id);
-        }
-        
-        $employeesID = array();
-        foreach ($project->employees as $employee){
-            array_push($employeesID, $employee->id);
-        }
-        
-        $availableEmployees = DB::table('users')
-                                ->select('id', 'name', 'last_name')
-                                ->where('profile_id', '=', 3)
-                                ->whereNotIn('id', $employeesID)
-                                ->get();
-        
-        $technologiesID = array();
-
-        foreach ($project->technologies as $technology){
-            array_push($technologiesID, $technology->id);
-        }
-        
-        $availableTechnologies = DB::table('technologies')
-                                    ->select('id', 'name')
-                                    ->whereNotIn('id', $technologiesID)
+            $tagsID = array();
+            foreach ($project->tags as $tag){
+                array_push($tagsID, $tag->id);
+            }
+            
+            $employeesID = array();
+            foreach ($project->employees as $employee){
+                array_push($employeesID, $employee->id);
+            }
+            
+            $availableEmployees = DB::table('users')
+                                    ->select('id', 'name', 'last_name')
+                                    ->where('profile_id', '=', 3)
+                                    ->whereNotIn('id', $employeesID)
                                     ->get();
-        
-        foreach ($project->attachments as $attachment){
-            $attachment->date = date('d', strtotime($attachment->created_at)).' de '.$this->getMonthName(date('m', strtotime($attachment->created_at))).' de '.date('Y', strtotime($attachment->created_at));
-            $attachment->time = date('H:i', strtotime($attachment->created_at));
-        }
+            
+            $technologiesID = array();
 
-        $clients = DB::table('users')
-                        ->select('id', 'name', 'last_name')
-                        ->where('profile_id', '=', 2)
-                        ->orderBy('name', 'ASC')
-                        ->get();
-        
-        $countries = DB::table('countries')
+            foreach ($project->technologies as $technology){
+                array_push($technologiesID, $technology->id);
+            }
+            
+            $availableTechnologies = DB::table('technologies')
+                                        ->select('id', 'name')
+                                        ->whereNotIn('id', $technologiesID)
+                                        ->get();
+            
+            foreach ($project->attachments as $attachment){
+                $attachment->date = date('d', strtotime($attachment->created_at)).' de '.$this->getMonthName(date('m', strtotime($attachment->created_at))).' de '.date('Y', strtotime($attachment->created_at));
+                $attachment->time = date('H:i', strtotime($attachment->created_at));
+            }
+
+            $budget['cost'] = 0;
+            $budget['assigned'] = 0;
+            $budget['benefit'] = 0;
+            foreach ($project->bills as $bill) {
+                if ($bill->status == 1){
+                    $budget['benefit'] += $bill->amount;
+                }
+            }
+            $budget['assigned'] = ($budget['benefit']*60)/100;
+
+            foreach ($project->accounting_transactions as $transaction) {
+                if ($transaction->status == 1){
+                    $budget['cost'] += $transaction->amount;
+                }
+            }
+
+            $clients = DB::table('users')
+                            ->select('id', 'name', 'last_name')
+                            ->where('profile_id', '=', 2)
+                            ->orderBy('name', 'ASC')
+                            ->get();
+            
+            $countries = DB::table('countries')
+                            ->select('id', 'name')
+                            ->orderBy('name', 'ASC')
+                            ->get();
+            
+            $tags = DB::table('tags')
                         ->select('id', 'name')
-                        ->orderBy('name', 'ASC')
+                        ->orderBy('id', 'ASC')
                         ->get();
-        
-        $tags = DB::table('tags')
-                    ->select('id', 'name')
-                    ->orderBy('id', 'ASC')
-                    ->get();
 
-        return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID'));   
+            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID', 'budget'));   
+        }else if(Auth::user()->profile_id == 2){
+            $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
+                        ->where('id', '=', $id)
+                        ->first();
+
+            return view('client.showProject')->with(compact('project'));
+        }else{
+            $project = Project::with('user:id,name,last_name', 'employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
+                        ->where('id', '=', $id)
+                        ->first();
+
+            return view('employee.showProject')->with(compact('project'));
+        }   
     }
 
     /** Guardar datos modificados del Proyecto
@@ -223,19 +257,6 @@ class ProjectsController extends Controller
         }
     }
 
-    //detalle del empleado
-    public function detail($id){
-        $proyect = Project::find($id);
-        // dd($proyect);
-        return view('employee.projectsdetail', compact('proyect'));
-    }
-
-    //detalle del cliente
-    public function detailclient(){
-
-        return view('client.detailprojects');
-    }
-
     /** Agregar un archivo adjunto al proyecto
     *** Perfil: Admin ***/
     public function add_attachment(Request $request){
@@ -289,27 +310,8 @@ class ProjectsController extends Controller
     /** Agregar una transacción contable al proyecto
     *** Perfil: Admin ***/
     public function add_accounting_transaction(Request $request){
-        $lastTransaction = DB::table('project_accounting_transactions')
-                                ->select('balance')
-                                ->where('project_id', '=', $request->project_id)
-                                ->orderBy('id', 'DESC')
-                                ->first();
-
         $transaction = new AccountingTransaction($request->all());
         $transaction->date = date('Y-m-d');
-        if (!is_null($lastTransaction)){
-            if ($transaction->type == '+'){
-                $transaction->balance = $lastTransaction->balance + $transaction->amount;
-            }else{
-                $transaction->balance = $lastTransaction->balance - $transaction->amount;
-            }
-        }else{
-            if ($transaction->type == '+'){
-                $transaction->balance = $transaction->amount;
-            }else{
-                $transaction->balance = -$transaction->amount;
-            }
-        }
         $transaction->save();
 
         return redirect()->back()->with('msj-transaction', 'true');

@@ -16,6 +16,7 @@ class Financing extends Model
         'total_amount',
         'status',
         'date',
+        'percentage',
     ];
 
     public function user(){

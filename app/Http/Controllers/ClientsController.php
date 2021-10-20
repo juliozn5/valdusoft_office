@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ClientsController extends Controller
@@ -18,9 +19,9 @@ class ClientsController extends Controller
      *** Perfil: Cliente ***/
     public function index()
     {
-        $clients = Bill::all()->where('type', 'C');
-        $hostings = Hosting::paginate(10);
-        $projects = Project::paginate(10);
+        $clients = bill::where('user_id', '=', Auth::user()->id)->get();
+        $hostings = Hosting::where('user_id', '=', Auth::user()->id)->paginate(10);
+        $projects = Project::where('user_id', '=', Auth::user()->id)->paginate(10);
         return view('client.home')->with(compact('clients', 'hostings', 'projects'));
     }
 
@@ -101,14 +102,14 @@ class ClientsController extends Controller
             if ($request->hasFile('photo')) {
                 $file = $request->file('photo');
                 $name = $client->id . "." . $file->getClientOriginalExtension();
-                $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
-                $client->photo = 'uploads/images/users/photos/' . $name;
+                $file->move(public_path('storage') . '/photo-profile', $name);
+                $client->photo = $name;
             }
             if ($request->hasFile('logo')) {
                 $file = $request->file('logo');
                 $name = $client->id . "." . $file->getClientOriginalExtension();
-                $file->move(public_path('storage') . '/uploads/images/users/logos', $name);
-                $client->logo = 'uploads/images/users/logos/' . $name;
+                $file->move(public_path('storage') . '/logo-user', $name);
+                $client->logo = 'logo-user/' . $name;
             }
             $client->save();
         }
@@ -158,15 +159,15 @@ class ClientsController extends Controller
             if ($request->hasFile('photo')) {
                 $file = $request->file('photo');
                 $name = $client->id . "." . $file->getClientOriginalExtension();
-                $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
-                $client->photo = 'uploads/images/users/photos/' . $name;
+                $file->move(public_path('storage') . '/photo-profile', $name);
+                $client->photo = $name;
                 // dd($client->photo);
             }
             if ($request->hasFile('logo')) {
                 $file = $request->file('logo');
                 $name = $client->id . "." . $file->getClientOriginalExtension();
-                $file->move(public_path('storage') . '/uploads/images/users/logos', $name);
-                $client->logo = 'uploads/images/users/logos/' . $name;
+                $file->move(public_path('storage') . '/logo-user', $name);
+                $client->logo = 'logo-user/' . $name;
             }
             $client->save();
             $client->update($request->all());

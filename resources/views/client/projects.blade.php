@@ -6,11 +6,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @endpush
 
 @section('content')
-
-@include('layouts.partials.navbar')
-
-@include('layouts.partials.sidebar')
-
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -39,25 +34,31 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($projects as $item)
+                                        @foreach ($projects as $project)
                                         <tr>
-                                            <th>{{ $loop->iteration }}</th>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->start_date }}</td>
-                                            <td>{{ $item->ending_date }}</td>
+                                            <th>{{ $project->id }}</th>
+                                            <td>{{ $project->name }}</td>
                                             <td>
-                                                @if ($item->status == 0)
+                                                {{ (is_null($project->start_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->start_date)) }}
+                                            </td>
+                                            <td>
+                                                {{ (is_null($project->ending_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->ending_date)) }}
+                                            </td>
+                                            <td>
+                                                @if ($project->status == 0)
                                                 <label class="label status-label status-label-purple">No Atendido</label>
-                                                @elseif ($item->status == 1)
+                                                @elseif ($project->status == 1)
                                                 <label class="label status-label status-label-gray">En Proceso</label>
-                                                @elseif ($item->status == 2)
+                                                @elseif ($project->status == 2)
                                                 <label class="label status-label status-label-blue">Testiando</label>
-                                                @elseif ($item->status == 3)
+                                                @elseif ($project->status == 3)
                                                 <label class="label status-label status-label-green">Completado</label>
+                                                @elseif ($project->status == 4)
+                                                <label class="label status-label status-label-red">Eliminado</label>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{route('client.projects.detail')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                <a href="{{ route('client.projects.show', [$project->slug, $project->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -18,9 +18,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     });
 </script>
 @endif
-@include('layouts.partials.navbar')
-
-@include('layouts.partials.sidebar')
 
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -59,7 +56,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>{{ $item->id }}</td>
                                             <td>
                                                 @if (isset($item->photo))
-                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/'.$item->photo) }}" />
+                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
                                                 @else
                                                 <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                 @endif

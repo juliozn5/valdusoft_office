@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmployeeRequest;
+use App\Models\Bill;
+use App\Models\Financing;
 use App\Models\PayrollEmployee;
 use App\Models\User;
 use App\Models\Project;
@@ -18,12 +21,17 @@ class EmployeesController extends Controller
      *** Perfil: Empleado ***/
     public function index()
     {
+        $user = Auth::user();
+        $fechaActual = Carbon::now();
+        $fechaUser = new Carbon($user->admission_date);
+        $fechaUser->addYear(1);
+
         $project = Project::where('user_id', Auth::id());
         $payrolls = PayrollEmployee::where('user_id', Auth::id());
         $proyects_user = Auth::user()->projects;
         $user = Auth::user();
 
-        return view('employee.home')->with(compact('project', 'payrolls', 'user', 'proyects_user'));
+        return view('employee.home')->with(compact('project', 'payrolls', 'user', 'proyects_user', 'fechaUser'));
     }
 
     /** Listado de Empleados
@@ -36,6 +44,8 @@ class EmployeesController extends Controller
             ->with('employees', $employees);
     }
 
+
+
     /** Crear nuevo empleado
      *** Perfil: Admin ***/
     public function create()
@@ -47,9 +57,57 @@ class EmployeesController extends Controller
         return view('admin.employees.create')->with(compact('skills'));
     }
 
+
+    /** Editar datos de un empleado
+     *** Perfil: Admin ***/
+    public function edit($id)
+    {
+        $employee = User::find($id);
+
+        $skills = DB::table('skills')
+        ->orderBy('skill', 'ASC')
+        ->get();
+        
+        return view('admin.employees.edit', compact('employee', 'skills'));
+    }
+
+        /** Guardar datos modificados de un empleado
+     *** Perfil: Admin ***/
+    public function update(EmployeeRequest $request, User $employee)
+    {
+        if($employee->password != $request->password){
+            $nuevaClave = Hash::make($request->password);
+        }
+
+        $employee->update($request->all());
+        $employee->slug = Str::slug($request->name . "-" . $request->last_name);
+        if(isset($nuevaClave)){
+            $employee->password = $nuevaClave;
+        }
+        $employee->save();
+
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $name = $employee->id . "." . $file->getClientOriginalExtension();
+            $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
+            $employee->photo = 'uploads/images/users/photos/' . $name;
+        }
+
+        if ($request->hasFile('curriculum')) {
+            $file2 = $request->file('curriculum');
+            $name2 = $employee->id . "." . $file2->getClientOriginalExtension();
+            $file->move(public_path('storage') . '/uploads/documents/curriculums', $name2);
+            $employee->curriculum = 'uploads/documents/curriculums'. $name2;
+        }
+
+        $employee->save();
+
+        return redirect()->route('admin.employees.list')->with('message', 'Se actualizó el Empleado Exitosamente');
+        // }
+    }
     /** Guardar datos del nuevo empleado
      *** Perfil: Admin ***/
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
         $employee = new User($request->all());
 
@@ -64,15 +122,15 @@ class EmployeesController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $name = $employee->id . "." . $file->getClientOriginalExtension();
-            $file->move(public_path() . '/uploads/images/users/photos', $name);
-            $employee->photo = $name;
+            $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
+            $employee->photo = 'uploads/images/users/photos/' . $name;
         }
 
         if ($request->hasFile('curriculum')) {
             $file2 = $request->file('curriculum');
             $name2 = $employee->id . "." . $file2->getClientOriginalExtension();
-            $file2->move(public_path() . '/uploads/documents/curriculums', $name2);
-            $employee->curriculum = $name2;
+            $file->move(public_path('storage') . '/uploads/documents/curriculums', $name2);
+            $employee->curriculum = 'uploads/documents/curriculums'. $name2;
         }
 
         $employee->save();
@@ -108,10 +166,11 @@ class EmployeesController extends Controller
         }
 
         $availableProjects = Project::whereNotIn('id', $projectsID)->get();
-
+        $facturas = Bill::where('user_id', $id)->get();
         $projectColors = ['#FF3F3F', '#12A0B4', '#940385'];
+        $financiamiento = Financing::where(['user_id' => $id, 'status' => '0'])->sum('total_amount');
 
-        return view('admin.employees.show')->with(compact('employee', 'projectColors', 'availableProjects', 'fechaUser'));
+        return view('admin.employees.show')->with(compact('employee', 'projectColors', 'availableProjects', 'fechaUser', 'facturas', 'financiamiento'));
     }
 
     /** Asignar proyecto a un empleado
@@ -151,6 +210,17 @@ class EmployeesController extends Controller
 
         return view('landing.profile.profile')
             ->with(compact('user', 'skillsActivos', 'project', 'availableSkills', 'itemColors', 'fechaUser'));
+    }
+
+    public function editPhone(Request $request)
+    {
+
+        $user = Auth::user();
+        $user->update($request->all());
+        $user->phone = $request->phone;
+        $user->save();
+
+        return redirect()->back()->with('message', 'Se actualizo tu perfil');
     }
 
     /*actualizar los skills*/
@@ -193,7 +263,7 @@ class EmployeesController extends Controller
         $user->save();
 
 
-        return redirect()->back()->with('msj-exitoso', 'Billetera Guardada Exitosamente');
+        return redirect()->back()->with('message', 'Se actualizo tu perfil');
     }
 
     public function upload_curriculum(Request $request)

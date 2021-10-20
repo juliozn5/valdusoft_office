@@ -17,6 +17,7 @@ class CreateFinancingPaymentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('financing_id');
             $table->double('amount');
+            $table->string('description');
             $table->date('date');
             $table->timestamps();
 

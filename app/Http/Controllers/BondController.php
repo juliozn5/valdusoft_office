@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bond;
+use Illuminate\Support\Facades\Request;
+
 class BondsController extends Controller
 {
     /** De Interés - Bonos

@@ -41,7 +41,7 @@
                               <div class="table-responsive">
                                   <table class="table mb-0">
                                      <thead class="thead-light">
-                                          <tr class="">
+                                          <tr class="text-center">
                                                <th>FECHA</th>
                                                <th>CLIENTE</th>   
                                                <th>ID DE FACTURA</th>                                     

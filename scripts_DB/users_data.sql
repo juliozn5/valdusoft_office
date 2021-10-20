@@ -27,7 +27,6 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `slug`, `email`, `phone`, `birthdate`, `admission_date`, `email_verified_at`, `password`, `position`, `profile_id`, `remember_token`, `created_at`, `updated_at`, `curriculum`, `price_per_hour`, `uphold_account`, `photo`, `tron_wallet`, `logo`) VALUES
-(1, 'admin', 'master', 'admin-master', 'admin@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$yfar1ISof2qxLW7nZe6LzuzPyrU/9N9oyHZQqbMSxJQrdIQhj024W', '1', 1, NULL, '2021-09-13 22:03:40', '2021-09-13 22:03:40', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'Freddy', 'Millán', 'freddy-jose-millan-salazar', 'freddymillan@valdusoft.com', '+584120924853', '1993-02-04', '2018-04-15', NULL, '$2y$10$RbdmW9SfbajO.7Xej4Ag7OzTT49nsQ1OWlvoN2q5n3G9zKLxOvnDa', '0', 3, NULL, '2021-09-13 23:37:18', '2021-09-13 23:37:18', NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'Carlos', 'González', 'carlos-gonzalez', 'carlosgonzalez@valdusoft.com', '+584123597875', NULL, NULL, NULL, '$2y$10$HsFeyFg/lamDsIcUTgGCGO2d0X4wMoFyT6Aj5.WYMIc44xHGCZRrC', '0', 3, NULL, '2021-09-13 23:52:44', '2021-09-13 23:52:44', NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Luisanaelena', 'Marín', 'luisanaelena-marin', 'luisanamarin@valdusoft.com', '+584120924871', '1992-12-29', '2019-10-01', NULL, '$2y$10$P1AOuCDOWSfydm60yqQIzePhJ5ObmZneH93wt2jxomBcQ52F7du0i', '0', 3, NULL, '2021-09-13 23:57:27', '2021-09-13 23:57:27', NULL, 2.2, NULL, NULL, NULL, NULL),

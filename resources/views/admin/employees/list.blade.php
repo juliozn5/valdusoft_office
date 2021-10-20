@@ -37,7 +37,13 @@
                                     <tbody>
                                         @foreach ($employees as $employee)
                                         <tr>
-                                            <td><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" /></td>
+                                            <td>
+                                                @if (!is_null($employee->photo))
+                                                <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="50" width="50">
+                                                @else
+                                                <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="50" width="50">
+                                                @endif
+                                            </td>
                                             <td>{{ $employee->name }}</td>
                                             <td>{{ $employee->last_name }}</td>
                                             <td>
@@ -54,7 +60,10 @@
                                                     Dato no disponible
                                                 @endif
                                             </td>
-                                            <td><a href="{{ route('admin.employees.show', [$employee->slug, $employee->id]) }}"><i class="fa fa-eye"></i></a></td>
+                                            <td>
+                                                <a href="{{ route('admin.employees.show', [$employee->slug, $employee->id]) }}"><i class="fa fa-eye mr-1"></i></a>
+                                                <a href="{{ route('admin.employees.edit', $employee->id) }}"><i class="fa fa-edit"></i></a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -35,9 +35,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('profile', 'ProfileController@edit')->name('profile');
     Route::patch('profile-update', 'ProfileController@update')->name('profile.update');
+    Route::post('profile-update', 'ProfileController@updatePhoto')->name('profile.updates');
 
     Route::get('change-password', 'ChangePasswordController@index');
     Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
+    Route::post('change', 'ChangePasswordController@change')->name('change-password');
 
     //LISTADO DE RUTAS PARA EL ADMINISTRADOR
     Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'profile'], 'profile' => ['1']], function () {
@@ -78,6 +81,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', 'EmployeesController@list')->name('admin.employees.list');
             Route::get('create', 'EmployeesController@create')->name('admin.employees.create');
             Route::post('store', 'EmployeesController@store')->name('admin.employees.store');
+            Route::patch('update/{employee}', 'EmployeesController@update')->name('admin.employees.update');
+            Route::get('edit/{employee}', 'EmployeesController@edit')->name('admin.employees.edit');
             Route::get('show/{slug}/{id}', 'EmployeesController@show')->name('admin.employees.show');
             Route::post('assign-projects', 'EmployeesController@assign_projects')->name('admin.employees.assign-projects');
         });
@@ -106,12 +111,17 @@ Route::group(['middleware' => ['auth']], function () {
             //MÓDULO FINANCIERO - NÓMINA
             Route::group(['prefix' => 'payroll'], function () {
                 Route::get('/', 'PayrollController@list')->name('admin.payrolls.list');
-                Route::get('generate', 'PayrollController@generate')->name('admin.payrolls.generate');
-                Route::get('DetailPayroll', 'PayrollController@DetailPayroll')->name('admin.payrolls.DetailPayroll');
-                Route::post('update', 'PayrollController@update')->name('admin.payrolls.updatePayroll');
-                Route::get('PayrollList', 'PayrollController@PayrollList')->name('admin.payrolls.PayrollList');
+                Route::get('create', 'PayrollController@create')->name('admin.payrolls.create');
+                Route::post('store', 'PayrollController@store')->name('admin.payrolls.store');
+                Route::get('show/{id}', 'PayrollController@show')->name('admin.payrolls.show');
+                Route::get('edit/{id}', 'PayrollController@edit')->name('admin.payrolls.edit');
+                Route::post('update', 'PayrollController@update')->name('admin.payrolls.update');
 
-                Route::post('upgenerate', 'PayrollEmployeeController@upgenerate')->name('admin.payrolls.upgenerate');
+                Route::group(['prefix' => 'bonds'], function () {
+                    Route::post('store', 'PayrollController@store')->name('admin.payrolls.store');
+                });
+
+                Route::post('generateloan', 'PayrollController@generateloan')->name('admin.payrolls.generateloan');
             });
 
             //MÓDULO FINANCIERO - PAGOS
@@ -123,6 +133,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::get('dataGrafica', 'AdminController@dataGrafica')->name('dataGrafica');
+        Route::post('', 'BillController@saveInvoice')->name('save-invoice');
     });
 
     //LISTADO DE RUTAS PARA EL CLIENTE
@@ -132,12 +143,14 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('client.projects.list');
+            Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('client.projects.show')->middleware('project_user');
             Route::get('/detail', 'ProjectsController@detailclient')->name('client.projects.detail');
         });
 
         //MÓDULO DE HOSTINGS
         Route::group(['prefix' => 'hostings'], function () {
             Route::get('/', 'HostingController@list')->name('client.hostings.list');
+            Route::get('/{id}', 'HostingController@showHosting')->name('client.hosting.showHosting');
         });
 
         //MÓDULO DE FACTURAS
@@ -152,6 +165,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'profile'], 'profile' => ['3']], function () {
         Route::get('/', 'EmployeesController@index')->name('employee.home');
         Route::get('/profile', 'EmployeesController@profile')->name('employee.profile');
+        Route::post('profile', 'EmployeesController@editPhone')->name('employee.profiles');
         Route::post('update-skills', 'EmployeesController@update_skills')->name('employee.profile.update-skills');
         Route::post('update-wallet', 'EmployeesController@update_wallet')->name('employee.profile.update-wallet');
         Route::post('upload-curriculum', 'EmployeesController@upload_curriculum')->name('employee.profile.upload-curriculum');
@@ -159,7 +173,7 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
-            Route::get('/detail/{id}', 'ProjectsController@detail')->name('employee.projects.detail');
+            Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('employee.projects.show')->middleware('project_user');
         });
 
         //MÓDULO DE FACTURAS
@@ -172,7 +186,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['prefix' => 'interest'], function () {
             Route::get('financing', 'FinancingController@list')->name('employee.interest.financing');
             Route::get('holidays', 'HolidaysController@list')->name('employee.interest.holidays');
-            Route::get('bonds', 'BondsController@list')->name('employee.interest.bonds');
+            Route::get('bonds', 'BondController@list')->name('employee.interest.bonds');
         });
     });
 });
