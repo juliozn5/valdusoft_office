@@ -208,28 +208,25 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         @csrf
                                         <div id="listas">
                                             <div class="row mt-2">
-                                                <select name="user_id" id="user_id" class="form-control" required>
+                                                {{-- <select name="user_id" id="user_id" class="form-control" required>
                                                     <option value="" selected disabled>Seleccione un cliente...</option>
                                                     @foreach ($user_client as $item)
                                                     <option value="{{ $item->id }}">{{ $item->name }} {{ $item->last_name }}</option>
                                                     @endforeach
-                                                </select>
-                                                <input type="text" name="descripcion[]" class="one form-control col-2"
-                                                    id="principal_0">
-                                                <input type="text" name="unidades[]" oninput="calcular(0)"
-                                                    class="monto two form-control col-2" id="second_0">
-                                                <input type="text" name="valor[]" oninput="calcular(0)"
-                                                    class="monto three form-control col-2" id="third_0">
-                                                <input name="precio[]" class="form-control four col-2" id="fourth_0">
+                                                </select> --}}
+                                                <input type="text" name="descripcion[]" class="one form-control col-2" id="first">
+                                                <input type="number" name="unidades[]" class="two form-control col-2" id="second" oninput="calculate()">
+                                                <input type="number" name="valor[]" class="three form-control col-2" id="third" oninput="calculate()">
+                                                <input type="text" name="precio[]" class="four form-control col-2" id="fourth" readonly>
                                             </div>
                                         </div>
                                         <!--FOOTER DEL MODAL-->
                                         <div class="modal-footer">
                                             <ul class="list-group list-group-flush">
 
-                                                <li class="list-group-item"> <strong>TOTAL PARCIAL</strong> 00</li>
-                                                <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
-                                                <li class="list-group-item"><strong>PAGADO</strong> 00</li>
+                                                <li class="list-group-item">TOTAL PARCIAL: <br> <span class="font-weight-bolder" id="tp"></span></li>
+                                                <li class="list-group-item">DESCUENTO: <br> <input name="descuento" oninput="calculate()" class="form-control" size="4" id="d"></li>
+                                                <li class="list-group-item">PAGADO: <br> <span class="font-weight-bolder" id="p"></span></li>
                                             </ul>
                                         </div>
                                         <button type="submit" id="botom"
@@ -256,31 +253,35 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 
 @push('custom_js')
 <script>
-    /* function to calculate value of units by unit price */
-    function calcular(id) {
-        try {
-            console.log(id);
-            let a = parseFloat(document.getElementById("second_" + id).value) || 0;
-            b = parseFloat(document.getElementById("third_" + id).value) || 0;
-            document.getElementById("fourth_" + id).value = a * b;
-        } catch (e) {}
 
-    }
+/* función para calculate el valor de las unidades */
+function calculate() {
+
+    second = $("#second").val();
+    third = $("#third").val();
+    fourth = $("#fourth").val(second * third);
+
+    subtotal = $('#tp').text((second * third) + '$');
+
+    discount = $("#d").val();
+    $('#p').text( (second * third - discount) + '$' )
+}
 
 /*This function generates and removes entries, the index of this function is in admin / bill / list*/
-let campos_max = 100; //Campos de input Maximos
-let x = 1;
+max_fields = 100;
+x = 1;
+
 $('#add_field').click(function (e) {
     e.preventDefault(); //Pervenir Nuevos Click
-    if (x < campos_max) {
+    if (x < max_fields) {
         $('#listas').append('<div id="listas">\
-            <div class="row mt-4">\
+        <div class="row mt-4">\
         <input type="text" name="descripcion[]" class="one form-control col-2" id="principal_' + x + '">\
-        <input type="text" id="second_' + x + '" name="unidades[]" oninput="calcular(' + x + ')" class="two monto form-control col-2" >\
-        <input type="text" id="third_' + x + '" name="valor[]" oninput="calcular(' + x + ')"  class="three monto form-control col-2" >\
+        <input type="text" id="second_' + x + '" name="unidades[]" oninput="calculate(' + x + ')" class="two monto form-control col-2" >\
+        <input type="text" id="third_' + x + '" name="valor[]" oninput="calculate(' + x + ')"  class="three monto form-control col-2" >\
         <input name="precio[]" class="four form-control col-2" id="fourth_' + x + '">\
-    <a href="#" class="remover_campo ml-2"><i class="fas fa-times"></i></a>\
-    </div>');
+        <a href="#" class="remover_campo ml-2"><i class="fas fa-times"></i></a>\
+        </div>');
         x++;
     }
 });
