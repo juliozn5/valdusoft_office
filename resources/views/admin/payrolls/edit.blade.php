@@ -266,14 +266,21 @@
                         @csrf
                         <input type="hidden" name="payroll_id" value="{{ $payroll->id }}">
                         <div class="row p-2">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                            <div class="col-xl-3 col-lg-3 col-md-4 col-12">
                                 <label for="date">Fecha de inicio</label>
                                 <input type="date" class="form-control" name="start_date" value="{{ $payroll->start_date }}" required>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                            <div class="col-xl-3 col-lg-3 col-md-4 col-12">
                                 <label for="dead_line">Fecha de cierre</label>
                                 <input type="date" class="form-control" name="dead_line" value="{{ $payroll->dead_line }}" required>
                             </div>
+                            <div class="col-xl-3 col-lg-3 col-md-4 col-12">
+                              <label for="dead_line">Estado</label>
+                              <select name="status" class="form-control">
+                                 <option value="0" @if ($payroll->status == '0') selected @endif>En Espera</option>
+                                 <option value="1" @if ($payroll->status == '1') selected @endif>Completada</option>
+                              </select>
+                           </div>
                         </div>
                      
                         <div class="card-header">

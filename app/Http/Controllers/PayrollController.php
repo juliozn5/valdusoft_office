@@ -205,6 +205,19 @@ class PayrollController extends Controller
         }
 
         $payroll = Payrolls::find($request->payroll_id);
+
+        if ( ($payroll->status == '0') && ($request->status == '1') ){
+            DB::table('payrolls_employee')
+                ->where('payroll_id', '=', $payroll->id)
+                ->update(['status' => '1']);
+        }
+
+        if ( ($payroll->status == '1') && ($request->status == '0') ){
+            DB::table('payrolls_employee')
+                ->where('payroll_id', '=', $payroll->id)
+                ->update(['status' => '0']);
+        }
+
         $payroll->update($request->all());
         $payroll->amount = $payroll_total;
         $payroll->save();
