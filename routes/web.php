@@ -116,12 +116,6 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('show/{id}', 'PayrollController@show')->name('admin.payrolls.show');
                 Route::get('edit/{id}', 'PayrollController@edit')->name('admin.payrolls.edit');
                 Route::post('update', 'PayrollController@update')->name('admin.payrolls.update');
-
-                Route::group(['prefix' => 'bonds'], function () {
-                    Route::post('store', 'PayrollController@store')->name('admin.payrolls.store');
-                });
-
-                Route::post('generateloan', 'PayrollController@generateloan')->name('admin.payrolls.generateloan');
             });
 
             //MÓDULO FINANCIERO - PAGOS

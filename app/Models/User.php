@@ -88,6 +88,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Bond');
     }
 
+    public function financings(){
+        return $this->hasMany('App\Models\Financing');
+    }
+
     //Relación del usuario con el chat
     public function chats(){
         return $this->hasMany('App\Models\Chat');
@@ -113,6 +117,6 @@ class User extends Authenticatable
 
     //Relación con los pagos de abonos de financiamiento
     public function financing_payments(){
-        return $this->hasMany('App\Models\FinancePayment');
+        return $this->hasMany('App\Models\FinancingPayment');
     }
 }

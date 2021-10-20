@@ -13,6 +13,7 @@ class FinancingPayment extends Model
 
     protected $fillable =[
         'financing_id',
+        'payroll_employee_id',
         'amount',
         'date',
         'description',
@@ -20,5 +21,9 @@ class FinancingPayment extends Model
 
     public function financing(){
         return $this->belongsTo('App\Models\Financing');
+    }
+
+    public function payroll_employee(){
+        return $this->belongsTo('App\Models\PayrollEmployee', 'payroll_employee_id', 'id');
     }
 }
