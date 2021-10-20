@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bill;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class BillController extends Controller
 {
@@ -14,15 +15,16 @@ class BillController extends Controller
      {
           if (Auth::user()->profile_id == 1) {
 
-               $client_bill = Bill::all()->where('type', 'C');
-
-
+               $client = Bill::all()->where('type', 'C');
                $hosting = Bill::all()->where('type', 'H');
-
-
                $employer = Bill::all()->where('type', 'E');
 
-               return view('admin.bills.list', compact('client_bill', 'hosting', 'employer'));
+               $user_client = User::all()->where('profile_id', '2');
+               $user_employer = User::all()->where('profile_id', '3');
+
+
+               return view('admin.bills.list', compact('client', 'hosting', 'employer', 'user_client', 'user_employer'));
+
           } else if (Auth::user()->profile_id == 2) {
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
                return view('client.bills')->with('bills', $bills);
@@ -47,8 +49,8 @@ class BillController extends Controller
                view('admin.bills.BillList');
      }
 
-     public function bill()
+     public function bill(Request $request)
      {
-          
+          dd($request->all());
      }
 }

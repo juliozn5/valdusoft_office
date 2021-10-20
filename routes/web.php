@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,7 +100,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::group(['prefix' => 'bills'], function () {
                 Route::get('/', 'BillController@list')->name('admin.bills.list');
                 Route::get('bill', 'BillController@BillList')->name('admin.bills.BillList');
-                Route::post('bill', 'BillController@bill')->name('billsPost');
+                Route::post('bill', 'BillController@bill')->name('admin.bills.post');
             });
 
             //MÓDULO FINANCIERO - NÓMINA

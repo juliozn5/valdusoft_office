@@ -1,79 +1,53 @@
 @extends('layouts.app')
+
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click"
 data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
-@section('content')
-@include('layouts.partials.navbar')
-@include('layouts.partials.sidebar')
 
+@push('custom_css')
+   
 <style>
     .modal-body {
-        padding: 0rem;
+        padding: 1rem;
     }
+
 </style>
-<script>
-    //OCULTAR BOTON DE GENERAR
-    function ocultar() {
-        document.getElementById('generar').style.display = 'none';
-    }
 
-    //MOSTRAR BOTON DE GENERAR 
+@endpush
 
-    function mostrar() {
-        document.getElementById('generar').style.display = 'block';
-    }
-</script>
-
+@section('content')
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row"> </div>
-        <div class="content-header-left col-md-9 col-12 mb-2">
-            <div class="row breadcrumbs-top">
-                <div class="col-12">
-                    <h2 class="content-header-title float-left mb-0">Financiero</h2>
-                    <div class="breadcrumb-wrapper col-12">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fas fa-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.bills.list') }}">Financiero</a>
-                            </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.bills.list') }}">Factura</a>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="content-body">
-
-        <div id="table-head">
-            <div class="col-11" style="margin-left:15px">
+        <div class="content-body">
+            <div id="table-head">
                 <div class="card">
+
                     <div class="card-header">
-                        <div class="d-grid gap-2 d-md-block mb-2 col-md-8 col-sm-1">
-                            <ul class="nav nav-pills nav-justified">
-                                <li class="">
-                                    <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments" id="empleado" onclick="ocultar()"><strong> EMPLEADOS </strong></a>
-                                </li>
-                                <li class="">
-                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat" id="mostrar" onClick="mostrar('generar')"><strong> CLIENTES </strong></a>
-                                </li>
-                                <li class="">
-                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant" id="mostrar" onClick="mostrar('generar')"><strong> HOSTING </strong></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="d-grid gap-2 d-md-block mb-2 col-4">
-                            <a href="#prestamo" data-toggle="modal" class="btn1 btn btn-primary mb-2 waves-effect" style="margin-left:130px;" id="generar"> GENERAR</a>
-                        </div>
+                        <ul class="nav nav-pills ">
+                            <li>
+                                <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments"
+                                    id="empleado" onclick="ocultar()"><strong>
+                                        EMPLEADOS
+                                    </strong></a>
+                            </li>
+                            <li>
+                                <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat" id="mostrar"
+                                    onClick="mostrar('generar')"><strong> CLIENTES
+                                    </strong></a>
+                            </li>
+                            <li>
+                                <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant"
+                                    id="mostrar" onClick="mostrar('generar')"><strong> HOSTING </strong></a>
+                            </li>
+                        </ul>
+                        <a href="#prestamo" data-toggle="modal" class="btn1 btn btn-primary mb-2 waves-effect"
+                            id="generar"> GENERAR</a>
                     </div>
 
                     <div class="tab-content">
-
                         <!-- Pestaña de Empleado -->
                         <div class="tab-pane active " id="attachments">
                             <div class="table-responsive mt-1">
@@ -100,7 +74,8 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-purple">No
                                                     Atendido</label>
                                                 @elseif ($employe->status == 1)
-                                                <label class="label status-label status-label-gray">En Proceso</label>
+                                                <label class="label status-label status-label-gray">En
+                                                    Proceso</label>
                                                 @elseif ($employe->status == 2)
                                                 <label class="label status-label status-label-blue">Testiando</label>
                                                 @elseif ($employe->status == 3)
@@ -108,15 +83,14 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{route('admin.bills.BillList')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
-
+                                                <a href="{{route('admin.bills.BillList')}}"><i
+                                                        class="fa fa-eye mr-1 action-icon"></i></a>
                                             </td>
                                             @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
                         <!-- Pestaña de Cliente -->
                         <div class="tab-pane fade" id="chat">
                             <div class="table-responsive mt-1">
@@ -130,8 +104,9 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             <th>ESTADO</th>
                                             <th class="col-3">ACCIÓN</th>
                                         </tr>
+                                    </thead>
                                     <tbody class="text-center">
-                                        @foreach ($client_bill as $client)
+                                        @foreach ($client as $client)
                                         <tr>
                                             <th scope="row">#{{ $client->id }}</th>
                                             <td>{{ $client->user->name }}</td>
@@ -142,27 +117,24 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-purple">No
                                                     Atendido</label>
                                                 @elseif ($client->status == 1)
-                                                <label class="label status-label status-label-gray">En Proceso</label>
+                                                <label class="label status-label status-label-gray">En
+                                                    Proceso</label>
                                                 @elseif ($client->status == 2)
                                                 <label class="label status-label status-label-blue">Testiando</label>
                                                 @elseif ($client->status == 3)
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-
                                             <td>
-                                                <a href="{{route('admin.bills.BillList')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
-
+                                                <a href="{{route('admin.bills.BillList')}}"><i
+                                                        class="fa fa-eye mr-1 action-icon"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="mr-3">
-                            </div>
                         </div>
-
                         <!-- Pestaña de Hosting -->
                         <div class="tab-pane fade" id="accountant">
                             <div class="table-responsive mt-1">
@@ -189,20 +161,19 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <label class="label status-label status-label-purple">No
                                                     Atendido</label>
                                                 @elseif ($hosting->status == 1)
-                                                <label class="label status-label status-label-gray">En Proceso</label>
+                                                <label class="label status-label status-label-gray">En
+                                                    Proceso</label>
                                                 @elseif ($hosting->status == 2)
                                                 <label class="label status-label status-label-blue">Testiando</label>
                                                 @elseif ($hosting->status == 3)
                                                 <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-
                                             <td>
-                                                <a href="{{route('admin.bills.BillList')}}"><i class="fa fa-eye mr-1 action-icon"></i></a>
-
+                                                <a href="{{route('admin.bills.BillList')}}"><i
+                                                        class="fa fa-eye mr-1 action-icon"></i></a>
                                             </td>
                                         </tr>
-
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -216,9 +187,10 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-
-                                    <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar Factura</strong></h5>
-                                    <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
+                                    <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar
+                                            Factura</strong></h5>
+                                    <button class="close" style="margin-right:10px; margin-top:1px;"
+                                        data-dismiss="modal">&times;</button>
                                 </div>
 
                                 <!--BODY DEL MODAL-->
@@ -232,44 +204,120 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             <th class="" style="margin-right:15px;">PRECIO</th>
                                         </thead>
                                     </table>
-                                    <form action="{{ route('billsPost')}}" method="post">
+                                    <form action="{{ route('admin.bills.post')}}" method="post">
                                         @csrf
                                         <div id="listas">
                                             <div class="row mt-2">
-
-                                                <input type="text" name="descripcion[]" class="one form-control col-2" id="principal_0">
-
-                                                <input type="text" name="unidades[]" oninput="calcular(0)" class="monto two form-control col-2" id="second_0">
-
-                                                <input type="text" name="valor[]" oninput="calcular(0)" class="monto three form-control col-2" id="third_0">
-
+                                                <select name="user_id" id="user_id" class="form-control" required>
+                                                    <option value="" selected disabled>Seleccione un cliente...</option>
+                                                    @foreach ($user_client as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->name }} {{ $item->last_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <input type="text" name="descripcion[]" class="one form-control col-2"
+                                                    id="principal_0">
+                                                <input type="text" name="unidades[]" oninput="calcular(0)"
+                                                    class="monto two form-control col-2" id="second_0">
+                                                <input type="text" name="valor[]" oninput="calcular(0)"
+                                                    class="monto three form-control col-2" id="third_0">
                                                 <input name="precio[]" class="form-control four col-2" id="fourth_0">
-
                                             </div>
-
                                         </div>
-                                </div>
+                                        <!--FOOTER DEL MODAL-->
+                                        <div class="modal-footer">
+                                            <ul class="list-group list-group-flush">
 
-                                <!--FOOTER DEL MODAL-->
-                                <div class="modal-footer">
-                                    <ul class="list-group list-group-flush">
+                                                <li class="list-group-item"> <strong>TOTAL PARCIAL</strong> 00</li>
+                                                <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
+                                                <li class="list-group-item"><strong>PAGADO</strong> 00</li>
+                                            </ul>
+                                        </div>
+                                        <button type="submit" id="botom"
+                                            class="btn btn-primary  waves-effect waves-light mb-2 mr-2 mb-3"><strong>Guardar</strong></button>
 
-                                        <li class="list-group-item"> <strong>TOTAL PARCIAL</strong> 00</li>
-                                        <li class="list-group-item"><strong>DESCUENTO</strong> 00</li>
-                                        <li class="list-group-item"><strong>PAGADO</strong> 00</li>
-                                    </ul>
-                                </div>
+                                        <a id="add_field"><img class="rounded-circle ml-2"
+                                                src="{{ asset('images/icons/plus-circle.png') }}" height="40"
+                                                width="40">
+                                            <span class="ml-1" style="font-weight: bold;">Agregar otra fila</span></a>
 
-                                <button type="submit" id="botom" class="btn btn-primary  waves-effect waves-light mb-2 mr-2 mb-3"><strong>Guardar</strong></button>
-                                </form>
-                                <a id="add_field"><img class="rounded-circle ml-2" src="{{ asset('images/icons/plus-circle.png') }}" height="40" width="40"> <span class="ml-1" style="font-weight: bold;">Agregar otra fila</span></a>
+                                    </form> 
 
-
+                                </div> 
                             </div>
-
                         </div>
                     </div>
+
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@push('custom_js')
+<script>
+    /* function to calculate value of units by unit price */
+    function calcular(id) {
+        try {
+            console.log(id);
+            let a = parseFloat(document.getElementById("second_" + id).value) || 0;
+            b = parseFloat(document.getElementById("third_" + id).value) || 0;
+            document.getElementById("fourth_" + id).value = a * b;
+        } catch (e) {}
+
+    }
+
+/*This function generates and removes entries, the index of this function is in admin / bill / list*/
+let campos_max = 100; //Campos de input Maximos
+let x = 1;
+$('#add_field').click(function (e) {
+    e.preventDefault(); //Pervenir Nuevos Click
+    if (x < campos_max) {
+        $('#listas').append('<div id="listas">\
+            <div class="row mt-4">\
+        <input type="text" name="descripcion[]" class="one form-control col-2" id="principal_' + x + '">\
+        <input type="text" id="second_' + x + '" name="unidades[]" oninput="calcular(' + x + ')" class="two monto form-control col-2" >\
+        <input type="text" id="third_' + x + '" name="valor[]" oninput="calcular(' + x + ')"  class="three monto form-control col-2" >\
+        <input name="precio[]" class="four form-control col-2" id="fourth_' + x + '">\
+    <a href="#" class="remover_campo ml-2"><i class="fas fa-times"></i></a>\
+    </div>');
+        x++;
+    }
+});
 
 
-                @endsection
+// Remover Grupo de div
+$('#listas').on("click", ".remover_campo", function (e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    x--;
+});
+
+/*This function changes the value of the "Value of the hour" and then that will be the cost of the hour*/
+
+// const elemNombre = document.getElementById("nombre"),
+//     elemValorNombre = document.getElementById("valor_nombre");
+
+// function cambio(evento) {
+//     let cambio = elemNombre.value;
+//     elemValorNombre.innerText = cambio;
+// }
+
+// elemNombre.addEventListener('input', cambio);
+
+
+    //OCULTAR BOTON DE GENERAR
+    // function ocultar() {
+    //     document.getElementById('generar').style.display = 'none';
+    // }
+
+    //MOSTRAR BOTON DE GENERAR 
+
+    // function mostrar() {
+    //     document.getElementById('generar').style.display = 'block';
+    // }
+
+
+</script>
+
+@endpush
