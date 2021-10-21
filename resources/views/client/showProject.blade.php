@@ -43,7 +43,6 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             @endif
                         </div>
 
-
                         <div class="p-2">
                             <h3 class="text-primary font-weight-bolder text-uppercase">{{ $project->name }}</h3>
 

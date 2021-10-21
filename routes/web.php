@@ -135,6 +135,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'client', 'middleware' => ['auth', 'profile'], 'profile' => ['2']], function () {
         Route::get('/', 'ClientsController@index')->name('client.home');
 
+        
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('client.projects.list');
