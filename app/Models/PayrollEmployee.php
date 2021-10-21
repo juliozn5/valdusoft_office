@@ -31,4 +31,12 @@ class PayrollEmployee extends Model
     public function bond(){
         return $this->hasOne('App\Models\Bond', 'payroll_employee_id');
     }
+
+    public function financing(){
+        return $this->hasOne('App\Models\Financing', 'payroll_employee_id');
+    }
+
+    public function financing_payment(){
+        return $this->hasOne('App\Models\FinancingPayment', 'payroll_employee_id');
+    }
 }

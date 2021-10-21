@@ -13,17 +13,23 @@ class Financing extends Model
 
     protected $fillable =[
         'user_id',
+        'payroll_employee_id',
         'total_amount',
         'status',
         'date',
         'percentage',
+        'description',
     ];
 
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
 
+    public function payroll_employee(){
+        return $this->belongsTo('App\Models\PayrollEmployee', 'payroll_employee_id', 'id');
+    }
+
     public function payments(){
-        return $this->hasMany('App\Models\PaymentFinancing');
+        return $this->hasMany('App\Models\FinancingPayment');
     }
 }

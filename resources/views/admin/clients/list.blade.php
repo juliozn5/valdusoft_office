@@ -40,7 +40,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <tr>
                                             <th>#</th>
                                             <th>Foto</th>
-                                            <th>Logo Empresa</th>
+                                        
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Email</th>
@@ -61,13 +61,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                 @endif
                                             </td>
-                                            <td>
-                                                @if (isset($item->logo))
-                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/'.$item->logo) }}" />
-                                                @else
-                                                <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
-                                                @endif
-                                            </td>
+                                       
                                             
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->last_name }}</td>

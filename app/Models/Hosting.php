@@ -34,4 +34,9 @@ class Hosting extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
+
+    public function getRenewalHosting()
+    {
+        return $this->hasMany('App\Models\RenewalHosting', 'hosting_id', 'id');
+    }
 }

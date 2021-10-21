@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Payrolls;
 use App\Models\Financing;
+use App\Models\FinancingPayment;
 use App\Models\PayrollEmployee;
-use App\Models\PaymentFinancing;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,15 +21,16 @@ class PayrollController extends Controller
             $payrolls = Payrolls::paginate(10);
              return view('admin.payrolls.list')->with('payrolls', $payrolls);
         }
-        
     }
 
     public function create(){ 
         $employees = User::where('profile_id', '=',3)
                         ->where('price_per_hour', '<>', NULL)
-                        ->orderBy('name', 'ASC')
+                        ->with(['financings' => function($query){
+                            $query->where('status', '=', '0');
+                        }])->orderBy('name', 'ASC')
                         ->get();
-
+        
         return view('admin.payrolls.create')->with(compact('employees'));                             
     }
 
@@ -47,6 +48,10 @@ class PayrollController extends Controller
             $inputBond = 'bond_'.$i;
             $inputBondAmount = 'bond_amount_'.$i;
             $inputBondDescription = 'bond_description_'.$i;
+            $inputFinancing = 'financing_'.$i;
+            $inputFinancingAmount = 'financing_amount_'.$i;
+            $inputFinancingDescription = 'financing_description_'.$i;
+            $inputFinancingPercentage = 'financing_percentage_'.$i;
             
             if ( (!is_null($request->$inputPriceByHour)) && (!is_null($request->$inputTotalHours)) ){
                 $payrollEmployee = new PayrollEmployee();
@@ -57,8 +62,6 @@ class PayrollController extends Controller
                 $payrollEmployee->total_amount = $request->$inputTotalAmount;
                 $payrollEmployee->save();
 
-                $payroll_total += $payrollEmployee->total_amount;
-
                 if ($request->$inputBond == 1){
                     $bond = new Bond();
                     $bond->user_id = $payrollEmployee->user_id;
@@ -66,9 +69,51 @@ class PayrollController extends Controller
                     $bond->amount = $request->$inputBondAmount;
                     $bond->description = $request->$inputBondDescription;
                     $bond->save();
-
-                    $payroll_total += $bond->amount;
                 }
+
+                $checkFinancing = Financing::where('user_id', '=', $payrollEmployee->user_id)
+                                        ->with('payments')
+                                        ->where('status', '=', '0')
+                                        ->first();
+                
+                if (!is_null($checkFinancing)){
+                    $accumulated = 0;
+                    foreach ($checkFinancing->payments as $pay){
+                        $accumulated += $pay->amount;
+                    }
+
+                    $remaining = $checkFinancing->total_amount - $accumulated;
+                    
+                    $payment = new FinancingPayment();
+                    $payment->financing_id = $checkFinancing->id;
+                    $payment->payroll_employee_id = $payrollEmployee->id;
+
+                    $fee = ($checkFinancing->total_amount * $checkFinancing->percentage) / 100;
+                    if ($remaining > $fee){
+                        $payment->amount = $fee;
+                    }else{
+                        $payment->amount = $remaining;
+                        $checkFinancing->status = '1';
+                        $checkFinancing->save();
+                    }
+                    
+                    $payment->description = 'Descuento quincenal del financiamiento por concepto de '.$checkFinancing->description;
+                    $payment->date = date('Y-m-d');
+                    $payment->save();
+                }else{
+                    if ($request->$inputFinancing == 1){
+                        $financing = new Financing();
+                        $financing->user_id = $payrollEmployee->user_id;
+                        $financing->payroll_employee_id = $payrollEmployee->id;
+                        $financing->total_amount = $request->$inputFinancingAmount;
+                        $financing->description = $request->$inputFinancingDescription;
+                        $financing->percentage = $request->$inputFinancingPercentage;
+                        $financing->date = date('Y-m-d');
+                        $financing->save();
+                    }
+                }
+
+                $payroll_total += $payrollEmployee->total_amount;
             }
         }
 
@@ -80,7 +125,7 @@ class PayrollController extends Controller
 
     public function show($id){
         $payroll = Payrolls::where('id', '=', $id)
-                        ->with('payrolls_employee', 'payrolls_employee.user', 'payrolls_employee.bond')
+                        ->with('payrolls_employee', 'payrolls_employee.user', 'payrolls_employee.bond', 'payrolls_employee.financing', 'payrolls_employee.financing_payment')
                         ->first();
 
         return view('admin.payrolls.show', compact('payroll'));                             
@@ -90,6 +135,15 @@ class PayrollController extends Controller
         $payroll = Payrolls::where('id', '=', $id)
                         ->with('payrolls_employee', 'payrolls_employee.bond')
                         ->first();
+        
+        foreach ($payroll->payrolls_employee as $payroll_employee) {
+            $financings = DB::table('financing')
+                            ->where('user_id', '=', $payroll_employee->user_id)
+                            ->where('status', '=', '0')
+                            ->first();
+            
+            $payroll_employee->financings = $financings;
+        }
 
         return view('admin.payrolls.edit', compact('payroll'));                             
     }
@@ -103,16 +157,16 @@ class PayrollController extends Controller
             $inputBond = 'bond_'.$i;
             $inputBondAmount = 'bond_amount_'.$i;
             $inputBondDescription = 'bond_description_'.$i;
+            $inputFinancing = 'financing_'.$i;
+            $inputFinancingId = 'financing_id_'.$i;
+            $inputFinancingAmount = 'financing_amount_'.$i;
+            $inputFinancingDescription = 'financing_description_'.$i;
+            $inputFinancingPercentage = 'financing_percentage_'.$i;
             
             $payrollEmployee = PayrollEmployee::find($request->$inputPayrollEmployeeId);
-
-            if ($payrollEmployee->total_hours != $request->$inputTotalHours){
-                $payrollEmployee->total_hours = $request->$inputTotalHours;
-                $payrollEmployee->total_amount = $request->$inputTotalAmount;
-                $payrollEmployee->save();
-            }
-
-            $payroll_total += $payrollEmployee->total_amount;
+            $payrollEmployee->total_hours = $request->$inputTotalHours;
+            $payrollEmployee->total_amount = $request->$inputTotalAmount;
+            $payrollEmployee->save();
 
             $bond = Bond::where('payroll_employee_id', '=', $payrollEmployee->id)
                         ->first();
@@ -125,8 +179,6 @@ class PayrollController extends Controller
                     $bond->amount = $request->$inputBondAmount;
                     $bond->description = $request->$inputBondDescription;
                     $bond->save();
-
-                    $payroll_total += $bond->amount;
                 }
             }else{
                 if ($request->$inputBond == 0){
@@ -135,30 +187,41 @@ class PayrollController extends Controller
                     $bond->amount = $request->$inputBondAmount;
                     $bond->description = $request->$inputBondDescription;
                     $bond->save();
-                    
-                    $payroll_total += $bond->amount;
                 }
             }
+                
+            if ( ($request->$inputFinancingId == 0) && ($request->$inputFinancing == 1) ){
+                $financing = new Financing();
+                $financing->user_id = $payrollEmployee->user_id;
+                $financing->payroll_employee_id = $payrollEmployee->id;
+                $financing->total_amount = $request->$inputFinancingAmount;
+                $financing->description = $request->$inputFinancingDescription;
+                $financing->percentage = $request->$inputFinancingPercentage;
+                $financing->date = date('Y-m-d');
+                $financing->save();
+            }
+
+            $payroll_total += $payrollEmployee->total_amount;
         }
 
         $payroll = Payrolls::find($request->payroll_id);
+
+        if ( ($payroll->status == '0') && ($request->status == '1') ){
+            DB::table('payrolls_employee')
+                ->where('payroll_id', '=', $payroll->id)
+                ->update(['status' => '1']);
+        }
+
+        if ( ($payroll->status == '1') && ($request->status == '0') ){
+            DB::table('payrolls_employee')
+                ->where('payroll_id', '=', $payroll->id)
+                ->update(['status' => '0']);
+        }
+
         $payroll->update($request->all());
         $payroll->amount = $payroll_total;
         $payroll->save();
 
         return redirect()->route('admin.payrolls.list')->with('payroll-updated', 'true');
-    }
-    
-    public function generateloan(Request $request)
-    { 
-        $data = request();
-
-        DB::table('financing')->insert([
-            'total_amount'=> $data['total_amount'],
-            'percentage'=> $data['percentage'],
-            'user_id' => Auth::user()->id,
-           ]);
-
-       return redirect( route('admin.payrolls.generate'));
     }
 }
