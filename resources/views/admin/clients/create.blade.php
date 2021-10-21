@@ -86,7 +86,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col-12">
+                                    <div class=" col-4">
                                         <div class="form-group">
                                             <label for="photo">Foto</label>
                                             <input type="file" name="photo" id="photo" class="form-control @error('photo') is-invalid @enderror">
@@ -97,17 +97,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col-12">
-                                        <div class="form-group">
-                                            <label for="logo">Logo Empresa</label>
-                                            <input type="file" name="logo" id="logo" class="form-control @error('logo') is-invalid @enderror">
-                                            @error('logo')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                   
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password">Contraseña</label>
