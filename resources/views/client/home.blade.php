@@ -19,6 +19,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class="row">
                             @foreach ($projects as $project)
                             <div class="container-fluid col-md-2 col-sm-1 rounded" id="recomiendo">
+                                {{-- <img src="{{asset('uploads/images/projects')}}" class="mt-2" alt="" style="width:100%;"> --}}
                                 <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
                                 <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
                                     <div style="position: relative;top: 14px;">{{$project -> name}}</div>

@@ -140,7 +140,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <div class="project-detail-titles">Curriculum Vitae</div>
                                     <div class="mt-1">
                                         @if (!is_null($user->curriculum))
-                                        <a href="{{ asset('uploads/documents/curriculums/'.$employee->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $user->curriculum }}</a>
+                                        <a href="{{ asset('uploads/documents/curriculums/'.$user->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $user->curriculum }}</a>
                                         @else
                                         <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible
                                         @endif
