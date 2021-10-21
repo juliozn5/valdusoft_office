@@ -25,22 +25,20 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class="thead-gris">
-                                        <tr>
-                                            <th>FECHA</th>
-                                            <th>DEUDA</th>
-                                            <th>ABONO</th>
-                                            <th>PEDIENTE</th>
-                                        </tr>
+                                      <thead class="thead-gris text-center">
+                                         <tr>
+                                           <th>FECHA</th>
+                                           <th>DEUDA</th>
+                                           <th>ABONO</th>
+                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($employes as $item)
-                                        <tr>
-                                            <td>{{date('d/m/Y', strtotime($item->date))}}</td>
-                                            <td>{{$item->total_hours}}</td>
-                                            <td>{{$item->price_by_hour}}</td>
-                                            <td>{{$item->total_amount}}</td>
-                                        </tr>
+                                         <tr class="text-center">
+                                            <td>{{ date('d-m-Y', strtotime($item->date)) }}</td>
+                                            <td>{{number_format($item->total_amount, 2, ',', '.')}}</td>
+                                            <td>{{number_format($item->financing_paymnets->amount, 2, ',', '.')}}</td>
+                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -63,7 +61,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>
                 </div>
-            </div>
-    </div>
+           </div>
+     </section>
+   </div>
 </div>
 @endsection

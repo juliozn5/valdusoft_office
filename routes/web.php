@@ -74,6 +74,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('store', 'ClientsController@store')->name('admin.clients.store');
             Route::patch('update/{id}', 'ClientsController@update')->name('admin.clients.update');
             Route::delete('delete/{id}', 'ClientsController@delete')->name('admin.clients.delete');
+          
         });
 
         //MÓDULO DE EMPLEADOS
@@ -134,11 +135,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'client', 'middleware' => ['auth', 'profile'], 'profile' => ['2']], function () {
         Route::get('/', 'ClientsController@index')->name('client.home');
 
+        
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('client.projects.list');
             Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('client.projects.show')->middleware('project_user');
             Route::get('/detail', 'ProjectsController@detailclient')->name('client.projects.detail');
+            Route::post('add-attachment', 'ProjectsController@attachments')->name('client.project.add-attachments');
+            Route::post('update-attachment', 'ProjectsController@updates')->name('client.projects.update-attachments');
         });
 
         //MÓDULO DE HOSTINGS

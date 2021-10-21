@@ -59,10 +59,8 @@ class HostingController extends Controller
             "date" => ['required'],
             "client" => ['required'],
             "date_end" => ['required'],
-            "price" => ['required'],
-            "cpanel_url" => ['string'],
-            "cpanel_email" => ['string', 'email'],
-            "cpanel_password" => ['string']
+            "price" => ['required'],    
+            "status" => ['required']
         ];
 
         $msj = [
@@ -73,7 +71,7 @@ class HostingController extends Controller
             'client.required' => 'El cliente es requerido',
             'date_end.required' => 'Los Años de vencimiento son requeridos',
             'price.required' => 'El Precio es requerido',
-            'cpanel_email' => 'El Email es inválido'
+            'status.required' => 'El estado es requerido',
         ];
         // dd($request);
         $validate = $this->validate($request, $fields, $msj);
@@ -86,19 +84,18 @@ class HostingController extends Controller
                         'create_date' => $request->date,
                         'due_date' => $fecha->addYears($request->date_end),
                         'price' => $request->price,
-                        'renewal_price' => $request->renewal_price,
+                        // 'renewal_price' => $request->renewal_price,
                         'years' => $request->date_end,
-                        'cpanel_url' => $request->cpanel_url,
-                        'cpanel_email' => $request->cpanel_email,
-                        'cpanel_password' => $request->cpanel_password,
-                        'user_id' => $request->client
+                        'user_id' => $request->client,
+                        'status' => $request->status
                     ]);
-
+                    
+    
                     $bill = Bill::create([
                         'user_id' => $hosting->user_id,
                         'amount' => $hosting->price,
                         'date' => $hosting->create_date,
-                        'payed_at' => null,
+                        'payed_at' => $hosting->created_at,
                         'status' => '0',
                         'type' => 'H',
                         'hosting_id' => $hosting->id
