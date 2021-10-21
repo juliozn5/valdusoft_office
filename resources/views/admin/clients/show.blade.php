@@ -41,7 +41,7 @@
                             <div class="col-md-4">
                                 @if (isset($client->photo))
                                     <img class="rounded-circle" style="object-fit:cover;"
-                                        src="{{ asset('storage/' . $client->photo) }}" alt="" width="55px" height="55px">
+                                        src="{{ asset('storage/photo-profile/' . $client->photo) }}" alt="" width="55px" height="55px">
                                 @else
                                     <img class="rounded-circle" style="object-fit:cover;"
                                         src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
