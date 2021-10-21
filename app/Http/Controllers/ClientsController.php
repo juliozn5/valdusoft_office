@@ -31,7 +31,7 @@ class ClientsController extends Controller
     public function list()
     {
         $client = User::where('profile_id', '=', 2)
-                    // ->where('status', '1')
+                  ->where('status', '1')
                     ->orderBy('name', 'ASC')
                     ->paginate(10);
                     
@@ -180,7 +180,7 @@ class ClientsController extends Controller
     public function delete(Request $request)
     {
         $client = User::find($request->id);
-        $client->status = '1';
+        $client->status = '0';
         $client->save();
 
         return redirect()->route('admin.clients.list')->with('message', 'Se elimino el Cliente' . ' ' . $client->client . ' ' . 'Exitosamente');
