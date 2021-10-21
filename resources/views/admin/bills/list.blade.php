@@ -265,7 +265,6 @@ function calculate(id) {
     third = $("#third_"+id).val();
     fourth = $("#fourth_"+id).val(second * third);
 
-
     subtotal = $('#tp').text((second * third) + '$');
 
     discount = $("#d").val();
@@ -280,7 +279,7 @@ x = 1;
 
 $('#add_field').click(function (e) {
     e.preventDefault(); //Pervenir Nuevos Click
-    if (x < max_fields) {
+    if (x < max_fields) { 
         $('#listas').append('<div class="row mt-2">\
         <input type="text" name="descripcion[]" class="one form-control col-2" id="first_'+x+'">\
         <input type="number" name="unidades[]" class="two form-control col-2" id="second_'+x+'" oninput="calculate('+x+')">\
@@ -289,7 +288,9 @@ $('#add_field').click(function (e) {
         <a href="#" class="remover_campo ml-2"><i class="fas fa-times"></i></a>\
         </div>');
         x++;
+
     }
+    // calculate(x)
 });
 
 // Remover Grupo de div
