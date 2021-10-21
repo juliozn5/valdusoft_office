@@ -168,14 +168,20 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                                         <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
                                             Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
+                                            <a href="#editAttachment" data-toggle="modal" onclick="editAttachment({{ $attachment }});">Editar</a>
                                         </div>
                                     </div>
+
                                     @endforeach
                                     @else
                                     <div class="col-12 p-2">
                                         No hay archivos adjuntos actualmente...
                                     </div>
                                     @endif
+                                </div>
+
+                                <div>
+                                    <a href="#newAttachment" data-toggle="modal" class="btn btn-info mb-2 waves-effect waves-light"> Añadir un adjunto</a>
                                 </div>
                             </div>
 
@@ -192,6 +198,111 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+{{-- Modal para agregar archivo adjunto --}}
+<div class="modal fade text-left" id="newAttachment" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h5 class="modal-title">Añadir Archivo Adjunto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form action="{{ route('client.project.add-attachments') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="project_id" value="{{ $project->id }}">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="name">Nombre para el archivo</label>
+                                <input type="text" name="name" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="file_type">Tipo de Archivo</label>
+                                <select name="file_type" class="form-control" required>
+                                    <option value="" selected disabled>Seleccione una opción...</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="image">Imagen</option>
+                                    <option value="excel">Excel</option>
+                                    <option value="ppt">Presentación PowerPoint</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="file">Archivo adjunto</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="file" id="file">
+                                    <label class="custom-file-label" for="logo">Seleccione un archivo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{-- Modal para editar archivo adjunto --}}
+<div class="modal fade text-left" id="editAttachment" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h5 class="modal-title" id="myModalLabel110">Editar Archivo Adjunto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form action="{{ route('client.projects.update-attachments') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="attachment_id" id="attachment_id">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="name">Nombre para el archivo</label>
+                                <input type="text" name="name" id="name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="file_type">Tipo de Archivo</label>
+                                <select name="file_type" id="file_type" class="form-control">
+                                    <option value="pdf">PDF</option>
+                                    <option value="image">Imagen</option>
+                                    <option value="excel">Excel</option>
+                                    <option value="ppt">Presentación PowerPoint</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="file">Archivo adjunto</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="file" id="file">
+                                    <label class="custom-file-label" for="logo">Seleccione un archivo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
