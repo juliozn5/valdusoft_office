@@ -36,7 +36,7 @@
                             <div class="row" style="display: flex; align-items: center;">
                                 <div class="col-md-4">
                                     @if (!is_null($employee->photo))
-                                    <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/photo-profile/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="100" width="100">
+                                    <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="80" width="80">
                                     @else
                                     <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
                                     @endif
