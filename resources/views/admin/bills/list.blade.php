@@ -214,10 +214,10 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                     <option value="{{ $item->id }}">{{ $item->name }} {{ $item->last_name }}</option>
                                                     @endforeach
                                                 </select> --}}
-                                                <input type="text" name="descripcion[]" class="one form-control col-2" id="first">
-                                                <input type="number" name="unidades[]" class="two form-control col-2" id="second" oninput="calculate()">
-                                                <input type="number" name="valor[]" class="three form-control col-2" id="third" oninput="calculate()">
-                                                <input type="text" name="precio[]" class="four form-control col-2" id="fourth" readonly>
+                                                <input type="text" name="descripcion[]" class="one form-control col-2" id="first_0">
+                                                <input type="number" name="unidades[]" class="two form-control col-2" id="second_0" oninput="calculate(0)">
+                                                <input type="number" name="valor[]" class="three form-control col-2" id="third_0" oninput="calculate(0)">
+                                                <input type="number" name="precio[]" class="four form-control col-2" id="fourth_0" readonly>
                                             </div>
                                         </div>
                                         <!--FOOTER DEL MODAL-->
@@ -225,7 +225,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             <ul class="list-group list-group-flush">
 
                                                 <li class="list-group-item">TOTAL PARCIAL: <br> <span class="font-weight-bolder" id="tp"></span></li>
-                                                <li class="list-group-item">DESCUENTO: <br> <input name="descuento" oninput="calculate()" class="form-control" size="4" id="d"></li>
+                                                <li class="list-group-item">DESCUENTO: <br> <input name="descuento" oninput="calculate(0)" class="form-control" size="4" id="d"></li>
                                                 <li class="list-group-item">PAGADO: <br> <span class="font-weight-bolder" id="p"></span></li>
                                             </ul>
                                         </div>
@@ -255,17 +255,23 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 <script>
 
 /* función para calculate el valor de las unidades */
-function calculate() {
+function calculate(id) {
 
-    second = $("#second").val();
-    third = $("#third").val();
-    fourth = $("#fourth").val(second * third);
+    fourt = $("#fourth_"+id).val();
+
+    console.log(fourt);
+
+    second = $("#second_"+id).val();
+    third = $("#third_"+id).val();
+    fourth = $("#fourth_"+id).val(second * third);
 
     subtotal = $('#tp').text((second * third) + '$');
 
     discount = $("#d").val();
-    $('#p').text( (second * third - discount) + '$' )
-}
+
+    paid_out = $('#p').text( (second * third - discount) + '$' )
+
+}   
 
 /*This function generates and removes entries, the index of this function is in admin / bill / list*/
 max_fields = 100;
@@ -273,19 +279,19 @@ x = 1;
 
 $('#add_field').click(function (e) {
     e.preventDefault(); //Pervenir Nuevos Click
-    if (x < max_fields) {
-        $('#listas').append('<div id="listas">\
-        <div class="row mt-4">\
-        <input type="text" name="descripcion[]" class="one form-control col-2" id="principal_' + x + '">\
-        <input type="text" id="second_' + x + '" name="unidades[]" oninput="calculate(' + x + ')" class="two monto form-control col-2" >\
-        <input type="text" id="third_' + x + '" name="valor[]" oninput="calculate(' + x + ')"  class="three monto form-control col-2" >\
-        <input name="precio[]" class="four form-control col-2" id="fourth_' + x + '">\
+    if (x < max_fields) { 
+        $('#listas').append('<div class="row mt-2">\
+        <input type="text" name="descripcion[]" class="one form-control col-2" id="first_'+x+'">\
+        <input type="number" name="unidades[]" class="two form-control col-2" id="second_'+x+'" oninput="calculate('+x+')">\
+        <input type="number" name="valor[]" class="three form-control col-2" id="third_'+x+'" oninput="calculate('+x+')">\
+        <input type="number" name="precio[]" class="four form-control col-2" id="fourth_'+x+'" readonly>\
         <a href="#" class="remover_campo ml-2"><i class="fas fa-times"></i></a>\
         </div>');
         x++;
-    }
-});
 
+    }
+    // calculate(x)
+});
 
 // Remover Grupo de div
 $('#listas').on("click", ".remover_campo", function (e) {

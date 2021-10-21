@@ -163,7 +163,7 @@
                                 @if (!is_null($project->logo))
                                 <img src="{{ asset('uploads/images/projects/'.$project->logo) }}" width="100%" height="100%">
                                 @else
-                                <img src="{{ asset('images/logo.webp') }}" width="100%" height="100%">
+                                <img src="{{ asset('images/logo.webp') }}" width="100%">
                                 @endif
                             </div>
 

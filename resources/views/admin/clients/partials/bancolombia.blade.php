@@ -45,7 +45,7 @@
                 @if (isset($client->photo))
                 <img id="photo_preview" class="rounded" style="object-fit: cover;"
                     width="140px" height="100px"
-                    src="{{ asset('storage/' . $client->photo) }}" />
+                    src="{{ asset('storage/photo-profile/' . $client->photo) }}" />
                 @else
                 <img id="photo_preview" class="rounded" style="object-fit: cover;"
                     width="140px" height="100px"
