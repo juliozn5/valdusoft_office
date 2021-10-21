@@ -1,8 +1,22 @@
 @extends('layouts.app')
 
+
+@push('scripts')
+<script>
+    function editAttachment($attachment) {
+        $("#attachment_id").val($attachment.id);
+        $("#name").val($attachment.name);
+        $("#file_type option[value=" + $attachment.file_type + "]").attr("selected", true);
+    }
+</script>
+@endpush
+
+
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern content-left-sidebar chat-application navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
+
+
 
 @section('content')
 <div class="app-content content">
