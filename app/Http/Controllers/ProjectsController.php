@@ -14,50 +14,52 @@ use App\Models\AccountingTransaction;
 class ProjectsController extends Controller
 {
     /** Listado de Proyectos 
-    *** Perfil: Admin - Cliente - Empleados ***/
-    public function list(){
-        if (Auth::user()->profile_id == 1){
+     *** Perfil: Admin - Cliente - Empleados ***/
+    public function list()
+    {
+        if (Auth::user()->profile_id == 1) {
             $projects = Project::where('status', '<>', '4')
-                            ->orderBy('id', 'DESC')
-                            ->paginate(10);
-            
+                ->orderBy('id', 'DESC')
+                ->paginate(10);
+
             return view('admin.projects.list')
-            ->with('projects', $projects); 
-        }else if (Auth::user()->profile_id == 2){
+                ->with('projects', $projects);
+        } else if (Auth::user()->profile_id == 2) {
             $projects = Project::where('user_id', '=', Auth::user()->id)
-                            ->where('status', '<>', '4')
-                            ->orderBy('id', 'DESC')
-                            ->paginate(10);
+                ->where('status', '<>', '4')
+                ->orderBy('id', 'DESC')
+                ->paginate(10);
 
             return view('client.projects')
-            ->with('projects', $projects); 
-        }else if (Auth::user()->profile_id == 3){
+                ->with('projects', $projects);
+        } else if (Auth::user()->profile_id == 3) {
             $projects = User::find(Auth::id())->projects()->orderBy('id', 'DESC')
-            ->paginate(10);
+                ->paginate(10);
 
             return view('employee.projects')->with('projects', $projects);
         }
     }
 
     /** Crear Nuevo Proyecto
-    *** Perfil: Admin ***/
-    public function create(){
+     *** Perfil: Admin ***/
+    public function create()
+    {
         $clients = DB::table('users')
-                        ->select('id', 'name', 'last_name')
-                        ->where('profile_id', '=', 2)
-                        ->orderBy('name', 'ASC')
-                        ->get();
-        
+            ->select('id', 'name', 'last_name')
+            ->where('profile_id', '=', 2)
+            ->orderBy('name', 'ASC')
+            ->get();
+
         $countries = DB::table('countries')
-                        ->select('id', 'name')
-                        ->orderBy('name', 'ASC')
-                        ->get();
-        
+            ->select('id', 'name')
+            ->orderBy('name', 'ASC')
+            ->get();
+
         $technologies = DB::table('technologies')
-                        ->select('id', 'name')
-                        ->orderBy('name', 'ASC')
-                        ->get();
-        
+            ->select('id', 'name')
+            ->orderBy('name', 'ASC')
+            ->get();
+
         $tags = DB::table('tags')
             ->select('id', 'name')
             ->orderBy('id', 'ASC')
@@ -69,20 +71,21 @@ class ProjectsController extends Controller
 
     public function detailclient()
     {
-        return redirect()->back()->with('message','En espera de Respuesta'); 
+        return redirect()->back()->with('message', 'En espera de Respuesta');
     }
 
     /** Guardar datos del Nuevo Proyecto
-    *** Perfil: Admin ***/
-    public function store(Request $request){
+     *** Perfil: Admin ***/
+    public function store(Request $request)
+    {
         $project = new Project($request->all());
         $project->slug = Str::slug($request->name);
         $project->save();
 
-        if ($request->hasFile('logo')){
+        if ($request->hasFile('logo')) {
             $file = $request->file('logo');
-            $name = $project->id.".".$file->getClientOriginalExtension();
-            $file->move(public_path().'/uploads/images/projects', $name);
+            $name = $project->id . "." . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/uploads/images/projects', $name);
             $project->logo = $name;
             $project->save();
         }
@@ -99,46 +102,47 @@ class ProjectsController extends Controller
             }
         }
 
-        return redirect()->route('admin.projects.list')->with('msj-exitoso','done'); 
+        return redirect()->route('admin.projects.list')->with('msj-exitoso', 'done');
     }
 
     /** Ver detalles de un Proyecto
-    *** Perfil: Admin ***/
-    public function show($slug, $id){
-        if (Auth::user()->profile_id == 1){
+     *** Perfil: Admin ***/
+    public function show($slug, $id)
+    {
+        if (Auth::user()->profile_id == 1) {
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions', 'bills')
-                        ->where('id', '=', $id)
-                        ->first();
+                ->where('id', '=', $id)
+                ->first();
 
             $tagsID = array();
-            foreach ($project->tags as $tag){
+            foreach ($project->tags as $tag) {
                 array_push($tagsID, $tag->id);
             }
-            
+
             $employeesID = array();
-            foreach ($project->employees as $employee){
+            foreach ($project->employees as $employee) {
                 array_push($employeesID, $employee->id);
             }
-            
+
             $availableEmployees = DB::table('users')
-                                    ->select('id', 'name', 'last_name')
-                                    ->where('profile_id', '=', 3)
-                                    ->whereNotIn('id', $employeesID)
-                                    ->get();
-            
+                ->select('id', 'name', 'last_name')
+                ->where('profile_id', '=', 3)
+                ->whereNotIn('id', $employeesID)
+                ->get();
+
             $technologiesID = array();
 
-            foreach ($project->technologies as $technology){
+            foreach ($project->technologies as $technology) {
                 array_push($technologiesID, $technology->id);
             }
-            
+
             $availableTechnologies = DB::table('technologies')
-                                        ->select('id', 'name')
-                                        ->whereNotIn('id', $technologiesID)
-                                        ->get();
-            
-            foreach ($project->attachments as $attachment){
-                $attachment->date = date('d', strtotime($attachment->created_at)).' de '.$this->getMonthName(date('m', strtotime($attachment->created_at))).' de '.date('Y', strtotime($attachment->created_at));
+                ->select('id', 'name')
+                ->whereNotIn('id', $technologiesID)
+                ->get();
+
+            foreach ($project->attachments as $attachment) {
+                $attachment->date = date('d', strtotime($attachment->created_at)) . ' de ' . $this->getMonthName(date('m', strtotime($attachment->created_at))) . ' de ' . date('Y', strtotime($attachment->created_at));
                 $attachment->time = date('H:i', strtotime($attachment->created_at));
             }
 
@@ -146,90 +150,92 @@ class ProjectsController extends Controller
             $budget['assigned'] = 0;
             $budget['benefit'] = 0;
             foreach ($project->bills as $bill) {
-                if ($bill->status == 1){
+                if ($bill->status == 1) {
                     $budget['benefit'] += $bill->amount;
                 }
             }
-            $budget['assigned'] = ($budget['benefit']*60)/100;
+            $budget['assigned'] = ($budget['benefit'] * 60) / 100;
 
             foreach ($project->accounting_transactions as $transaction) {
-                if ($transaction->status == 1){
+                if ($transaction->status == 1) {
                     $budget['cost'] += $transaction->amount;
                 }
             }
 
             $clients = DB::table('users')
-                            ->select('id', 'name', 'last_name')
-                            ->where('profile_id', '=', 2)
-                            ->orderBy('name', 'ASC')
-                            ->get();
-            
-            $countries = DB::table('countries')
-                            ->select('id', 'name')
-                            ->orderBy('name', 'ASC')
-                            ->get();
-            
-            $tags = DB::table('tags')
-                        ->select('id', 'name')
-                        ->orderBy('id', 'ASC')
-                        ->get();
+                ->select('id', 'name', 'last_name')
+                ->where('profile_id', '=', 2)
+                ->orderBy('name', 'ASC')
+                ->get();
 
-            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID', 'budget'));   
-        }else if(Auth::user()->profile_id == 2){
+            $countries = DB::table('countries')
+                ->select('id', 'name')
+                ->orderBy('name', 'ASC')
+                ->get();
+
+            $tags = DB::table('tags')
+                ->select('id', 'name')
+                ->orderBy('id', 'ASC')
+                ->get();
+
+            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID', 'budget'));
+        } else if (Auth::user()->profile_id == 2) {
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
-                        ->where('id', '=', $id)
-                        ->first();
+                ->where('id', '=', $id)
+                ->first();
 
             return view('client.showProject')->with(compact('project'));
-        }else{
+        } else {
             $project = Project::with('user:id,name,last_name', 'employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
-                        ->where('id', '=', $id)
-                        ->first();
+                ->where('id', '=', $id)
+                ->first();
 
             return view('employee.showProject')->with(compact('project'));
-        }   
+        }
     }
 
     /** Guardar datos modificados del Proyecto
-    *** Perfil: Admin ***/
-    public function update(Request $request, $id){
+     *** Perfil: Admin ***/
+    public function update(Request $request, $id)
+    {
         $project = Project::find($id);
         $project->fill($request->all());
 
-        if ($request->hasFile('logo')){
+        if ($request->hasFile('logo')) {
             $file = $request->file('logo');
-            $name = $project->id.".".$file->getClientOriginalExtension();
-            $file->move(public_path().'/uploads/images/projects', $name);
+            $name = $project->id . "." . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/uploads/images/projects', $name);
             $project->logo = $name;
         }
-        
+
         $project->save();
-    
+
         DB::table('projects_tags')
             ->where('project_id', '=', $project->id)
             ->delete();
 
-        if (!is_null($request->tags)){
-            foreach ($request->tags as $tag){
+        if (!is_null($request->tags)) {
+            foreach ($request->tags as $tag) {
                 $project->tags()->attach($tag);
             }
         }
 
-        return redirect()->back()->with('project-updated','done');  
+        return redirect()->back()->with('project-updated', 'done');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $project = Project::find($id);
         $project->status = "4";
         $project->save();
-      
-        return redirect()->route('admin.projects.list')->with('msj-deleted','done');
 
+        return redirect()->route('admin.projects.list')->with('msj-deleted', 'done');
     }
 
-     /** Asignar miembro a un proyecto
-    *** Perfil: Admin ***/
-    public function assign_members(Request $request){
+    /** Asignar miembro a un proyecto
+     *** Perfil: Admin ***/
+    public function assign_members(Request $request)
+    {
         $fecha = date('Y-m-d H:i:s');
         if (!is_null($request->employees)) {
             foreach ($request->employees as $employee) {
@@ -242,9 +248,10 @@ class ProjectsController extends Controller
         }
     }
 
-     /** Asignar tecnología a un proyecto
-    *** Perfil: Admin ***/
-    public function assign_technologies(Request $request){
+    /** Asignar tecnología a un proyecto
+     *** Perfil: Admin ***/
+    public function assign_technologies(Request $request)
+    {
         $fecha = date('Y-m-d H:i:s');
         if (!is_null($request->technologies)) {
             foreach ($request->technologies as $technology) {
@@ -258,14 +265,34 @@ class ProjectsController extends Controller
     }
 
     /** Agregar un archivo adjunto al proyecto
-    *** Perfil: Admin ***/
-    public function add_attachment(Request $request){
+     *** Perfil: Admin ***/
+    public function add_attachment(Request $request)
+    {
         $project = Project::find($request->project_id);
-        
-        if ($request->hasFile('file')){
+
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
             $name = $file->getClientOriginalName();
-            $file->move(public_path().'/uploads/attachments', $name);
+            $file->move(public_path() . '/uploads/attachments', $name);
+
+            $attachment = new Attachment(['name' => $request->name, 'file_name' => $name, 'file_type' => $request->file_type]);
+            $project->attachments()->save($attachment);
+        }
+
+        return redirect()->back()->with('msj-attachment', 'true');
+    }
+    
+
+    /** Agregar un archivo adjunto al proyecto
+     *** Perfil: cliente ***/
+    public function attachments(Request $request)
+    {
+        $project = Project::find($request->project_id);
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $name = $file->getClientOriginalName();
+            $file->move(public_path() . '/uploads/attachments', $name);
 
             $attachment = new Attachment(['name' => $request->name, 'file_name' => $name, 'file_type' => $request->file_type]);
             $project->attachments()->save($attachment);
@@ -275,15 +302,34 @@ class ProjectsController extends Controller
     }
 
     /** Editar un archivo adjunto del proyecto
-    *** Perfil: Admin ***/
-    public function update_attachment(Request $request){
+     *** Perfil: Admin ***/
+    public function update_attachment(Request $request)
+    {
         $attachment = Attachment::find($request->attachment_id);
         $attachment->fill($request->all());
 
-        if ($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
             $name = $file->getClientOriginalName();
-            $file->move(public_path().'/uploads/attachments', $name);
+            $file->move(public_path() . '/uploads/attachments', $name);
+            $attachment->file_name = $name;
+        }
+
+        $attachment->save();
+
+        return redirect()->back()->with('msj-attachment', 'true');
+    }
+   /** Editar un archivo adjunto del proyecto
+     *** Perfil: cliente ***/
+    public function updates(Request $request)
+    {
+        $attachment = Attachment::find($request->attachment_id);
+        $attachment->fill($request->all());
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $name = $file->getClientOriginalName();
+            $file->move(public_path() . '/uploads/attachments', $name);
             $attachment->file_name = $name;
         }
 
@@ -292,24 +338,27 @@ class ProjectsController extends Controller
         return redirect()->back()->with('msj-attachment', 'true');
     }
 
+
     /** Eliminar un archivo adjunto del proyecto
-    *** Perfil: Admin ***/
-    public function delete_attachment($id){ 
+     *** Perfil: Admin ***/
+    public function delete_attachment($id)
+    {
         $attachment = Attachment::find($id);
 
-        $path = public_path().'/uploads/attachments/'.$attachment->file_name;
+        $path = public_path() . '/uploads/attachments/' . $attachment->file_name;
         if (getimagesize($path)) {
             unlink($path);
         }
 
         $attachment->delete();
-      
+
         return redirect()->back()->with('attachment-deleted', 'done');
     }
 
     /** Agregar una transacción contable al proyecto
-    *** Perfil: Admin ***/
-    public function add_accounting_transaction(Request $request){
+     *** Perfil: Admin ***/
+    public function add_accounting_transaction(Request $request)
+    {
         $transaction = new AccountingTransaction($request->all());
         $transaction->date = date('Y-m-d');
         $transaction->save();
@@ -318,53 +367,55 @@ class ProjectsController extends Controller
     }
 
     /** Modificar los datos una transacción del proyecto
-    *** Perfil: Admin ***/
-    public function update_accounting_transaction(Request $request){
+     *** Perfil: Admin ***/
+    public function update_accounting_transaction(Request $request)
+    {
         $transaction = AccountingTransaction::find($request->transaction_id);
         $transaction->fill($request->all());
-        $transaction->save();        
-      
+        $transaction->save();
+
         return redirect()->back()->with('transaction-updated', 'done');
     }
-    
-    public function getMonthName($month){
-        switch ($month){
+
+    public function getMonthName($month)
+    {
+        switch ($month) {
             case 1:
                 return 'Enero';
-            break;
+                break;
             case 2:
                 return 'Febrero';
-            break;
+                break;
             case 3:
                 return 'Marzo';
-            break;
+                break;
             case 4:
                 return 'Abril';
-            break;
+                break;
             case 5:
                 return 'Mayo';
-            break;
+                break;
             case 6:
                 return 'Junio';
-            break;
+                break;
             case 7:
                 return 'Julio';
-            break;
+                break;
             case 8:
                 return 'Agosto';
-            break;
+                break;
             case 9:
                 return 'Septiembre';
-            break;
+                break;
             case 10:
                 return 'Octubre';
-            break;
+                break;
             case 11:
                 return 'Noviembre';
-            break;
+                break;
             case 12:
                 return 'Diciembre';
-            break;
+                break;
         }
     }
 }
