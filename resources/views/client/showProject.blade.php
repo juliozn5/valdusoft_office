@@ -181,9 +181,13 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                                         <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
                                             Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
-                                            <a href="#editAttachment" data-toggle="modal" onclick="editAttachment({{ $attachment }});">Editar</a>
+                                            <a class="delete-attachment" data-id="attachment-{{ $attachment->id }}">Descargar</a>
+
+                                            - <a href="#editAttachment" data-toggle="modal" onclick="editAttachment({{ $attachment }});">Editar</a>
                                         </div>
                                     </div>
+
+
 
                                     @endforeach
                                     @else
