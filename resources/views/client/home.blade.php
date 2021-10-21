@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @push('body-atribute')
-class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
+class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click"
+data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
 
 @section('content')
@@ -11,24 +12,22 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="content-wrapper">
         <div class="content-body mb-5 mt-2">
             <div class="card">
-                <div class="mb-1 ">
-                    <h3 style="padding: 5px">Proyectos</h3>
-                </div>
-                <div class="card">
-                    <div class="container">
-                        <div class="row">
-                            @foreach ($projects as $project)
-                            <div class="container-fluid col-md-2 col-sm-1 rounded" id="recomiendo">
-                                <img src="{{asset('images/figma/recomiendo.png')}}" class="mt-2" alt="" style="width:100%;">
-                                <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
-                                    <div style="position: relative;top: 14px;">{{$project -> name}}</div>
-                                </div>
+                <h3 class="card-header">Proyectos</h3>
+                <div class="container">
+                    <div class="row">
+                        @foreach ($projects as $item)
+                        @if ($item->status != 4)
+                        <div class="container-fluid col-2 rounded" id="recomiendo">
+                            <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="mt-2" alt=""
+                                style="width:100%;">
+                            <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
+                                <div style="position: relative;top: 14px;">{{$item->name}}</div>
                             </div>
-                            @endforeach
                         </div>
+                        @endif
+                        @endforeach
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="card ">
@@ -40,7 +39,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <th class="">FECHA</th>
                             <th class="text-center">ESTADO</th>
                             <th class="text-center">DESCRIPCIÓN</th>
-                            <th class="text-center">MONTO</th> 
+                            <th class="text-center">MONTO</th>
                         </thead>
                         <tbody>
                             @foreach ($clients as $client)
@@ -48,9 +47,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <td class="">{{ date('d-m-Y', strtotime($client->date ) )}}</td>
                                 <td class="text-center">
                                     @if ($client->status == 0)
-                                     <label class="label status-label status-label-purple">Pendiente</label>
+                                    <label class="label status-label status-label-purple">Pendiente</label>
                                     @elseif ($client->status == 1)
-                                     <label class="label status-label status-label-gray">Pagada</label>
+                                    <label class="label status-label status-label-gray">Pagada</label>
                                     @endif
                                 </td>
                                 <td class="text-center">{{ $client->description }}</td>
@@ -69,25 +68,28 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="container">
                         <div class="row">
                             @foreach ($hostings as $hostings)
-                                <div class="col-6 card" style="height:150px;">
-
-                                    <div class="card-body rounded" id="position" style="background: #252856;margin-left:2px;">
-                                      <div class="p-1">
-                                            <img class="float-right mr-2 mt-2" src="{{asset('images/icons/background.png')}}" alt="">
-                                            <h5 class="card-title text-white mt-2 ">{{$hostings->url}}</h5>
-                                            <br>
-                                            <p class="card-text h5 text-white ">Fecha de renovación</p>
-                                            <br>
-                                            <p class="h5 text-white "><i class="far fa-calendar icon-big mr-1"></i>{{ $hostings->updated_at->format('d-m-Y') }}</p>
-                                      </div>
+                            <div class="col-6 card" style="height:150px;">
+                                <div class="card-body rounded" id="position"
+                                    style="background: #252856;margin-left:2px;">
+                                    <div class="p-1">
+                                        <img class="float-right mr-2 mt-2"
+                                            src="{{asset('images/icons/background.png')}}" alt="">
+                                        <h5 class="card-title text-white mt-2 ">{{$hostings->url}}</h5>
+                                        <br>
+                                        <p class="card-text h5 text-white ">Fecha de renovación</p>
+                                        <br>
+                                        <p class="h5 text-white "><i
+                                                class="far fa-calendar icon-big mr-1"></i>{{ $hostings->updated_at->format('d-m-Y') }}
+                                        </p>
                                     </div>
-                               </div>
-                           @endforeach
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-   </div>
-</div>  
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

@@ -19,9 +19,10 @@ class ClientsController extends Controller
      *** Perfil: Cliente ***/
     public function index()
     {
-        $clients = bill::where('user_id', '=', Auth::user()->id)->get();
-        $hostings = Hosting::where('user_id', '=', Auth::user()->id)->paginate(10);
-        $projects = Project::where('user_id', '=', Auth::user()->id)->paginate(10);
+        $clients = bill::where('user_id', '=', Auth::id())->get();
+        $hostings = Hosting::where('user_id', '=', Auth::id())->get();
+        $projects = Project::where('user_id', '=', Auth::id())->get();
+
         return view('client.home')->with(compact('clients', 'hostings', 'projects'));
     }
 
