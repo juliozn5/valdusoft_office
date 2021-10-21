@@ -62,7 +62,8 @@ class HostingController extends Controller
             "price" => ['required'],
             "cpanel_url" => ['string'],
             "cpanel_email" => ['string', 'email'],
-            "cpanel_password" => ['string']
+            "cpanel_password" => ['string'],
+            "status" => ['required']
         ];
 
         $msj = [
@@ -73,6 +74,7 @@ class HostingController extends Controller
             'client.required' => 'El cliente es requerido',
             'date_end.required' => 'Los Años de vencimiento son requeridos',
             'price.required' => 'El Precio es requerido',
+            'status.required' => 'El estado es requerido',
             'cpanel_email' => 'El Email es inválido'
         ];
         // dd($request);
@@ -91,9 +93,11 @@ class HostingController extends Controller
                         'cpanel_url' => $request->cpanel_url,
                         'cpanel_email' => $request->cpanel_email,
                         'cpanel_password' => $request->cpanel_password,
-                        'user_id' => $request->client
+                        'user_id' => $request->client,
+                        'status' => $request->status
                     ]);
-
+                    $hosting->save();
+    
                     $bill = Bill::create([
                         'user_id' => $hosting->user_id,
                         'amount' => $hosting->price,
