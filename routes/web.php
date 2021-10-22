@@ -143,6 +143,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/detail', 'ProjectsController@detailclient')->name('client.projects.detail');
             Route::post('add-attachment', 'ProjectsController@attachments')->name('client.project.add-attachments');
             Route::post('update-attachment', 'ProjectsController@updates')->name('client.projects.update-attachments');
+            
         });
 
         //MÓDULO DE HOSTINGS

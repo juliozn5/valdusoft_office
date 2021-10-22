@@ -193,6 +193,9 @@ class ProjectsController extends Controller
             return view('employee.showProject')->with(compact('project'));
         }
     }
+    
+
+
 
     /** Guardar datos modificados del Proyecto
      *** Perfil: Admin ***/
@@ -281,7 +284,7 @@ class ProjectsController extends Controller
 
         return redirect()->back()->with('msj-attachment', 'true');
     }
-    
+
 
     /** Agregar un archivo adjunto al proyecto
      *** Perfil: cliente ***/
@@ -319,7 +322,7 @@ class ProjectsController extends Controller
 
         return redirect()->back()->with('msj-attachment', 'true');
     }
-   /** Editar un archivo adjunto del proyecto
+    /** Editar un archivo adjunto del proyecto
      *** Perfil: cliente ***/
     public function updates(Request $request)
     {

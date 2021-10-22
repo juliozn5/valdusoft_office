@@ -66,7 +66,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <div class="project-detail-titles">Miembros</div>
                                 </div>
                                 @foreach ($project->employees as $employee)
-                                <div class="col-1 mr-1">
+                                <div class="col-6 mr-1">
                                     <img class="rounded-circle" style="object-fit: cover;" src="{{asset('storage/photo-profile/'.$employee->photo)}}" alt=" {{$employee->name .' '. $employee->last_name}}" title=" {{$employee->name .' '. $employee->last_name}}" height="50" width="50">
                                 </div>
                                 @endforeach
@@ -181,7 +181,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                                         <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
                                             Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
-                                            <a class="delete-attachment" data-id="attachment-{{ $attachment->id }}">Descargar</a>
+                                            <a class="delete-attachment" >Descargar</a>
 
                                             - <a href="#editAttachment" data-toggle="modal" onclick="editAttachment({{ $attachment }});">Editar</a>
                                         </div>

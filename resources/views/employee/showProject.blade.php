@@ -43,9 +43,11 @@
                                 @endif
                             </div>
 
-                            <div class="p-2">
-                                <h3 class="card-title">{{ $project->name }}</h3>
+                            <div class="col-12 d-flex justify-content-center mt-2">
+                                <h1 class="text-primary font-weight-bolder text-uppercase">{{ $project->name }}</h1>
+                            </div>
 
+                            <div class="p-2">
                                 <!-- Sección de Cliente -->
                                 <div class="row mt-2">
                                     <div class="col-6">
@@ -166,19 +168,19 @@
                                             @foreach ($project->attachments as $attachment)
                                                 <div class="col-4 pt-1">
                                                     @if ($attachment->file_type == 'image')
-                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank" download>
                                                             <img src="{{ asset('images/icons/files/image.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="img">
                                                         </a>
                                                     @elseif($attachment->file_type == 'pdf')
-                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank" download>
                                                             <img src="{{ asset('images/icons/files/pdf.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="pdf">
                                                         </a>
                                                     @elseif($attachment->file_type == 'excel')
-                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank" download>
                                                             <img src="{{ asset('images/icons/files/excel.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="excel">
                                                         </a>
                                                     @elseif($attachment->file_type == 'ppt')
-                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank" download>
                                                             <img src="{{ asset('images/icons/files/powerpoint.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="ppt">
                                                         </a>
                                                     @endif
