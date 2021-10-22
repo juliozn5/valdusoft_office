@@ -1,8 +1,22 @@
 @extends('layouts.app')
 
+
+@push('scripts')
+<script>
+    function editAttachment($attachment) {
+        $("#attachment_id").val($attachment.id);
+        $("#name").val($attachment.name);
+        $("#file_type option[value=" + $attachment.file_type + "]").attr("selected", true);
+    }
+</script>
+@endpush
+
+
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern content-left-sidebar chat-application navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
+
+
 
 @section('content')
 <div class="app-content content">
@@ -52,7 +66,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <div class="project-detail-titles">Miembros</div>
                                 </div>
                                 @foreach ($project->employees as $employee)
-                                <div class="col-1 mr-1">
+                                <div class="col-6 mr-1">
                                     <img class="rounded-circle" style="object-fit: cover;" src="{{asset('storage/photo-profile/'.$employee->photo)}}" alt=" {{$employee->name .' '. $employee->last_name}}" title=" {{$employee->name .' '. $employee->last_name}}" height="50" width="50">
                                 </div>
                                 @endforeach
@@ -167,9 +181,22 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                                         <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
                                             Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
-                                            <a href="#editAttachment" data-toggle="modal" onclick="editAttachment({{ $attachment }});">Editar</a>
+
+
+                                            @if ($attachment->file_type == 'image')
+                                            <a class="delete-attachment" href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" download="{{$attachment->file_name}}">Descargar</a>
+                                            @elseif($attachment->file_type == 'pdf')
+                                            <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" class="delete-attachment" download="{{ $attachment->file_name }}">Descargar </a>
+                                            @elseif($attachment->file_type == 'excel')
+                                            <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" class="delete-attachment" download="{{$attachment->file_name }}">Descargar </a>
+                                            @elseif($attachment->file_type == 'ppt')
+                                            <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" class="delete-attachment" download="{{ $attachment->file_name }}">Descargar</a>
+                                            @endif
+                                            - <a href="#editAttachment" data-toggle="modal" onclick="editAttachment({{ $attachment }});">Editar</a>
                                         </div>
                                     </div>
+
+
 
                                     @endforeach
                                     @else
