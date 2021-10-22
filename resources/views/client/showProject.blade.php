@@ -181,8 +181,17 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                                         <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
                                             Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
-                                            <a class="delete-attachment" >Descargar</a>
 
+
+                                            @if ($attachment->file_type == 'image')
+                                            <a class="delete-attachment" href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" download="{{$attachment->file_name}}">Descargar</a>
+                                            @elseif($attachment->file_type == 'pdf')
+                                            <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" class="delete-attachment" download="{{ $attachment->file_name }}">Descargar </a>
+                                            @elseif($attachment->file_type == 'excel')
+                                            <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" class="delete-attachment" download="{{$attachment->file_name }}">Descargar </a>
+                                            @elseif($attachment->file_type == 'ppt')
+                                            <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" class="delete-attachment" download="{{ $attachment->file_name }}">Descargar</a>
+                                            @endif
                                             - <a href="#editAttachment" data-toggle="modal" onclick="editAttachment({{ $attachment }});">Editar</a>
                                         </div>
                                     </div>
