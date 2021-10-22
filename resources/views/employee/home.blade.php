@@ -16,15 +16,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
                 <div class="card">
                     <div class="container">
-                    <div class="row">
-                        @foreach ($proyects_user as $item)
-                            <div class="container-fluid col-md-2 col-sm-1 mb-2 rounded" id="recomiendo">
-                            <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="mt-2" alt="" style="width:100%;">
-                            <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
-                                <div style="position: relative;top: 14px;"> {{$item->name}}</div>
-                            </div>
+                        <div class="row">
+                            @foreach ($proyects_user as $item)
+                            <a href="{{ route('employee.projects.show', [$item->slug, $item->id]) }}" title="Ir al proyecto {{$item->name}}">
+                                <div class="container-fluid col-md-2 col-sm-1 mb-2 rounded" id="recomiendo">
+                                    <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="mt-2" alt="" style="width:100%; border-radius: 7px 7px 0 0;">
+                                    <div class="pr-1 h4 pb-2 text-center text-white" id="shadow">
+                                        <div style="position: relative;top: 14px;"> {{$item->name}}</div>
+                                    </div>
+                            </a>
+                            @endforeach
                         </div>
-                        @endforeach
                         
                     </div>
                 </div>
