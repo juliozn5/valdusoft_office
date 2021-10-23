@@ -65,7 +65,7 @@ class BillController extends Controller
           $bill->payed_at = Carbon::now();
           $bill->save();
 
-          if ($request->payment_type == "C") {
+          if ($request->tipo_pago == "C") {
 
                $msj = [
                     'name.required' => 'El nombre es requerido.', 
@@ -114,7 +114,7 @@ class BillController extends Controller
                     $bill->amount = 0;
                     $bill->save();
 
-                    return redirect()->back()->with('message', 'Ocurrió un error al crear la renovación');
+                    return redirect()->back()->with('message', 'Renovacion de hosting exitosa');
 
                }else{
                     return redirect()->back()->with('message', 'Ocurrió un error al crear la renovación');

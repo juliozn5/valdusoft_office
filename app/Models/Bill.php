@@ -17,7 +17,7 @@ class Bill extends Model{
         'payed_at',
         'status',
         'type',
-        'payment_type',
+        'tipo_pago',
         'billetera',
         'bancolombia',
         'comprobante'
