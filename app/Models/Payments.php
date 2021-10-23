@@ -18,8 +18,13 @@ class Payments extends Model
         'total',
         'date',
     ];
+
     public function user(){
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function bill(){
+        return $this->belongsTo('App\Models\Bill');
     }
   
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Bill;
 use App\Models\User;
+use App\Models\Payrolls;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use PDF; use DB;
 
 class BillController extends Controller
 {
@@ -35,6 +37,7 @@ class BillController extends Controller
                return view('employee.bills')->with('bills', $bills);
           }
      }
+
      public function detail()
      {
           return view('client.billdetail');
@@ -122,4 +125,40 @@ class BillController extends Controller
           }
 
      }
+
+     public function store_payrolls_bills($payroll_id){
+          $payroll = Payrolls::where('id', '=', $payroll_id)
+                        ->with('payrolls_employee')
+                        ->first();
+          $payroll->status = '1';
+          $payroll->save();
+          
+          foreach ($payroll->payrolls_employee as $payroll_employee){
+               $bill = new Bill();
+               $bill->payroll_employee_id = $payroll_employee->id;
+               $bill->user_id = $payroll_employee->user_id;
+               $bill->amount = $payroll_employee->total_amount;
+               $bill->date = date('Y-m-d');
+               $bill->type = 'E';
+               $bill->save();
+          }
+          
+          DB::table('payrolls_employee')
+               ->where('payroll_id', '=', $payroll->id)
+               ->update(['status' => '1']);
+          
+          return redirect()->route('admin.payrolls.list', $payroll_id)->with('bills-created', true);
+     }
+
+     public function prueba(){
+          //$pdf = PDF::loadView('pdfs.payrollEmployeeBill');//->setPaper('a4', 'landscape');
+        /*$output = $pdf->output();
+        $path = public_path()."/certificates/courses/".Auth::user()->ID."-".$curso_id.".pdf"; 
+        file_put_contents($path, $output);*/
+        //return $pdf->download('certificate.pdf');
+
+        $pdf = PDF::loadView('layouts.bills');
+        return $pdf->stream('invoice.pdf');
+     }
+
 }
