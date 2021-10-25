@@ -36,11 +36,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table mb-0">
-                                    <thead class="thead-gris">
+                                    <thead class="thead-gris text-center">
                                         <tr>
                                             <th>#</th>
                                             <th>Foto</th>
-                                        
+
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Email</th>
@@ -49,7 +49,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         </tr>
                                     </thead>
 
-                                    <tbody>
+                                    <tbody class="text-center">
 
                                         @foreach ($client as $item)
                                         <tr>
@@ -61,8 +61,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                 @endif
                                             </td>
-                                       
-                                            
+
+
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->last_name }}</td>
                                             <td>{{ $item->email }}</td>
@@ -71,7 +71,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 <a href="{{ route('admin.clients.show', [$item->slug,$item->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
 
                                                 <a href="{{ route('admin.clients.edit', $item->id) }}"><i class="fa fa-edit mr-1 action-icon"></i></a>
-                                                
+
                                                 <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('delete{{$item->id}}').submit();"><i class="fa fa-trash action-icon"></i></a>
                                                 <form action="{{ route('admin.clients.delete', $item->id) }}" method="POST" id="delete{{$item->id}}">
                                                     @csrf
