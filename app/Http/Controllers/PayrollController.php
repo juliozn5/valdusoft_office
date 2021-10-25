@@ -11,6 +11,8 @@ use App\Models\FinancingPayment;
 use App\Models\PayrollEmployee;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\PayrollsEmployeeExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PayrollController extends Controller
 {
@@ -223,5 +225,9 @@ class PayrollController extends Controller
         $payroll->save();
 
         return redirect()->route('admin.payrolls.list')->with('payroll-updated', 'true');
+    }
+
+    public function export($payroll_id){
+        return Excel::download(new PayrollsEmployeeExport($payroll_id), 'payroll.xlsx');
     }
 }

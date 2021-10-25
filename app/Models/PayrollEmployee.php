@@ -39,4 +39,8 @@ class PayrollEmployee extends Model
     public function financing_payment(){
         return $this->hasOne('App\Models\FinancingPayment', 'payroll_employee_id');
     }
+
+    public function bill(){
+        return $this->hasOne('App\Models\PayrollEmployee', 'payroll_employee_id');
+    }
 }

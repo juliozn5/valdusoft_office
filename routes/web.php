@@ -22,9 +22,7 @@ Route::get('/clear-cache', function () {
     return 'DONE'; //Return anything
 });
 
-Route::get('chat', function () {
-    return view('chat');
-});
+Route::get('bill', 'BillController@prueba');
 Auth::routes();
 
 // USUARIO LOGUEADO
@@ -117,6 +115,8 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('show/{id}', 'PayrollController@show')->name('admin.payrolls.show');
                 Route::get('edit/{id}', 'PayrollController@edit')->name('admin.payrolls.edit');
                 Route::post('update', 'PayrollController@update')->name('admin.payrolls.update');
+                Route::get('store-bills/{payroll_id}', 'BillController@store_payrolls_bills')->name('admin.payrolls.store-bills');
+                Route::get('export/{id}', 'PayrollController@export')->name('admin.payrolls.export');
             });
 
             //MÓDULO FINANCIERO - PAGOS

@@ -35,7 +35,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="card" id="card-head1">
                         <div class="card-header">
                             <h3 class="card-title mb-1">Empleados en la Nómina</h3>
-                            <a href="#" class="btn btn-primary mb-2 waves-effect waves-light">&nbsp; <strong>GENERAR FACTURAS</strong></a>
+                            <a href="{{ route('admin.payrolls.store-bills', $payroll->id) }}" class="btn btn-primary mb-2 waves-effect waves-light">&nbsp; <strong>GENERAR FACTURAS</strong></a>
                         </div>
 
                         <div class="card-content">
