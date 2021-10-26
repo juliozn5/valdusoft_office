@@ -103,8 +103,9 @@ Route::group(['middleware' => ['auth']], function () {
             //MÓDULO FINANCIERO - FACTURAS
             Route::group(['prefix' => 'bills'], function () {
                 Route::get('/', 'BillController@list')->name('admin.bills.list');
-                Route::get('bill', 'BillController@BillList')->name('admin.bills.BillList');
-                Route::post('bill', 'BillController@bill')->name('admin.bills.post');
+                Route::get('show/{id}', 'BillController@show')->name('admin.bills.show');
+                Route::get('download/{id}', 'BillController@download')->name('admin.bills.download');
+                Route::post('send', 'BillController@send')->name('admin.bills.send');
             });
 
             //MÓDULO FINANCIERO - NÓMINA
@@ -122,8 +123,7 @@ Route::group(['middleware' => ['auth']], function () {
             //MÓDULO FINANCIERO - PAGOS
             Route::group(['prefix' => 'payments'], function () {
                 Route::get('/', 'PaymentsController@list')->name('admin.payments.list');
-                Route::get('billpayment', 'PaymentsController@billpayment')->name('admin.payments.billpayment');
-                Route::post('/generate', 'PaymentsController@generate')->name('payments.generate');
+                Route::post('store', 'PaymentsController@store')->name('admin.payments.store');
             });
         });
 
@@ -181,7 +181,8 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE FACTURAS
         Route::group(['prefix' => 'bills'], function () {
             Route::get('/', 'BillController@list')->name('employee.bills.list');
-            Route::get('/details/{id}', 'BillController@details')->name('employee.bills.details');
+            Route::get('/show/{id}', 'BillController@show')->name('employee.bills.show');
+            Route::get('download/{id}', 'BillController@download')->name('employee.bills.download');
         });
 
         //MÓDULO DE INTERÉS

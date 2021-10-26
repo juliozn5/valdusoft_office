@@ -8,7 +8,7 @@ use App\Models\Payrolls;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use PDF; use DB;
+use PDF; use DB; use Mail;
 
 class BillController extends Controller
 {
@@ -17,16 +17,20 @@ class BillController extends Controller
      public function list()
      {
           if (Auth::user()->profile_id == 1) {
+               $employee_bills = Bill::where('type', 'E')
+                                   ->with('user:id,name,last_name')
+                                   ->orderBy('id', 'DESC')
+                                   ->get();
 
                $client = Bill::all()->where('type', 'C');
                $hosting = Bill::all()->where('type', 'H');
-               $employer = Bill::all()->where('type', 'E');
+               
 
                $user_client = User::all()->where('profile_id', '2');
                $user_employer = User::all()->where('profile_id', '3');
 
 
-               return view('admin.bills.list', compact('client', 'hosting', 'employer', 'user_client', 'user_employer'));
+               return view('admin.bills.list', compact('client', 'hosting', 'employee_bills', 'user_client', 'user_employer'));
 
           } else if (Auth::user()->profile_id == 2) {
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
@@ -34,29 +38,87 @@ class BillController extends Controller
                return view('client.bills')->with('bills', $bills);
           } else if (Auth::user()->profile_id == 3) {
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
+     
                return view('employee.bills')->with('bills', $bills);
           }
      }
 
+     public function show($id){
+          $bill = Bill::where('id', '=', $id)
+                    ->with('user:id,name,last_name,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payment')
+                    ->first();
+
+          if (Auth::user()->profile_id == 1){
+               return view('admin.bills.show')->with(compact('bill')); 
+          }else if (Auth::user()->profile_id == 3){
+               return view('employee.showBill')->with(compact('bill'));
+          }
+          
+     }
+
+     /* Guarda las facturas individuales de una nomina específica*/
+     public function store_payrolls_bills($payroll_id){
+          $payroll = Payrolls::where('id', '=', $payroll_id)
+                        ->with('payrolls_employee')
+                        ->first();
+          $payroll->status = '1';
+          $payroll->save();
+          
+          foreach ($payroll->payrolls_employee as $payroll_employee){
+               $bill = new Bill();
+               $bill->payroll_employee_id = $payroll_employee->id;
+               $bill->user_id = $payroll_employee->user_id;
+               $bill->amount = $payroll_employee->total_amount;
+               $bill->date = date('Y-m-d');
+               $bill->type = 'E';
+               $bill->save();
+          }
+          
+          DB::table('payrolls_employee')
+               ->where('payroll_id', '=', $payroll->id)
+               ->update(['status' => '1']);
+          
+          return redirect()->route('admin.payrolls.list', $payroll_id)->with('bills-created', true);
+     }
+
+     public function download($bill_id){
+          $bill = Bill::where('id', '=', $bill_id)
+                    ->with('user:id,name,last_name,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payment')
+                    ->first();
+
+          if ($bill->type == 'E'){
+               $pdf = PDF::loadView('pdfs.payrollEmployeeBill', compact('bill'));
+          }
+          
+          return $pdf->stream('factura_'.$bill->id.'.pdf');
+     }
+
+     public function send(Request $request){
+          $bill = Bill::find($request->bill_id);
+
+          if ($bill->type == 'E'){
+              $pdf = PDF::loadView('pdfs.payrollEmployeeBill', compact('bill')); 
+          }
+
+          $data['email'] = $request->email;
+          $data['subject'] = $request->subject;
+          $data['message'] = $request->message;
+          $data['bill_id'] = $request->bill_id;
+
+          Mail::send('emails.invoice', ['data' => $data], function ($mail) use ($pdf, $data) {
+               $mail->to($data['email']);
+               $mail->subject($data['subject']);
+               $mail->attachData($pdf->output(), 'factura_'.$data['bill_id'].'.pdf');
+          });
+
+          return redirect()->back()->with('msj-send', 'true');
+     }
+
+
+
      public function detail()
      {
           return view('client.billdetail');
-     }
-
-     public function details($id)
-     {
-          $factura = Bill::find($id);
-          $user = User::find($factura->user_id);
-          return view('employee.billdetail', compact('factura', 'user'));
-     }
-
-     public function BillList()
-     {
-          return view('admin.bills.BillList');
-     }
-
-     public function bill(Request $request)
-     {
      }
 
      public function saveInvoice(Request $request)
@@ -125,40 +187,4 @@ class BillController extends Controller
           }
 
      }
-
-     public function store_payrolls_bills($payroll_id){
-          $payroll = Payrolls::where('id', '=', $payroll_id)
-                        ->with('payrolls_employee')
-                        ->first();
-          $payroll->status = '1';
-          $payroll->save();
-          
-          foreach ($payroll->payrolls_employee as $payroll_employee){
-               $bill = new Bill();
-               $bill->payroll_employee_id = $payroll_employee->id;
-               $bill->user_id = $payroll_employee->user_id;
-               $bill->amount = $payroll_employee->total_amount;
-               $bill->date = date('Y-m-d');
-               $bill->type = 'E';
-               $bill->save();
-          }
-          
-          DB::table('payrolls_employee')
-               ->where('payroll_id', '=', $payroll->id)
-               ->update(['status' => '1']);
-          
-          return redirect()->route('admin.payrolls.list', $payroll_id)->with('bills-created', true);
-     }
-
-     public function prueba(){
-          //$pdf = PDF::loadView('pdfs.payrollEmployeeBill');//->setPaper('a4', 'landscape');
-        /*$output = $pdf->output();
-        $path = public_path()."/certificates/courses/".Auth::user()->ID."-".$curso_id.".pdf"; 
-        file_put_contents($path, $output);*/
-        //return $pdf->download('certificate.pdf');
-
-        $pdf = PDF::loadView('layouts.bills');
-        return $pdf->stream('invoice.pdf');
-     }
-
 }

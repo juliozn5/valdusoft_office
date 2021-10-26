@@ -58,7 +58,7 @@
                     Valdusoft
                 </div>
                 <div style="color: #333F4F; font-size: 16px; line-height: 25px;">
-                    San Cristobal - Tachira <br>
+                    San Cristobal - Táchira <br>
                     <a href="https://valdusoft.com" target="_blank" style="color: #170c66;"><u>Valdusoft.com</u></a><br>			
                     <a href="mailto:financiero@valdusoft.com" target="_blank">financiero@valdusoft.com</a><br>					
                     <b>Alexis Valera</b>
@@ -66,7 +66,7 @@
             </div>
 
             {{-- Encabezado Derecho --}}
-            <div style="width: 40%; float: right; padding-top: 5%; font-size: 14px; color: #000000; text-align: center;">
+            <div style="width: 40%; float: right; padding-top: 5%; font-size: 14px; line-height: 20px; color: #000000; text-align: center;">
                 <img src="https://clients.valdusoft.com/images/valdusoft/logo-bill.jpg" alt="" width="120" height="70">
                 <hr style="width: 140px; background-color: #BFBFBF; margin-top: 0 !important; margin-bottom: 10px !important;">
                 <div>

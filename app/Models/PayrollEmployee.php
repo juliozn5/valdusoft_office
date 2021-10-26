@@ -21,7 +21,7 @@ class PayrollEmployee extends Model
     ];
 
     public function payroll(){
-        return $this->belongsTo('App\Models\Payroll', 'payroll_id');
+        return $this->belongsTo('App\Models\Payrolls', 'payroll_id');
     }
 
     public function user(){
