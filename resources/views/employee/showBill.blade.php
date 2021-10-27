@@ -43,7 +43,7 @@
                                         <div>
                                             <div class="logo-wrapper">
                                                 <img src="https://clients.valdusoft.com/images/valdusoft/logo-bill.jpg" alt="" width="120" height="70">
-                                            </div>		
+                                            </div>
                                             <p class="card-text mb-25">San Cristobal - Tachira</p>
                                             <p class="card-text mb-25"><a href="https://valdusoft.com" target="_blank" style="color: #170c66;"><u>Valdusoft.com</u></a></p>
                                             <p class="card-text mb-25"><a href="mailto:financiero@valdusoft.com" target="_blank">financiero@valdusoft.com</a></p>
