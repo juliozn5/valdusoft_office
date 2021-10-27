@@ -53,14 +53,18 @@ class HostingController extends Controller
      *** Perfil: Admin ***/
     public function store(Request $request)
     {
-        
+
         $fields = [
             "hosting_url" => ['required', 'min:4', 'max:255'],
             "date" => ['required'],
             "client" => ['required'],
             "date_end" => ['required'],
-            "price" => ['required'],    
-            "status" => ['required']
+            "price" => ['required'],
+            "status" => ['required'],
+            "cpanel_url" => ['required'],
+            "cpanel_email" => ['required'],
+            "cpanel_password" => ['required'],
+            "renewal_price" => ['required'],
         ];
 
         $msj = [
@@ -72,6 +76,10 @@ class HostingController extends Controller
             'date_end.required' => 'Los Años de vencimiento son requeridos',
             'price.required' => 'El Precio es requerido',
             'status.required' => 'El estado es requerido',
+            'cpanel_url.required' => 'La url del Cpanel es requerida',
+            'cpanel_email.required' => 'El email del Cpanel es requerido',
+            'cpanel_password.required' => 'La contraseña del Cpanel es requerida',
+            'renewal_price.required' => 'El precio de renovacion es requerido'
         ];
         // dd($request);
         $validate = $this->validate($request, $fields, $msj);
@@ -81,16 +89,19 @@ class HostingController extends Controller
                 $fecha = new Carbon($request->date);
                     $hosting = Hosting::create([
                         'url' => $request->hosting_url,
+                        'cpael_url' => $request->cpanel_url,
+                        'cpanel_email' => $request->cpanel_email,
+                        'cpanel_password' => $request->cpanel_password,
                         'create_date' => $request->date,
                         'due_date' => $fecha->addYears($request->date_end),
                         'price' => $request->price,
-                        // 'renewal_price' => $request->renewal_price,
+                        'renewal_price' => $request->renewal_price,
                         'years' => $request->date_end,
                         'user_id' => $request->client,
                         'status' => $request->status
                     ]);
-                    
-    
+
+
                     $bill = Bill::create([
                         'user_id' => $hosting->user_id,
                         'amount' => $hosting->price,
@@ -100,7 +111,7 @@ class HostingController extends Controller
                         'type' => 'H',
                         'hosting_id' => $hosting->id
                     ]);
-                    
+
 
                 DB::commit();
                 return redirect()->route('admin.hostings.list')->with('message', 'Se creo el Hosting Exitosamente');
@@ -168,8 +179,8 @@ class HostingController extends Controller
         // $hosting->cpanel_url = $request->cpanel_url;
         // $hosting->cpanel_email = $request->cpanel_email;
         // $hosting->cpanel_password = $request->cpanel_password;
-        
-        
+
+
 
         $hosting->save();
 
@@ -216,7 +227,7 @@ class HostingController extends Controller
                         'type' => 'H',
                         'hosting_id' => $renewal->hosting_id
                     ]);
-                    
+
 
                 DB::commit();
                 return redirect()->back()->with('message', 'Renovación creada Exitosamente');
@@ -240,11 +251,11 @@ class HostingController extends Controller
 
         return redirect()->route('admin.hostings.list')->with('message', 'Se elimino el Hosting' . ' ' . $hosting->client . ' ' . 'Exitosamente');
     }
-    /**detalles de Hosting 
+    /**detalles de Hosting
      * para cliente */
     public function showHosting($id)
-    {   
-        $hosting = Hosting::find($id); 
+    {
+        $hosting = Hosting::find($id);
       return view('client.showHosting', compact('hosting'));
     }
 }
