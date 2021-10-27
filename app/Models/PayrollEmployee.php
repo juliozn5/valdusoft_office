@@ -21,7 +21,7 @@ class PayrollEmployee extends Model
     ];
 
     public function payroll(){
-        return $this->belongsTo('App\Models\Payroll', 'payroll_id');
+        return $this->belongsTo('App\Models\Payrolls', 'payroll_id');
     }
 
     public function user(){
@@ -38,5 +38,9 @@ class PayrollEmployee extends Model
 
     public function financing_payment(){
         return $this->hasOne('App\Models\FinancingPayment', 'payroll_employee_id');
+    }
+
+    public function bill(){
+        return $this->hasOne('App\Models\PayrollEmployee', 'payroll_employee_id');
     }
 }

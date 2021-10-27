@@ -12,12 +12,13 @@ class Bill extends Model{
         'user_id',
         'hosting_id',
         'project_id',
+        'payroll_employee_id',
         'amount',
         'date',
         'payed_at',
         'status',
         'type',
-        'payment_type',
+        'tipo_pago',
         'billetera',
         'bancolombia',
         'comprobante'
@@ -33,5 +34,13 @@ class Bill extends Model{
 
     public function project(){
         return $this->belongsTo('App\Models\Project');
+    }
+
+    public function payroll_employee(){
+        return $this->belongsTo('App\Models\PayrollEmployee');
+    }
+
+    public function payment(){
+        return $this->hasOne('App\Models\Payments');
     }
 }

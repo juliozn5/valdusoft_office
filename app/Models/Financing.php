@@ -33,7 +33,7 @@ class Financing extends Model
         return $this->hasMany('App\Models\FinancingPayment');
     }
     
-    public function financing_paymnets(){
+    public function financing_payments(){
           return $this->belongsTo('App\Models\FinancingPayment', 'id');
     }
 }

@@ -33,6 +33,14 @@
         </script>
     @endif
 
+    @if (Session::has('bills-created'))
+        <script>
+            $(document).ready(function() {
+                toastr.success('Las facturas de la nómina han sido generadas con éxito.', 'Operación Completada');
+            });
+        </script>
+    @endif
+
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -54,7 +62,7 @@
                       </div>
                    </div>
                 </div>
-             </div>
+            </div>
         </div>
 
         <div class="content-body">
@@ -98,6 +106,7 @@
                                             <td class="text-center">
                                                 <a href="{{ route('admin.payrolls.show', $payroll->id) }}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
                                                 <a href="{{ route('admin.payrolls.edit', $payroll->id) }}"><i style="font-size:20px;" class="far fa-edit ml-1"></i></a>
+                                                <a href="{{ route('admin.payrolls.export', $payroll->id) }}"><i style="font-size:20px;" class="far fa-file-excel ml-1"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

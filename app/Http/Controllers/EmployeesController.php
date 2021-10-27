@@ -25,13 +25,16 @@ class EmployeesController extends Controller
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($user->admission_date);
         $fechaUser->addYear(1);
-
         $project = Project::where('user_id', Auth::id());
         $payrolls = PayrollEmployee::where('user_id', Auth::id());
         $proyects_user = Auth::user()->projects;
-        $user = Auth::user();
+        $lastBill = DB::table('bills')
+                        ->select('id')
+                        ->where('user_id', '=', Auth::user()->id)
+                        ->orderBy('id', 'DESC')
+                        ->first();
 
-        return view('employee.home')->with(compact('project', 'payrolls', 'user', 'proyects_user', 'fechaUser'));
+        return view('employee.home')->with(compact('project', 'payrolls', 'user', 'proyects_user', 'fechaUser', 'lastBill'));
     }
 
     /** Listado de Empleados

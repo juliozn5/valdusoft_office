@@ -274,13 +274,13 @@
                                 <label for="dead_line">Fecha de cierre</label>
                                 <input type="date" class="form-control" name="dead_line" value="{{ $payroll->dead_line }}" required>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-4 col-12">
+                            {{--  <div class="col-xl-3 col-lg-3 col-md-4 col-12">
                               <label for="dead_line">Estado</label>
                               <select name="status" class="form-control">
                                  <option value="0" @if ($payroll->status == '0') selected @endif>En Espera</option>
                                  <option value="1" @if ($payroll->status == '1') selected @endif>Completada</option>
                               </select>
-                           </div>
+                           </div>--}}
                         </div>
                      
                         <div class="card-header">

@@ -32,7 +32,7 @@
 
         </div>
 
-        <div class="row d-flex justify-content-center mt-5 pb-3">
+        <div class="row d-flex justify-content-center pb-3">
             <div class=" col-12">
                 <div class="card">
                     <div class="card-header">
@@ -143,12 +143,12 @@
 
 
                                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                            <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
-                                            <a href="{{ route('admin.clients.list') }}" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
+                                                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Editar</button>
+                                                <a href="{{ route('admin.clients.list') }}" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                             </div>
 
 
-                                        
+
                                         </div>
                                     </div>
                             </form>

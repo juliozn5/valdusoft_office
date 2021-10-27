@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Payments;
 use App\Models\User;
-use App\Models\bill;
+use App\Models\Bill;
+use App\Models\PayrollEmployee;
+use Faker\Provider\ar_SA\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,36 +15,57 @@ class PaymentsController extends Controller
     /** Listado de Pagos
     *** Perfil: Admin ***/
     public function list(){ 
-         $users = User::all();
-         $bills = bill::where('status', '0')->get();
+        if (Auth::user()->profile_id == 1){
+            $payments = Payments::with('user:id,name,last_name')
+                            ->orderBy('id', 'DESC')
+                            ->paginate(10);
 
-         if (Auth::user()->profile_id == 1){
-            $payments = payments::where('user_id', '=', Auth::user()->id)->paginate(10);
-            return view('admin.payments.list')->with('payments', $payments)->with('users', $users)->with('bills', $bills);
+            $bills = Bill::where('status', '0')->get();
+            return view('admin.payments.list')->with(compact('payments', 'bills'));
+        }
+    }
+
+    public function store(Request $request){
+        $bill = Bill::find($request->bill_id);
+
+        $payment = new Payments($request->all());
+        $payment->user_id = $bill->user_id;
+        if (!isset($request->amount)){
+            $payment->amount = $bill->amount;
+        }
+        $payment->total = $payment->amount - $payment->discount_amount;
+        $payment->date = date('Y-m-d');
+        $payment->status = '1';
+        $payment->save();
+
+        if ($request->hasFile('support')) {
+            $file = $request->file('support');
+            $name = $payment->id . "." . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/uploads/images/payment-supports', $name);
+            $payment->support = $name;
+            $payment->save();
         }
 
-    }
+        $bill->status = '1';
+        $bill->save();
 
-    public function billpayment(){
-        return view('admin.payments.billpayment');    
-    }
-    public function generate(request $request)
-    {
-    
-       $data = request();
-    
-       DB::table('payments')->insert([
-           'user_id' => $data['user_id'],
-           'bill_id' => $data['bill_id'],
-           'payment_method' => $data['payment_method'],
-           'amount' => $data['amount'],
-           'fee' => $data['fee'],
-           'total' => $data['total'],
-           'date' => $data['date'],
-       ]);
+        if (!is_null($bill->payroll_employee_id)){
+            $payrollEmployee = PayrollEmployee::find($bill->payroll_employee_id);
+            $payrollEmployee->status = '1';
+            $payrollEmployee->save();
 
-   
+            $checkPayroll = DB::table('payrolls_employee')
+                                ->where('payroll_id', '=', $payrollEmployee->payroll_id)
+                                ->where('status', '=', '0')
+                                ->count();
+            
+            if ($checkPayroll == 0){
+                DB::table('payrolls')
+                    ->where('id', '=', $payrollEmployee->payroll_id)
+                    ->update(['status' => '1', 'updated_at' => date('Y-m-d H:i:s')]);
+            }
+        }
 
-        return redirect()->back()->with('msj-success', 'Saldo retirado con exito');
+        return redirect()->back()->with('msj-store', 'true');
     }
 }

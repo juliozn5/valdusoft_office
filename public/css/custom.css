@@ -285,9 +285,10 @@
 
 #shadow {
     background: linear-gradient(rgba(37, 40, 86, 0) 0%, #252856 100%);
-    border-radius: 7px;
+    border-radius: 0 0 7px 7px;
     align-items: center;
  /*   width: 140px;*/
+    margin-top: -5px;
 }
 
 

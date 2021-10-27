@@ -23,7 +23,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <li class="breadcrumb-item"><a href="{{ route('client.home') }}"><i class="fa fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('client.hostings.list') }}">Hostings</a></li>
                                 <li class="breadcrumb-item">Detalle del Hosting</a></li>
-
                             </ol>
                         </div>
                     </div>
@@ -35,6 +34,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="card-header">
                     <div class="h3 col-md-4 col-sm-12"><a target="_blank" href="{{$hosting->url}}">{{$hosting->url}}</a></div>
                     <div>
+                        <a type="button" onclick="editBill({{$hosting}});" class="btn btn-green" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalRenovation" id="btn-guardar"><img src="{{ asset('images/valdusoft/refresh.png') }}" alt="" class="mr-1">Renovar</a> 
                         <a type="button" class="btn btn-hos_show mr-1 center" style="background-color:#FF4D00;color: white;" id="btn-guardar" href="{{$hosting->cpanel_url}}" target="_blank"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
                     </div>
                 </div>
@@ -117,4 +117,48 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="modalRenovation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Renovación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center">Seleccione el método de pago</h4>
+                <div class="d-flex justify-content-center p-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="billetera" onchange="javascript:showContent()">
+                        <label class="form-check-label" for="inlineRadio1">Billetera</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="bancolombia" onchange="javascript:showContent2()">
+                        <label class="form-check-label" for="inlineRadio2">Bancolombia</label>
+                    </div>
+                </div>
+
+                <form class="form form-vertical" action="{{ route('save-invoices') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" id="payment_type" name="payment_type">
+                    <input type="hidden" id="hosting_id" name="hosting_id">
+                    <input type="hidden" id="user_id" name="user_id">
+
+                    @include('client.partials.bancolombia')
+                    @include('client.partials.billetera')
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
+
+@include('admin.clients.partials.js')
