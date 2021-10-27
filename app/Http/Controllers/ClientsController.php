@@ -149,6 +149,7 @@ class ClientsController extends Controller
         ], $msj);
 
         if ($validate) {
+            $client->update($request->all());
             $client->slug = Str::slug($request->name . "-" . $request->last_name);
             if ($request->hasFile('photo')) {
                 $file = $request->file('photo');
@@ -159,7 +160,7 @@ class ClientsController extends Controller
             }
          
             $client->save();
-            $client->update($request->all());
+            
             return redirect()->route('admin.clients.list')->with('message', 'Se actualizó el Cliente Exitosamente');
         }
     }
