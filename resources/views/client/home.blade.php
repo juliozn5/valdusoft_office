@@ -12,16 +12,24 @@ data-menu="vertical-menu-modern" data-col="2-columns"
     <div class="content-wrapper">
         <div class="content-body mb-5 mt-2">
             <div class="card">
-                <h3 class="card-header">Proyectos</h3>
+                <h3 class="card-header mb-2">Proyectos</h3>
                 <div class="container">
                     <div class="row">
                         @foreach ($projects as $item)
                         @if ($item->status != 4)
-                        <div class="container-fluid col-2 rounded" id="recomiendo">
-                            <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="mt-2" alt=""
-                                style="width:100%;">
-                            <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
-                                <div style="position: relative;top: 14px;">{{$item->name}}</div>
+                        <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
+
+                            @if ($item->logo === NULL)
+                            <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
+
+                            @else
+                            <img class="card-img-top"  src="{{ asset('/images/figma/recomiendo.png') }}"  >
+                            @endif
+
+                            <div class="card-body">
+                                <div class="pr-1  h4 pb-2 text text-white ml-2" id="shadow">
+                                    <div style="position: relative;top: 14px;" class="ml-1">{{$item->name}}</div>
+                                </div>
                             </div>
                         </div>
                         @endif
@@ -69,17 +77,14 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                         <div class="row">
                             @foreach ($hostings as $hostings)
                             <div class="col-6 card" style="height:150px;">
-                                <div class="card-body rounded" id="position"
-                                    style="background: #252856;margin-left:2px;">
+                                <div class="card-body rounded" id="position" style="background: #252856;margin-left:2px;">
                                     <div class="p-1">
-                                        <img class="float-right mr-2 mt-2"
-                                            src="{{asset('images/icons/background.png')}}" alt="">
+                                        <img class="float-right mr-2 mt-2" src="{{asset('images/icons/background.png')}}" alt="">
                                         <h5 class="card-title text-white mt-2 ">{{$hostings->url}}</h5>
                                         <br>
                                         <p class="card-text h5 text-white ">Fecha de renovación</p>
                                         <br>
-                                        <p class="h5 text-white "><i
-                                                class="far fa-calendar icon-big mr-1"></i>{{ $hostings->updated_at->format('d-m-Y') }}
+                                        <p class="h5 text-white "><i class="far fa-calendar icon-big mr-1"></i>{{ $hostings->updated_at->format('d-m-Y') }}
                                         </p>
                                     </div>
                                 </div>
