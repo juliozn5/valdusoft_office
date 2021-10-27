@@ -17,11 +17,18 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     <div class="row">
                         @foreach ($projects as $item)
                         @if ($item->status != 4)
-                        <div class="card container-fluid" style="width: 20rem;" id="recomiendo">
+                        <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
+
+                            @if ($item->logo === NULL)
                             <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
+
+                            @else
+                            <img class="card-img-top"  src="{{ asset('/images/figma/recomiendo.png') }}"  >
+                            @endif
+
                             <div class="card-body">
-                                <div class="pr-1  h4 pb-2   text-white" id="shadow">
-                                    <div class="ml-1" style="position: relative;top: 14px;">{{$item->name}}</div>
+                                <div class="pr-1  h4 pb-2 text text-white ml-2" id="shadow">
+                                    <div style="position: relative;top: 14px;" class="ml-1">{{$item->name}}</div>
                                 </div>
                             </div>
                         </div>
