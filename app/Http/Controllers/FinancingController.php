@@ -16,10 +16,11 @@ class FinancingController extends Controller
                         ->with('financing_payments')
                         ->where('status', '=', '0')
                         ->first();
+        $accum = 0;
         if (!is_null($financing)){
             if (!is_null($financing->financing_payments)){
                 foreach ($financing->financing_payments as $financing_payment) {
-                    $financing->total_payments += $financing_payment->amount;
+                    $accum += $financing_payment->amount;
                 }
             }
         }
@@ -28,6 +29,6 @@ class FinancingController extends Controller
         $fechaUser = new Carbon(Auth::user()->admission_date);
         $fechaUser->addYear(1);
 
-        return view('employee.financing')->with(compact('financing', 'fechaUser')); 
+        return view('employee.financing')->with(compact('financing', 'fechaUser', 'accum')); 
     }
 }
