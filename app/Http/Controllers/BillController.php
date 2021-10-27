@@ -87,6 +87,7 @@ class BillController extends Controller
         
                if ($validate) {
                     $bill->save();
+                  
                }else{
                     return redirect()->back()->with('message', 'Ocurrió un error al crear la renovación');
                }

@@ -12,7 +12,7 @@ class PaymentsController extends Controller
 {
     /** Listado de Pagos
     *** Perfil: Admin ***/
-    public function list(){ 
+    public function list(){
          $users = User::all();
          $bills = bill::where('status', '0')->get();
 
@@ -24,13 +24,13 @@ class PaymentsController extends Controller
     }
 
     public function billpayment(){
-        return view('admin.payments.billpayment');    
+        return view('admin.payments.billpayment');
     }
     public function generate(request $request)
     {
-    
+
        $data = request();
-    
+
        DB::table('payments')->insert([
            'user_id' => $data['user_id'],
            'bill_id' => $data['bill_id'],
@@ -41,7 +41,7 @@ class PaymentsController extends Controller
            'date' => $data['date'],
        ]);
 
-   
+
 
         return redirect()->back()->with('msj-success', 'Saldo retirado con exito');
     }

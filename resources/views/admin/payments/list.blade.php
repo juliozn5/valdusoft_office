@@ -7,7 +7,7 @@
  @include('layouts.partials.navbar')
 
  @include('layouts.partials.sidebar')
-  
+
   <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -43,14 +43,14 @@
                                      <thead class="thead-light">
                                           <tr class="text-center">
                                                <th>FECHA</th>
-                                               <th>CLIENTE</th>   
-                                               <th>ID DE FACTURA</th>                                     
+                                               <th>CLIENTE</th>
+                                               <th>ID DE FACTURA</th>
                                                <th>PLATAFORMA DE PAGO</th>
                                                <th>MONTO</th>
                                                <th>FEE</th>
                                                <th>TOTAL</th>
                                                <th>ESTADO</th>
-                                               <th>ACCIÓN</th>        
+                                               <th>ACCIÓN</th>
                                            </tr>
                                        </thead>
                                        <tbody>
@@ -59,12 +59,12 @@
                                                <tr>
                                                  <td>{{ date('d-m-Y', strtotime($payment->date)) }}</td>
                                                  <td class="text-center">{{ $payment->user->slug}}</td>
-                                                 <td class="text-center">{{ $payment->bill_id }}</td>                                                            
+                                                 <td class="text-center">{{ $payment->bill_id }}</td>
                                                  <td>
                                                     @if ($payment->payment_method == 0)
                                                        <img src="{{ asset('images/valdusoft/paypal.png') }}" height="36" width="140px">
                                                     @elseif ($payment->payment_method == 1)
-                                                       <img src="{{ asset('images/valdusoft/uphold.png') }}" height="36" width="140px"> 
+                                                       <img src="{{ asset('images/valdusoft/uphold.png') }}" height="36" width="140px">
                                                     @endif
                                                  </td>
                                                  <td class="text-center">{{number_format($payment->amount, 2, ',', '.')}} $</td>
@@ -87,13 +87,13 @@
                               </div>
                               <div class="mr-3">
                                   {{ $payments->links() }}
-                              </div> 
+                              </div>
                          </div>
                      </div>
                  </div>
               </div>
           </div>
-     </div>     
+     </div>
    </div>
  {{-- MODAL --}}
  <div class="modal fade" id="ModalGenerate" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -106,7 +106,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                </div>
-                
+
                <form action="{{ route('payments.generate')}}" method="POST">
                  @csrf
                  <div class="modal-body">
@@ -121,7 +121,7 @@
                               <option value="{{$user->id}}">{{$user->slug}}</option>
                             @endforeach
                       </select>
-                       
+
                       <label class="mt-2">Seleccione la factura</label>
                       <select name="bill_id" required class="form-control">
                             <option value="">Seleccione una factura</option>
@@ -142,30 +142,30 @@
                       <div class="form-group mt-2">
                             <label for="amount">monto</label>
                             <input type="text" name="amount" class="form-control" id="amount" placeholder="monto" required >
-                      </div> 
-                             
+                      </div>
+
                       <div class="form-group">
                             <label for="fee">feed de pago</label>
                             <input type="text" name="fee" class="form-control" id="fee" placeholder="fee" required >
                       </div>
-   
+
                       <div class="form-group">
                            <label for="total">total a pagar</label>
                            <input type="text" name="total" class="form-control" id="total" placeholder="total" required >
                       </div>
-                                                     
+
                       <div class="form-group">
                            <label for="date">Fecha</label>
                            <input type="date" name="date" class="form-control" id="date" required >
-                      </div> 
-                            
+                      </div>
+
                       <div class="modal-footer">
-                         <button type="submit" class="btn btn-primary 
+                         <button type="submit" class="btn btn-primary
                           waves-effect waves-light">Guardar</button>
                           <button type="button" class="btn btn-danger"
-                          data-dismiss="modal">Cancelar</button>          
+                          data-dismiss="modal">Cancelar</button>
                       </div>
-                  </div>    
+                  </div>
              </form>
           </div>
       </div>
