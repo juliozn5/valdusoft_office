@@ -46,7 +46,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 @else
                                     <button class="btn btn-primary mt-1 pb-1" disabled><b>Descargar</b></button>
                                 @endif
-                                
+
                             </div>
                         </div>
                     </div>

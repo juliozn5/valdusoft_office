@@ -42,7 +42,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token'
-        
+
     ];
 
     /**
@@ -72,7 +72,7 @@ class User extends Authenticatable
     public function bills(){
         return $this->hasMany('App\Models\Bill');
     }
-    
+
     //Relación de los empleados con los proyectos
     public function projects(){
         return $this->belongsToMany('App\Models\Project', 'projects_users', 'user_id', 'project_id');
