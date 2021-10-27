@@ -143,6 +143,8 @@ class BillController extends Controller
                return view('admin.bills.show')->with(compact('bill')); 
           }else if (Auth::user()->profile_id == 3){
                return view('employee.showBill')->with(compact('bill'));
+          }else{
+               return view('client.showBill')->with(compact('bill'));
           }
           
      }
@@ -205,13 +207,6 @@ class BillController extends Controller
           });
 
           return redirect()->back()->with('msj-send', 'true');
-     }
-
-
-
-     public function detail()
-     {
-          return view('client.billdetail');
      }
 
      public function saveInvoice(Request $request)

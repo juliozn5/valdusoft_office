@@ -22,9 +22,9 @@
                             </div>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('employee.home') }}"><i class="fa fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('client.home') }}"><i class="fa fa-home"></i></a></li>
                                     <li class="breadcrumb-item"><a href="#">Financiero</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('employee.bills.list') }}">Facturas</a>
+                                    <li class="breadcrumb-item"><a href="{{ route('client.bills.list') }}">Facturas</a>
                                 </ol>
                             </div>
                         </div>
@@ -57,12 +57,8 @@
                                                 <span class="invoice-number">#{{ $bill->id }}</span>
                                             </h4>
                                             <div class="invoice-date-wrapper">
-                                                <p class="invoice-date-title">Fecha de Inicio:</p>
-                                                <p class="invoice-date">{{ date('d-m-Y', strtotime($bill->payroll_employee->payroll->start_date)) }}</p>
-                                            </div>
-                                            <div class="invoice-date-wrapper">
-                                                <p class="invoice-date-title">Fecha de Fin:</p>
-                                                <p class="invoice-date">{{ date('d-m-Y', strtotime($bill->payroll_employee->payroll->dead_line)) }}</p>
+                                                <p class="invoice-date-title">Fecha:</p>
+                                                <p class="invoice-date">{{ date('d-m-Y', strtotime($bill->date)) }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +71,7 @@
                                     <div class="row invoice-spacing">
                                         {{-- Datos del Destinatario --}}
                                         <div class="col-xl-8 p-0">
-                                            <h6 class="mb-2">Empleado:</h6>
+                                            <h6 class="mb-2">Cliente:</h6>
                                             <h6 class="mb-25">{{ $bill->user->name }} {{ $bill->user->last_name }}</h6>
                                             <p class="card-text mb-25">{{ $bill->user->phone }}</p>
                                             <p class="card-text mb-0">{{ $bill->user->email }}</p>
@@ -103,7 +99,7 @@
                                                         @if (!is_null($bill->payments[0]->support))
                                                             <tr>
                                                                 <td class="pr-1">Comprobante del Pago:</td>
-                                                                <td><span class="font-weight-bold"><a href="{{ asset('uploads/images/payment-supports/'.$bill->payments[0]->support) }}" target="_blank">Ver</a></span></td>
+                                                                <td><span class="font-weight-bold"><a href="{{ asset('uploads/images/payments[0]-supports/'.$bill->payments[0]->support) }}" target="_blank">Ver</a></span></td>
                                                             </tr>
                                                         @endif
                                                     </tbody>
@@ -125,36 +121,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                          @foreach ($bill->details as $detail)
                                             <tr class="border-bottom">
-                                                <td class="py-1">Horas acumuladas en la quincena</td>
-                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ $bill->payroll_employee->total_hours }}</span></td>
-                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->price_by_hour, 2, '.', ',') }}$</span></td>
-                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->price_by_hour * $bill->payroll_employee->total_hours, 2, '.', ',') }}$</span></td>
+                                                <td class="py-1">{{ $detail->description }}</td>
+                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ $detail->units }}</span></td>
+                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price, 2, '.', ',') }}$</span></td>
+                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price * $detail->units, 2, '.', ',') }}$</span></td>
                                             </tr>
-                                            @if(!is_null($bill->payroll_employee->bond))
-                                                <tr class="border-bottom">
-                                                    <td class="py-1">{{ $bill->payroll_employee->bond->description }}</td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">1</span></td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->bond->amount, 2, '.', ',') }}$</span></td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->bond->amount, 2, '.', ',') }}$</span></td>
-                                                </tr>
-                                            @endif
-                                            @if(!is_null($bill->payroll_employee->financing))
-                                                <tr class="border-bottom">
-                                                    <td class="py-1">{{ $bill->payroll_employee->financing->description }}</td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">1</span></td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->financing->total_amount, 2, '.', ',') }}$</span></td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->financing->total_amount, 2, '.', ',') }}$</span></td>
-                                                </tr>
-                                            @endif
-                                            @if(!is_null($bill->payroll_employee->financing_payment))
-                                                <tr class="border-bottom">
-                                                    <td class="py-1">{{ $bill->payroll_employee->financing_payment->description }}</td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">1</span></td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->financing_payment->amount, 2, '.', ',') }}$</span></td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">- {{ number_format($bill->payroll_employee->financing_payment->amount, 2, '.', ',') }}$</span></td>
-                                                </tr>
-                                            @endif
+                                          @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -178,7 +152,7 @@
                         <div class="col-xl-3 col-md-4 col-12 invoice-actions mt-md-0 mt-2">
                             <div class="card">
                                 <div class="card-body p-2">
-                                    <a class="btn btn-primary btn-block btn-download-invoice mb-75" href="{{ route('employee.bills.download', $bill->id) }}" target="_blank">
+                                    <a class="btn btn-primary btn-block btn-download-invoice mb-75" href="{{ route('client.bills.download', $bill->id) }}" target="_blank">
                                         <i class="fas fa-download"></i> Descargar
                                     </a>
                                 </div>

@@ -6,10 +6,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
 @section('content')
 
-@include('layouts.partials.navbar')
-
-@include('layouts.partials.sidebar')
-
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -43,16 +39,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <td>{{ $bill->amount }}$</td>
                                             <td>
                                                 @if ($bill->status == 0)
-                                                <label class="label status-label status-label-purple">No Atendido</label>
-                                                @elseif ($bill->status == 1)
-                                                <label class="label status-label status-label-gray">En Proceso</label>
-                                                @elseif ($bill->status == 2)
-                                                <label class="label status-label status-label-blue">Testiando</label>
-                                                @elseif ($bill->status == 3)
-                                                <label class="label status-label status-label-green">Completado</label>
+                                                    <label class="label status-label status-label-purple">Pendiente</label>
+                                                @else
+                                                    <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-                                            <td><a href="{{ route('client.bills.detail') }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
+                                            <td><a href="{{ route('client.bills.show', $bill->id) }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
