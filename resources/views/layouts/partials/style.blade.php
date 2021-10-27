@@ -21,4 +21,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/vendors/css/animate/animate.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/vendors/css/extensions/sweetalert2.min.css') }}">
 
+<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
+
 @stack('custom_css')

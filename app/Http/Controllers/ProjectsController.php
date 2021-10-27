@@ -33,8 +33,9 @@ class ProjectsController extends Controller
             return view('client.projects')
                 ->with('projects', $projects);
         } else if (Auth::user()->profile_id == 3) {
-            $projects = User::find(Auth::id())->projects()->orderBy('id', 'DESC')
-                ->paginate(10);
+            $projects = Project::where('user_id', '=', Auth::id())
+            ->where('status', '!=', '4')
+            ->get();
 
             return view('employee.projects')->with('projects', $projects);
         }
