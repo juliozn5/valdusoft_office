@@ -68,7 +68,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="row">
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="hosting_url">URL</label>
+                                        <label for="hosting_url"><strong>URL</strong></label>
                                         <input name="hosting_url" id="hosting_url" class="form-control @error('hosting_url') is-invalid @enderror">
                                         @error('hosting_url')
                                             <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="date">Fecha de Inicio</label>
+                                        <label for="date"><strong>Fecha de Inicio</strong></label>
                                         <input type="date" name="date" id="date" class="form-control @error('date') is-invalid @enderror">
                                         @error('date')
                                             <span class="invalid-feedback" role="alert">
@@ -90,8 +90,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="date_end">Cantidad de años</label>
-                                        <select name="date_end" id="date_end" class="form-control @error('date_end') is-invalid @enderror" required>
+                                        <label for="date_end"><strong>Cantidad de años</strong></label>
+                                        <select name="date_end" id="date_end" class="form-control @error('date_end') is-invalid @enderror">
                                             <option value="" selected disabled>Seleccione los años para el hosting...</option>
                                             <option value="1" id="date_end">1 Año</option>
                                             <option value="2" id="date_end">2 Años</option>
@@ -106,7 +106,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="client">Cliente</label>
+                                        <label for="client"><strong>Cliente</strong></label>
                                         <select name="client" id="client" class="form-control @error('client') is-invalid @enderror">
                                             <option value="" selected disabled>Seleccione un cliente...</option>
                                             @foreach ($clients as $item)
@@ -144,15 +144,20 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                                  <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="status">Estado</label>
-                                        <select name="status" id="status" class="form-control" required>
+                                        <label for="status"><strong>Estado</strong></label>
+                                        <select name="status" id="status" class="form-control @error('status') is-invalid @enderror" >
                                             <option value="" selected disabled>Seleccione un estado...</option>
                                             <option value="0">Activo</option>
                                             <option value="1">Inactivo</option>
                                         </select>
+                                        @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-4 col-12">
+                                <div class="col-md-4 col-12">
                                     <div class="form-group">
                                         <label for="cpanel_url"><strong>URL Cpanel</strong></label>
                                         <input name="cpanel_url" id="cpanel_url" class="form-control @error('cpanel_url') is-invalid @enderror">
@@ -184,7 +189,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             </span>
                                         @enderror
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="col-12 alert alert-danger" id="errors_div" style="display: none;"></div>
                             </div>
                         </div>

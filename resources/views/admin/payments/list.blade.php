@@ -47,8 +47,8 @@
                                     <table class="table mb-0">
                                         <thead class="thead-light">
                                             <th>FECHA</th>
-                                            <th>USUARIO</th>   
-                                            <th>ID DE FACTURA</th>                                     
+                                            <th>USUARIO</th>
+                                            <th>ID DE FACTURA</th>
                                             <th>PLATAFORMA DE PAGO</th>
                                             <th>ID DE PAGO</th>
                                             <th class="text-center">MONTO</th>
@@ -62,12 +62,12 @@
                                                 <tr>
                                                     <td>{{ date('d-m-Y', strtotime($payment->date)) }}</td>
                                                     <td>{{ $payment->user->name }} {{ $payment->user->last_name }}</td>
-                                                    <td class="text-center">#{{ $payment->bill_id }}</td>                                                            
+                                                    <td class="text-center">#{{ $payment->bill_id }}</td>
                                                     <td class="text-center">
                                                         @if ($payment->payment_method == 'Crypto')
                                                             <img src="{{ asset('images/valdusoft/binance.png') }}" height="30" width="80px">
                                                         @else
-                                                            <img src="{{ asset('images/valdusoft/bancolombia.png') }}" height="30" width="80px"> 
+                                                            <img src="{{ asset('images/valdusoft/bancolombia.png') }}" height="30" width="80px">
                                                         @endif
                                                     </td>
                                                     <td>{{ $payment->payment_id }}</td>
@@ -91,15 +91,15 @@
                                 </div>
                                 <div class="mr-3">
                                     {{ $payments->links() }}
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>     
+        </div>
     </div>
-    
+
     {{-- MODAL --}}
     <div class="modal fade" id="ModalGenerate" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -111,7 +111,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                
+
                 <form method="POST" action="{{ route('admin.payments.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
@@ -122,10 +122,10 @@
                                 @foreach ($bills as $bill)
                                     <option value="{{ $bill->id }}">
                                         #{{ $bill->id }} -  {{ number_format($bill->amount, 2, '.', ',') }}$ -
-                                        @if ($bill->type == 'H') 
+                                        @if ($bill->type == 'H')
                                             {{ $bill->hosting->url }} (Hosting)
                                         @else
-                                            {{ $bill->user->name }} {{ $bill->user->last_name }} 
+                                            {{ $bill->user->name }} {{ $bill->user->last_name }}
                                             @if ($bill->type == 'C')
                                                 (Cliente)
                                             @else
@@ -166,8 +166,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>  
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>    
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
                     </div>
                 </form>
             </div>

@@ -27,7 +27,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             </a>
                             @endforeach
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

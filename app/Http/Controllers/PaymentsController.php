@@ -14,7 +14,8 @@ class PaymentsController extends Controller
 {
     /** Listado de Pagos
     *** Perfil: Admin ***/
-    public function list(){ 
+    public function list()
+    {
         if (Auth::user()->profile_id == 1){
             $payments = Payments::with('user:id,name,last_name')
                             ->orderBy('id', 'DESC')
@@ -25,7 +26,8 @@ class PaymentsController extends Controller
         }
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $bill = Bill::find($request->bill_id);
 
         $payment = new Payments($request->all());
@@ -58,7 +60,7 @@ class PaymentsController extends Controller
                                 ->where('payroll_id', '=', $payrollEmployee->payroll_id)
                                 ->where('status', '=', '0')
                                 ->count();
-            
+
             if ($checkPayroll == 0){
                 DB::table('payrolls')
                     ->where('id', '=', $payrollEmployee->payroll_id)
