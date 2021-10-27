@@ -220,13 +220,13 @@
                                         <div class="project-detail-titles">Miembros</div>
                                     </div>
                                     @foreach ($project->employees as $employee)
-                                    <div class="col-1 mr-1">
+                                    <div class="col-5 mr-1">
                                         <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
                                     </div>
                                     @endforeach
                                     <div class="col-1">
                                         <a href="#availableEmployees" data-toggle="modal">
-                                            <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Miembro" height="50" width="50">
+                                            <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Miembro" height="40" width="40">
                                         </a>
                                     </div>
                                 </div>
