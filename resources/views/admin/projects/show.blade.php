@@ -579,13 +579,10 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <label class="custom-file-label" for="logo">Seleccione un logo</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="logo">Monto</label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="logo" id="logo">
-                                    <label class="custom-file-label" for="logo">Seleccione un logo</label>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="logo">Monto</label>
+                                    <input type="number" class="form-control" name="amount" id="amount" value="{{ $project->amount }}"> 
                                 </div>
                             </div>
                         </div>
