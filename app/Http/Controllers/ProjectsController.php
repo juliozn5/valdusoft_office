@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AccountingTransaction;
+use App\Models\Bill;
 
 class ProjectsController extends Controller
 {
@@ -109,7 +110,10 @@ class ProjectsController extends Controller
      *** Perfil: Admin ***/
     public function show($slug, $id)
     {
+
         if (Auth::user()->profile_id == 1) {
+            $bill = Bill::where('id', '=', Auth::id())->get();
+            
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions', 'bills')
                 ->where('id', '=', $id)
                 ->first();
@@ -178,8 +182,9 @@ class ProjectsController extends Controller
                 ->orderBy('id', 'ASC')
                 ->get();
 
-            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'clients', 'countries', 'tags', 'tagsID', 'budget'));
+            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget'));
         } else if (Auth::user()->profile_id == 2) {
+            
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
                 ->where('id', '=', $id)
                 ->first();

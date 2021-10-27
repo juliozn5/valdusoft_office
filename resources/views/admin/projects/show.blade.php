@@ -387,6 +387,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <div class="table-responsive mt-1">
                                     <table class="table mb-0">
                                         <thead class="thead-light">
+                                           @foreach($bill as $bills)
                                             <tr class="text-center">
                                                 <th>MONTO</th>
                                                 <th>FECHA</th>
@@ -396,15 +397,20 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                         </thead>
                                         <tbody>
                                             <tr class="text-center">
-                                                <th>1</th>
-                                                <th>2021</th>
-                                                <th>1</th>
+                                                <th>{{$bills->amount}}</th>
+                                                <th>{{$bills->date}}</th>
+                                                @if($bills->status == 0)
+                                                <th>Pendiente</th>
+                                                @else($bills->status == 1)
+                                                <th>Pagada</th>
+                                                @endif
                                             </tr>
                                         </tbody>
+                                       @endforeach
                                     </table>
                                 </div>
                             </div>
-                            
+
                             {{-- Pestaña de Contable --}}
                             <div class="tab-pane  @if (Session::has('msj-transaction')) active @else fade @endif" id="accountant">
                                 <h3 class="card-title ml-2">Contable</h3>
