@@ -40,7 +40,11 @@ class Bill extends Model{
         return $this->belongsTo('App\Models\PayrollEmployee');
     }
 
-    public function payment(){
-        return $this->hasOne('App\Models\Payments');
+    public function details(){
+        return $this->hasMany('App\Models\BillDetail');
+    }
+
+    public function payments(){
+        return $this->hasMany('App\Models\Payments');
     }
 }

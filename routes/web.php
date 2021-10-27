@@ -103,6 +103,7 @@ Route::group(['middleware' => ['auth']], function () {
             //MÓDULO FINANCIERO - FACTURAS
             Route::group(['prefix' => 'bills'], function () {
                 Route::get('/', 'BillController@list')->name('admin.bills.list');
+                Route::post('store', 'BillController@store')->name('admin.bills.store');
                 Route::get('show/{id}', 'BillController@show')->name('admin.bills.show');
                 Route::get('download/{id}', 'BillController@download')->name('admin.bills.download');
                 Route::post('send', 'BillController@send')->name('admin.bills.send');

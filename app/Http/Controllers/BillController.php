@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bill;
-use App\Models\User;
-use App\Models\Payrolls;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Bill;
+use App\Models\BillDetail;
+use App\Models\Payrolls;
+use App\Models\Payments;
 use PDF; use DB; use Mail;
+use Carbon\Carbon;
 
 class BillController extends Controller
 {
@@ -22,15 +23,37 @@ class BillController extends Controller
                                    ->orderBy('id', 'DESC')
                                    ->get();
 
-               $client = Bill::all()->where('type', 'C');
-               $hosting = Bill::all()->where('type', 'H');
+               $client_bills = Bill::where('type', 'C')
+                                   ->with('user:id,name,last_name', 'payments')
+                                   ->orderBy('id', 'DESC')
+                                   ->get();
                
+               foreach($client_bills as $cb){
+                    $cb->paid_amount = 0;
+                    foreach ($cb->payments as $p){
+                         $cb->paid_amount += $p->total;
+                    }
+               }
+          
+               $hosting_bills = Bill::where('type', 'H')
+                                   ->with('hosting:id,url')
+                                   ->orderBy('id', 'DESC')
+                                   ->get();
+               
+               $clients = DB::table('users')
+                              ->where('profile_id', '2')
+                              ->where('status', '1')
+                              ->select('id', 'name', 'last_name')
+                              ->orderBy('name', 'DESC')
+                              ->get();
+               
+               $hostings = DB::table('hostings')
+                              ->where('status', '0')
+                              ->select('id', 'url')
+                              ->orderBy('url', 'DESC')
+                              ->get();
 
-               $user_client = User::all()->where('profile_id', '2');
-               $user_employer = User::all()->where('profile_id', '3');
-
-
-               return view('admin.bills.list', compact('client', 'hosting', 'employee_bills', 'user_client', 'user_employer'));
+               return view('admin.bills.list', compact('employee_bills', 'client_bills', 'hosting_bills', 'clients', 'hostings'));
 
           } else if (Auth::user()->profile_id == 2) {
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
@@ -43,9 +66,77 @@ class BillController extends Controller
           }
      }
 
+     public function store(Request $request){
+          $total = $request->partial_total;
+
+          $bill = new Bill();
+          if (!is_null($request->client_id)){
+               $bill->user_id = $request->client_id;
+               $bill->type = 'C';
+          }else{
+               $userHosting = DB::table('hostings')
+                                   ->select('user_id')
+                                   ->where('id', '=', $request->hosting_id)
+                                   ->first();
+               
+               $bill->user_id = $userHosting->user_id;
+               $bill->hosting_id = $request->hosting_id;
+               $bill->type = 'H';
+          }
+          $bill->amount = $request->partial_total;
+          $bill->date = date('Y-m-d');
+          $bill->save();
+
+          for ($i = 0; $i < count($request->description); $i++){
+               $detail = new BillDetail();
+               $detail->bill_id = $bill->id;
+               $detail->description = $request->description[$i];
+               $detail->units = $request->unit[$i];
+               $detail->price = $request->price[$i];
+               $detail->save();
+          }
+          
+          if (!is_null($request->discount)){
+               $payment = new Payments();
+               $payment->bill_id = $bill->id;
+               $payment->user_id = $bill->user_id;
+               $payment->amount = 0;
+               $payment->discount_amount = $request->discount;
+               $payment->total = $request->discount;
+               $payment->discount_description = 'Descuento general de la factura';
+               $payment->date = date('Y-m-d');
+               $payment->status = '1';
+               $payment->save();
+
+               $total -= $payment->total;
+          }
+
+          if (!is_null($request->payed)){
+          
+               $payment2 = new Payments();
+               $payment2->bill_id = $bill->id;
+               $payment2->user_id = $bill->user_id;
+               $payment2->amount = $request->payed;
+               $payment2->total = $request->payed;
+               $payment2->date = date('Y-m-d');
+               $payment2->status = '1';
+               $payment2->save();
+
+               $total -= $payment2->total;
+          }
+
+          if ($total == 0){
+               $bill->status = '1';
+               $bill->payed_at = date('Y-m-d');
+               $bill->save();
+          }
+
+          return redirect()->back()->with('msj-store', 'true');
+     }
+
      public function show($id){
           $bill = Bill::where('id', '=', $id)
-                    ->with('user:id,name,last_name,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payment')
+                    ->with('user:id,name,last_name,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payments')
                     ->first();
 
           if (Auth::user()->profile_id == 1){
@@ -83,11 +174,13 @@ class BillController extends Controller
 
      public function download($bill_id){
           $bill = Bill::where('id', '=', $bill_id)
-                    ->with('user:id,name,last_name,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payment')
+                    ->with('user:id,name,last_name,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payments', 'details')
                     ->first();
 
           if ($bill->type == 'E'){
                $pdf = PDF::loadView('pdfs.payrollEmployeeBill', compact('bill'));
+          }else{
+               $pdf = PDF::loadView('pdfs.clientBill', compact('bill'));
           }
           
           return $pdf->stream('factura_'.$bill->id.'.pdf');

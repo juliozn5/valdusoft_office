@@ -105,34 +105,38 @@
                                                 <p class="card-text mb-0">{{ $bill->user->email }}</p>
                                             @elseif ($bill->type == 'C')
                                                 <h6 class="mb-2">Cliente:</h6>
+                                                <h6 class="mb-25">{{ $bill->user->name }} {{ $bill->user->last_name }}</h6>
+                                                <p class="card-text mb-25">{{ $bill->user->phone }}</p>
+                                                <p class="card-text mb-0">{{ $bill->user->email }}</p>
                                             @else
                                                 <h6 class="mb-2">Hosting:</h6>
+                                                <h6 class="mb-25">{{ $bill->hosting->url }}</h6>
                                             @endif
                                         </div>
 
                                         {{-- Datos del Pago --}}
-                                        @if (!is_null($bill->payment))
+                                        @if ($bill->payments->count() > 0)
                                             <div class="col-xl-4 p-0 mt-xl-0 mt-2">
                                                 <h6 class="mb-2">Detalles del Pago:</h6>
                                                 <table>
                                                     <tbody>
                                                         <tr>
                                                             <td class="pr-1">Método de Pago:</td>
-                                                            <td><span class="font-weight-bold">{{ $bill->payment->payment_method }}</span></td>
+                                                            <td><span class="font-weight-bold">{{ $bill->payments[0]->payment_method }}</span></td>
                                                         </tr>
                                                         <tr>
 
                                                             <td class="pr-1">Billetera / # Cuenta:</td>
-                                                            <td><span class="font-weight-bold">{{ $bill->payment->account }}</span></td>
+                                                            <td><span class="font-weight-bold">{{ $bill->payments[0]->account }}</span></td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pr-1">Identificador del Pago:</td>
-                                                            <td><span class="font-weight-bold">{{ $bill->payment->payment_id }}</span></td>
+                                                            <td><span class="font-weight-bold">{{ $bill->payments[0]->payment_id }}</span></td>
                                                         </tr>
-                                                        @if (!is_null($bill->payment->support))
+                                                        @if (!is_null($bill->payments[0]->support))
                                                             <tr>
                                                                 <td class="pr-1">Comprobante del Pago:</td>
-                                                                <td><span class="font-weight-bold"><a href="{{ asset('uploads/images/payment-supports/'.$bill->payment->support) }}" target="_blank">Ver</a></span></td>
+                                                                <td><span class="font-weight-bold"><a href="{{ asset('uploads/images/payment-supports/'.$bill->payments[0]->support) }}" target="_blank">Ver</a></span></td>
                                                             </tr>
                                                         @endif
                                                     </tbody>
@@ -186,7 +190,14 @@
                                                     </tr>
                                                 @endif
                                             @else
-                                                
+                                                @foreach ($bill->details as $detail)
+                                                    <tr class="border-bottom">
+                                                        <td class="py-1">{{ $detail->description }}</td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ $detail->units }}</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price, 2, '.', ',') }}$</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price * $detail->units, 2, '.', ',') }}$</span></td>
+                                                    </tr>
+                                                @endforeach
                                             @endif
                                         </tbody>
                                     </table>
@@ -217,7 +228,7 @@
                                     <a class="btn btn-primary btn-block btn-download-invoice mb-75" href="{{ route('admin.bills.download', $bill->id) }}" target="_blank">
                                         <i class="fas fa-download"></i> Descargar
                                     </a>
-                                    @if (is_null($bill->payment))
+                                    @if ($bill->status == '0')
                                         <button class="btn btn-success btn-block" data-toggle="modal" data-target="#add-payment">
                                             <i class="fas fa-donate"></i> Agregar Pago
                                         </button>
