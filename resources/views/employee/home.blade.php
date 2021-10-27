@@ -41,7 +41,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="card-body">
                                 <img src="{{ asset('images/figma/group_154.png') }}" class="float-right pl-2" width="120" height="120" alt="">
                                 <h6 class="pt-2">Ultima factura de la quincena</h6>
-                                <a href="#" class="btn btn-primary mt-1 pb-1"><b>descargar</b></a>
+                                <a href="{{ route('employee.bills.download', $lastBill->id) }}" class="btn btn-primary mt-1 pb-1" target="_blank" @if (is_null($lastBill)) disabled @endif><b>Descargar</b></a>
                             </div>
                         </div>
                     </div>

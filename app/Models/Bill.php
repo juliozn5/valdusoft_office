@@ -41,6 +41,6 @@ class Bill extends Model{
     }
 
     public function payment(){
-        return $this->hasOne('App\Models\Payment');
+        return $this->hasOne('App\Models\Payments');
     }
 }

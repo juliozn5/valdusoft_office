@@ -13,10 +13,16 @@ class Payments extends Model
         'user_id',
         'bill_id',
         'payment_method',
+        'payment_id',
         'amount',
         'fee',
         'total',
         'date',
+        'status',
+        'account',
+        'discount_amount',
+        'discount_description',
+        'support'
     ];
 
     public function user(){

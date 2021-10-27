@@ -33,18 +33,27 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                          </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($employes as $item)
-                                         <tr class="text-center">
-                                            <td>{{ date('d-m-Y', strtotime($item->date)) }}</td>
-                                            <td>{{number_format($item->total_amount, 2, ',', '.')}}</td>
-                                            <td>{{number_format($item->financing_paymnets->amount, 2, ',', '.')}}</td>
-                                         </tr>
-                                        @endforeach
+                                        @if (!is_null($financing))
+                                            @if (!is_null($financing->financing_payments))
+                                                @foreach ($financing->f as $item)
+                                                    <tr class="text-center">
+                                                        <td>{{ date('d-m-Y', strtotime($item->date)) }}</td>
+                                                        <td>{{number_format($item->total_amount, 2, ',', '.')}}</td>
+                                                        <td>{{number_format($item->total_payments, 2, ',', '.')}}</td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="3">No tiene abonos aun en su financiamiento...</td>
+                                                </tr>
+                                            @endif
+                                        @else
+                                            <tr>
+                                                <td colspan="3">No tienen ningun financiamiento activo...</td>
+                                            </tr>
+                                        @endif
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="mr-3">
-                                {{$employes->links()}}
                             </div>
                         </div>
                     </div>
