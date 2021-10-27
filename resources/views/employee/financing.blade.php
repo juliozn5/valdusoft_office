@@ -35,11 +35,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <tbody>
                                         @if (!is_null($financing))
                                             @if (!is_null($financing->financing_payments))
-                                                @foreach ($financing->f as $item)
+                                                @foreach ($financing->financing_payments as $item)
                                                     <tr class="text-center">
                                                         <td>{{ date('d-m-Y', strtotime($item->date)) }}</td>
-                                                        <td>{{number_format($item->total_amount, 2, ',', '.')}}</td>
-                                                        <td>{{number_format($item->total_payments, 2, ',', '.')}}</td>
+                                                        <td>{{number_format($financing->total_amount - $accum, 2, ',', '.')}}$</td>
+                                                        <td>{{number_format($item->amount, 2, ',', '.')}}$</td>
                                                     </tr>
                                                 @endforeach
                                             @else

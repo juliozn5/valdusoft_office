@@ -17,7 +17,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="card">
                     <div class="card-header" style="padding:30px 0px 0px 30px;">
                         @if (Auth::user()->photo != NULL)
-                        <a><img class="rounded-circle ml-2" src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
+                        <a><img class="rounded-circle ml-2" src="{{ asset('storage/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
 
                         @else
                         <a><img class="rounded-circle ml-2" src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
@@ -133,34 +133,29 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
 
 
-                    <div class="container px-4">
-                        <div class="row gx-5">
-                            <div class="col">
-                                <div class="mt-5">
-                                    <div class="project-detail-titles">Curriculum Vitae</div>
-                                    <div class="mt-1">
-                                        @if (!is_null($user->curriculum))
-                                        <a href="{{ asset('uploads/documents/curriculums/'.$user->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $user->curriculum }}</a>
-                                        @else
-                                        <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible
-                                        @endif
-                                    </div>
-                                </div>
+                    <div class="container mt-3 " style="padding:0px 0px 0px 50px;">
+                        <div class="row">
+                            <div class="col-6 col-sm-3 project-detail-titles">Curriculum Vitae <a href="#availableCurriculum" data-toggle="modal">
+                                    @if(is_null($user->curriculum))
+                                    <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                                    @else
+                                    <i class="far fa-edit ml-2" style="font-size:21px;"></i>
+                                    @endif
+                                </a>
                             </div>
 
-                            <div class="col-8">
-                                <div class="p-1 mt-5">
-                                    <a href="#availableCurriculum" data-toggle="modal">
-                                        @if(is_null($user->curriculum))
-                                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
-                                        @else
-                                        <i class="far fa-edit ml-2" style="font-size:21px;"></i>
-                                        @endif
-                                    </a>
-                                </div>
+                            <div class="w-100"></div>
+
+                            <div class="col-6 col-sm-2 mt-2"> @if (!is_null($user->curriculum))
+                                <a href="{{ asset('uploads/documents/curriculums/'.$user->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $user->curriculum }}</a>
+                                @else
+                                <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible
+                                @endif
                             </div>
+
                         </div>
                     </div>
+
 
                     <div class="row">
                         <div class="col-md-3 mb-3 col-sm-1 mt-5" style="padding:0px 0px 0px 60px;">
@@ -171,7 +166,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
 
                         <div class="col-3 mt-5">
-                            
+
                             <div class="project-detail-titles">Billetera USDT-TRON</div>
                             <div class="mt-1 project-detail-dates">
                                 <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($user->tron_wallet)) ? 'Dato no disponible' : $user->tron_wallet }} <a href="#availableWallet" data-toggle="modal">
@@ -355,8 +350,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="modal-header bg-primary white">
                     <h5 class="modal-title" id="myModalLabel110">Modificar Billetera</h5>
                     <a data-dismiss="modal" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                        </a>
+                        <i class="fas fa-times"></i>
+                    </a>
                 </div>
                 <form method="POST" action="{{route('employee.profile.update-wallet')}}">
                     @csrf
