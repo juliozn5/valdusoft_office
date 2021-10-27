@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label class="h5" for="amount">Monto <span style="color: red;">*</span></label>
                 <input type="text" class="form-control @error('amount') is-invalid @enderror"
-                    name="amount" placeholder="Ingrese el monto" value="0">
+                    name="amount" placeholder="Ingrese el monto" value="{{$client->hosting->renewal_price}}" readonly>
                 @error('amount')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-            </div>                                                                      
+            </div>
 
         </div>
     </div>

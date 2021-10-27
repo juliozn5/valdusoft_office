@@ -8,7 +8,7 @@ use App\Models\PayrollEmployee;
 use Illuminate\Support\Facades\Auth;
 
 class FinancingController extends Controller
-{   
+{
     /** De Interés - Financiamiento
     *** Perfil: Empleado ***/
     public function list(){
@@ -24,11 +24,11 @@ class FinancingController extends Controller
                 }
             }
         }
-        
+
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon(Auth::user()->admission_date);
         $fechaUser->addYear(1);
 
-        return view('employee.financing')->with(compact('financing', 'fechaUser', 'accum')); 
+        return view('employee.financing')->with(compact('financing', 'fechaUser', 'accum'));
     }
 }
