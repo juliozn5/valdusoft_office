@@ -398,9 +398,9 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                 <th>{{$bills->amount}}</th>
                                                 <th>{{$bills->date}}</th>
                                                 @if($bills->status == 0)
-                                                <th>Pendiente</th>
+                                                <th class="label status-label status-label-purple">Pendiente</th>
                                                 @else($bills->status == 1)
-                                                <th>Pagada</th>
+                                                <th class="label status-label status-label-green">Pagada</th>
                                                 @endif
                                             </tr>
                                         </tbody>
