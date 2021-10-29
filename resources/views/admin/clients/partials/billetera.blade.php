@@ -11,31 +11,31 @@
                     <option value="LTC - LcLq2xtxT6vKoKMbK3gbVN54wyx1BTSRA5">LTC - LcLq2xtxT6vKoKMbK3gbVN54wyx1BTSRA5</option>
                 </select>
                 @error('billetera')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
                 @enderror
             </div>
 
             <div class="form-group">
                 <label class="h5" for="amount">Monto <span style="color: red;">*</span></label>
-                <input type="text" class="form-control @error('amount') is-invalid @enderror"
-                    name="amount" placeholder="Ingrese el monto" value="{{$client->hosting->renewal_price}}" readonly>
+                @if(!empty($client->hosting->renewal_price))
+                <input type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" placeholder="Ingrese el monto" value="{{$client->hosting->renewal_price}}" readonly>
+                @endif
                 @error('amount')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
                 @enderror
             </div>
 
             <div class="form-group">
                 <label class="h5" for="name">Hash <span style="color: red;">*</span></label>
-                <input type="text" class="form-control @error('hash') is-invalid @enderror"
-                    name="hash" placeholder="Ingrese el hash de la transacción">
+                <input type="text" class="form-control @error('hash') is-invalid @enderror" name="hash" placeholder="Ingrese el hash de la transacción">
                 @error('hash')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
                 @enderror
             </div>
 
