@@ -383,9 +383,9 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="tab-pane fade pl-2 pr-2" id="Bills">
                                 <h3 class="card-title">Facturas</h3>
 
-                                <div class="table-responsive mt-1">
+                                <div class="table-responsive mb-2">
                                     <table class="table mb-0">
-                                        <thead class="thead-light">
+                                        <thead class="thead-light mb-2">
                                             <tr class="text-center">
                                                 <th>MONTO</th>
                                                 <th>FECHA</th>
@@ -403,6 +403,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                 <th class="label status-label status-label-green">Pagada</th>
                                                 @endif
                                             </tr>
+                                         
                                         </tbody>
                                         @endforeach
                                     </table>
