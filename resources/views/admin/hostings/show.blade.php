@@ -182,7 +182,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                 Renovaciones
                               </button>
                           </div>
-                      
+
                           <div id="collapseOne" class="collapse p-1" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -309,57 +309,60 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <label for="price"><strong>Precio</strong></label>
-                                <input name="price" id="price"
-                                    class="form-control @error('price') is-invalid @enderror">
-                                @error('price')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        {{-- <hr> --}}
-                        {{-- <div class="row">
-                            <div class="col-sm-6">
-                                <label for="cpanel_url"><strong>URL Cpanel</strong></label>
-                                <input name="cpanel_url" id="cpanel_url" class="form-control @error('cpanel_url') is-invalid @enderror">
-                                @error('cpanel_url')
+                                <div class="form-group">
+                                    <label for="price"><strong>Precio</strong></label>
+                                    <input name="price" id="price"
+                                        class="form-control @error('price') is-invalid @enderror">
+                                    @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="cpanel_email"><strong>Email Cpanel</strong></label>
-                        <input name="cpanel_email" id="cpanel_email"
-                            class="form-control @error('cpanel_email') is-invalid @enderror">
-                        @error('cpanel_email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="col-sm-6 mt-1 mx-auto">
-                        <label for="cpanel_password"><strong>Password Cpanel</strong></label>
-                        <input name="cpanel_password" id="cpanel_password"
-                            class="form-control @error('cpanel_password') is-invalid @enderror">
-                        @error('cpanel_password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div> --}}
-        </div>
-    </div>
-    <br><br>
-    <div class="modal-footer">
-        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
-    </div>
-    </form>
-</div>
-</div>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="cpanel_url"><strong>URL Cpanel</strong></label>
+                                    <input name="cpanel_url" id="cpanel_url" class="form-control @error('cpanel_url') is-invalid @enderror">
+                                    @error('cpanel_url')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                               </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="cpanel_email"><strong>Email Cpanel</strong></label>
+                                    <input name="cpanel_email" id="cpanel_email" class="form-control @error('cpanel_email') is-invalid @enderror">
+                                    @error('cpanel_email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                           </div>
+                           <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="cpanel_password"><strong>Password Cpanel</strong></label>
+                                    <input name="cpanel_password" id="cpanel_password" class="form-control @error('cpanel_password') is-invalid @enderror">
+                                    @error('cpanel_password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                           </div>
+                      </div>
+                  </div>
+                 <br><br>
+                 <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar Cambios</button>
+                 </div>
+               </div>
+            </form>
+       </div>
+   </div>
 </div>
 <!--  MODAL RENOVAR HOSTING  -->
 <div class="modal  fade text-left " id="renovar" tabindex="-1" role="dialog" aria-modal="true">

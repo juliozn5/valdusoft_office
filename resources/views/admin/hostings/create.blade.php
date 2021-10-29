@@ -157,39 +157,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="cpanel_url"><strong>URL Cpanel</strong></label>
-                                        <input name="cpanel_url" id="cpanel_url" class="form-control @error('cpanel_url') is-invalid @enderror">
-                                        @error('cpanel_url')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="cpanel_email"><strong>Email Cpanel</strong></label>
-                                        <input name="cpanel_email" id="cpanel_email" class="form-control @error('cpanel_email') is-invalid @enderror">
-                                        @error('cpanel_email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="cpanel_password"><strong>Password Cpanel</strong></label>
-                                        <input name="cpanel_password" id="cpanel_password" class="form-control @error('cpanel_password') is-invalid @enderror">
-                                        @error('cpanel_password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+
                                 <div class="col-12 alert alert-danger" id="errors_div" style="display: none;"></div>
                             </div>
                         </div>

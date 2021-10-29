@@ -61,9 +61,9 @@ class HostingController extends Controller
             "date_end" => ['required'],
             "price" => ['required'],
             "status" => ['required'],
-            "cpanel_url" => ['required'],
-            "cpanel_email" => ['required'],
-            "cpanel_password" => ['required'],
+            // "cpanel_url" => ['required'],
+            // "cpanel_email" => ['required'],
+            // "cpanel_password" => ['required'],
             "renewal_price" => ['required'],
         ];
 
@@ -76,9 +76,9 @@ class HostingController extends Controller
             'date_end.required' => 'Los Años de vencimiento son requeridos',
             'price.required' => 'El Precio es requerido',
             'status.required' => 'El estado es requerido',
-            'cpanel_url.required' => 'La url del Cpanel es requerida',
-            'cpanel_email.required' => 'El email del Cpanel es requerido',
-            'cpanel_password.required' => 'La contraseña del Cpanel es requerida',
+            // 'cpanel_url.required' => 'La url del Cpanel es requerida',
+            // 'cpanel_email.required' => 'El email del Cpanel es requerido',
+            // 'cpanel_password.required' => 'La contraseña del Cpanel es requerida',
             'renewal_price.required' => 'El precio de renovacion es requerido'
         ];
         // dd($request);
@@ -89,9 +89,9 @@ class HostingController extends Controller
                 $fecha = new Carbon($request->date);
                     $hosting = Hosting::create([
                         'url' => $request->hosting_url,
-                        'cpael_url' => $request->cpanel_url,
-                        'cpanel_email' => $request->cpanel_email,
-                        'cpanel_password' => $request->cpanel_password,
+                        // 'cpael_url' => $request->cpanel_url,
+                        // 'cpanel_email' => $request->cpanel_email,
+                        // 'cpanel_password' => $request->cpanel_password,
                         'create_date' => $request->date,
                         'due_date' => $fecha->addYears($request->date_end),
                         'price' => $request->price,
@@ -176,9 +176,9 @@ class HostingController extends Controller
         $hosting->years = $request->date_end;
         $hosting->price = $request->price;
         $hosting->renewal_price = $request->renewal_price;
-        // $hosting->cpanel_url = $request->cpanel_url;
-        // $hosting->cpanel_email = $request->cpanel_email;
-        // $hosting->cpanel_password = $request->cpanel_password;
+        $hosting->cpanel_url = $request->cpanel_url;
+        $hosting->cpanel_email = $request->cpanel_email;
+        $hosting->cpanel_password = $request->cpanel_password;
 
 
 
