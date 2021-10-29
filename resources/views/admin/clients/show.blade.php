@@ -57,10 +57,12 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     <div class="card">
                         <div class="row ">
                             @foreach ($projects as $item)
-                            <div class="container col-md-2 col-sm-1 mb-2 rounded">
-                                <img src="{{ asset('uploads/images/projects/' . $item->logo) }}" class="mt-2" alt="" style="width:100%;">
-                                <div class="pr-1 mt-2 h4 pb-2 text-center text-white" id="shadow">
-                                    <div style="position: relative;top: 14px;"> {{ $item->name }}</div>
+                            <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
+                                <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <div class=" h4 pb-2 " id="shadow">
+                                        <div class="ml-1  text-white" style="position: relative;top: 14px;"> {{$item->name}}</div><a>
+                                    </div>
                                 </div>
                             </div>
                             @endforeach
@@ -82,7 +84,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <h5 class="card-title text-white mt-1 ">{{$item->url}}</h5>
                                                 <br>
                                                 <p class="card-text h5 text-white ">Fecha de Vencimiento</p>
-                                                
+
                                                 <p class="h4 mt-1 text-white"><i class="fa fa-calendar icon-big mr-1"></i>{{ date('d/m/Y', strtotime($item->due_date)) }}
                                                 </p>
                                                 <a type="button" class="btn margen-b" style="background-color:#FF4D00;color: white;" id="btn-guardar"><img src="{{ asset('images/valdusoft/admin.png') }}" alt="" class="mr-1">Ir al Cpanel</a>
