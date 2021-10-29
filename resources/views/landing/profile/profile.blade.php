@@ -146,7 +146,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                             <div class="w-100"></div>
 
-                            <div class="col-6 col-sm-2 mt-2"> @if (!is_null($user->curriculum))
+                            <div class="col-6 col-sm-3 mt-2"> @if (!is_null($user->curriculum))
                                 <a href="{{ asset('uploads/documents/curriculums/'.$user->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $user->curriculum }}</a>
                                 @else
                                 <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible

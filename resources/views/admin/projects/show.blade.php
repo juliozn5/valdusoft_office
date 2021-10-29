@@ -383,33 +383,33 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="tab-pane fade pl-2 pr-2" id="Bills">
                                 <h3 class="card-title">Facturas</h3>
 
-
-                                <div class="table-responsive mt-1">
+                                <div class="table-responsive mb-2">
                                     <table class="table mb-0">
-                                        <thead class="thead-light">
-                                           @foreach($bill as $bills)
+                                        <thead class="thead-light mb-2">
                                             <tr class="text-center">
                                                 <th>MONTO</th>
                                                 <th>FECHA</th>
                                                 <th>ESTADO</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($bill as $bills)
                                             <tr class="text-center">
                                                 <th>{{$bills->amount}}</th>
                                                 <th>{{$bills->date}}</th>
                                                 @if($bills->status == 0)
-                                                <th>Pendiente</th>
+                                                <th class="label status-label status-label-purple">Pendiente</th>
                                                 @else($bills->status == 1)
-                                                <th>Pagada</th>
+                                                <th class="label status-label status-label-green">Pagada</th>
                                                 @endif
                                             </tr>
+                                         
                                         </tbody>
-                                       @endforeach
+                                        @endforeach
                                     </table>
                                 </div>
                             </div>
+
 
                             {{-- Pestaña de Contable --}}
                             <div class="tab-pane  @if (Session::has('msj-transaction')) active @else fade @endif" id="accountant">
@@ -582,7 +582,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label for="logo">Monto</label>
-                                    <input type="number" class="form-control" name="amount" id="amount" value="{{ $project->amount }}"> 
+                                    <input type="number" class="form-control" name="amount" id="amount" value="{{ $project->amount }}">
                                 </div>
                             </div>
                         </div>
