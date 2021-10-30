@@ -102,7 +102,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <tr>
                                                 <td>
                                                     @if (!is_null($item->photo))
-                                                    <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;" src="{{ asset('/storage/'.$item->photo) }}" />
+                                                    <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;" src="{{ asset('/storage/photo-profile/'.$item->photo) }}" />
                                                     @else
                                                     <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                                     @endif
@@ -166,7 +166,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                     </td>
                                                     <th scope="row">{{ $hosting->url }}</th>
                                                     <td>{{ date('d/m/Y', strtotime($hosting->create_date)) }}</td>
-                                                    <td>{{date('d/m/Y', $hosting->renewal_hosting)}}</td>                                                  
+                                                    <td>{{date('d/m/Y', $hosting->renewal_hosting)}}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

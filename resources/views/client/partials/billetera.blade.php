@@ -19,8 +19,13 @@
 
             <div class="form-group">
                 <label class="h5" for="amount">Monto <span style="color: red;"></span></label>
-                <input type="text" class="form-control @error('amount') is-invalid @enderror"
-                    name="amount" placeholder="Ingrese el monto" value="{{$hosting->renewal_price}}" readonly>
+                @if($hostings->renewal_price = null)
+                    <input type="text" class="form-control @error('amount') is-invalid @enderror"
+                        name="amount" placeholder="Ingrese el monto" value="" readonly>
+                @else
+                    <input type="text" class="form-control @error('amount') is-invalid @enderror"
+                     name="amount" placeholder="Ingrese el monto" value="{{$hostings->renewal_price}}" readonly>
+                @endif
                 @error('amount')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -37,7 +42,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-            </div>                                                                      
+            </div>
 
         </div>
     </div>

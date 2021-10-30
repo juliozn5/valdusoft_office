@@ -16,11 +16,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="content-body">
                 <div class="card">
                     <div class="card-header" style="padding:30px 0px 0px 30px;">
-                        @if (Auth::user()->photo != NULL)
-                        <a><img class="rounded-circle ml-2" src="{{ asset('storage/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
-
+                        @if (Auth::user()->photo === NULL)
+                          <a><img class="rounded-circle ml-2" src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
                         @else
-                        <a><img class="rounded-circle ml-2" src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
+                          <a><img class="rounded-circle ml-2" src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
                         @endif
                         <div class="col ml-1">
                             <h3 class="card-title mb-1" title="Hello from speech bubble!">{{ $user->name }} {{ $user->last_name }}</h3>
@@ -133,7 +132,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
 
 
-                    <div class="container mt-3 " style="padding:0px 0px 0px 50px;">
+                    <div class="container mt-3 ">
                         <div class="row">
                             <div class="col-6 col-sm-3 project-detail-titles">Curriculum Vitae <a href="#availableCurriculum" data-toggle="modal">
                                     @if(is_null($user->curriculum))
@@ -371,7 +370,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 </div>
 
 <!--Modificar Skills-->
-<!-- 
+<!--
     <div class="modal fade text-left" id="availableSkills" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
