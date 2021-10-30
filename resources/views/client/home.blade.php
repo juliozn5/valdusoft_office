@@ -19,15 +19,15 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                         @if ($item->status != 4)
                         <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
 
-                            @if ($item->logo === NULL)
+                            @if (!is_null($item->logo))
                             <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
 
                             @else
-                            <img class="card-img-top"  src="{{ asset('/images/figma/recomiendo.png') }}"  >
+                            <img class="card-img-top" src="{{ asset('/images/figma/recomiendo.png') }}">
                             @endif
 
                             <div class="card-body">
-                                <div class="pr-1  h4 pb-2 text text-white ml-2" id="shadow">
+                                <div class="pr-1  h4 pb-2 text text-white" id="shadow">
                                     <div style="position: relative;top: 14px;" class="ml-1">{{$item->name}}</div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                         <thead class="thead-light ">
                             <th class="">FECHA</th>
                             <th class="text-center">ESTADO</th>
-                            <th class="text-center">DESCRIPCIÓN</th>
+                            <th class="text-center">ACCION</th>
                             <th class="text-center">MONTO</th>
                         </thead>
                         <tbody>
@@ -60,7 +60,11 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                     <label class="label status-label status-label-gray">Pagada</label>
                                     @endif
                                 </td>
-                                <td class="text-center">{{ $client->description }}</td>
+                                <td class="text-center">
+                                    <div class="row">
+                                        <div class="col "><a href="{{ route('client.bills.show', $client->id) }}"><i class="fas fa-eye"></i></a></div>
+                                        <div class="col "><a href="{{ route('client.bills.download', $client->id) }}" target="_black"><i class="fas fa-download"></i></a></div>
+                                </td>
                                 <td class="text-center">{{ $client->amount }}$</td>
                             </tr>
                             @endforeach
