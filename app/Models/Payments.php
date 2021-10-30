@@ -13,13 +13,24 @@ class Payments extends Model
         'user_id',
         'bill_id',
         'payment_method',
+        'payment_id',
         'amount',
         'fee',
         'total',
         'date',
+        'status',
+        'account',
+        'discount_amount',
+        'discount_description',
+        'support'
     ];
+
     public function user(){
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function bill(){
+        return $this->belongsTo('App\Models\Bill');
     }
   
 }

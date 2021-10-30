@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Chat;
 use App\Events\NuevoMensaje;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ChatForm extends Component
 {
@@ -35,8 +35,7 @@ class ChatForm extends Component
     public function mount()
     {                
         // Instanciamos Faker
-        //$this->faker = \Faker\Factory::create();       
-        $this->project = 7;
+        //$this->faker = \Faker\Factory::create();  
         $this->user = Auth::user()->name." ".Auth::user()->last_name;     
         $this->user_id = Auth::user()->id;       
     }

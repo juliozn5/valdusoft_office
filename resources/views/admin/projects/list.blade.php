@@ -48,7 +48,9 @@
                                         <tr>
                                             <th scope="row">{{ $project->id }}</th>
                                             <td>{{ $project->name }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($project->start_date)) }}</td>
+                                            <td>
+                                                {{ (is_null($project->start_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->start_date)) }}
+                                            </td>
                                             <td>
                                                 {{ (is_null($project->ending_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->ending_date)) }}
                                             </td>
@@ -61,6 +63,8 @@
                                                 <label class="label status-label status-label-blue">Testiando</label>
                                                 @elseif ($project->status == 3)
                                                 <label class="label status-label status-label-green">Completado</label>
+                                                @elseif ($project->status == 4)
+                                                <label class="label status-label status-label-red">Eliminado</label>
                                                 @endif
                                             </td>
                                             <td>

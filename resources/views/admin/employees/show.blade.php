@@ -7,6 +7,7 @@
     });
 </script>
 @endif
+
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -34,7 +35,12 @@
                         <div class="card-header">
                             <div class="row" style="display: flex; align-items: center;">
                                 <div class="col-md-4">
-                                    <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->fullname }}" height="100" width="100">
+                                    @if (!is_null($employee->photo))
+                                    <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="80" width="80">
+                                    @else
+                                    <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
+                                    @endif
+                                    
                                 </div>
                                 <div class="col-md-8">
                                     <h3 class="card-title">{{ $employee->name }} {{ $employee->last_name }}</h3>
@@ -42,16 +48,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body" style="padding: 0px 0px !important;">
+                        <div class="card-body" >
                             {{-- Sección de Proyectos Asignados --}}
-                            <div class="pl-2 pr-2">
+                            <div class="pl-4 pr-2 mt-1">
                                 <div class="project-detail-titles">Proyectos Asignados</div>
                                 <div class="mt-1">
                                     @php $cont = 0; @endphp
                                     @foreach ($employee->projects as $project)
                                     <a href="">
                                         <div class="text-center text-white d-inline-block mr-1">
-                                            <div class="project-circle" style="background-color: {{ $projectColors[$cont] }};">P{{ $project->id }}</div>
+                                            <a href="{{ route('admin.projects.show', [$project->slug, $project->id]) }}"><div class="project-circle text-white" style="background-color: {{ $projectColors[$cont] }};"> P{{ $project->id }}</div></a>
                                         </div>
                                     </a>
                                     @php
@@ -71,45 +77,47 @@
                             </div>
 
                             {{-- Sección de Fechas --}}
-                            <div class="row mt-3 pl-2 pr-2">
-                                <div class="col-2">
+                            <div class="row mt-3 pl-4 pr-2">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Fecha de Nacimiento</div>
                                     <div class="mt-1 project-detail-dates">
                                         <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->birthdate)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->birthdate)) }}
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Fecha de Ingreso</div>
                                     <div class="mt-1 project-detail-dates">
                                         <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->admission_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->admission_date)) }}
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Próximas Vacaciones</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i> 29/12/1992
+                                        <i class="far fa-calendar icon-big mr-1"></i>{{
+                                        (is_null($fechaUser)) ? 'Dato no disponible' : date('d-m-Y', strtotime($fechaUser)) }}
+
                                     </div>
                                 </div>
                             </div>
 
                             {{-- Sección de Skills --}}
-                            <div class="mt-3 pl-2 pr-2">
+                            <div class="mt-3 pl-4 pr-2">
                                 <div class="project-detail-titles">Skills</div>
                                 <div class="mt-1">
-                                    @if (!is_null($employee->skills))
-                                        @foreach ($employee->skills as $skill)
-                                            <div class="text-center text-white d-inline-block mr-1">
-                                                <div class="project-detail-skill">{{ $skill->skill }}</div>
-                                            </div>
-                                        @endforeach
+                                    @if ($employee->skills_count)
+                                    @foreach ($employee->skills as $skill)
+                                    <div class="text-center text-white d-inline-block mr-1">
+                                        <div class="project-detail-skill">{{ $skill->skill }}</div>
+                                    </div>
+                                    @endforeach
                                     @else
-                                        El empleado no posee ningún skill asociado
+                                    El empleado no posee ningún skill asociado
                                     @endif
                                 </div>
                             </div>
 
                             {{-- Sección de Curriculum --}}
-                            <div class="mt-3 pl-2 pr-2">
+                            <div class="mt-3 pl-4 pr-2">
                                 <div class="project-detail-titles">Curriculum Vitae</div>
                                 <div class="mt-1">
                                     @if (!is_null($employee->curriculum))
@@ -121,8 +129,8 @@
                             </div>
 
                             {{-- Sección de Sueldo --}}
-                            <div class="row mt-3 pl-2 pr-2">
-                                <div class="col-2">
+                            <div class="row mt-3 pl-4 pr-2">
+                                <div class="col-3">
                                     <div class="project-detail-titles">Precio por hora</div>
                                     <div class="mt-1 project-detail-dates">
                                         <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($employee->price_per_hour)) ? 'Dato no disponible' : $employee->price_per_hour.' USD' }}
@@ -131,7 +139,17 @@
                                 <div class="col-3">
                                     <div class="project-detail-titles">Billetera USDT-TRON</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <img src="{{ asset('images/icons/uphold.png') }}" class="mr-1"> {{ (is_null($employee->tron_wallet)) ? 'Dato no disponible' : $employee->tron_wallet }}
+                                        <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($employee->tron_wallet)) ? 'Dato no disponible' : $employee->tron_wallet }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Sección de Sueldo --}}
+                            <div class="row mt-3 pl-4 pr-2">
+                                <div class="col-6">
+                                    <div class="project-detail-titles">Financiamiento</div>
+                                    <div class="mt-1 project-detail-dates">
+                                        <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($financiamiento)) ? 'Dato no disponible' : $financiamiento.' USD' }}
                                     </div>
                                 </div>
                             </div>
@@ -139,53 +157,40 @@
                             <div class="mt-3">
                                 <hr>
                                 <br>
-                                <button type="button" class="btn btn-primary ml-2">Facturas</button>
+                                <h2 class="h3 ml-2">Facturas</h2>
 
                                 <div class="table-responsive pt-2">
                                     <table class="table">
-                                        <thead class="thead-light">
+                                        <thead class="thead-light text-center">
                                             <th>ID</th>
                                             <th>FECHA</th>
-                                            <th>DESCRIPCIÓN</th>
                                             <th>MONTO</th>
+                                            <th>ESTADO</th>
+                                            <th>ACCIÓN</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>001</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>002</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>003</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>004</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>005</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
-                                            <tr>
-                                                <td>006</td>
-                                                <td>05 May 2021</td>
-                                                <td><span style="color: #650865; font-size: 15px; font-weight: 500;">Pago de ejemplo</span><br>Completado</td>
-                                                <td>640$</td>
-                                            </tr>
+                                            @foreach ($facturas as $factura)
+                                            <tr class="text-center">
+                                                <td>{{$factura->id}}</td>
+                                                <td>{{$factura->date}}</td>
+                                                <td>{{$factura->amount}}$</td>
+                                                <td>
+                                                    @if($factura->status == '0')
+                                                        <div class="badge badge-warning">
+                                                            En Espera
+                                                        </div>
+                                                    @elseif($factura->status == '1')
+                                                        <div class="badge badge-success">
+                                                            Pagado
+                                                        </div>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="" class="btn btn-primary waves-effect waves-light" title="Ver Factura"><i class="fa fa-eye"></i></a>
+                                                    <a href="" class="btn btn-primary waves-effect waves-light" title="Descargar Factura"><i class="fa fa-download"></i></a>
+                                                </td>
+                                            </tr> 
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

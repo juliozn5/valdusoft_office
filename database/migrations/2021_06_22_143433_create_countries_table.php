@@ -17,6 +17,7 @@ class CreateCountriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('abbreviation')->nullable();
+            $table->integer('phonecode');
             $table->timestamps();
         });
     }

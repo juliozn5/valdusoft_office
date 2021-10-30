@@ -37,12 +37,33 @@
                                     <tbody>
                                         @foreach ($employees as $employee)
                                         <tr>
-                                            <td><img class="rorounded-circleund" width="50px" height="50px" src="{{ asset('images/valdusoft/valdusoft.png') }}" /></td>
+                                            <td>
+                                                @if (isset($employee->photo))
+                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/'.$employee->photo) }}" />
+                                                @else
+                                                <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                @endif
+                                            </td>
                                             <td>{{ $employee->name }}</td>
                                             <td>{{ $employee->last_name }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($employee->birthdate)) }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($employee->admission_date)) }}</td>
-                                            <td><a href="{{ route('admin.employees.show', [$employee->slug, $employee->id]) }}"><i class="fa fa-eye"></i></a></td>
+                                            <td>
+                                                @if (!is_null($employee->birthdate))
+                                                    {{ date('d-m-Y', strtotime($employee->birthdate)) }}
+                                                @else
+                                                    Dato no disponible
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if (!is_null($employee->admission_date))
+                                                    {{ date('d-m-Y', strtotime($employee->admission_date)) }}
+                                                @else
+                                                    Dato no disponible
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.employees.show', [$employee->slug, $employee->id]) }}"><i class="fa fa-eye mr-1"></i></a>
+                                                <a href="{{ route('admin.employees.edit', $employee->id) }}"><i class="fa fa-edit"></i></a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -14,7 +14,6 @@ class AccountingTransaction extends Model
     protected $fillable = [
         'project_id',
         'description',
-        'type',
         'amount',
         'date',
         'status'

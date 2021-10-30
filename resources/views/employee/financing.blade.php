@@ -25,28 +25,35 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class="thead-gris">
-                                        <tr>
-                                            <th>FECHA</th>
-                                            <th>DEUDA</th>
-                                            <th>ABONO</th>
-                                            <th>PEDIENTE</th>
-                                        </tr>
+                                      <thead class="thead-gris text-center">
+                                         <tr>
+                                           <th>FECHA</th>
+                                           <th>DEUDA</th>
+                                           <th>ABONO</th>
+                                         </tr>
                                     </thead>
-                                    <tbody>  
-                                    @foreach ($employes as $item)
-                                        <tr>
-                                        <td>{{date('d/m/Y', strtotime($item->date))}}</td>
-                                        <td>{{$item->total_hours}}</td>
-                                        <td>{{$item->price_by_hour}}</td>
-                                        <td>{{$item->total_amount}}</td>
-                                        </tr>
-                                    @endforeach
+                                    <tbody>
+                                        @if (!is_null($financing))
+                                            @if (!is_null($financing->financing_payments))
+                                                @foreach ($financing->financing_payments as $item)
+                                                    <tr class="text-center">
+                                                        <td>{{ date('d-m-Y', strtotime($item->date)) }}</td>
+                                                        <td>{{number_format($financing->total_amount - $accum, 2, ',', '.')}}$</td>
+                                                        <td>{{number_format($item->amount, 2, ',', '.')}}$</td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="3">No tiene abonos aun en su financiamiento...</td>
+                                                </tr>
+                                            @endif
+                                        @else
+                                            <tr>
+                                                <td colspan="3">No tienen ningun financiamiento activo...</td>
+                                            </tr>
+                                        @endif
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="mr-3">
-                                {{$employes->links()}}
                             </div>
                         </div>
                     </div>
@@ -54,16 +61,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="col-md-4 col-sm-12">
                     <div class="card">
                         <div class="">
-                            <div class="card-body">
+                            <div class="card-body p-1">
                                 <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="120" height="120" alt="">
-                                <h5 class="pt-2">Proximas <br> Vacaciones</h5>
+                                <h5 class="pt-2">Próximas <br> Vacaciones</h5>
                                 <br>
-                                <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>30 Agosto</p>
+                                <p class="h4 " id="holidays-date"><i class="far fa-calendar icon-big mr-1"></i>{{$fechaUser->toDateString()}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-    </div>
+           </div>
+     </section>
+   </div>
 </div>
 @endsection

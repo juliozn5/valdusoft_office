@@ -3,6 +3,7 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
+
         $('.delete-attachment').on('click', function() {
             var id = $(this).attr('data-id').split("-");
             Swal.fire({
@@ -47,14 +48,14 @@
         $("#file_type option[value=" + $attachment.file_type + "]").attr("selected", true);
     }
 
-    function changeTransactionType($type) {
+    /*function changeTransactionType($type) {
         $("#type option[value=" + $type + "]").attr("selected", true);
         if ($type == '+') {
             $("#transaction_type_button").html('Ingreso');
         } else {
             $("#transaction_type_button").html('Egreso');
         }
-    }
+    }*/
 
     function addTransaction() {
         if ($("#amount").val() == "") {
@@ -156,13 +157,13 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
         <div class="content-body">
             <div class="row" id="table-head">
                 {{-- Sección Izquierda --}}
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                     <div class="card">
                         <div style="height: 300px;">
                             @if (!is_null($project->logo))
                             <img src="{{ asset('uploads/images/projects/'.$project->logo) }}" width="100%" height="100%">
                             @else
-                            <img src="{{ asset('images/image.png') }}" width="100%" height="100%">
+                            <img src="{{ asset('images/logo.webp') }}" width="100%">
                             @endif
                         </div>
 
@@ -176,6 +177,27 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 </div>
                             </div>
 
+                            @if (Auth::user()->profile_id == 1)
+                            <div class="row mt-3">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-6 text-right" style="padding-right: 3px; padding-left: 3px;">
+                                    <div class="project-detail-titles">Presupuesto |</div>
+                                    <div class="mt-1 project-detail-dates">{{ number_format($project->amount, 0, ',', '.') }}$ |</div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-6 text-left" style="padding-right: 3px; padding-left: 3px;">
+                                    <div class="project-detail-titles">Beneficio</div>
+                                    <div class="mt-1 project-detail-dates">{{ number_format($budget['benefit'], 0, ',', '.') }}$</div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-6 text-right" style="padding-right: 3px; padding-left: 3px;">
+                                    <div class="project-detail-titles">Asignado |</div>
+                                    <div class="mt-1 project-detail-dates">{{ number_format($budget['assigned'], 0, ',', '.') }}$ |</div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-6 text-left" style="padding-right: 3px; padding-left: 3px;">
+                                    <div class="project-detail-titles">Costo</div>
+                                    <div class="mt-1 project-detail-dates">{{ number_format($budget['cost'], 0, ',', '.') }}$</div>
+                                </div>
+                            </div>
+                            @endif
+
                             {{-- Sección de Cliente --}}
                             <div class="row mt-2">
                                 <div class="col-6">
@@ -187,7 +209,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <div class="col-6">
                                     <div class="project-detail-titles">País</div>
                                     <div class="mt-1 project-detail-dates">
-                                       @if (!is_null($project->country_id)) {{ $project->country->name }} @else No Definido @endif
+                                        @if (!is_null($project->country_id)) {{ $project->country->name }} @else No Definido @endif
                                     </div>
                                 </div>
                             </div>
@@ -198,13 +220,13 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <div class="project-detail-titles">Miembros</div>
                                 </div>
                                 @foreach ($project->employees as $employee)
-                                <div class="col-1 mr-1">
+                                <div class="col-5 mr-1">
                                     <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
                                 </div>
                                 @endforeach
                                 <div class="col-1">
                                     <a href="#availableEmployees" data-toggle="modal">
-                                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Miembro" height="50" width="50">
+                                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Miembro" height="40" width="40">
                                     </a>
                                 </div>
                             </div>
@@ -244,7 +266,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                             {{-- Sección de Status --}}
                             <div class="row mt-2">
-                                <div class="col-12">
+                                <div class="col-4">
                                     <div class="project-detail-titles">Estado</div>
                                     <div class="mt-1 project-detail-dates">
                                         @if ($project->status == 0)
@@ -258,13 +280,24 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                         @endif
                                     </div>
                                 </div>
+
+                                <div class="col-8">
+                                    <div class="project-detail-titles">Etiquetas</div>
+                                    <div class="mt-1">
+                                        @foreach ($project->tags as $tag)
+                                        <div class="text-center text-white d-inline-block mr-1 pb-1">
+                                            <div class="project-detail-skill">{{ $tag->name }}</div>
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {{-- Sección Derecha --}}
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                     <div class="card">
                         <div class="pt-2 pl-2 pr-2 pb-0">
                             <ul class="nav nav-pills nav-justified">
@@ -272,10 +305,13 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <a class="nav-link nav-link-pills  @if (!Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#attachments">Adjuntos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat">Chat</a>
+                                    <a class="nav-link nav-link-pills" data-toggle="tab" id="scrolling" href="#chat">Chat</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link nav-link-pills  @if (Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#accountant">Contable</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link-pills  @if (Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#Bills">Facturas</a>
                                 </li>
                             </ul>
                         </div>
@@ -291,16 +327,24 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <div class="col-4 pt-1">
                                         @if ($attachment->file_type == 'image')
                                         <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
-                                            <img src="{{ asset('uploads/attachments/'.$attachment->file_name) }}" alt="{{ $attachment->name }}" width="100%" height="200px">
+                                            <img src="{{ asset('images/icons/files/image.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="img">
                                         </a>
-                                        @else
+                                        @elseif($attachment->file_type == 'pdf')
                                         <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
-                                            <img src="{{ asset('images/pdf.png') }}" alt="{{ $attachment->name }}" width="100%">
+                                            <img src="{{ asset('images/icons/files/pdf.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="pdf">
+                                        </a>
+                                        @elseif($attachment->file_type == 'excel')
+                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                            <img src="{{ asset('images/icons/files/excel.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="excel">
+                                        </a>
+                                        @elseif($attachment->file_type == 'ppt')
+                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}" target="_blank">
+                                            <img src="{{ asset('images/icons/files/powerpoint.png') }}" alt="{{ $attachment->name }}" width="80px" height="80px" alt="ppt">
                                         </a>
                                         @endif
                                     </div>
                                     <div class="col-8 pt-1">
-                                        <div style="font-size: 12px; font-weight: 500; color: #3C3232;">{{ $attachment->name }}</div>
+                                        <div style="font-size: 12px; font-weight: 500; color: #3C3232;">{{ $attachment->name }} - {{$attachment->file_type }}</div>
 
                                         <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
                                             Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
@@ -328,10 +372,44 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="tab-pane fade pl-2 pr-2" id="chat">
                                 <h3 class="card-title">Chat</h3>
 
-                                @livewire("chat-list")
+                                @livewire("chat-list", ['project' => $project->id])
 
-                                @livewire("chat-form")
+                                @livewire("chat-form", ['project' => $project->id])
+
                             </div>
+
+
+                            {{-- Pestaña Para facturas --}}
+                            <div class="tab-pane fade pl-2 pr-2" id="Bills">
+                                <h3 class="card-title">Facturas</h3>
+
+                                <div class="table-responsive mb-2">
+                                    <table class="table mb-0">
+                                        <thead class="thead-light mb-2">
+                                            <tr class="text-center">
+                                                <th>MONTO</th>
+                                                <th>FECHA</th>
+                                                <th>ESTADO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($bill as $bills)
+                                            <tr class="text-center">
+                                                <th>{{$bills->amount}}</th>
+                                                <th>{{$bills->date}}</th>
+                                                @if($bills->status == 0)
+                                                <th class="label status-label status-label-purple">Pendiente</th>
+                                                @else($bills->status == 1)
+                                                <th class="label status-label status-label-green">Pagada</th>
+                                                @endif
+                                            </tr>
+                                         
+                                        </tbody>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            </div>
+
 
                             {{-- Pestaña de Contable --}}
                             <div class="tab-pane  @if (Session::has('msj-transaction')) active @else fade @endif" id="accountant">
@@ -363,15 +441,9 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($transaction->type == '+')
-                                                    <span class="text-success">
-                                                        {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
-                                                    </span>
-                                                    @else
                                                     <span class="text-danger">
-                                                        {{ $transaction->type }} {{ number_format($transaction->amount, 2, ',', '.') }}
+                                                        - {{ number_format($transaction->amount, 2, ',', '.') }}
                                                     </span>
-                                                    @endif
                                                 </td>
                                                 <td>
                                                     <a href="#editTransaction" data-toggle="modal" onclick="editTransaction({{ $transaction }});"><i class="fa fa-edit mr-1 action-icon"></i></a>
@@ -393,13 +465,13 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="amount" placeholder="0.00">
                                                 <div class="input-group-append">
-                                                    <button type="button" class="btn btn-secondary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" id="transaction_type_button">
-                                                        Ingreso
+                                                    <button type="button" class="btn btn-secondary waves-effect waves-light" id="transaction_type_button" disabled>
+                                                        Egreso
                                                     </button>
-                                                    <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end">
-                                                        <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a>
-                                                        <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('-');">Egreso</a>
-                                                    </div>
+                                                    {{-- <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end">
+                                                            <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a> 
+                                                            <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('-');">Egreso</a>
+                                                        </div>--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -407,6 +479,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                             <button class="btn btn-info mb-2 waves-effect waves-light" onclick="addTransaction();">Guardar</button>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -416,6 +489,9 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
         </div>
     </div>
 </div>
+
+
+
 
 {{-- Modal para editar datos del proyecto --}}
 <div class="modal fade text-left" id="editProject" tabindex="-1" role="dialog" aria-modal="true">
@@ -443,6 +519,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="form-group">
                                 <label for="user_id">Cliente</label>
                                 <select name="user_id" id="projet_user_id" class="form-control">
+                                    <option value="" selected disabled>Seleccione un cliente...</option>
                                     @foreach ($clients as $client)
                                     <option value="{{ $client->id }}">{{ $client->name }} {{ $client->last_name }}</option>
                                     @endforeach
@@ -453,6 +530,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="form-group">
                                 <label for="country">País</label>
                                 <select name="country_id" id="project_country_id" class="form-control">
+                                    <option value="" selected disabled>Seleccione un país...</option>
                                     @foreach ($countries as $country)
                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                                     @endforeach
@@ -475,6 +553,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             <div class="form-group">
                                 <label for="type">Tipo</label>
                                 <select name="type" id="project_type" class="form-control">
+                                    <option value="" selected disabled>Seleccione un tipo...</option>
                                     <option value="Fijo">Fijo</option>
                                     <option value="Entrega">Entrega</option>
                                 </select>
@@ -498,6 +577,31 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="logo" id="logo">
                                     <label class="custom-file-label" for="logo">Seleccione un logo</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="logo">Monto</label>
+                                    <input type="number" class="form-control" name="amount" id="amount" value="{{ $project->amount }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="pb-1"><label for="tags">Etiquetas</label></div>
+                                <div class="row ml-1">
+                                    @foreach ($tags as $tag)
+                                    @php
+                                    $check = 0;
+                                    if (in_array($tag->id, $tagsID)){
+                                    $check = 1;
+                                    }
+                                    @endphp
+                                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                                        <input type="checkbox" class="form-check-input skills" value="{{ $tag->id }}" name="tags[]" @if ($check==1) checked @endif>
+                                        <label class="form-check-label">{{ $tag->name }}</label>
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -713,22 +817,13 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <input type="text" name="description" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="amount">Monto</label>
                                 <input type="text" name="amount" id="amount-hidden" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="type">Tipo</label>
-                                <select name="type" id="type" class="form-control" required>
-                                    <option value="+" selected>Ingreso</option>
-                                    <option value="-">Egreso</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="status">Estado</label>
                                 <select name="status" class="form-control" required>
@@ -770,7 +865,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <input type="text" name="description" id="description" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="status">Estado</label>
                                 <select name="status" id="status" class="form-control" required>

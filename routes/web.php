@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('config:clear');
     $exitCode = Artisan::call('cache:clear');
     $exitCode = Artisan::call('config:cache');
     return 'DONE'; //Return anything
 });
 
-Route::get('chat', function () {
-    return view('chat');
-});
+Route::get('bill', 'BillController@prueba');
 Auth::routes();
 
 // USUARIO LOGUEADO
@@ -34,9 +33,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('profile', 'ProfileController@edit')->name('profile');
     Route::patch('profile-update', 'ProfileController@update')->name('profile.update');
+    Route::post('profile-update', 'ProfileController@updatePhoto')->name('profile.updates');
 
     Route::get('change-password', 'ChangePasswordController@index');
     Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
+    Route::post('change', 'ChangePasswordController@change')->name('change-password');
 
     //LISTADO DE RUTAS PARA EL ADMINISTRADOR
     Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'profile'], 'profile' => ['1']], function () {
@@ -70,6 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('store', 'ClientsController@store')->name('admin.clients.store');
             Route::patch('update/{id}', 'ClientsController@update')->name('admin.clients.update');
             Route::delete('delete/{id}', 'ClientsController@delete')->name('admin.clients.delete');
+          
         });
 
         //MÓDULO DE EMPLEADOS
@@ -77,6 +80,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', 'EmployeesController@list')->name('admin.employees.list');
             Route::get('create', 'EmployeesController@create')->name('admin.employees.create');
             Route::post('store', 'EmployeesController@store')->name('admin.employees.store');
+            Route::patch('update/{employee}', 'EmployeesController@update')->name('admin.employees.update');
+            Route::get('edit/{employee}', 'EmployeesController@edit')->name('admin.employees.edit');
             Route::get('show/{slug}/{id}', 'EmployeesController@show')->name('admin.employees.show');
             Route::post('assign-projects', 'EmployeesController@assign_projects')->name('admin.employees.assign-projects');
         });
@@ -98,50 +103,64 @@ Route::group(['middleware' => ['auth']], function () {
             //MÓDULO FINANCIERO - FACTURAS
             Route::group(['prefix' => 'bills'], function () {
                 Route::get('/', 'BillController@list')->name('admin.bills.list');
-                Route::get('bill', 'BillController@BillList')->name('admin.bills.BillList');
-
+                Route::post('store', 'BillController@store')->name('admin.bills.store');
+                Route::get('show/{id}', 'BillController@show')->name('admin.bills.show');
+                Route::get('download/{id}', 'BillController@download')->name('admin.bills.download');
+                Route::post('send', 'BillController@send')->name('admin.bills.send');
             });
 
             //MÓDULO FINANCIERO - NÓMINA
             Route::group(['prefix' => 'payroll'], function () {
                 Route::get('/', 'PayrollController@list')->name('admin.payrolls.list');
-                Route::get('generate', 'PayrollController@generate')->name('admin.payrolls.generate');
-                Route::get('DetailPayroll', 'PayrollController@DetailPayroll')->name('admin.payrolls.DetailPayroll');
-                Route::post('update', 'PayrollController@update')->name('admin.payrolls.updatePayroll');
-                Route::get('PayrollList', 'PayrollController@PayrollList')->name('admin.payrolls.PayrollList');
- 
-                Route::post('upgenerate', 'PayrollEmployeeController@upgenerate')->name('admin.payrolls.upgenerate');
-
+                Route::get('create', 'PayrollController@create')->name('admin.payrolls.create');
+                Route::post('store', 'PayrollController@store')->name('admin.payrolls.store');
+                Route::get('show/{id}', 'PayrollController@show')->name('admin.payrolls.show');
+                Route::get('edit/{id}', 'PayrollController@edit')->name('admin.payrolls.edit');
+                Route::post('update', 'PayrollController@update')->name('admin.payrolls.update');
+                Route::get('store-bills/{payroll_id}', 'BillController@store_payrolls_bills')->name('admin.payrolls.store-bills');
+                Route::get('export/{id}', 'PayrollController@export')->name('admin.payrolls.export');
             });
 
             //MÓDULO FINANCIERO - PAGOS
             Route::group(['prefix' => 'payments'], function () {
                 Route::get('/', 'PaymentsController@list')->name('admin.payments.list');
-                Route::get('billpayment', 'PaymentsController@billpayment')->name('admin.payments.billpayment');
+                Route::post('store', 'PaymentsController@store')->name('admin.payments.store');
             });
         });
+
+        Route::get('dataGrafica', 'AdminController@dataGrafica')->name('dataGrafica');
+        Route::post('', 'BillController@saveInvoice')->name('save-invoice');
     });
 
     //LISTADO DE RUTAS PARA EL CLIENTE
     Route::group(['prefix' => 'client', 'middleware' => ['auth', 'profile'], 'profile' => ['2']], function () {
         Route::get('/', 'ClientsController@index')->name('client.home');
 
+        
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('client.projects.list');
+            Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('client.projects.show')->middleware('project_user');
             Route::get('/detail', 'ProjectsController@detailclient')->name('client.projects.detail');
+            Route::post('add-attachment', 'ProjectsController@attachments')->name('client.project.add-attachments');
+            Route::post('update-attachment', 'ProjectsController@updates')->name('client.projects.update-attachments');
+            
         });
 
         //MÓDULO DE HOSTINGS
         Route::group(['prefix' => 'hostings'], function () {
             Route::get('/', 'HostingController@list')->name('client.hostings.list');
+            Route::get('/{id}', 'HostingController@showHosting')->name('client.hosting.showHosting');
+            Route::post('', 'BillController@saveInvoice')->name('save-invoices');
         });
+
+     
 
         //MÓDULO DE FACTURAS
         Route::group(['prefix' => 'bills'], function () {
             Route::get('/', 'BillController@list')->name('client.bills.list');
-            //FACTURA DETALLADA
-            Route::get('/detail', 'BillController@detail')->name('client.bills.detail');
+            Route::get('show/{id}', 'BillController@show')->name('client.bills.show');
+            Route::get('download/{id}', 'BillController@download')->name('client.bills.download');
         });
     });
 
@@ -149,31 +168,29 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'profile'], 'profile' => ['3']], function () {
         Route::get('/', 'EmployeesController@index')->name('employee.home');
         Route::get('/profile', 'EmployeesController@profile')->name('employee.profile');
+        Route::post('profile', 'EmployeesController@editPhone')->name('employee.profiles');
         Route::post('update-skills', 'EmployeesController@update_skills')->name('employee.profile.update-skills');
         Route::post('update-wallet', 'EmployeesController@update_wallet')->name('employee.profile.update-wallet');
         Route::post('upload-curriculum', 'EmployeesController@upload_curriculum')->name('employee.profile.upload-curriculum');
 
-
-
-
-
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('employee.projects.list');
-            Route::get('/detail', 'ProjectsController@detail')->name('employee.projects.detail');
+            Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('employee.projects.show')->middleware('project_user');
         });
 
         //MÓDULO DE FACTURAS
         Route::group(['prefix' => 'bills'], function () {
             Route::get('/', 'BillController@list')->name('employee.bills.list');
-            Route::get('/details', 'BillController@details')->name('employee.bills.details');
+            Route::get('/show/{id}', 'BillController@show')->name('employee.bills.show');
+            Route::get('download/{id}', 'BillController@download')->name('employee.bills.download');
         });
 
         //MÓDULO DE INTERÉS
         Route::group(['prefix' => 'interest'], function () {
             Route::get('financing', 'FinancingController@list')->name('employee.interest.financing');
             Route::get('holidays', 'HolidaysController@list')->name('employee.interest.holidays');
-            Route::get('bonds', 'BondsController@list')->name('employee.interest.bonds');
+            Route::get('bonds', 'BondController@list')->name('employee.interest.bonds');
         });
     });
 });

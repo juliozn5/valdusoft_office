@@ -32,12 +32,12 @@
                             <div class="card-header">
                                 <h3 class="card-title mb-2">Nuevo Proyecto</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body pl-3 pr-3">
                                 <div class="row">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="name">Nombre</label>
-                                            <input type="text" name="name" id="name" class="form-control" required>
+                                            <input type="text" name="name" id="name" class="form-control" autofocus required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -60,23 +60,31 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-12">
                                         <div class="form-group">
-                                            <div class="pb-1"><label for="technologies">Tecnologías</label></div>
-                                            <div class="row ml-1">
-                                                @foreach ($technologies as $technology)
-                                                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
-                                                    <input type="checkbox" class="form-check-input skills" value="{{ $technology->id }}" name="technologies[]">
-                                                    <label class="form-check-label">{{ $technology->name }}</label>
-                                                </div>
-                                                @endforeach
-                                            </div>
+                                            <label for="description">Descripción</label>
+                                            <input type="text" class="form-control" name="description" id="description">
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="form-group">
+                                            <label for="link">Link de Visita</label>
+                                            <input type="url" class="form-control" name="link" id="link">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label for="visible_landing">Visibilidad en LandingPage</label>
+                                            <select class="form-control" name="visible_landing" id="visible_landing">
+                                                <option value="1">Visible</option>
+                                                <option value="0">No Visible</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="country">País</label>
-                                            <select name="country" id="country" class="form-control" required>
+                                            <label for="country_id">País</label>
+                                            <select name="country_id" id="country_id" class="form-control" required>
                                                 <option value="" selected disabled>Seleccione un país...</option>
                                                 @foreach ($countries as $country)
                                                 <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -96,6 +104,19 @@
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
+                                            <label for="status">Estado</label>
+                                            <select name="status" id="status" class="form-control" required>
+                                                <option value="" selected disabled>Seleccione un estado...</option>
+                                                <option value="0">No Atendido</option>
+                                                <option value="1">En Proceso</option>
+                                                <option value="2">Testiando</option>
+                                                <option value="3">Completado</option>
+                                                <option value="4">Eliminado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
                                             <label for="start_date">Fecha de inicio</label>
                                             <input type="date" name="start_date" id="start_date" class="form-control" required>
                                         </div>
@@ -104,6 +125,38 @@
                                         <div class="form-group">
                                             <label for="ending_date">Fecha de entrega</label>
                                             <input type="date" name="ending_date" id="ending_date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label for="amount">Monto</label>
+                                            <input type="number" name="amount" id="amount" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="pb-1"><label for="tags">Etiquetas</label></div>
+                                            <div class="row ml-1">
+                                                @foreach ($tags as $tag)
+                                                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                                                    <input type="checkbox" class="form-check-input skills" value="{{ $tag->id }}" name="tags[]">
+                                                    <label class="form-check-label">{{ $tag->name }}</label>
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="pb-1"><label for="technologies">Tecnologías</label></div>
+                                            <div class="row ml-1">
+                                                @foreach ($technologies as $technology)
+                                                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                                                    <input type="checkbox" class="form-check-input skills" value="{{ $technology->id }}" name="technologies[]">
+                                                    <label class="form-check-label">{{ $technology->name }}</label>
+                                                </div>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 alert alert-danger" id="errors_div" style="display: none;">

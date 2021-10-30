@@ -41,7 +41,8 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'remember_token'
+
     ];
 
     /**
@@ -71,7 +72,7 @@ class User extends Authenticatable
     public function bills(){
         return $this->hasMany('App\Models\Bill');
     }
-    
+
     //Relación de los empleados con los proyectos
     public function projects(){
         return $this->belongsToMany('App\Models\Project', 'projects_users', 'user_id', 'project_id');
@@ -81,6 +82,14 @@ class User extends Authenticatable
     public function skills(){
         return $this->belongsToMany('App\Models\Skill', 'skills_users', 'user_id', 'skill_id');
 
+    }
+
+    public function bonds(){
+        return $this->hasMany('App\Models\Bond');
+    }
+
+    public function financings(){
+        return $this->hasMany('App\Models\Financing');
     }
 
     //Relación del usuario con el chat
@@ -108,6 +117,6 @@ class User extends Authenticatable
 
     //Relación con los pagos de abonos de financiamiento
     public function financing_payments(){
-        return $this->hasMany('App\Models\FinancePayment');
+        return $this->hasMany('App\Models\FinancingPayment');
     }
 }

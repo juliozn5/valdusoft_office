@@ -246,6 +246,20 @@
         transform: scale(1.05,1.05);
 }
 
+/*///////////////////////////*/
+/*   PERSONALIZED CLASSES    */
+/*           CHAT            */
+/*///////////////////////////*/
+
+.chat-username{
+    color: black; 
+    padding-bottom: 5px; 
+    font-weight: bold;
+}
+.chat-date{
+    font-size: 12px;
+}
+
 
 /*/////////////////////////////*/
 /*   PERSONALIZED CLASSES      */
@@ -271,9 +285,10 @@
 
 #shadow {
     background: linear-gradient(rgba(37, 40, 86, 0) 0%, #252856 100%);
-    border-radius: 7px;
+    border-radius: 0 0 7px 7px;
     align-items: center;
  /*   width: 140px;*/
+    margin-top: -5px;
 }
 
 
@@ -341,7 +356,7 @@ display:inline-block;
 }
 
 #add_field {
-margin-left: 725px;
+float: left;
 padding:5px;
 
 }
