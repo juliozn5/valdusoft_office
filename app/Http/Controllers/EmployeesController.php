@@ -25,7 +25,7 @@ class EmployeesController extends Controller
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($user->admission_date);
         $fechaUser->addYear(1);
-        $project = Project::where('user_id', Auth::id());
+        $project = Project::where('user_id', '=', Auth::id())->get();
         $payrolls = PayrollEmployee::where('user_id', Auth::id());
         $proyects_user = Auth::user()->projects;
         $lastBill = DB::table('bills')
@@ -70,7 +70,7 @@ class EmployeesController extends Controller
         $skills = DB::table('skills')
         ->orderBy('skill', 'ASC')
         ->get();
-        
+
         return view('admin.employees.edit', compact('employee', 'skills'));
     }
 

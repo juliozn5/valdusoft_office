@@ -11,29 +11,33 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="content-wrapper">
         <div class="content-body mb-5 mt-2">
             <div class="card">
-                <div class="ml-1 mb-1 mt-1">
-                    <h3>Proyectos</h3>
-                </div>
-                <div class="card">
+                <h3 class="card-header mb-2">Proyectos</h3>
                     <div class="container">
                         <div class="row">
-                            @foreach ($proyects_user as $item)
-                            <a href="{{ route('employee.projects.show', [$item->slug, $item->id]) }}" title="Ir al proyecto {{$item->name}}">
-                             
-                                <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
-                                    <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <div class=" h4 pb-2 " id="shadow">
-                                            <div class="ml-1  text-white" style="position: relative;top: 14px;"> {{$item->name}}</div><a>
-                                        </div>
+                            @foreach ($project as $item)
+                            @if ($item->status != 4)
+                            <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
+
+                                @if ($item->logo === NULL)
+                                <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
+
+                                @else
+                                <img class="card-img-top"  src="{{ asset('/images/figma/recomiendo.png') }}"  >
+                                @endif
+
+                                <div class="card-body">
+                                    <div class="pr-1  h4 pb-2 text text-white ml-2" id="shadow">
+                                        <div style="position: relative;top: 14px;" class="ml-1">{{$item->name}}</div>
                                     </div>
                                 </div>
+                            </div>
+                            @endif
                                 @endforeach
                         </div>
 
                     </div>
-                </div>
-        
+
+
     </div>
     <section id="dashboard-analytics">
         <div class="row">

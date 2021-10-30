@@ -20,10 +20,9 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                         <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
 
                             @if ($item->logo === NULL)
-                            <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
-
+                            <img class="card-img-top"  src="{{ asset('/images/figma/recomiendo.png') }}">
                             @else
-                            <img class="card-img-top"  src="{{ asset('/images/figma/recomiendo.png') }}"  >
+                            <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" >
                             @endif
 
                             <div class="card-body">
