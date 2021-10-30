@@ -45,7 +45,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 @endif
                                             </td>
                                             <td><a href="{{ route('client.bills.show', $bill->id) }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                                <a class="ml-1 mt-1 btn btn-primary btn-sm btn-download-invoice mb-75" href="{{ route('client.bills.download', $bill->id) }}" target="_blank">
+                                                <a class="ml-1 mt-1 " href="{{ route('client.bills.download', $bill->id) }}" target="_blank">
                                                     <i class="fas fa-download"></i>
                                                 </a>
                                             </td>
