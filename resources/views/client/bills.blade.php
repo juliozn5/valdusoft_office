@@ -44,7 +44,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                     <label class="label status-label status-label-green">Completado</label>
                                                 @endif
                                             </td>
-                                            <td><a href="{{ route('client.bills.show', $bill->id) }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
+                                            <td><a href="{{ route('client.bills.show', $bill->id) }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a class="ml-1 mt-1 " href="{{ route('client.bills.download', $bill->id) }}" target="_blank">
+                                                    <i class="fas fa-download"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
