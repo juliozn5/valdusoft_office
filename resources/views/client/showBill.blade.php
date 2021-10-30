@@ -125,8 +125,8 @@
                                             <tr class="border-bottom">
                                                 <td class="py-1">{{ $detail->description }}</td>
                                                 <td class="py-1 text-center"><span class="font-weight-bold">{{ $detail->units }}</span></td>
-                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price, 2, '.', ',') }}$</span></td>
-                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price * $detail->units, 2, '.', ',') }}$</span></td>
+                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price, 2, '.', ',') }}</span></td>
+                                                <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price * $detail->units, 2, '.', ',') }}</span></td>
                                             </tr>
                                           @endforeach
                                         </tbody>
@@ -139,7 +139,7 @@
                                             <div class="invoice-total-wrapper">
                                                 <div class="invoice-total-item">
                                                     <p class="invoice-total-title">Total:</p>
-                                                    <p class="invoice-total-amount">{{ number_format($bill->amount, 2, '.', ',') }}$</p>
+                                                    <p class="invoice-total-amount">{{ number_format($bill->amount, 2, '.', ',') }}</p>
                                                 </div>
                                             </div>
                                         </div>

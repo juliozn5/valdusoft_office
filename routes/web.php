@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::delete('delete-attachment/{id}', 'ProjectsController@delete_attachment')->name('admin.projects.delete-attachment');
             Route::post('add-accounting-transaction', 'ProjectsController@add_accounting_transaction')->name('admin.projects.add-accounting-transaction');
             Route::post('update-accounting-transaction', 'ProjectsController@update_accounting_transaction')->name('admin.projects.update-accounting-transaction');
+            Route::get('client-list/{client_id}', 'ProjectsController@client_list')->name('admin.projects.client-list');
         });
 
         //MÓDULO DE CLIENTES

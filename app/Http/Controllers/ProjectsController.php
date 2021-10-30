@@ -427,4 +427,15 @@ class ProjectsController extends Controller
                 break;
         }
     }
+
+    public function client_list($client_id){
+        $projects = DB::table('projects')
+                        ->select('id', 'name')
+                        ->where('user_id', '=', $client_id)
+                        ->get();
+        
+        return response()->json(
+            $projects
+        );
+    }
 }

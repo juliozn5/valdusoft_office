@@ -73,6 +73,7 @@ class BillController extends Controller
           if (!is_null($request->client_id)){
                $bill->user_id = $request->client_id;
                $bill->type = 'C';
+               $bill->project_id = $request->project_id;
           }else{
                $userHosting = DB::table('hostings')
                                    ->select('user_id')

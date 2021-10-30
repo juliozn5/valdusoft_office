@@ -25,15 +25,35 @@
                 if ($option == 'C'){
                     $("#select_hostings").addClass("hidden");
                     $("#select_clients").removeClass("hidden");
+                    $("#select_projects").removeClass("hidden");
                     $("#client_id").attr("required", true);
+                    $("#project_id").attr("required", true);
                     $("#hosting_id").attr("required", false);
                 }else{
                     $("#select_hostings").removeClass("hidden");
                     $("#select_clients").addClass("hidden");
+                    $("#select_projects").addClass("hidden");
                     $("#client_id").attr("required", false);
+                    $("#project_id").attr("required", false);
                     $("#hosting_id").attr("required", true);
                 }
             }
+        }
+
+        function loadProjects(){
+            var route = 'http://localhost:8000/admin/projects/client-list/'+$("#client_id").val();
+            //var route = 'https://valdusoft.com/admin/projects/client-list/'+$("#client_id").val();
+            $.ajax({
+                url: route,
+                type: "GET",
+                success:function(ans){
+                    $("#project_id").html("");
+                    $("#project_id").append("<option value='' selected disabled>Seleccione una opción...</option>");
+                    for (var i = 0; i < ans.length; i++){
+                        $("#project_id").append("<option value="+ans[i].id+">"+ans[i].name+"</option>");
+                    }
+                }
+            });
         }
 
         function addRow(){
@@ -129,7 +149,7 @@
                                                     <th scope="row">#{{ $employee->id }}</th>
                                                     <td>{{ $employee->user->name }} {{ $employee->user->last_name }}</td>
                                                     <td>{{ date('d-m-Y', strtotime($employee->date)) }}</td>
-                                                    <td>{{ $employee->amount }}$</td>
+                                                    <td>{{ number_format($employee->amount, 2, '.', ',') }}</td>
                                                     <td>
                                                         @if ($employee->status == 0)
                                                             <label class="label status-label status-label-purple">Pendiente</label>
@@ -169,8 +189,8 @@
                                                 <th scope="row">#{{ $client->id }}</th>
                                                 <td>{{ $client->user->name }} {{ $client->user->last_name }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($client->date)) }}</td>
-                                                <td>{{ number_format($client->amount, 2, '.', ',') }}$</td>
-                                                <td>{{ number_format($client->paid_amount, 2, '.', ',') }}$</td>
+                                                <td>{{ number_format($client->amount, 2, '.', ',') }}</td>
+                                                <td>{{ number_format($client->paid_amount, 2, '.', ',') }}</td>
                                                 <td>
                                                     @if ($client->status == 0)
                                                         <label class="label status-label status-label-purple">Pendiente</label>
@@ -209,7 +229,7 @@
                                                 <th scope="row">#{{ $hosting->id }}</th>
                                                 <td>{{ $hosting->hosting->url }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($hosting->date)) }}</td>
-                                                <td>{{ number_format($hosting->amount, 2, '.', ',') }}$</td>
+                                                <td>{{ number_format($hosting->amount, 2, '.', ',') }}</td>
                                                 <td>
                                                     @if ($hosting->status == 0)
                                                         <label class="label status-label status-label-purple">Pendiente</label>
@@ -251,11 +271,18 @@
                     <div class="modal-body">
                         <div class="form-group" id="select_clients">
                             <label for="client_id">Seleccione un cliente</label>
-                            <select class="form-control" name="client_id" id="client_id" required>
+                            <select class="form-control" name="client_id" id="client_id" onchange="loadProjects();" required>
                                 <option value="" selected disabled>Seleccione una opción...</option>
                                 @foreach ($clients as $c)
                                     <option value="{{ $c->id }}">{{ $c->name }} {{ $c->last_name }}</option>
                                 @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="select_projects">
+                            <label for="project_id">Seleccione un proyecto...</label>
+                            <select class="form-control" name="project_id" id="project_id" required>
+                                <option value="" selected disabled>Seleccione una opción...</option>
                             </select>
                         </div>
 

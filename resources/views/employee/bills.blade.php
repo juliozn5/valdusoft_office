@@ -50,7 +50,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 <tr>
                                                     <th scope="row">#{{ $bill->id }}</th>
                                                     <td>{{ date('d-m-Y', strtotime($bill->date)) }}</td>
-                                                    <td>{{ number_format($bill->amount, 2, '.', ',') }}$</td>
+                                                    <td>{{ number_format($bill->amount, 2, '.', ',') }}</td>
                                                     <td>
                                                         @if ($bill->status == 0)
                                                             <label class="label status-label status-label-purple">Pendiente</label>

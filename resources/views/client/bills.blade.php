@@ -36,7 +36,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <tr>
                                             <th scope="row">#{{ $bill->id }}</th>
                                             <td>{{ $bill->date }}</td>
-                                            <td>{{ $bill->amount }}$</td>
+                                            <td>{{ $bill->amount }}</td>
                                             <td>
                                                 @if ($bill->status == 0)
                                                     <label class="label status-label status-label-purple">Pendiente</label>

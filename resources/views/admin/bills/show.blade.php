@@ -162,31 +162,31 @@
                                                 <tr class="border-bottom">
                                                     <td class="py-1">Horas acumuladas en la quincena</td>
                                                     <td class="py-1 text-center"><span class="font-weight-bold">{{ $bill->payroll_employee->total_hours }}</span></td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->price_by_hour, 2, '.', ',') }}$</span></td>
-                                                    <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->price_by_hour * $bill->payroll_employee->total_hours, 2, '.', ',') }}$</span></td>
+                                                    <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->price_by_hour, 2, '.', ',') }}</span></td>
+                                                    <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->price_by_hour * $bill->payroll_employee->total_hours, 2, '.', ',') }}</span></td>
                                                 </tr>
                                                 @if(!is_null($bill->payroll_employee->bond))
                                                     <tr class="border-bottom">
                                                         <td class="py-1">{{ $bill->payroll_employee->bond->description }}</td>
                                                         <td class="py-1 text-center"><span class="font-weight-bold">1</span></td>
-                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->bond->amount, 2, '.', ',') }}$</span></td>
-                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->bond->amount, 2, '.', ',') }}$</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->bond->amount, 2, '.', ',') }}</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->bond->amount, 2, '.', ',') }}</span></td>
                                                     </tr>
                                                 @endif
                                                 @if(!is_null($bill->payroll_employee->financing))
                                                     <tr class="border-bottom">
                                                         <td class="py-1">{{ $bill->payroll_employee->financing->description }}</td>
                                                         <td class="py-1 text-center"><span class="font-weight-bold">1</span></td>
-                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->financing->total_amount, 2, '.', ',') }}$</span></td>
-                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->financing->total_amount, 2, '.', ',') }}$</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->financing->total_amount, 2, '.', ',') }}</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->financing->total_amount, 2, '.', ',') }}</span></td>
                                                     </tr>
                                                 @endif
                                                 @if(!is_null($bill->payroll_employee->financing_payment))
                                                     <tr class="border-bottom">
                                                         <td class="py-1">{{ $bill->payroll_employee->financing_payment->description }}</td>
                                                         <td class="py-1 text-center"><span class="font-weight-bold">1</span></td>
-                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->financing_payment->amount, 2, '.', ',') }}$</span></td>
-                                                        <td class="py-1 text-center"><span class="font-weight-bold">- {{ number_format($bill->payroll_employee->financing_payment->amount, 2, '.', ',') }}$</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($bill->payroll_employee->financing_payment->amount, 2, '.', ',') }}</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">- {{ number_format($bill->payroll_employee->financing_payment->amount, 2, '.', ',') }}</span></td>
                                                     </tr>
                                                 @endif
                                             @else
@@ -194,8 +194,8 @@
                                                     <tr class="border-bottom">
                                                         <td class="py-1">{{ $detail->description }}</td>
                                                         <td class="py-1 text-center"><span class="font-weight-bold">{{ $detail->units }}</span></td>
-                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price, 2, '.', ',') }}$</span></td>
-                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price * $detail->units, 2, '.', ',') }}$</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price, 2, '.', ',') }}</span></td>
+                                                        <td class="py-1 text-center"><span class="font-weight-bold">{{ number_format($detail->price * $detail->units, 2, '.', ',') }}</span></td>
                                                     </tr>
                                                 @endforeach
                                             @endif
