@@ -73,7 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('store', 'ClientsController@store')->name('admin.clients.store');
             Route::patch('update/{id}', 'ClientsController@update')->name('admin.clients.update');
             Route::delete('delete/{id}', 'ClientsController@delete')->name('admin.clients.delete');
-          
+
         });
 
         //MÓDULO DE EMPLEADOS
@@ -107,6 +107,7 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::post('store', 'BillController@store')->name('admin.bills.store');
                 Route::get('show/{id}', 'BillController@show')->name('admin.bills.show');
                 Route::get('download/{id}', 'BillController@download')->name('admin.bills.download');
+                Route::get('downloadPDF/{id}', 'BillController@downloadPDF')->name('admin.bills.downloadPDF');
                 Route::post('send', 'BillController@send')->name('admin.bills.send');
             });
 
@@ -137,7 +138,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'client', 'middleware' => ['auth', 'profile'], 'profile' => ['2']], function () {
         Route::get('/', 'ClientsController@index')->name('client.home');
 
-        
+
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('client.projects.list');
@@ -145,7 +146,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/detail', 'ProjectsController@detailclient')->name('client.projects.detail');
             Route::post('add-attachment', 'ProjectsController@attachments')->name('client.project.add-attachments');
             Route::post('update-attachment', 'ProjectsController@updates')->name('client.projects.update-attachments');
-            
+
         });
 
         //MÓDULO DE HOSTINGS
@@ -155,13 +156,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('', 'BillController@saveInvoice')->name('save-invoices');
         });
 
-     
+
 
         //MÓDULO DE FACTURAS
         Route::group(['prefix' => 'bills'], function () {
             Route::get('/', 'BillController@list')->name('client.bills.list');
             Route::get('show/{id}', 'BillController@show')->name('client.bills.show');
             Route::get('download/{id}', 'BillController@download')->name('client.bills.download');
+            Route::get('downloadPDF/{id}', 'BillController@downloadPDF')->name('client.bills.downloadPDF');
         });
     });
 
