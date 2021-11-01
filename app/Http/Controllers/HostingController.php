@@ -138,9 +138,7 @@ class HostingController extends Controller
      *** Perfil: Admin ***/
     public function update(Request $request)
     {
-        // dd($request);
         $hosting = Hosting::find($request->hosting_id);
-
 
         $fields = [
             "hosting_url" => ['required', 'min:4', 'max:255'],
@@ -149,7 +147,7 @@ class HostingController extends Controller
             "date_end" => ['required'],
             "price" => ['required'],
             "cpanel_url" => ['string'],
-            "cpanel_email" => ['string', 'email'],
+            "cpanel_email" => ['string'],
             "cpanel_password" => ['string']
         ];
 
@@ -161,12 +159,12 @@ class HostingController extends Controller
             'client.required' => 'El cliente es requerido',
             'date_end.required' => 'Los Años de vencimiento son requeridos',
             'price.required' => 'El Precio es requerido',
-            'cpanel_email.email' => 'El Email es inválido'
+            'cpanel_email.required' => 'El Email es inválido'
         ];
 
         $this->validate($request, $fields, $msj);
-        // dd("Pasó Validación");
-        // $hosting->update($request->all());
+        
+        $hosting->update($request->all());
         $hosting->url = $request->hosting_url;
         $hosting->user_id = $request->client;
         $hosting->create_date = $request->date;
@@ -179,8 +177,6 @@ class HostingController extends Controller
         $hosting->cpanel_url = $request->cpanel_url;
         $hosting->cpanel_email = $request->cpanel_email;
         $hosting->cpanel_password = $request->cpanel_password;
-
-
 
         $hosting->save();
 
