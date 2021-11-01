@@ -124,19 +124,19 @@ class EmployeesController extends Controller
 
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
-            $name = $employee->id . "." . $file->getClientOriginalExtension();
+            $name = $file->getClientOriginalName(); //$employee->id . "." . $file->getClientOriginalExtension();
             $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
-            $employee->photo = 'uploads/images/users/photos/' . $name;
-        }
+            $employee->photo =  $name;
 
+        }
         if ($request->hasFile('curriculum')) {
             $file2 = $request->file('curriculum');
-            $name2 = $employee->id . "." . $file2->getClientOriginalExtension();
-            $file->move(public_path('storage') . '/uploads/documents/curriculums', $name2);
-            $employee->curriculum = 'uploads/documents/curriculums'. $name2;
+            $name2 =  $file2->getClientOriginalName();//$employee->id . "." . $file2->getClientOriginalExtension();
+            $file2->move(public_path('storage') . '/uploads/documents/curriculums', $name2);
+            $employee->curriculum =  $name2;
         }
-
         $employee->save();
+
 
         if (!is_null($request->skills)) {
             foreach ($request->skills as $skill) {
