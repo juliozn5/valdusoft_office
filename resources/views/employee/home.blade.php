@@ -59,7 +59,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             <div class="col-md-4 col-sm-12">
                 <div class="card p-2">
                     <div class="">
-                        <div class="card-body">
+                        <div class="card-body"> 
                             <img src="{{ asset('images/figma/dolar.png') }}" class="float-right pl-2" width="120" height="120" alt="">
                             <h5 class="pt-2">Valor de la hora de trabajo</h5>
                             <br>

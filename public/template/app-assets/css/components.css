@@ -3696,6 +3696,7 @@ tr.group {
       display: flex;
       align-items: center;
       justify-content: center;
+      background-color: #FF4D00;
     }
     .text-a{
       position:relative;
