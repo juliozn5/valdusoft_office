@@ -101,35 +101,35 @@
                                         <div class="form-group">
                                             <label for="last_name">Apellido <span style="color: red;">*</span></label>
                                             <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" autofocus>
-                                            
+
                                             @error('last_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{!! $message !!}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div>      
-                                    
+                                    </div>
+
                                     {{-- Correo Electrónico --}}
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="email">Correo Electrónico <span style="color: red;">*</span></label>
                                             <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" autofocus>
-                                            
+
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{!! $message !!}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div>                                                              
+                                    </div>
 
                                     {{-- Fecha de nacimiento --}}
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="birthdate">Fecha de nacimiento</label>
                                             <input type="date" name="birthdate" id="birthdate" class="form-control @error('birthdate') is-invalid @enderror" value="{{ old('birthdate') }}" autofocus>
-                                            
+
                                             @error('birthdate')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{!! $message !!}</strong>
@@ -137,42 +137,42 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    
+
                                     {{-- Fecha de ingreso --}}
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="admission_date">Fecha de ingreso</label>
                                             <input type="date" name="admission_date" id="admission_date" class="form-control @error('admission_date') is-invalid @enderror" value="{{ old('admission_date') }}" autofocus>
-                                            
+
                                             @error('admission_date')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{!! $message !!}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div>      
-                                    
+                                    </div>
+
                                     {{-- Telefono --}}
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="phone">Telefono <span style="color: red;">*</span></label>
                                             <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" autofocus>
-                                            
+
                                             @error('phone')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{!! $message !!}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div>                                    
+                                    </div>
 
 
-                                    {{-- Precio por hora --}}                                    
+                                    {{-- Precio por hora --}}
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="price_per_hour">Precio por Hora</label>
                                             <input type="text" name="price_per_hour" id="price_per_hour" class="form-control @error('price_per_hour') is-invalid @enderror" value="{{ old('price_per_hour') }}" autofocus>
-                                            
+
                                             @error('price_per_hour')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{!! $message !!}</strong>
@@ -180,13 +180,13 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    
+
                                     {{-- Billetera USDT-TRON --}}
                                     <div class="col-md-8 col-12">
                                         <div class="form-group">
                                             <label for="tron_wallet">Billetera USDT-TRON</label>
                                             <input type="text" name="tron_wallet" id="tron_wallet" class="form-control @error('tron_wallet') is-invalid @enderror" value="{{ old('tron_wallet') }}" autofocus>
-                                            
+
                                             @error('tron_wallet')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{!! $message !!}</strong>
@@ -194,7 +194,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    
+
                                     {{-- Posición --}}
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
@@ -206,21 +206,21 @@
                                                 <option value="2">Project Manager</option>
                                                 <option value="3">Financiero</option>
                                             </select>
-                                            
+
                                             @error('position')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{!! $message !!}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div> 
+                                    </div>
 
                                     {{-- Contraseña --}}
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password">Contraseña <span style="color: red;">*</span></label>
                                             <input type="password" name="password" id="password" class="form-control" onkeyup="checkPasswords();" value="{{ old('password') }}">
-                                            
+
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{!! $message !!}</strong>
@@ -234,7 +234,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password_confirmation">Repetir Contraseña <span style="color: red;">*</span></label>
-                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" onkeyup="checkPasswords();" value="{{ old('password_confirmation') }}">                                        
+                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" onkeyup="checkPasswords();" value="{{ old('password') }}">
                                         </div>
                                     </div>
 
@@ -270,8 +270,8 @@
                                                 src="{{ asset('images/valdusoft/valdusoft.png') }}" />
                                             {{-- @endif --}}
                                         </div>
-                                    </div>   
-                                    
+                                    </div>
+
                                     {{-- Curriculum vitae --}}
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -301,7 +301,7 @@
                                             @endif
                                         </div> --}}
                                     </div>
-                                    
+
                                     <div class="col-md-12 pl-3">
                                         <div class="form-group">
                                             <div class="text-center"><label for="skills">Skills</label>
@@ -391,7 +391,7 @@
                                             <input type="text" name="price_per_hour" id="price_per_hour" class="form-control">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="uphold_account">Billetera USDT-TRON</label>
@@ -464,3 +464,4 @@
 
     }
 </script>
+
