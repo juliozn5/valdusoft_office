@@ -38,8 +38,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title mb-2">Pagos</h3>
-                                @if ($bills->count() > 0)
+                             
                                     <a href="#" class="btn btn-primary  mb-2 waves-effect waves-light" data-toggle="modal"  data-target="#ModalGenerate"><i class="feather icon-plus "></i>&nbsp; Agregar Nuevo</a>
+                                @if ($bills->count() > 0)
                                 @endif
                             </div>
                             <div class="card-content">
@@ -104,15 +105,13 @@
     <div class="modal fade" id="ModalGenerate" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-
                 <div class="modal-header">
                     <h5 class="modal-title text-darck" id="#exampleModalToggle">Cargar Pago</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-                <form method="POST" action="{{ route('admin.payments.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.payments.store') }}" enctype="multipart/form-data" required >
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
@@ -136,41 +135,35 @@
                                 @endforeach
                             </select>
                         </div>
+                    
                         <div class="form-group">
-                            <label class="form-label" for="payment_method">Método de Pago</label>
-                            <select class="form-control" id="payment_method" name="payment_method" required>
-                                <option value="" selected disabled>Seleccione el método de pago...</option>
-                                <option value="Crypto">Criptomoneda</option>
-                                <option value="Bancolombia">Bancolombia</option>
-                            </select>
+                        <div class="modal-body">
+                            <h4 class="text-center">Seleccione el método de pago</h4>
+                            <div class="d-flex justify-content-center p-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="billetera" onchange="javascript:showContent()">
+                                    <label class="form-check-label" for="inlineRadio1">Criptomoneda</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="bancolombia" onchange="javascript:showContent2()">
+                                    <label class="form-check-label" for="inlineRadio2">Bancolombia</label>
+                                </div>
+                            </div>
+                          
+                            @include('admin.payments.partials.bancolombia')
+                            @include('admin.payments.partials.billetera')
+
+    
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="account">Cuenta / Billetera</label>
-                            <input type="text" class="form-control" name="account" id="account" required/>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="payment_id">Identificador del Pago</label>
-                            <input type="text" class="form-control" name="payment_id" id="payment_id" required/>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="discount_description">Concepto del Descuento</label>
-                            <input type="text" class="form-control" name="discount_description" name="discount_description" />
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="discount">Monto a Descontar</label>
-                            <input type="text" class="form-control" name="discount_amount" name="discount_amount" />
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="support">Soporte del Pago</label>
-                            <input type="file" class="form-control" name="support" name="support" />
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 @endsection
+
+@include('admin.payments.partials.js')

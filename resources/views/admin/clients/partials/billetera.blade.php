@@ -19,13 +19,15 @@
 
             <div class="form-group">
                 <label class="h5" for="amount">Monto <span style="color: red;">*</span></label>
-                @if ($client->hosting != NULL)
+                @if($item->renewal_price === null)
                     <input type="text" class="form-control @error('amount') is-invalid @enderror"
-                    name="amount" placeholder="Ingrese el monto" value="{{$client->hosting->renewal_price}}" readonly>
-                @else
-                    <input type="text" class="form-control @error('amount') is-invalid @enderror"
-                    name="amount" placeholder="Ingrese el monto" value="" readonly>
-                @endif
+
+                     name="renewal_price" value="" readonly>
+                     @else
+                     <input type="text" class="form-control @error('amount') is-invalid @enderror"
+
+                     name="renewal_prices" value="{{$item->renewal_price}}" readonly>
+                     @endif
                 @error('amount')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
