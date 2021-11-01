@@ -19,7 +19,7 @@
 
             <div class="form-group">
                 <label class="h5" for="amount">Monto <span style="color: red;"></span></label>
-                @if($hostings->renewal_price = null)
+                @if(is_null($hostings->renewal_price))
                     <input type="text" class="form-control @error('amount') is-invalid @enderror"
                         name="amount" placeholder="Ingrese el monto" value="" readonly>
                 @else

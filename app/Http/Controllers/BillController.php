@@ -214,7 +214,7 @@ class BillController extends Controller
      {
           $bill = new Bill($request->all()); 
           $bill->type = 'C';
-          $bill->status = '1';
+          $bill->status = '0';
           $bill->date = Carbon::now();
           $bill->payed_at = Carbon::now();
           $bill->save();
