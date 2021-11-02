@@ -8,6 +8,7 @@ use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\Payrolls;
 use App\Models\Payments;
+use App\Models\Project;
 use PDF; use DB; use Mail;
 use Carbon\Carbon;
 
@@ -27,33 +28,34 @@ class BillController extends Controller
                                    ->with('user:id,name,last_name', 'payments')
                                    ->orderBy('id', 'DESC')
                                    ->get();
-               
+
                foreach($client_bills as $cb){
                     $cb->paid_amount = 0;
                     foreach ($cb->payments as $p){
                          $cb->paid_amount += $p->total;
                     }
                }
-          
+
                $hosting_bills = Bill::where('type', 'H')
                                    ->with('hosting:id,url')
                                    ->orderBy('id', 'DESC')
                                    ->get();
-               
+
                $clients = DB::table('users')
                               ->where('profile_id', '2')
                               ->where('status', '1')
                               ->select('id', 'name', 'last_name')
                               ->orderBy('name', 'DESC')
                               ->get();
-               
+
                $hostings = DB::table('hostings')
                               ->where('status', '0')
                               ->select('id', 'url')
                               ->orderBy('url', 'DESC')
                               ->get();
+              $proyecto = Project::all();
 
-               return view('admin.bills.list', compact('employee_bills', 'client_bills', 'hosting_bills', 'clients', 'hostings'));
+              return view('admin.bills.list', compact('employee_bills', 'client_bills', 'hosting_bills', 'clients', 'hostings','proyecto'));
 
           } else if (Auth::user()->profile_id == 2) {
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
@@ -61,7 +63,7 @@ class BillController extends Controller
                return view('client.bills')->with('bills', $bills);
           } else if (Auth::user()->profile_id == 3) {
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
-     
+
                return view('employee.bills')->with('bills', $bills);
           }
      }
@@ -79,7 +81,7 @@ class BillController extends Controller
                                    ->select('user_id')
                                    ->where('id', '=', $request->hosting_id)
                                    ->first();
-               
+
                $bill->user_id = $userHosting->user_id;
                $bill->hosting_id = $request->hosting_id;
                $bill->type = 'H';
@@ -96,7 +98,7 @@ class BillController extends Controller
                $detail->price = $request->price[$i];
                $detail->save();
           }
-          
+
           if (!is_null($request->discount)){
                $payment = new Payments();
                $payment->bill_id = $bill->id;
@@ -113,7 +115,7 @@ class BillController extends Controller
           }
 
           if (!is_null($request->payed)){
-          
+
                $payment2 = new Payments();
                $payment2->bill_id = $bill->id;
                $payment2->user_id = $bill->user_id;
@@ -141,13 +143,13 @@ class BillController extends Controller
                     ->first();
 
           if (Auth::user()->profile_id == 1){
-               return view('admin.bills.show')->with(compact('bill')); 
+               return view('admin.bills.show')->with(compact('bill'));
           }else if (Auth::user()->profile_id == 3){
                return view('employee.showBill')->with(compact('bill'));
           }else{
                return view('client.showBill')->with(compact('bill'));
           }
-          
+
      }
 
      /* Guarda las facturas individuales de una nomina específica*/
@@ -157,7 +159,7 @@ class BillController extends Controller
                         ->first();
           $payroll->status = '1';
           $payroll->save();
-          
+
           foreach ($payroll->payrolls_employee as $payroll_employee){
                $bill = new Bill();
                $bill->payroll_employee_id = $payroll_employee->id;
@@ -167,11 +169,11 @@ class BillController extends Controller
                $bill->type = 'E';
                $bill->save();
           }
-          
+
           DB::table('payrolls_employee')
                ->where('payroll_id', '=', $payroll->id)
                ->update(['status' => '1']);
-          
+
           return redirect()->route('admin.payrolls.list', $payroll_id)->with('bills-created', true);
      }
 
@@ -185,15 +187,29 @@ class BillController extends Controller
           }else{
                $pdf = PDF::loadView('pdfs.clientBill', compact('bill'));
           }
-          
+
           return $pdf->stream('factura_'.$bill->id.'.pdf');
      }
+
+     public function downloadPDF($bill_id){
+        $bill = Bill::where('id', '=', $bill_id)
+                  ->with('user:id,name,last_name,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payments', 'details')
+                  ->first();
+
+        if ($bill->type == 'E'){
+             $pdf = PDF::loadView('pdfs.payrollEmployeeBill', compact('bill'));
+        }else{
+             $pdf = PDF::loadView('pdfs.clientBill', compact('bill'));
+        }
+
+        return $pdf->download('factura_'.$bill->id.'.pdf');
+   }
 
      public function send(Request $request){
           $bill = Bill::find($request->bill_id);
 
           if ($bill->type == 'E'){
-              $pdf = PDF::loadView('pdfs.payrollEmployeeBill', compact('bill')); 
+              $pdf = PDF::loadView('pdfs.payrollEmployeeBill', compact('bill'));
           }
 
           $data['email'] = $request->email;
@@ -212,7 +228,7 @@ class BillController extends Controller
 
      public function saveInvoice(Request $request)
      {
-          $bill = new Bill($request->all()); 
+          $bill = new Bill($request->all());
           $bill->type = 'C';
           $bill->status = '0';
           $bill->date = Carbon::now();
@@ -222,11 +238,11 @@ class BillController extends Controller
           if ($request->tipo_pago == "C") {
 
                $msj = [
-                    'name.required' => 'El nombre es requerido.', 
+                    'name.required' => 'El nombre es requerido.',
                     'hash.required' => 'El hash de la operación es requerido.',
                     'amount.required' => 'El monto es requerido.',
                     'amount.numeric' => 'El monto debe ser en números.',
-                    'tipo_billetera,required' => 'Por favor ingrese el tipo de documento.'                  
+                    'tipo_billetera,required' => 'Por favor ingrese el tipo de documento.'
                 ];
                $validate = $request->validate([
                     'name' => ['required', 'string', 'max:50'],
@@ -234,23 +250,23 @@ class BillController extends Controller
                     'hash' => ['required', 'string', 'max:50'],
                     'amount' => ['required', 'numeric', 'max:50'],
                ], $msj);
-               
-        
+
+
                if ($validate) {
                     $bill->save();
-                  
+
                }else{
                     return redirect()->back()->with('message', 'Ocurrió un error al crear la renovación');
                }
 
           } else {
                $msj = [
-                    'comprobante.required' => 'El comprobante es requerido.', 
+                    'comprobante.required' => 'El comprobante es requerido.',
                 ];
                $validate = $request->validate([
                     'comprobante' => ['required'],
-               ], $msj);   
-               
+               ], $msj);
+
                if ($validate) {
                     if ($request->hasFile('comprobante')) {
                          $file = $request->file('comprobante');
@@ -263,7 +279,7 @@ class BillController extends Controller
                          'cuenta' => '91201530453',
                          'tipo_cuenta' => 'Ahorro',
                          'cedula' => '1.148.456.331',
-                    ];     
+                    ];
 
                     $bill->bancolombia = json_encode($bancolombia);
                     $bill->amount = 0;
