@@ -149,7 +149,8 @@
                                 <div class="col-6">
                                     <div class="project-detail-titles">Financiamiento</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($financiamiento)) ? 'Dato no disponible' : $financiamiento.' USD' }}
+
+                                        <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($restante)) ? 'Dato no disponible' : $restante.' USD' }}
                                     </div>
                                 </div>
                             </div>

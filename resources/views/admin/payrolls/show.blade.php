@@ -62,10 +62,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                         {{ $item->user->tron_wallet }}
                                                     @else
                                                         Dato no disponible
-                                                    @endif 
+                                                    @endif
                                                 </td>
                                                 <td class="text-center">{{ $item->total_hours }} horas</td>
-                                                <td class="text-center">{{ number_format($item->price_by_hour, 2, ',', '.') }}$</td>       
+                                                <td class="text-center">{{ number_format($item->price_by_hour, 2, ',', '.') }}$</td>
                                                 <td class="text-center">{{ number_format($item->total_hours * $item->price_by_hour, 2, ',', '.') }}$</td>
                                                 <td class="text-center">
                                                     @if (!is_null($item->bond))
