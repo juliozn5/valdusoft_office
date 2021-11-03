@@ -170,10 +170,10 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                         <div class="p-2">
                             <div class="row">
                                 <div class="col-6 text-left">
-                                    <h3 class="card-title">{{ $project->name }}</h3>
+                                    <h3 class="text-primary font-weight-bolder text-uppercase">{{ $project->name }}</h3>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <a class="btn btn-primary btn-sm waves-effect waves-light" href="#editProject" data-toggle="modal" onclick="editProject({{ $project }});"><i class="fa fa-edit"></i> Editar</a>
+                                    <button class="btn btn-primary" href="#editProject" data-toggle="modal" onclick="editProject({{ $project }});"><i class="fa fa-edit"></i> Editar</button>
                                 </div>
                             </div>
 
@@ -380,30 +380,41 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
 
                             {{-- Pestaña Para facturas --}}
-                            <div class="tab-pane fade pl-2 pr-2" id="Bills">
-                                <h3 class="card-title">Facturas</h3>
+                            <div class="tab-pane fade " id="Bills">
+                                <h3 class="card-title ml-2 mb-1">Facturas</h3>
 
-                                <div class="table-responsive mb-2">
-                                    <table class="table mb-0">
-                                        <thead class="thead-light mb-2">
+                                <div class="table-responsive mb-2 mt-3">
+                                    <table class="table">
+                                        <thead class="thead-light ">
                                             <tr class="text-center">
                                                 <th>MONTO</th>
                                                 <th>FECHA</th>
                                                 <th>ESTADO</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="mt-2">
                                             @foreach($bill as $bills)
-                                            <tr class="text-center">
-                                                <th>{{$bills->amount}}</th>
-                                                <th>{{$bills->date}}</th>
+                                            <tr class="text-center ">
+
+
+                                                <th style="font-weight:normal;font-size:15px;">{{$bills->amount}}</th>
+
+
+
+                                                <th style="font-weight:normal;font-size:15px;">{{$bills->date}}</th>
+
+
+
                                                 @if($bills->status == 0)
-                                                <th class="label status-label status-label-purple">Pendiente</th>
+                                                <th><button class="btn btn-primary">Pendiente</button></th>
+
+
+
                                                 @else($bills->status == 1)
-                                                <th class="label status-label status-label-green">Pagada</th>
+                                                <th><button class="btn btn-danger">Button</button></th>
                                                 @endif
                                             </tr>
-                                         
+
                                         </tbody>
                                         @endforeach
                                     </table>
