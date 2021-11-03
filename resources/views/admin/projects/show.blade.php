@@ -411,7 +411,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
 
                                                 @else($bills->status == 1)
-                                                <th><button class="btn btn-danger">Button</button></th>
+                                                <th><button class="btn btn-danger">Pagada</button></th>
                                                 @endif
                                             </tr>
 
