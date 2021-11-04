@@ -72,41 +72,5 @@ class PaymentsController extends Controller
 
         return redirect()->back()->with('msj-store', 'true');
     }
-
-    public function billetera(request $request)
-    {
-        
-      
-        $payment->payments()->create([
-            'fee' => $data['fee'],
-            'discount_amount' => $data['discount_amount'],
-            'payment_method' => "Cripto",
-           
-         ]);
-
-
-          return redirect()->back()->with('msj-store', 'true');
-    }
-
-     public function bancolombia(Request $request)
-    {
-              
-        $data = $request->validate([
-            'fee' => 'required',
-            'discount_amount' => 'required',
-        ]);
-
-      
-        $payment->payments()->create([
-            'fee' => $data['fee'],
-            'discount_amount' => $data['discount_amount'],
-            'payment_method' => "Cripto",
-            'payment_id' => $data['payment_id'],
-            'support' => $$data['support']
-           
-         ]);
-
-
-          return redirect()->back()->with('msj-store', 'true');
-    }
+  
 }

@@ -127,7 +127,7 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('/', 'PaymentsController@list')->name('admin.payments.list');
                 Route::post('store', 'PaymentsController@store')->name('admin.payments.store');
                 Route::post('billetera', 'PaymentsController@billetera')->name('admin.payments.billetera');
-                 Route::post('bancolombia', 'PaymentsController@bancolombia')->name('admin.payments.bancolombia');
+                Route::post('bancolombia', 'PaymentsController@bancolombia')->name('admin.payments.bancolombia');
 
             });
         });
