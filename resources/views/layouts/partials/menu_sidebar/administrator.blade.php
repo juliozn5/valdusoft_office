@@ -26,9 +26,16 @@
 <li class="nav-item has-sub"><a href="#"><img src="{{ asset('images/icons/mone.png') }}" />
     <span class="menu-title ml-1" data-i18n="Ecommerce">Financiero</span></a>
     <ul>
-        <li><a href="{{ route('admin.bills.list') }}"><img src="{{ asset('images/icons/mone.png') }}" /><span class="menu-title ml-1">Facturas</span></a>
+        <li class="nav-item has-sub"><a href="#"><img src="{{ asset('images/icons/mone.png') }}" />
+            <span class="menu-title ml-1" data-i18n="Ecommerce">Facturas</span></a>
+            <ul>          
+                <li><a href="{{ route('admin.bills.list') }}"><img src="{{ asset('images/icons/mone.png') }}" /><span class="menu-title ml-1">Facturas</span></a>
+                </li>
+                <li><a href="{{ route('admin.bills.pending') }}"><img src="{{ asset('images/icons/mone.png') }}" /><span class="menu-title ml-1">Pendientes</span></a>
+               </li>
+            </ul>  
+           
         </li>
-
         <li> <a href="{{ route('admin.payrolls.list') }}"><img src="{{ asset('images/icons/mone.png') }}" /><span class="menu-title ml-1">Nómina</span></a>
         </li>
 

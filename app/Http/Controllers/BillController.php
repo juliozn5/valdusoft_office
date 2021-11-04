@@ -293,4 +293,13 @@ class BillController extends Controller
           }
 
      }
+
+     public function pending()
+     {
+      $bills = Bill::where('status', '0')->get();
+
+      return view('admin.bills.pending', compact('bills'));
+
+     }
+
 }

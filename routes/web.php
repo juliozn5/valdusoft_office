@@ -109,7 +109,9 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('download/{id}', 'BillController@download')->name('admin.bills.download');
                 Route::get('downloadPDF/{id}', 'BillController@downloadPDF')->name('admin.bills.downloadPDF');
                 Route::post('send', 'BillController@send')->name('admin.bills.send');
+                Route::get('/pending', 'BillController@pending')->name('admin.bills.pending');
             });
+
 
             //MÓDULO FINANCIERO - NÓMINA
             Route::group(['prefix' => 'payroll'], function () {
@@ -127,9 +129,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::group(['prefix' => 'payments'], function () {
                 Route::get('/', 'PaymentsController@list')->name('admin.payments.list');
                 Route::post('store', 'PaymentsController@store')->name('admin.payments.store');
-                Route::post('billetera', 'PaymentsController@billetera')->name('admin.payments.billetera');
-                Route::post('bancolombia', 'PaymentsController@bancolombia')->name('admin.payments.bancolombia');
-
             });
         });
 

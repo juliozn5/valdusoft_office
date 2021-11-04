@@ -29,7 +29,7 @@ class PaymentsController extends Controller
     public function store(Request $request)
     {
         $bill = Bill::find($request->bill_id);
-
+    
         $payment = new Payments($request->all());
         $payment->user_id = $bill->user_id;
         if (!isset($request->amount)){
@@ -70,7 +70,7 @@ class PaymentsController extends Controller
             }
         }
 
-        return redirect()->back()->with('msj-store', 'true');
+        return redirect()->back()->with('message', 'Factura confirmada  exitosamente');
     }
   
 }
