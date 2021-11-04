@@ -6,17 +6,35 @@
 
 @push('scripts')
    <script>
+      function calculateTotal(id){
+         if ($("#hours_"+id).val() != ""){
+            var totalHours = (parseFloat($("#price_per_hour_"+id).val()) * parseFloat($("#hours_"+id).val())).toFixed(2);
+         }else{
+            var totalHours = 0;
+         }
+
+         if ($("#financing_id_"+id).val() == 0){
+            return ( parseFloat(totalHours) + parseFloat($("#bond_amount_"+id).val()) + parseFloat($("#financing_amount_"+id).val()) );
+         }else{
+            let fee =  ( totalHours * parseFloat($("#financing_percentage_"+id).val()) ) / 100;
+            if ( parseFloat($("#financing_remaining_"+id).val()) > parseFloat(fee) ){
+               $("#financing_fee_"+id).val(fee);
+               $("#financing_finished_"+id).val(0);
+               return ( (totalHours - fee) + parseFloat($("#bond_amount_"+id).val()) );
+            }else{
+               $("#financing_fee_"+id).val($("#financing_remaining_"+id).val());
+               $("#financing_finished_"+id).val(1);
+               return ( (totalHours - parseFloat($("#financing_remaining_"+id).val())) + parseFloat($("#bond_amount_"+id).val()) );
+            }
+            
+         }
+      }
+
       $(".hours").on("change", function(){
          let id = $(this).attr("id").split("_");
 
-         let totalHours = (parseFloat($("#price_per_hour_"+id[1]).val()) * parseFloat($("#hours_"+id[1]).val())).toFixed(2);
-
-         if ($("#financing_id_"+id[1]).val() == 0){
-            var total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+id[1]).val()) + parseFloat($("#financing_amount_"+id[1]).val());
-         }else{
-            let fee = ( parseFloat($("#financing_amount_"+id[1]).val()) * parseFloat($("#financing_percentage_"+id[1]).val()) ) / 100;
-            var total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+id[1]).val()) - parseFloat(fee);
-         }
+         let total = calculateTotal(id[1]);
+         
          $("#total_"+id[1]).val(total);
          $("#data_total_"+id[1]).html(total +"$");
       });
@@ -33,17 +51,8 @@
          $("#bond_amount_"+number).val($("#modal-amount").val());
          $("#bond_description_"+number).val($("#modal-description").val());
 
-         if ($("#hours_"+number).val() != ""){
-            var totalHours = (parseFloat($("#price_per_hour_"+number).val()) * parseFloat($("#hours_"+number).val())).toFixed(2);
-         }else{
-            var totalHours = 0;
-         }
-         if ($("#financing_id_"+number).val() == 0){
-            var total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+number).val()) + parseFloat($("#financing_amount_"+number).val()); 
-         }else{
-            let fee = ( parseFloat($("#financing_amount_"+number).val()) * parseFloat($("#financing_percentage_"+number).val()) ) / 100;
-            var total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+number).val()) - parseFloat(fee);
-         }
+         let total = calculateTotal(number);
+   
          $("#total_"+number).val(total);
          $("#data_total_"+number).html(total+"$");  
 
@@ -67,18 +76,8 @@
          $("#bond_amount_"+number).val($("#modal-amount2").val());
          $("#bond_description_"+number).val($("#modal-description2").val());
 
-         if ($("#hours_"+number).val() != ""){
-            var totalHours = (parseFloat($("#price_per_hour_"+number).val()) * parseFloat($("#hours_"+number).val())).toFixed(2);
-         }else{
-            var totalHours = 0;
-         }
+         let total = calculateTotal(number);
          
-         if ($("#financing_id_"+number).val() == 0){
-            var total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+number).val()) + parseFloat($("#financing_amount_"+number).val()); 
-         }else{
-            let fee = ( parseFloat($("#financing_amount_"+number).val()) * parseFloat($("#financing_percentage_"+number).val()) ) / 100;
-            var total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+number).val()) - parseFloat(fee);
-         }
          $("#total_"+number).val(total);
          $("#data_total_"+number).html(total+"$");    
 
@@ -93,18 +92,8 @@
          $("#bond_amount_"+number).val("0");
          $("#bond_description_"+number).val("");
 
-         if ($("#hours_"+number).val() != ""){
-            var totalHours = (parseFloat($("#price_per_hour_"+number).val()) * parseFloat($("#hours_"+number).val())).toFixed(2);
-         }else{
-            var totalHours = 0;
-         }
-         
-         if ($("#financing_id_"+number).val() == 0){
-            var total = parseFloat(totalHours) + parseFloat($("#financing_amount_"+number).val()); 
-         }else{
-            let fee = ( parseFloat($("#financing_amount_"+number).val()) * parseFloat($("#financing_percentage_"+number).val()) ) / 100;
-            var total = parseFloat(totalHours) - parseFloat(fee);
-         }
+         let total = calculateTotal(number);
+
          $("#total_"+number).val(total);
          $("#data_total_"+number).html(total+"$");  
 
@@ -128,12 +117,13 @@
          $("#financing_description_"+number).val($("#modal-financing-description").val());
          $("#financing_percentage_"+number).val($("#modal-financing-percentage").val());
 
-         if ($("#hours_"+number).val() != ""){
-            var totalHours = (parseFloat($("#price_per_hour_"+number).val()) * parseFloat($("#hours_"+number).val())).toFixed(2);
-         }else{
-            var totalHours = 0;
-         }
+         /*var totalHours = calculateSalary(number);
+
          let total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+number).val()) + parseFloat($("#financing_amount_"+number).val());
+         */
+
+         let total = calculateTotal(number);
+
          $("#total_"+number).val(total);
          $("#data_total_"+number).html(total+"$");
 
@@ -150,16 +140,19 @@
          $("#modal-financing-amount2").val($("#financing_amount_"+$number).val());
          $("#modal-financing-description2").val($("#financing_description_"+$number).val());
          $("#modal-financing-percentage2").val($("#financing_percentage_"+$number).val());
+         $("#modal-financing-remaining").val($("#financing_remaining_"+$number).val());
 
          if ($option == 2){
             $("#btn-delete-financing").addClass("hidden");
             $("#btn-update-financing").addClass("hidden");
+            $("#remaining_div").removeClass("hidden");
             $("#modal-financing-amount2").attr("disabled", true);
             $("#modal-financing-description2").attr("disabled", true);
             $("#modal-financing-percentage2").attr("disabled", true);
          }else{
             $("#btn-delete-financing").removeClass("hidden");
             $("#btn-update-financing").removeClass("hidden");
+            $("#remaining_div").addClass("hidden");
             $("#modal-financing-amount2").attr("disabled", false);
             $("#modal-financing-description2").attr("disabled", false);
             $("#modal-financing-percentage2").attr("disabled", false);
@@ -174,12 +167,9 @@
          $("#financing_description_"+number).val($("#modal-financing-description2").val());
          $("#financing_percentage_"+number).val($("#modal-financing-percentage2").val());
 
-         if ($("#hours_"+number).val() != ""){
-            var totalHours = (parseFloat($("#price_per_hour_"+number).val()) * parseFloat($("#hours_"+number).val())).toFixed(2);
-         }else{
-            var totalHours = 0;
-         }
-         let total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+number).val()) + parseFloat($("#financing_amount_"+number).val());
+         let total = calculateTotal(number);
+
+         //let total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+number).val()) + parseFloat($("#financing_amount_"+number).val());
          $("#total_"+number).val(total);
          $("#data_total_"+number).html(total+"$");
 
@@ -196,12 +186,11 @@
          $("#financing_description_"+number).val("");
          $("#financing_percentage_"+number).val("");
 
-         if ($("#hours_"+number).val() != ""){
-            var totalHours = (parseFloat($("#price_per_hour_"+number).val()) * parseFloat($("#hours_"+number).val())).toFixed(2);
-         }else{
-            var totalHours = 0;
-         }
-         let total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+number).val());
+         /*let totalHours = calculateSalary(number);
+
+         let total = parseFloat(totalHours) + parseFloat($("#bond_amount_"+number).val());*/
+
+         let total = calculateTotal(number);
          $("#total_"+number).val(total);
          $("#data_total_"+number).html(total+"$");
 
@@ -319,6 +308,9 @@
                                              <input type="hidden" name="financing_amount_{{ $cont }}" id="financing_amount_{{ $cont }}" value="{{ $employee->financings[0]->total_amount }}">
                                              <input type="hidden" name="financing_description_{{ $cont }}" id="financing_description_{{ $cont }}" value="{{ $employee->financings[0]->description }}">
                                              <input type="hidden" name="financing_percentage_{{ $cont }}" id="financing_percentage_{{ $cont }}" value="{{ $employee->financings[0]->percentage }}">
+                                             <input type="hidden" name="financing_remaining_{{ $cont }}" id="financing_remaining_{{ $cont }}" value="{{ $employee->financings[0]->remaining }}">
+                                             <input type="hidden" name="financing_fee_{{ $cont }}" id="financing_fee_{{ $cont }}" value="0">
+                                             <input type="hidden" name="financing_finished_{{ $cont }}" id="financing_finished_{{ $cont }}" value="0">
 
                                              <a href="#showFinancingModal" data-toggle="modal" onclick="showFinancing({{ $cont }}, 2);" title="Ver Préstamo Activo">
                                                 <img src="{{ asset('images/svg/info-circle.svg')}}" alt="Ver Préstamo Activo" height="40" width="40">
@@ -329,7 +321,7 @@
                                              <input type="hidden" name="financing_amount_{{ $cont }}" id="financing_amount_{{ $cont }}" value="0">
                                              <input type="hidden" name="financing_description_{{ $cont }}" id="financing_description_{{ $cont }}">
                                              <input type="hidden" name="financing_percentage_{{ $cont }}" id="financing_percentage_{{ $cont }}">
-                                       
+                                             
                                              <a href="#addFinancingModal" data-toggle="modal" onclick="addFinancing({{ $cont }});" id="addFinancingLink-{{ $cont }}" title="Agregar Préstamo">
                                                 <img class="rounded-circle" src="{{ asset('images/svg/plus-circle.svg')}}" alt="Agregar Préstamo" height="40" width="40">
                                              </a>
@@ -444,14 +436,22 @@
             <form id="update_financing_form">
                <div class="modal-body">
                   <input type="hidden" id="modal-user-number4">
-                  <label for="total_amount">Valor del Préstamo</label>
-                  <input type="text" class=" form-control" id="modal-financing-amount2" required>
-                  <br>
-                  <label for="percentage">% a descontar del sueldo</label>
-                  <input type="text" class=" form-control" id="modal-financing-percentage2" required>
-                  <br>
-                  <label for="percentage">Concepto</label>
-                  <input type="text" class=" form-control" id="modal-financing-description2" required>
+                  <div class="form-group">
+                     <label for="modal-financing-amount2">Valor del Préstamo</label>
+                     <input type="text" class=" form-control" id="modal-financing-amount2" required>
+                  </div>
+                  <div class="form-group" id="remaining_div">
+                     <label for="modal-financing-remaining">Deuda Actual</label>
+                     <input type="text" class=" form-control" id="modal-financing-remaining" required disabled>
+                  </div>
+                  <div class="form-group">
+                     <label for="modal-financing-percentage2">% a descontar del sueldo</label>
+                     <input type="text" class=" form-control" id="modal-financing-percentage2" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="modal-financing-description2">Concepto</label>
+                     <input type="text" class=" form-control" id="modal-financing-description2" required>
+                  </div>
                </div>
                <div class="modal-footer">
                   <a class="btn btn-danger text-white" onclick="deleteFinancing();" id="btn-delete-financing">ELIMINAR PRESTAMO</a>

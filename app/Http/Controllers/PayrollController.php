@@ -30,8 +30,21 @@ class PayrollController extends Controller
                         ->where('price_per_hour', '<>', NULL)
                         ->with(['financings' => function($query){
                             $query->where('status', '=', '0');
-                        }])->orderBy('name', 'ASC')
+                        }, 'financings.payments'])->orderBy('name', 'ASC')
                         ->get();
+
+        foreach ($employees as $employee){
+            if ($employee->financings->count() > 0){
+                $acum = 0;
+                $remaining = 0;
+                foreach ($employee->financings[0]->payments as $payment){
+                    $acum += $payment->amount;
+                }
+
+                $employee->financings[0]->remaining = $employee->financings[0]->total_amount - $acum;
+                
+            }
+        }
         
         return view('admin.payrolls.create')->with(compact('employees'));                             
     }
@@ -54,6 +67,8 @@ class PayrollController extends Controller
             $inputFinancingAmount = 'financing_amount_'.$i;
             $inputFinancingDescription = 'financing_description_'.$i;
             $inputFinancingPercentage = 'financing_percentage_'.$i;
+            $inputFinancingFee = 'financing_fee_'.$i;
+            $inputFinancingFinished = 'financing_finished_'.$i;
             
             if ( (!is_null($request->$inputPriceByHour)) && (!is_null($request->$inputTotalHours)) ){
                 $payrollEmployee = new PayrollEmployee();
@@ -79,26 +94,14 @@ class PayrollController extends Controller
                                         ->first();
                 
                 if (!is_null($checkFinancing)){
-                    $accumulated = 0;
-                    foreach ($checkFinancing->payments as $pay){
-                        $accumulated += $pay->amount;
-                    }
-
-                    $remaining = $checkFinancing->total_amount - $accumulated;
-                    
                     $payment = new FinancingPayment();
                     $payment->financing_id = $checkFinancing->id;
                     $payment->payroll_employee_id = $payrollEmployee->id;
-
-                    $fee = ($checkFinancing->total_amount * $checkFinancing->percentage) / 100;
-                    if ($remaining > $fee){
-                        $payment->amount = $fee;
-                    }else{
-                        $payment->amount = $remaining;
+                    $payment->amount = $request->$inputFinancingFee;
+                    if ($request->$inputFinancingFinished == 1){
                         $checkFinancing->status = '1';
                         $checkFinancing->save();
                     }
-                    
                     $payment->description = 'Descuento quincenal del financiamiento por concepto de '.$checkFinancing->description;
                     $payment->date = date('Y-m-d');
                     $payment->save();

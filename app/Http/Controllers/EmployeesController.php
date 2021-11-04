@@ -173,6 +173,19 @@ class EmployeesController extends Controller
         $facturas = Bill::where('user_id', $id)->get();
         $projectColors = ['#FF3F3F', '#12A0B4', '#940385'];
         $financiamiento = Financing::where(['user_id' => $id, 'status' => '0'])->sum('total_amount');
+        $financiamiento = Financing::where('user_id', $id)
+                            ->where('status', '0')
+                            ->with('payments')
+                            ->first();
+        $acumulado = 0;
+        $restante = 0;
+        if (!is_null($financiamiento)){
+            foreach ($financiamiento->payments as $p){
+                $acumulado += $p->amount;
+            }
+
+            $restante = $financiamiento->total_amount - $acumulado;
+        }
 
         $f = Financing::where('user_id', $id)->where('status', '0')->with('payments')->first();
         $acumulado = 0;
