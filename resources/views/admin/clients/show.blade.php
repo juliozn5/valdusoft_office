@@ -76,7 +76,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                             <div class="container pb-2">
                                 <div class="row">
                                     @foreach ($hosting as $item)
-                                    <div class="col-6 card " style="height:150px;">
+                                    <div class="col-6 card mt-3" style="height:150px;">
 
                                         <div class="card-body  rounded" id="position" style="background: #252856;margin-left:2px;">
                                             <div class="p-1">
@@ -128,9 +128,9 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="#"><i class="fa fa-eye mr-1 action-icon"></i></a>
+
                                                     <a class="" href="{{ route('admin.bills.downloadPDF', $client->id) }}" target="_blank">
-                                                        <i class="ml-1 fas fa-download" style="font-size:20px;"></i>
+                                                        <i class=" fas fa-download" style="font-size:20px;"></i>
                                                     </a>
                                                     <a class="" href="{{ route('admin.bills.download', $client->id) }}" target="_blank">
                                                         <i class="ml-1 far fa-file-pdf" style="font-size:23px;"></i>
