@@ -35,7 +35,7 @@ class ClientsController extends Controller
                   ->where('status', '1')
                     ->orderBy('name', 'ASC')
                     ->paginate(10);
-                    
+
 
         return view('admin.clients.list')
             ->with('client', $client);
@@ -80,7 +80,7 @@ class ClientsController extends Controller
             'phone' => 'El teléfono es requerido',
             'photo.mimes' => 'Archivos no permitido, solo jpeg, jpg y png',
             'photo.max' => 'La imagen no debe ser mayor de 2048 Kilobytes',
-        
+
         ];
         $validate = $request->validate([
             'name' => ['required', 'string', 'max:50'],
@@ -89,7 +89,7 @@ class ClientsController extends Controller
             'phone' => ['required', 'string', 'max:18'],
             'password' => ['required', 'string', 'min:6'],
             'photo' => ['nullable', 'mimes:jpeg,png', 'max:2048'],
-           
+
         ], $msj);
 
 
@@ -105,7 +105,7 @@ class ClientsController extends Controller
                 $file->move(public_path('storage') . '/photo-profile', $name);
                 $client->photo = $name;
             }
-           
+
             $client->save();
         }
 
@@ -137,7 +137,7 @@ class ClientsController extends Controller
             'phone' => 'El teléfono es requerido',
             'photo.mimes' => 'Archivos no permitido, solo jpeg, jpg y png',
             'photo.max' => 'La imagen no debe ser mayor de 2048 Kilobytes',
-     
+
         ];
         $validate = $request->validate([
             'name' => ['required', 'string', 'max:50'],
@@ -145,7 +145,7 @@ class ClientsController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $client->id . ',id'],
             'phone' => ['required', 'string', 'max:18'],
             'photo' => ['nullable', 'mimes:jpeg,png', 'max:2048'],
-           
+
         ], $msj);
 
         if ($validate) {
@@ -158,9 +158,9 @@ class ClientsController extends Controller
                 $client->photo = $name;
                 // dd($client->photo);
             }
-         
+
             $client->save();
-            
+
             return redirect()->route('admin.clients.list')->with('message', 'Se actualizó el Cliente Exitosamente');
         }
     }
