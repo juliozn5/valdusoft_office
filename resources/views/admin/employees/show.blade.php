@@ -149,7 +149,8 @@
                                 <div class="col-6">
                                     <div class="project-detail-titles">Financiamiento</div>
                                     <div class="mt-1 project-detail-dates">
-                                        <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($financiamiento)) ? 'Dato no disponible' : $financiamiento.' USD' }}
+
+                                        <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($restante)) ? 'Dato no disponible' : $restante.' USD' }}
                                     </div>
                                 </div>
                             </div>
@@ -186,8 +187,12 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="" class="btn btn-primary waves-effect waves-light" title="Ver Factura"><i class="fa fa-eye"></i></a>
-                                                    <a href="" class="btn btn-primary waves-effect waves-light" title="Descargar Factura"><i class="fa fa-download"></i></a>
+                                                    <a class="" href="{{ route('admin.bills.downloadPDF', $factura->id) }}" target="_blank">
+                                                        <i class="ml-1 fas fa-download" style="font-size:20px;"></i>
+                                                    </a>
+                                                    <a class="" href="{{ route('admin.bills.download', $factura->id) }}" target="_blank">
+                                                        <i class="ml-1 far fa-file-pdf" style="font-size:23px;"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             @endforeach

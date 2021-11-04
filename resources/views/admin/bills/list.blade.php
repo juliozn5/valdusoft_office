@@ -57,7 +57,7 @@
         }
 
         function addRow(){
-            numRows++;         
+            numRows++;
             let content = '<tr id="row_'+numRows+'">\
                 <td><input type="text" name="description[]" class="form-control description" id="description_'+numRows+'" required></td>\
                 <td><input type="number" name="unit[]" class="form-control units" id="unit_'+numRows+'" value="1" oninput="calculate('+numRows+')" required></td>\
@@ -65,7 +65,7 @@
                 <td><input type="text" name="total[]" class="form-control total" id="total_'+numRows+'" value="0" readonly></td>\
                 <td><a href="javascript:;" onclick="deleteRow('+numRows+')"><img class="rounded-circle ml-2" src="{{ asset('images/svg/x-circle.svg') }}" height="30" width="30"></a></td>\
                 </tr>';
-            
+
             $("#items_table>tbody").append(content);
         }
 
@@ -159,7 +159,13 @@
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('admin.bills.show', $employee->id)}}">
-                                                            <i class="fa fa-eye mr-1 action-icon"></i>
+                                                            <i class="fa fa-eye  action-icon" style="font-size:15px;"></i>
+                                                        </a>
+                                                        <a class="" href="{{ route('admin.bills.downloadPDF', $employee->id) }}" target="_blank">
+                                                            <i class="ml-1 fas fa-download" style="font-size:20px;"></i>
+                                                        </a>
+                                                        <a class="" href="{{ route('admin.bills.download', $employee->id) }}" target="_blank">
+                                                            <i class="ml-1 far fa-file-pdf" style="font-size:23px;"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -202,6 +208,7 @@
                                                     <a href="{{ route('admin.bills.show', $client->id)}}">
                                                         <i class="fa fa-eye mr-1 action-icon"></i>
                                                     </a>
+
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -255,7 +262,7 @@
         </div>
     </div>
 
-    {{-- MODAL PARA CREAR FACTURA DEL CLIENTE O HOSTING --}} 
+    {{-- MODAL PARA CREAR FACTURA DEL CLIENTE O HOSTING --}}
     <div class="modal fade" id="addBill" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
@@ -283,6 +290,9 @@
                             <label for="project_id">Seleccione un proyecto...</label>
                             <select class="form-control" name="project_id" id="project_id" required>
                                 <option value="" selected disabled>Seleccione una opción...</option>
+                                @foreach ($proyecto as $p)
+                                <option value="{{ $p->id }}">{{ $p->name }} </option>
+                            @endforeach
                             </select>
                         </div>
 

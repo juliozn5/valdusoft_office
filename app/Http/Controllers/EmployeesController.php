@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Bill;
 use App\Models\Financing;
+use App\Models\FinancingPayment;
 use App\Models\PayrollEmployee;
 use App\Models\User;
 use App\Models\Project;
@@ -91,16 +92,16 @@ class EmployeesController extends Controller
 
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
-            $name = $employee->id . "." . $file->getClientOriginalExtension();
+            $name = $file->getClientOriginalName(); //$employee->id . "." . $file->getClientOriginalExtension();
             $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
-            $employee->photo = 'uploads/images/users/photos/' . $name;
+            $employee->photo =  $name;
         }
 
         if ($request->hasFile('curriculum')) {
             $file2 = $request->file('curriculum');
-            $name2 = $employee->id . "." . $file2->getClientOriginalExtension();
-            $file->move(public_path('storage') . '/uploads/documents/curriculums', $name2);
-            $employee->curriculum = 'uploads/documents/curriculums'. $name2;
+            $name2 =  $file2->getClientOriginalName();//$employee->id . "." . $file2->getClientOriginalExtension();
+            $file2->move(public_path('storage') . '/uploads/documents/curriculums', $name2);
+            $employee->curriculum =  $name2;
         }
 
         $employee->save();
@@ -173,7 +174,17 @@ class EmployeesController extends Controller
         $projectColors = ['#FF3F3F', '#12A0B4', '#940385'];
         $financiamiento = Financing::where(['user_id' => $id, 'status' => '0'])->sum('total_amount');
 
-        return view('admin.employees.show')->with(compact('employee', 'projectColors', 'availableProjects', 'fechaUser', 'facturas', 'financiamiento'));
+        $f = Financing::where('user_id', $id)->where('status', '0')->with('payments')->first();
+        $acumulado = 0;
+        $restante = 0;
+        if(!is_null($f)){
+            foreach($f->payments as $p ){
+                $acumulado += $p->amount;
+            }
+            $restante = $f->total_amount - $acumulado;
+        }
+
+        return view('admin.employees.show')->with(compact('employee', 'projectColors', 'availableProjects', 'fechaUser', 'facturas', 'financiamiento','restante'));
     }
 
     /** Asignar proyecto a un empleado

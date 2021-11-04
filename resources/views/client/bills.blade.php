@@ -45,8 +45,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 @endif
                                             </td>
                                             <td><a href="{{ route('client.bills.show', $bill->id) }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
+                                                <a class="" href="{{ route('client.bills.downloadPDF', $bill->id) }}" target="_blank">
+                                                    <i class="ml-1 fas fa-download" style="font-size:20px;"></i>
+                                                </a>
+
                                                 <a class="ml-1 mt-1 " href="{{ route('client.bills.download', $bill->id) }}" target="_blank">
-                                                    <i class="fas fa-download"></i>
+                                                    <i class="far fa-file-pdf"  style="font-size:20px;"></i>
                                                 </a>
                                             </td>
                                         </tr>

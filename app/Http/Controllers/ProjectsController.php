@@ -14,7 +14,7 @@ use App\Models\Bill;
 
 class ProjectsController extends Controller
 {
-    /** Listado de Proyectos 
+    /** Listado de Proyectos
      *** Perfil: Admin - Cliente - Empleados ***/
     public function list()
     {
@@ -25,6 +25,7 @@ class ProjectsController extends Controller
 
             return view('admin.projects.list')
                 ->with('projects', $projects);
+
         } else if (Auth::user()->profile_id == 2) {
             $projects = Project::where('user_id', '=', Auth::user()->id)
                 ->where('status', '<>', '4')
@@ -33,10 +34,9 @@ class ProjectsController extends Controller
 
             return view('client.projects')
                 ->with('projects', $projects);
+
         } else if (Auth::user()->profile_id == 3) {
-            $projects = Project::where('user_id', '=', Auth::id())
-            ->where('status', '!=', '4')
-            ->get();
+            $projects =Auth::user()->projects;
 
             return view('employee.projects')->with('projects', $projects);
         }
@@ -114,7 +114,7 @@ class ProjectsController extends Controller
 
         if (Auth::user()->profile_id == 1) {
             $bill = Bill::where('id', '=', Auth::id())->get();
-            
+
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions', 'bills')
                 ->where('id', '=', $id)
                 ->first();
@@ -185,7 +185,7 @@ class ProjectsController extends Controller
 
             return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget'));
         } else if (Auth::user()->profile_id == 2) {
-            
+
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
                 ->where('id', '=', $id)
                 ->first();
@@ -199,7 +199,7 @@ class ProjectsController extends Controller
             return view('employee.showProject')->with(compact('project'));
         }
     }
-    
+
 
 
 
@@ -433,7 +433,7 @@ class ProjectsController extends Controller
                         ->select('id', 'name')
                         ->where('user_id', '=', $client_id)
                         ->get();
-        
+
         return response()->json(
             $projects
         );

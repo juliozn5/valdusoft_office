@@ -45,7 +45,7 @@
             <td>{{ $bill->payroll_employee->financing_payment->description }}</td>
             <td>1</td>
             <td>{{ number_format($bill->payroll_employee->financing_payment->amount, 2, '.', ',') }}</td>
-            <td>- {{ number_format($bill->payroll_employee->financing_payment->amount, 2, '.', ',') }$</td>
+            <td>- {{ number_format($bill->payroll_employee->financing_payment->amount, 2, '.', ',') }}$</td>
         </tr>
     @endif
     <tr>
