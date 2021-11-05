@@ -12,7 +12,8 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title mb-1">Facturas Pendientes</h3> 
-                            <a type="button" class="btn btn-primary mb-1" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalConfirm" id="btn-guardar">Confirmar Factura</a>   
+                             
+                            <a type="button" class="btn btn-primary mb-1" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalConfirm" id="btn-guardar">Confirmar Factura</a>    
                         </div>
 
                         <div class="card-content">
@@ -103,7 +104,7 @@
                             </select>
                         </div>
                     
-                        <div class="form-group">
+                      
                         <div class="modal-body">
                             <h4 class="text-center">Seleccione el método de pago</h4>
                             <div class="d-flex justify-content-center p-2">
@@ -116,10 +117,20 @@
                                     <label class="form-check-label" for="inlineRadio2">Bancolombia</label>
                                 </div>
                             </div>
-                            
+                            <div class="form-group">
+                                <label class="h5" for="fee">% de feed <span style="color: red;">*</span></label>
+                                <input type="text" class="form-control @error('fee') is-invalid @enderror"
+                                name="fee" id="fee" placeholder="Ingrese el feed de la transacción" >
+                                @error('fee')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div> 
+
                             @include('admin.bills.partials.bancolombia')
                             @include('admin.bills.partials.billetera')  
-                            
+                              
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>

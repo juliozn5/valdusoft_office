@@ -158,7 +158,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <i class="fas fa-download"></i> Descargar
                                 </a>
                                 @if ($bill->status == '0')
-                                <button class="btn btn-success btn-block" data-toggle="modal" data-target="#add-payment">
+                                <button class="btn btn-success btn-block" data-toggle="modal" data-target="#Add-payment">
                                     <i class="fas fa-donate"></i> Agregar Pago
                                 </button>
                                 @endif
@@ -174,7 +174,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
 
 {{-- Modal para Agregar Pago --}}
-<div class="modal fade" id="add-payment" aria-hidden="true">
+<div class="modal fade" id="Add-payment" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content p-0">
             <div class="modal-header mb-1">
@@ -182,7 +182,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <span class="align-middle">Agregar Pago</span>
                 </h5>
             </div>
-            <form method="POST" action="{{ route('admin.payments.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('client.payments.store') }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="bill_id" value="{{ $bill->id }}">
                 <input type="hidden" name="user_id" value="{{ is_null($bill->user_id) ? 0 : $bill->user_id }}">

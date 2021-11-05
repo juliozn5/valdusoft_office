@@ -158,7 +158,11 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('', 'BillController@saveInvoice')->name('save-invoices');
         });
 
-
+         //MÓDULO FINANCIERO - PAGOS
+        Route::group(['prefix' => 'payments'], function () {
+               
+            Route::post('store', 'PaymentsController@store')->name('client.payments.store');
+        });
 
         //MÓDULO DE FACTURAS
         Route::group(['prefix' => 'bills'], function () {

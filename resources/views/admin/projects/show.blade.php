@@ -3,7 +3,6 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
-
         $('.delete-attachment').on('click', function() {
             var id = $(this).attr('data-id').split("-");
             Swal.fire({
@@ -25,13 +24,11 @@
             })
         });
     });
-
     function editAttachment($attachment) {
         $("#attachment_id").val($attachment.id);
         $("#name").val($attachment.name);
         $("#file_type option[value=" + $attachment.file_type + "]").attr("selected", true);
     }
-
     function editProject($project) {
         $("#project_name").val($project.name);
         $("#project_user_id option[value=" + $project.user_id + "]").attr("selected", true);
@@ -41,13 +38,11 @@
         $("#project_ending_date").val($project.ending_date);
         $("#project_status option[value=" + $project.status + "]").attr("selected", true);
     }
-
     function editAttachment($attachment) {
         $("#attachment_id").val($attachment.id);
         $("#name").val($attachment.name);
         $("#file_type option[value=" + $attachment.file_type + "]").attr("selected", true);
     }
-
     /*function changeTransactionType($type) {
         $("#type option[value=" + $type + "]").attr("selected", true);
         if ($type == '+') {
@@ -56,7 +51,6 @@
             $("#transaction_type_button").html('Egreso');
         }
     }*/
-
     function addTransaction() {
         if ($("#amount").val() == "") {
             Swal.fire({
@@ -71,7 +65,6 @@
             $("#newTransaction").modal("show");
         }
     }
-
     function editTransaction($transaction) {
         $("#transaction_id").val($transaction.id);
         $("#description").val($transaction.description);
@@ -395,9 +388,8 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                         <tbody class="mt-2">
                                             @foreach($bill as $bills)
                                             <tr class="text-center ">
-
-
-                                                <th style="font-weight:normal;font-size:15px;">{{$bills->amount}}</th>
+                                               
+                                                 <th style="font-weight:normal;font-size:15px;">{{$bills->amount}}</th>
 
 
 
@@ -413,6 +405,8 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                 @else($bills->status == 1)
                                                 <th><button class="btn btn-danger">Pagada</button></th>
                                                 @endif
+
+            
                                             </tr>
 
                                         </tbody>

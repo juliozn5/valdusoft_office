@@ -113,7 +113,7 @@ class ProjectsController extends Controller
     {
 
         if (Auth::user()->profile_id == 1) {
-            $bill = Bill::where('id', '=', Auth::id())->get();
+                $bill = Bill::where('id', '=', Auth::id())->get();
 
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions', 'bills')
                 ->where('id', '=', $id)

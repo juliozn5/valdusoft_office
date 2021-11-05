@@ -2,16 +2,6 @@
     <div class="row">
         <div class="col-12">
            <div class="form-group">
-               <label class="h5" for="fee">% de feed <span style="color: red;">*</span></label>
-               <input type="text" class="form-control @error('fee') is-invalid @enderror"
-                      name="fee" id="fee" placeholder="Ingrese el feed de la transacción" >
-                @error('fee')
-                   <span class="invalid-feedback" role="alert">
-                       <strong>{{ $message }}</strong>
-                   </span>
-                @enderror
-           </div>
-           <div class="form-group">
                <label class="h5" for="payment_id">Referencia <span style="color: red;">*</span></label>
                <input type="text" class="form-control @error('payment_id') is-invalid @enderror"
                 name="payment_id" id="payment_id" placeholder="Ingrese la referencia de la transacción" >
@@ -37,7 +27,8 @@
                      </span>
                    @enderror
               </div>
-          </div> 
+              <input type="hidden" id="payment_method" name="payment_method" value="bancolombia">
+              <input type="hidden" id="discount_amount" name="discount_amount" value="0">
         </div>                                 
         </div>
     </div>
