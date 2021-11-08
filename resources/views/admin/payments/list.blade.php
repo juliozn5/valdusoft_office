@@ -39,7 +39,7 @@
                             <div class="card-header">
                                 <h3 class="card-title mb-2">Pagos</h3>
                                  @if ($bills->count() > 0)
-                                    <a href="#" class="btn btn-primary  mb-2 waves-effect waves-light" data-toggle="modal"  data-target="#ModalGenerate"><i class="feather icon-plus "></i>&nbsp; Agregar Nuevo</a>
+                                    <a href="#" class="btn btn-primary  mb-2 waves-effect waves-light" data-toggle="modal" data-target="#ModalGenerate"><i class="feather icon-plus "></i>&nbsp; Agregar Nuevo</a>
                                
                                 @endif
                             </div>

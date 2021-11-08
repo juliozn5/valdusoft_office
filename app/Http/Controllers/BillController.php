@@ -139,8 +139,13 @@ class BillController extends Controller
 
      public function show($id){
           $bill = Bill::where('id', '=', $id)
-                    ->with('user:id,name,last_name,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payments')
+                    ->with('user:id,name,last_name,phone,email,tron_wallet', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payments')
                     ->first();
+          
+          $bill->remaining = $bill->amount;
+          foreach ($bill->payments as $payment) {
+               $bill->remaining -= $payment->total;
+          }
 
           if (Auth::user()->profile_id == 1){
                return view('admin.bills.show')->with(compact('bill'));
@@ -169,10 +174,6 @@ class BillController extends Controller
                $bill->type = 'E';
                $bill->save();
           }
-
-          DB::table('payrolls_employee')
-               ->where('payroll_id', '=', $payroll->id)
-               ->update(['status' => '1']);
 
           return redirect()->route('admin.payrolls.list', $payroll_id)->with('bills-created', true);
      }

@@ -28,17 +28,32 @@ class PaymentsController extends Controller
 
     public function store(Request $request)
     {
-        $bill = Bill::find($request->bill_id);
-    
-        $payment = new Payments($request->all());
-        $payment->user_id = $bill->user_id;
-        if (!isset($request->amount)){
-            $payment->amount = $bill->amount;
+        $bill = Bill::with('payments')
+                    ->where('id', '=', $request->bill_id)
+                    ->first();
+        
+        if (!is_null($request->discount_amount)){
+            $payment = new Payments();
+            $payment->bill_id = $bill->id;
+            $payment->user_id = $bill->user_id;
+            $payment->amount = 0;
+            $payment->discount_amount = $request->discount_amount;
+            $payment->total = $request->discount_amount;
+            $payment->discount_description = $request->discount_description;
+            $payment->date = date('Y-m-d');
+            $payment->status = '1';
+            $payment->save();
         }
-        $payment->total = $payment->amount - $payment->discount_amount;
-        $payment->date = date('Y-m-d');
-        $payment->status = '1';
-        $payment->save();
+    
+        if (!is_null($request->amount)){
+            $payment2 = new Payments($request->all());
+            $payment2->user_id = $bill->user_id;
+            $payment2->amount = $request->amount;
+            $payment2->total = $request->amount;
+            $payment2->date = date('Y-m-d');
+            $payment2->status = '1';
+            $payment2->save();
+        }
 
         if ($request->hasFile('support')) {
             $file = $request->file('support');
@@ -48,10 +63,30 @@ class PaymentsController extends Controller
             $payment->save();
         }
 
-        $bill->status = '1';
-        $bill->save();
-      
+        if ($bill->type == 'E'){
+            $bill->status = '1';
+            $bill->payed_at = date('Y-m-d');
+        }else{
+            $paymentsTotal = $bill->amount;
+            if (isset($payment)){
+                $paymentsTotal -= $payment->total;
+            }
+            if (isset($payment2)){
+                $paymentsTotal -= $payment2->total;
+            }
+            foreach ($bill->payments as $p){
+                $paymentsTotal -= $p->total;
+            }
 
+            if ($paymentsTotal == 0){
+                $bill->status = '1';
+                $bill->payed_at = date('Y-m-d');
+            }else{
+                $bill->status = '2';
+            }
+        }
+        
+        $bill->save();
 
         if (!is_null($bill->payroll_employee_id)){
             $payrollEmployee = PayrollEmployee::find($bill->payroll_employee_id);
@@ -70,7 +105,7 @@ class PaymentsController extends Controller
             }
         }
 
-        return redirect()->back()->with('message', 'Factura confirmada  exitosamente');
+        return redirect()->back()->with('message', 'El pago ha sido agregado con éxito');
     }
   
 }

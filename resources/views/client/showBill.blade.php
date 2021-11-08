@@ -76,36 +76,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         <p class="card-text mb-25">{{ $bill->user->phone }}</p>
                                         <p class="card-text mb-0">{{ $bill->user->email }}</p>
                                     </div>
-
-                                    {{-- Datos del Pago --}}
-                                    @if ($bill->payments->count() > 0)
-                                    <div class="col-xl-4 p-0 mt-xl-0 mt-2">
-                                        <h6 class="mb-2">Detalles del Pago:</h6>
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="pr-1">Método de Pago:</td>
-                                                    <td><span class="font-weight-bold">{{ $bill->payments[0]->payment_method }}</span></td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td class="pr-1">Billetera / # Cuenta:</td>
-                                                    <td><span class="font-weight-bold">{{ $bill->payments[0]->account }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="pr-1">Identificador del Pago:</td>
-                                                    <td><span class="font-weight-bold">{{ $bill->payments[0]->payment_id }}</span></td>
-                                                </tr>
-                                                @if (!is_null($bill->payments[0]->support))
-                                                <tr>
-                                                    <td class="pr-1">Comprobante del Pago:</td>
-                                                    <td><span class="font-weight-bold"><a href="{{ asset('uploads/images/payments[0]-supports/'.$bill->payments[0]->support) }}" target="_blank">Ver</a></span></td>
-                                                </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    @endif
                                 </div>
                             </div>
 
@@ -145,10 +115,52 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="3">PAGOS ABONADOS</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="py-1">Fecha</th>
+                                            <th class="py-1">Descripción</th>
+                                            <th class="py-1 text-center">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if ($bill->payments->count() > 0)
+                                            @foreach ($bill->payments as $payment)
+                                                <tr class="border-bottom">
+                                                    <td class="py-1">{{ date('d-m-Y', strtotime($payment->created_at)) }}</td>
+                                                    @if (!is_null($payment->discount_amount))
+                                                        <td class="py-1">DESCUENTO #{{ $payment->id }}</td>
+                                                    @else
+                                                        <td class="py-1">PAGO #{{ $payment->id }}</td>
+                                                    @endif
+                                                    <td class="py-1 text-center"><span class="font-weight-bold">- {{ number_format($payment->total, 2, '.', ',') }}</span></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="card-body invoice-padding pt-1 pb-1">
+                                <div class="row invoice-sales-total-wrapper">
+                                    <div class="col-md-12 d-flex justify-content-end order-md-2 order-1">
+                                        <div class="invoice-total-wrapper" style="max-width: 20rem !important;">
+                                            <div class="invoice-total-item">
+                                                <p class="invoice-total-title">TOTAL POR PAGAR:</p>
+                                                <p class="invoice-total-amount" style="margin-right: 35px;">{{ number_format($bill->remaining, 2, '.', ',') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    {{-- Sección de Botones --}}
                     {{-- Sección de Botones --}}
                     <div class="col-xl-3 col-md-4 col-12 invoice-actions mt-md-0 mt-2">
                         <div class="card">
