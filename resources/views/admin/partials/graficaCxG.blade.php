@@ -48,7 +48,7 @@
                 opposite: false,
                 labels: {
                     formatter: function(value) {
-                        return value + "K";
+                        return value + "$";
                     }
                 },
             },
@@ -64,6 +64,6 @@
         lineAreaChart.render();
 
     }).catch(e => console.log(e))
-    
+
 </script>
 @endpush

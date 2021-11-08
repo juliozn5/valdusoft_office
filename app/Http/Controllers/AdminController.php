@@ -48,7 +48,7 @@ class AdminController extends Controller
             $Empleado = []; */
 
             //testeando///////////////////////////////////////////////////
-            $anno = Carbon::now()->format('Y');
+           /* $anno = Carbon::now()->format('Y');
 
             $fecha_ini = Carbon::createFromDate($anno,1,1)->startOfDay();
             $fecha_fin = Carbon::createFromDate($anno, 12,1)->endOfMonth()->endOfDay();
@@ -66,7 +66,7 @@ class AdminController extends Controller
 
                 array_push($Empleado, $facturaEmpleado[$j]['monto']);
 
-            }
+            } */
 
             //return $m;
         return view('admin.home', compact('hostings', 'user','billC'));
@@ -186,9 +186,9 @@ class AdminController extends Controller
 
             //Factura de empleadoss/////////////////////////////////////////////////////////////
             $facturaEmpleado= Bill::select(
-            DB::raw('DATE_FORMAT(created_at,"%m %Y") as mes'),
+            DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
             DB::raw('SUM(amount) as monto'))
-            ->where('type', 'E')->whereBetween('created_at', [$fecha_ini, $fecha_fin])->groupBy('mes')->orderBy('mes', 'ASC')->get();
+            ->where('status','1')->where('type', 'E')->whereBetween('created_at', [$fecha_ini, $fecha_fin])->groupBy('mes')->orderBy('mes', 'ASC')->get();
             $m = $facturaEmpleado->count();
 
             $facturaEmpleado->toArray();
@@ -202,18 +202,20 @@ class AdminController extends Controller
 
             //Factura de Clientes/////////////////////////////////////////////////////////
             $facturaCliente= Bill::select(
-                DB::raw('DATE_FORMAT(created_at,"%m %Y") as mes'),
-                DB::raw('SUM(amount) as monto'))
-                ->where('type', 'C')->whereBetween('created_at', [$fecha_ini, $fecha_fin])->groupBy('mes')->orderBy('mes', 'ASC')->get();
-                $m = $facturaCliente->count();
-                $facturaCliente->toArray();
-                $Clientes = [];
-                for($i = 0; $i < $m; $i++) {
-                    $facturaCliente[$i];
-                    array_push($Clientes, $facturaCliente[$i]['monto']);
+            DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
+            DB::raw('SUM(amount) as monto'))
+            ->where('status','1')->where('type', 'C')->whereBetween('created_at', [$fecha_ini, $fecha_fin])->groupBy('mes')->orderBy('mes', 'ASC')->get();
+            $m2 = $facturaCliente->count();
 
-                }
+            $facturaCliente->toArray();
+            $Clientes = [];
+            for($i = 0; $i < $m2; $i++) {
 
+                $facturaCliente[$i];
+                array_push($Clientes, $facturaCliente[$i]['monto']);
+
+            }
+            //Se esta usando la columna 'created_at' de la tabla bills , falta gregar la columnan y estatus necesariios
             $data = [
                 'data_clientes' => $Clientes,
                 'data_empleados' =>  $Empleado
@@ -221,6 +223,6 @@ class AdminController extends Controller
 
             return response()->json(['valores' => $data]);
 
-                }
+        }
 }
 
