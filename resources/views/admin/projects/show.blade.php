@@ -415,7 +415,6 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 </div>
                             </div>
 
-
                             {{-- Pestaña de Contable --}}
                             <div class="tab-pane  @if (Session::has('msj-transaction')) active @else fade @endif" id="accountant">
                                 <h3 class="card-title ml-2">Contable</h3>

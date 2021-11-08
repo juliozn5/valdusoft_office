@@ -162,6 +162,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['prefix' => 'payments'], function () {
                
             Route::post('store', 'PaymentsController@store')->name('client.payments.store');
+            Route::post('billetera', 'PaymentsController@billetera')->name('admin.payments.billetera');
+            Route::post('bancolombia', 'PaymentsController@bancolombia')->name('admin.payments.bancolombia');
         });
 
         //MÓDULO DE FACTURAS

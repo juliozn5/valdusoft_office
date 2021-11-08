@@ -12,18 +12,20 @@ class FinancingController extends Controller
     /** De Interés - Financiamiento
     *** Perfil: Empleado ***/
     public function list(){
-        $financing = Financing::where('user_id', Auth::id())
-                        ->with('financing_payments')
-                        ->where('status', '=', '0')
-                        ->first();
+
+
+       $financing = Financing::where('user_id', Auth::id())
+                      ->with('financing_payments')
+                      ->where('status', '=', '0')
+                      ->first();
         $accum = 0;
         if (!is_null($financing)){
-            if (!is_null($financing->financing_payments)){
+         if (!is_null($financing->financing_payments)){
                 foreach ($financing->financing_payments as $financing_payment) {
                     $accum += $financing_payment->amount;
                 }
             }
-        }
+        }    
 
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon(Auth::user()->admission_date);
