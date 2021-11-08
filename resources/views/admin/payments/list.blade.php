@@ -100,6 +100,70 @@
             </div>
         </div>
     </div>
+    {{-- MODAL --}}
+    <div class="modal fade" id="ModalGenerate" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 50%;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-darck" id="#exampleModalToggle">Confirmar Pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('admin.payments.store') }}" enctype="multipart/form-data" required >
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="mt-2" for="bill_id">Seleccione la factura</label>
+                            <select name="bill_id" id="bill_id" class="form-control" required>
+                                <option value="" selected disabled>Seleccione una factura...</option>
+                                @foreach ($bills as $bill)
+                                    <option value="{{ $bill->id }}">
+                                        #{{ $bill->id }} -  {{ number_format($bill->amount, 2, '.', ',') }}$ -
+                                        @if ($bill->type == 'H')
+                                            {{ $bill->hosting->url }} (Hosting)
+                                        @else
+                                            {{ $bill->user->name }} {{ $bill->user->last_name }}
+                                            @if ($bill->type == 'C')
+                                                (Cliente)
+                                            @else
+                                                (Empleado)
+                                            @endif
+                                        @endif
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
+                        <div class="form-group">
+                        <div class="modal-body">
+                            <h4 class="text-center">Seleccione el método de pago</h4>
+                            <div class="d-flex justify-content-center p-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="billetera" onchange="javascript:showContent()">
+                                    <label class="form-check-label" for="inlineRadio1">Criptomoneda</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="bancolombia" onchange="javascript:showContent2()">
+                                    <label class="form-check-label" for="inlineRadio2">Bancolombia</label>
+                                </div>
+                            </div>
+
+                            @include('admin.payments.partials.bancolombia')
+                            @include('admin.payments.partials.billetera')
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
   
 @endsection
+
+@include('admin.payments.partials.js')
