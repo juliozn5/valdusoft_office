@@ -5,7 +5,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
 
-   
 @section('content')
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -74,6 +73,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                 </div>
             </div>
         </div>
+         
         <div class="content-body">
             <div class="card ">
                 <div class="card-header">
