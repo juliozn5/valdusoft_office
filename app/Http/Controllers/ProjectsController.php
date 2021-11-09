@@ -129,17 +129,16 @@ class ProjectsController extends Controller
                 array_push($employeesID, $employee->id);
             }
 
+            $technologiesID = array();
+            foreach ($project->technologies as $technology) {
+                array_push($technologiesID, $technology->id);
+            }
+
             $availableEmployees = DB::table('users')
                 ->select('id', 'name', 'last_name')
                 ->where('profile_id', '=', 3)
                 ->whereNotIn('id', $employeesID)
                 ->get();
-
-            $technologiesID = array();
-
-            foreach ($project->technologies as $technology) {
-                array_push($technologiesID, $technology->id);
-            }
 
             $availableTechnologies = DB::table('technologies')
                 ->select('id', 'name')
@@ -206,7 +205,7 @@ class ProjectsController extends Controller
     /** Guardar datos modificados del Proyecto
      *** Perfil: Admin ***/
     public function update(Request $request, $id)
-    {
+    {   
         $project = Project::find($id);
         $project->fill($request->all());
 
