@@ -204,7 +204,6 @@ class AdminController extends Controller
             $fecha_ini = Carbon::createFromDate($anno,1,1)->startOfDay();
             $fecha_fin = Carbon::createFromDate($anno, 12,1)->endOfMonth()->endOfDay();
 
-            //Obtener fecha de las facturas//////////////////////////////////////////////////////
             $facturaFecha = Bill::select(
                             DB::raw('DATE_FORMAT(payed_at,"%M ") as mes'))
                             ->where('status','1')
@@ -214,10 +213,16 @@ class AdminController extends Controller
                             ->get();
 
             //Factura de empleadoss/////////////////////////////////////////////////////////////
-            $facturaEmpleado= Bill::select(
-            DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
-            DB::raw('SUM(amount) as monto'))
-            ->where('status','1')->where('type', 'E')->whereBetween('created_at', [$fecha_ini, $fecha_fin])->groupBy('mes')->orderBy('mes', 'ASC')->get();
+            $facturaEmpleado = Bill::select(
+                DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
+                DB::raw('SUM(amount) as monto'))
+                ->where('status','1')
+                ->where('type', 'E')
+                ->whereBetween('created_at', [$fecha_ini, $fecha_fin])
+                ->groupBy('mes')
+                ->orderBy('mes', 'ASC')
+                ->get();
+
             $m = $facturaEmpleado->count();
 
             $facturaEmpleado->toArray();
@@ -233,7 +238,13 @@ class AdminController extends Controller
             $facturaCliente= Bill::select(
             DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
             DB::raw('SUM(amount) as monto'))
-            ->where('status','1')->where('type', 'C')->whereBetween('created_at', [$fecha_ini, $fecha_fin])->groupBy('mes')->orderBy('mes', 'ASC')->get();
+                ->where('status','1')
+                ->where('type', 'C')
+                ->whereBetween('created_at', [$fecha_ini, $fecha_fin])
+                ->groupBy('mes')
+                ->orderBy('mes', 'ASC')
+                ->get();
+
             $m2 = $facturaCliente->count();
 
             $facturaCliente->toArray();
@@ -246,7 +257,7 @@ class AdminController extends Controller
                 array_push(  $mont , $facturaFecha[$i]['mes']);
 
             }
-            //Se esta usando la columna 'created_at' de la tabla bills , falta gregar la columnan y estatus necesariios
+
             $data = [
                 'data_clientes' => $Clientes,
                 'data_empleados' =>  $Empleado,
