@@ -386,31 +386,22 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                             </tr>
                                         </thead>
                                         <tbody class="mt-2">
-                                            @foreach($bill as $bills)
-                                            <tr class="text-center ">
-                                               
-                                                 <th style="font-weight:normal;font-size:15px;">{{$bills->amount}}</th>
-
-
-
-                                                <th style="font-weight:normal;font-size:15px;">{{$bills->date}}</th>
-
-
-
-                                                @if($bills->status == 0)
-                                                <th><button class="btn btn-primary">Pendiente</button></th>
-
-
-
-                                                @else($bills->status == 1)
-                                                <th><button class="btn btn-danger">Pagada</button></th>
-                                                @endif
-
-            
-                                            </tr>
-
+                                            @foreach($project->bills as $bill)
+                                                <tr class="text-center ">
+                                                    <td style="font-weight:normal;font-size:15px;">{{$bill->amount}}</td>
+                                                    <td style="font-weight:normal;font-size:15px;">{{$bill->date}}</td>
+                                                    <td>
+                                                        @if($bill->status == 0) 
+                                                            <label class="label status-label status-label-purple">Pendiente</label>
+                                                        @elseif ($bill->status == 1)
+                                                            <label class="label status-label status-label-green">Pagada</label>
+                                                        @else
+                                                            <label class="label status-label status-label-blue">Parcialmente Pagada</label>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
-                                        @endforeach
                                     </table>
                                 </div>
                             </div>
