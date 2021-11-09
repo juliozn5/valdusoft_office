@@ -115,33 +115,35 @@
                                         </div>
 
                                         {{-- Datos del Pago --}}
-                                        @if ($bill->payments->count() > 0)
-                                            <div class="col-xl-4 p-0 mt-xl-0 mt-2">
-                                                <h6 class="mb-2">Detalles del Pago:</h6>
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pr-1">Método de Pago:</td>
-                                                            <td><span class="font-weight-bold">{{ $bill->payments[0]->payment_method }}</span></td>
-                                                        </tr>
-                                                        <tr>
-
-                                                            <td class="pr-1">Billetera / # Cuenta:</td>
-                                                            <td><span class="font-weight-bold">{{ $bill->payments[0]->account }}</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="pr-1">Identificador del Pago:</td>
-                                                            <td><span class="font-weight-bold">{{ $bill->payments[0]->payment_id }}</span></td>
-                                                        </tr>
-                                                        @if (!is_null($bill->payments[0]->support))
+                                        @if ($bill->type != 'C')
+                                            @if ($bill->payments->count() > 0)
+                                                <div class="col-xl-4 p-0 mt-xl-0 mt-2">
+                                                    <h6 class="mb-2">Detalles del Pago:</h6>
+                                                    <table>
+                                                        <tbody>
                                                             <tr>
-                                                                <td class="pr-1">Comprobante del Pago:</td>
-                                                                <td><span class="font-weight-bold"><a href="{{ asset('uploads/images/payment-supports/'.$bill->payments[0]->support) }}" target="_blank">Ver</a></span></td>
+                                                                <td class="pr-1">Método de Pago:</td>
+                                                                <td><span class="font-weight-bold">{{ $bill->payments[0]->payment_method }}</span></td>
                                                             </tr>
-                                                        @endif
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                            <tr>
+
+                                                                <td class="pr-1">Billetera / # Cuenta:</td>
+                                                                <td><span class="font-weight-bold">{{ $bill->payments[0]->account }}</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="pr-1">Identificador del Pago:</td>
+                                                                <td><span class="font-weight-bold">{{ $bill->payments[0]->payment_id }}</span></td>
+                                                            </tr>
+                                                            @if (!is_null($bill->payments[0]->support))
+                                                                <tr>
+                                                                    <td class="pr-1">Comprobante del Pago:</td>
+                                                                    <td><span class="font-weight-bold"><a href="{{ asset('uploads/images/payment-supports/'.$bill->payments[0]->support) }}" target="_blank">Ver</a></span></td>
+                                                                </tr>
+                                                            @endif
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>
@@ -202,19 +204,64 @@
                                         </tbody>
                                     </table>
                                 </div>
-
+                                
                                 <div class="card-body invoice-padding pt-1 pb-1">
                                     <div class="row invoice-sales-total-wrapper">
                                         <div class="col-md-12 d-flex justify-content-end order-md-2 order-1">
-                                            <div class="invoice-total-wrapper">
+                                            <div class="invoice-total-wrapper" style="max-width: 20rem !important;">
                                                 <div class="invoice-total-item">
-                                                    <p class="invoice-total-title">Total:</p>
+                                                    <p class="invoice-total-title">TOTAL FACTURA:</p>
                                                     <p class="invoice-total-amount">{{ number_format($bill->amount, 2, '.', ',') }}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                @if ($bill->type == 'C')
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="3">PAGOS ABONADOS</th>
+                                                </tr>
+                                                <tr>
+                                                    <th class="py-1">Fecha</th>
+                                                    <th class="py-1">Descripción</th>
+                                                    <th class="py-1 text-center">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if ($bill->payments->count() > 0)
+                                                    @foreach ($bill->payments as $payment)
+                                                        <tr class="border-bottom">
+                                                            <td class="py-1">{{ date('d-m-Y', strtotime($payment->created_at)) }}</td>
+                                                            @if (!is_null($payment->discount_amount))
+                                                                <td class="py-1">DESCUENTO #{{ $payment->id }}</td>
+                                                            @else
+                                                                <td class="py-1">PAGO #{{ $payment->id }}</td>
+                                                            @endif
+                                                            <td class="py-1 text-center"><span class="font-weight-bold">- {{ number_format($payment->total, 2, '.', ',') }}</span></td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="card-body invoice-padding pt-1 pb-1">
+                                        <div class="row invoice-sales-total-wrapper">
+                                            <div class="col-md-12 d-flex justify-content-end order-md-2 order-1">
+                                                <div class="invoice-total-wrapper" style="max-width: 20rem !important;">
+                                                    <div class="invoice-total-item">
+                                                        <p class="invoice-total-title">TOTAL POR PAGAR:</p>
+                                                        <p class="invoice-total-amount" style="margin-right: 35px;">{{ number_format($bill->remaining, 2, '.', ',') }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif   
                             </div>
                         </div>
 
@@ -228,10 +275,16 @@
                                     <a class="btn btn-primary btn-block btn-download-invoice mb-75" href="{{ route('admin.bills.download', $bill->id) }}" target="_blank">
                                         <i class="fas fa-download"></i> Descargar
                                     </a>
-                                    @if ($bill->status == '0')
-                                        <button class="btn btn-success btn-block" data-toggle="modal" data-target="#add-payment">
-                                            <i class="fas fa-donate"></i> Agregar Pago
-                                        </button>
+                                    @if ($bill->status != '1')
+                                        @if ($bill->type == 'E')
+                                            <button class="btn btn-success btn-block" data-toggle="modal" data-target="#add-payment">
+                                                <i class="fas fa-donate"></i> Agregar Hash
+                                            </button>
+                                        @else
+                                            <button class="btn btn-success btn-block" data-toggle="modal" data-target="#add-payment">
+                                                <i class="fas fa-donate"></i> Agregar Pago
+                                            </button>
+                                        @endif
                                     @endif
                                 </div>
                             </div>
@@ -298,43 +351,59 @@
                     @csrf
                     <input type="hidden" name="bill_id" value="{{ $bill->id }}">
                     <input type="hidden" name="user_id" value="{{ is_null($bill->user_id) ? 0 : $bill->user_id }}" >
-                    <input type="hidden" name="amount" value="{{ $bill->amount }}">
-                    <div class="modal-body flex-grow-1">
-                        <div class="form-group">
-                            <input id="balance" class="form-control" type="text" value="Balance de Factura: {{ number_format($bill->amount, 2, '.', ',') }}" disabled />
+                    @if ($bill->type == 'E')
+                        <input type="hidden" name="payment_method" value="Crypto">
+                        <input type="hidden" name="account" value="{{ $bill->user->tron_wallet }}">
+                        <input type="hidden" name="amount" value="{{ $bill->amount }}">
+                        
+                        <div class="modal-body flex-grow-1">
+                            <div class="form-group">
+                                <label class="form-label" for="payment_id">Hash del Pago</label>
+                                <input type="text" class="form-control" name="payment_id" id="payment_id" required/>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="payment_method">Método de Pago</label>
-                            <select class="form-control" id="payment_method" name="payment_method" required>
-                                <option value="" selected disabled>Seleccione el método de pago...</option>
-                                <option value="Crypto">Criptomoneda</option>
-                                <option value="Bancolombia">Bancolombia</option>
-                            </select>
+                    @else
+                        <div class="modal-body flex-grow-1">
+                            <div class="form-group">
+                                <input id="balance" class="form-control" type="text" value="Balance de Factura: {{ number_format($bill->remaining, 2, '.', ',') }}" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="amount">Monto de Abono</label>
+                                <input type="text" class="form-control" name="amount" id="amount"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="payment_method">Método de Pago</label>
+                                <select class="form-control" id="payment_method" name="payment_method">
+                                    <option value="" selected disabled>Seleccione el método de pago...</option>
+                                    <option value="Crypto">Criptomoneda</option>
+                                    <option value="Bancolombia">Bancolombia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="account">Cuenta / Billetera</label>
+                                <input type="text" class="form-control" name="account" id="account"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="payment_id">Identificador del Pago</label>
+                                <input type="text" class="form-control" name="payment_id" id="payment_id" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="discount_description">Concepto del Descuento</label>
+                                <input type="text" class="form-control" name="discount_description" id="discount_description" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="discount">Monto a Descontar</label>
+                                <input type="text" class="form-control" name="discount_amount" id="discount_amount" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="support">Soporte del Pago</label>
+                                <input type="file" class="form-control" name="support" id="support" />
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="account">Cuenta / Billetera</label>
-                            <input type="text" class="form-control" name="account" id="account" required/>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="payment_id">Identificador del Pago</label>
-                            <input type="text" class="form-control" name="payment_id" id="payment_id" required/>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="discount_description">Concepto del Descuento</label>
-                            <input type="text" class="form-control" name="discount_description" name="discount_description" />
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="discount">Monto a Descontar</label>
-                            <input type="text" class="form-control" name="discount_amount" name="discount_amount" />
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="support">Soporte del Pago</label>
-                            <input type="file" class="form-control" name="support" name="support" />
-                        </div>
-                    </div>
+                    @endif
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>  
-                        <button type="submit" class="btn btn-primary">Cargar Pago</button>
+                        <button type="submit" class="btn btn-primary">@if ($bill->type == 'E') Cargar Hash @else Cargar Pago @endif</button>
                     </div>
                 </form>
             </div>

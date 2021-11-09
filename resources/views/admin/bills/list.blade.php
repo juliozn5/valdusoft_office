@@ -153,8 +153,10 @@
                                                     <td>
                                                         @if ($employee->status == 0)
                                                             <label class="label status-label status-label-purple">Pendiente</label>
+                                                        @elseif ($employee->status == 2)
+                                                            <label class="label status-label status-label-blue">Parcialmente Pagada</label>
                                                         @else
-                                                            <label class="label status-label status-label-green">Pagada</label>
+                                                            <label class="label status-label status-label-green">Completada</label>
                                                         @endif
                                                     </td>
                                                     <td>
@@ -200,8 +202,10 @@
                                                 <td>
                                                     @if ($client->status == 0)
                                                         <label class="label status-label status-label-purple">Pendiente</label>
+                                                    @elseif ($client->status == 2)
+                                                        <label class="label status-label status-label-blue">Parcialmente Pagada</label>
                                                     @else
-                                                        <label class="label status-label status-label-green">Completado</label>
+                                                        <label class="label status-label status-label-green">Completada</label>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -240,8 +244,10 @@
                                                 <td>
                                                     @if ($hosting->status == 0)
                                                         <label class="label status-label status-label-purple">Pendiente</label>
+                                                    @elseif ($hosting->status == 2)
+                                                        <label class="label status-label status-label-blue">Parcialmente Pagada</label>
                                                     @else
-                                                        <label class="label status-label status-label-green">Completado</label>
+                                                        <label class="label status-label status-label-green">Completada</label>
                                                     @endif
                                                 </td>
                                                 <td>

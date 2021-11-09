@@ -54,8 +54,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                     <td>
                                                         @if ($bill->status == 0)
                                                             <label class="label status-label status-label-purple">Pendiente</label>
+                                                        @elseif($bill->status == 2)
+                                                            <label class="label status-label status-label-blue">Parcialmente Pagada</label>
                                                         @else
-                                                            <label class="label status-label status-label-green">Pagada</label>
+                                                            <label class="label status-label status-label-green">Completada</label>
                                                         @endif
                                                     </td>
                                                     <td><a href="{{ route('employee.bills.show', $bill->id) }}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a></td>
