@@ -67,8 +67,28 @@ class AdminController extends Controller
                 array_push($Empleado, $facturaEmpleado[$j]['monto']);
 
             } */
+            $anno = Carbon::now()->format('Y');
+            $fecha_ini = Carbon::createFromDate($anno,1,1)->startOfDay();
+            $fecha_fin = Carbon::createFromDate($anno, 12,1)->endOfMonth()->endOfDay();
+            $facturaCliente= Bill::select(
+                DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
+                DB::raw('SUM(amount) as monto'))
+                ->where('status','1')->where('type', 'E')->whereBetween('created_at', [$fecha_ini, $fecha_fin])->groupBy('mes')->orderBy('mes', 'ASC')->get();
+                $m = $facturaCliente->count();
 
-            //return $m;
+                $facturaFecha= Bill::select(
+                    DB::raw('DATE_FORMAT(payed_at,"%M ") as mes'))->where('status','1')->whereBetween('created_at', [$fecha_ini, $fecha_fin])->groupBy('mes')->orderBy('mes', 'ASC')->get();
+
+            $mont= [];
+            for($i = 0; $i < $m; $i++) {
+
+                $facturaCliente[$i];
+                array_push($Clientes, $facturaCliente[$i]['monto']);
+                array_push(  $mont , $facturaFecha[$i]['mes']);
+
+            }
+                //return $facturaEmpleado;
+           // return    $mont;
         return view('admin.home', compact('hostings', 'user','billC'));
     }
 
@@ -184,6 +204,15 @@ class AdminController extends Controller
             $fecha_ini = Carbon::createFromDate($anno,1,1)->startOfDay();
             $fecha_fin = Carbon::createFromDate($anno, 12,1)->endOfMonth()->endOfDay();
 
+            //Obtener fecha de las facturas//////////////////////////////////////////////////////
+            $facturaFecha = Bill::select(
+                            DB::raw('DATE_FORMAT(payed_at,"%M ") as mes'))
+                            ->where('status','1')
+                            ->whereBetween('created_at', [$fecha_ini, $fecha_fin])
+                            ->groupBy('mes')
+                            ->orderBy('mes', 'DESC')
+                            ->get();
+
             //Factura de empleadoss/////////////////////////////////////////////////////////////
             $facturaEmpleado= Bill::select(
             DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
@@ -209,16 +238,19 @@ class AdminController extends Controller
 
             $facturaCliente->toArray();
             $Clientes = [];
+            $mont= [];
             for($i = 0; $i < $m2; $i++) {
 
                 $facturaCliente[$i];
                 array_push($Clientes, $facturaCliente[$i]['monto']);
+                array_push(  $mont , $facturaFecha[$i]['mes']);
 
             }
             //Se esta usando la columna 'created_at' de la tabla bills , falta gregar la columnan y estatus necesariios
             $data = [
                 'data_clientes' => $Clientes,
-                'data_empleados' =>  $Empleado
+                'data_empleados' =>  $Empleado,
+                'data_mes'=>$mont
             ];
 
             return response()->json(['valores' => $data]);
