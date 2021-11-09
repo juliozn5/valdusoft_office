@@ -42,7 +42,7 @@
             ],
             xaxis: {
                 type: 'year',
-                categories: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                categories:  response.data.valores.data_mes, //["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
             },
             yaxis: {
                 opposite: false,
