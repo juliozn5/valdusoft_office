@@ -200,6 +200,8 @@ class AdminController extends Controller
             //return $B;
 
             //Obtener fecha para generar las facturas ////////////////////////////////////////////
+           //////////////////////////////////////////////////////////////////////////////////////
+
             $anno = Carbon::now()->format('Y');
             $fecha_ini = Carbon::createFromDate($anno,1,1)->startOfDay();
             $fecha_fin = Carbon::createFromDate($anno, 12,1)->endOfMonth()->endOfDay();
@@ -213,6 +215,8 @@ class AdminController extends Controller
                             ->get();
 
             //Factura de empleadoss/////////////////////////////////////////////////////////////
+           ////////////////////////////////////////////////////////////////////////////////////
+
             $facturaEmpleado = Bill::select(
                 DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
                 DB::raw('SUM(amount) as monto'))
@@ -235,9 +239,11 @@ class AdminController extends Controller
             }
 
             //Factura de Clientes/////////////////////////////////////////////////////////
+           //////////////////////////////////////////////////////////////////////////////
+
             $facturaCliente= Bill::select(
-            DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
-            DB::raw('SUM(amount) as monto'))
+                DB::raw('DATE_FORMAT(payed_at,"%m %Y") as mes'),
+                DB::raw('SUM(amount) as monto'))
                 ->where('status','1')
                 ->where('type', 'C')
                 ->whereBetween('created_at', [$fecha_ini, $fecha_fin])
