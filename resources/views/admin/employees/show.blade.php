@@ -4,7 +4,6 @@
 @if (Session::has('msj-exitoso'))
 <script>
     $(document).ready(function() toastr.success('El proyecto ha sido asignado con éxito.', 'Operación Completada');
-    });
 </script>
 @endif
 
