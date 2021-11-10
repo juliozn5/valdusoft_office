@@ -47,4 +47,8 @@ class Bill extends Model{
     public function payments(){
         return $this->hasMany('App\Models\Payments');
     }
+
+    public function payroll(){
+        return $this->belongsTo('App\Models\Payrolls', 'id');
+    }
 }

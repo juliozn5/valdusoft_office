@@ -56,7 +56,8 @@
                                                 Factura
                                                 <span class="invoice-number">#{{ $bill->id }}</span>
                                             </h4>
-                                            <div class="invoice-date-wrapper">
+                                             
+                                              <div class="invoice-date-wrapper">
                                                 <p class="invoice-date-title">Fecha de Inicio:</p>
                                                 <p class="invoice-date">{{ date('d-m-Y', strtotime($bill->payroll_employee->payroll->start_date)) }}</p>
                                             </div>
