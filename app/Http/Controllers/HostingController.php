@@ -251,7 +251,8 @@ class HostingController extends Controller
      * para cliente */
     public function showHosting($id)
     {
-        $hosting = Hosting::find($id);
+      $hosting = Hosting::find($id);
+      
       return view('client.showHosting', compact('hosting'));
     }
 }

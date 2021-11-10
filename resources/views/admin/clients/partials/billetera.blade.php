@@ -16,25 +16,25 @@
                 </span>
                 @enderror
             </div>
+            @foreach($hosting as $item)
+                <div class="form-group">
+                    <label class="h5" for="amount">Monto <span style="color: red;">*</span></label>
+                    @if($item->renewal_price === null)
+                        <input type="text" class="form-control @error('amount') is-invalid @enderror"
 
-            <div class="form-group">
-                <label class="h5" for="amount">Monto <span style="color: red;">*</span></label>
-                @if($item->renewal_price === null)
-                    <input type="text" class="form-control @error('amount') is-invalid @enderror"
+                         name="renewal_price" value="" readonly>
+                         @else
+                         <input type="text" class="form-control @error('amount') is-invalid @enderror"
 
-                     name="renewal_price" value="" readonly>
-                     @else
-                     <input type="text" class="form-control @error('amount') is-invalid @enderror"
-
-                     name="renewal_prices" value="{{$item->renewal_price}}" readonly>
-                     @endif
-                @error('amount')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-
+                         name="renewal_prices" value="{{$item->renewal_price}}" readonly>
+                         @endif
+                    @error('amount')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            @endforeach
             <div class="form-group">
                 <label class="h5" for="name">Hash <span style="color: red;">*</span></label>
                 <input type="text" class="form-control @error('hash') is-invalid @enderror" name="hash" placeholder="Ingrese el hash de la transacción">

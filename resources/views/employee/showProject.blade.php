@@ -80,7 +80,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
                                 @foreach ($project->employees as $employee)
                                 <div class="col-1 mr-1">
                                     <img class="rounded-circle" style="object-fit: cover;"
-                                        src="{{asset('storage/photo-profile/'.$employee->photo)}}"
+                                        src="{{ asset('/storage/uploads/images/users/photos/'.$employee->photo)}}"
                                         alt=" {{$employee->name .' '. $employee->last_name}}"
                                         title=" {{$employee->name .' '. $employee->last_name}}" height="50" width="50">
                                 </div>
