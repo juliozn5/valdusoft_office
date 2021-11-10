@@ -146,8 +146,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <input type="hidden" id="hosting_id" name="hosting_id">
                     <input type="hidden" id="user_id" name="user_id">
 
-                    @include('client.partials.bancolombia')
-                    @include('client.partials.billetera')
+                    @include('client.partialShow.bancolombia')
+                    @include('client.partialShow.billetera')
 
 
                     <div class="modal-footer">
