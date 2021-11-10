@@ -19,7 +19,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         @if (Auth::user()->photo === NULL)
                           <a><img class="rounded-circle ml-2" src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
                         @else
-                          <a><img class="rounded-circle ml-2" src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
+                          <a><img class="rounded-circle ml-2"  src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
                         @endif
                         <div class="col ml-1">
                             <h3 class="card-title mb-1" title="Hello from speech bubble!">{{ $user->name }} {{ $user->last_name }}</h3>

@@ -25,7 +25,7 @@
                                 @if (!(Auth::user()->photo))
                                 <span><img class="rounded-circle" src="{{ asset('images/valdusoft/valdusoft.png') }}" alt="avatar" height="40" width="40"></span>
                                 @else
-                                <span><img class="rounded-circle" src="{{ asset('/storage/uploads/images/users/photos/'.Auth::user()->photo) }}" alt="avatar" height="40" width="40"></span>
+                                <span><img class="rounded-circle" src="{{ asset('storage/photo-profile/'.Auth::user()->photo) }}" alt="avatar" height="40" width="40"></span>
                                 @endif
                             </span>
 
