@@ -16,14 +16,14 @@
                     </span>
                 @enderror
             </div>
-            @foreach($hostings as $item)
+            
                 <div class="form-group">
                     <label class="h5" for="amount">Monto <span style="color: red;"></span></label>
-                      @if($item->renewal_price === null)
+                      @if($hosting->renewal_price === null)
                         <input type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" readonly>
                          @else
                          <input type="text" class="form-control @error('amount') is-invalid @enderror"
-                         name="amount" value="{{$item->renewal_price}}" readonly>
+                         name="amount" value="{{$hosting->renewal_price}}" readonly>
                          @endif
 
                     @error('amount')
@@ -32,7 +32,7 @@
                         </span>
                     @enderror
                </div>
-            @endforeach 
+           
             <div class="form-group">
                 <label class="h5" for="name">Hash <span style="color: red;">*</span></label>
                 <input type="text" class="form-control @error('hash') is-invalid @enderror"

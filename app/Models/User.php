@@ -119,4 +119,5 @@ class User extends Authenticatable
     public function financing_payments(){
         return $this->hasMany('App\Models\FinancingPayment');
     }
+    
 }

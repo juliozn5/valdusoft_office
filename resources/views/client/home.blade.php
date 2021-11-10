@@ -81,7 +81,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     <div class="container mb-4 pb-2">
                         <div class="row">
                             @foreach ($hostings as $hosting)
-                            <div class="col-6 card " style="height:150px;">
+                                  <div class="col-6 card " style="height:150px;">
 
                                 <div class="card-body  rounded" id="position" style="background: #252856;margin-left:2px;">
                                     <div class="p-1">
@@ -99,7 +99,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             <a type="button" class="btn btn-hos_show  center" style="background-color:#FF4D00;color: white;" id="btn-guardar" href="{{$hosting->cpanel_url}}" target="_blank"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
                                         </div>
                                         <div class="col-md-6 ">
-                                            <a type="button" onclick="editBill({{$hosting}});" class="btn btn-green" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalRenovation" id="btn-guardar"><img src="{{ asset('images/valdusoft/refresh.png') }}" alt="" class="mr-1">Renovar</a>
+                                            <a type="button" onclick="editBill({{$hosting->id}});" class="btn btn-green" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalRenovation" id="btn-guardar"><img src="{{ asset('images/valdusoft/refresh.png') }}" alt="" class="mr-1">Renovar</a>
                                         </div>
                                     </div>
 

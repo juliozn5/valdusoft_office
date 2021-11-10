@@ -51,4 +51,5 @@ class Bill extends Model{
     public function payroll(){
         return $this->belongsTo('App\Models\Payrolls', 'id');
     }
+   
 }
