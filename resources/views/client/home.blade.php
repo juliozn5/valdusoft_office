@@ -73,7 +73,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                 </div>
             </div>
         </div>
-         
+
         <div class="content-body">
             <div class="card ">
                 <div class="card-header">
@@ -81,7 +81,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     <div class="container mb-4 pb-2">
                         <div class="row">
                             @foreach ($hostings as $hosting)
-                                  <div class="col-6 card " style="height:150px;">
+                            <div class="col-6 card mt-4" style="height:150px;">
 
                                 <div class="card-body  rounded" id="position" style="background: #252856;margin-left:2px;">
                                     <div class="p-1">
