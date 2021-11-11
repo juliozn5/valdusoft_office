@@ -16,6 +16,7 @@
                     </span>
                 @enderror
             </div>
+
                 <div class="form-group">
                     <label class="h5" for="amount">Monto <span style="color: red;"></span></label>
                       @if($client->hosting->renewal_price === null)
