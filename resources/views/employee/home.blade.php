@@ -19,14 +19,13 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
 
                                 @if ($item->logo === NULL)
-                                <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
-
-                                @else
-                                <img class="card-img-top"  src="{{ asset('/images/figma/recomiendo.png') }}"  >
+                                 <img src="{{ asset('/images/figma/recomiendo.png') }}" class="card-img-top">
+                                @else 
+                                 <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
                                 @endif
 
                                 <div class="card-body">
-                                    <div class="pr-1  h4 pb-2 text text-white ml-2" id="shadow">
+                                    <div class="pr-1  h4 pb-2 text text-white" id="shadow">
                                         <div style="position: relative;top: 14px;" class="ml-1">{{$item->name}}</div>
                                     </div>
                                 </div>

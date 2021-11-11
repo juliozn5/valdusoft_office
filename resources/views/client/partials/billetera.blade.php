@@ -1,6 +1,6 @@
 <div class="form-body" id="billetera" style="display: none;">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12">  
             <div class="form-group">
                 <label class="h5" for="billetera">Tipo de Billetera <span style="color: red;">*</span></label>
                 <select class="form-control {{ $errors->has('billetera') ? ' is-invalid' : '' }}" id="billetera" name="billetera">
@@ -16,14 +16,13 @@
                     </span>
                 @enderror
             </div>
-            
                 <div class="form-group">
                     <label class="h5" for="amount">Monto <span style="color: red;"></span></label>
-                      @if($hosting->renewal_price === null)
+                      @if($client->hosting->renewal_price === null)
                         <input type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" readonly>
                          @else
                          <input type="text" class="form-control @error('amount') is-invalid @enderror"
-                         name="amount" value="{{$hosting->renewal_price}}" readonly>
+                         name="amount" value="{{$client->hosting->renewal_price}}" readonly>
                          @endif
 
                     @error('amount')
@@ -43,7 +42,6 @@
                     </span>
                 @enderror
             </div>
-
         </div>
     </div>
 </div>

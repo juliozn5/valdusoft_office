@@ -99,7 +99,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                             <a type="button" class="btn btn-hos_show  center" style="background-color:#FF4D00;color: white;" id="btn-guardar" href="{{$hosting->cpanel_url}}" target="_blank"><img src="{{asset('images/valdusoft/admin.png')}}" alt="" class="mr-1">Ir al Cpanel</a>
                                         </div>
                                         <div class="col-md-6 ">
-                                            <a type="button" onclick="editBill({{$hosting}});" class="btn btn-green" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalRenovation" id="btn-guardar"><img src="{{ asset('images/valdusoft/refresh.png') }}" alt="" class="mr-1">Renovar</a>
+                                            <a type="button" onclick="editBill({{$hosting}});" class="btn btn-green" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalRenovatio" id="btn-guardar"><img src="{{ asset('images/valdusoft/refresh.png') }}" alt="" class="mr-1">Renovar</a>
                                         </div>
                                     </div>
 
@@ -111,7 +111,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="modalRenovation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalRenovatio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -153,5 +153,5 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     </div>
                 </div>
 
-                @include('admin.clients.partials.js')
+                @include('client.partials.js')
                 @endsection

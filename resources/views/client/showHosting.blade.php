@@ -161,4 +161,4 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 </div>
 @endsection
 
-@include('admin.clients.partials.js')
+@include('client.partialShow.js')

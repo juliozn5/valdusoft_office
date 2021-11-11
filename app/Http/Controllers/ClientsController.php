@@ -22,7 +22,7 @@ class ClientsController extends Controller
         $clients = bill::where('user_id', '=', Auth::id())->get();
         $hostings = Hosting::where('user_id', '=', Auth::id())->get();
         $projects = Project::where('user_id', '=', Auth::id())->get();
-      
+       
         return view('client.home')->with(compact('clients', 'hostings', 'projects'));
     
     }
