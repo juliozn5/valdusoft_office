@@ -229,6 +229,7 @@ class BillController extends Controller
 
      public function saveInvoice(Request $request)
      {
+       
           $bill = new Bill($request->all());
           $bill->type = 'C';
           $bill->status = '0';

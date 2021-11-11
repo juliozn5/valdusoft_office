@@ -16,7 +16,7 @@
                     </span>
                 @enderror
             </div>
-            
+          
                 <div class="form-group">
                     <label class="h5" for="amount">Monto <span style="color: red;"></span></label>
                       @if($hosting->renewal_price === null)
@@ -32,7 +32,7 @@
                         </span>
                     @enderror
                </div>
-           
+          
             <div class="form-group">
                 <label class="h5" for="name">Hash <span style="color: red;">*</span></label>
                 <input type="text" class="form-control @error('hash') is-invalid @enderror"
