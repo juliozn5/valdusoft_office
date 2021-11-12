@@ -130,9 +130,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             </a>
                         </div> -->
                     </div>
-
-
-                    <div class="container mt-3 ">
+                    <div class="container mt-3" style="padding:0px 0px 0px 50px;">
                         <div class="row">
                             <div class="col-6 col-sm-3 project-detail-titles">Curriculum Vitae <a href="#availableCurriculum" data-toggle="modal">
                                     @if(is_null($user->curriculum))

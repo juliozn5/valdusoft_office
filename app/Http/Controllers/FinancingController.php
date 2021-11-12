@@ -11,7 +11,7 @@ class FinancingController extends Controller
 {
     /** De Interés - Financiamiento
     *** Perfil: Empleado ***/
-    public function list(){
+     public function list(){
 
 
        $financing = Financing::where('user_id', Auth::id())
