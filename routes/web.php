@@ -103,15 +103,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['prefix' => 'financial'], function () {
             //MÓDULO FINANCIERO - FACTURAS
             Route::group(['prefix' => 'bills'], function () {
-                Route::get('/', 'BillController@list')->name('admin.bills.list');
                 Route::post('store', 'BillController@store')->name('admin.bills.store');
                 Route::get('show/{id}', 'BillController@show')->name('admin.bills.show');
                 Route::get('download/{id}', 'BillController@download')->name('admin.bills.download');
                 Route::get('downloadPDF/{id}', 'BillController@downloadPDF')->name('admin.bills.downloadPDF');
                 Route::post('send', 'BillController@send')->name('admin.bills.send');
                 Route::get('/pending', 'BillController@pending')->name('admin.bills.pending');
+                Route::get('/{type?}/{status?}', 'BillController@list')->name('admin.bills.list');
             });
-
 
             //MÓDULO FINANCIERO - NÓMINA
             Route::group(['prefix' => 'payroll'], function () {
@@ -127,8 +126,10 @@ Route::group(['middleware' => ['auth']], function () {
 
             //MÓDULO FINANCIERO - PAGOS
             Route::group(['prefix' => 'payments'], function () {
-                Route::get('/', 'PaymentsController@list')->name('admin.payments.list');
+                Route::get('/{bill_id?}', 'PaymentsController@list')->name('admin.payments.list');
                 Route::post('store', 'PaymentsController@store')->name('admin.payments.store');
+                Route::post('confirm', 'PaymentsController@confirm')->name('admin.payments.confirm');
+                Route::get('bill-list/{bill_id}', 'PaymentsController@bill_list')->name('admin.payments.bill-list');
             });
         });
 

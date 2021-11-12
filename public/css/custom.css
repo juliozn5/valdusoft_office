@@ -188,8 +188,12 @@
 .status-label-green{
     background: #26A30B;
 }
+.status-label-red{
+    background: red;
+}
 .action-icon{
     color: #3C3232 !important;
+    font-size: 15px;
 }
 .nav-link-pills{
     padding: 12px !important;

@@ -20,9 +20,15 @@
         function showBtn($option) {
             if ($option == 'E'){
                 $("#generate-btn").addClass("hidden");
+                $("#dropdown-item-pending").attr("href", "{{ route('admin.bills.list', ['E', 0]) }}");
+                $("#dropdown-item-partial").attr("href", "{{ route('admin.bills.list', ['E', 2]) }}");
+                $("#dropdown-item-payed").attr("href", "{{ route('admin.bills.list', ['E', 1]) }}");
             }else{
                 $("#generate-btn").removeClass("hidden");
                 if ($option == 'C'){
+                    $("#dropdown-item-pending").attr("href", "{{ route('admin.bills.list', ['C', 0]) }}");
+                    $("#dropdown-item-partial").attr("href", "{{ route('admin.bills.list', ['C', 2]) }}");
+                    $("#dropdown-item-payed").attr("href", "{{ route('admin.bills.list', ['C', 1]) }}");
                     $("#select_hostings").addClass("hidden");
                     $("#select_clients").removeClass("hidden");
                     $("#select_projects").removeClass("hidden");
@@ -30,6 +36,9 @@
                     $("#project_id").attr("required", true);
                     $("#hosting_id").attr("required", false);
                 }else{
+                    $("#dropdown-item-pending").attr("href", "{{ route('admin.bills.list', ['H', 0]) }}");
+                    $("#dropdown-item-partial").attr("href", "{{ route('admin.bills.list', ['H', 2]) }}");
+                    $("#dropdown-item-payed").attr("href", "{{ route('admin.bills.list', ['H', 1]) }}");
                     $("#select_hostings").removeClass("hidden");
                     $("#select_clients").addClass("hidden");
                     $("#select_projects").addClass("hidden");
@@ -38,6 +47,19 @@
                     $("#hosting_id").attr("required", true);
                 }
             }
+        }
+
+        function loadPayments($bill_id){
+            var route = 'http://localhost:8000/admin/financial/payments/bill-list/'+$bill_id;
+            //var route = 'https://valdusoft.com/admin/financial/payments/bill-list/'+$bill_id;
+            $.ajax({
+                url: route,
+                type: "GET",
+                success:function(ans){
+                    $("#tbody_payments").html(ans);
+                    $("#confirmPaymentModal").modal("show");
+                }
+            });
         }
 
         function loadProjects(){
@@ -106,31 +128,58 @@
             <div class="content-body">
                 <div id="table-head">
                     <div class="card">
-                        <div class="card-header">
-                            <ul class="nav nav-pills">
-                                <li>
-                                    <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments"
-                                        id="empleado" onclick="showBtn('E')"><strong>
-                                            EMPLEADOS
-                                        </strong></a>
-                                </li>
-                                <li>
-                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#chat" id="mostrar"
-                                        onClick="showBtn('C')"><strong> CLIENTES
-                                        </strong></a>
-                                </li>
-                                <li>
-                                    <a class="nav-link nav-link-pills ml-2" data-toggle="tab" href="#accountant"
-                                        id="mostrar" onClick="showBtn('H')"><strong> HOSTING </strong></a>
-                                </li>
-                            </ul>
-                            <a href="#addBill" data-toggle="modal" class="btn1 btn btn-primary mb-2 waves-effect hidden"
-                                id="generate-btn"> GENERAR</a>
+                        <div class="card-header" style="display: block;">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <ul class="nav nav-pills">
+                                        <li>
+                                            <a class="nav-link nav-link-pills @if ($type == 'E') active @endif" data-toggle="tab" href="#attachments"
+                                                id="empleado" onclick="showBtn('E')"><strong>
+                                                    EMPLEADOS
+                                                </strong></a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link nav-link-pills ml-2 @if ($type == 'C') active @endif" data-toggle="tab" href="#chat" id="mostrar"
+                                                onClick="showBtn('C')"><strong> CLIENTES
+                                                </strong></a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link nav-link-pills ml-2 @if ($type == 'H') active @endif" data-toggle="tab" href="#accountant"
+                                                id="mostrar" onClick="showBtn('H')"><strong> HOSTING </strong></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xl6 col-lg-6 col-6 text-right">
+                                    <div class="btn-group" role="group">
+                                        @if ($status == '0')
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                Pendientes
+                                            </button>
+                                        @elseif ($status == '1')
+                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="background-color: #26A30B !important;">
+                                                Pagadas
+                                            </button>
+                                        @else
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                Parcialmente Pagadas
+                                            </button>
+                                        @endif
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <a class="dropdown-item" href="{{ route('admin.bills.list', [$type, 0]) }}" id="dropdown-item-pending">Pendientes</a>
+                                            <a class="dropdown-item" href="{{ route('admin.bills.list', [$type, 2]) }}" id="dropdown-item-partial">Parcialmente Pagadas</a>
+                                            <a class="dropdown-item" href="{{ route('admin.bills.list', [$type, 1]) }}" id="dropdown-item-payed">Pagadas</a>
+                                        </div>
+                                    </div>
+                                    <a href="#addBill" data-toggle="modal" class="btn1 btn btn-primary ml-2 waves-effect @if ($type == 'E') hidden @endif" id="generate-btn"> GENERAR</a>
+                                </div>
+                            </div>
+                            
+                            
                         </div>
 
                         <div class="tab-content">
                             <!-- Pestaña de Empleado -->
-                            <div class="tab-pane active " id="attachments">
+                            <div class="tab-pane @if ($type == 'E') active @else fade @endif" id="attachments">
                                 <div class="table-responsive mt-1">
                                     <table class="table mb-0">
                                         <thead class="thead-light text-center">
@@ -160,14 +209,14 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('admin.bills.show', $employee->id)}}">
-                                                            <i class="fa fa-eye  action-icon" style="font-size:15px;"></i>
+                                                        <a href="{{ route('admin.bills.show', $employee->id)}}" title="Ver Detalles">
+                                                            <i class="fa fa-eye action-icon"></i>
                                                         </a>
-                                                        <a class="" href="{{ route('admin.bills.downloadPDF', $employee->id) }}" target="_blank">
-                                                            <i class="ml-1 fas fa-download" style="font-size:20px;"></i>
+                                                        <a class="" href="{{ route('admin.bills.downloadPDF', $employee->id) }}" target="_blank" title="Descargar">
+                                                            <i class="ml-1 fas fa-download action-icon"></i>
                                                         </a>
-                                                        <a class="" href="{{ route('admin.bills.download', $employee->id) }}" target="_blank">
-                                                            <i class="ml-1 far fa-file-pdf" style="font-size:23px;"></i>
+                                                        <a class="" href="{{ route('admin.bills.download', $employee->id) }}" target="_blank" title="Reporte Excel">
+                                                            <i class="ml-1 far fa-file-pdf action-icon"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -177,7 +226,7 @@
                                 </div>
                             </div>
                             <!-- Pestaña de Cliente -->
-                            <div class="tab-pane fade" id="chat">
+                            <div class="tab-pane @if ($type == 'C') active @else fade @endif" id="chat">
                                 <div class="table-responsive mt-1">
                                     <table class="table mb-0">
                                         <thead class="thead-light text-center">
@@ -209,10 +258,17 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('admin.bills.show', $client->id)}}">
-                                                        <i class="fa fa-eye mr-1 action-icon"></i>
+                                                    <a href="{{ route('admin.bills.show', $client->id)}}" title="Ver Detalles">
+                                                        <i class="fa fa-eye action-icon"></i>
                                                     </a>
-
+                                                    <a href="{{ route('admin.bills.downloadPDF', $client->id) }}" target="_blank" title="Descargar">
+                                                        <i class="ml-1 fas fa-download action-icon"></i>
+                                                    </a>
+                                                    @if ($client->pending_payments == true)
+                                                        <a href="{{ route('admin.payments.list', $client->id) }}" title="Pagos Pendientes">
+                                                            <i class="far fa-clock ml-1 action-icon"></i>
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -221,7 +277,7 @@
                                 </div>
                             </div>
                             <!-- Pestaña de Hosting -->
-                            <div class="tab-pane fade" id="accountant">
+                            <div class="tab-pane @if ($type == 'H') active @else fade @endif" id="accountant">
                                 <div class="table-responsive mt-1">
                                     <table class="table mb-0">
                                         <thead class="thead-light text-center">
@@ -296,9 +352,6 @@
                             <label for="project_id">Seleccione un proyecto...</label>
                             <select class="form-control" name="project_id" id="project_id" required>
                                 <option value="" selected disabled>Seleccione una opción...</option>
-                                @foreach ($proyecto as $p)
-                                <option value="{{ $p->id }}">{{ $p->name }} </option>
-                            @endforeach
                             </select>
                         </div>
 

@@ -51,10 +51,5 @@
         }
     }
 
-    function editBill($item) {
-        $("#hosting_id").val($item.id);        
-        $("#user_id").val($item.user_id);        
-    }
-
 </script>
 @endpush
