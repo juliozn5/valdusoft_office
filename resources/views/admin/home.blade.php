@@ -137,7 +137,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Listado de Hostingscdklscl</h3>
+                                <h3 class="card-title">Listado de Hostings</h3>
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive pt-2">
