@@ -230,7 +230,16 @@ class PayrollController extends Controller
         return redirect()->route('admin.payrolls.list')->with('payroll-updated', 'true');
     }
 
-    public function export($payroll_id){
-        return Excel::download(new PayrollsEmployeeExport($payroll_id), 'payroll.xlsx');
+    public function export($payroll_id)
+    {
+
+        $payroll = Payrolls::find($payroll_id);
+
+        if($payroll != null ){
+            $nombre = $payroll->created_at->format('Y-m-d');
+        }else{
+            $nombre = '';
+        }
+        return Excel::download(new PayrollsEmployeeExport($payroll_id), 'Nomina-'.$nombre.'-valdusoft.csv');
     }
 }
