@@ -16,30 +16,54 @@ class BillController extends Controller
 {
      /** Listado de Facturas
       *** Perfil: Admin ***/
-     public function list()
-     {
+     public function list($type = 'E', $status = '0'){
           if (Auth::user()->profile_id == 1) {
-               $employee_bills = Bill::where('type', 'E')
-                                   ->with('user:id,name,last_name')
-                                   ->orderBy('id', 'DESC')
-                                   ->get();
+               if ($status == NULL){
+                    $employee_bills = Bill::where('type', 'E')
+                                        ->with('user:id,name,last_name')
+                                        ->orderBy('id', 'DESC')
+                                        ->get();
 
-               $client_bills = Bill::where('type', 'C')
-                                   ->with('user:id,name,last_name', 'payments')
-                                   ->orderBy('id', 'DESC')
-                                   ->get();
+                    $client_bills = Bill::where('type', 'C')
+                                        ->with('user:id,name,last_name', 'payments')
+                                        ->orderBy('id', 'DESC')
+                                        ->get();
+                    
+                    $hosting_bills = Bill::where('type', 'H')
+                                        ->with('hosting:id,url')
+                                        ->orderBy('id', 'DESC')
+                                        ->get();
+               }else{
+                    $employee_bills = Bill::where('type', 'E')
+                                        ->where('status', $status)
+                                        ->with('user:id,name,last_name')
+                                        ->orderBy('id', 'DESC')
+                                        ->get();
+
+                    $client_bills = Bill::where('type', 'C')
+                                        ->where('status', $status)
+                                        ->with('user:id,name,last_name', 'payments')
+                                        ->orderBy('id', 'DESC')
+                                        ->get();
+
+                    $hosting_bills = Bill::where('type', 'H')
+                                        ->where('status', $status)
+                                        ->with('hosting:id,url')
+                                        ->orderBy('id', 'DESC')
+                                        ->get();
+               }
 
                foreach($client_bills as $cb){
                     $cb->paid_amount = 0;
+                    $cb->pending_payments = false;
                     foreach ($cb->payments as $p){
-                         $cb->paid_amount += $p->total;
+                         if ($p->status == '1'){
+                             $cb->paid_amount += $p->total; 
+                         }elseif ($p->status == '0'){
+                              $cb->pending_payments = true;
+                         }
                     }
                }
-
-               $hosting_bills = Bill::where('type', 'H')
-                                   ->with('hosting:id,url')
-                                   ->orderBy('id', 'DESC')
-                                   ->get();
 
                $clients = DB::table('users')
                               ->where('profile_id', '2')
@@ -53,9 +77,8 @@ class BillController extends Controller
                               ->select('id', 'url')
                               ->orderBy('url', 'DESC')
                               ->get();
-              $proyecto = Project::all();
 
-              return view('admin.bills.list', compact('employee_bills', 'client_bills', 'hosting_bills', 'clients', 'hostings','proyecto'));
+              return view('admin.bills.list', compact('employee_bills', 'client_bills', 'hosting_bills', 'clients', 'hostings', 'type', 'status'));
 
           } else if (Auth::user()->profile_id == 2) {
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
@@ -134,7 +157,7 @@ class BillController extends Controller
                $bill->save();
           }
 
-          return redirect()->back()->with('msj-store', 'true');
+          return redirect()->route('admin.bills.list', [$bill->type, '0'])->with('msj-store', 'true');
      }
 
      public function show($id){
@@ -144,7 +167,9 @@ class BillController extends Controller
           
           $bill->remaining = $bill->amount;
           foreach ($bill->payments as $payment) {
-               $bill->remaining -= $payment->total;
+               if ($payment->status == '1'){
+                    $bill->remaining -= $payment->total;
+               }
           }
 
           if (Auth::user()->profile_id == 1){

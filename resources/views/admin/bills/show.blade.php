@@ -8,6 +8,43 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('template/app-assets/css/pages/app-invoice.css') }}">
 @endpush
 
+@push('scripts')
+    <script>
+        function loadDiv(){
+            if ($("#payment_type").val() == 'Abono'){
+                $("#discount_div").addClass('hidden');
+                $("#discount_description").attr('required', false);
+                $("#discount_amount").attr('required', false);
+                $("#payment_div").removeClass('hidden');
+                $("#amount").attr('required', true);
+                $("#payment_method").attr('required', true);
+                $("#payment_id").attr('required', true);
+                $("#fee").attr('required', true);
+            }else{
+                $("#payment_div").addClass('hidden');
+                $("#amount").attr('required', false);
+                $("#payment_method").attr('required', false);
+                $("#payment_id").attr('required', false);
+                $("#fee").attr('required', false);
+                $("#discount_div").removeClass('hidden');
+                $("#discount_description").attr('required', true);
+                $("#discount_amount").attr('required', true);
+
+            }
+        }
+
+        function loadSupportDiv(){
+            if ($("#payment_method").val() == 'Crypto'){
+                $("#support_div").addClass('hidden');
+                $("#support").attr('required', false);
+            }else{
+                $("#support_div").removeClass('hidden');
+                $("#support").attr('required', true);
+            }
+        }
+    </script>
+@endpush
+
 @section('content')
     @if (Session::has('msj-store'))
         <script>
@@ -228,7 +265,8 @@
                                                 <tr>
                                                     <th class="py-1">Fecha</th>
                                                     <th class="py-1">Descripción</th>
-                                                    <th class="py-1 text-center">Total</th>
+                                                    <th class="py-1">Estado</th>
+                                                    <th class="py-1 text-center">Monto</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -241,7 +279,18 @@
                                                             @else
                                                                 <td class="py-1">PAGO #{{ $payment->id }}</td>
                                                             @endif
-                                                            <td class="py-1 text-center"><span class="font-weight-bold">- {{ number_format($payment->total, 2, '.', ',') }}</span></td>
+                                                            <td class="py-1">
+                                                                @if ($payment->status == 0)
+                                                                    <span style="color: blue;">Pendiente</span>
+                                                                @elseif ($payment->status == 1)
+                                                                    <span style="color: green;">Aprobado</span>
+                                                                @else
+                                                                    <span style="color: red;">Rechazado</span>
+                                                                @endif
+                                                            </td>
+                                                            <td class="py-1 text-center"><span class="font-weight-bold">
+                                                                - {{ number_format($payment->total, 2, '.', ',') }}</span>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 @endif
@@ -368,36 +417,48 @@
                                 <input id="balance" class="form-control" type="text" value="Balance de Factura: {{ number_format($bill->remaining, 2, '.', ',') }}" disabled />
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="amount">Monto de Abono</label>
-                                <input type="text" class="form-control" name="amount" id="amount"/>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="payment_method">Método de Pago</label>
-                                <select class="form-control" id="payment_method" name="payment_method">
-                                    <option value="" selected disabled>Seleccione el método de pago...</option>
-                                    <option value="Crypto">Criptomoneda</option>
-                                    <option value="Bancolombia">Bancolombia</option>
+                                <label class="form-label" for="payment_type">Tipo de Pago</label>
+                                <select class="form-control" id="payment_type" name="payment_type" onchange="loadDiv();">
+                                    <option value="Abono" selected>Abono</option>
+                                    <option value="Descuento">Descuento</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="account">Cuenta / Billetera</label>
-                                <input type="text" class="form-control" name="account" id="account"/>
+                            <div id="payment_div">
+                                <div class="form-group">
+                                    <label class="form-label" for="amount">Monto</label>
+                                    <input type="text" class="form-control" name="amount" id="amount" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="payment_method">Método de Pago</label>
+                                    <select class="form-control" id="payment_method" name="payment_method" onchange="loadSupportDiv();" required>
+                                        <option value="" selected disabled>Seleccione el método de pago...</option>
+                                        <option value="Crypto">Criptomoneda</option>
+                                        <option value="Bancolombia">Bancolombia</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="payment_id">Hash / Referencia</label>
+                                    <input type="text" class="form-control" name="payment_id" id="payment_id" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="fee">Fee</label>
+                                    <input type="text" class="form-control" name="fee" id="fee" required>
+                                </div>
+                                <div class="custom-file hidden" id="support_div">
+                                    <label class="custom-file-label" for="support"><b>Clic para seleccionar una imagen</b></label>
+                                    <input type="file" name="support" id="support" class="custom-file-input" accept="image/*" onchange="previewFile(this, 'photo_preview')">
+                               </div>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="payment_id">Identificador del Pago</label>
-                                <input type="text" class="form-control" name="payment_id" id="payment_id" />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="discount_description">Concepto del Descuento</label>
-                                <input type="text" class="form-control" name="discount_description" id="discount_description" />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="discount">Monto a Descontar</label>
-                                <input type="text" class="form-control" name="discount_amount" id="discount_amount" />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="support">Soporte del Pago</label>
-                                <input type="file" class="form-control" name="support" id="support" />
+
+                            <div class="hidden" id="discount_div">
+                                <div class="form-group">
+                                    <label class="form-label" for="discount_description">Concepto del Descuento</label>
+                                    <input type="text" class="form-control" name="discount_description" id="discount_description" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="discount">Monto a Descontar</label>
+                                    <input type="text" class="form-control" name="discount_amount" id="discount_amount" />
+                                </div>
                             </div>
                         </div>
                     @endif
