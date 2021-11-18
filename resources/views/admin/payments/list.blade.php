@@ -36,10 +36,16 @@
                 <div class="row" id="table-head">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title mb-2">Pagos</h3>
+                           <div class="card-header">
+                                <h3 class="card-title mb-2">
+                                    @if (is_null($bill_id))
+                                        Pagos
+                                    @else
+                                        Pagos de la Factura #{{ $bill_id }}
+                                    @endif
+                                </h3>
                                  @if ($bills->count() > 0)
-                                    <a href="#" class="btn btn-primary  mb-2 waves-effect waves-light" data-toggle="modal" data-target="#ModalGenerate"><i class="feather icon-plus "></i>&nbsp; Agregar Nuevo</a>
+                                    <a href="#" class="btn btn-primary  mb-2 waves-effect waves-light" data-toggle="modal" data-target="#ModalGenerate">Agregar Nuevo</a>
                                
                                 @endif
                             </div>
@@ -167,3 +173,4 @@
 @endsection
 
 @include('admin.payments.partials.js')
+

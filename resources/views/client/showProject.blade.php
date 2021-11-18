@@ -17,7 +17,6 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 @endpush
 
 
-
 @section('content')
 <div class="app-content content">
     <div class="content-overlay"></div>
