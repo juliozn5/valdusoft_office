@@ -87,7 +87,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
 
                                                 <p class="h4 mt-1 text-white"><i class="fa fa-calendar icon-big mr-1"></i>{{ date('d/m/Y', strtotime($item->due_date)) }}
                                                 </p>
-                                                <a href="{{$item->url}}" type="button" class="btn margen-b" style="background-color:#FF4D00;color: white;" id="btn-guardar"><img src="{{ asset('images/valdusoft/admin.png') }}" alt="" class="mr-1">Ir al Cpanel</a>
+                                                <a href="/{{$item->cpanel_url}}" type="button" class="btn margen-b" style="background-color:#FF4D00;color: white;" id="btn-guardar"><img src="{{ asset('images/valdusoft/admin.png') }}" alt="" class="mr-1">Ir al Cpanel</a>
                                                 <a type="button" onclick="editBill({{$item}});" class="btn margen-green" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalRenovar" id="btn-guardar"><img src="{{ asset('images/valdusoft/refresh.png') }}" alt="" class="mr-1"> Renovar</a>
                                             </div>
                                         </div>
