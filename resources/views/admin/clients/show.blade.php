@@ -116,15 +116,11 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                                 <td>{{ $client->amount }}$</td>
                                                 <td>
                                                     @if ($client->status == 0)
-                                                    <label class="label status-label status-label-purple">No
-                                                        Atendido</label>
+                                                    <label class="label status-label status-label-purple">Pendiente</label>
                                                     @elseif ($client->status == 1)
-                                                    <label class="label status-label status-label-gray">En
-                                                        Proceso</label>
+                                                    <label class="label status-label status-label-gray">Pagada</label>
                                                     @elseif ($client->status == 2)
-                                                    <label class="label status-label status-label-blue">Testeando</label>
-                                                    @elseif ($client->status == 3)
-                                                    <label class="label status-label status-label-green">Completado</label>
+                                                    <label class="label status-label status-label-blue">Parcialmente pagada</label>
                                                     @endif
                                                 </td>
                                                 <td>

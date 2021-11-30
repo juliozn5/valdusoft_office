@@ -38,10 +38,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                     <td>
                                                         @if ($bill->status == 0)
                                                             <label class="label status-label status-label-purple">Pendiente</label>
-                                                        @elseif ($bill->status == 2)
-                                                            <label class="label status-label status-label-blue">Parcialmente Pagada</label>
-                                                        @else
-                                                            <label class="label status-label status-label-green">Completada</label>
+                                                        @elseif ($bill->status == 1)
+                                                            <label class="label status-label status-label-blue">Pagada</label>
+                                                        @elseif($bill->status == 2)
+                                                            <label class="label status-label status-label-green">parcialmente pagada</label>
                                                         @endif
                                                     </td>
                                                     <td>

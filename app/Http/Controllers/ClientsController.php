@@ -23,10 +23,8 @@ class ClientsController extends Controller
         $hostings = Hosting::where('user_id', '=', Auth::id())->get();
         $projects = Project::where('user_id', '=', Auth::id())->get();
        
-        return view('client.home')->with(compact('clients', 'hostings', 'projects'));
-    
+        return view('client.home')->with(compact('clients', 'hostings', 'projects')); 
     }
-
 
     /** Listado de Clientes
      *** Perfil: Admin ***/
@@ -90,7 +88,6 @@ class ClientsController extends Controller
             'phone' => ['required', 'string', 'max:18'],
             'password' => ['required', 'string', 'min:6'],
             'photo' => ['nullable', 'mimes:jpeg,png', 'max:2048'],
-
         ], $msj);
 
 
