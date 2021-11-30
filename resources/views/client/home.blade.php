@@ -159,10 +159,6 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-                @include('client.partials.js')
-                @endsection
-=======
-    @include('client.partials.js')
+ @include('client.partials.js')
 @endsection
->>>>>>> e29ae012624f62769ee90979e4611e60c5f5dbff
+
