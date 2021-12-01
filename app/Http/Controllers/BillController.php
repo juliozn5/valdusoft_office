@@ -9,6 +9,7 @@ use App\Models\BillDetail;
 use App\Models\Payrolls;
 use App\Models\Payments;
 use App\Models\Project;
+use App\Models\Hosting;
 use PDF; use DB; use Mail;
 use Carbon\Carbon;
 
@@ -327,6 +328,10 @@ class BillController extends Controller
 
       return view('admin.bills.pending', compact('bills'));
 
+     }
+     public function renovation($id){
+          $hosting = Hosting::find($id);
+          return view('client.renovation',compact('hosting'));
      }
 
 }

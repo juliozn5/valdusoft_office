@@ -16,15 +16,15 @@
                     </span>
                 @enderror
             </div>
-          
+         
                 <div class="form-group">
                     <label class="h5" for="amount">Monto <span style="color: red;"></span></label>
-                      @if($hosting->renewal_price === null)
+                       @if($hosting->renewal_price === null)
                         <input type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" readonly>
-                         @else
+                        @else
                          <input type="text" class="form-control @error('amount') is-invalid @enderror"
                          name="amount" value="{{$hosting->renewal_price}}" readonly>
-                         @endif
+                        @endif   
 
                     @error('amount')
                         <span class="invalid-feedback" role="alert">

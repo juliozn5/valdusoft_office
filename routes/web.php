@@ -156,7 +156,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['prefix' => 'hostings'], function () {
             Route::get('/', 'HostingController@list')->name('client.hostings.list');
             Route::get('/{id}', 'HostingController@showHosting')->name('client.hosting.showHosting');
-            Route::post('', 'BillController@saveInvoice')->name('save-invoices');
+            Route::get('/renovation/{id}', 'billController@renovation')->name('client.renovation');
+            Route::post('/', 'billController@saveInvoice')->name('save-invoices');     
         });
 
          //MÓDULO FINANCIERO - PAGOS
