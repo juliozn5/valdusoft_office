@@ -17,12 +17,14 @@ class NuevoMensaje implements ShouldBroadcast
     public $proyecto;
     public $usuario;
     public $mensaje;
+    public $id_usuario;
 
-    public function __construct($proyecto, $usuario, $mensaje)
+    public function __construct($proyecto, $usuario, $mensaje, $id_usuario)
     {
         $this->proyecto = $proyecto;
         $this->usuario = $usuario;
         $this->mensaje = $mensaje;
+        $this->id_usuario = $id_usuario;
     }
     
     public function broadcastOn()

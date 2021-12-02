@@ -72,8 +72,12 @@
 
             var channel = pusher.subscribe('my-channel');
             channel.bind('my-event', function (data) {
-                //alert(JSON.stringify(data));
-                window.livewire.emit('mensajeRecibido', data);
+                if (data.proyecto == $("#project_id").val()){
+                    window.livewire.emit('mensajeRecibido', data);
+                    if (data.id_usuario != $("#user_auth").val()){
+                        $("#chat-badge").removeClass('hidden');
+                    } 
+                }
             });
 
             //setTimeout(function(){ window.livewire.emit('solicitaUsuario'); }, 100);

@@ -43,14 +43,6 @@
         $("#name").val($attachment.name);
         $("#file_type option[value=" + $attachment.file_type + "]").attr("selected", true);
     }
-    /*function changeTransactionType($type) {
-        $("#type option[value=" + $type + "]").attr("selected", true);
-        if ($type == '+') {
-            $("#transaction_type_button").html('Ingreso');
-        } else {
-            $("#transaction_type_button").html('Egreso');
-        }
-    }*/
     function addTransaction() {
         if ($("#amount").val() == "") {
             Swal.fire({
@@ -69,6 +61,9 @@
         $("#transaction_id").val($transaction.id);
         $("#description").val($transaction.description);
         $("#status option[value=" + $transaction.status + "]").attr("selected", true);
+    }
+    function clean(){
+        $("#chat-badge").addClass("hidden");
     }
 </script>
 @endpush
@@ -126,6 +121,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 </script>
 @endif
 
+
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -148,6 +144,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
         </div>
 
         <div class="content-body">
+            <input type="hidden" id="user_auth" value="{{ Auth::user()->id }}">
             <div class="row" id="table-head">
                 {{-- Sección Izquierda --}}
                 <div class="col-xl-6 col-lg-6 col-md-6 col-12">
@@ -298,7 +295,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <a class="nav-link nav-link-pills  @if (!Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#attachments">Adjuntos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link nav-link-pills" data-toggle="tab" id="scrolling" href="#chat">Chat</a>
+                                    <a class="nav-link nav-link-pills" data-toggle="tab" id="scrolling" href="#chat" onclick="clean();">Chat <label class="badge badge-danger hidden" id="chat-badge"><i class="fas fa-comment-alt"></i></label></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link nav-link-pills  @if (Session::has('msj-transaction')) active @endif" data-toggle="tab" href="#accountant">Contable</a>
@@ -501,7 +498,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
             <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
-                <input type="hidden" name="project_id" value="{{ $project->id }}">
+                <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">

@@ -8,6 +8,9 @@
         $("#name").val($attachment.name);
         $("#file_type option[value=" + $attachment.file_type + "]").attr("selected", true);
     }
+    function clean(){
+        $("#chat-badge").addClass("hidden");
+    }
 </script>
 @endpush
 
@@ -43,6 +46,8 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
         </div>
 
         <div class="content-body">
+            
+            <input type="hidden" id="user_auth" value="{{ Auth::user()->id }}">
             <div class="row" id="table-head">
 
                 <!-- Sección Izquierda -->
@@ -142,7 +147,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <a class="nav-link nav-link-pills active" data-toggle="tab" href="#attachments">Adjuntos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat">Chat</a>
+                                    <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat" onclick="clean();">Chat <label class="badge badge-danger hidden" id="chat-badge"><i class="fas fa-comment-alt"></i></label></a>
                                 </li>
                             </ul>
                         </div>
@@ -240,7 +245,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
             </div>
             <form action="{{ route('client.project.add-attachments') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="project_id" value="{{ $project->id }}">
+                <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">

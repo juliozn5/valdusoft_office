@@ -5,6 +5,14 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
 
+@push('scripts')
+    <script>
+        function clean(){
+            $("#chat-badge").addClass("hidden");
+        }
+    </script>
+@endpush
+
 @section('content')
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -32,6 +40,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
         </div>
 
         <div class="content-body">
+            <input type="hidden" id="user_auth" value="{{ Auth::user()->id }}">
+            <input type="hidden" id="project_id" value="{{ $project->id }}">
             <div class="row" id="table-head">
 
                 <!-- Sección Izquierda -->
@@ -161,7 +171,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
                                         href="#attachments">Adjuntos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat">Chat</a>
+                                    <a class="nav-link nav-link-pills" data-toggle="tab" href="#chat" onclick="clean();">Chat <label class="badge badge-danger hidden" id="chat-badge"><i class="fas fa-comment-alt"></i></label></a>
                                 </li>
                             </ul>
                         </div>

@@ -74,7 +74,7 @@ class ChatForm extends Component
         // Generamos el evento para Pusher
         // Enviamos en la "push" el usuario y mensaje (aunque en este ejemplo no lo utilizamos)
         // pero nos vale para comprobar en PusherDebug (y por consola) lo que llega...
-        event(new NuevoMensaje($this->project, $this->user, $this->message));
+        event(new NuevoMensaje($this->project, $this->user, $this->message, $this->user_id));
         
         // Este evento es para que lo reciba el componente
         // por Javascript y muestre el ALERT BOOSTRAP de "enviado"
