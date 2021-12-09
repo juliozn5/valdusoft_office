@@ -6,6 +6,7 @@ use App\Models\Bond;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Payrolls;
+use PDF;
 use App\Models\Financing;
 use App\Models\FinancingPayment;
 use App\Models\PayrollEmployee;
@@ -240,6 +241,26 @@ class PayrollController extends Controller
         }else{
             $nombre = '';
         }
-        return Excel::download(new PayrollsEmployeeExport($payroll_id), 'Nomina-'.$nombre.'-valdusoft.csv');
+        return Excel::download(new PayrollsEmployeeExport($payroll_id), 'Nomina-'.$nombre.'-valdusoft.xlsx');
     }
+
+
+    public function downloadPDF($payroll_id){
+
+        $payroll = Payrolls::find($payroll_id);
+
+        $payroll_employees = PayrollEmployee::where('payroll_id', '=', $payroll_id)
+        ->with('user:id,name,last_name', 'bond', 'financing', 'financing_payment')
+        ->get();
+
+        if($payroll != null ){
+            $nombre = $payroll->created_at->format('Y-m-d');
+        }else{
+            $nombre = '';
+        }
+
+        $pdf = PDF::loadView('pdfs.payrollAdmin', compact('payroll_employees','payroll'));
+
+        return $pdf->download('Nomina-'.$nombre.'-valdusoft.pdf');
+   }
 }

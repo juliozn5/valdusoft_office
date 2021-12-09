@@ -90,7 +90,6 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($payrolls as $payroll)
-
                                         <tr>
                                             <td class="text-center">{{ $payroll->id}}</td>
                                             <td class="text-center">{{ date('d-m-Y', strtotime($payroll->start_date)) }}</td>
@@ -107,6 +106,7 @@
                                                 <a href="{{ route('admin.payrolls.show', $payroll->id) }}"><i id="eye" style="font-size:15px;" class="far fa-eye"></i></a>
                                                 <a href="{{ route('admin.payrolls.edit', $payroll->id) }}"><i style="font-size:20px;" class="far fa-edit ml-1"></i></a>
                                                 <a href="{{ route('admin.payrolls.export', $payroll->id) }}"><i style="font-size:20px;" class="far fa-file-excel ml-1"></i></a>
+                                                <a class="" href="{{ route('admin.payrolls.pdf', $payroll->id) }}"><i style="font-size:20px;" class="far fa-file-pdf ml-1"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -118,7 +118,7 @@
                                 {{ $payrolls->links() }}
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>

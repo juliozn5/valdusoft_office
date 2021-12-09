@@ -122,6 +122,7 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::post('update', 'PayrollController@update')->name('admin.payrolls.update');
                 Route::get('store-bills/{payroll_id}', 'BillController@store_payrolls_bills')->name('admin.payrolls.store-bills');
                 Route::get('export/{id}', 'PayrollController@export')->name('admin.payrolls.export');
+                Route::get('pdf/{id}', 'PayrollController@downloadPDF')->name('admin.payrolls.pdf');
             });
 
             //MÓDULO FINANCIERO - PAGOS
