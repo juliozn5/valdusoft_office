@@ -11,6 +11,7 @@ class ChatList extends Component
     public $user;
     public $user_id;
     public $messages;
+    public $user_avatar;
         
     protected $listeners = ['mensajeRecibido'];
     
@@ -19,7 +20,7 @@ class ChatList extends Component
         $this->messages = [];         
         
         $messages = Chat::where('project_id', '=', $this->project)
-                        ->with('user:id,name,last_name')
+                        ->with('user:id,name,last_name,photo')
                         ->orderBy("id", "ASC")
                         ->get();     
 
@@ -37,6 +38,7 @@ class ChatList extends Component
                     "id" => $messages[$i]->id,
                     "user_id" => $messages[$i]->user_id,
                     "username" => $messages[$i]->user->name." ".$messages[$i]->user->last_name,
+                    "avatar" => $messages[$i]->user->photo,
                     "message" => $messages[$i]->message, 
                     "date" => date('d M h:i a', strtotime($messages[$i]->created_at))
                 ];
@@ -57,6 +59,7 @@ class ChatList extends Component
                         "id" => $messages[$i]->id,
                         "user_id" => $messages[$i]->user_id,
                         "username" => $messages[$i]->user->name." ".$messages[$i]->user->last_name,
+                        "avatar" => $messages[$i]->user->photo,
                         "message" => $messages[$i]->message, 
                         "date" => date('d M h:i a', strtotime($messages[$i]->created_at))
                     ];
@@ -67,6 +70,7 @@ class ChatList extends Component
                         "id" => $messages[$i]->id,
                         "user_id" => $messages[$i]->user_id,
                         "username" => $messages[$i]->user->name." ".$messages[$i]->user->last_name,
+                        "avatar" => $messages[$i]->user->photo,
                         "message" => $messages[$i]->message, 
                         "date" => date('d M h:i a', strtotime($messages[$i]->created_at))
                     ];
@@ -100,6 +104,7 @@ class ChatList extends Component
                 "id" => $message->id,
                 "user_id" => $message->user_id,
                 "username" => $message->user->name." ".$message->user->last_name,
+                "avatar" => $message->user->photo,
                 "message" => $message->message,
                 "date" => date('d M h:i a', strtotime($message->created_at))
             ];

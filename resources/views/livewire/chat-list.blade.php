@@ -11,7 +11,11 @@
                         @if ($mensaje["previous_user"] == false)
                             <div class="chat-avatar">
                                 <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                    <img src="{{ asset('template/app-assets/images/portrait/small/avatar-s-1.jpg') }}" alt="avatar" height="40" width="40" />
+                                    @if (!(Auth::user()->photo))
+                                        <img src="{{ asset('images/valdusoft/valdusoft.png') }}" alt="avatar" height="40" width="40">
+                                    @else
+                                        <img src="{{ asset('/storage/uploads/images/users/photos/'.Auth::user()->photo) }}"  alt="avatar" height="40" width="40">
+                                    @endif
                                 </a>
                             </div>
                         @endif
@@ -36,7 +40,11 @@
                         @if ($mensaje["previous_user"] == false)
                             <div class="chat-avatar">
                                 <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                    <img src="{{ asset('template/app-assets/images/portrait/small/avatar-s-1.jpg') }}" alt="avatar" height="40" width="40" />
+                                    @if (!($mensaje["avatar"]))
+                                        <img src="{{ asset('images/valdusoft/valdusoft.png') }}" alt="avatar" height="40" width="40">
+                                    @else
+                                        <img src="{{ asset('/storage/uploads/images/users/photos/'.$mensaje["avatar"]) }}"  alt="avatar" height="40" width="40">
+                                    @endif
                                 </a>
                             </div>
                         @endif
