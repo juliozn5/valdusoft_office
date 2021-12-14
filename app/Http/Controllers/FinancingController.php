@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Bond;
 use App\Models\Financing;
 use App\Models\PayrollEmployee;
+use App\Models\Payrolls;
 use Illuminate\Support\Facades\Auth;
 
 class FinancingController extends Controller
@@ -14,23 +16,25 @@ class FinancingController extends Controller
      public function list(){
 
 
+    //    $financing = PayrollEmployee::where('user_id', Auth::id())->OrderByDesc('created_at')->first();
+       
        $financing = Financing::where('user_id', Auth::id())
-                      ->with('financing_payments')
-                      ->where('status', '=', '0')
-                      ->first();
-        $accum = 0;
-        if (!is_null($financing)){
-         if (!is_null($financing->financing_payments)){
-                foreach ($financing->financing_payments as $financing_payment) {
-                    $accum += $financing_payment->amount;
-                }
-            }
-        }    
+       ->with('financing_payments')
+       ->where('status', '=', '0')
+       ->first();
 
-        $fechaActual = Carbon::now();
+        // $accum = 0;
+        // if (!is_null($financing)){
+        //  if (!is_null($financing->financing_payments)){
+        //         foreach ($financing->financing_payments as $financing_payment) {
+        //             $accum += $financing_payment->amount;
+        //         }
+        //     }
+        // }    
+
         $fechaUser = new Carbon(Auth::user()->admission_date);
-        $fechaUser->addYear(1);
+        $fechaUser->addYears(1);
 
-        return view('employee.financing')->with(compact('financing', 'fechaUser', 'accum'));
+        return view('employee.financing')->with(compact('financing', 'fechaUser'));
     }
 }
