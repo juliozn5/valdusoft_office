@@ -102,7 +102,9 @@
                     </div>
                 </div>
             </div>
-
+            @if ($bills->count() > 0)
+             @include('admin.payments.listBill')
+            @endif
             <div class="content-body">
                 <div class="row" id="table-head">
                     <div class="col-12">
@@ -115,10 +117,10 @@
                                         Pagos de la Factura #{{ $bill_id }}
                                     @endif
                                 </h3>
-                                 @if ($bills->count() > 0)
+                                 <!-- @if ($bills->count() > 0)
                                     <a href="#" class="btn btn-primary  mb-2 waves-effect waves-light" data-toggle="modal" data-target="#ModalGenerate"><i class="feather icon-plus "></i>&nbsp; Agregar Nuevo</a>
                                
-                                @endif
+                                @endif -->
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
@@ -193,7 +195,6 @@
             </div>
         </div>
     </div>
-
     {{-- MODAL PARA AGREGAR NUEVO PAGO --}}
     <div class="modal fade" id="ModalGenerate" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -208,25 +209,7 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="mt-2" for="bill_id">Seleccione la factura</label>
-                            <select name="bill_id" id="bill_id" class="form-control" required>
-                                <option value="" selected disabled>Seleccione una factura...</option>
-                                @foreach ($bills as $bill)
-                                    <option value="{{ $bill->id }}">
-                                        #{{ $bill->id }} -  {{ number_format($bill->amount, 2, '.', ',') }}$ -
-                                        @if ($bill->type == 'H')
-                                            {{ $bill->hosting->url }} (Hosting)
-                                        @else
-                                            {{ $bill->user->name }} {{ $bill->user->last_name }}
-                                            @if ($bill->type == 'C')
-                                                (Cliente)
-                                            @else
-                                                (Empleado)
-                                            @endif
-                                        @endif
-                                    </option>
-                                @endforeach
-                            </select>
+                        
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="amount">Monto</label>
@@ -260,7 +243,8 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> 
+ 
 
     {{-- MODAL PARA CONFIRMAR EL PAGO DE UNA FACTURA --}}
     <div class="modal fade" id="confirmPaymentModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -296,4 +280,55 @@
         <input type="hidden" name="action" value="cancel">
         <input type="hidden" name="payment_id" id="cancel_payment_id">
     </form>
+
+
+    {{-- MODAL PARA AGREGAR NUEVO PAGO --}}
+    <div class="modal fade" id="ModalConfirm" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-darck" id="#exampleModalToggle">Confirmar Pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('admin.payments.store') }}" enctype="multipart/form-data" required >
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                        
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="amount">Monto</label>
+                            <input type="text" class="form-control" name="amount" id="amount" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="payment_method">Método de Pago</label>
+                            <select class="form-control" id="payment_method" name="payment_method" onchange="loadSupportDiv();" required>
+                                <option value="" selected disabled>Seleccione el método de pago...</option>
+                                <option value="Crypto">Criptomoneda</option>
+                                <option value="Bancolombia">Bancolombia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="payment_id">Hash / Referencia</label>
+                            <input type="text" class="form-control" name="payment_id" id="payment_id" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="fee">Fee</label>
+                            <input type="text" class="form-control" name="fee" id="fee" required>
+                        </div>
+                        <div class="custom-file hidden" id="support_div">
+                            <label class="custom-file-label" for="support"><b>Clic para seleccionar una imagen</b></label>
+                            <input type="file" name="support" id="support" class="custom-file-input" accept="image/*" onchange="previewFile(this, 'photo_preview')">
+                       </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
 @endsection

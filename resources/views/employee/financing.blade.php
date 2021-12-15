@@ -33,25 +33,18 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    @if (!is_null($financing))
-                                      @if (!is_null($financing->financing_payments))
-                                        @foreach ($financing->financing_payments as $item)
+                                        {{-- @foreach ($financing as $item) --}}
                                           <tr class="text-center">
-                                            <td>{{ date('d-m-Y', strtotime($financing->payroll->dead_line)) }}</td>
-                                            <td>{{number_format($financing->total_amount - $accum, 2, ',', '.')}}$</td>
-                                            <td>{{number_format($item->amount, 2, ',', '.')}}$</td>
+                                            <td>{{ $financing->payroll->dead_line }}</td>
+                                            @if ($financing->payroll->status == 1)
+                                            <td>{{ $financing->total_amount / 100 * $financing->percentage  }}$</td>
+                                            <td>{{ $financing->payroll->amount }}$</td>
+                                            @else
+                                            <td>Procesando</td>
+                                            <td>Procesando</td>
+                                            @endif
                                           </tr>
-                                        @endforeach
-                                      @else
-                                        <tr>
-                                          <td colspan="3">No tiene abonos aun en su financiamiento...</td>
-                                        </tr>
-                                      @endif
-                                    @else
-                                      <tr>
-                                        <td colspan="3">No tienen ningun financiamiento activo...</td>
-                                      </tr>
-                                    @endif    
+                                        {{-- @endforeach --}}
                                   </tbody>
                                 </table>
                             </div>
