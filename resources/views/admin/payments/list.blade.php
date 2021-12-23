@@ -130,6 +130,7 @@
                                             <th>PLATAFORMA DE PAGO</th>
                                             <th>ID DE PAGO</th>
                                             <th class="text-center">MONTO</th>
+                                            <th class="text-center">FEE</th>
                                             <th class="text-center">SOPORTE</th>
                                             <th class="text-center">ESTADO</th>
                                             <th class="text-center">ACCIÓN</th>
@@ -155,6 +156,7 @@
                                                         @endif 
                                                     </td>
                                                     <td class="text-center">{{ number_format($payment->total, 2, ',', '.') }}$</td>
+                                                    <td class="text-center">{{ number_format($payment->fee, 2, ',', '.') }}$</td>
                                                     <td class="text-center">
                                                         @if (!is_null($payment->support))
                                                             <a href="{{ asset('/uploads/images/payment-supports/'.$payment->support) }}" target="_blank">Ver</a>

@@ -78,8 +78,14 @@ class BillController extends Controller
                               ->select('id', 'url')
                               ->orderBy('url', 'DESC')
                               ->get();
+               
+               $projects = DB::table('projects')
+                              ->where('status', '0')
+                              ->select('id', 'name', 'user_id')
+                              ->orderBy('id', 'DESC')
+                              ->get();
 
-              return view('admin.bills.list', compact('employee_bills', 'client_bills', 'hosting_bills', 'clients', 'hostings', 'type', 'status'));
+              return view('admin.bills.list', compact('employee_bills', 'client_bills', 'hosting_bills', 'clients', 'hostings', 'type', 'status','projects'));
 
           } else if (Auth::user()->profile_id == 2) {
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
