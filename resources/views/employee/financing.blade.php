@@ -36,18 +36,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                         {{-- @foreach ($financing as $item) --}}
                                           <tr class="text-center">
                                             <td>{{ $financing->payroll->dead_line }}</td>
-<<<<<<< HEAD
-                                            @if ($financing->payroll->status == 1)
-                                            <td>{{ $financing->total_amount / 100 * $financing->percentage  }}$</td>
-                                            <td>{{ $financing->payroll->amount }}$</td>
-                                            @else
-                                            <td>Procesando</td>
-                                            <td>Procesando</td>
-                                            @endif
-=======
                                             <td>{{ $financing->total_amount / 100 * $financing->percentage  }}$</td>
                                             <td>{{ $financing->total_amount }}$</td>
->>>>>>> ee4f06f2626593ad4af2754bd54027e453929e93
                                           </tr>
                                         {{-- @endforeach --}}
                                   </tbody>
