@@ -130,7 +130,7 @@
                                             <th>USUARIO</th>
                                             <th>ID DE FACTURA</th>
                                             <th>PLATAFORMA DE PAGO</th>
-                                            <th style="width: 25%;">ID DE PAGO</th>
+                                            <th>ID DE PAGO</th>
                                             <th class="text-center">MONTO</th>
                                             <th class="text-center">SOPORTE</th>
                                             <th class="text-center">ESTADO</th>

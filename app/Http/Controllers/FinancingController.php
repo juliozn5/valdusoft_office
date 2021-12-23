@@ -16,12 +16,12 @@ class FinancingController extends Controller
      public function list(){
 
 
-    //    $financing = PayrollEmployee::where('user_id', Auth::id())->OrderByDesc('created_at')->first();
+         $financing = PayrollEmployee::where('user_id', Auth::id())->OrderByDesc('created_at')->first();
        
-       $financing = Financing::where('user_id', Auth::id())
-       ->with('financing_payments')
-       ->where('status', '=', '0')
-       ->first();
+        //    $financing = Financing::where('user_id', Auth::id())
+        //    ->with('financing_payments')
+        //    ->where('status', '=', '0')
+        //    ->first();
 
         // $accum = 0;
         // if (!is_null($financing)){

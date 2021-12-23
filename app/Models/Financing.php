@@ -38,6 +38,6 @@ class Financing extends Model
     }
 
     public function payroll(){
-        return $this->belongsTo('App\Models\Payrolls', 'id');
+        return $this->belongsTo('App\Models\Payrolls', 'payroll_employee_id', 'id');
     }
 }
