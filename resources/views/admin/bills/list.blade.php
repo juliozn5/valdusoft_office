@@ -352,9 +352,6 @@
                             <label for="project_id">Seleccione un proyecto...</label>
                             <select class="form-control" name="project_id" id="project_id" required>
                                 <option value="" selected disabled>Seleccione una opción...</option>
-                                @foreach($projects as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }} - {{$item->user_id}} </option>
-                                @endforeach
                             </select>
                         </div>
 
