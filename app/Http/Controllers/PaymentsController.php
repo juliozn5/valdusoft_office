@@ -28,7 +28,7 @@ class PaymentsController extends Controller
                                 ->orderBy('id', 'DESC')
                                 ->paginate(10);
             }
-           
+
             $bills = Bill::where('status', '<>', '1')->get();
             return view('admin.payments.list')->with(compact('payments', 'bills', 'bill_id'));
         }
@@ -49,7 +49,7 @@ class PaymentsController extends Controller
             $payment->total = $request->discount_amount;
             $payment->discount_description = $request->discount_description;
             $payment->date = date('Y-m-d');
-            $payment->status = '1';
+            $payment->status = 1;
             $payment->save();
         }else{
             $payment = new Payments($request->all());
@@ -58,7 +58,7 @@ class PaymentsController extends Controller
             $payment->total = $request->amount;
             $payment->date = date('Y-m-d');
             if (Auth::user()->profile_id == 1){
-                $payment->status = '1';
+                $payment->status = '0';
             }else{
                 $payment->status = '0';
             }
