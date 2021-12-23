@@ -33,13 +33,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </tr>
                                   </thead>
                                   <tbody>
-                                        {{-- @foreach ($financing as $item) --}}
-                                          <tr class="text-center">
-                                            <td>{{ $financing->payroll->dead_line }}</td>
-                                            <td>{{ $financing->total_amount / 100 * $financing->percentage  }}$</td>
-                                            <td>{{ $financing->total_amount }}$</td>
-                                          </tr>
-                                        {{-- @endforeach --}}
+                                        @if(isset($financing->financing_payments))
+                                          @foreach ($financing->financing_payments->sortByDesc('created_at') as $item)
+                                            <tr class="text-center">
+                                              <td>{{ $item->payroll_employee->payroll->dead_line }}</td>
+                                              <td>{{ $item->remaining_financing  }}$</td>
+                                              <td>{{ $item->amount }}$</td>
+                                            </tr>
+                                          @endforeach 
+                                        @endif
                                   </tbody>
                                 </table>
                             </div>

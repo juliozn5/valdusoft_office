@@ -105,6 +105,12 @@ class PayrollController extends Controller
                     }
                     $payment->description = 'Descuento quincenal del financiamiento por concepto de '.$checkFinancing->description;
                     $payment->date = date('Y-m-d');
+                    if($checkFinancing->payments == null){
+                        $payment->remaining_financing = $checkFinancing->total_amount - $request->$inputFinancingFee;
+                    }else{
+                        $payment->remaining_financing = $checkFinancing->total_amount - $request->$inputFinancingFee - $checkFinancing->payments->sum('amount');
+                    }
+                    
                     $payment->save();
                 }else{
                     if ($request->$inputFinancing == 1){

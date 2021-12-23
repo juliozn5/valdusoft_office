@@ -17,6 +17,7 @@ class FinancingPayment extends Model
         'amount',
         'date',
         'description',
+        'remaining_financing'
     ];
 
     public function financing(){
