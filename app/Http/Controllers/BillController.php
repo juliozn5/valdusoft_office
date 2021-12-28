@@ -29,7 +29,7 @@ class BillController extends Controller
                                         ->with('user:id,name,last_name', 'payments')
                                         ->orderBy('id', 'DESC')
                                         ->get();
-                    
+
                     $hosting_bills = Bill::where('type', 'H')
                                         ->with('hosting:id,url')
                                         ->orderBy('id', 'DESC')
@@ -59,7 +59,7 @@ class BillController extends Controller
                     $cb->pending_payments = false;
                     foreach ($cb->payments as $p){
                          if ($p->status == '1'){
-                             $cb->paid_amount += $p->total; 
+                             $cb->paid_amount += $p->total;
                          }elseif ($p->status == '0'){
                               $cb->pending_payments = true;
                          }
@@ -79,7 +79,7 @@ class BillController extends Controller
                               ->orderBy('url', 'DESC')
                               ->get();
 
-              return view('admin.bills.list', compact('employee_bills', 'client_bills', 'hosting_bills', 'clients', 'hostings', 'type', 'status','projects'));
+              return view('admin.bills.list', compact('employee_bills', 'client_bills', 'hosting_bills', 'clients', 'hostings', 'type', 'status'));
 
           } else if (Auth::user()->profile_id == 2) {
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
@@ -165,7 +165,7 @@ class BillController extends Controller
           $bill = Bill::where('id', '=', $id)
                     ->with('user:id,name,last_name,phone,email,tron_wallet', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payments')
                     ->first();
-          
+
           $bill->remaining = $bill->amount;
           foreach ($bill->payments as $payment) {
                if ($payment->status == '1'){
@@ -255,7 +255,7 @@ class BillController extends Controller
 
      public function saveInvoice(Request $request)
      {
-          
+
           $bill = new Bill($request->all());
           $bill->type = 'C';
           $bill->status = '0';
