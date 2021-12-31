@@ -153,18 +153,19 @@ class ProjectsController extends Controller
             $budget['cost'] = 0;
             $budget['assigned'] = 0;
             $budget['benefit'] = 0;
-            foreach ($project->bills as $bill) {
-                if ($bill->status == 1) {
-                    $budget['benefit'] += $bill->amount;
-                }
-            }
-            $budget['assigned'] = ($budget['benefit'] * 60) / 100;
-
+            
+            
+            
             foreach ($project->accounting_transactions as $transaction) {
                 if ($transaction->status == 1) {
                     $budget['cost'] += $transaction->amount;
                 }
             }
+
+            $ingresos = $project->bills->where('status', '1')->sum('amount') - $budget['cost'];
+            $budget['benefit'] = $ingresos - $budget['cost'];
+
+            $budget['assigned'] = ($ingresos * 60) / 100;
 
             $clients = DB::table('users')
                 ->select('id', 'name', 'last_name')
@@ -182,7 +183,7 @@ class ProjectsController extends Controller
                 ->orderBy('id', 'ASC')
                 ->get();
 
-            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget'));
+            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget', 'ingresos'));
         } else if (Auth::user()->profile_id == 2) {
 
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')

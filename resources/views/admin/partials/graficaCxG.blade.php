@@ -32,12 +32,12 @@
                 width: 3
             },
             series: [{
-                    name: 'Costos',
+                    name: 'Gastos',
                     data: response.data.valores.data_empleados
                 },
                 {
-                    name: 'Ganancias',
-                    data: response.data.valores.data_clientes
+                    name: 'Ganancia',
+                    data: response.data.valores.data_cliente
                 }
             ],
             xaxis: {

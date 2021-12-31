@@ -48,9 +48,9 @@
                 }
             }
         }
-
+    
         function loadPayments($bill_id){
-            var route = 'http://localhost:8000/admin/financial/payments/bill-list/'+$bill_id;
+            var route = '{{url("admin/financial/payments/bill-list/")}}/'+$bill_id;
             //var route = 'https://valdusoft.com/admin/financial/payments/bill-list/'+$bill_id;
             $.ajax({
                 url: route,
@@ -63,7 +63,7 @@
         }
 
         function loadProjects(){
-            var route = 'http://localhost:8000/admin/projects/client-list/'+$("#client_id").val();
+            var route = '{{url("admin/projects/client-list")}}/'+$("#client_id").val();
             //var route = 'https://valdusoft.com/admin/projects/client-list/'+$("#client_id").val();
             $.ajax({
                 url: route,

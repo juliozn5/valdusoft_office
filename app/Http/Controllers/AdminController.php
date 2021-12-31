@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Hosting;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\Payrolls;
+use App\Models\Payments;
 
 class AdminController extends Controller
 {
@@ -206,6 +208,61 @@ class AdminController extends Controller
             $fecha_ini = Carbon::createFromDate($anno,1,1)->startOfDay();
             $fecha_fin = Carbon::createFromDate($anno, 12,1)->endOfMonth()->endOfDay();
 
+            $costos = Payrolls::select(
+                        DB::raw('date_format(created_at,"%m/%Y") as mes'),
+                        DB::raw('SUM(amount) as monto')
+                    )->where('status','1')
+                    ->whereBetween('created_at', [$fecha_ini, $fecha_fin])
+                    ->groupBy('mes')
+                    ->orderBy('mes', 'DESC')
+                    ->get()
+                    ->toArray();
+
+            $ganancias = Payments::select(
+                                DB::raw('date_format(created_at,"%m/%Y") as mes'),
+                                DB::raw('SUM(amount) as monto')
+                            )
+                            ->where('status','1')
+                            ->whereBetween('created_at', [$fecha_ini, $fecha_fin])
+                            ->groupBy('mes')
+                            ->orderBy('mes', 'ASC')
+                            ->get()
+                            ->toArray();
+
+            
+            
+            //FORMATEAMOS
+            $valores = [];
+            for ($date = $fecha_ini->copy(); $date->lt($fecha_fin->copy()->addMonth(1)); $date->addMonth(1)) {
+                $valores[$date->format('m/Y')] = [
+                'created' => $date->format('m/Y'),
+                'costos' => 0,
+                'ganancia' => 0
+                ];
+            }
+
+            foreach($costos as $pago){
+                $valores[$pago['mes']]['costos'] = $pago['monto'];
+            }
+
+            foreach($ganancias as $ganancia){
+                $valores[$pago['mes']]['ganancia'] = $ganancia['monto'];
+            }
+        
+            $meses = collect($valores)->pluck('created');
+            $Empleado = collect($valores)->pluck('costos');
+            $gain = collect($valores)->pluck('ganancia');
+            
+            $data = [
+                'data_empleados' =>  $Empleado,
+                'data_mes'=> $meses,
+                'data_cliente' => $gain
+            ];
+
+            return response()->json(['valores' => $data]);
+            /*
+            dd($meses);
+
             $facturaFecha = Bill::select(
                             DB::raw('DATE_FORMAT(payed_at,"%M ") as mes'))
                             ->where('status','1')
@@ -226,7 +283,7 @@ class AdminController extends Controller
                 ->groupBy('mes')
                 ->orderBy('mes', 'ASC')
                 ->get();
-
+            
             $m = $facturaEmpleado->count();
 
             $facturaEmpleado->toArray();
@@ -271,6 +328,7 @@ class AdminController extends Controller
             ];
 
             return response()->json(['valores' => $data]);
+            */
 
         }
 }

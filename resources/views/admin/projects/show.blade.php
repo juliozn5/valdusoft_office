@@ -168,22 +168,34 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             </div>
 
                             @if (Auth::user()->profile_id == 1)
-                            <div class="row mt-3">
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-6 text-right" style="padding-right: 3px; padding-left: 3px;">
-                                    <div class="project-detail-titles">Presupuesto |</div>
-                                    <div class="mt-1 project-detail-dates">{{ number_format($project->amount, 0, ',', '.') }}$ |</div>
+                            <div class="row mt-3 no-gutters">
+                                <div class="col-xl-8 col-lg-8 col-md-7 col-12">
+                                    <div class="row no-gutters">
+                                        <div class="col-xl-5 col-lg-5 col-md-12 col-4 text-lg-right" style="padding-right: 3px; padding-left: 3px;">
+                                            <div class="project-detail-titles">Presupuesto |</div>
+                                            <div class="mt-1 project-detail-dates">{{ number_format($project->amount, 0, ',', '.') }}$ |</div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3 col-md-5 col-3 text-left" style="padding-right: 3px; padding-left: 3px;">
+                                            <div class="project-detail-titles">Ingreso</div>
+                                            <div class="mt-1 project-detail-dates">{{ number_format($ingresos, 0, ',', '.') }}$</div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-7 col-5 text-left" style="padding-right: 3px; padding-left: 3px;">
+                                            <div class="project-detail-titles">| Beneficio</div>
+                                            <div class="mt-1 project-detail-dates">| {{ number_format($budget['benefit'], 0, ',', '.') }}$</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-6 text-left" style="padding-right: 3px; padding-left: 3px;">
-                                    <div class="project-detail-titles">Beneficio</div>
-                                    <div class="mt-1 project-detail-dates">{{ number_format($budget['benefit'], 0, ',', '.') }}$</div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-6 text-right" style="padding-right: 3px; padding-left: 3px;">
-                                    <div class="project-detail-titles">Asignado |</div>
-                                    <div class="mt-1 project-detail-dates">{{ number_format($budget['assigned'], 0, ',', '.') }}$ |</div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-6 text-left" style="padding-right: 3px; padding-left: 3px;">
-                                    <div class="project-detail-titles">Costo</div>
-                                    <div class="mt-1 project-detail-dates">{{ number_format($budget['cost'], 0, ',', '.') }}$</div>
+                                <div class="col-xl-4 col-lg-4 col-md-5 col-12">
+                                    <div class="row">
+                                        <div class="col-xl-7 col-lg-7 col-md-7 col-6 text-right" style="padding-right: 3px; padding-left: 3px;">
+                                            <div class="project-detail-titles">Asignado |</div>
+                                            <div class="mt-1 project-detail-dates">{{ number_format($budget['assigned'], 0, ',', '.') }}$ |</div>
+                                        </div>
+                                        <div class="col-xl-5 col-lg-5 col-md-5 col-6 text-left" style="padding-right: 3px; padding-left: 3px;">
+                                            <div class="project-detail-titles">Costo</div>
+                                            <div class="mt-1 project-detail-dates">{{ number_format($budget['cost'], 0, ',', '.') }}$</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             @endif
@@ -412,18 +424,17 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                         <thead class="thead-light">
                                             <tr class="">
                                                 <th>FECHA</th>
-                                                <th>DESCRIPCIÓN</th>
+                                                <th>ESTADO</th>
                                                 <th>MONTO</th>
                                                 <th>ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ($project->accounting_transactions->count() > 0)
-                                            @foreach ($project->accounting_transactions as $transaction)
+                                            @if ($project->bills->count() > 0)
+                                            @foreach ($project->bills->where('status', 1) as $transaction)
                                             <tr>
                                                 <td>{{ date('d-m-Y', strtotime($transaction->date)) }}</td>
                                                 <td>
-                                                    <span class="transaction-description">{{ $transaction->description }}</span><br>
                                                     @if ($transaction->status == 0)
                                                     <span class="transaction-status">Pendiente</span>
                                                     @elseif ($transaction->status == 1)
@@ -434,7 +445,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                 </td>
                                                 <td>
                                                     <span class="text-danger">
-                                                        - {{ number_format($transaction->amount, 2, ',', '.') }}
+                                                         {{ number_format($transaction->amount, 2, ',', '.') }}
                                                     </span>
                                                 </td>
                                                 <td>
