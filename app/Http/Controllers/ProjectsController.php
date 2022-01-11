@@ -162,7 +162,7 @@ class ProjectsController extends Controller
                 }
             }
 
-            $ingresos = $project->bills->where('status', '1')->sum('amount') - $budget['cost'];
+            $ingresos = $project->bills->where('status', '1')->where('type', 'C')->sum('amount');
             $budget['benefit'] = $ingresos - $budget['cost'];
 
             $budget['assigned'] = ($ingresos * 60) / 100;
@@ -183,7 +183,26 @@ class ProjectsController extends Controller
                 ->orderBy('id', 'ASC')
                 ->get();
 
-            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget', 'ingresos'));
+            $contable = collect();
+            foreach($project->accounting_transactions as $egreso){
+                $contable->push([
+                    'amount' => $egreso->amount,
+                    'created_at' => $egreso->created_at,
+                    'status' => $egreso->status,
+                    'tipo' => "egreso"
+                ]);
+            }
+
+            foreach($project->bills->where('type', 'C') as $ing){
+                $contable->push([
+                    'amount' => $ing->amount,
+                    'created_at' => $ing->created_at,
+                    'status' => $ing->status,
+                    'tipo' => "ingreso"
+                ]);
+            }
+            
+            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget', 'ingresos', 'contable'));
         } else if (Auth::user()->profile_id == 2) {
 
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')

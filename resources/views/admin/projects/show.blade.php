@@ -58,9 +58,9 @@
         }
     }
     function editTransaction($transaction) {
-        $("#transaction_id").val($transaction.id);
-        $("#description").val($transaction.description);
-        $("#status option[value=" + $transaction.status + "]").attr("selected", true);
+        $("#transaction_id").val($transaction['id']);
+        $("#description").val($transaction['description']);
+        $("#status option[value=" + $transaction['status'] + "]").attr("selected", true);
     }
     function clean(){
         $("#chat-badge").addClass("hidden");
@@ -159,15 +159,36 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                         <div class="p-2">
                             <div class="row">
-                                <div class="col-6 text-left">
+                                <div class="col-8 text-left">
                                     <h3 class="text-primary font-weight-bolder text-uppercase">{{ $project->name }}</h3>
                                 </div>
-                                <div class="col-6 text-right">
+                                <div class="col-4 text-right">
                                     <button class="btn btn-primary" href="#editProject" data-toggle="modal" onclick="editProject({{ $project }});"><i class="fa fa-edit"></i> Editar</button>
                                 </div>
                             </div>
 
                             @if (Auth::user()->profile_id == 1)
+                            <table class="table mt-2">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Presupuesto</th>
+                                        <th>Ingreso</th>
+                                        <th>Beneficio</th>
+                                        <th>Asignado</th>
+                                        <th>Costo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ number_format($project->amount, 0, ',', '.') }}$</td>
+                                        <td>{{ number_format($ingresos, 0, ',', '.') }}$</td>
+                                        <td>{{ number_format($budget['benefit'], 0, ',', '.') }}$</td>
+                                        <td>{{ number_format($budget['assigned'], 0, ',', '.') }}$</td>
+                                        <td>{{ number_format($budget['cost'], 0, ',', '.') }}$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            {{--
                             <div class="row mt-3 no-gutters">
                                 <div class="col-xl-8 col-lg-8 col-md-7 col-12">
                                     <div class="row no-gutters">
@@ -198,6 +219,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     </div>
                                 </div>
                             </div>
+                            --}}
                             @endif
 
                             {{-- Sección de Cliente --}}
@@ -223,7 +245,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 </div>
                                 @foreach ($project->employees as $employee)
                                 <div class="col-5 mr-1">
-                                    <img class="rounded-circle" src="{{ asset('/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
+                                    <img class="rounded-circle" src="{{ asset('storage/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
                                 </div>
                                 @endforeach
                                 <div class="col-1">
@@ -254,7 +276,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <div class="project-detail-titles">Tecnologías</div>
                                 <div class="mt-1">
                                     @foreach ($project->technologies as $technology)
-                                    <div class="text-center text-white d-inline-block mr-1">
+                                    <div class="text-center text-white d-inline-block mr-1" style="margin-top: 4px; margin-bottom: 4px;">
                                         <div class="project-detail-skill">{{ $technology->name }}</div>
                                     </div>
                                     @endforeach
@@ -431,25 +453,26 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                         </thead>
                                         <tbody>
                                             @if ($project->bills->count() > 0)
-                                            @foreach ($project->bills->where('status', 1) as $transaction)
+                                            @foreach ($contable->sortByDesc('created_at') as $transaction)
                                             <tr>
-                                                <td>{{ date('d-m-Y', strtotime($transaction->date)) }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($transaction['created_at'])) }}</td>
                                                 <td>
-                                                    @if ($transaction->status == 0)
+                                                    @if ($transaction['status'] == 0)
                                                     <span class="transaction-status">Pendiente</span>
-                                                    @elseif ($transaction->status == 1)
+                                                    @elseif ($transaction['status'] == 1)
                                                     <span class="transaction-status">Completada</span>
-                                                    @elseif ($transaction->status == 2)
+                                                    @elseif ($transaction['status'] == 2)
                                                     <span class="transaction-status">Cancelada</span>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <span class="text-danger">
-                                                         {{ number_format($transaction->amount, 2, ',', '.') }}
+                                                    <span class="@if($transaction['tipo'] == 'egreso') text-danger @else  text-success @endif">
+                                                    
+                                                         {{ number_format($transaction['amount'], 2, ',', '.') }}
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <a href="#editTransaction" data-toggle="modal" onclick="editTransaction({{ $transaction }});"><i class="fa fa-edit mr-1 action-icon"></i></a>
+                                                    <a href="#editTransaction" data-toggle="modal" onclick="editTransaction({{json_encode($transaction, TRUE)}})"><i class="fa fa-edit mr-1 action-icon"></i></a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -521,7 +544,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="user_id">Cliente</label>
-                                <select name="user_id" id="projet_user_id" class="form-control">
+                                <select name="user_id" id="project_user_id" class="form-control">
                                     <option value="" selected disabled>Seleccione un cliente...</option>
                                     @foreach ($clients as $client)
                                     <option value="{{ $client->id }}">{{ $client->name }} {{ $client->last_name }}</option>
@@ -531,7 +554,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label for="country">País</label>
+                                <label for="country_id">País</label>
                                 <select name="country_id" id="project_country_id" class="form-control">
                                     <option value="" selected disabled>Seleccione un país...</option>
                                     @foreach ($countries as $country)
@@ -584,8 +607,8 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="logo">Monto</label>
-                                    <input type="number" class="form-control" name="amount" id="amount" value="{{ $project->amount }}">
+                                    <label for="amount">Monto</label>
+                                    <input type="number" class="form-control" name="amount" id="project_amount" value="{{ $project->amount }}">
                                 </div>
                             </div>
                         </div>

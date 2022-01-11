@@ -37,6 +37,48 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         opacity: 1;
         border: 0;
     }
+
+    /*BOTON FAVORITO*/
+    #form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+    }
+
+    #form p {
+    text-align: center !important;
+    }
+
+    #form p label {
+    font-size:2em;
+    }
+
+    input[type="radio"] {
+    display: none;
+    }
+
+    p label {
+    color: grey;
+    font-size:2em;
+    }
+
+    .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    }
+
+    p label:hover,
+    p label:hover ~ label {
+    color: orange;
+    }
+    /*
+    input[type="radio"]:checked ~ label {
+    color: orange;
+    }
+    */
+    .active-favorite{
+        color: orange;
+    }
 </style>
 @endpush
 
@@ -88,13 +130,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive pt-2">
-                                    <table class="table">
+                                    <table class="table myTable">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>Foto</th>
                                                 <th>Nombre</th>
                                                 <th>Email</th>
                                                 <th>Telefono</th>
+                                                <th>Favorito</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -110,6 +153,15 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 <td><a href="{{ route('admin.employees.show', [$item->slug, $item->id]) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
                                                 <td><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
                                                 <td><a href="https://api.whatsapp.com/send?phone={{ $item->phone }}" Target="_blank">{{ $item->phone }}</a></td>
+                                                <td>
+                                                    <form id="#form">
+                                                        <p class="clasificacion text-center">
+                                                          <input class="input-radio" label-target="label{{$item->id}}" id="radio{{$item->id}}" type="radio" name="estrellas" value="{{$item->id}}"><!--
+                                                          --><label @if($item->favorite == 1) class="active-favorite" @endif id="label{{$item->id}}" for="radio{{$item->id}}">★</label>
+                                                        </p>
+                                                      </form>
+                                                      
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -182,5 +234,32 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $('.input-radio').click(function(e){
+            
+            let labelTarget = $(this).attr('label-target')
+        
+            axios.post("{{route('ajaxFavorite')}}", {id: $(this).val()}).then( function(response){
+                if(response.data.success == true){
+                    $('#'+labelTarget).addClass('active-favorite')
+                }else{
+                    $('#'+labelTarget).removeClass('active-favorite');
+                }
+            }).catch(e => console.log(e))
+
+        });
+
+        $('.myTable').DataTable({
+            responsive: true,
+            order: [
+                [0, "desc"]
+            ],
+            pageLength : 5,
+            lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]
+        })
+    </script>
+@endpush
 
 @endsection

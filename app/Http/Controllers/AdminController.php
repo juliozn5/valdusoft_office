@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Payrolls;
 use App\Models\Payments;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -21,9 +22,9 @@ class AdminController extends Controller
     public function index(){
 
         $user = User::where('profile_id', '=', 3)
-                    ->orderBy('name', 'ASC')
+                    ->orderBy('favorite', 'DESC')
                     ->get();
-
+    
         $hostings = Hosting::all();
 
         $billC = Bill::select(
@@ -331,5 +332,14 @@ class AdminController extends Controller
             */
 
         }
+
+    public function ajaxFavorite(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->favorite = !$user->favorite;
+        $user->save();
+
+        return response()->json(['success' => $user->favorite]);
+    }
 }
 
