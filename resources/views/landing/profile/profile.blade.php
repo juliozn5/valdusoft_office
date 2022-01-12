@@ -31,23 +31,24 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <!--Data-->
                 <div class="card-body">
                     <div class="ml-4 mb-3">
+                     
                         <div class="row">
                             <div class="col-sm-8 col-md-6 project-detail-titles">Numero de telefono</div>
-                            <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 project-detail-titles">Cambiar Contraseña</div>
+                            <div class="col-sm-5 offset-sm-2 col-md-3 offset-md-0 project-detail-titles">Cambiar Contraseña</div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-7 col-md-7 col-lg-6">
-                                <p style="font-size: 17px;"><span> {{(is_null($user->phone)) ? 'Dato no disponible' : ($user->phone) }}</span><a data-toggle="modal" data-target="#telefono">
-
+                                <p style="font-size: 17px;"><span> {{(is_null($user->phone)) ? 'Dato no disponible' : ($user->phone) }}</span>
+                                    <a data-toggle="modal" data-target="#telefono">
                                         @if(is_null($user->phone))
-                                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                                          <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
                                         @else
-                                        <i class="far fa-edit ml-2" style="font-size:21px;"></i>
+                                            <i class="far fa-edit ml-2" style="font-size:21px;"></i>
                                         @endif
-
-
                                     </a>
+                                </p>
                             </div>
+                           
                             <div class="col-sm-6 col-md-5 offset-md-2  offset-lg-0">
                                 <div class="row">
                                     <div class="col-sm-5 col-md-6"><input id="password" type="password" class="form-control" value="$user->password" name="current_password" disabled></div>
@@ -58,7 +59,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                                 </a>
                             </div>
-                        </div>
+                        </div> 
                     </div>
 
                     <!--ASSIGNED PROJECTS-->
@@ -83,8 +84,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             @endforeach
                         </div>
                     </div>
-
-
 
                     <!--DATE OF BIRTH-->
                     <div class="row mt-3 " style="padding:0px 0px 0px 50px;">
@@ -113,6 +112,25 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 <span> {{(is_null($fechaUser)) ? 'Dato no disponible' : date('d/m/Y', strtotime($fechaUser)) }}</span>
                             </div>
                         </div>
+
+                        <div class="col-md-3 col-sm-1">
+                            <div class="project-detail-titles">CV</div>
+                            <div class="mt-1 project-detail-dates">
+                                <a href="#availableCurriculum" data-toggle="modal">
+                                    @if(is_null($user->curriculum))
+                                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
+                                    @else
+                                        <i class="far fa-edit" style="font-size:21px;"></i>
+                                    @endif
+                                </a>
+                                @if (!is_null($user->curriculum))
+                                    <a href="{{ asset('uploads/documents/curriculums/'.$user->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $user->curriculum }}</a>
+                                @else
+                                    <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1">No Disponible
+                                @endif
+                            </div>
+                        </div>
+
                     </div>
 
                     <!--SKILLS SECTION-->
@@ -124,57 +142,38 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="project-detail-skill">{{ $skill->skill }}</div>
                         </div>
                         @endforeach
-                        <!-- <div class="text-center text-white d-inline-block mr-1">
+                        <div class="text-center text-white d-inline-block mr-1">
                             <a href="#availableSkills" data-toggle="modal">
                                 <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
                             </a>
-                        </div> -->
-                    </div>
-                    <div class="container mt-3" style="padding:0px 0px 0px 50px;">
-                        <div class="row">
-                            <div class="col-6 col-sm-3 project-detail-titles">Curriculum Vitae <a href="#availableCurriculum" data-toggle="modal">
-                                    @if(is_null($user->curriculum))
-                                    <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
-                                    @else
-                                    <i class="far fa-edit ml-2" style="font-size:21px;"></i>
-                                    @endif
-                                </a>
-                            </div>
-
-                            <div class="w-100"></div>
-
-                            <div class="col-6 col-sm-3 mt-2"> @if (!is_null($user->curriculum))
-                                <a href="{{ asset('uploads/documents/curriculums/'.$user->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $user->curriculum }}</a>
-                                @else
-                                <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible
-                                @endif
-                            </div>
-
                         </div>
                     </div>
+                    <div class="row mt-1" style="padding:0px 0px 0px 50px;">
 
-
-                    <div class="row">
-                        <div class="col-md-3 mb-3 col-sm-1 mt-5" style="padding:0px 0px 0px 60px;">
+                        <div class="col-md-3 mb-3 col-sm-1 mt-5" >
                             <div class="project-detail-titles"><strong>Precio Por Hora</strong></div>
                             <div class="mt-1 project-detail-dates">
                                 <img src="{{ asset('images/icons/dollar.png')}}" alt="" class="mr-1"><span>{{ $user->price_per_hour}} USDT</span>
                             </div>
                         </div>
 
-                        <div class="col-3 mt-5">
-
-                            <div class="project-detail-titles">Billetera USDT-TRON</div>
+                        <div class="col-md-3 mb-3 col-sm-1 mt-5" >
+                            <div class="project-detail-titles"><strong>Financiamiento</strong></div>
                             <div class="mt-1 project-detail-dates">
-                                <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($user->tron_wallet)) ? 'Dato no disponible' : $user->tron_wallet }} <a href="#availableWallet" data-toggle="modal">
+                                <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($restante)) ? 'Dato no disponible' : $restante.' USD' }}
+                            </div>
+                        </div>
 
+                        <div class="col-5 mt-5">
+                            <div class="project-detail-titles">Billetera USDT-TRC20</div>
+                            <div class="mt-1 project-detail-dates">
+                                <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($user->tron_wallet)) ? 'Dato no disponible' : $user->tron_wallet }}
+                                <a href="#availableWallet" data-toggle="modal">
                                     @if(is_null($user->tron_wallet))
-                                    <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
-
+                                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
                                     @else
-                                    <i class="far fa-edit ml-2" style="font-size:21px;"></i>
+                                        <i class="far fa-edit ml-2" style="font-size:21px;"></i>
                                     @endif
-
                                 </a>
                             </div>
                         </div>
@@ -200,8 +199,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         @method('PATCH')
                         <div class="media">
                             <div class="custom-file">
-                                <label class="custom-file-label" for="photo">Seleccione su foto <b>(Se permiten JPG o PNG.
-                                        Tamaño máximo de 800kB)</b></label>
+                                <label class="custom-file-label" for="photo">
+                                    Seleccione su foto <b>(Se permiten JPG o PNG. Tamaño máximo de 800kB)</b>
+                                </label>
                                 <input type="file" id="photo" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" onchange="previewFile(this, 'photo_preview')" accept="image/*">
                                 @error('photo')
                                 <span class="invalid-feedback" role="alert">
@@ -222,12 +222,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         <div class=" col-12 d-flex flex-sm-row flex-column justify-content-end">
                             <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
                         </div>
-                </div>
-                </form>
+                    </form>
+               </div>
             </div>
         </div>
     </div>
-
 
     <!--Cambiar Numero de Celular-->
     <div class="modal fade" id="telefono" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -249,7 +248,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                     <hr>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" type="submit" class="btn btn-primary">Guardar Cambios</button>
                     </div>
                 </form>
             </div>
@@ -368,7 +367,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 </div>
 
 <!--Modificar Skills-->
-<!--
+
     <div class="modal fade text-left" id="availableSkills" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">

@@ -232,11 +232,35 @@ class EmployeesController extends Controller
         $availableSkills = DB::table('skills')
             ->orderBy('skill', 'ASC')
             ->get();
-
         $itemColors = ['#FF3F3F', '#12A0B4', '#940385'];
+         $id = Auth::user();
+         $financiamiento = Financing::where(['user_id' => $id, 'status' => '0'])->sum('total_amount');
+         $financiamiento = Financing::where('user_id', $id)
+                             ->where('status', '0')
+                             ->with('payments')
+                             ->first();
+         $acumulado = 0;
+         $restante = 0;
+         if (!is_null($financiamiento)){
+             foreach ($financiamiento->payments as $p){
+                 $acumulado += $p->amount;
+             }
+
+             $restante = $financiamiento->total_amount - $acumulado;
+         }
+
+         $f = Financing::where('user_id', $id)->where('status', '0')->with('payments')->first();
+         $acumulado = 0;
+         $restante = 0;
+         if(!is_null($f)){
+             foreach($f->payments as $p ){
+                $acumulado += $p->amount;
+           }
+             $restante = $f->total_amount - $acumulado;
+         }
 
         return view('landing.profile.profile')
-            ->with(compact('user', 'skillsActivos', 'project', 'availableSkills', 'itemColors', 'fechaUser'));
+            ->with(compact('user', 'skillsActivos', 'project', 'availableSkills', 'itemColors', 'fechaUser', 'restante'));
     }
 
     public function editPhone(Request $request)
