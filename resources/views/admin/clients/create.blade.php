@@ -28,15 +28,30 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
 @section('content')
 
-@include('layouts.partials.navbar')
 
 @include('layouts.partials.sidebar')
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
+
     <div class="content-wrapper">
+        
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">
+                @push('breadcrumbs')
+   
+                    <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
+                        Cliente</div>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.clients.list') }}">Cliente</a></li>
+                            <li class="breadcrumb-item">Nuevo Cliente</li>
+                        </ol>
+                    </div>
+                     
+                @endpush
+                {{--
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
                         <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
@@ -50,6 +65,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                     </div>
                 </div>
+                --}}
             </div>
         </div>
 

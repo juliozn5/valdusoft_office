@@ -28,7 +28,6 @@
 @push('body-atribute')
 class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
 @endpush
-@include('layouts.partials.navbar')
 
 @include('layouts.partials.sidebar')
 
@@ -39,21 +38,19 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
         <div class="content-header row">
 
             <div class="content-header-left col-md-9 col-12 mb-2">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Hosting</h2>
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.hostings.list') }}">Hosting</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.hostings.create') }}">Añadir Hosting</a>
-                                </li>
-                            </ol>
-                        </div>
+                @push('breadcrumbs')
+                    <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">Hosting</div>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Inicio</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.hostings.list') }}">Hosting</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.hostings.create') }}">Añadir Hosting</a>
+                            </li>
+                        </ol>
                     </div>
-                </div>
+                @endpush
             </div>
         </div>
         <div class="content-body">

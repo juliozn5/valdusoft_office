@@ -6,6 +6,9 @@
                     <ul class="nav navbar-nav">
                         <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
                     </ul>
+                    
+                    @stack('breadcrumbs')
+                    
                 </div>
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-user nav-item">

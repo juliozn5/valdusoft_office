@@ -20,22 +20,17 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
     <div class="content-wrapper">
         <div class="content-header">
             <div class="content-header-left mb-2">
-                <div class="row breadcrumbs-top">
-                    <div class="col-8">
-                        <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
-                            Proyectos</div>
-                        <div class="breadcrumb-wrapper">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="route('employee.projects.list')">Proyectos</a></li>
-                                <li class="breadcrumb-item">Detalle del Proyecto</li>
-                            </ol>
-                        </div>
+                @push('breadcrumbs')
+                    <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
+                        Proyectos</div>
+                    <div class="breadcrumb-wrapper">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="route('employee.projects.list')">Proyectos</a></li>
+                            <li class="breadcrumb-item">Detalle del Proyecto</li>
+                        </ol>
                     </div>
-                    <div class="col-4 text-right pr-2">
-                        <a href="{{route('employee.projects.list')}}"><u>Atrás</u></a>
-                    </div>
-                </div>
+                @endpush
             </div>
         </div>
 
