@@ -93,7 +93,7 @@ class EmployeesController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $name = $file->getClientOriginalName(); //$employee->id . "." . $file->getClientOriginalExtension();
-            $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
+            $file->move(public_path('storage') . '/photo-profile', $name);
             $employee->photo =  $name;
         }
 
@@ -126,7 +126,8 @@ class EmployeesController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $name = $file->getClientOriginalName(); //$employee->id . "." . $file->getClientOriginalExtension();
-            $file->move(public_path('storage') . '/uploads/images/users/photos', $name);
+            $file->move(public_path('storage') . '/photo-profile', $name);
+    
             $employee->photo =  $name;
 
         }

@@ -40,7 +40,7 @@
 
                         </div>
                     </div>
-                    <div class="col-mb-1" style="padding-right:67%">
+                    <div class="col-mb-1" style="padding-right:75%">
                         <h3 class="card-title">{{ $employee->name }} {{ $employee->last_name }}</h3>
                         {{ $employee->email }}
                     </div>
