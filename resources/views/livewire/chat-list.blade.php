@@ -12,7 +12,7 @@
                             <div class="chat-avatar">
                                 <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
                                     @if (!(Auth::user()->photo))
-                                        <img src="{{ asset('images/valdusoft/valdusoft.png') }}" alt="avatar" height="40" width="40">
+                                        <i class="feather icon-user" style="font-size: 40px;"></i>
                                     @else
                                         <img src="{{ asset('/storage/uploads/images/users/photos/'.Auth::user()->photo) }}"  alt="avatar" height="40" width="40">
                                     @endif
@@ -41,7 +41,7 @@
                             <div class="chat-avatar">
                                 <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
                                     @if (!($mensaje["avatar"]))
-                                        <img src="{{ asset('images/valdusoft/valdusoft.png') }}" alt="avatar" height="40" width="40">
+                                        <i class="feather icon-user" style="font-size: 40px;"></i>
                                     @else
                                         <img src="{{ asset('/storage/uploads/images/users/photos/'.$mensaje["avatar"]) }}"  alt="avatar" height="40" width="40">
                                     @endif

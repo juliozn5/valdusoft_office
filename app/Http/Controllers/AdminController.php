@@ -247,7 +247,7 @@ class AdminController extends Controller
             }
 
             foreach($ganancias as $ganancia){
-                $valores[$pago['mes']]['ganancia'] = $ganancia['monto'];
+                $valores[$ganancia['mes']]['ganancia'] = $ganancia['monto'];
             }
         
             $meses = collect($valores)->pluck('created');

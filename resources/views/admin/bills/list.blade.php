@@ -120,7 +120,7 @@
             });
         </script>
     @endif
-
+    
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -195,7 +195,7 @@
                                         <tbody class="text-center">
                                             @foreach ($employee_bills as $employee)
                                                 <tr>
-                                                    <th scope="row">#{{ $employee->id }}</th>
+                                                    <th scope="row"> <a href="{{route('admin.bills.show', $employee->id)}}">#{{ $employee->id }}</a></th>
                                                     <td>{{ $employee->user->name }} {{ $employee->user->last_name }}</td>
                                                     <td>{{ date('d-m-Y', strtotime($employee->date)) }}</td>
                                                     <td>{{ number_format($employee->amount, 2, '.', ',') }}</td>
@@ -243,7 +243,7 @@
                                         <tbody class="text-center">
                                             @foreach ($client_bills as $client)
                                             <tr>
-                                                <th scope="row">#{{ $client->id }}</th>
+                                                <th scope="row"> <a target="_blank" href="{{route('admin.bills.show', $client->id)}}">#{{ $client->id }}</a> </th>
                                                 <td>{{ $client->user->name }} {{ $client->user->last_name }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($client->date)) }}</td>
                                                 <td>{{ number_format($client->amount, 2, '.', ',') }}</td>
@@ -293,7 +293,7 @@
                                         <tbody class="text-center">
                                             @foreach ($hosting_bills as $hosting)
                                             <tr>
-                                                <th scope="row">#{{ $hosting->id }}</th>
+                                                <th scope="row"><a target="_blank" href="{{route('admin.bills.show', $hosting->id)}}">#{{ $hosting->id }}</a></th>
                                                 <td>{{ $hosting->hosting->url }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($hosting->date)) }}</td>
                                                 <td>{{ number_format($hosting->amount, 2, '.', ',') }}</td>

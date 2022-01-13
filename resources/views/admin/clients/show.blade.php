@@ -39,7 +39,7 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                             @if (isset($client->photo))
                             <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/photo-profile/' . $client->photo) }}" alt="" width="55px" height="55px">
                             @else
-                            <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
+                            <i class="rounded-circle feather icon-user" style="font-size: 100px;"></i>
                             @endif
                         </div>
                     </div>

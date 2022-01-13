@@ -17,7 +17,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div class="card">
                     <div class="card-header" style="padding:30px 0px 0px 30px;">
                         @if (Auth::user()->photo === NULL)
-                          <a><img class="rounded-circle ml-2" src="{{asset('images/valdusoft/valdusoft.png')}}" alt="avatar" height="40" width="40" data-toggle="modal" data-target="#fotos"></a>
+                          <a data-toggle="modal" data-target="#fotos"><i class="rounded-circle ml-2 feather icon-user" style="font-size: 40px;"></i></a>
                         @else
                           <a><img class="rounded-circle ml-2"  src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px" data-toggle="modal" data-target="#fotos"></a>
                         @endif

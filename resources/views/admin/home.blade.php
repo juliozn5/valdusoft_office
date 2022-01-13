@@ -147,7 +147,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                     @if (!is_null($item->photo))
                                                     <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;"   src="{{ asset('/storage/uploads/images/users/photos/'.$item->photo) }}" />
                                                     @else
-                                                    <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                    <i class="rounded-circle feather icon-user" style="font-size: 32px;"></i>
                                                     @endif
                                                 </td>
                                                 <td><a href="{{ route('admin.employees.show', [$item->slug, $item->id]) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
@@ -210,7 +210,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                         @if (isset($hosting->user->logo))
                                                         <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/'.$hosting->user->logo) }}" />
                                                         @else
-                                                        <img class="rorounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                            <i class="rounded-circle feather icon-user" style="font-size: 70px;"></i>
                                                         @endif
                                                     </td>
                                                     <td>

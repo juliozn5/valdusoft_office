@@ -263,9 +263,10 @@
                                                 width="140px" height="100px"
                                                 src="{{ asset('storage/' . $employee->photo) }}" />
                                             @else --}}
-                                            <img id="photo_preview" class="rounded" style="object-fit: cover;"
+                                            <img id="photo_preview" class="rounded d-none" style="object-fit: cover;"
                                                 width="140px" height="100px"
-                                                src="{{ asset('images/valdusoft/valdusoft.png') }}" />
+                                                src="" />
+                                            <i id="fat-user" class="rounded-circle feather icon-user" style="font-size: 140px;"></i>
                                             {{-- @endif --}}
                                         </div>
                                     </div>
@@ -446,6 +447,8 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {
+                $('#fat-user').addClass('d-none');
+                $("#" + preview_id).removeClass('d-none');
                 $("#" + preview_id).attr('src', e.target.result);
                 $("#" + preview_id).css('height', '100px');
                 $("#" + preview_id).parent().parent().removeClass('d-none');

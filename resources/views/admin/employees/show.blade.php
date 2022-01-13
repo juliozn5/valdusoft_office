@@ -37,7 +37,7 @@
                                     @if (!is_null($employee->photo))
                                     <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/photo-profile/'.$employee->photo) }}"  alt="{{ $employee->fullname }}" height="80" width="80">
                                     @else
-                                    <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('images/valdusoft/valdusoft.png') }}" height="100" width="100">
+                                    <i class="rounded-circle feather icon-user" style="font-size: 100px;"></i>
                                     @endif
 
                                 </div>
