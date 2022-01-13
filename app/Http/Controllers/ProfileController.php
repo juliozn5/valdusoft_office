@@ -35,9 +35,13 @@ class ProfileController extends Controller
 
 
         $user->save();
-
-        return redirect()->route('employee.profile')->with('message', 'Se actualizo tu perfil');
+        if (Auth::user()->profile_id == 2){
+            return redirect()->route('client.home')->with('message', 'Se actualizo tu perfil'); 
+        }else{
+         return redirect()->route('employee.profile')->with('message', 'Se actualizo tu perfil'); 
         }
+        
+    }
 
     public function updatePhoto(Request $request)
     {

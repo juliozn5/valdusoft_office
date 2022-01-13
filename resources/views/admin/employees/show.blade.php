@@ -40,136 +40,125 @@
                                     <i class="rounded-circle feather icon-user" style="font-size: 100px;"></i>
                                     @endif
 
-                                </div>
-                                <div class="col-md-8">
-                                    <h3 class="card-title">{{ $employee->name }} {{ $employee->last_name }}</h3>
-                                    {{ $employee->email }}
-                                </div>
-                            </div>
                         </div>
-                        <div class="card-body" >
-                            {{-- Sección de Proyectos Asignados --}}
-                            <div class="pl-4 pr-2 mt-1">
-                                <div class="project-detail-titles">Proyectos Asignados</div>
-                                <div class="mt-1">
-                                    @php $cont = 0; @endphp
-                                    @foreach ($employee->projects as $project)
+                    </div>
+                    <div class="col-mb-1" style="padding-right:75%">
+                        <h3 class="card-title">{{ $employee->name }} {{ $employee->last_name }}</h3>
+                        {{ $employee->email }}
+                    </div>
+                </div>
+                {{-- Sección de Proyectos Asignados --}}
+                <div class="card-body" >
+                    <div class="pl-2 pr-2 mt-1">
+                        <div class="project-detail-titles">Proyectos Asignados</div>
+                            <div class="mt-1">
+                                @php $cont = 0; @endphp
+                                @foreach ($employee->projects as $project)
                                     <a href="">
                                         <div class="text-center text-white d-inline-block mr-1">
                                             <a href="{{ route('admin.projects.show', [$project->slug, $project->id]) }}"><div class="project-circle text-white" style="background-color: {{ $projectColors[$cont] }};"> P{{ $project->id }}</div></a>
                                         </div>
                                     </a>
                                     @php
-                                    if ($cont == 2){
-                                    $cont = 0;
-                                    }else{
-                                    $cont++;
-                                    }
+                                        if ($cont == 2){
+                                           $cont = 0;
+                                        }else{
+                                           $cont++;
+                                        }
                                     @endphp
-                                    @endforeach
-                                    <a href="#availableProjects" data-toggle="modal">
-                                        <div class="text-center d-inline-block mr-1">
-                                            <div class="project-circle project-circle-add"><i class="fa fa-plus"></i></div>
-                                        </div>
-                                    </a>
+                                @endforeach
+                                <a href="#availableProjects" data-toggle="modal">
+                                    <div class="text-center d-inline-block mr-1">
+                                        <div class="project-circle project-circle-add"><i class="fa fa-plus"></i></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {{-- Sección de Fechas --}}
+                        <div class="row mt-3 pl-2 pr-2">
+                            <div class="col-3">
+                                <div class="project-detail-titles">Fecha de Nacimiento</div>
+                                <div class="mt-1 project-detail-dates">
+                                    <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->birthdate)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->birthdate)) }}
                                 </div>
                             </div>
-
-                            {{-- Sección de Fechas --}}
-                            <div class="row mt-3 pl-4 pr-2">
-                                <div class="col-3">
-                                    <div class="project-detail-titles">Fecha de Nacimiento</div>
-                                    <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->birthdate)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->birthdate)) }}
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="project-detail-titles">Fecha de Ingreso</div>
-                                    <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->admission_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->admission_date)) }}
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="project-detail-titles">Próximas Vacaciones</div>
-                                    <div class="mt-1 project-detail-dates">
-                                        <i class="far fa-calendar icon-big mr-1"></i>{{
-                                        (is_null($fechaUser)) ? 'Dato no disponible' : date('d-m-Y', strtotime($fechaUser)) }}
-
-                                    </div>
+                            <div class="col-3">
+                                <div class="project-detail-titles">Fecha de Ingreso</div>
+                                <div class="mt-1 project-detail-dates">
+                                    <i class="far fa-calendar icon-big mr-1"></i> {{ (is_null($employee->admission_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($employee->admission_date)) }}
                                 </div>
                             </div>
-
-                            {{-- Sección de Skills --}}
-                            <div class="mt-3 pl-4 pr-2">
-                                <div class="project-detail-titles">Skills</div>
-                                <div class="mt-1">
-                                    @if ($employee->skills_count)
-                                    @foreach ($employee->skills as $skill)
-                                    <div class="text-center text-white d-inline-block mr-1">
-                                        <div class="project-detail-skill">{{ $skill->skill }}</div>
-                                    </div>
-                                    @endforeach
-                                    @else
-                                    El empleado no posee ningún skill asociado
-                                    @endif
+                            <div class="col-3">
+                                <div class="project-detail-titles">Próximas Vacaciones</div>
+                                <div class="mt-1 project-detail-dates">
+                                    <i class="far fa-calendar icon-big mr-1"></i>
+                                    {{ (is_null($fechaUser)) ? 'Dato no disponible' : date('d-m-Y', strtotime($fechaUser)) }}
                                 </div>
                             </div>
-
-                            {{-- Sección de Curriculum --}}
-                            <div class="mt-3 pl-4 pr-2">
+                            <div class="col-3">      
                                 <div class="project-detail-titles">Curriculum Vitae</div>
                                 <div class="mt-1">
                                     @if (!is_null($employee->curriculum))
-                                    <a href="{{ asset('uploads/documents/curriculums/'.$employee->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $employee->curriculum }}</a>
-                                    @else
-                                    <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible
+                                        <a href="{{ asset('uploads/documents/curriculums/'.$employee->curriculum) }}" target="_blank" style="color: #3C3232 !important;"><img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> {{ $employee->curriculum }}</a>
+                                     @else
+                                        <img src="{{ asset('images/icons/arrow-down.png') }}" class="mr-1"> Archivo no disponible
                                     @endif
                                 </div>
                             </div>
-
-                            {{-- Sección de Sueldo --}}
-                            <div class="row mt-3 pl-4 pr-2">
-                                <div class="col-3">
-                                    <div class="project-detail-titles">Precio por hora</div>
-                                    <div class="mt-1 project-detail-dates">
-                                        <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($employee->price_per_hour)) ? 'Dato no disponible' : $employee->price_per_hour.' USD' }}
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="project-detail-titles">Billetera USDT-TRON</div>
-                                    <div class="mt-1 project-detail-dates">
-                                        <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($employee->tron_wallet)) ? 'Dato no disponible' : $employee->tron_wallet }}
-                                    </div>
+                        </div>
+                        {{-- Sección de Skills --}}
+                        <div class="mt-3 pl-2 pr-2">
+                            <div class="project-detail-titles">Skills</div>
+                            <div class="mt-1">
+                                @if ($employee->skills_count)
+                                    @foreach ($employee->skills as $skill)
+                                        <div class="text-center text-white d-inline-block mr-1">
+                                            <div class="project-detail-skill">{{ $skill->skill }}</div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    El empleado no posee ningún skill asociado
+                                @endif
+                            </div>
+                        </div>
+                        {{-- Sección de Sueldo --}}
+                        <div class="row mt-3 pl-2 pr-2">
+                            <div class="col-3">
+                                <div class="project-detail-titles">Precio por hora</div>
+                                <div class="mt-1 project-detail-dates">
+                                    <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($employee->price_per_hour)) ? 'Dato no disponible' : $employee->price_per_hour.' USD' }}
                                 </div>
                             </div>
-
-                            {{-- Sección de Sueldo --}}
-                            <div class="row mt-3 pl-4 pr-2">
-                                <div class="col-6">
-                                    <div class="project-detail-titles">Financiamiento</div>
-                                    <div class="mt-1 project-detail-dates">
-
-                                        <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($restante)) ? 'Dato no disponible' : $restante.' USD' }}
-                                    </div>
+                            <div class="col-3">
+                                <div class="project-detail-titles">Financiamiento</div>
+                                <div class="mt-1 project-detail-dates">
+                                    <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($restante)) ? 'Dato no disponible' : $restante.' USD' }}
                                 </div>
                             </div>
-                            {{-- Sección de Facturas --}}
-                            <div class="mt-3">
-                                <hr>
-                                <br>
-                                <h2 class="h3 ml-2">Facturas</h2>
+                            <div class="col-5">
+                                <div class="project-detail-titles">Billetera USDT-TRC20</div>
+                                <div class="mt-1 project-detail-dates">
+                                    <img src="{{ asset('images/icons/tether-usdt-logo.png') }}" width="30" height="30" class="mr-1"> {{ (is_null($employee->tron_wallet)) ? 'Dato no disponible' : $employee->tron_wallet }}
+                                </div>
+                            </div>
+                        </div>
+                        {{-- Sección de Facturas --}}
+                        <div class="mt-3">
+                            <hr>
+                            <br>
+                            <h2 class="h3 ml-2">Facturas</h2>
 
-                                <div class="table-responsive pt-2">
-                                    <table class="table">
-                                        <thead class="thead-light text-center">
-                                            <th>ID</th>
-                                            <th>FECHA</th>
-                                            <th>MONTO</th>
-                                            <th>ESTADO</th>
-                                            <th>ACCIÓN</th>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($facturas as $factura)
+                            <div class="table-responsive pt-2">
+                                <table class="table">
+                                    <thead class="thead-light text-center">
+                                        <th>ID</th>
+                                        <th>FECHA</th>
+                                        <th>MONTO</th>
+                                        <th>ESTADO</th>
+                                        <th>ACCIÓN</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($facturas as $factura)
                                             <tr class="text-center">
                                                 <td>{{$factura->id}}</td>
                                                 <td>{{$factura->date}}</td>
@@ -194,10 +183,9 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

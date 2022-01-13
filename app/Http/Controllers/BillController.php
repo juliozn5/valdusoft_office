@@ -239,6 +239,7 @@ class BillController extends Controller
               $pdf = PDF::loadView('pdfs.payrollEmployeeBill', compact('bill'));
           }
 
+          $pdf = PDF::loadView('pdfs.clientBill', compact('bill'));
           $data['email'] = $request->email;
           $data['subject'] = $request->subject;
           $data['message'] = $request->message;

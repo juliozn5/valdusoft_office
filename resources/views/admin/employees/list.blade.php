@@ -42,7 +42,8 @@
                                                     @if (isset($employee->photo))
                                                     <img class="rounded-circle"
                                                     style="object-fit: cover;" width="70px" height="70px"
-                                                    src="{{ asset('storage/uploads/images/users/photos/'.$employee->photo) }}" />
+                                                    
+                                                    src="{{ asset('storage/photo-profile/'.$employee->photo) }}">
                                                     @else
                                                     <i class="rounded-circle feather icon-user" style="font-size: 70px;"></i>
                                                     @endif

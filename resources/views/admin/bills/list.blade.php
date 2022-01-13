@@ -48,7 +48,7 @@
                 }
             }
         }
-    
+
         function loadPayments($bill_id){
             var route = '{{url("admin/financial/payments/bill-list/")}}/'+$bill_id;
             //var route = 'https://valdusoft.com/admin/financial/payments/bill-list/'+$bill_id;
@@ -173,8 +173,8 @@
                                     <a href="#addBill" data-toggle="modal" class="btn1 btn btn-primary ml-2 waves-effect @if ($type == 'E') hidden @endif" id="generate-btn"> GENERAR</a>
                                 </div>
                             </div>
-                            
-                            
+
+
                         </div>
 
                         <div class="tab-content">
@@ -236,6 +236,7 @@
                                                 <th>FECHA</th>
                                                 <th>TOTAL</th>
                                                 <th>ABONADO</th>
+                                                <th>PROYECTO</th>
                                                 <th>ESTADO</th>
                                                 <th class="col-3">ACCIÓN</th>
                                             </tr>
@@ -248,6 +249,7 @@
                                                 <td>{{ date('d-m-Y', strtotime($client->date)) }}</td>
                                                 <td>{{ number_format($client->amount, 2, '.', ',') }}</td>
                                                 <td>{{ number_format($client->paid_amount, 2, '.', ',') }}</td>
+                                                <td>{{ $client->project->name}}</td>
                                                 <td>
                                                     @if ($client->status == 0)
                                                         <label class="label status-label status-label-purple">Pendiente</label>

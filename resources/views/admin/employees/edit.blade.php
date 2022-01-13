@@ -260,7 +260,7 @@
                                             @if ($employee->photo)
                                             <img id="photo_preview" class="rounded" style="object-fit: cover;"
                                                 width="140px" height="100px"
-                                                src="{{ asset('storage/'.$employee->photo) }}" />
+                                                src="{{ asset('storage/photo-profile/'.$employee->photo) }}" />
                                             @else
                                             <img id="photo_preview" class="rounded d-none" style="object-fit: cover;"
                                                 width="140px" height="100px"
