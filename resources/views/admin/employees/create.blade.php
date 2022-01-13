@@ -213,11 +213,13 @@
                                         </div>
                                     </div>
 
+
                                     {{-- Contraseña --}}
-                                    <div class="col-md-4 col-12">
+
+                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password">Contraseña <span style="color: red;">*</span></label>
-                                            <input type="password" name="password" id="password" class="form-control" onkeyup="checkPasswords();" value="{{ old('password') }}">
+                                            <input type="password" name="password" id="password" class="form-control" onkeyup="checkPasswords();">
 
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -232,7 +234,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password_confirmation">Repetir Contraseña <span style="color: red;">*</span></label>
-                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" onkeyup="checkPasswords();" value="{{ old('password') }}">
+                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" onkeyup="checkPasswords();">
                                         </div>
                                     </div>
 

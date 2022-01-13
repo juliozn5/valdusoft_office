@@ -31,7 +31,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <!--Data-->
                 <div class="card-body">
                     <div class="ml-4 mb-3">
-                     
+
                         <div class="row">
                             <div class="col-sm-8 col-md-6 project-detail-titles">Numero de telefono</div>
                             <div class="col-sm-5 offset-sm-2 col-md-3 offset-md-0 project-detail-titles">Cambiar Contraseña</div>
@@ -48,7 +48,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     </a>
                                 </p>
                             </div>
-                           
+
                             <div class="col-sm-6 col-md-5 offset-md-2  offset-lg-0">
                                 <div class="row">
                                     <div class="col-sm-5 col-md-6"><input id="password" type="password" class="form-control" value="$user->password" name="current_password" disabled></div>
@@ -59,7 +59,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                 </div>
                                 </a>
                             </div>
-                        </div> 
+                        </div>
                     </div>
 
                     <!--ASSIGNED PROJECTS-->
@@ -92,6 +92,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="mt-1 project-detail-dates">
                                 <img src="{{ asset('images/svg/calendar.svg')}}">
                                 <span>{{ date('d/m/Y', strtotime($user->birthdate)) }}</span>
+                                <a data-toggle="modal" data-target="#birthdate">
+                                    <i class="far fa-edit ml-2" style="font-size:21px;"></i>
+                                </a>
                             </div>
                         </div>
 
@@ -248,7 +251,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     </div>
                     <hr>
                     <div class="modal-footer">
-                        <button type="button" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <input class="btn btn-primary waves-effect waves-light" type="submit" value="Guardar cambios">
                     </div>
                 </form>
             </div>
@@ -308,6 +311,33 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Cambiar Numero de Fecha de Nacimiento-->
+    <div class="modal fade" id="birthdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambiar Fecha de Nacimiento</h5>
+                    <a type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></a>
+                </div>
+                <form method="POST" action="{{ route('employee.profile.update-birthdate') }}">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="col-10 mt-1 ml-3">
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" id="birthdate" class="form-control"  value="{{$user->birthdate}}" name="birthdate">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="modal-footer">
+                        <input class="btn btn-primary waves-effect waves-light" type="submit" value="Guardar cambios">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

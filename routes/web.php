@@ -160,12 +160,12 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', 'HostingController@list')->name('client.hostings.list');
             Route::get('/{id}', 'HostingController@showHosting')->name('client.hosting.showHosting');
             Route::get('/renovation/{id}', 'billController@renovation')->name('client.renovation');
-            Route::post('/', 'billController@saveInvoice')->name('save-invoices');     
+            Route::post('/', 'billController@saveInvoice')->name('save-invoices');
         });
 
          //MÓDULO FINANCIERO - PAGOS
         Route::group(['prefix' => 'payments'], function () {
-               
+
             Route::post('store', 'PaymentsController@store')->name('client.payments.store');
             Route::post('billetera', 'PaymentsController@billetera')->name('admin.payments.billetera');
             Route::post('bancolombia', 'PaymentsController@bancolombia')->name('admin.payments.bancolombia');
@@ -185,6 +185,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', 'EmployeesController@index')->name('employee.home');
         Route::get('/profile', 'EmployeesController@profile')->name('employee.profile');
         Route::post('profile', 'EmployeesController@editPhone')->name('employee.profiles');
+        Route::post('update-birthdate', 'EmployeesController@update_birthdate')->name('employee.profile.update-birthdate');
         Route::post('update-skills', 'EmployeesController@update_skills')->name('employee.profile.update-skills');
         Route::post('update-wallet', 'EmployeesController@update_wallet')->name('employee.profile.update-wallet');
         Route::post('upload-curriculum', 'EmployeesController@upload_curriculum')->name('employee.profile.upload-curriculum');

@@ -127,7 +127,7 @@ class EmployeesController extends Controller
             $file = $request->file('photo');
             $name = $file->getClientOriginalName(); //$employee->id . "." . $file->getClientOriginalExtension();
             $file->move(public_path('storage') . '/photo-profile', $name);
-    
+
             $employee->photo =  $name;
 
         }
@@ -275,6 +275,17 @@ class EmployeesController extends Controller
         return redirect()->back()->with('message', 'Se actualizo tu perfil');
     }
 
+    public function update_birthdate(Request $request)
+    {
+
+        $user = Auth::user();
+        $user->update($request->all());
+        $user->birthdate = $request->birthdate;
+        $user->save();
+
+        return redirect()->back()->with('message', 'Se actualizo tu perfil');
+    }
+
     /*actualizar los skills*/
     public function update_skills(Request $request)
     {
@@ -327,7 +338,7 @@ class EmployeesController extends Controller
 
         if ($request->hasFile('archivo')) {
             $file = $request->file('archivo');
-            $name = $user->id . "." . $file->getClientOriginalExtension();
+            $name = $user->name . " ". $user->last_name. "." . $file->getClientOriginalExtension();
             $file->move(public_path('storage') . '/flie-curriculum', $name);
             $user->curriculum = $name;
         }
