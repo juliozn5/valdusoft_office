@@ -12,6 +12,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str as Str;
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -163,6 +164,10 @@ class EmployeesController extends Controller
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($employee->admission_date);
         $fechaUser->addYear(1);
+
+        if($fechaUser->year < 2021){
+            $fechaUser->year = 2022;
+        }
 
         $projectsID = array();
 

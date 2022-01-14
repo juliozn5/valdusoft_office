@@ -95,7 +95,8 @@
                                     {{ (is_null($fechaUser)) ? 'Dato no disponible' : date('d-m-Y', strtotime($fechaUser)) }}
                                 </div>
                             </div>
-                            <div class="col-3">      
+
+                            <div class="col-3">
                                 <div class="project-detail-titles">Curriculum Vitae</div>
                                 <div class="mt-1">
                                     @if (!is_null($employee->curriculum))

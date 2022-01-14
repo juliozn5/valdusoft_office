@@ -19,13 +19,13 @@
 
     @yield('content')
 
-    @include('layouts.partials.scripts') 
-    
+    @include('layouts.partials.scripts')
+
     @livewireScripts
 
     @stack('scripts')
 
-   
+
 
 </body>
 

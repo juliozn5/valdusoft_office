@@ -77,14 +77,14 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                @endif                                 --}}
+                                @endif --}}
 
                                 <div class="row">
                                     {{-- Nombre --}}
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="name">Nombre <span style="color: red;">*</span></label>
-                                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus>
+                                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
 
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -98,7 +98,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="last_name">Apellido <span style="color: red;">*</span></label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" autofocus>
+                                            <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror">
 
                                             @error('last_name')
                                                 <span class="invalid-feedback" role="alert">
@@ -112,7 +112,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="email">Correo Electrónico <span style="color: red;">*</span></label>
-                                            <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" autofocus>
+                                            <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror">
 
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -126,7 +126,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="birthdate">Fecha de nacimiento</label>
-                                            <input type="date" name="birthdate" id="birthdate" class="form-control @error('birthdate') is-invalid @enderror" value="{{ old('birthdate') }}" autofocus>
+                                            <input type="date" name="birthdate" id="birthdate" class="form-control @error('birthdate') is-invalid @enderror">
 
                                             @error('birthdate')
                                                 <span class="invalid-feedback" role="alert">
@@ -140,7 +140,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="admission_date">Fecha de ingreso</label>
-                                            <input type="date" name="admission_date" id="admission_date" class="form-control @error('admission_date') is-invalid @enderror" value="{{ old('admission_date') }}" autofocus>
+                                            <input type="date" name="admission_date" id="admission_date" class="form-control @error('admission_date') is-invalid @enderror">
 
                                             @error('admission_date')
                                                 <span class="invalid-feedback" role="alert">
@@ -154,7 +154,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="phone">Telefono <span style="color: red;">*</span></label>
-                                            <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" autofocus>
+                                            <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
 
                                             @error('phone')
                                                 <span class="invalid-feedback" role="alert">
@@ -169,7 +169,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="price_per_hour">Precio por Hora</label>
-                                            <input type="text" name="price_per_hour" id="price_per_hour" class="form-control @error('price_per_hour') is-invalid @enderror" value="{{ old('price_per_hour') }}" autofocus>
+                                            <input type="text" name="price_per_hour" id="price_per_hour" class="form-control @error('price_per_hour') is-invalid @enderror">
 
                                             @error('price_per_hour')
                                                 <span class="invalid-feedback" role="alert">
@@ -183,7 +183,7 @@
                                     <div class="col-md-8 col-12">
                                         <div class="form-group">
                                             <label for="tron_wallet">Billetera USDT-TRON</label>
-                                            <input type="text" name="tron_wallet" id="tron_wallet" class="form-control @error('tron_wallet') is-invalid @enderror" value="{{ old('tron_wallet') }}" autofocus>
+                                            <input type="text" name="tron_wallet" id="tron_wallet" class="form-control @error('tron_wallet') is-invalid @enderror" >
 
                                             @error('tron_wallet')
                                                 <span class="invalid-feedback" role="alert">
