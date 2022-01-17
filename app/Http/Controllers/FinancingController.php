@@ -17,11 +17,11 @@ class FinancingController extends Controller
 
 
         // $financing = PayrollEmployee::where('user_id', Auth::id())->OrderByDesc('created_at')->first();
-     
+
          //PRESTAMO
         $financing = Financing::where('user_id', Auth::id())->where('status', '0')->OrderByDesc('created_at')->first();
-     
-       
+
+
         //    $financing = Financing::where('user_id', Auth::id())
         //    ->with('financing_payments')
         //    ->where('status', '=', '0')
@@ -34,10 +34,14 @@ class FinancingController extends Controller
         //             $accum += $financing_payment->amount;
         //         }
         //     }
-        // }    
+        // }
 
         $fechaUser = new Carbon(Auth::user()->admission_date);
         $fechaUser->addYears(1);
+
+        if($fechaUser->year < 2021){
+            $fechaUser->year = 2022;
+        }
 
         return view('employee.financing')->with(compact('financing', 'fechaUser'));
     }

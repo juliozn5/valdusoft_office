@@ -35,6 +35,10 @@ class EmployeesController extends Controller
                         ->orderBy('id', 'DESC')
                         ->first();
 
+        if($fechaUser->year < 2021){
+            $fechaUser->year = 2022;
+        }
+
         return view('employee.home')->with(compact('project', 'payrolls', 'user', 'proyects_user', 'fechaUser', 'lastBill'));
     }
 

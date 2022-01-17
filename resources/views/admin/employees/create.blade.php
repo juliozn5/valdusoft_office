@@ -84,7 +84,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="name">Nombre <span style="color: red;">*</span></label>
-                                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
+                                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
 
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -98,7 +98,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="last_name">Apellido <span style="color: red;">*</span></label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror">
+                                            <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}">
 
                                             @error('last_name')
                                                 <span class="invalid-feedback" role="alert">
@@ -112,7 +112,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="email">Correo Electrónico <span style="color: red;">*</span></label>
-                                            <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror">
+                                            <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
 
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -126,7 +126,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="birthdate">Fecha de nacimiento</label>
-                                            <input type="date" name="birthdate" id="birthdate" class="form-control @error('birthdate') is-invalid @enderror">
+                                            <input type="date" name="birthdate" id="birthdate" class="form-control @error('birthdate') is-invalid @enderror" value="{{ old('birthdate') }}">
 
                                             @error('birthdate')
                                                 <span class="invalid-feedback" role="alert">
@@ -140,7 +140,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="admission_date">Fecha de ingreso</label>
-                                            <input type="date" name="admission_date" id="admission_date" class="form-control @error('admission_date') is-invalid @enderror">
+                                            <input type="date" name="admission_date" id="admission_date" class="form-control @error('admission_date') is-invalid @enderror" value="{{ old('admission_date') }}">
 
                                             @error('admission_date')
                                                 <span class="invalid-feedback" role="alert">
@@ -164,12 +164,11 @@
                                         </div>
                                     </div>
 
-
                                     {{-- Precio por hora --}}
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="price_per_hour">Precio por Hora</label>
-                                            <input type="text" name="price_per_hour" id="price_per_hour" class="form-control @error('price_per_hour') is-invalid @enderror">
+                                            <input type="text" name="price_per_hour" id="price_per_hour" class="form-control @error('price_per_hour') is-invalid @enderror" value="{{ old('price_per_hour') }}">
 
                                             @error('price_per_hour')
                                                 <span class="invalid-feedback" role="alert">
@@ -183,7 +182,7 @@
                                     <div class="col-md-8 col-12">
                                         <div class="form-group">
                                             <label for="tron_wallet">Billetera USDT-TRON</label>
-                                            <input type="text" name="tron_wallet" id="tron_wallet" class="form-control @error('tron_wallet') is-invalid @enderror" >
+                                            <input type="text" name="tron_wallet" id="tron_wallet" class="form-control @error('tron_wallet') is-invalid @enderror" value="{{ old('tron_wallet') }}" >
 
                                             @error('tron_wallet')
                                                 <span class="invalid-feedback" role="alert">
@@ -213,13 +212,11 @@
                                         </div>
                                     </div>
 
-
                                     {{-- Contraseña --}}
-
                                      <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password">Contraseña <span style="color: red;">*</span></label>
-                                            <input type="password" name="password" id="password" class="form-control" onkeyup="checkPasswords();">
+                                            <input type="password" name="password" id="password" class="form-control" onkeyup="checkPasswords();" value="{{ old('password') }}">
 
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -228,7 +225,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
 
                                     {{-- Confirmar contraseña --}}
                                     <div class="col-md-4 col-12">
@@ -294,13 +290,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <div class="row justify-content-center" id="photo_preview_wrapper">
-                                            @if (isset($employee->curriculum))
-                                                <img id="photo_preview2" class="rounded" style="object-fit: cover;"
-                                                    width="140px" height="100px"
-                                                    src="{{ asset('storage/' . $employee->curriculum) }}" />
-                                            @endif
-                                        </div> --}}
                                     </div>
 
                                     <div class="col-md-12 pl-3">
@@ -324,113 +313,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="card-body pl-3 pr-3">
-                                <div class="row">
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="name">Nombre</label>
-                                            <input type="text" name="name" id="name" class="form-control" autofocus required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="last_name">Apellido</label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="photo">Foto</label>
-                                            <input type="file" name="photo" id="photo" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="birthdate">Fecha de Nacimiento</label>
-                                            <input type="date" name="birthdate" id="birthdate" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="admission_date">Fecha de Ingreso</label>
-                                            <input type="date" name="admission_date" id="admission_date" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="phone">Teléfono</label>
-                                            <input type="text" name="phone" id="phone" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="email">Correo Electrónico</label>
-                                            <input type="text" name="email" id="email" class="form-control" data-route="{{ route('admin.check-email') }}" onblur="checkEmail();" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-12">
-                                        <div class="form-group">
-                                            <label for="curriculum">CV</label>
-                                            <input type="file" name="curriculum" id="curriculum" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="position">Posición</label>
-                                            <select name="position" id="position" class="form-control" required>
-                                                <option value="" selected disabled>Seleccione una opción...</option>
-                                                <option value="0">Desarrollador</option>
-                                                <option value="1">Diseñador</option>
-                                                <option value="2">Project Manager</option>
-                                                <option value="3">Financiero</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="price_per_hour">Precio por Hora</label>
-                                            <input type="text" name="price_per_hour" id="price_per_hour" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="uphold_account">Billetera USDT-TRON</label>
-                                            <input type="text" name="tron_wallet" id="tron_wallet" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="password">Contraseña</label>
-                                            <input type="password" name="password" id="password" class="form-control" onkeyup="checkPasswords();" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="password_confirmation">Repetir Contraseña</label>
-                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" onkeyup="checkPasswords();" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 pl-3">
-                                        <div class="form-group">
-                                            <div class="text-center"><label for="skills">Skills</label>
-                                                <hr>
-                                            </div>
-                                            <div class="row">
-                                                @foreach ($skills as $skill)
-                                                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
-                                                    <input type="checkbox" class="form-check-input skills" value="{{ $skill->id }}" name="skills[]">
-                                                    <label class="form-check-label">{{ $skill->skill }}</label>
-                                                </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 alert alert-danger" id="errors_div" style="display: none;">
-
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                     <div class="col-12 text-right">

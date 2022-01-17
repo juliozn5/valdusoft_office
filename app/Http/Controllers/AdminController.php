@@ -24,7 +24,7 @@ class AdminController extends Controller
         $user = User::where('profile_id', '=', 3)
                     ->orderBy('favorite', 'DESC')
                     ->get();
-    
+
         $hostings = Hosting::all();
 
         $billC = Bill::select(
@@ -230,8 +230,8 @@ class AdminController extends Controller
                             ->get()
                             ->toArray();
 
-            
-            
+
+
             //FORMATEAMOS
             $valores = [];
             for ($date = $fecha_ini->copy(); $date->lt($fecha_fin->copy()->addMonth(1)); $date->addMonth(1)) {
@@ -249,11 +249,11 @@ class AdminController extends Controller
             foreach($ganancias as $ganancia){
                 $valores[$ganancia['mes']]['ganancia'] = $ganancia['monto'];
             }
-        
+
             $meses = collect($valores)->pluck('created');
             $Empleado = collect($valores)->pluck('costos');
             $gain = collect($valores)->pluck('ganancia');
-            
+
             $data = [
                 'data_empleados' =>  $Empleado,
                 'data_mes'=> $meses,
@@ -284,7 +284,7 @@ class AdminController extends Controller
                 ->groupBy('mes')
                 ->orderBy('mes', 'ASC')
                 ->get();
-            
+
             $m = $facturaEmpleado->count();
 
             $facturaEmpleado->toArray();

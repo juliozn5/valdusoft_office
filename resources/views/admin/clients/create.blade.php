@@ -35,11 +35,11 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="header-navbar-shadow"></div>
 
     <div class="content-wrapper">
-        
+
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">
                 @push('breadcrumbs')
-   
+
                     <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
                         Cliente</div>
                     <div class="breadcrumb-wrapper col-12">
@@ -49,7 +49,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <li class="breadcrumb-item">Nuevo Cliente</li>
                         </ol>
                     </div>
-                     
+
                 @endpush
                 {{--
                 <div class="row breadcrumbs-top">
@@ -91,6 +91,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             @enderror
                                         </div>
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="last_name">Apellido</label>
@@ -113,7 +114,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             @enderror
                                         </div>
                                     </div>
-                                   
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="password">Contraseña</label>

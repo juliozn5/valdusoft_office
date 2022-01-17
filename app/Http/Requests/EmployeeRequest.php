@@ -41,7 +41,7 @@ class EmployeeRequest extends FormRequest
         }else{
             $rules = array_merge($rules, [
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $employee->id . ',id'],
-            ]); 
+            ]);
         }
 
         return $rules;
