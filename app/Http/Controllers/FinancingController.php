@@ -39,7 +39,7 @@ class FinancingController extends Controller
         $fechaUser = new Carbon(Auth::user()->admission_date);
         $fechaUser->addYears(1);
 
-        if($fechaUser->year < 2021){
+        if($fechaUser->year <= 2021){
             $fechaUser->year = 2022;
         }
 

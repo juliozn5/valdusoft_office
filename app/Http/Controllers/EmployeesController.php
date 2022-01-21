@@ -35,7 +35,7 @@ class EmployeesController extends Controller
                         ->orderBy('id', 'DESC')
                         ->first();
 
-        if($fechaUser->year < 2021){
+        if($fechaUser->year <= 2021){
             $fechaUser->year = 2022;
         }
 
@@ -168,7 +168,7 @@ class EmployeesController extends Controller
         $fechaUser = new Carbon($employee->admission_date);
         $fechaUser->addYear(1);
 
-        if($fechaUser->year < 2021){
+        if($fechaUser->year <= 2021){
             $fechaUser->year = 2022;
         }
 
@@ -231,6 +231,10 @@ class EmployeesController extends Controller
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($user->admission_date);
         $fechaUser->addYear(1);
+
+        if($fechaUser->year <= 2021){
+           $fechaUser->year = 2022;
+        }
 
         $project = Project::all()->where('user_id', Auth::user()->id);
 
