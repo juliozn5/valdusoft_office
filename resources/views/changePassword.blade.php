@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header d-flex justify-content-center"><h1>Cambiar Contraseña</h1></div>
+                <div class="card-header d-flex justify-content-center"><h4>Cambiar Contraseña</h4></div>
    
                 <div class="card-body">
                     <form method="POST" action="{{ route('change.password') }}">
