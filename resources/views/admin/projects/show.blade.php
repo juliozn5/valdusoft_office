@@ -247,10 +247,10 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <div class="col-5 mr-1">
                                     @isset($employee->photo)
                                         <img class="rounded-circle" src="{{ asset('storage/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
-                                        {{ $employee->name }}
+                                 
                                     @else
                                         <i id="fat-user" class="rounded-circle feather icon-user" style="font-size: 50px;"></i>
-                                        {{ $employee->name }}
+                                
                                     @endisset
                                 </div>
                                 @endforeach
@@ -417,6 +417,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <table class="table">
                                         <thead class="thead-light ">
                                             <tr class="text-center">
+                                                <th>ID</th>
                                                 <th>MONTO</th>
                                                 <th>FECHA</th>
                                                 <th>ESTADO</th>
@@ -425,6 +426,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                         <tbody class="mt-2">
                                             @foreach($project->bills as $bill)
                                                 <tr class="text-center ">
+                                                    <td><a href="{{route('admin.bills.show', $bill->id)}}" target="_blank">{{$bill->id}}</a></td>
                                                     <td style="font-weight:normal;font-size:15px;">{{$bill->amount}}</td>
                                                     <td style="font-weight:normal;font-size:15px;">{{$bill->date}}</td>
                                                     <td>
@@ -458,7 +460,8 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ($project->bills->count() > 0)
+                                
+                                            @if (count($contable) > 0)
                                             @foreach ($contable->sortByDesc('created_at') as $transaction)
                                             <tr>
                                                 <td>{{ date('d-m-Y', strtotime($transaction['created_at'])) }}</td>

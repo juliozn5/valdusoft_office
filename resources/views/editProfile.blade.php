@@ -148,90 +148,183 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @include('layouts.partials.sidebar')
 
 <div class="app-content content">
-  <div class="content-overlay"></div>
-  <div class="header-navbar-shadow"></div>
   <div class="content-wrapper">
-    <div class="content-header row">
-    </div>
-    <div class="content-body">
+      <div class="card">
+          <div class="content-body">
+              <div class="card">
+                  <div class="card-content p-1">
+                      <div class="card-body">
+
+                        <div class="row">
+                          <div class="col-3 align-self-center text-center">
+                            @if (Auth::user()->photo === NULL)
+                              <a data-toggle="modal" data-target="#fotos"><i class="rounded-circle ml-2 feather icon-user" style="font-size: 55px;"></i></a>
+                            @else
+                              <a><img class="rounded-circle ml-2"  src="{{ asset('storage/photo-profile/'.$user->photo) }}" alt="" width="55px" height="55px"></a>
+                            @endif
+                            <a href="" class="d-block" data-toggle="modal" data-target="#contrasennaModal">Cambiar contraseña</a>
+                          </div>
+                          <div class="col-6">
+                              <h3 class="card-title mb-1" title="Hello from speech bubble!">{{ $user->name }} {{ $user->last_name }}</h3>
+                              <p>{{ $user->email }}</p>
+                          </div>
+                          <div class="col-2 align-self-center text-center">
+                          
+                              <i class="far fa-edit ml-2" style="font-size:30px;" data-toggle="modal" data-target="#editModal"></i>
+                            
+                          </div>
+                        </div>
 
 
-      <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
 
-        <form action="{{ route('profile.update',$user->id) }}" method="POST" enctype="multipart/form-data">
-          @csrf
-          @method('PATCH')
-          <div class="media">
-            <div class="custom-file">
-              <label class="custom-file-label" for="photo">Seleccione su
-                Foto <b>(Se permiten JPG o PNG.
-                  Tamaño máximo de 800kB)</b></label>
-              <input type="file" id="photo" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" onchange="previewFile(this, 'photo_preview')" accept="image/*">
-              @error('photo')
-              <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
-              @enderror
-            </div>
-          </div>
+                        <!-- Modal edit -->
+                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Editar perfil</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form action="{{ route('profile.update',$user->id) }}" method="POST" enctype="multipart/form-data">
+                              <div class="modal-body">
+                                
+                                  @csrf
+                                  @method('PATCH')
+                                  <div class="media">
+                                    <div class="custom-file">
+                                      <label class="custom-file-label" for="photo">Seleccione su
+                                        Foto <b>(Se permiten JPG o PNG.
+                                          Tamaño máximo de 800kB)</b></label>
+                                      <input type="file" id="photo" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" onchange="previewFile(this, 'photo_preview')" accept="image/*">
+                                      @error('photo')
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                      </span>
+                                      @enderror
+                                    </div>
+                                  </div>
+                        
+                                  <div class="row mb-4 mt-4 d-none" id="photo_preview_wrapper">
+                                    <div class="col"></div>
+                                    <div class="col-auto">
+                                      <img id="photo_preview" class="img-fluid rounded" />
+                                    </div>
+                                    <div class="col"></div>
+                                  </div>
+                        
+                                  <hr>
+                        
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <div class="form-group">
+                                        <div class="controls">
+                                          <h2 class="font-weight-bold">Datos Personales</h2>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-6">
+                                      <div class="form-group">
+                                        <div class="controls">
+                                          <label class="required" for="">Nombre y Apellido</label>
+                                          <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nombre" value="{{ $user->name }}">
+                                          @error('name')
+                                          <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                          </span>
+                                          @enderror
+                                        </div>
+                                      </div>
+                                    </div>
+                        
+                                    <div class="col-6">
+                                      <div class="form-group">
+                                        <div class="controls">
+                                          <label class="required" for="email">Email</label>
+                                          <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" value="{{ $user->email }}">
+                                          @error('email')
+                                          <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                          </span>
+                                          @enderror
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">Guardar</button>
+                              </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
 
-          <div class="row mb-4 mt-4 d-none" id="photo_preview_wrapper">
-            <div class="col"></div>
-            <div class="col-auto">
-              <img id="photo_preview" class="img-fluid rounded" />
-            </div>
-            <div class="col"></div>
-          </div>
 
-          <hr>
 
-          <div class="row">
-            <div class="col-12">
-              <div class="form-group">
-                <div class="controls">
-                  <h2 class="font-weight-bold">Datos Personales</h2>
-                </div>
+
+                        <!-- Modal contrasena-->
+                        <div class="modal fade" id="contrasennaModal" tabindex="-1" aria-labelledby="contrasennaModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="contrasennaModalLabel">Cambiar contraseña</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form method="POST" action="{{ route('change.password') }}">
+                              <div class="modal-body">
+                                @csrf 
+   
+                                @foreach ($errors->all() as $error)
+                                    <p class="text-danger">{{ $error }}</p>
+                                @endforeach 
+          
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña actual</label>
+          
+                                    <div class="col-md-6">
+                                        <input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password">
+                                    </div>
+                                </div>
+          
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Nueva Contraseña</label>
+          
+                                    <div class="col-md-6">
+                                        <input id="new_password" type="password" class="form-control" name="new_password" autocomplete="current-password">
+                                    </div>
+                                </div>
+          
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Confirmar Contraseña</label>
+            
+                                    <div class="col-md-6">
+                                        <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password">
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">
+                                  Actualizar Contraseña
+                              </button>
+                              </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                  </div>
               </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <div class="controls">
-                  <label class="required" for="">Nombre y Apellido</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nombre" value="{{ $user->name }}">
-                  @error('name')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6">
-              <div class="form-group">
-                <div class="controls">
-                  <label class="required" for="email">Email</label>
-                  <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" value="{{ $user->email }}">
-                  @error('email')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div class=" col-12 d-flex flex-sm-row flex-column justify-content-end">
-            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
           </div>
       </div>
-      </form>
-
-      @include('changePassword')
-    </div>
   </div>
-</div>
 </div>
 
 @endsection

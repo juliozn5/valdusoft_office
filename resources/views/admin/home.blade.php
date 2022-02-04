@@ -99,7 +99,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     <div class="col-12 col-sm-5">
 
                         {{-- Consulta todos los clientes --}}
-                        <div class="card">
+                        <div class="card" style="height: 42%;">
                             <div class="card-content p-1">
                                 <div class="card-body">
                                     <img src="{{ asset('images/svg/ilustracion_clientes.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
@@ -110,7 +110,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
 
                         {{-- Consulta y paga la nomina --}}
-                        <div class="card">
+                        <div class="card" style="height: 45%;">
                             <div class="card-content p-1">
                                 <div class="card-body">
                                     <img src="{{ asset('images/svg/ilustracion_nomina.svg') }}" class="float-right pl-2" width="150" height="150" alt="">
@@ -125,48 +125,48 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                     {{-- Tabla "Empleados" --}}
                     <div class="col-12 col-sm-7">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Empleados</h3>
-                            </div>
-                            <div class="card-content">
-                                <div class="table-responsive pt-2">
-                                    <table class="table myTable">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th>Foto</th>
-                                                <th>Nombre</th>
-                                                <th>Email</th>
-                                                <th>Telefono</th>
-                                                <th>Favorito</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($user as $item)
-                                            <tr>
-                                                <td>
-                                                    @if (!is_null($item->photo))
-                                                    {{-- <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;"   src="{{ asset('/storage/uploads/images/users/photos/'.$item->photo) }}" /> --}}
-                                                    <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;"   src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
-                                                    @else
-                                                    <i class="rounded-circle feather icon-user" style="font-size: 32px;"></i>
-                                                    @endif
-                                                </td>
-                                                <td><a href="{{ route('admin.employees.show', [$item->slug, $item->id]) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
-                                                <td><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
-                                                <td><a href="https://api.whatsapp.com/send?phone={{ $item->phone }}" Target="_blank">{{ $item->phone }}</a></td>
-                                                <td>
-                                                    <form id="#form">
-                                                        <p class="clasificacion text-center">
-                                                          <input class="input-radio" label-target="label{{$item->id}}" id="radio{{$item->id}}" type="radio" name="estrellas" value="{{$item->id}}"><!--
-                                                          --><label @if($item->favorite == 1) class="active-favorite" @endif id="label{{$item->id}}" for="radio{{$item->id}}">★</label>
-                                                        </p>
-                                                      </form>
-                                                      
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                            <div class="card-content p-1">
+                                <div class="card-body">
+                                    <h4 class="pt-2">Empleados</h4>
+                                    <div class="table-responsive pt-2">
+                                        <table class="table myTable">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Foto</th>
+                                                    <th>Nombre</th>
+                                                    <th>Email</th>
+                                                    <th>Telefono</th>
+                                                    <th>Favorito</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($user as $item)
+                                                <tr>
+                                                    <td>
+                                                        @if (!is_null($item->photo))
+                                                        {{-- <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;"   src="{{ asset('/storage/uploads/images/users/photos/'.$item->photo) }}" /> --}}
+                                                        <img class="rounded-circle" width="32px" height="32px" style="object-fit: cover;"   src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
+                                                        @else
+                                                        <i class="rounded-circle feather icon-user" style="font-size: 32px;"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td><a href="{{ route('admin.employees.show', [$item->slug, $item->id]) }}">{{ $item->name }} {{ $item->last_name }}</a></td>
+                                                    <td><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
+                                                    <td><a href="https://api.whatsapp.com/send?phone={{ $item->phone }}" Target="_blank">{{ $item->phone }}</a></td>
+                                                    <td>
+                                                        <form id="#form">
+                                                            <p class="clasificacion text-center">
+                                                            <input class="input-radio" label-target="label{{$item->id}}" id="radio{{$item->id}}" type="radio" name="estrellas" value="{{$item->id}}"><!--
+                                                            --><label @if($item->favorite == 1) class="active-favorite" @endif id="label{{$item->id}}" for="radio{{$item->id}}">★</label>
+                                                            </p>
+                                                        </form>
+                                                        
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -257,7 +257,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
             order: [
                 [0, "desc"]
             ],
-            pageLength : 5,
+            pageLength : 4,
             lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]
         })
     </script>
