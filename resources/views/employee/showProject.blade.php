@@ -116,7 +116,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
                                 <div class="mt-1">
                                     @foreach ($project->technologies as $tech)
                                     <div class="text-center text-white d-inline-block mr-1">
-                                        <div class="project-detail-skill">{{$tech->name}}</div>
+                                        <div class="project-detail-skill mt-1">{{$tech->name}}</div>
                                     </div>
                                     @endforeach
 
@@ -145,7 +145,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
                                     <div class="mt-1">
                                         @foreach ($project->tags as $tag)
                                         <div class="text-center text-white d-inline-block mr-1 pb-1">
-                                            <div class="project-detail-skill">{{ $tag->name }}</div>
+                                            <div class="project-detail-skill ">{{ $tag->name }}</div>
                                         </div>
                                         @endforeach
                                     </div>
@@ -188,41 +188,42 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
                                             <img src="{{ asset('images/icons/files/image.png') }}"
                                                 alt="{{ $attachment->name }}" width="80px" height="80px" alt="img">
                                         </a>
-                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
-                                            class="btn-sm btn-primary"
+                                      {{--  <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
+                                           
                                             download="{{ asset('uploads/attachments/'.$attachment->file_name) }}">Descargar
-                                            imagen</a>
+                                            imagen</a>  --}}
+                                   
                                         @elseif($attachment->file_type == 'pdf')
                                         <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
                                             target="_blank">
                                             <img src="{{ asset('images/icons/files/pdf.png') }}"
                                                 alt="{{ $attachment->name }}" width="80px" height="80px" alt="pdf">
                                         </a>
-                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
-                                            class="btn-sm btn-primary"
+                                       {{-- <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
+                                           
                                             download="{{ asset('uploads/attachments/'.$attachment->file_name) }}">Descargar
-                                            pdf</a>
+                                            pdf</a> --}}
                                         @elseif($attachment->file_type == 'excel')
                                         <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
                                             target="_blank">
                                             <img src="{{ asset('images/icons/files/excel.png') }}"
                                                 alt="{{ $attachment->name }}" width="80px" height="80px" alt="excel">
                                         </a>
-                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
+                                        {{--<a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
                                             class="btn-sm btn-primary"
                                             download="{{ asset('uploads/attachments/'.$attachment->file_name) }}">Descargar
-                                            excel</a>
+                                            excel</a>--}}
                                         @elseif($attachment->file_type == 'ppt')
                                         <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
                                             target="_blank">
                                             <img src="{{ asset('images/icons/files/powerpoint.png') }}"
                                                 alt="{{ $attachment->name }}" width="80px" height="80px" alt="ppt">
                                         </a>
-                                        <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
-                                            class="btn-sm btn-primary"
+                                        {{--<a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
+                                             class="btn-sm btn-primary" 
                                             download="{{ asset('uploads/attachments/'.$attachment->file_name) }}">Descargar
-                                            powerpoint</a>
-                                        @endif
+                                            powerpoint</a>--}}
+                                        @endif 
                                     </div>
                                     <div class="col-8 pt-1">
                                         <div style="font-size: 12px; font-weight: 500; color: #3C3232;">
@@ -231,6 +232,34 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
                                         <div class="mt-2" style="font-size: 12px; font-weight: 300; color: #9D9EAF;">
                                             Añadido: {{ $attachment->date }} a las {{ $attachment->time }}<br>
                                         </div>
+                                         @if ($attachment->file_type == 'image')
+                                            <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
+                                                 class="btn-sm btn-primary" 
+                                                download="{{ asset('uploads/attachments/'.$attachment->file_name) }}">Descargar
+                                                imagen
+                                            </a>
+                                   
+                                        @elseif($attachment->file_type == 'pdf')
+                                       
+                                            <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
+                                               class="btn-sm btn-primary" 
+                                               download="{{ asset('uploads/attachments/'.$attachment->file_name) }}">Descargar
+                                                pdf
+                                            </a>
+                                        @elseif($attachment->file_type == 'excel')
+                                       
+                                            <a 
+                                                href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
+                                                download="{{ asset('uploads/attachments/'.$attachment->file_name) }}">Descargar
+                                                excel
+                                            </a>
+                                        @elseif($attachment->file_type == 'ppt')
+                                       
+                                            <a href="{{ asset('uploads/attachments/'.$attachment->file_name) }}"
+                                               download="{{ asset('uploads/attachments/'.$attachment->file_name) }}">Descargar
+                                                powerpoint
+                                            </a>
+                                        @endif
                                     </div>
                                     @endforeach
                                     @else

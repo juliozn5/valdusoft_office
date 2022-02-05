@@ -27,7 +27,7 @@ class PayrollEmployee extends Model
     public function user(){
         return $this->belongsTo('App\Models\User','user_id', 'id');
     }
-
+    
     public function bond(){
         return $this->hasOne('App\Models\Bond', 'payroll_employee_id');
     }

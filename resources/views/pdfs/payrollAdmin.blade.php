@@ -21,6 +21,7 @@ Listado de empleados en la Nómina
 <tr>
     <td>{{ $item->id }}</td>
     <td>{{ $item->user->name }} {{ $item->user->last_name }}</td>
+    <td>{{ $item->user->tron_wallet}}</td>
     <td>{{number_format($item->price_by_hour, 2, ',', '.')}}$</td>
     <td>{{number_format($item->total_hours, 2, ',', '.')}}</td>
     <td>{{number_format($item->total_hours * $item->price_by_hour, 2, ',', '.')}}$</td>

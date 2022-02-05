@@ -256,9 +256,9 @@ class PayrollController extends Controller
         $payroll = Payrolls::find($payroll_id);
 
         $payroll_employees = PayrollEmployee::where('payroll_id', '=', $payroll_id)
-        ->with('user:id,name,last_name', 'bond', 'financing', 'financing_payment')
+        ->with('user:id,name,last_name,tron_wallet', 'bond', 'financing', 'financing_payment')
         ->get();
-
+      
         if($payroll != null ){
             $nombre = $payroll->created_at->format('Y-m-d');
         }else{

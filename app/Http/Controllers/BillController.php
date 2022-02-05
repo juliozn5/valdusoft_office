@@ -206,10 +206,11 @@ class BillController extends Controller
      }
 
      public function download($bill_id){
-          $bill = Bill::where('id', '=', $bill_id)
-                    ->with('user:id,name,last_name,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payments', 'details')
-                    ->first();
 
+          $bill = Bill::where('id', '=', $bill_id)
+                    ->with('user:id,name,last_name,tron_wallet,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payments', 'details')
+                    ->first();
+          
           if ($bill->type == 'E'){
                $pdf = PDF::loadView('pdfs.payrollEmployeeBill', compact('bill'));
           }else{

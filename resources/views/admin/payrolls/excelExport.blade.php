@@ -4,6 +4,7 @@
             <tr>
                 <th style="background: #6C016C; color: #ffffff; text-align: center;"><b>#</b></th>
                 <th style="background: #6C016C; color: #ffffff; text-align: center; width: 15%"><b>Empleado</b></th>
+                <th style="background: #6C016C; color: #ffffff; text-align: center; width: 15%"><b>Billetera</b></th>
                 <th style="background: #6C016C; color: #ffffff; text-align: center; width: 14%"><b>Precio por Hora</b>
                 </th>
                 <th style="background: #6C016C; color: #ffffff; text-align: center; width: 16%"><b>Horas Trabajadas</b>
@@ -22,6 +23,7 @@
             <tr>
                 <td style="text-align: center; border: solid;">{{ $item->id }}</td>
                 <td style="text-align: center; border: solid;">{{ $item->user->name }} {{ $item->user->last_name }}</td>
+                 <td style="text-align: center; border: solid;">{{ $item->user->tron_wallet }}</td>
                 <td style="text-align: center; border: solid;">{{number_format($item->price_by_hour, 2, ',', '.')}}$</td>
                 <td style="text-align: center; border: solid;">{{number_format($item->total_hours, 2, ',', '.')}}</td>
                 <td style="text-align: center; border: solid;">{{number_format($item->total_hours * $item->price_by_hour, 2, ',', '.')}}$</td>

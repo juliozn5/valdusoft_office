@@ -28,15 +28,15 @@
                                     <tbody>
                                         @foreach ($projects as $project)
                                         <tr>
-                                            <th scope="row">{{ $project->id }}</th>
-                                            <td class="text-center">{{ $project->name }}</td>
-                                            <td class="text-center" >
+                                            <th style="padding-left: 30px;">{{ $project->id }}</th>
+                                            <td class="text-center"  style="padding-left: 40px;">{{ $project->name }}</td>
+                                            <td class="text-center"style="padding-left: 30px;" >
                                                 {{ (is_null($project->start_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->start_date)) }}
                                             </td>
-                                            <td class="text-center">
+                                            <td class="text-center" style="padding-left: 30px;">
                                                 {{ (is_null($project->ending_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->ending_date)) }}
-                                            </td class="text-center">
-                                            <td class="text-center">
+                                            </td>
+                                            <td class="text-center" style="padding-left: 30px;">
                                                 @if ($project->status == 0)
                                                 <label class="label status-label status-label-purple">No Atendido</label>
                                                 @elseif ($project->status == 1)
@@ -49,7 +49,7 @@
                                                 <label class="label status-label status-label-red">Eliminado</label>
                                                 @endif
                                             </td>
-                                            <td class="text-center">
+                                            <td class="text-center" style="padding-left: 50px;">
                                                 <a href="{{ route('employee.projects.show', [$project->slug, $project->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
                                             </td>
                                         </tr>

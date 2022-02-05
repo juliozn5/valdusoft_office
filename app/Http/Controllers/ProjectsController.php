@@ -211,10 +211,15 @@ class ProjectsController extends Controller
 
             return view('client.showProject')->with(compact('project'));
         } else {
+
             $project = Project::with('user:id,name,last_name', 'employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
                 ->where('id', '=', $id)
                 ->first();
-
+            
+             foreach ($project->attachments as $attachment) {
+                $attachment->date = date('d', strtotime($attachment->created_at)) . ' de ' . $this->getMonthName(date('m', strtotime($attachment->created_at))) . ' de ' . date('Y', strtotime($attachment->created_at));
+                $attachment->time = date('H:i', strtotime($attachment->created_at));
+            }
             return view('employee.showProject')->with(compact('project'));
         }
     }
