@@ -246,7 +246,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 @foreach ($project->employees as $employee)
                                 <div class="col-5 mr-1">
                                     @isset($employee->photo)
-                                        <img class="rounded-circle" src="{{ asset('storage/uploads/images/users/photos/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
+                                        <img class="rounded-circle" src="{{ asset('storage/photo-profile/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
                                  
                                     @else
                                         <i id="fat-user" class="rounded-circle feather icon-user" style="font-size: 50px;"></i>

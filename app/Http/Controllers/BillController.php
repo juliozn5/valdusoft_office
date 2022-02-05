@@ -197,6 +197,7 @@ class BillController extends Controller
                $bill->user_id = $payroll_employee->user_id;
                $bill->amount = $payroll_employee->total_amount;
                $bill->date = date('Y-m-d');
+               $bill->status = '1';
                $bill->type = 'E';
                $bill->save();
           }
