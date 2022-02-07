@@ -14,12 +14,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
+        <div class="content-header row"></div>
         <div class="content-body">
-
             <h1>Bonos</h1>
-
         </div>
     </div>
 </div>

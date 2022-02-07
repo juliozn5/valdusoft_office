@@ -23,8 +23,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-
-
         <div class="content-body">
             <div class="row" id="table-head">
                 <div class="col-12">
@@ -52,34 +50,40 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                     <tbody class="text-center">
 
                                         @foreach ($client as $item)
-                                        <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>
-                                                @if (isset($item->photo))
-                                                <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
-                                                @else
-                                                    <i class="rounded-circle feather icon-user" style="font-size: 70px;"></i>
-                                                
-                                                @endif
-                                            </td>
+                                            <tr>
+                                                <td>{{ $item->id }}</td>
+                                                <td>
+                                                    @if (isset($item->photo))
+                                                    <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
+                                                    @else
+                                                        <i class="rounded-circle feather icon-user" style="font-size: 70px;"></i>
+                                                    
+                                                    @endif
+                                                </td>
 
 
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->last_name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td>{{ $item->phone }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.clients.show', [$item->slug,$item->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->last_name }}</td>
+                                                <td>{{ $item->email }}</td>
+                                                <td>{{ $item->phone }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.clients.show', [$item->slug,$item->id]) }}">
+                                                        <i class="fa fa-eye mr-1 action-icon"></i>
+                                                    </a>
 
-                                                <a href="{{ route('admin.clients.edit', $item->id) }}"><i class="fa fa-edit mr-1 action-icon"></i></a>
+                                                    <a href="{{ route('admin.clients.edit', $item->id) }}">
+                                                        <i class="fa fa-edit mr-1 action-icon"></i>
+                                                    </a>
 
-                                                <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('delete{{$item->id}}').submit();"><i class="fa fa-trash action-icon"></i></a>
-                                                <form action="{{ route('admin.clients.delete', $item->id) }}" method="POST" id="delete{{$item->id}}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                            </td>
-                                        </tr>
+                                                    <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('delete{{$item->id}}').submit();">
+                                                        <i class="fa fa-trash action-icon"></i>
+                                                    </a>
+                                                    <form action="{{ route('admin.clients.delete', $item->id) }}" method="POST" id="delete{{$item->id}}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -92,8 +96,6 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 @endsection

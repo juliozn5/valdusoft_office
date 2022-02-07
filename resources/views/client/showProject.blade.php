@@ -65,19 +65,18 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
 
                         <div class="p-2">
                             <h3 class="text-primary font-weight-bolder text-uppercase">{{ $project->name }}</h3>
-
+                      
                             <!-- Sección de Miembros-->
                             <div class="row mt-2">
                                 <div class="col-12 pb-1">
                                     <div class="project-detail-titles">Miembros</div>
                                 </div>
                                 @foreach ($project->employees as $employee)
-                                <div class="col-6 mr-1">
+                                <div class="col-5 mr-1">
                                     <img class="rounded-circle" style="object-fit: cover;" src="{{asset('storage/photo-profile/'.$employee->photo)}}" alt=" {{$employee->name .' '. $employee->last_name}}" title=" {{$employee->name .' '. $employee->last_name}}" height="50" width="50">
                                 </div>
                                 @endforeach
                             </div>
-
                             <!-- Sección de Fechas -->
                             <div class="row mt-2">
                                 <div class="col-6">

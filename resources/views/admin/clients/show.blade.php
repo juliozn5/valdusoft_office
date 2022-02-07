@@ -18,16 +18,17 @@ data-menu="vertical-menu-modern" data-col="2-columns"
             <div class="content-header-left col-md-9 col-12 mb-2">
              
                 @push('breadcrumbs')
-                <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
-                    Clientes</div>
-                <div class="breadcrumb-wrapper col-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.clients.list') }}">Clientes</a>
-                        </li>
-                        <li class="breadcrumb-item">Detalle del Cliente</li>
-                    </ol>
-                </div>
+                    <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
+                        Clientes
+                    </div>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.clients.list') }}">Clientes</a>
+                            </li>
+                            <li class="breadcrumb-item">Detalle del Cliente</li>
+                        </ol>
+                    </div>
                 @endpush
             </div>
         </div>
@@ -37,9 +38,9 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     <div class="row" id="all-center-items">
                         <div class="col-md-4">
                             @if (isset($client->photo))
-                            <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/photo-profile/' . $client->photo) }}" alt="" width="55px" height="55px">
+                                <img class="rounded-circle" style="object-fit:cover;" src="{{ asset('storage/photo-profile/' . $client->photo) }}" alt="" width="55px" height="55px">
                             @else
-                            <i class="rounded-circle feather icon-user" style="font-size: 100px;"></i>
+                                <i class="rounded-circle feather icon-user" style="font-size: 100px;"></i>
                             @endif
                         </div>
                     </div>
@@ -55,14 +56,14 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                     <div class="card">
                         <div class="row ">
                             @foreach ($projects as $item)
-                            <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
-                                <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <div class=" h4 pb-2 " id="shadow">
-                                        <div class="ml-1  text-white" style="position: relative;top: 14px;"> {{$item->name}}</div><a>
+                                <div class="card container-fluid" style="width: 18rem;" id="recomiendo">
+                                    <img src="{{ asset('uploads/images/projects/'.$item->logo) }}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <div class=" h4 pb-2 " id="shadow">
+                                            <div class="ml-1  text-white" style="position: relative;top: 14px;"> {{$item->name}}</div><a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                         <div class="mr-3">
@@ -74,22 +75,22 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                             <div class="container pb-2">
                                 <div class="row">
                                     @foreach ($hosting as $item)
-                                    <div class="col-6 card mt-3" style="height:150px;">
+                                        <div class="col-6 card mt-3" style="height:150px;">
 
-                                        <div class="card-body  rounded" id="position" style="background: #252856;margin-left:2px;">
-                                            <div class="p-1">
-                                                <img class="float-right mr-2 mt-2" src="{{asset('images/icons/background.png')}}" alt="">
-                                                <h5 class="card-title text-white mt-1 ">{{$item->url}}</h5>
-                                                <br>
-                                                <p class="card-text h5 text-white ">Fecha de Vencimiento</p>
+                                            <div class="card-body  rounded" id="position" style="background: #252856;margin-left:2px;">
+                                                <div class="p-1">
+                                                    <img class="float-right mr-2 mt-2" src="{{asset('images/icons/background.png')}}" alt="">
+                                                    <h5 class="card-title text-white mt-1 ">{{$item->url}}</h5>
+                                                    <br>
+                                                    <p class="card-text h5 text-white ">Fecha de Vencimiento</p>
 
-                                                <p class="h4 mt-1 text-white"><i class="fa fa-calendar icon-big mr-1"></i>{{ date('d/m/Y', strtotime($item->due_date)) }}
-                                                </p>
-                                                <a href="/{{$item->cpanel_url}}" type="button" class="btn margen-b" style="background-color:#FF4D00;color: white;" id="btn-guardar"><img src="{{ asset('images/valdusoft/admin.png') }}" alt="" class="mr-1">Ir al Cpanel</a>
-                                                <a type="button" onclick="editBill({{$item}});" class="btn margen-green" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalRenovar" id="btn-guardar"><img src="{{ asset('images/valdusoft/refresh.png') }}" alt="" class="mr-1"> Renovar</a>
+                                                    <p class="h4 mt-1 text-white"><i class="fa fa-calendar icon-big mr-1"></i>{{ date('d/m/Y', strtotime($item->due_date)) }}
+                                                    </p>
+                                                    <a href="/{{$item->cpanel_url}}" type="button" class="btn margen-b" style="background-color:#FF4D00;color: white;" id="btn-guardar"><img src="{{ asset('images/valdusoft/admin.png') }}" alt="" class="mr-1">Ir al Cpanel</a>
+                                                    <a type="button" onclick="editBill({{$item}});" class="btn margen-green" style="background-color: #06B054;color: white;" data-toggle="modal" data-target="#modalRenovar" id="btn-guardar"><img src="{{ asset('images/valdusoft/refresh.png') }}" alt="" class="mr-1"> Renovar</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -108,29 +109,29 @@ data-menu="vertical-menu-modern" data-col="2-columns"
                                         </thead>
                                         <tbody>
                                             @foreach ($client_bill as $client)
-                                            <tr>
-                                                <th scope="row">#{{ $client->id }}</th>
-                                                <td>{{ $client->date }}</td>
-                                                <td>{{ $client->amount }}$</td>
-                                                <td>
-                                                    @if ($client->status == 0)
-                                                    <label class="label status-label status-label-purple">Pendiente</label>
-                                                    @elseif ($client->status == 1)
-                                                    <label class="label status-label status-label-gray">Pagada</label>
-                                                    @elseif ($client->status == 2)
-                                                    <label class="label status-label status-label-blue">Parcialmente pagada</label>
-                                                    @endif
-                                                </td>
-                                                <td>
+                                                <tr>
+                                                    <th scope="row">#{{ $client->id }}</th>
+                                                    <td>{{ $client->date }}</td>
+                                                    <td>{{ $client->amount }}$</td>
+                                                    <td>
+                                                        @if ($client->status == 0)
+                                                        <label class="label status-label status-label-purple">Pendiente</label>
+                                                        @elseif ($client->status == 1)
+                                                        <label class="label status-label status-label-gray">Pagada</label>
+                                                        @elseif ($client->status == 2)
+                                                        <label class="label status-label status-label-blue">Parcialmente pagada</label>
+                                                        @endif
+                                                    </td>
+                                                    <td>
 
-                                                    <a class="" href="{{ route('admin.bills.downloadPDF', $client->id) }}" target="_blank">
-                                                        <i class=" fas fa-download" style="font-size:20px;"></i>
-                                                    </a>
-                                                    <a class="" href="{{ route('admin.bills.download', $client->id) }}" target="_blank">
-                                                        <i class="ml-1 far fa-file-pdf" style="font-size:23px;"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                        <a class="" href="{{ route('admin.bills.downloadPDF', $client->id) }}" target="_blank">
+                                                            <i class=" fas fa-download" style="font-size:20px;"></i>
+                                                        </a>
+                                                        <a class="" href="{{ route('admin.bills.download', $client->id) }}" target="_blank">
+                                                            <i class="ml-1 far fa-file-pdf" style="font-size:23px;"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

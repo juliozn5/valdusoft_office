@@ -22,9 +22,15 @@
                             </div>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('employee.home') }}"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="#">Financiero</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('employee.bills.list') }}">Facturas</a>
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ route('employee.home') }}"><i class="fa fa-home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Financiero</a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ route('employee.bills.list') }}">Facturas</a>
+                                    </li>
                                 </ol>
                             </div>
                         </div>

@@ -9,7 +9,6 @@
         .modal-body {
             padding: 1rem;
         }
-
     </style>
 @endpush
 
@@ -243,36 +242,48 @@
                                         </thead>
                                         <tbody class="text-center">
                                             @foreach ($client_bills as $client)
-                                            <tr>
-                                                <th scope="row"> <a target="_blank" href="{{route('admin.bills.show', $client->id)}}">#{{ $client->id }}</a> </th>
-                                                <td>{{ $client->user->name }} {{ $client->user->last_name }}</td>
-                                                <td>{{ date('d-m-Y', strtotime($client->date)) }}</td>
-                                                <td>{{ number_format($client->amount, 2, '.', ',') }}</td>
-                                                <td>{{ number_format($client->paid_amount, 2, '.', ',') }}</td>
-                                                <td>{{ $client->project->name}}</td>
-                                                <td>
-                                                    @if ($client->status == 0)
-                                                        <label class="label status-label status-label-purple">Pendiente</label>
-                                                    @elseif ($client->status == 2)
-                                                        <label class="label status-label status-label-blue">Parcialmente Pagada</label>
-                                                    @else
-                                                        <label class="label status-label status-label-green">Completada</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('admin.bills.show', $client->id)}}" title="Ver Detalles">
-                                                        <i class="fa fa-eye action-icon"></i>
-                                                    </a>
-                                                    <a href="{{ route('admin.bills.downloadPDF', $client->id) }}" target="_blank" title="Descargar">
-                                                        <i class="ml-1 fas fa-download action-icon"></i>
-                                                    </a>
-                                                    @if ($client->pending_payments == true)
-                                                        <a href="{{ route('admin.payments.list', $client->id) }}" title="Pagos Pendientes">
-                                                            <i class="far fa-clock ml-1 action-icon"></i>
+                                                <tr>
+                                                    <td scope="row"> 
+                                                        <a target="_blank" href="{{route('admin.bills.show', $client->id)}}">#{{ $client->id }}</a> 
+                                                    </td>
+                                                    <td>
+                                                        {{ $client->user->name }} {{ $client->user->last_name }}
+                                                    </td>
+                                                    <td>
+                                                        {{ date('d-m-Y', strtotime($client->date)) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ number_format($client->amount, 2, '.', ',') }}
+                                                    </td>
+                                                    <td>
+                                                        {{ number_format($client->paid_amount, 2, '.', ',') }}
+                                                    </td>
+                                                    <td>
+                                                        {{$client->project->name}}
+                                                    </td>
+                                                    <td>
+                                                        @if ($client->status == 0)
+                                                            <label class="label status-label status-label-purple">Pendiente</label>
+                                                        @elseif ($client->status == 2)
+                                                            <label class="label status-label status-label-blue">Parcialmente Pagada</label>
+                                                        @else
+                                                            <label class="label status-label status-label-green">Completada</label>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('admin.bills.show', $client->id)}}" title="Ver Detalles">
+                                                            <i class="fa fa-eye action-icon"></i>
                                                         </a>
-                                                    @endif
-                                                </td>
-                                            </tr>
+                                                        <a href="{{ route('admin.bills.downloadPDF', $client->id) }}" target="_blank" title="Descargar">
+                                                            <i class="ml-1 fas fa-download action-icon"></i>
+                                                        </a>
+                                                        @if ($client->pending_payments == true)
+                                                            <a href="{{ route('admin.payments.list', $client->id) }}" title="Pagos Pendientes">
+                                                                <i class="far fa-clock ml-1 action-icon"></i>
+                                                            </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -331,10 +342,14 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar
-                            Factura</strong></h5>
+                    <h5 class="modal-title" id="exampleModalToggleLabel">
+                        <strong>
+                            GenerarFactura
+                        </strong>
+                    </h5>
                     <button class="close" style="margin-right:10px; margin-top:1px;"
-                        data-dismiss="modal">&times;</button>
+                        data-dismiss="modal">&times;>
+                    </button>
                 </div>
 
                 <form action="{{ route('admin.bills.store')}}" method="post">
@@ -377,10 +392,18 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><input type="text" name="description[]" class="form-control" id="description_1" required></td>
-                                    <td><input type="number" name="unit[]" class="form-control" id="unit_1" value="1" oninput="calculate(1)" required></td>
-                                    <td><input type="text" name="price[]" class="form-control" id="price_1" value="0" oninput="calculate(1)" required></td>
-                                    <td><input type="text" name="total[]" class="form-control" id="total_1" value="0" readonly></td>
+                                    <td>
+                                        <input type="text" name="description[]" class="form-control" id="description_1" required>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="unit[]" class="form-control" id="unit_1" value="1" oninput="calculate(1)" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="price[]" class="form-control" id="price_1" value="0" oninput="calculate(1)" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="total[]" class="form-control" id="total_1" value="0" readonly>
+                                    </td>
                                     <td>
                                         <a href="javascript:;" onclick="addRow();"><img class="rounded-circle ml-2" src="{{ asset('images/svg/plus-circle.svg') }}" height="30" width="30"></a>
                                     </td>
@@ -388,25 +411,40 @@
                             </tbody>
                             <tfoot>
                                 <tr style="font-weight: bold; font-size: 14px;">
-                                    <td style="border-top: none !important;"></td>
-                                    <td colspan="2" class="text-right">TOTAL PARCIAL</td>
-                                    <td colspan="2" class="text-right" style="padding-right: 20px;"><input type="text" class="form-control" name="partial_total" id="partial_total" value="0.00" style="border: none !important; font-size: 14px !important;" readonly></td>
+                                    <td style="border-top: none !important;">
+                                        
+                                    </td>
+                                    <td colspan="2" class="text-right">
+                                        TOTAL PARCIAL
+                                    </td>
+                                    <td colspan="2" class="text-right" style="padding-right: 20px;">
+                                        <input type="text" class="form-control" name="partial_total" id="partial_total" value="0.00" style="border: none !important; font-size: 14px !important;" readonly>
+                                    </td>
                                 </tr>
                                 <tr style="font-weight: bold; font-size: 14px;">
                                     <td style="border-top: none !important;"></td>
-                                    <td colspan="2" class="text-right">DESCUENTO</td>
-                                    <td colspan="2" class="text-right"><input type="text" class="form-control" name="discount" id="discount" placeholder="0.00" style="border: none !important; font-size: 14px !important;"></td>
+                                    <td colspan="2" class="text-right">
+                                        DESCUENTO
+                                    </td>
+                                    <td colspan="2" class="text-right">
+                                        <input type="text" class="form-control" name="discount" id="discount" placeholder="0.00" style="border: none !important; font-size: 14px !important;">
+                                    </td>
                                 </tr>
                                 <tr style="font-weight: bold; font-size: 14px;">
                                     <td style="border-top: none !important;"></td>
-                                    <td colspan="2" class="text-right">PAGADO</td>
-                                    <td colspan="2" class="text-right"><input type="text" class="form-control" name="payed" id="payed" placeholder="0.00" style="border: none !important; font-size: 14px !important;"></td>
+                                    <td colspan="2" class="text-right">
+                                        PAGADO
+                                    </td>
+                                    <td colspan="2" class="text-right">
+                                        <input type="text" class="form-control" name="payed" id="payed" placeholder="0.00" style="border: none !important; font-size: 14px !important;">
+                                    </td>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary waves-effect waves-light"><strong>Guardar</strong></button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light"><strong>Guardar</strong>
+                        </button>
                     </div>
                 </form>
             </div>

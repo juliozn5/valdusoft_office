@@ -27,32 +27,36 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($projects as $project)
-                                        <tr>
-                                            <th style="padding-left: 30px;">{{ $project->id }}</th>
-                                            <td class="text-center"  style="padding-left: 40px;">{{ $project->name }}</td>
-                                            <td class="text-center"style="padding-left: 30px;" >
-                                                {{ (is_null($project->start_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->start_date)) }}
-                                            </td>
-                                            <td class="text-center" style="padding-left: 30px;">
-                                                {{ (is_null($project->ending_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->ending_date)) }}
-                                            </td>
-                                            <td class="text-center" style="padding-left: 30px;">
-                                                @if ($project->status == 0)
-                                                <label class="label status-label status-label-purple">No Atendido</label>
-                                                @elseif ($project->status == 1)
-                                                <label class="label status-label status-label-gray">En Proceso</label>
-                                                @elseif ($project->status == 2)
-                                                <label class="label status-label status-label-blue">Testiando</label>
-                                                @elseif ($project->status == 3)
-                                                <label class="label status-label status-label-green">Completado</label>
-                                                @elseif ($project->status == 4)
-                                                <label class="label status-label status-label-red">Eliminado</label>
-                                                @endif
-                                            </td>
-                                            <td class="text-center" style="padding-left: 50px;">
-                                                <a href="{{ route('employee.projects.show', [$project->slug, $project->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td style="padding-left: 30px;">
+                                                    {{ $project->id }}
+                                                </td>
+                                                <td class="text-center"  style="padding-left: 40px;">
+                                                    {{ $project->name }}
+                                                </td>
+                                                <td class="text-center"style="padding-left: 30px;" >
+                                                    {{ (is_null($project->start_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->start_date)) }}
+                                                </td>
+                                                <td class="text-center" style="padding-left: 30px;">
+                                                    {{ (is_null($project->ending_date)) ? 'Dato no disponible' : date('d-m-Y', strtotime($project->ending_date)) }}
+                                                </td>
+                                                <td class="text-center" style="padding-left: 30px;">
+                                                    @if ($project->status == 0)
+                                                        <label class="label status-label status-label-purple">No Atendido</label>
+                                                    @elseif ($project->status == 1)
+                                                        <label class="label status-label status-label-gray">En Proceso</label>
+                                                    @elseif ($project->status == 2)
+                                                        <label class="label status-label status-label-blue">Testiando</label>
+                                                    @elseif ($project->status == 3)
+                                                        <label class="label status-label status-label-green">Completado</label>
+                                                    @elseif ($project->status == 4)
+                                                        <label class="label status-label status-label-red">Eliminado</label>
+                                                    @endif
+                                                </td>
+                                                <td class="text-center" style="padding-left: 50px;">
+                                                    <a href="{{ route('employee.projects.show', [$project->slug, $project->id]) }}"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -67,11 +71,10 @@
 @endsection
 
 @push('custom_js')
-
-<script>
-$('.table').DataTable({
-    responsive: true,
-    order: [[ 0, "asc" ]],
-})
-</script>
+    <script>
+        $('.table').DataTable({
+            responsive: true,
+            order: [[ 0, "asc" ]],
+        })
+    </script>
 @endpush

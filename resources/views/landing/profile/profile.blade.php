@@ -38,7 +38,10 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-7 col-md-7 col-lg-6">
-                                <p style="font-size: 17px;"><span> {{(is_null($user->phone)) ? 'Dato no disponible' : ($user->phone) }}</span>
+                                <p style="font-size: 17px;">
+                                    <span> 
+                                        {{(is_null($user->phone)) ? 'Dato no disponible' : ($user->phone) }}
+                                    </span>
                                     <a data-toggle="modal" data-target="#telefono">
                                         @if(is_null($user->phone))
                                           <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Tecnología" height="40" width="40">
@@ -51,13 +54,17 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 
                             <div class="col-sm-6 col-md-5 offset-md-2  offset-lg-0">
                                 <div class="row">
-                                    <div class="col-sm-5 col-md-6"><input id="password" type="password" class="form-control" value="$user->password" name="current_password" disabled></div>
-                                    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0"><a data-toggle="modal" data-target="#modal20"><i class="far fa-edit ml-2" style="font-size:21px;"></i></a></div>
+                                    <div class="col-sm-5 col-md-6">
+                                        <input id="password" type="password" class="form-control" value="$user->password" name="current_password" disabled>
+                                    </div>
+                                    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+                                        <a data-toggle="modal" data-target="#modal20">
+                                            <i class="far fa-edit ml-2" style="font-size:21px;">     
+                                            </i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 row ">
-
-                                </div>
-                                </a>
+                                <div class="col-md-6 row "></div>
                             </div>
                         </div>
                     </div>
@@ -71,7 +78,8 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             @foreach ($project as $item)
                             <a href="">
                                 <div class="text-center text-white d-inline-block mr-1">
-                                    <div class="project-circle" style="background-color:{{ $itemColors[$cont] }}"><strong> {{ $item->id }}</strong></div>
+                                    <div class="project-circle" style="background-color:{{ $itemColors[$cont] }}">    <strong> {{ $item->id }}</strong>       
+                                    </div>
                                 </div>
                             </a>
                             @php
@@ -91,9 +99,12 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="project-detail-titles">Fecha de Nacimiento</div>
                             <div class="mt-1 project-detail-dates">
                                 <img src="{{ asset('images/svg/calendar.svg')}}">
-                                <span>{{ date('d/m/Y', strtotime($user->birthdate)) }}</span>
+                                <span>
+                                    {{ date('d/m/Y', strtotime($user->birthdate)) }}
+                                </span>
                                 <a data-toggle="modal" data-target="#birthdate">
-                                    <i class="far fa-edit ml-2" style="font-size:21px;"></i>
+                                    <i class="far fa-edit ml-2" style="font-size:21px;">
+                                    </i>
                                 </a>
                             </div>
                         </div>
@@ -103,7 +114,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             <div class="project-detail-titles">Fecha de Ingreso</div>
                             <div class="mt-1 project-detail-dates">
                                 <img src="{{ asset('images/svg/calendar.svg')}}">
-                                <span>{{ date('d/m/Y', strtotime($user->admission_date)) }}</span>
+                                <span>
+                                    {{ date('d/m/Y', strtotime($user->admission_date)) }}
+                                </span>
                             </div>
                         </div>
 

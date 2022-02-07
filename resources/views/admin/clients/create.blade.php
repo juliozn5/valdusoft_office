@@ -58,8 +58,14 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                             Cliente</div>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.clients.list') }}">Cliente</a></li>
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('admin.home') }}">
+                                        <i class="fa fa-home"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('admin.clients.list') }}">Cliente</a>
+                                </li>
                                 <li class="breadcrumb-item">Nuevo Cliente</li>
                             </ol>
                         </div>
