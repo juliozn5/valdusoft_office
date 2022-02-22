@@ -160,7 +160,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                             --><label @if($item->favorite == 1) class="active-favorite" @endif id="label{{$item->id}}" for="radio{{$item->id}}">★</label>
                                                             </p>
                                                         </form>
-                                                        
+
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -177,7 +177,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                 <div id="chart">
                     <div class="card p-1">
                         <div class="card-header">
-                            <h3 class="card-title mb-2">Costos vs Ganancias</h3>
+                            <h3 class="card-title mb-2">Costos vs Ingresos</h3>
                         </div>
                         <div class="card-content">
                             <div id="timeline-chart"></div>
@@ -239,9 +239,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
 @push('scripts')
     <script>
         $('.input-radio').click(function(e){
-            
+
             let labelTarget = $(this).attr('label-target')
-        
+
             axios.post("{{route('ajaxFavorite')}}", {id: $(this).val()}).then( function(response){
                 if(response.data.success == true){
                     $('#'+labelTarget).addClass('active-favorite')

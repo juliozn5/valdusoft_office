@@ -36,7 +36,7 @@
                     data: response.data.valores.data_empleados
                 },
                 {
-                    name: 'Ganancia',
+                    name: 'Ingresos',
                     data: response.data.valores.data_cliente
                 }
             ],
