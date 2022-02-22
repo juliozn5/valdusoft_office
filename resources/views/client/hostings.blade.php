@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-       </div> 
+       </div>
        <div class="content-body">
             <div class="row" id="table-head">
                 <div class="col-12">
@@ -32,7 +32,7 @@
                                         <tr>
                                             <th>DOMINIO</th>
                                             <th>FECHA DE INICIO</th>
-                                            <th>FECHA DE RENOVACION</th>      
+                                            <th>FECHA DE RENOVACION</th>
                                             <th>AÑOS</th>
                                             <th>ESTADO</th>
                                             <th>ACCIÓN</th>
@@ -51,10 +51,10 @@
                                                @elseif ($item->status == 1)
                                                     <label class="label status-label status-label-gray">Inactivo</label>
                                                 @endif
-                                            </td> 
+                                            </td>
                                             <td>
                                                 <a href="{{route('client.hosting.showHosting', $item->id)}}"><img id="bottom" src="{{asset('images/icons/Vector.png')}}" alt=""></a>
-                                            </td> 
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

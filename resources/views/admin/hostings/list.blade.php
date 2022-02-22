@@ -86,9 +86,9 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{route('admin.hostings.show', [$hosting->id])}}" class="mr-2"><i class="fa fa-eye mr-1 action-icon"></i></a>
+                                                <a href="{{route('admin.hostings.show', [$hosting->id])}}" class=""><i class="fa fa-eye mr-1 action-icon"></i></a>
 
-                                                <a href="#edit" data-toggle="modal" onclick="edithosting({{$hosting}});"><img id="bottom" src="{{asset('images/icons/Group.png')}}" alt=""></a>
+                                                <a href="#edit" data-toggle="modal" onclick="edithosting({{$hosting}});"><i class="fa fa-edit action-icon"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -135,7 +135,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                        @enderror   
+                                        @enderror
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <label for="client"><strong>Cliente</strong></label>
