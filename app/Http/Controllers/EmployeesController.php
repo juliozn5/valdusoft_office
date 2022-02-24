@@ -360,4 +360,24 @@ class EmployeesController extends Controller
 
         return redirect()->route('employee.profile')->with('message', 'Se actualizo tu perfil');
     }
+
+    public function accionEmpleado(Request $request){
+        //return $request;
+        if(isset($request->activar) ){
+            //return $request;
+            $iduser = $request->userid;
+             $user = User::where('id',$iduser)->first();
+             $user->status = '1';
+             $user->update();
+             return back()->with('msj-success', 'Activado');
+        }
+        if(isset($request->suspender)){
+            $iduser = $request->userid;
+             $user = User::where('id',$iduser)->first();
+             $user->status = '0';
+             $user->update();
+             return back()->with('msj-success', 'suspendido');
+
+        }
+    }
 }

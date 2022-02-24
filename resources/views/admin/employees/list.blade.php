@@ -66,12 +66,22 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('admin.employees.show', [$employee->slug, $employee->id]) }}"><i class="fa fa-eye mr-1"></i></a>
-                                                    <a href="{{ route('admin.employees.edit', $employee->id) }}"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{ route('admin.employees.edit', $employee->id) }}"><i class="fa fa-edit mr-1"></i></a>
+                                                    <a type="button"  data-toggle="modal" data-target="#exampleModal">
+                                                    @if($employee->status == 1)
+                                                       <i class="fa fa-toggle-on" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Suspender Empleado"></i>
+                                                    @else
+                                                    <i class="fa fa-toggle-off" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Activar Empleado"></i>
+                                                    @endif
+                                                   </a>
+
                                                 </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    {{--MODAL--}}
+                                    @include('admin.employees.modalStatus')
                                 </div>
 
                                 <div class="mr-3">

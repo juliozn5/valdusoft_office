@@ -85,6 +85,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('edit/{employee}', 'EmployeesController@edit')->name('admin.employees.edit');
             Route::get('show/{slug}/{id}', 'EmployeesController@show')->name('admin.employees.show');
             Route::post('assign-projects', 'EmployeesController@assign_projects')->name('admin.employees.assign-projects');
+            Route::post('/accion-empleado', 'EmployeesController@accionEmpleado')->name('accion-empleado');
+
         });
 
         //MÓDULO DE HOSTINGS
