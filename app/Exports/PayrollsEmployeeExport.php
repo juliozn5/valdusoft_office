@@ -22,7 +22,7 @@ class PayrollsEmployeeExport implements FromView
         $payroll = Payrolls::find($this->payroll_id);
 
         $payroll_employees = PayrollEmployee::where('payroll_id', '=', $this->payroll_id)
-        ->with('user:id,name,last_name', 'bond', 'financing', 'financing_payment')
+        ->with('user:id,name,last_name,tron_wallet', 'bond', 'financing', 'financing_payment')
         ->get();
      
         return view('admin.payrolls.excelExport', [

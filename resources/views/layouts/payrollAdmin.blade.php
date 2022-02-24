@@ -99,7 +99,6 @@
                     <tr>
                         <th><b>#</b></th>
                         <th><b>Empleado</b></th>
-                        <th><b>Billetera USDT</b></th>
                         <th><b>Precio por Hora</b></th>
                         <th><b>Horas Trabajadas</b></th>
                         <th><b>Total Horas</b></th>
