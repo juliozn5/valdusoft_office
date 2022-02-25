@@ -251,10 +251,8 @@
                      <div class="card-header">
                         <h3 class="card-title mb-1">Empleados</h3>
                      </div>
-                     @if(empty($employees))
-                     {{$employees}}
-                     <h1>sin mepleados activos</h1>
-                     @endif
+                     @if(sizeof($employees) > 0)
+
                      <div class="card-content">
                         <div class="table-responsive">
                            <table class="table mb-0">
@@ -341,6 +339,17 @@
                            </div>
                         </div>
                      </div>
+                     @else
+                     <thead class="thead-light ">
+                        <div class="card-content">
+                           <div class="">
+                              <div class="table mb-0 " style=" text-align: center;">
+                                <p class=" mb-1 alert alert-danger  " style="display: inline-block; width: 30%; font-size: 19px;" ><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Sin Empleados activos</p>
+                              </div>
+
+                           </div>
+                        </div>
+                     @endif
                   </form>
                </div>
             </div>

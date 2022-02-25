@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+
+</style>
     @if (Session::has('msj-exitoso'))
         <script>
             $(document).ready(function(){
@@ -32,7 +35,7 @@
                                                 <th>APELLIDO</th>
                                                 <th>FECHA DE NACIMIENTO</th>
                                                 <th>FECHA DE INGRESO</th>
-                                                <th>Estado</th>
+                                                <th>ESTADO</th>
                                                 <th>ACCIÓN</th>
                                             </tr>
                                         </thead>
@@ -67,9 +70,9 @@
                                                 </td>
                                                 <td>
                                                     @if($employee->status == 1)
-                                                    <h6 class="btn btn-outline-success">Activo</h6>
+                                                    <h6 class="alert alert-success">Activo <i class="fa fa-check" aria-hidden="true"></i></h6>
                                                     @else
-                                                    <h6 class="btn btn-outline-danger">Suspendido</h6>
+                                                    <h6 class="alert alert-danger">Suspendido <i class="fa fa-times" aria-hidden="true"></i></h6>
                                                     @endif
                                                 </td>
                                                 <td>
