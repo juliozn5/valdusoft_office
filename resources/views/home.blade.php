@@ -6,6 +6,9 @@ class="vertical-layout vertical-menu-modern semi-dark-layout 1-column  navbar-fl
 @endpush
 
 @section('content')
+@if(Auth::user()->status == 0)
+@include('layouts.partials.navbarsupen')
+@endif
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -23,7 +26,11 @@ class="vertical-layout vertical-menu-modern semi-dark-layout 1-column  navbar-fl
                                 <img class="img-fluid center-block logo-center pl-2 pr-2" width="250px" height="230px"
                                     src="{{ asset('images/valdusoft/logo.png') }}" />
                             </div>
+                            @if(Auth::user()->status == 1)
                             <h3 class="font-weight-bold text-white text-center pr-2 pl-2 ">Bienvenido al Backoffice</h3>
+                            @else
+                            <h3 class="font-weight-bold text-white text-center pr-2 pl-2 ">Cuenta Suspendida</h3>
+                            @endif
                             <h3 class="pl-2 pr-2 pt-0 text-white text-center"><b class="text-info">{{ Auth::user()->name }}</b></h3>
                             <div class="card-content">
                                 <div class="card-body pt-1 row justify-content-center">
@@ -34,7 +41,11 @@ class="vertical-layout vertical-menu-modern semi-dark-layout 1-column  navbar-fl
                                     @elseif ( Auth::user()->profile_id == 2)
                                     <a href="{{ route('client.home') }}" class="btn btn-primary">Entrar al Backoffice</a>
                                     @elseif ( Auth::user()->profile_id == 3)
+                                    @if(Auth::user()->status == 1)
                                     <a href="{{ route('employee.home') }}" class="btn btn-primary">Entrar al Backoffice</a>
+                                    @else
+                                    <a href="#" class="btn btn-seccondary" disable>Entrar al Backoffice</a>
+                                    @endif
                                     @endif
                                 </div>
                             </div>

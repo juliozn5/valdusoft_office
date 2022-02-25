@@ -22,6 +22,7 @@ class EmployeesController extends Controller
      *** Perfil: Empleado ***/
     public function index()
     {
+        if(Auth::user()->status == 1){
         $user = Auth::user();
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($user->admission_date);
@@ -40,6 +41,9 @@ class EmployeesController extends Controller
         }
 
         return view('employee.home')->with(compact('project', 'payrolls', 'user', 'proyects_user', 'fechaUser', 'lastBill'));
+        }else{
+            return back()->with('msj-success', 'suspendido');
+        }
     }
 
     /** Listado de Empleados
@@ -226,7 +230,7 @@ class EmployeesController extends Controller
     }
     public function profile()
     {
-
+        if(Auth::user()->status == 1){
         $user = Auth::user();
         $fechaActual = Carbon::now();
         $fechaUser = new Carbon($user->admission_date);
@@ -274,21 +278,29 @@ class EmployeesController extends Controller
 
         return view('landing.profile.profile')
             ->with(compact('user', 'skillsActivos', 'project', 'availableSkills', 'itemColors', 'fechaUser', 'restante'));
+        }else{
+            return back()->with('msj-success', 'suspendido');
+        }
     }
 
     public function editPhone(Request $request)
     {
-
+        if(Auth::user()->status == 1){
         $user = Auth::user();
         $user->update($request->all());
         $user->phone = $request->phone;
         $user->save();
 
         return redirect()->back()->with('message', 'Se actualizo tu perfil');
+        }else{
+            return back()->with('msj-success', 'suspendido');
+
+        }
     }
 
     public function update_birthdate(Request $request)
     {
+        if(Auth::user()->status == 1){
 
         $user = Auth::user();
         $user->update($request->all());
@@ -296,11 +308,17 @@ class EmployeesController extends Controller
         $user->save();
 
         return redirect()->back()->with('message', 'Se actualizo tu perfil');
+        }else{
+            return back()->with('msj-success', 'suspendido');
+
+        }
     }
 
     /*actualizar los skills*/
     public function update_skills(Request $request)
     {
+        if(Auth::user()->status == 1){
+
         $user = User::find($request->user_id);/*buscar el usuario legeado*/
 
         DB::table('skills_users')
@@ -313,10 +331,15 @@ class EmployeesController extends Controller
         }
 
         return redirect()->back()->with('msj-exitoso', 'true');
+    }else{
+        return back()->with('msj-success', 'suspendido');
+
+    }
     }
 
     public function update_wallet(Request $request)
     {
+        if(Auth::user()->status == 1){
 
         // $user = User::find($request);
 
@@ -339,10 +362,16 @@ class EmployeesController extends Controller
 
 
         return redirect()->back()->with('message', 'Se actualizo tu perfil');
+        }else{
+            return back()->with('msj-success', 'suspendido');
+
+        }
     }
 
     public function upload_curriculum(Request $request)
     {
+        if(Auth::user()->status == 1){
+
 
         $user = User::find(Auth::user()->id);
 
@@ -359,6 +388,10 @@ class EmployeesController extends Controller
         $user->save();
 
         return redirect()->route('employee.profile')->with('message', 'Se actualizo tu perfil');
+    }else{
+        return back()->with('msj-success', 'suspendido');
+
+    }
     }
 
     public function accionEmpleado(Request $request){

@@ -86,9 +86,15 @@ class BillController extends Controller
 
                return view('client.bills')->with('bills', $bills);
           } else if (Auth::user()->profile_id == 3) {
+            if(Auth::user()->status == 1){
+
                $bills = Bill::where('user_id', '=', Auth::user()->id)->paginate(10);
 
                return view('employee.bills')->with('bills', $bills);
+            }else{
+                return back()->with('msj-success', 'suspendido');
+
+            }
           }
      }
 
@@ -210,7 +216,7 @@ class BillController extends Controller
           $bill = Bill::where('id', '=', $bill_id)
                     ->with('user:id,name,last_name,tron_wallet,phone,email', 'payroll_employee', 'payroll_employee.payroll', 'payroll_employee.financing', 'payroll_employee.financing_payment', 'payments', 'details')
                     ->first();
-          
+
           if ($bill->type == 'E'){
                $pdf = PDF::loadView('pdfs.payrollEmployeeBill', compact('bill'));
           }else{

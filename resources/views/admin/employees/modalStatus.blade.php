@@ -1,6 +1,6 @@
-                       
-                       
-                        <div class="modal fade bd-example-modal-sm" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+                        <div class="modal fade bd-example-modal-sm" id="exampleModal{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                         <form action="{{ route('accion-empleado') }}" method="POST">
                         @csrf
@@ -12,14 +12,14 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                
-                                    @if($employee->status == 1)
-                                    <h2 class="text-center">Seguro quieres supender a este empleado ? </h2>
+
+                                    @if($employee->status == '1')
+                                    <h2 class="text-center">Seguro quieres supender a {{$employee->name}} ? </h2>
                                     <input type="hidden" name="userid" value="{{$employee->id}}">
                                     @endif
 
-                                     @if($employee->status == 0)
-                                     <h2 class="text-center">Seguro quieres Activar a este empleado ? </h2>
+                                     @if($employee->status == '0')
+                                     <h2 class="text-center">Seguro quieres Activar a {{$employee->name}} ? </h2>
                                     <input type="hidden" name="userid" value="{{$employee->id}}">
                                      @endif
 
@@ -27,12 +27,12 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                                 <button type="submit" class="btn btn-primary">
-                                
-                                 @if($employee->status == 1)
+
+                                 @if($employee->status == '1')
                                 <input type="hidden" name="suspender" value="si">
                                  @endif
 
-                                 @if($employee->status == 0)
+                                 @if($employee->status == '0')
                                   <input type="hidden" name="activar" value="si">
                                  @endif
                                 Si

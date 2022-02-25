@@ -26,7 +26,7 @@
                $("#financing_finished_"+id).val(1);
                return ( (totalHours - parseFloat($("#financing_remaining_"+id).val())) + parseFloat($("#bond_amount_"+id).val()) );
             }
-            
+
          }
       }
 
@@ -34,7 +34,7 @@
          let id = $(this).attr("id").split("_");
 
          let total = calculateTotal(id[1]);
-         
+
          $("#total_"+id[1]).val(total);
          $("#data_total_"+id[1]).html(total +"$");
       });
@@ -52,9 +52,9 @@
          $("#bond_description_"+number).val($("#modal-description").val());
 
          let total = calculateTotal(number);
-   
+
          $("#total_"+number).val(total);
-         $("#data_total_"+number).html(total+"$");  
+         $("#data_total_"+number).html(total+"$");
 
          $("#modal-amount").val("");
          $("#modal-description").val("");
@@ -68,7 +68,7 @@
          $("#modal-amount2").val($("#bond_amount_"+$number).val());
          $("#modal-description2").val($("#bond_description_"+$number).val());
       }
-      
+
       $("#update_bond_form").submit(function(event){
          event.preventDefault();
 
@@ -77,9 +77,9 @@
          $("#bond_description_"+number).val($("#modal-description2").val());
 
          let total = calculateTotal(number);
-         
+
          $("#total_"+number).val(total);
-         $("#data_total_"+number).html(total+"$");    
+         $("#data_total_"+number).html(total+"$");
 
          $("#modal-amount2").val("");
          $("#modal-description2").val("");
@@ -95,7 +95,7 @@
          let total = calculateTotal(number);
 
          $("#total_"+number).val(total);
-         $("#data_total_"+number).html(total+"$");  
+         $("#data_total_"+number).html(total+"$");
 
          $("#modal-amount2").val("");
          $("#modal-description2").val("");
@@ -247,10 +247,14 @@
                            <input type="date" class="form-control" name="dead_line" required>
                         </div>
                      </div>
-                     
+
                      <div class="card-header">
                         <h3 class="card-title mb-1">Empleados</h3>
                      </div>
+                     @if(empty($employees))
+                     {{$employees}}
+                     <h1>sin mepleados activos</h1>
+                     @endif
                      <div class="card-content">
                         <div class="table-responsive">
                            <table class="table mb-0">
@@ -272,8 +276,8 @@
                                     <input type="hidden" name="employee_id_{{ $cont }}" id="employee_id_{{ $cont }}" value="{{ $employee->id }}">
                                     <tr>
                                        <td scope="row">{{ $employee->name }} {{ $employee->last_name }}</td>
-                                       <td>   
-                                          <input type="text" name="hours_{{ $cont }}" id="hours_{{ $cont }}" class="col-7 form-control hours">  
+                                       <td>
+                                          <input type="text" name="hours_{{ $cont }}" id="hours_{{ $cont }}" class="col-7 form-control hours">
                                        </td>
                                        <td class="text-center">
                                           <input type="hidden" name="price_per_hour_{{ $cont }}" id="price_per_hour_{{ $cont }}" value="{{$employee->price_per_hour}}$">
@@ -291,14 +295,14 @@
                                           <input type="hidden" name="bond_{{ $cont }}" id="bond_{{ $cont }}" value="0">
                                           <input type="hidden" name="bond_amount_{{ $cont }}" id="bond_amount_{{ $cont }}" value="0">
                                           <input type="hidden" name="bond_description_{{ $cont }}" id="bond_description_{{ $cont }}">
-                                          
+
                                           <a href="#addBondModal" data-toggle="modal" onclick="addBond({{ $cont }});" id="addBondLink-{{ $cont }}" title="Agregar Bono">
                                              <img class="rounded-circle" src="{{ asset('images/svg/plus-circle.svg')}}" alt="Agregar Bono" height="40" width="40">
                                           </a>
                                           <a class="hidden" href="#showBondModal" data-toggle="modal" onclick="showBond({{ $cont }});" id="showBondLink-{{ $cont }}" title="Ver Bono">
                                              <img class="rounded-circle" src="{{ asset('images/svg/info-circle.svg')}}" alt="Ver Bono" height="40" width="40">
                                           </a>
-                                       </td>    
+                                       </td>
                                        <td class="text-center">
                                           @if ($employee->financings->count() > 0)
                                              <input type="hidden" id="financing_id_{{ $cont }}" value="{{ $employee->financings[0]->id }}">
@@ -319,7 +323,7 @@
                                              <input type="hidden" name="financing_amount_{{ $cont }}" id="financing_amount_{{ $cont }}" value="0">
                                              <input type="hidden" name="financing_description_{{ $cont }}" id="financing_description_{{ $cont }}">
                                              <input type="hidden" name="financing_percentage_{{ $cont }}" id="financing_percentage_{{ $cont }}">
-                                             
+
                                              <a href="#addFinancingModal" data-toggle="modal" onclick="addFinancing({{ $cont }});" id="addFinancingLink-{{ $cont }}" title="Agregar Préstamo">
                                                 <img class="rounded-circle" src="{{ asset('images/svg/plus-circle.svg')}}" alt="Agregar Préstamo" height="40" width="40">
                                              </a>
@@ -334,7 +338,7 @@
                            </table>
                            <div class="bottom float-right p-2">
                               <button type="submit" class="btn  btn-primary ">GENERAR</button>
-                           </div> 
+                           </div>
                         </div>
                      </div>
                   </form>
@@ -344,16 +348,16 @@
       </div>
    </div>
 
-   {{--   MODAL PARA AGREGAR BONO  --}} 
+   {{--   MODAL PARA AGREGAR BONO  --}}
    <div class="modal fade" id="addBondModal" aria-hidden="true" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Generar Bono </strong></h5>
                <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
-            </div>  
+            </div>
             <form id="add_bond_form">
-               <div class="modal-body"> 
+               <div class="modal-body">
                   <input type="hidden" id="modal-user-number">
                   <p>Monto</p>
                   <input type="text" class=" form-control" id="modal-amount" required>
@@ -369,16 +373,16 @@
       </div>
    </div>
 
-   {{--   MODAL PARA VER BONO  --}} 
+   {{--   MODAL PARA VER BONO  --}}
    <div class="modal fade" id="showBondModal" aria-hidden="true" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title" id="exampleModalToggleLabel"><strong>Detalles del Bono </strong></h5>
                <button class="close" style="margin-right:10px; margin-top:1px;" data-dismiss="modal">&times;</button>
-            </div>  
+            </div>
             <form id="update_bond_form">
-               <div class="modal-body"> 
+               <div class="modal-body">
                   <input type="hidden" id="modal-user-number2">
                   <p>Monto</p>
                   <input type="text" class=" form-control" id="modal-amount2" required>
@@ -395,7 +399,7 @@
       </div>
    </div>
 
-   {{--   MODAL PARA AGREGAR PRESTAMO  --}} 
+   {{--   MODAL PARA AGREGAR PRESTAMO  --}}
    <div class="modal fade" id="addFinancingModal" aria-hidden="true" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
@@ -423,7 +427,7 @@
       </div>
    </div>
 
-   {{--   MODAL PARA VER PRESTAMO  --}} 
+   {{--   MODAL PARA VER PRESTAMO  --}}
    <div class="modal fade" id="showFinancingModal" aria-hidden="true" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">

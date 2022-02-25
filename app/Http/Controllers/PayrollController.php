@@ -26,8 +26,9 @@ class PayrollController extends Controller
         }
     }
 
-    public function create(){ 
+    public function create(){
         $employees = User::where('profile_id', '=',3)
+                        ->where('status','1')
                         ->where('price_per_hour', '<>', NULL)
                         ->with(['financings' => function($query){
                             $query->where('status', '=', '0');
@@ -43,11 +44,11 @@ class PayrollController extends Controller
                 }
 
                 $employee->financings[0]->remaining = $employee->financings[0]->total_amount - $acum;
-                
+
             }
         }
-        
-        return view('admin.payrolls.create')->with(compact('employees'));                             
+
+        return view('admin.payrolls.create')->with(compact('employees'));
     }
 
     public function store(Request $request){
@@ -70,7 +71,7 @@ class PayrollController extends Controller
             $inputFinancingPercentage = 'financing_percentage_'.$i;
             $inputFinancingFee = 'financing_fee_'.$i;
             $inputFinancingFinished = 'financing_finished_'.$i;
-            
+
             if ( (!is_null($request->$inputPriceByHour)) && (!is_null($request->$inputTotalHours)) ){
                 $payrollEmployee = new PayrollEmployee();
                 $payrollEmployee->payroll_id = $payroll->id;
@@ -93,7 +94,7 @@ class PayrollController extends Controller
                                         ->with('payments')
                                         ->where('status', '=', '0')
                                         ->first();
-                
+
                 if (!is_null($checkFinancing)){
                     $payment = new FinancingPayment();
                     $payment->financing_id = $checkFinancing->id;
@@ -110,7 +111,7 @@ class PayrollController extends Controller
                     }else{
                         $payment->remaining_financing = $checkFinancing->total_amount - $request->$inputFinancingFee - $checkFinancing->payments->sum('amount');
                     }
-                    
+
                     $payment->save();
                 }else{
                     if ($request->$inputFinancing == 1){
@@ -140,24 +141,24 @@ class PayrollController extends Controller
                         ->with('payrolls_employee', 'payrolls_employee.user', 'payrolls_employee.bond', 'payrolls_employee.financing', 'payrolls_employee.financing_payment')
                         ->first();
 
-        return view('admin.payrolls.show', compact('payroll'));                             
+        return view('admin.payrolls.show', compact('payroll'));
     }
 
     public function edit($id){
         $payroll = Payrolls::where('id', '=', $id)
                         ->with('payrolls_employee', 'payrolls_employee.bond')
                         ->first();
-        
+
         foreach ($payroll->payrolls_employee as $payroll_employee) {
             $financings = DB::table('financing')
                             ->where('user_id', '=', $payroll_employee->user_id)
                             ->where('status', '=', '0')
                             ->first();
-            
+
             $payroll_employee->financings = $financings;
         }
 
-        return view('admin.payrolls.edit', compact('payroll'));                             
+        return view('admin.payrolls.edit', compact('payroll'));
     }
 
     public function update(Request $request){
@@ -174,7 +175,7 @@ class PayrollController extends Controller
             $inputFinancingAmount = 'financing_amount_'.$i;
             $inputFinancingDescription = 'financing_description_'.$i;
             $inputFinancingPercentage = 'financing_percentage_'.$i;
-            
+
             $payrollEmployee = PayrollEmployee::find($request->$inputPayrollEmployeeId);
             $payrollEmployee->total_hours = $request->$inputTotalHours;
             $payrollEmployee->total_amount = $request->$inputTotalAmount;
@@ -201,7 +202,7 @@ class PayrollController extends Controller
                     $bond->save();
                 }
             }
-                
+
             if ( ($request->$inputFinancingId == 0) && ($request->$inputFinancing == 1) ){
                 $financing = new Financing();
                 $financing->user_id = $payrollEmployee->user_id;
@@ -258,7 +259,7 @@ class PayrollController extends Controller
         $payroll_employees = PayrollEmployee::where('payroll_id', '=', $payroll_id)
         ->with('user:id,name,last_name,tron_wallet', 'bond', 'financing', 'financing_payment')
         ->get();
-      
+
         if($payroll != null ){
             $nombre = $payroll->created_at->format('Y-m-d');
         }else{

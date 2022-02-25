@@ -36,9 +36,14 @@ class ProjectsController extends Controller
                 ->with('projects', $projects);
 
         } else if (Auth::user()->profile_id == 3) {
+            if(Auth::user()->status == 1){
+
             $projects =Auth::user()->projects;
 
             return view('employee.projects')->with('projects', $projects);
+        }else{
+            return back()->with('msj-success', 'suspendido');
+        }
         }
     }
 
@@ -153,9 +158,9 @@ class ProjectsController extends Controller
             $budget['cost'] = 0;
             $budget['assigned'] = 0;
             $budget['benefit'] = 0;
-            
-            
-            
+
+
+
             foreach ($project->accounting_transactions as $transaction) {
                 if ($transaction->status == 1) {
                     $budget['cost'] += $transaction->amount;
@@ -201,7 +206,7 @@ class ProjectsController extends Controller
                     'tipo' => "ingreso"
                 ]);
             }
-            
+
             return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget', 'ingresos', 'contable'));
         } else if (Auth::user()->profile_id == 2) {
 
@@ -215,7 +220,7 @@ class ProjectsController extends Controller
             $project = Project::with('user:id,name,last_name', 'employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
                 ->where('id', '=', $id)
                 ->first();
-            
+
              foreach ($project->attachments as $attachment) {
                 $attachment->date = date('d', strtotime($attachment->created_at)) . ' de ' . $this->getMonthName(date('m', strtotime($attachment->created_at))) . ' de ' . date('Y', strtotime($attachment->created_at));
                 $attachment->time = date('H:i', strtotime($attachment->created_at));
@@ -230,7 +235,7 @@ class ProjectsController extends Controller
     /** Guardar datos modificados del Proyecto
      *** Perfil: Admin ***/
     public function update(Request $request, $id)
-    {   
+    {
         $project = Project::find($id);
         $project->fill($request->all());
 

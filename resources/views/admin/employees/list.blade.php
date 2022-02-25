@@ -26,23 +26,24 @@
                                 <div class="table-responsive">
                                     <table class="table mb-0">
                                         <thead class="thead-light">
-                                            <tr>
+                                            <tr class="text-center">
                                                 <th>FOTO</th>
                                                 <th>NOMBRE</th>
                                                 <th>APELLIDO</th>
                                                 <th>FECHA DE NACIMIENTO</th>
                                                 <th>FECHA DE INGRESO</th>
+                                                <th>Estado</th>
                                                 <th>ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($employees as $employee)
-                                            <tr>
+                                            @foreach ($employees as $key => $employee)
+                                            <tr class="text-center">
                                                 <td>
                                                     @if (isset($employee->photo))
                                                     <img class="rounded-circle"
                                                     style="object-fit: cover;" width="70px" height="70px"
-                                                    
+
                                                     src="{{ asset('storage/photo-profile/'.$employee->photo) }}">
                                                     @else
                                                     <i class="rounded-circle feather icon-user" style="font-size: 70px;"></i>
@@ -65,10 +66,17 @@
                                                     @endif
                                                 </td>
                                                 <td>
+                                                    @if($employee->status == 1)
+                                                    <h6 class="btn btn-outline-success">Activo</h6>
+                                                    @else
+                                                    <h6 class="btn btn-outline-danger">Suspendido</h6>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     <a href="{{ route('admin.employees.show', [$employee->slug, $employee->id]) }}"><i class="fa fa-eye mr-1"></i></a>
                                                     <a href="{{ route('admin.employees.edit', $employee->id) }}"><i class="fa fa-edit mr-1"></i></a>
-                                                    <a type="button"  data-toggle="modal" data-target="#exampleModal">
-                                                    @if($employee->status == 1)
+                                                    <a type="button"  data-toggle="modal" data-target="#exampleModal{{$key}}">
+                                                    @if($employee->status == '1')
                                                        <i class="fa fa-toggle-on" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Suspender Empleado"></i>
                                                     @else
                                                     <i class="fa fa-toggle-off" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Activar Empleado"></i>
@@ -76,12 +84,14 @@
                                                    </a>
 
                                                 </td>
+                                                @include('admin.employees.modalStatus')
                                             </tr>
+
                                             @endforeach
                                         </tbody>
                                     </table>
                                     {{--MODAL--}}
-                                    @include('admin.employees.modalStatus')
+
                                 </div>
 
                                 <div class="mr-3">
