@@ -172,6 +172,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Presupuesto</th>
+                                        <th>Abonado</th>
                                         <th>Ingreso</th>
                                         <th>Beneficio</th>
                                         <th>Asignado</th>
@@ -179,8 +180,13 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>{{ number_format($project->amount, 0, ',', '.') }}$</td>
+                                        <td>
+                                        <span>
+                                            {{$abonado}}$
+                                        </span>
+                                        </td>
                                         <td>{{ number_format($ingresos, 0, ',', '.') }}$</td>
                                         <td>{{ number_format($budget['benefit'], 0, ',', '.') }}$</td>
                                         <td>{{ number_format($budget['assigned'], 0, ',', '.') }}$</td>
@@ -247,10 +253,10 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <div class="col-5 mr-1">
                                     @isset($employee->photo)
                                         <img class="rounded-circle" src="{{ asset('storage/photo-profile/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
-                                 
+
                                     @else
                                         <i id="fat-user" class="rounded-circle feather icon-user" style="font-size: 50px;"></i>
-                                
+
                                     @endisset
                                 </div>
                                 @endforeach
@@ -430,7 +436,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                     <td style="font-weight:normal;font-size:15px;">{{$bill->amount}}</td>
                                                     <td style="font-weight:normal;font-size:15px;">{{$bill->date}}</td>
                                                     <td>
-                                                        @if($bill->status == 0) 
+                                                        @if($bill->status == 0)
                                                             <label class="label status-label status-label-purple">Pendiente</label>
                                                         @elseif ($bill->status == 1)
                                                             <label class="label status-label status-label-green">Pagada</label>
@@ -460,7 +466,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                             </tr>
                                         </thead>
                                         <tbody>
-                                
+
                                             @if (count($contable) > 0)
                                             @foreach ($contable->sortByDesc('created_at') as $transaction)
                                             <tr>
@@ -476,7 +482,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                 </td>
                                                 <td>
                                                     <span class="@if($transaction['tipo'] == 'egreso') text-danger @else  text-success @endif">
-                                                    
+
                                                          {{ number_format($transaction['amount'], 2, ',', '.') }}
                                                     </span>
                                                 </td>
@@ -504,7 +510,7 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                         Egreso
                                                     </button>
                                                     {{-- <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end">
-                                                            <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a> 
+                                                            <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('+');">Ingreso</a>
                                                             <a class="dropdown-item" href="javascript:;" onclick="changeTransactionType('-');">Egreso</a>
                                                         </div>--}}
                                                 </div>

@@ -100,7 +100,7 @@
                                         <div>
                                             <div class="logo-wrapper">
                                                 <img src="https://clients.valdusoft.com/images/valdusoft/logo-bill.jpg" alt="" width="120" height="70">
-                                            </div>		
+                                            </div>
                                             <p class="card-text mb-25">San Cristobal - Tachira</p>
                                             <p class="card-text mb-25"><a href="https://valdusoft.com" target="_blank" style="color: #170c66;"><u>Valdusoft.com</u></a></p>
                                             <p class="card-text mb-25"><a href="mailto:financiero@valdusoft.com" target="_blank">financiero@valdusoft.com</a></p>
@@ -245,7 +245,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                
+
                                 <div class="card-body invoice-padding pt-1 pb-1">
                                     <div class="row invoice-sales-total-wrapper">
                                         <div class="col-md-12 d-flex justify-content-end order-md-2 order-1">
@@ -285,11 +285,11 @@
                                                             @endif
                                                             <td class="py-1">
                                                                 @if ($payment->status == 0)
-                                                                    <span style="color: blue;">Pendiente</span>
+                                                                    <span class="alert alert-info">Pendiente</span>
                                                                 @elseif ($payment->status == 1)
-                                                                    <span style="color: green;">Aprobado</span>
+                                                                    <span class="alert alert-success">Aprobado</span>
                                                                 @else
-                                                                    <span style="color: red;">Rechazado</span>
+                                                                    <span class="alert alert-danger" >Rechazado</span>
                                                                 @endif
                                                             </td>
                                                             <td class="py-1 text-center"><span class="font-weight-bold">
@@ -314,7 +314,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endif   
+                                @endif
                             </div>
                         </div>
 
@@ -360,7 +360,7 @@
                 <form method="POST" action="{{ route('admin.bills.send') }}">
                     @csrf
                     <input type="hidden" name="bill_id" value="{{ $bill->id }}">
-                    <div class="modal-body"> 
+                    <div class="modal-body">
                         <div class="form-group">
                             <label for="email" class="form-label">Correo Electrónico</label>
                             <input type="email" class="form-control" id="email" name="email" value="{{ $bill->user->email }}" required/>
@@ -408,7 +408,7 @@
                         <input type="hidden" name="payment_method" value="Crypto">
                         <input type="hidden" name="account" value="{{ $bill->user->tron_wallet }}">
                         <input type="hidden" name="amount" value="{{ $bill->amount }}">
-                        
+
                         <div class="modal-body flex-grow-1">
                             <div class="form-group">
                                 <label class="form-label" for="payment_id">Hash del Pago</label>
@@ -467,7 +467,7 @@
                         </div>
                     @endif
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>  
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">@if ($bill->type == 'E') Cargar Hash @else Cargar Pago @endif</button>
                     </div>
                 </form>

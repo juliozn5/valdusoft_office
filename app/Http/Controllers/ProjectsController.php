@@ -203,11 +203,19 @@ class ProjectsController extends Controller
                     'amount' => $ing->amount,
                     'created_at' => $ing->created_at,
                     'status' => $ing->status,
-                    'tipo' => "ingreso"
+                    'tipo' => "ingreso",
+                    ''
                 ]);
             }
+            $bill2 = Bill::where('project_id', '=', $id)->first();
 
-            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget', 'ingresos', 'contable'));
+
+            if(isset($bill2->amount)){
+                $abonado = $bill2->amount;
+            }else{
+                $abonado = 0;
+            }
+            return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies','abonado', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget', 'ingresos', 'contable'));
         } else if (Auth::user()->profile_id == 2) {
 
             $project = Project::with('employees', 'technologies', 'tags', 'attachments', 'accounting_transactions')
