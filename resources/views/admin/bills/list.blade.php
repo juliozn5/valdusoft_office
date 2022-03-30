@@ -119,7 +119,7 @@
             });
         </script>
     @endif
-    
+
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -243,8 +243,8 @@
                                         <tbody class="text-center">
                                             @foreach ($client_bills as $client)
                                                 <tr>
-                                                    <td scope="row"> 
-                                                        <a target="_blank" href="{{route('admin.bills.show', $client->id)}}">#{{ $client->id }}</a> 
+                                                    <td scope="row">
+                                                        <a target="_blank" href="{{route('admin.bills.show', $client->id)}}">#{{ $client->id }}</a>
                                                     </td>
                                                     <td>
                                                         {{ $client->user->name }} {{ $client->user->last_name }}
@@ -412,7 +412,7 @@
                             <tfoot>
                                 <tr style="font-weight: bold; font-size: 14px;">
                                     <td style="border-top: none !important;">
-                                        
+
                                     </td>
                                     <td colspan="2" class="text-right">
                                         TOTAL PARCIAL

@@ -126,19 +126,27 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
-            <div class="content-header-left col-md-9 col-12 mb-2">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">Proyectos</div>
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('admin.projects.list') }}">Proyectos</a></li>
-                                <li class="breadcrumb-item">Detalle del Proyecto</li>
-                            </ol>
+           <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    @push('breadcrumbs')
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="content-header-title float-left" style="padding: 0.5rem 0 0.5rem 1rem !important">
+                                    Detalles del Proyecto
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="breadcrumb-wrapper">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('admin.projects.list') }}">Proyectos</a></li>
+                                        <li class="breadcrumb-item">Detalle del Proyecto</li>
+                                    </ol>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    @endpush
                 </div>
             </div>
         </div>
@@ -172,7 +180,6 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Presupuesto</th>
-                                        <th>Abonado</th>
                                         <th>Ingreso</th>
                                         <th>Beneficio</th>
                                         <th>Asignado</th>
@@ -182,11 +189,6 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                 <tbody>
                                     <tr class="text-center">
                                         <td>{{ number_format($project->amount, 0, ',', '.') }}$</td>
-                                        <td>
-                                        <span>
-                                            {{$abonado}}$
-                                        </span>
-                                        </td>
                                         <td>{{ number_format($ingresos, 0, ',', '.') }}$</td>
                                         <td>{{ number_format($budget['benefit'], 0, ',', '.') }}$</td>
                                         <td>{{ number_format($budget['assigned'], 0, ',', '.') }}$</td>
@@ -245,27 +247,29 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                             </div>
 
                             {{-- Sección de Miembros--}}
-                            <div class="row mt-2">
-                                <div class="col-12 pb-1">
-                                    <div class="project-detail-titles">Miembros</div>
-                                </div>
-                                @foreach ($project->employees as $employee)
-                                <div class="col-5 mr-1">
-                                    @isset($employee->photo)
-                                        <img class="rounded-circle" src="{{ asset('storage/photo-profile/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
 
-                                    @else
-                                        <i id="fat-user" class="rounded-circle feather icon-user" style="font-size: 50px;"></i>
+                            <div class="project-detail-titles mt-1 mb-1">Miembros</div>
+                                <div class="row">
 
-                                    @endisset
+
+                                    @foreach ($project->employees as $employee)
+
+                                    <div class="col-3  mb-1">
+                                         @isset($employee->photo)
+                                            <img class="rounded-circle" src="{{ asset('storage/photo-profile/'.$employee->photo) }}" alt="{{ $employee->name }} {{ $employee->last_name }}" height="50" width="50">
+                                        @else
+                                            <i id="fat-user" class="rounded-circle feather icon-user" style="font-size: 50px;"></i>
+                                        @endisset
+                                    </div>
+                                    @endforeach
+                                    <div class="col">
+                                        <a href="#availableEmployees" data-toggle="modal">
+                                            <i class="fa fa-plus-circle secondary" style="font-size: 50px;" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                @endforeach
-                                <div class="col-1">
-                                    <a href="#availableEmployees" data-toggle="modal">
-                                        <img class="rounded-circle" src="{{ asset('images/icons/plus-circle.png') }}" alt="Agregar Miembro" height="40" width="40">
-                                    </a>
-                                </div>
-                            </div>
+
+
 
                             {{-- Sección de Fechas --}}
                             <div class="row mt-2">
@@ -424,8 +428,8 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                         <thead class="thead-light ">
                                             <tr class="text-center">
                                                 <th>ID</th>
-                                                <th>MONTO</th>
                                                 <th>FECHA</th>
+                                                <th  class="text-right">MONTO</th>
                                                 <th>ESTADO</th>
                                             </tr>
                                         </thead>
@@ -433,15 +437,15 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                             @foreach($project->bills as $bill)
                                                 <tr class="text-center ">
                                                     <td><a href="{{route('admin.bills.show', $bill->id)}}" target="_blank">{{$bill->id}}</a></td>
-                                                    <td style="font-weight:normal;font-size:15px;">{{$bill->amount}}</td>
                                                     <td style="font-weight:normal;font-size:15px;">{{$bill->date}}</td>
+                                                    <td  class="text-right"  style="font-weight:normal;font-size:15px;"> {{ number_format($bill->amount, 2, ',', '.') }}$</td>
                                                     <td>
                                                         @if($bill->status == 0)
-                                                            <label class="label status-label status-label-purple">Pendiente</label>
+                                                            <label class="alert alert-dark">Pendiente</label>
                                                         @elseif ($bill->status == 1)
-                                                            <label class="label status-label status-label-green">Pagada</label>
+                                                            <label  class="alert alert-success">Pagada</label>
                                                         @else
-                                                            <label class="label status-label status-label-blue">Parcialmente Pagada</label>
+                                                            <label class="alert alert-info">Parcialmente Pagada</label>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -459,19 +463,19 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                     <table class="table mb-0">
                                         <thead class="thead-light">
                                             <tr class="">
-                                                <th>FECHA</th>
-                                                <th>ESTADO</th>
-                                                <th>MONTO</th>
+                                                <th class="text-center">FECHA</th>
+                                                <th class="text-center">ESTADO</th>
+                                                <th class="text-right">MONTO</th>
                                                 <th>ACCIÓN</th>
-                                            </tr>
+                                            </tr> {{ number_format($bill->amount, 0, ',', '.') }}
                                         </thead>
                                         <tbody>
 
                                             @if (count($contable) > 0)
                                             @foreach ($contable->sortByDesc('created_at') as $transaction)
                                             <tr>
-                                                <td>{{ date('d-m-Y', strtotime($transaction['created_at'])) }}</td>
-                                                <td>
+                                                <td class="text-center">{{ date('d-m-Y', strtotime($transaction['created_at'])) }}</td>
+                                                <td class="text-center">
                                                     @if ($transaction['status'] == 0)
                                                     <span class="transaction-status">Pendiente</span>
                                                     @elseif ($transaction['status'] == 1)
@@ -480,13 +484,16 @@ class="vertical-layout vertical-menu-modern content-left-sidebar chat-applicatio
                                                     <span class="transaction-status">Cancelada</span>
                                                     @endif
                                                 </td>
-                                                <td>
+                                                <td class="text-right">
                                                     <span class="@if($transaction['tipo'] == 'egreso') text-danger @else  text-success @endif">
-
-                                                         {{ number_format($transaction['amount'], 2, ',', '.') }}
+                                                        @if($transaction['tipo'] == 'egreso')
+                                                        <strong>- </strong>{{ number_format($transaction['amount'], 2, ',', '.') }}
+                                                         @else
+                                                         <strong>+ </strong>{{ number_format($transaction['amount'], 2, ',', '.') }}
+                                                         @endif
                                                     </span>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <a href="#editTransaction" data-toggle="modal" onclick="editTransaction({{json_encode($transaction, TRUE)}})"><i class="fa fa-edit mr-1 action-icon"></i></a>
                                                 </td>
                                             </tr>

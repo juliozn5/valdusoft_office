@@ -26,13 +26,8 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title mb-1">Proyectos</h3>
-                            <div class="col-sm d-flex justify-content-end">
-                                <a href="{{ route('admin.projects.create') }}" class="btn btn-primary mb-2 waves-effect waves-light mr-1"> Agregar nuevo proyecto</a>
-                                <a href="{{ route('admin.projects.completados') }}" class="btn btn-success mb-2 waves-effect waves-light"> Proyectos Completados</a>
-
-                              </div>
-
+                            <h3 class="card-title mb-1 ">Proyectos completados</h3>
+                            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary mb-2 waves-effect waves-light"> Agregar nuevo proyecto</a>
 
                         </div>
 
@@ -91,6 +86,13 @@
                                 {{ $projects->links() }}
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <a href="{{ route('admin.projects.list') }}" >
+                            <i class="fa fa-chevron-circle-left"  style="font-size: 50px;" aria-hidden="true">
+
+                            </i>
+                        </a>
                     </div>
                 </div>
             </div>

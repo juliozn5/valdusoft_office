@@ -1,13 +1,62 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+
+    .sinBorde{
+        border: none !important;
+        width: 4.8rem;
+        outline: none;
+        height: 2.5rem;
+        transition: 0.3s;
+        transition:  0.7s;
+
+
+    }
+    .sinBorde:hover{
+        background-color:#28c76f41;
+        border-radius: 15px;
+        width: 7rem;
+    }
+    .sinBorde:focus{
+        background-color: #28c76f41;
+        border-radius: 15px;
+        width: 7rem;
+
+    }
+    .sinBorde::placeholder{
+        color: black;
+        font-weight: bold;
+
+    }
+    .sinBorde:focus::placeholder{
+        color:  #28c76f;
+        font-weight: bold;
+    }
+    .sinBorde:hover::placeholder{
+        color:  #28c76f;
+        font-weight: bold;
+    }
+
+
+</style>
 @if (Session::has('msj-exitoso'))
 <script>
+
+
     $(document).ready(function() {
         toastr.success('El proyecto ha sido asignado con éxito.', 'Operación Completada')
     });
+
+
 </script>
 @endif
+@push('custom_js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+@endpush
+
 
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -126,14 +175,21 @@
                         <div class="row mt-3 pl-2 pr-2">
                             <div class="col-3">
                                 <div class="project-detail-titles">Precio por hora</div>
-                                <div class="mt-1 project-detail-dates">
-                                    <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($employee->price_per_hour)) ? 'Dato no disponible' : $employee->price_per_hour.' USD' }}
+                                <div class="mt-1 project-detail-dates btnCustom">
+
+                                    <i class="text-center fa fa-usd alert alert-success rounded-circle border"  aria-hidden="true" style="width: 2.65rem;"></i>
+                                    <input type="hidden" name="empleadoID" id="empleadoID" value="{{$employee->id}}">
+
+
+                                        <input type="number" name="monto" id="monto" class="text-center sinBorde" placeholder="{{ (is_null($employee->price_per_hour)) ? 'Dato no disponible' : $employee->price_per_hour.' USD' }}" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <span class="b" onclick="aumento();" id="basic-addon2"><i class="fa fa-check alert alert-success rounded-circle b" aria-hidden="true"></i></span>
+
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="project-detail-titles">Financiamiento</div>
-                                <div class="mt-1 project-detail-dates">
-                                    <img src="{{ asset('images/icons/dollar.png') }}" class="mr-1"> {{ (is_null($restante)) ? 'Dato no disponible' : $restante.' USD' }}
+                                <div class="mt-1 project-detail-dates ">
+                                    <i class="text-center fa fa-usd alert alert-success rounded-circle border"  aria-hidden="true" style="width: 2.65rem;"></i> <strong> {{ (is_null($restante)) ? 'Dato no disponible' : $restante.' USD' }}</strong>
                                 </div>
                             </div>
                             <div class="col-5">
@@ -233,4 +289,43 @@
         </div>
     </div>
 </div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function aumento(monto){
+         var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+            axios.post('{{route("accion-aumento")}}',
+              {
+
+                empleadoID:document.getElementById('empleadoID').value,
+                monto:document.getElementById('monto').value
+
+              }).then(function (response) {
+
+              if(response.data.valores.monto > 0){
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Valor por Hora Actualizado',
+                showConfirmButton: false,
+                timer: 1500
+                })
+              }else{
+                Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Monto no valido',
+                showConfirmButton: false,
+                timer: 1500
+                })
+              }
+
+              }).catch(function (error) {
+                  console.log(error);
+              });
+              //console.log(response.data.valores);
+
+        }
+</script>
 @endsection

@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
         //MÓDULO DE PROYECTOS
         Route::group(['prefix' => 'projects'], function () {
             Route::get('/', 'ProjectsController@list')->name('admin.projects.list');
+            Route::get('/completados', 'ProjectsController@listCompletados')->name('admin.projects.completados');
             Route::get('create', 'ProjectsController@create')->name('admin.projects.create');
             Route::get('show/{slug}/{id}', 'ProjectsController@show')->name('admin.projects.show');
             Route::post('store', 'ProjectsController@store')->name('admin.projects.store');
@@ -86,6 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('show/{slug}/{id}', 'EmployeesController@show')->name('admin.employees.show');
             Route::post('assign-projects', 'EmployeesController@assign_projects')->name('admin.employees.assign-projects');
             Route::post('/accion-empleado', 'EmployeesController@accionEmpleado')->name('accion-empleado');
+            Route::post('/accion-price-hours', 'EmployeesController@precioPorHora')->name('accion-aumento');
         });
 
         //MÓDULO DE HOSTINGS

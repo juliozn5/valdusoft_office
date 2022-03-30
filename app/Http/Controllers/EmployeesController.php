@@ -50,10 +50,12 @@ class EmployeesController extends Controller
      *** Perfil: Admin ***/
     public function list()
     {
-        $employees = User::where('profile_id', '=', 3)->paginate(10);
+        $employees = User::where('profile_id', '=', 3)->where('status', '=', '1')->paginate(10);
+        $employeesSuspendidos = User::where('profile_id', '=', 3)->where('status', '=', '0')->paginate(10);
 
         return view('admin.employees.list')
-            ->with('employees', $employees);
+            ->with('employees', $employees)
+            ->with('employeesSuspendidos', $employeesSuspendidos);
     }
 
 
@@ -412,5 +414,22 @@ class EmployeesController extends Controller
              return back()->with('msj-success', 'suspendido');
 
         }
+    }
+
+    public function precioPorHora(Request $request){
+
+        $data = [
+            'ID' => $request->empleadoID,
+            'monto'=> $request->monto,
+        ];
+        $id =$request->empleadoID;
+        $price_hour = floatval($request->monto);
+        if($price_hour > 0 ){
+            $user = User::where('id',$id)->update(['price_per_hour'=> $price_hour]);
+            return response()->json(['valores' => $data]);
+        }else{
+            return response()->json(['valores' => $data]);
+        }
+
     }
 }

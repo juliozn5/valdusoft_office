@@ -22,7 +22,7 @@
 
 <li class=" nav-item ">
     <a class="elementoPadre row " href="{{ route('admin.employees.list') }}"><i class=" col-2 fa fa-user" aria-hidden="true"></i>
-        <span class="menu-title col-sm-2 mt-1">Empleados</span> </a>
+        <span class="menu-title col-sm-2 mt-1 menuSidebar">Empleados</span> </a>
 </li>
 
 <li class=" nav-item ">

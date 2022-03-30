@@ -22,6 +22,7 @@ class AdminController extends Controller
     public function index(){
 
         $user = User::where('profile_id', '=', 3)
+                    ->where('status','1')
                     ->orderBy('favorite', 'DESC')
                     ->get();
 

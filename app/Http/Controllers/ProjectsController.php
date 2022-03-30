@@ -11,6 +11,8 @@ use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AccountingTransaction;
 use App\Models\Bill;
+use App\Models\Payments;
+use Faker\Provider\ar_SA\Payment;
 
 class ProjectsController extends Controller
 {
@@ -19,7 +21,7 @@ class ProjectsController extends Controller
     public function list()
     {
         if (Auth::user()->profile_id == 1) {
-            $projects = Project::where('status', '<>', '4')
+            $projects = Project::where('status', '<',  ['3'])
                 ->orderBy('id', 'DESC')
                 ->paginate(10);
 
@@ -44,6 +46,17 @@ class ProjectsController extends Controller
         }else{
             return back()->with('msj-success', 'suspendido');
         }
+        }
+    }
+    public function listCompletados(){
+        if (Auth::user()->profile_id == 1) {
+            $projects = Project::where('status', '=',  '3')
+                ->orderBy('id', 'DESC')
+                ->paginate(10);
+
+            return view('admin.projects.listCompletados')
+                ->with('projects', $projects);
+
         }
     }
 
@@ -142,6 +155,7 @@ class ProjectsController extends Controller
             $availableEmployees = DB::table('users')
                 ->select('id', 'name', 'last_name')
                 ->where('profile_id', '=', 3)
+                ->where('status', '=', '1')
                 ->whereNotIn('id', $employeesID)
                 ->get();
 
@@ -168,9 +182,33 @@ class ProjectsController extends Controller
             }
 
             $ingresos = $project->bills->where('status', '1')->where('type', 'C')->sum('amount');
+
+            $ID_Payments = [];
+            $ingresosPayments = [];
+
+            for($i = 0; $i < $project->bills->count(); $i++){
+                $ID_Payments = $project->bills[$i]->id;
+                array_push($ingresosPayments,Payments::where('bill_id', $ID_Payments)->where('status','1')->first());
+                if(empty($ingresosPayments[$i])){
+                   unset( $ingresosPayments[$i]);
+                }
+            }
+
+            $suma =[];
+            for($i = 0; $i<count($ingresosPayments); $i++){
+                if(empty($ingresosPayments[$i])){
+                    unset( $ingresosPayments[$i]);
+                 }else{
+                    array_push($suma,$ingresosPayments[$i]['amount']);}
+            }
+            //return $abonado =  $ingresosPayments;
+
+            $abonado = array_sum($suma);
+
+              $ingresos = $ingresos + $abonado;
             $budget['benefit'] = $ingresos - $budget['cost'];
 
-            $budget['assigned'] = ($ingresos * 60) / 100;
+            $budget['assigned'] = ($ingresos * 0.6);
 
             $clients = DB::table('users')
                 ->select('id', 'name', 'last_name')
@@ -210,11 +248,7 @@ class ProjectsController extends Controller
             $bill2 = Bill::where('project_id', '=', $id)->first();
 
 
-            if(isset($bill2->amount)){
-                $abonado = $bill2->amount;
-            }else{
-                $abonado = 0;
-            }
+
             return view('admin.projects.show')->with(compact('project', 'availableEmployees', 'availableTechnologies','abonado', 'bill','clients', 'countries', 'tags', 'tagsID', 'budget', 'ingresos', 'contable'));
         } else if (Auth::user()->profile_id == 2) {
 

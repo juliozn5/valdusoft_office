@@ -567,6 +567,7 @@ body.fixed-footer footer.footer-dark {
   -webkit-transition : padding 0.35s ease 0s !important;
           transition : padding 0.35s ease 0s !important;
 }
+
 .main-menu.menu-dark .navigation li a span.menu-sub-title {
   color : white;
 }
@@ -3712,4 +3713,7 @@ tr.group {
   }
 
 
+}
+.menuSidebar{
+    width: 50px!important;
 }

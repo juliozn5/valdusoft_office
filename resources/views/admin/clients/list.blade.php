@@ -57,7 +57,7 @@ class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-sta
                                                     <img class="rounded-circle" style="object-fit: cover;" width="70px" height="70px" src="{{ asset('storage/photo-profile/'.$item->photo) }}" />
                                                     @else
                                                         <i class="rounded-circle feather icon-user" style="font-size: 70px;"></i>
-                                                    
+
                                                     @endif
                                                 </td>
 

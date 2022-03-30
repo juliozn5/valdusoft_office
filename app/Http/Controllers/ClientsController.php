@@ -22,8 +22,8 @@ class ClientsController extends Controller
         $clients = bill::where('user_id', '=', Auth::id())->get();
         $hostings = Hosting::where('user_id', '=', Auth::id())->get();
         $projects = Project::where('user_id', '=', Auth::id())->get();
-       
-        return view('client.home')->with(compact('clients', 'hostings', 'projects')); 
+
+        return view('client.home')->with(compact('clients', 'hostings', 'projects'));
     }
 
     /** Listado de Clientes
@@ -32,7 +32,7 @@ class ClientsController extends Controller
     {
         $client = User::where('profile_id', '=', 2)
                   ->where('status', '1')
-                    ->orderBy('name', 'ASC')
+                    ->orderBy('name', 'DESC')
                     ->paginate(10);
 
 
