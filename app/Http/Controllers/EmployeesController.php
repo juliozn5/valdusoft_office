@@ -192,6 +192,7 @@ class EmployeesController extends Controller
                             ->where('status', '0')
                             ->with('payments')
                             ->first();
+
         $acumulado = 0;
         $restante = 0;
         if (!is_null($financiamiento)){
