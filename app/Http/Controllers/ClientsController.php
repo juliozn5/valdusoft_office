@@ -146,6 +146,7 @@ class ClientsController extends Controller
 
         ], $msj);
 
+
         if ($validate) {
             $client->update($request->all());
             $client->slug = Str::slug($request->name . "-" . $request->last_name);
